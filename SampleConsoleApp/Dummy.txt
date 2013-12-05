@@ -1,1 +1,0 @@
-﻿Test file to verify Git syncing (3)
