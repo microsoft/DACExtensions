@@ -1,11 +1,6 @@
-﻿using Microsoft.SqlServer.Dac;
-using Microsoft.SqlServer.Dac.Model;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
-using System;
-using System.IO;
-using System.Linq;
+﻿using System;
 
-namespace ModelBuilderApp
+namespace Public.Dac.Samples.App
 {
     class Program
     {

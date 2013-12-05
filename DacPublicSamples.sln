@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelBuilderApp", "ModelBuilderApp\ModelBuilderApp.csproj", "{7855389B-A1F0-4A7C-A83A-38EEF5B73F9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleApp", "ModelBuilderApp\SampleConsoleApp.csproj", "{7855389B-A1F0-4A7C-A83A-38EEF5B73F9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples", "Samples\Samples.csproj", "{C1C2B521-22B6-4124-AAEC-A5E1FCAB0DFA}"
 EndProject

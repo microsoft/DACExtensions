@@ -1,14 +1,11 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Dac;
+using Microsoft.SqlServer.Dac.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SqlServer.Dac;
-using Microsoft.SqlServer.Dac.Model;
-using Public.Dac.Samples;
 
-namespace ModelBuilderApp
+namespace Public.Dac.Samples.App
 {
     internal class ModelFilterExample
     {

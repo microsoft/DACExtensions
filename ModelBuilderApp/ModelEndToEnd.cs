@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SqlServer.Dac;
+﻿using Microsoft.SqlServer.Dac;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
+using System;
+using System.IO;
+using System.Linq;
 
-namespace ModelBuilderApp
+namespace Public.Dac.Samples.App
 {
     /// <summary>
     /// Basic demo class showing end to end usage of the model
