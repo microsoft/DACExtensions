@@ -35,12 +35,15 @@ Current actions:
                     ModelEndToEnd.Run();
                     break;
                 case Behavior.FilterModel:
-
+                    ModelFilterExample.RunFilteringExample();
                     break;
                 case Behavior.FilterDeploymentSteps:
-
+                    // TODO implement deployment example
                     break;
             }
+
+            Console.WriteLine("Press any key to finish");
+            Console.ReadKey();
         }
 
         private static Behavior GetBehavior(string[] args)
