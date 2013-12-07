@@ -1,4 +1,5 @@
-﻿using Microsoft.SqlServer.Dac.Model;
+﻿using System;
+using Microsoft.SqlServer.Dac.Model;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -52,6 +53,11 @@ namespace Public.Dac.Samples
             get; 
             set;
         }
+        
+        public IEnumerable<TSqlObject> Filter(IEnumerable<TSqlObject> tSqlObjects)
+        {
+            return tSqlObjects.Where(o => ShouldInclude(o));
+        }
 
         private bool ShouldInclude(TSqlObject tsqlObject)
         {
@@ -61,10 +67,9 @@ namespace Public.Dac.Samples
             ObjectIdentifier id = tsqlObject.Name;
             if (id.HasName && id.Parts.Count >= 1)
             {
-                // Assuming schema name is always the first part. For 
-                // models with some composite elements from a separate model 
+                // Assuming schema name is always the first part. 
                 string schemaName = id.Parts[0];
-                found = _schemaNames.Contains(schemaName);
+                found = _schemaNames.Contains(schemaName, StringComparer.OrdinalIgnoreCase);
             }
 
             if (Filtering == FilterType.Exclude)
@@ -74,12 +79,5 @@ namespace Public.Dac.Samples
             };
             return found;
         }
-
-
-        public IEnumerable<TSqlObject> Filter(IEnumerable<TSqlObject> tSqlObjects)
-        {
-            return tSqlObjects.Where(o => ShouldInclude(o));
-        }
-
     }
 }

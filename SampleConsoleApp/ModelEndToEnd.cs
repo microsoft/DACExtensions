@@ -38,8 +38,8 @@ namespace Public.Dac.Samples.App
 
                 CopyFromTheModel(model);
 
-                // save the model to a .dacpac
-                // Note that the PackageOptions can be used to specify 
+                // save the model to a new .dacpac
+                // Note that the PackageOptions can be used to specify RefactorLog and contributors to include
                 DacPackageExtensions.BuildPackage(
                     dacpacPath,
                     model,
@@ -48,19 +48,20 @@ namespace Public.Dac.Samples.App
                     );
             }
 
+            // Load from a dacpac
             using (TSqlModel modelFromDacpac = new TSqlModel(dacpacPath))
             {
                 // Show that all the elements were saved successfully
                 ReadTheModel(modelFromDacpac);
 
-                // You can update the model in the dacpac. Other updates (for pre/post deployment scripts
+                // You can update the model in the dacpac. Other parts of a dacpac can't be updated yet (pre/post deployment scripts)
                 modelFromDacpac.AddObjects("CREATE VIEW V1 AS SELECT * FROM T1");
 
                 using (DacPackage dacPackage = DacPackage.Load(dacpacPath, 
                                                     DacSchemaModelStorageType.Memory,
                                                     FileAccess.ReadWrite))
                 {
-                    // Note how it's a bit awkard to load a dac package and update the model in it right now, since
+                    // Note how it's a bit awkward to load a dac package and update the model in it right now, since
                     // both load the same path.
                     DacPackageExtensions.UpdateModel(dacPackage, modelFromDacpac, null);
                 }
@@ -75,12 +76,13 @@ namespace Public.Dac.Samples.App
             // This will get all tables. 
             var tables = model.GetObjects(DacQueryScopes.Default, Table.TypeClass).ToList();
 
-            // Look up a specific table by ID (note that if no schema is defined, the default "dbo" is used)
-            var t1 = model.GetObjects(Table.TypeClass, new ObjectIdentifier("dbo", "t1"), DacQueryScopes.Default).FirstOrDefault();
+            // Look up a specific table by ID. Note that if no schema is defined when creating an element, the default "dbo" schema is used
+            var t1 = model.GetObjects(Table.TypeClass, new ObjectIdentifier("dbo", "t1"), DacQueryScopes.UserDefined).FirstOrDefault();
 
             // Get a the column referenced by this table, and query its length
             TSqlObject column = t1.GetReferenced(Table.Columns).First(col => col.Name.Parts[2].Equals("c1"));
-            Console.WriteLine("Column c1 has length {0}", column.GetProperty<int>(Column.Length)); 
+            int columnLength = column.GetProperty<int>(Column.Length);
+            Console.WriteLine("Column c1 has length {0}", columnLength); 
         }
 
         private static void CopyFromTheModel(TSqlModel model)
