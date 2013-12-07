@@ -59,6 +59,9 @@ namespace Public.Dac.Samples
                 .Select(pair => pair.Value);
 
             _schemaNames = new HashSet<string>(schemaNames);
+
+            // Currently there is no "FilterType" argument that would allow us to
+            // specify the filter's behavior. For now, will always by in "Exclude" mode 
         }
 
         /// <summary>

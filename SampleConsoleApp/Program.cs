@@ -30,6 +30,7 @@ Current actions:
                 case Behavior.FilterModel:
                     ModelFilterExample.RunFilteringExample();
                     break;
+                // To test deployment plan-based filtering see the TestFiltering.TestFilterPlanWhenPublishing() unit test
             }
 
             Console.WriteLine("Press any key to finish");
