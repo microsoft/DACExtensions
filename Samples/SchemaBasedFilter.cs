@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Remoting.Messaging;
 using Microsoft.SqlServer.Dac.Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Public.Dac.Samples
     /// </summary>
     public class SchemaBasedFilter : IFilter
     {
+        public const string SchemaNameArg = "Schema";
 
         public enum FilterType
         {
@@ -46,6 +48,20 @@ namespace Public.Dac.Samples
         }
 
         /// <summary>
+        /// This would be called by a deployment contributor to initialize the filter. The 
+        /// assumption is that in the code that runs the deployment, a number of arguments
+        /// "Schema1=dev;Schema2=test" would be passed into the contributor arguments
+        /// </summary>
+        public void Initialize(Dictionary<string, string> filterArguments)
+        {
+            var schemaNames = filterArguments
+                .Where(pair => pair.Key.StartsWith(SchemaNameArg))
+                .Select(pair => pair.Value);
+
+            _schemaNames = new HashSet<string>(schemaNames);
+        }
+
+        /// <summary>
         /// What type of filtering to use. Defaults to <see cref="FilterType.Exclude"/>
         /// </summary>
         public FilterType Filtering
@@ -58,6 +74,7 @@ namespace Public.Dac.Samples
         {
             return tSqlObjects.Where(o => ShouldInclude(o));
         }
+
 
         private bool ShouldInclude(TSqlObject tsqlObject)
         {
@@ -76,7 +93,7 @@ namespace Public.Dac.Samples
             {
                 // exclude any objects whose schema was in the filter list
                 return !found;
-            };
+            }
             return found;
         }
     }

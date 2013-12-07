@@ -15,5 +15,11 @@ namespace Public.Dac.Samples
         /// <param name="tSqlObjects">the objects to filter</param>
         /// <returns>some filtered set of objects</returns>
         IEnumerable<TSqlObject> Filter(IEnumerable<TSqlObject> tSqlObjects);
+
+        /// <summary>
+        /// Provides a chance to initialize the filter based on some set of key-value pairs
+        /// </summary>
+        /// <param name="filterArguments">set of key value pairs that can be used to initialize the filter</param>
+        void Initialize(Dictionary<string, string> filterArguments);
     }
 }

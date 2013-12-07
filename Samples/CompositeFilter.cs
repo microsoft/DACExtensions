@@ -24,5 +24,10 @@ namespace Public.Dac.Samples
 
             return tSqlObjects;
         }
+
+        public void Initialize(Dictionary<string, string> filterArguments)
+        {
+            // Do nothing
+        }
     }
 }

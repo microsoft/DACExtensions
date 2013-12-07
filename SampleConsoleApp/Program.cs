@@ -8,8 +8,7 @@ namespace Public.Dac.Samples.App
         {
             Usage,
             RunEndToEnd,
-            FilterModel,
-            FilterDeploymentSteps
+            FilterModel
         }
 
         static void Main(string[] args)
@@ -22,7 +21,6 @@ namespace Public.Dac.Samples.App
 Current actions:
 [RunEndToEnd] - Runs the end to end demo that creates a model, copies to another model, and saves the model to a dacpac
 [FilterModel] - Runs the end to end demo that creates a model, copies to another model, and saves the model to a dacpac
-[FilterDeploymentSteps] - Runs the end to end demo that creates a model, copies to another model, and saves the model to a dacpac
 [Usage] - Print this usage message
 ");
                     break;
@@ -31,9 +29,6 @@ Current actions:
                     break;
                 case Behavior.FilterModel:
                     ModelFilterExample.RunFilteringExample();
-                    break;
-                case Behavior.FilterDeploymentSteps:
-                    // TODO implement deployment example
                     break;
             }
 
@@ -53,10 +48,6 @@ Current actions:
                 if (MatchesBehavior(args[0], Behavior.FilterModel))
                 {
                     behavior = Behavior.FilterModel;
-                }
-                else if (MatchesBehavior(args[0], Behavior.FilterDeploymentSteps))
-                {
-                    behavior = Behavior.FilterDeploymentSteps;
                 }
             }
             return behavior;

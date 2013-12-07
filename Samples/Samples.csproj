@@ -47,6 +47,7 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft SQL Server\110\SDK\Assemblies\Microsoft.SqlServer.TransactSql.ScriptDom.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -57,8 +58,9 @@
   <ItemGroup>
     <Compile Include="CompositeFilter.cs" />
     <Compile Include="DisposableList.cs" />
-    <Compile Include="IFilter.cs" />
+    <Compile Include="Filter.cs" />
     <Compile Include="ModelFilterer.cs" />
+    <Compile Include="PlanFilterer.cs" />
     <Compile Include="SchemaBasedFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TSqlModelExtensions.cs" />
