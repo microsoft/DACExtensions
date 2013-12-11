@@ -67,33 +67,13 @@ namespace Public.Dac.Samples
         }
 
         /// <summary>
-        /// Builds the arguments string to be used when 
+        /// Builds the arguments string to be passed to the DacServices API when running the contributor
         /// </summary>
         public static string BuildPlanFiltererArgumentString(string filterName,
             Dictionary<string, string> filterArguments)
         {
-            StringBuilder args = new StringBuilder();
-            AddArgument(args, FilterNameArg, filterName);
-
-            foreach (var entry in filterArguments)
-            {
-                AddArgument(args, entry.Key, entry.Value);
-            }
-            return args.ToString();
-        }
-
-        /// <summary>
-        /// Adds an argument into the string. Args are name-value pairs separated by the "=" sign, with
-        /// each argument in the list semicolon delimited. Hence and arg string might look like
-        /// "FilterName=SchemaBasedFilter;Schema1=dev;Schema2=test"
-        /// </summary>
-        private static void AddArgument(StringBuilder args, string key, string value)
-        {
-            if (args.Length > 0)
-            {
-                args.Append(";");
-            }
-            args.Append(key).Append("=").Append(value);
+            filterArguments[FilterNameArg] = filterName;
+            return Utils.BuildContributorArguments(filterArguments);
         }
     }
 }
