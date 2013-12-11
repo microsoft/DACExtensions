@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Dac;
+using Microsoft.SqlServer.Dac.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Public.Dac.Samples;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.SqlServer.Dac;
-using Microsoft.SqlServer.Dac.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Public.Dac.Samples;
 
 namespace Public.Dac.Sample.Tests
 {

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Runtime.Remoting.Messaging;
-using Microsoft.SqlServer.Dac.Model;
+﻿using Microsoft.SqlServer.Dac.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 

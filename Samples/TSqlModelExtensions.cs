@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.SqlServer.Dac.Model;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.SqlServer.Dac.Model;
 
 namespace Public.Dac.Samples
 {

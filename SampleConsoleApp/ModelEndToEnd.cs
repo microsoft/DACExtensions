@@ -61,8 +61,6 @@ namespace Public.Dac.Samples.App
                                                     DacSchemaModelStorageType.Memory,
                                                     FileAccess.ReadWrite))
                 {
-                    // Note how it's a bit awkward to load a dac package and update the model in it right now, since
-                    // both load the same path.
                     DacPackageExtensions.UpdateModel(dacPackage, modelFromDacpac, null);
                 }
             }
