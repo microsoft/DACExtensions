@@ -4,6 +4,7 @@ using Microsoft.SqlServer.TransactSql.ScriptDom;
 using System;
 using System.IO;
 using System.Linq;
+using ColumnType = Microsoft.SqlServer.Dac.Model.ColumnType;
 
 namespace Public.Dac.Samples.App
 {
@@ -80,7 +81,12 @@ namespace Public.Dac.Samples.App
             // Get a the column referenced by this table, and query its length
             TSqlObject column = t1.GetReferenced(Table.Columns).First(col => col.Name.Parts[2].Equals("c1"));
             int columnLength = column.GetProperty<int>(Column.Length);
-            Console.WriteLine("Column c1 has length {0}", columnLength); 
+            Console.WriteLine("Column c1 has length {0}", columnLength);
+
+            // Verify the ColumnType of this column. This can help indicate which properties will return meaningful values.
+            // For instance  since Column.Collation is only available on a simple column, and Column.Persisted is only on computed columns
+            ColumnType columnType = column.GetMetadata<ColumnType>(Column.ColumnType);
+            Console.WriteLine("Column c1 is of type '{0}'", columnType);
         }
 
         private static void CopyFromTheModel(TSqlModel model)
