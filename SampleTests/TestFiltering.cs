@@ -16,6 +16,7 @@
 // </copyright>
 //------------------------------------------------------------------------------
 using Microsoft.SqlServer.Dac;
+using Microsoft.SqlServer.Dac.Deployment;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Public.Dac.Samples;
@@ -34,7 +35,7 @@ namespace Public.Dac.Sample.Tests
         private const int TopLevelProdElementCount = 3;
         private const int TopLevelDevElementCount = 3;
         private const int TopLevelTestElementCount = 2;
-        
+
         private readonly string[] _testScripts = new string[]
         {
             // Prod
@@ -206,7 +207,7 @@ namespace Public.Dac.Sample.Tests
             var model = CreateTestModel();
             string existingPackagePath = GetTestFilePath("original.dacpac");
             BuildPackage(model, existingPackagePath);
-            
+
             // When saving a dacpac for deployment to production (filtering to exclude "dev" and "test" schemas)
             var schemaFilter = new SchemaBasedFilter("dev", "test");
             ModelFilterer modelFilterer = new ModelFilterer(schemaFilter);
@@ -254,10 +255,64 @@ namespace Public.Dac.Sample.Tests
                 services.Deploy(package, productionDbName, upgradeExisting: true, options: options);
             }
 
-            var schemaFilter = new SchemaBasedFilter("dev", "test");
-            ModelFilterer modelFilterer = new ModelFilterer(schemaFilter);
+            // Then expect only the "prod" schema objects to remain in the new package
+            // Extract the dacpac back from the database and ensure that only production elements are there
 
-            modelFilterer.UpdateDacpacModelWithFilter(existingPackagePath);
+            string extractedPackagePath = GetTestFilePath("extracted.dacpac");
+            services.Extract(extractedPackagePath, productionDbName, "AppName", new Version(1, 0));
+            var extractedModel = _trash.Add(new TSqlModel(extractedPackagePath, DacSchemaModelStorageType.Memory));
+
+            Assert.AreEqual(TopLevelProdElementCount, CountTablesViewsAndSchemas(extractedModel));
+            AssertAllObjectsHaveSchemaName(extractedModel, "prod");
+
+        }
+
+        /// <summary>
+        /// This test illustrates how you can include a requirement for a specific contributor when building the dacpac,
+        /// but add specific arguments such as the schemas to be filtered at deployment time. 
+        /// 
+        /// It builds the dacpac with the contributor ID specified, which means that contributor must be present 
+        /// on the computer that the deployment is being run from. However the arguments specifying which schemas are to be filtered
+        /// are left to deployment-time. This might be useful in the case where deployment should be blocked unless some schema is
+        /// filtered.
+        /// </summary>
+        [TestMethod]
+        public void TestIncludePlanFiltererInDacpac()
+        {
+            // Given a model with objects that use "dev", "test" and "prod" schemas
+            // and the contributor information built in
+            var model = CreateTestModel();
+            string existingPackagePath = GetTestFilePath("includesContributor.dacpac");
+            Console.WriteLine("Build dacpac to \n" + existingPackagePath);
+            DacPackageExtensions.BuildPackage(existingPackagePath, model, new PackageMetadata(), new PackageOptions()
+            {
+                DeploymentContributors = new[] { new DeploymentContributorInformation() { ExtensionId = PlanFilterer.PlanFiltererContributorId } }
+            });
+
+            DacServices services = new DacServices("Server=(localdb)\\v11.0;Integrated Security=true;");
+
+            // When publishing to production (filtering to exclude "dev" and "test" schemas)
+            string productionDbName = "ProductionDB";
+            using (DacPackage package = DacPackage.Load(existingPackagePath, DacSchemaModelStorageType.Memory))
+            {
+                DacDeployOptions options = new DacDeployOptions();
+
+                // Specify the filter to use and what arguments it needs. Note that this is a little limited by
+                // having to pass string-based arguments. This could be worked around by serializing arguments to a 
+                // file and passing the file path to the contributor if you need to do anything advanced.
+                options.AdditionalDeploymentContributorArguments =
+                    PlanFilterer.BuildPlanFiltererArgumentString("SchemaBasedFilter", new Dictionary<string, string>()
+                    {
+                        {"Schema1", "dev"},
+                        {"Schema2", "test"},
+                    });
+
+                // For test purposes, always create a new database (otherwise previous failures might mess up our result)
+                options.CreateNewDatabase = true;
+
+                // Run the deployment with the options as specified
+                services.Deploy(package, productionDbName, upgradeExisting: true, options: options);
+            }
 
             // Then expect only the "prod" schema objects to remain in the new package
             // Extract the dacpac back from the database and ensure that only production elements are there
