@@ -1,0 +1,54 @@
+Problem description: Index [dbo].[TableWithoutBin2Collation].[IX_T1_C2] is on a character column [dbo].[TableWithoutBin2Collation].[c2] that does not use a *_BIN2 collation. This is not supported for indexes on memory optimized tables. The collation 'SQL_Latin1_General_CP1_CI_AS' for the database or for the specified column should be changed
+FullID: Public.Dac.Samples.SR1101
+Severity: Warning
+Model element: dbo.TableWithoutBin2Collation.IX_T1_C2
+Script file: TableWithoutBin2Collation.sql
+Start line: 15
+Start column: 5
+========end of problem========
+
+Problem description: Index [dbo].[TableWithoutBin2Collation].[IX_T1_MultipleIndexes] is on a character column [dbo].[TableWithoutBin2Collation].[c3] that does not use a *_BIN2 collation. This is not supported for indexes on memory optimized tables. The collation 'SQL_Latin1_General_CP1_CI_AS' for the database or for the specified column should be changed
+FullID: Public.Dac.Samples.SR1101
+Severity: Warning
+Model element: dbo.TableWithoutBin2Collation.IX_T1_MultipleIndexes
+Script file: TableWithoutBin2Collation.sql
+Start line: 16
+Start column: 5
+========end of problem========
+
+Problem description: Index [dbo].[TableWithoutBin2Collation].[IX_T1_MultipleIndexes] is on a character column [dbo].[TableWithoutBin2Collation].[c4] that does not use a *_BIN2 collation. This is not supported for indexes on memory optimized tables. The collation 'SQL_Latin1_General_CP1_CI_AS' for the database or for the specified column should be changed
+FullID: Public.Dac.Samples.SR1101
+Severity: Warning
+Model element: dbo.TableWithoutBin2Collation.IX_T1_MultipleIndexes
+Script file: TableWithoutBin2Collation.sql
+Start line: 16
+Start column: 5
+========end of problem========
+
+Problem description: Index [dbo].[TableWithoutBin2Collation].[IX_T1_c5] is on a character column [dbo].[TableWithoutBin2Collation].[c5] that does not use a *_BIN2 collation. This is not supported for indexes on memory optimized tables. The collation 'SQL_Latin1_General_CP1_CI_AS' for the database or for the specified column should be changed
+FullID: Public.Dac.Samples.SR1101
+Severity: Warning
+Model element: dbo.TableWithoutBin2Collation.IX_T1_c5
+Script file: TableWithoutBin2Collation.sql
+Start line: 17
+Start column: 5
+========end of problem========
+
+Problem description: Index [dbo].[TableWithoutBin2Collation].[IX_T1_MultipleIndexesOneWithBin2] is on a character column [dbo].[TableWithoutBin2Collation].[c3] that does not use a *_BIN2 collation. This is not supported for indexes on memory optimized tables. The collation 'SQL_Latin1_General_CP1_CI_AS' for the database or for the specified column should be changed
+FullID: Public.Dac.Samples.SR1101
+Severity: Warning
+Model element: dbo.TableWithoutBin2Collation.IX_T1_MultipleIndexesOneWithBin2
+Script file: TableWithoutBin2Collation.sql
+Start line: 19
+Start column: 5
+========end of problem========
+
+Problem description: Index [dbo].[TableWithSpecificNonBin2Collation].[IX_TableWithSpecificNonBin2Collation_Column] is on a character column [dbo].[TableWithSpecificNonBin2Collation].[c2] that does not use a *_BIN2 collation. This is not supported for indexes on memory optimized tables. The collation 'SQL_Latin1_General_CP1250_CS_AS' for the database or for the specified column should be changed
+FullID: Public.Dac.Samples.SR1101
+Severity: Warning
+Model element: dbo.TableWithSpecificNonBin2Collation.IX_TableWithSpecificNonBin2Collation_Column
+Script file: TableWithSpecificNonBin2Collation.sql
+Start line: 8
+Start column: 5
+========end of problem========
+

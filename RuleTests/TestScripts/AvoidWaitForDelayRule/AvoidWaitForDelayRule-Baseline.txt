@@ -1,0 +1,36 @@
+Problem description: WAITFOR DELAY statement was found in [dbo].[DatabaseScalarFunction1]
+FullID: Public.Dac.Samples.SR1004
+Severity: Warning
+Model element: dbo.DatabaseScalarFunction1
+Script file: DatabaseScalarFunction1.sql
+Start line: 9
+Start column: 5
+========end of problem========
+
+Problem description: WAITFOR DELAY statement was found in [dbo].[ProcWithWaitForDelay]
+FullID: Public.Dac.Samples.SR1004
+Severity: Warning
+Model element: dbo.ProcWithWaitForDelay
+Script file: ProcWithWaitForDelay.sql
+Start line: 5
+Start column: 3
+========end of problem========
+
+Problem description: WAITFOR DELAY statement was found in [ServerTrigger1]
+FullID: Public.Dac.Samples.SR1004
+Severity: Warning
+Model element: ServerTrigger1
+Script file: ServerTrigger1.sql
+Start line: 6
+Start column: 3
+========end of problem========
+
+Problem description: WAITFOR DELAY statement was found in [dbo].[TableValuedFunctionWithWaitForDelay]
+FullID: Public.Dac.Samples.SR1004
+Severity: Warning
+Model element: dbo.TableValuedFunctionWithWaitForDelay
+Script file: TableValuedFunctionWithWaitForDelay.sql
+Start line: 13
+Start column: 5
+========end of problem========
+

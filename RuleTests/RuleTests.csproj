@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E8F7142C-412D-40A8-AC5E-C90339A8C559}</ProjectGuid>
+    <ProjectGuid>{DF142FCD-E8E0-4841-BDB9-C9974F09068D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Public.Dac.Sample.Tests</RootNamespace>
-    <AssemblyName>Public.Dac.Sample.Tests</AssemblyName>
+    <RootNamespace>Public.Dac.Samples.Rules.Tests</RootNamespace>
+    <AssemblyName>Public.Dac.Samples.Rules.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,7 +53,12 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -68,17 +73,80 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TestFiltering.cs" />
+    <Compile Include="BaselinedRuleTest.cs" />
+    <Compile Include="RuleTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestDbLocationModifiers.cs" />
-    <Compile Include="TestUtils.cs" />
+    <Compile Include="RuleTestCases.cs" />
+    <Compile Include="RuleTestUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RuleSamples\RuleSamples.csproj">
+      <Project>{18e096e9-6a3d-4124-b908-9c39a425f7be}</Project>
+      <Name>RuleSamples</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Samples\Samples.csproj">
       <Project>{c1c2b521-22b6-4124-aaec-a5e1fcab0dfa}</Project>
       <Name>Samples</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestScripts\AvoidWaitForDelayRule\AvoidWaitForDelayRule-Baseline.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\AvoidWaitForDelayRule\DatabaseScalarFunction1.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\AvoidWaitForDelayRule\InlineFunction.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\AvoidWaitForDelayRule\ProcWithWaitForDelay.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\AvoidWaitForDelayRule\ProcWithWaitForTime.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\AvoidWaitForDelayRule\ServerTrigger1.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\AvoidWaitForDelayRule\Table1.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\AvoidWaitForDelayRule\TableValuedFunctionWithWaitForDelay.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestBin2CollationOnProjectRule\Filegroup.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestBin2CollationOnProjectRule\TableWithSpecificNonBin2Collation.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestBin2CollationOnProjectRule\TableWithBin2Collation.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestBin2CollationOnProjectRule\TableWithoutBin2Collation.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestBin2CollationOnProjectRule\TestBin2CollationOnProjectRule-Baseline.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestNonBin2CollationOnProjectRule\Filegroup.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestNonBin2CollationOnProjectRule\TableWithBin2Collation.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestNonBin2CollationOnProjectRule\TableWithSpecificNonBin2Collation.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestNonBin2CollationOnProjectRule\TestNonBin2CollationOnProjectRule-Baseline.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestNonBin2CollationOnProjectRule\TableWithoutBin2Collation.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\README.txt" />
+  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
