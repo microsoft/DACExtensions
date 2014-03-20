@@ -106,11 +106,38 @@ namespace Public.Dac.Samples.Rules {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indexes on character columns that do not use a *_BIN2 collation are not supported with indexes on memory optimized tables..
+        ///   Looks up a localized string similar to Indexes on character columns that do not use a *_BIN2 collation are not supported with indexes on memory optimized tables.
         /// </summary>
         internal static string InMemoryBinCollection_RuleName {
             get {
                 return ResourceManager.GetString("InMemoryBinCollection_RuleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The index {0} on view {1} is not allowed, as the view references a memory optimized table {2}.
+        /// </summary>
+        internal static string ViewsOnMemoryOptimizedTable_IndexProblemDescription {
+            get {
+                return ResourceManager.GetString("ViewsOnMemoryOptimizedTable_IndexProblemDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Views on memory optimized tables should be schema bound.
+        /// </summary>
+        internal static string ViewsOnMemoryOptimizedTable_RuleName {
+            get {
+                return ResourceManager.GetString("ViewsOnMemoryOptimizedTable_RuleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View {0} must specify the &apos;WITH SCHEMABINDING&apos; view attribute as it references a memory optimized table {1}.
+        /// </summary>
+        internal static string ViewsOnMemoryOptimizedTable_SchemaBindingProblemDescription {
+            get {
+                return ResourceManager.GetString("ViewsOnMemoryOptimizedTable_SchemaBindingProblemDescription", resourceCulture);
             }
         }
     }

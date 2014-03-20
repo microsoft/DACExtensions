@@ -45,7 +45,11 @@ namespace Public.Dac.Samples.Rules
         /// </summary>
         public const string InMemoryBinCollection_ProblemDescription = "InMemoryBinCollection_ProblemDescription";
 
-
+        /// <summary>
+        /// Lookup name inside the resources file for the rule name
+        /// </summary>
+        public const string ViewsOnMemoryOptimizedTable_RuleName = "ViewsOnMemoryOptimizedTable_RuleName";
+        
         /// <summary>
         /// The design category (should not be localized)
         /// </summary>

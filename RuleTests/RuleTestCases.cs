@@ -24,7 +24,10 @@ namespace Public.Dac.Samples.Rules.Tests
 {
     /// <summary>
     /// Basic test cases to validate the rule samples.
-    /// These could (and should) be extended to use baselines as this will make validation easier.
+    /// Many test cases have be extended to use baselines as this can make validation easier - baselined rule tests
+    /// support converting a set of input TSQL scripts into a model, running analysis against this and then comparing the
+    /// results to an expected baseline. The first time you add a test and run analysis you would verify the output created
+    /// looks correct, and if this is true you would update your baseline file to match this.
     /// </summary>
     [TestClass]
     public class RuleTestCases
@@ -120,6 +123,24 @@ CREATE TABLE [dbo].[NotAView] (c3 int)", expectedProblemFile)
             {
                 test.DatabaseOptions.Collation = "SQL_Latin1_General_CP437_BIN2";
                 test.RunTest(InMemoryTableBin2CollationRule.RuleId);
+            }
+        }
+
+
+        /// <summary>
+        /// Baselined test verifying ViewOnMemoryOptimizedTableRule
+        /// </summary>
+        [TestMethod]
+        public void TestViewOnMemoryOptimizedTableRule()
+        {
+            // Test with a BIN2 collation to ensure character indexes work successfully
+            using (BaselinedRuleTest test = new BaselinedRuleTest(
+                TestContext,
+                "TestViewOnMemoryOptimizedTableRule",
+                new TSqlModelOptions() { Collation = "SQL_Latin1_General_CP437_BIN2" },
+                SqlServerVersion.Sql120))
+            {
+                test.RunTest(ViewsOnMemoryOptimizedTableRule.RuleId);
             }
         }
     }

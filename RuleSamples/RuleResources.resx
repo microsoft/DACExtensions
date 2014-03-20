@@ -133,6 +133,15 @@
     <value>Index {0} is on a character column {1} that does not use a *_BIN2 collation. This is not supported for indexes on memory optimized tables. The collation '{2}' for the database or for the specified column should be changed</value>
   </data>
   <data name="InMemoryBinCollection_RuleName" xml:space="preserve">
-    <value>Indexes on character columns that do not use a *_BIN2 collation are not supported with indexes on memory optimized tables.</value>
+    <value>Indexes on character columns that do not use a *_BIN2 collation are not supported with indexes on memory optimized tables</value>
+  </data>
+  <data name="ViewsOnMemoryOptimizedTable_IndexProblemDescription" xml:space="preserve">
+    <value>The index {0} on view {1} is not allowed, as the view references a memory optimized table {2}</value>
+  </data>
+  <data name="ViewsOnMemoryOptimizedTable_RuleName" xml:space="preserve">
+    <value>Views on memory optimized tables should be schema bound</value>
+  </data>
+  <data name="ViewsOnMemoryOptimizedTable_SchemaBindingProblemDescription" xml:space="preserve">
+    <value>View {0} must specify the 'WITH SCHEMABINDING' view attribute as it references a memory optimized table {1}</value>
   </data>
 </root>

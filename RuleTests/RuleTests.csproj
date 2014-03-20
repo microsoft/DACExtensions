@@ -129,6 +129,24 @@
     <Content Include="TestScripts\TestBin2CollationOnProjectRule\TestBin2CollationOnProjectRule-Baseline.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestScripts\TestBin2CollationOnProjectRule\UddtTests.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestViewOnMemoryOptimizedTableRule\Filegroup.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestViewOnMemoryOptimizedTableRule\Table1.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestViewOnMemoryOptimizedTableRule\Table2.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestViewOnMemoryOptimizedTableRule\TestViewOnMemoryOptimizedTableRule-Baseline.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestViewOnMemoryOptimizedTableRule\View1Tests.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestScripts\TestNonBin2CollationOnProjectRule\Filegroup.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -145,6 +163,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TestScripts\README.txt" />
+    <Content Include="TestScripts\TestNonBin2CollationOnProjectRule\UddtTests.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Choose>

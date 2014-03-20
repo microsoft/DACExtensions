@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AvoidWaitForDelayRule.cs" />
+    <Compile Include="ViewsOnMemoryOptimizedTableRule.cs" />
     <Compile Include="InMemoryTableBin2CollationRule.cs" />
     <Compile Include="LocalizedExportCodeAnalysisRuleAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -86,6 +86,10 @@ namespace Public.Dac.Samples.Rules
 
         private string GetResourceString(string resourceId)
         {
+            if (string.IsNullOrWhiteSpace(resourceId))
+            {
+                return string.Empty;
+            }
             EnsureResourceManagerInitialized();
             return _resourceManager.GetString(resourceId, CultureInfo.CurrentUICulture);
         }

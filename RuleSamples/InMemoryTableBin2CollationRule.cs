@@ -29,9 +29,6 @@ namespace Public.Dac.Samples.Rules
     /// This is a SQL rule which warns if an Index on a Memory Optimized table targets a character column that does
     /// not use BIN2 collation. This would cause an error at deployment time so this is an important rule to support.
     /// 
-    /// Since this rule only needs to be run on SQL Server 2014 and greater editions it uses the 
-    /// PlatformCompatibility flag to avoid appearing in the list of supported rules for any SQL Server version
-    /// before 2014.
     /// </summary>
     [LocalizedExportCodeAnalysisRule(InMemoryTableBin2CollationRule.RuleId,
         RuleConstants.ResourceBaseName,                         // Name of the resource file to look up displayname and description in
@@ -69,11 +66,6 @@ namespace Public.Dac.Samples.Rules
             };
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
         public override IList<SqlRuleProblem> Analyze(SqlRuleExecutionContext context)
         {
             IList<SqlRuleProblem> problems = new List<SqlRuleProblem>();
@@ -112,7 +104,7 @@ namespace Public.Dac.Samples.Rules
                                                .Where(column => IsCharacterColumn(column)))
             {
                 // Fall back on the default project collation if none is defined for the specific column
-                string collation = column.GetProperty<string>(Column.Collation) ?? defaultCollation ?? string.Empty;
+                 string collation = column.GetProperty<string>(Column.Collation) ?? defaultCollation ?? string.Empty;
                 if (!collation.EndsWith(Bin2Ending, StringComparison.OrdinalIgnoreCase))
                 {
                     // Error looks liks "Index <name> on column <name> should have a BIN2 collation instead of <collation>"
@@ -146,6 +138,10 @@ namespace Public.Dac.Samples.Rules
                 return false;
             }
 
+            // Note: User Defined Data Types (UDDTs) are not supported during deployment ofmemory optimized tables. 
+            // The code below handles UDDTs in order to show how properties of a UDDT should be accessed and because
+            // the model validation does not actually block this syntax at present there are tests that validate this behavior. 
+ 
             // User Defined Data Types and built in types are merged in the public model.
             // We want to examine the built in type: for user defined data types this will be
             // found by accessing the DataType.Type object, which will not exist for a built in type

@@ -7,3 +7,12 @@ Start line: 8
 Start column: 5
 ========end of problem========
 
+Problem description: Index [dbo].[TableWithUddts].[IX_TableWithUddts_C2] is on a character column [dbo].[TableWithUddts].[c2] that does not use a *_BIN2 collation. This is not supported for indexes on memory optimized tables. The collation 'SQL_Latin1_General_CP1250_CS_AS' for the database or for the specified column should be changed
+FullID: Public.Dac.Samples.SR1101
+Severity: Warning
+Model element: dbo.TableWithUddts.IX_TableWithUddts_C2
+Script file: UddtTests.sql
+Start line: 23
+Start column: 5
+========end of problem========
+

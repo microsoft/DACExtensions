@@ -1,0 +1,27 @@
+Problem description: View [dbo].[View1] must specify the 'WITH SCHEMABINDING' view attribute as it references a memory optimized table [dbo].[Table1]
+FullID: Public.Dac.Samples.SR1102
+Severity: Warning
+Model element: dbo.View1
+Script file: View1Tests.sql
+Start line: 1
+Start column: 13
+========end of problem========
+
+Problem description: The index [dbo].[View1].[IX_View1_myCol] on view [dbo].[View1] is not allowed, as the view references a memory optimized table [dbo].[Table1]
+FullID: Public.Dac.Samples.SR1102
+Severity: Warning
+Model element: dbo.View1.IX_View1_myCol
+Script file: View1Tests.sql
+Start line: 7
+Start column: 31
+========end of problem========
+
+Problem description: The index [dbo].[View1].[IX_View1_c2] on view [dbo].[View1] is not allowed, as the view references a memory optimized table [dbo].[Table1]
+FullID: Public.Dac.Samples.SR1102
+Severity: Warning
+Model element: dbo.View1.IX_View1_c2
+Script file: View1Tests.sql
+Start line: 10
+Start column: 14
+========end of problem========
+
