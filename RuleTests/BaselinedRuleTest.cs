@@ -31,6 +31,8 @@ namespace Public.Dac.Samples.Rules.Tests
     /// <summary>
     /// A baselined rule test reads input scripts from a folder, and verifies the output of the test against
     /// 
+    /// An interesting learning challenge would be to add support for running the baselined test against a dacpac model
+    /// rather than a scripted model - this is left as a suggested exercise for now.
     /// </summary>
     public class BaselinedRuleTest : RuleTest
     {

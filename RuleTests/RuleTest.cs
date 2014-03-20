@@ -161,6 +161,7 @@ namespace Public.Dac.Samples.Rules.Tests
         private string BuildDacpacFromModel(TSqlModel model)
         {
             string path = DacpacPath;
+            Assert.IsFalse(string.IsNullOrWhiteSpace(DacpacPath), "DacpacPath must be set if target for analysis is a Dacpac");
 
             if (File.Exists(path))
             {
@@ -226,6 +227,19 @@ namespace Public.Dac.Samples.Rules.Tests
             RunRulesAndVerifyResult(service, verify);
         }
 
+        /// <summary>
+        /// Sets up the service and disables all rules except the rule you wish to test. 
+        /// 
+        /// If you want all rules to run then do not change the
+        /// <see cref="CodeAnalysisRuleSettings.DisableRulesNotInSettings"/> flag, as it is set to "false" by default which
+        /// ensures that all rules are run. 
+        /// 
+        /// To run some (but not all) of the built-in rules then you could query the 
+        /// <see cref="CodeAnalysisService.GetRules"/> method to get a list of all the rules, then set their
+        /// <see cref="RuleConfiguration.Enabled"/> and other flags as needed, or alternatively call the 
+        /// <see cref="CodeAnalysisService.ApplyRuleSettings"/> method to apply whatever rule settings you wish
+        /// 
+        /// </summary>
         private CodeAnalysisService CreateCodeAnalysisService(string ruleIdToRun)
         {
             CodeAnalysisServiceFactory factory = new CodeAnalysisServiceFactory();
