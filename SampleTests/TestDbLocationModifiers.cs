@@ -32,7 +32,7 @@ namespace Public.Dac.Sample.Tests
     [TestClass]
     public class TestDbLocationModifiers
     {
-        private const string DataSourceName = "(localdb)\\v11.0";
+        private const string DataSourceName = "(localdb)\\MSSQLLocalDB";
         private static string ServerConnectionString
         {
             get { return "Data Source=" + DataSourceName + ";Integrated Security=True"; }

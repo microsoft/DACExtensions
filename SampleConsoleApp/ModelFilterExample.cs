@@ -108,7 +108,7 @@ namespace Public.Dac.Samples.App
             using (DacPackage package = DacPackage.Load(productionPackagePath, DacSchemaModelStorageType.Memory))
             {
                 Console.WriteLine("Deploying the production dacpac to 'ProductionDB'");
-                DacServices services = new DacServices("Server=(localdb)\\v11.0;Integrated Security=true;");
+                DacServices services = new DacServices("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;");
                 services.Deploy(package, "ProductionDB");
 
                 Console.WriteLine("Extracting the 'ProductionDB' back to a dacpac for comparison");
@@ -129,52 +129,8 @@ namespace Public.Dac.Samples.App
                     View.TypeClass,
                     Schema.TypeClass))
             {
-                Console.WriteLine("\t{0}", PrettyPrintObjectName(tsqlObject));
+                Console.WriteLine("\t{0}", model.DisplayServices.GetElementName(tsqlObject, ElementNameStyle.EscapedFullyQualifiedName));
             }
-        }
-
-        /// <summary>
-        /// Utility method that's unfortunately needed since public model doesn't currently return nicely formatted
-        /// strings for an identifier
-        /// </summary>
-        /// <param name="tsqlObject"></param>
-        /// <returns></returns>
-        private static string PrettyPrintObjectName(TSqlObject tsqlObject)
-        {
-            StringBuilder name = new StringBuilder();
-            ObjectIdentifier id = tsqlObject.Name;
-            if(id.HasName)
-            {
-                // Models with references may contain objects with external name parts. 
-                // These represent things like the "$(RefDatabase)" part of a name like [$(RefDatabase)].[MytSchema].[MyTable]
-                if (id.HasExternalParts)
-                {
-                    foreach (string part in id.ExternalParts)
-                    {
-                        AddNamePart(name, part);
-                    }
-                }
-
-                foreach (string part in id.Parts)
-                {
-                    AddNamePart(name, part);
-                }
-            }
-            else
-            {
-                name.Append("UnnamedObject");
-            }
-
-            return name.ToString();
-        }
-
-        private static void AddNamePart(StringBuilder name, string part)
-        {
-            if (name.Length > 0)
-            {
-                name.Append('.');
-            }
-            name.Append('[').Append(part).Append(']');
         }
 
     }

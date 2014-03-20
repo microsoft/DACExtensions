@@ -228,7 +228,7 @@ namespace Public.Dac.Sample.Tests
             string existingPackagePath = GetTestFilePath("original.dacpac");
             BuildPackage(model, existingPackagePath);
 
-            DacServices services = new DacServices("Server=(localdb)\\v11.0;Integrated Security=true;");
+            DacServices services = new DacServices("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;");
 
             // When publishing to production (filtering to exclude "dev" and "test" schemas)
             string productionDbName = "ProductionDB";
@@ -289,7 +289,7 @@ namespace Public.Dac.Sample.Tests
                 DeploymentContributors = new[] { new DeploymentContributorInformation() { ExtensionId = PlanFilterer.PlanFiltererContributorId } }
             });
 
-            DacServices services = new DacServices("Server=(localdb)\\v11.0;Integrated Security=true;");
+            DacServices services = new DacServices("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;");
 
             // When publishing to production (filtering to exclude "dev" and "test" schemas)
             string productionDbName = "ProductionDB";

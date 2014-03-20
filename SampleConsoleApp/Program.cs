@@ -25,7 +25,8 @@ namespace Public.Dac.Samples.App
         {
             Usage,
             RunEndToEnd,
-            FilterModel
+            FilterModel,
+            RunCodeAnalysis
         }
 
         static void Main(string[] args)
@@ -37,7 +38,8 @@ namespace Public.Dac.Samples.App
                     Console.WriteLine(@"Specify the action you wish to perform, for example 'ModelBuilderApp.exe RunEndToEnd'
 Current actions:
 [RunEndToEnd] - Runs the end to end demo that creates a model, copies to another model, and saves the model to a dacpac
-[FilterModel] - Runs the end to end demo that creates a model, copies to another model, and saves the model to a dacpac
+[FilterModel] - Runs a demo that creates a model then creates a filtered copy with some schemas removed.
+[RunCodeAnalysis] - Runs a demo of running Static Code Analysis from your code.
 [Usage] - Print this usage message
 ");
                     break;
@@ -47,7 +49,10 @@ Current actions:
                 case Behavior.FilterModel:
                     ModelFilterExample.RunFilteringExample();
                     break;
-                // To test deployment plan-based filtering see the TestFiltering.TestFilterPlanWhenPublishing() unit test
+                case Behavior.RunCodeAnalysis:
+                    RunCodeAnalysisExample.RunAnalysisExample();
+                    break;
+                    // To test deployment plan-based filtering see the TestFiltering.TestFilterPlanWhenPublishing() unit test
             }
 
             Console.WriteLine("Press any key to finish");
@@ -66,6 +71,10 @@ Current actions:
                 if (MatchesBehavior(args[0], Behavior.FilterModel))
                 {
                     behavior = Behavior.FilterModel;
+                }
+                if (MatchesBehavior(args[0], Behavior.RunCodeAnalysis))
+                {
+                    behavior = Behavior.RunCodeAnalysis;
                 }
             }
             return behavior;
