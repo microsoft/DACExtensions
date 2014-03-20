@@ -1,4 +1,5 @@
-﻿//------------------------------------------------------------------------------
+﻿
+//------------------------------------------------------------------------------
 // <copyright company="Microsoft">
 //   Copyright 2013 Microsoft
 //
@@ -15,17 +16,16 @@
 //   limitations under the License.
 // </copyright>
 //------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Globalization;
-using System.IO;
-using System.Text;
+
 using Microsoft.SqlServer.Dac;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Public.Dac.Samples;
 using Public.Dac.Samples.Contributors;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
 
 namespace Public.Dac.Sample.Tests
 {

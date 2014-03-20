@@ -15,6 +15,7 @@
 //   limitations under the License.
 // </copyright>
 //------------------------------------------------------------------------------
+
 using Microsoft.SqlServer.Dac;
 using Microsoft.SqlServer.Dac.Deployment;
 using Microsoft.SqlServer.Dac.Model;

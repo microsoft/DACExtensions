@@ -16,14 +16,12 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-using Microsoft.SqlServer.Dac;
 using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Extensibility;
 using Microsoft.SqlServer.Dac.Model;
+using Microsoft.SqlServer.TransactSql.ScriptDom;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
 
 namespace Public.Dac.Samples.Rules
 {

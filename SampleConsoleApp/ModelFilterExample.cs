@@ -20,7 +20,6 @@ using Microsoft.SqlServer.Dac.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Public.Dac.Samples.App
 {

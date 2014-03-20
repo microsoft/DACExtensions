@@ -15,6 +15,7 @@
 //   limitations under the License.
 // </copyright>
 //------------------------------------------------------------------------------
+
 using Microsoft.SqlServer.Dac.CodeAnalysis;
 using Microsoft.SqlServer.Dac.Model;
 

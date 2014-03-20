@@ -15,6 +15,7 @@
 //   limitations under the License.
 // </copyright>
 //------------------------------------------------------------------------------
+
 using System;
 using System.Data.SqlClient;
 using System.Globalization;
