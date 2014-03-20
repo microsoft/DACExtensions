@@ -138,7 +138,7 @@ namespace Public.Dac.Samples.Rules
                 return false;
             }
 
-            // Note: User Defined Data Types (UDDTs) are not supported during deployment ofmemory optimized tables. 
+            // Note: User Defined Data Types (UDDTs) are not supported during deployment of memory optimized tables. 
             // The code below handles UDDTs in order to show how properties of a UDDT should be accessed and because
             // the model validation does not actually block this syntax at present there are tests that validate this behavior. 
  
