@@ -25,10 +25,11 @@ using System.Linq;
 namespace Public.Dac.Samples.Rules
 {
     /// <summary>
-    /// This is an example of a rule that uses the public model API to analyze properties of elements.
+    /// This is probably the simplest possible example of a rule that uses the public model API to analyze properties of elements.
     /// In this case any table whose name ends in "View" is treated as a problem.
     /// 
-    /// This does not use a localized export attribute, unlike the <see cref="AvoidWaitForDelayRule"/>. 
+    /// This does not use a localized export attribute, unlike the <see cref="AvoidWaitForDelayRule"/> and other rules. It is
+    /// not recommended that you use this code in a real world scenario
     /// </summary>
     [ExportCodeAnalysisRule(TableNameEndingInViewRule.RuleId,
         TableNameEndingInViewRule.RuleDisplayName,
