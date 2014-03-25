@@ -1,8 +1,15 @@
-These samples assume the latest SSDT updates for Visual Studio 2013 are installed. To develop using Visual Studio 2012 please modify the .csproj files to change "C:\Program Files (x86)\Microsoft Visual Studio 12.0" to ">C:\Program Files (x86)\Microsoft Visual Studio 11.0", and ensure the latest SSDT is installed for Visual Studio 2012.
+These samples assume the latest SSDT updates for Visual Studio 2013 are installed. 
+To develop using Visual Studio 2012 please modify the .csproj files to change 
+"C:\Program Files (x86)\Microsoft Visual Studio 12.0" to "C:\Program Files (x86)\Microsoft Visual Studio 11.0", and ensure the latest SSDT is installed for Visual Studio 2012.
 
-These samples are intended to work in tandem with the walkthroughs (http://msdn.microsoft.com/en-us/library/dn268597(v=vs.103).aspx) and standard SSDT help documentation. They show how to bootstrap an extensions library for Static Code Analysis rules and contributors and test them without installing anything into Visual Studio. 
+These samples are intended to work in tandem with the walkthroughs at
+http://msdn.microsoft.com/en-us/library/dn268597(v=vs.103).aspx and with the standard 
+SSDT help documentation. They show how to bootstrap an extensions library for Static 
+Code Analysis rules and contributors and test them without installing anything into V
+isual Studio. 
 
-If you wish to install any samples DLL into visual studio you need to sign the DLLs per the walkthrough instructions:
+If you wish to install any samples DLL into visual studio you need to sign the DLLs per 
+the walkthrough instructions:
 
 To sign and build the assembly
 - On the Project menu, click <ProjectName> Properties .
@@ -15,4 +22,5 @@ To sign and build the assembly
 - On the File menu, click Save All .
 - On the Build menu, click Build Solution .
 
-Then copy them to the extension installation directory <Visual Studio Install Dir>\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\120\Extensions.
+Then copy them to the extension installation directory 
+<Visual Studio Install Dir>\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\120\Extensions.
