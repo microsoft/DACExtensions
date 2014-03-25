@@ -78,7 +78,11 @@ RETURN 0", "ProcedureWithValidationWarnings.sql"),
         /// </summary>
         private static void RunAnalysis(TSqlModel model, string resultsFilePath)
         {
-            // Creating a default service will run all discovered rules, treating issues as 
+            // Creating a default service will run all discovered rules, treating issues as Warnings.
+            // To configure which rules are run you can pass a CodeAnalysisRuleSettings object to the service
+            // or as part of the CodeAnalysisServiceSettings passed into the factory method. Examples of this
+            // can be seen in the RuleTest.CreateCodeAnalysisService method.
+
             CodeAnalysisService service = new CodeAnalysisServiceFactory().CreateAnalysisService(model.Version);
             service.ResultsFile = resultsFilePath;
             CodeAnalysisResult result = service.Analyze(model);
