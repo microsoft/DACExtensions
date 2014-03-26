@@ -72,10 +72,19 @@ namespace Public.Dac.Samples.Rules
         /// </summary>
         private class NameFindingVisitor : TSqlConcreteFragmentVisitor
         {
+            /// <summary>
+            /// Mapping from object types to known TSqlFragment types that define those objects in AST form.
+            /// For each fragment type mapped in this dictionary, an ExplicitVisit override must be added that
+            /// handles that fragment type and queries the correct sub-fragment representing the name
+            /// </summary>
             private static Dictionary<ModelTypeClass, IList<Type>> _typeClassToFragmentType = new Dictionary<ModelTypeClass, IList<Type>>()
             {
-                {View.TypeClass, new [] { typeof(CreateViewStatement)}},
+                {Table.TypeClass, new [] { typeof(CreateTableStatement)}},  // Alter table visit is not supported
+                {View.TypeClass, new [] { typeof(CreateViewStatement), typeof(AlterViewStatement)}},
                 {Index.TypeClass, new [] { typeof(CreateIndexStatement), typeof(AlterIndexStatement)}},
+                {Procedure.TypeClass, new [] { typeof(CreateProcedureStatement), typeof(AlterProcedureStatement)}},
+                {ScalarFunction.TypeClass, new [] { typeof(CreateFunctionStatement), typeof(AlterFunctionStatement)}},
+                {TableValuedFunction.TypeClass, new [] { typeof(CreateFunctionStatement), typeof(AlterFunctionStatement)}},
             };
 
             private ModelTypeClass _currentTypeClass;
@@ -96,6 +105,14 @@ namespace Public.Dac.Samples.Rules
                 }
             }
 
+            public override void ExplicitVisit(AlterViewStatement view)
+            {
+                if (IsSupportedForCurrentType(view.GetType()))
+                {
+                    Name = view.SchemaObjectName;
+                }
+            }
+
             public override void ExplicitVisit(CreateIndexStatement index)
             {
                 
@@ -104,6 +121,57 @@ namespace Public.Dac.Samples.Rules
                     Name = index.Name;
                 }
             }
+
+            public override void ExplicitVisit(AlterIndexStatement index)
+            {
+                if (IsSupportedForCurrentType(index.GetType()))
+                {
+                    Name = index.Name;
+                }
+            }
+
+            public override void ExplicitVisit(CreateTableStatement table)
+            {
+                if (IsSupportedForCurrentType(table.GetType()))
+                {
+                    Name = table.SchemaObjectName;
+                }
+            }
+
+            public override void ExplicitVisit(CreateProcedureStatement proc)
+            {
+                if (IsSupportedForCurrentType(proc.GetType())
+                    && proc.ProcedureReference != null)
+                {
+                    Name = proc.ProcedureReference.Name;
+                }
+            }
+
+            public override void ExplicitVisit(AlterProcedureStatement proc)
+            {
+                if (IsSupportedForCurrentType(proc.GetType())
+                    && proc.ProcedureReference != null)
+                {
+                    Name = proc.ProcedureReference.Name;
+                }
+            }
+
+            public override void ExplicitVisit(AlterFunctionStatement func)
+            {
+                if (IsSupportedForCurrentType(func.GetType()))
+                {
+                    Name = func.Name;
+                }
+            }
+
+            public override void ExplicitVisit(CreateFunctionStatement func)
+            {
+                if (IsSupportedForCurrentType(func.GetType()))
+                {
+                    Name = func.Name;
+                }
+            }
+
             
             private bool IsSupportedForCurrentType(Type fragmentType)
             {

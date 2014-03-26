@@ -126,6 +126,12 @@
   <data name="CannotCreateResourceManager" xml:space="preserve">
     <value>Can't create ResourceManager for {0} from {1}.</value>
   </data>
+  <data name="CapitalizedNames_ProblemDescription" xml:space="preserve">
+    <value>'{0}' does not start with a capital letter. Lowercase names are not recommended</value>
+  </data>
+  <data name="CapitalizedNames_RuleName" xml:space="preserve">
+    <value>All TSQL objects should have a capitalized or uppercase name. Lowercase names are not recommended</value>
+  </data>
   <data name="CategorySamples" xml:space="preserve">
     <value>SamplesCategory</value>
   </data>

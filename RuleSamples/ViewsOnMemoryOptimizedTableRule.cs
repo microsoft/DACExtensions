@@ -108,6 +108,9 @@ namespace Public.Dac.Samples.Rules
                     RuleUtils.GetElementName(context, view),
                     RuleUtils.GetElementName(context, table));
                 TSqlFragment nameFragment = TsqlScriptDomUtils.LookupSchemaObjectName(index);
+
+                // Note that nameFragment can be null - in this case the index's position information will be used.
+                // This is just a little less precise than pointing to the position of the name for that index
                 problems.Add(new SqlRuleProblem(description, index, nameFragment));
 
             }

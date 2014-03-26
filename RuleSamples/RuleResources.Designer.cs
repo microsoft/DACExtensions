@@ -88,6 +88,24 @@ namespace Public.Dac.Samples.Rules {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; does not start with a capital letter. Lowercase names are not recommended.
+        /// </summary>
+        internal static string CapitalizedNames_ProblemDescription {
+            get {
+                return ResourceManager.GetString("CapitalizedNames_ProblemDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All TSQL objects should have a capitalized or uppercase name. Lowercase names are not recommended.
+        /// </summary>
+        internal static string CapitalizedNames_RuleName {
+            get {
+                return ResourceManager.GetString("CapitalizedNames_RuleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SamplesCategory.
         /// </summary>
         internal static string CategorySamples {

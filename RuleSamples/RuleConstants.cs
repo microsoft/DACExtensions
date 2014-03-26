@@ -49,29 +49,18 @@ namespace Public.Dac.Samples.Rules
         /// Lookup name inside the resources file for the rule name
         /// </summary>
         public const string ViewsOnMemoryOptimizedTable_RuleName = "ViewsOnMemoryOptimizedTable_RuleName";
-        
+
+        public const string CapitalizedNames_RuleName = "CapitalizedNames_RuleName";
+
+        public const string CapitalizedNames_ProblemDescription = "CapitalizedNames_ProblemDescription";
+
         /// <summary>
         /// The design category (should not be localized)
         /// </summary>
         public const string CategoryDesign = "Design";
 
-        /// <summary>
-        /// The performance category (should not be localized)
-        /// </summary>
-        public const string CategoryPerformance = "Design";
+        public const string CategoryPerformance = "Performance";
 
-        /// <summary>
-        /// SQL Server 2014 and future releases have features that older versions do not. Some rules may only
-        /// wish to target the latest versions of SQL Server to minimize the performance impace when building 
-        /// projects targeting older versions. Using this compatability setting the rule will not appear in the UI
-        /// or be supported during analysis for SQL Server 2012 and lower.
-        /// Note: TSqlPlatformCompatibility.Sql120 refers to SQL Server 2014 (Version 12.0 of SQL Server).
-        /// Also note that since we do not know what features SQL Databases in Azure may provide in the future, we
-        /// choose to be safe and not exclude it here
-        /// </summary>
-        public const TSqlPlatformCompatibility Sql12OrGreaterCompatibility = TSqlPlatformCompatibility.All
-                                                                             & ~TSqlPlatformCompatibility.Sql90
-                                                                             & ~TSqlPlatformCompatibility.Sql100
-                                                                             & ~TSqlPlatformCompatibility.Sql110;
+        public const string CategoryNaming = "Naming";
     }
 }

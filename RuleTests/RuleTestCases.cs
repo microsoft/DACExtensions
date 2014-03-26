@@ -202,5 +202,22 @@ CREATE TABLE [dbo].[NotAView] (c3 int)", "OneProblem.sql")
                 test.RunTest(ViewsOnMemoryOptimizedTableRule.RuleId);
             }
         }
+
+        /// <summary>
+        /// Baselined test verifying TestCapitalizedNameRule
+        /// </summary>
+        [TestMethod]
+        public void TestCapitalizedNamesRule()
+        {
+            // Test with a BIN2 collation to ensure character indexes work successfully
+            using (BaselinedRuleTest test = new BaselinedRuleTest(
+                TestContext,
+                "TestCapitalizedNamesRule",
+                new TSqlModelOptions() { Collation = "SQL_Latin1_General_CP437_BIN2" },
+                SqlServerVersion.Sql120))
+            {
+                test.RunTest(CapitalizedNamesRule.RuleId);
+            }
+        }
     }
 }

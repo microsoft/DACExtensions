@@ -1,0 +1,54 @@
+Problem description: '[dbo].[lowercasetable]' does not start with a capital letter. Lowercase names are not recommended
+FullID: Public.Dac.Samples.SR1103
+Severity: Warning
+Model element: dbo.lowercasetable
+Script file: TestScript.sql
+Start line: 6
+Start column: 14
+========end of problem========
+
+Problem description: '[dbo].[lowercasetable].[c2]' does not start with a capital letter. Lowercase names are not recommended
+FullID: Public.Dac.Samples.SR1103
+Severity: Warning
+Model element: dbo.lowercasetable.c2
+Script file: TestScript.sql
+Start line: 11
+Start column: 5
+========end of problem========
+
+Problem description: '[dbo].[lowercaseView]' does not start with a capital letter. Lowercase names are not recommended
+FullID: Public.Dac.Samples.SR1103
+Severity: Warning
+Model element: dbo.lowercaseView
+Script file: TestScript.sql
+Start line: 19
+Start column: 13
+========end of problem========
+
+Problem description: '[dbo].[lowercaseView].[c2]' does not start with a capital letter. Lowercase names are not recommended
+FullID: Public.Dac.Samples.SR1103
+Severity: Warning
+Model element: dbo.lowercaseView.c2
+Script file: TestScript.sql
+Start line: 22
+Start column: 12
+========end of problem========
+
+Problem description: '[dbo].[lowercaseView].[id]' does not start with a capital letter. Lowercase names are not recommended
+FullID: Public.Dac.Samples.SR1103
+Severity: Warning
+Model element: dbo.lowercaseView.id
+Script file: TestScript.sql
+Start line: 22
+Start column: 26
+========end of problem========
+
+Problem description: '[dbo].[lowercaseProcedure]' does not start with a capital letter. Lowercase names are not recommended
+FullID: Public.Dac.Samples.SR1103
+Severity: Warning
+Model element: dbo.lowercaseProcedure
+Script file: TestScript.sql
+Start line: 26
+Start column: 18
+========end of problem========
+

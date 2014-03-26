@@ -114,6 +114,12 @@
     <Content Include="TestScripts\AvoidWaitForDelayRule\TableValuedFunctionWithWaitForDelay.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestScripts\TestCapitalizedNamesRule\TestCapitalizedNamesRule-Baseline.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestScripts\TestCapitalizedNamesRule\TestScript.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestScripts\TestBin2CollationOnProjectRule\Filegroup.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
