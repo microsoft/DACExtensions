@@ -1,6 +1,4 @@
-﻿using Microsoft.SqlServer.Dac.CodeAnalysis;
-using Microsoft.SqlServer.Dac.Model;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
+﻿
 //------------------------------------------------------------------------------
 // <copyright company="Microsoft">
 //   Copyright 2013 Microsoft
@@ -18,6 +16,10 @@ using Microsoft.SqlServer.TransactSql.ScriptDom;
 //   limitations under the License.
 // </copyright>
 //------------------------------------------------------------------------------
+
+using Microsoft.SqlServer.Dac.CodeAnalysis;
+using Microsoft.SqlServer.Dac.Model;
+using Microsoft.SqlServer.TransactSql.ScriptDom;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
