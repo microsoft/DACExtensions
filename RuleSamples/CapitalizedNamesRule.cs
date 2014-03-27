@@ -121,7 +121,7 @@ namespace Public.Dac.Samples.Rules
 
                     // Name fragment would have more precise location information than the overall object.
                     // This can be null, in which case the object's position will be used.
-                    // note that the current implementation does work for non-top level types as it
+                    // note that the current implementation does not work for non-top level types as it
                     // relies on the TSqlModelUtils.TryGetFragmentForAnalysis() method which doesn't support these.
                     TSqlFragment nameFragment = TsqlScriptDomUtils.LookupSchemaObjectName(tSqlObject);
 
