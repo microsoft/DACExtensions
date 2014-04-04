@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositeFilter.cs" />
+    <Compile Include="Contributors\CreateIndexOperationalPropsModifier.cs" />
     <Compile Include="Contributors\DbLocationModifier.cs" />
     <Compile Include="Contributors\DbCreateDatabaseModifier.cs" />
     <Compile Include="DisposableList.cs" />

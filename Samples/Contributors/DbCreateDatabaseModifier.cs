@@ -71,8 +71,6 @@ namespace Public.Dac.Samples.Contributors
                 {
                     ChangeNewDatabaseLocation(context, databasePath, logPath);
                 }
-
-                ChangeNewDatabaseLocation(context, databasePath, logPath);
             }
         }
 

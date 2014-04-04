@@ -68,6 +68,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="TestCreateIndexOperationalPropsModifier.cs" />
     <Compile Include="TestFiltering.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDbLocationModifiers.cs" />
