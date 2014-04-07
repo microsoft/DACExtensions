@@ -22,5 +22,10 @@ To sign and build the assembly
 - On the File menu, click Save All .
 - On the Build menu, click Build Solution .
 
-Then copy them to the extension installation directory 
-<Visual Studio Install Dir>\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\120\Extensions.
+
+Then copy them to the extension installation directory.
+
+NOTE: In the current SSDT/DacFx release there is a bug that's causing extension lookup to search in the wrong directory path. The standard extension directory should be 
+<Visual Studio Install Dir>\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\120\Extensions. However due to this bug, lookup is falling back to the non-Visual Studio extension directory (C:\Program Files (x86)\Microsoft SQL Server\120\DAC\Bin\Extensions). 
+
+Because of this bug, for now the best practice is to install side-by-side with the DAC DLLs in <Visual Studio Install Dir>\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\120. Extension lookup always searches the directory that the DAC DLLs are installed in and so this will ensure your extensions work now and in future releases when the bug is fixed. Please take care when adding / replacing your DLLs not to overwrite any of the other DLLs in that directory.
