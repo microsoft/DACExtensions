@@ -110,15 +110,15 @@ namespace Public.Dac.Sample.Tests
                 iteration++);
 
             // Given MAXDOP option specified, expect it to be included in the settings
-            options = SetCreateIndexContributorOptions(null, "ON");
+            options = SetCreateIndexContributorOptions(null, "3");
             RunTestAndVerifyResult(options,
-                deployScript => Assert.IsTrue(deployScript.Contains("WITH (MAXDOP = ON)"), "Expected MAXDOP option to be 'ON'"),
+                deployScript => Assert.IsTrue(deployScript.Contains("WITH (MAXDOP = 3)"), "Expected MAXDOP option to be 'ON'"),
                 iteration++);
 
             // Given MAXDOP and ONLINE option specified, expect both to be included in the settings
-            options = SetCreateIndexContributorOptions("OFF", "ON");
+            options = SetCreateIndexContributorOptions("OFF", "2");
             RunTestAndVerifyResult(options,
-                deployScript => Assert.IsTrue(deployScript.Contains("WITH (ONLINE = OFF, MAXDOP = ON)"), "Expected both options to be defined"),
+                deployScript => Assert.IsTrue(deployScript.Contains("WITH (ONLINE = OFF, MAXDOP = 2)"), "Expected both options to be defined"),
                 iteration++);
         }
 

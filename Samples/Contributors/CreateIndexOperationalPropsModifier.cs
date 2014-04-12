@@ -45,62 +45,45 @@ namespace Public.Dac.Samples.Contributors
         public const string OptionOn = "ON";
         public const string OptionOff = "OFF";
 
-        private readonly Dictionary<string, IndexOptionKind> _optionArgumentMap = new Dictionary<string, IndexOptionKind>
+        private readonly Dictionary<string, OptionDefinition> _optionArgumentMap = 
+            new Dictionary<string, OptionDefinition>
         {
-            {OnlineArg, IndexOptionKind.Online},
-            {MaxDopArg, IndexOptionKind.MaxDop},
+            {OnlineArg, new OptionDefinition(IndexOptionKind.Online, true)},
+            {MaxDopArg, new OptionDefinition(IndexOptionKind.MaxDop, false)},
         };
 
         protected override void OnExecute(DeploymentPlanContributorContext context)
         {
-            IList<IndexStateOption> options = ConvertArgsToOptions(context);
+            IList<IndexOption> options = ConvertArgsToOptions(context);
             if (options.Count > 0)
             {
                 ChangeCreateIndexOperationalProps(context, options);
             }
         }
 
-        private IList<IndexStateOption> ConvertArgsToOptions(DeploymentPlanContributorContext context)
+        private IList<IndexOption> ConvertArgsToOptions(DeploymentPlanContributorContext context)
         {
-            List<IndexStateOption> options = new List<IndexStateOption>();
+            List<IndexOption> options = new List<IndexOption>();
 
             foreach(var entry in context.Arguments)
             {
-                IndexOptionKind optionKind;
-                if(_optionArgumentMap.TryGetValue(entry.Key, out optionKind))
+                OptionDefinition optionDefinition;
+                if (_optionArgumentMap.TryGetValue(entry.Key, out optionDefinition))
                 {
-                    AddStateOption(optionKind, entry.Value, options);
+                    IndexOption option = optionDefinition.CreateOption(entry.Value);
+                    if (option != null)
+                    {
+                        options.Add(option);
+                    }
                 }
             }
 
             return options;
         }
 
-        private void AddStateOption(IndexOptionKind optionKind, string argumentValue, IList<IndexStateOption> options)
-        {
-            OptionState state;
-            if (string.Compare(OptionOn, argumentValue, StringComparison.OrdinalIgnoreCase) == 0)
-            {
-                state = OptionState.On;
-            }
-            else if (string.Compare(OptionOff, argumentValue, StringComparison.OrdinalIgnoreCase) == 0)
-            {
-                state = OptionState.Off;
-            }
-            else
-            {
-                return;
-            }
-
-            options.Add(new IndexStateOption
-            {
-                OptionKind = optionKind,
-                OptionState = state
-            });
-        }
 
         private void ChangeCreateIndexOperationalProps(DeploymentPlanContributorContext context, 
-            IList<IndexStateOption> options)
+            IList<IndexOption> options)
         {
             DeploymentStep nextStep = context.PlanHandle.Head;
 
@@ -151,11 +134,11 @@ namespace Public.Dac.Samples.Contributors
         /// </summary>
         private class CreateIndexStatementVisitor : TSqlConcreteFragmentVisitor
         {
-            private readonly Dictionary<IndexOptionKind, IndexStateOption> _optionKindToOptionMap;
-            public CreateIndexStatementVisitor(IEnumerable<IndexStateOption> indexOptions)
+            private readonly Dictionary<IndexOptionKind, IndexOption> _optionKindToOptionMap;
+            public CreateIndexStatementVisitor(IEnumerable<IndexOption> indexOptions)
             {
-                _optionKindToOptionMap = new Dictionary<IndexOptionKind, IndexStateOption>();
-                foreach (IndexStateOption option in indexOptions)
+                _optionKindToOptionMap = new Dictionary<IndexOptionKind, IndexOption>();
+                foreach (IndexOption option in indexOptions)
                 {
                     _optionKindToOptionMap[option.OptionKind] = option;
                 }
@@ -170,23 +153,82 @@ namespace Public.Dac.Samples.Contributors
                 if (node.IndexOptions != null)
                 {
 
-                    // Override existing values
-                    foreach (IndexOption option in node.IndexOptions)
+                    // Remove existing values if we need to overwrite them
+                    List<IndexOption> existingOptions = new List<IndexOption>(node.IndexOptions);
+                    foreach (IndexOption option in existingOptions)
                     {
-                        IndexStateOption updatedOption;
+                        IndexOption updatedOption;
                         if (_optionKindToOptionMap.TryGetValue(option.OptionKind, out updatedOption))
                         {
-                            ((IndexStateOption)option).OptionState = updatedOption.OptionState;
-                            _optionKindToOptionMap.Remove(option.OptionKind);
+                            node.IndexOptions.Remove(option);
                         }
                     }
 
-                    // Add any values that still haven't been set
+                    // Add the new values
                     foreach (var option in _optionKindToOptionMap.Values)
                     {
                         node.IndexOptions.Add(option);
                     }
                 }
+            }
+        }
+        
+        private class OptionDefinition
+        {
+            private IndexOptionKind _kind;
+            private bool _isStateOption;
+
+            public OptionDefinition(IndexOptionKind kind, bool isStateOption)
+            {
+                _kind = kind;
+                _isStateOption = isStateOption;
+            }
+
+            public IndexOption CreateOption(string argumentValue)
+            {
+                if (_isStateOption)
+                {
+                    return CreateStateOption(argumentValue);
+                }
+                return CreateExpressionOption(argumentValue);
+            }
+
+            private IndexOption CreateExpressionOption(string argumentValue)
+            {
+                int value;
+                if (int.TryParse(argumentValue, out value))
+                {
+                    return new IndexExpressionOption
+                    {
+                        OptionKind = _kind,
+                        Expression = new IntegerLiteral { Value = argumentValue }
+                    };
+                }
+
+                return null;
+            }
+
+            private IndexOption CreateStateOption(string argumentValue)
+            {
+                OptionState state;
+                if (string.Compare(OptionOn, argumentValue, StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    state = OptionState.On;
+                }
+                else if (string.Compare(OptionOff, argumentValue, StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    state = OptionState.Off;
+                }
+                else
+                {
+                    return null;
+                }
+
+                return new IndexStateOption
+                {
+                    OptionKind = _kind,
+                    OptionState = state
+                };
             }
         }
     }
