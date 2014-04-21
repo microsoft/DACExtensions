@@ -25,9 +25,23 @@ using Microsoft.SqlServer.Dac;
 namespace Public.Dac.Samples.Rules
 {
     /// <summary>
-    /// Utility class for TransactSql.ScriptDom functionality. These functions are not be
-    /// part of the public API, but are included in the public samples project so that users can
-    /// understand how we use the ScriptDom APIs for writing rules.
+    /// Utility class for TransactSql.ScriptDom functionality. 
+    /// 
+    /// These functions are useful examples of how to make use of the ScriptDom APIs
+    /// when running code analysis. 
+    /// 
+    /// For instance they show how to use TSqlModelUtils.TryGetFragmentForAnalysis to 
+    /// get the ScriptDom for analysis, rather than using TSqlObject.TryGetScript. This is because 
+    /// during analysis we want the original source script, not a recreated script that's based
+    /// off the model contents.
+    /// - The original source script contains the correct source position info (start line and column)
+    /// and helps provide the most accurate error information to the user. 
+    /// - Using TSqlObject.TryGetScript or TSqlObject.GetScript creates a new script each time,
+    /// which affects performance and can be costly. The preference is to use the original fragment from
+    /// the model if at all possible. 
+    /// 
+    /// The class also shows how to write custom fragment visitors to identify object names. When examining
+    /// the script dom, visitors are an efficient and useful way to interact with them. 
     /// </summary>
     internal static class TsqlScriptDomUtils
     {
@@ -36,7 +50,9 @@ namespace Public.Dac.Samples.Rules
         /// or a trigger. These have similar characteristics, for instance the ability to
         /// include select statements against tables. 
         /// </summary>
-        /// <param name="fragment"><see cref="TSqlFragment"/> representing part of a TSQL object definition</param>
+        /// <param name="fragment">
+        /// <see cref="TSqlFragment"/> representing part of a TSQL object definition
+        /// </param>
         /// <returns>true if this is a subroutine, a view or a trigger body</returns>
         public static bool IsSubroutineViewOrTrigger(TSqlFragment fragment)
         {
@@ -46,11 +62,12 @@ namespace Public.Dac.Samples.Rules
         }
 
         /// <summary>
-        /// Looks up the fragment representing the name of a <see cref="TSqlObject"/>. Only some common object types are supported - more
-        /// can be added as needed.
+        /// Looks up the fragment representing the name of a <see cref="TSqlObject"/>. 
+        /// Only some common object types are supported - more can be added as needed.
         /// 
-        /// Searches for the precise TSqlFragment representing the name of the view. If it's possible to find this
-        /// it can provide the most accurate source position information to support clicking on the error in the errors list
+        /// Searches for the precise TSqlFragment representing the name of the view. 
+        /// If it's possible to find this it can provide the most accurate source 
+        /// position information to support clicking on the error in the errors list
         /// and navigating to that precise view definition in a project file 
         /// </summary>
         /// <param name="tSqlObject">The object whose name is requested</param>
