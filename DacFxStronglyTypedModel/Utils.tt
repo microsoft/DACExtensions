@@ -1,0 +1,90 @@
+﻿<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="$(DacFxExternals)\Microsoft.SqlServer.Dac.Extensions.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Microsoft.SqlServer.Dac.Model"#>
+<#+
+
+private static string NamespaceName = "Microsoft.SqlServer.Dac.Extensions.Prototype";
+
+private static string GetPropertyTypeName(ModelPropertyClass property, out bool useGenericGetter )
+{
+	useGenericGetter = true;
+	string typeName;
+	if(property.DataType.IsGenericType)
+	{
+		Type[] genericTypes = property.DataType.GetGenericArguments();
+		typeName = genericTypes[0].Name + "?";
+	}
+	else if( property.DataType.Name == "SqlScriptProperty")
+	{
+		// SqlScriptProperty is an internal type. The property getter should
+		// return a string
+		typeName = "String";
+		useGenericGetter = false;
+	}
+	else
+	{
+		typeName  = property.DataType.Name;
+	}
+
+	return typeName;
+
+}
+private static Dictionary<string, Dictionary<string, Tuple<bool, string,string>>> LoadOverrides(string teampleFile)
+{
+	XmlDocument configurationData = new XmlDocument();
+    configurationData.Load( System.IO.Path.GetDirectoryName(teampleFile) +"\\modelmetadata.xml");
+    XmlNode root = configurationData.SelectSingleNode("Model");
+	Dictionary<string, Dictionary<string, Tuple<bool,string,string>>> overrides = new Dictionary<string, Dictionary<string, Tuple<bool,string,string>>>();
+    foreach (XmlNode element in root.ChildNodes)
+    {
+			if(element.NodeType == XmlNodeType.Comment)
+			{
+				continue;
+			}
+        string elementName = element.Attributes["Name"].Value;
+        foreach (XmlNode relationship in element.ChildNodes)
+        {
+			if(relationship.NodeType == XmlNodeType.Comment)
+			{
+				continue;
+			}
+            string propertyName = relationship.Attributes["Name"].Value;
+            string returnType = relationship.Attributes["ReturnType"].Value;
+			string returnTypeNamespace = relationship.Attributes["ReturnTypeNamespace"].Value;
+			bool specialize = bool.Parse(relationship.Attributes["Specialize"].Value);
+            Dictionary<string, Tuple<bool,string,string>> relationships;
+            if (!overrides.TryGetValue(elementName, out relationships))
+            {
+                relationships = new Dictionary<string, Tuple<bool,string,string>>();
+                overrides[elementName] = relationships;
+            }
+            relationships.Add(propertyName, Tuple.Create(specialize, returnTypeNamespace,returnType));
+        }
+    }
+    return overrides;
+}
+
+private bool SupportsVersion(TSqlPlatforms platform, SqlServerVersion version)
+        { 
+            switch( version)
+            {
+                case SqlServerVersion.Sql90:
+					return (platform & TSqlPlatforms.Sql90) == TSqlPlatforms.Sql90;
+				case SqlServerVersion.Sql100:
+                     return (platform & TSqlPlatforms.Sql100) == TSqlPlatforms.Sql100;
+                case SqlServerVersion.Sql110:
+                     return (platform & TSqlPlatforms.Sql110) == TSqlPlatforms.Sql110;
+                case SqlServerVersion.Sql120:
+                    return (platform & (TSqlPlatforms)0x00000010) == (TSqlPlatforms)0x00000010;                
+                case SqlServerVersion.SqlAzure:
+                     return (platform & TSqlPlatforms.SqlAzure) == TSqlPlatforms.SqlAzure;
+                default:
+                    return false;
+            }   
+        }
+#>

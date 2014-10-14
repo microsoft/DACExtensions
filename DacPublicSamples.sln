@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleApp", "SampleConsoleApp\SampleConsoleApp.csproj", "{7855389B-A1F0-4A7C-A83A-38EEF5B73F9A}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleSamples", "RuleSamples\RuleSamples.csproj", "{18E096E9-6A3D-4124-B908-9C39A425F7BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleTests", "RuleTests\RuleTests.csproj", "{DF142FCD-E8E0-4841-BDB9-C9974F09068D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DacFxStronglyTypedModel", "DacFxStronglyTypedModel\DacFxStronglyTypedModel.csproj", "{832ECF86-C071-4628-A8B7-2529D8A7BDBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DF142FCD-E8E0-4841-BDB9-C9974F09068D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF142FCD-E8E0-4841-BDB9-C9974F09068D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF142FCD-E8E0-4841-BDB9-C9974F09068D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{832ECF86-C071-4628-A8B7-2529D8A7BDBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{832ECF86-C071-4628-A8B7-2529D8A7BDBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{832ECF86-C071-4628-A8B7-2529D8A7BDBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{832ECF86-C071-4628-A8B7-2529D8A7BDBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

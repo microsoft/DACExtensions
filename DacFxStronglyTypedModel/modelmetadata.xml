@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Model>
+  <Element Name="Aggregate">
+    <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
+    <Relationship Name="Parameters" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Parameter" />
+    <Relationship Name="ReturnType" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlTypeSpecifierBase" />
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+  <Element Name="ApplicationRole">
+    <Relationship Name="DefaultSchema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+  <Element Name="Assembly">
+    <Relationship Name="AssemblySources" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AssemblySource" />
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+    <Relationship Name="ReferencedAssemblies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
+  </Element>
+  <Element Name="AssemblySource">
+  </Element>
+  <Element Name="AsymmetricKey">
+    <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+    <!--<Relationship Name="Provider" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Provider" />-->
+  </Element>
+  <Element Name="AuditAction">
+  </Element>
+  <Element Name="AuditActionGroup">
+  </Element>
+  <Element Name="AuditActionSpecification">
+    <Relationship Name="AuditActions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AuditAction" />
+    <Relationship Name="Principals" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlDatabaseSecurityPrincipal" />
+    <Relationship Name="SecuredObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlSecurable" />
+  </Element>
+  <Element Name="BrokerPriority">
+    <!--<Relationship Name="ContractName" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ContractName" />-->
+    <!--<Relationship Name="LocalServiceName" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="LocalServiceName" />-->
+  </Element>
+  <Element Name="BuiltInServerRole">
+  </Element>
+  <Element Name="Certificate">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+    <Relationship Name="ExistingKeysAssembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
+  </Element>
+  <Element Name="CheckConstraint">
+    <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
+    <Relationship Name="Host" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExtendedProperty" />
+  </Element>
+  <Element Name="ClrTypeMethod">
+    <Relationship Name="Parameters" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Parameter" />
+    <Relationship Name="ReturnType" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlTypeSpecifierBase" />
+  </Element>
+  <Element Name="ClrTypeMethodParameter">
+    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataType" />
+  </Element>
+  <Element Name="ClrTypeProperty">
+    <Relationship Name="ClrType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlTypeSpecifierBase" />
+  </Element>
+  <Element Name="Column">
+    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataType" />
+    <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
+    <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="XmlSchemaCollection" />
+  </Element>
+  <Element Name="ColumnStoreIndex">
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
+    <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="IndexedObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlColumnSource" />
+    <Relationship Name="PartitionColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="PartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+  </Element>
+  <Element Name="Contract">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+    <Relationship Name="Messages" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="MessageType" />
+  </Element>
+  <Element Name="Credential">
+    <Relationship Name="CryptographicProvider" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="CryptographicProvider" />
+  </Element>
+  <Element Name="CryptographicProvider">
+  </Element>
+  <Element Name="DatabaseAuditSpecification">
+    <Relationship Name="AuditActionGroups" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AuditActionGroup" />
+    <Relationship Name="AuditActions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AuditAction" />
+    <Relationship Name="ServerAudit" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ServerAudit" />
+  </Element>
+  <Element Name="DatabaseDdlTrigger">
+    <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
+    <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BodyDependencies" />-->
+    <Relationship Name="EventGroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="EventGroup" />
+    <Relationship Name="EventType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Model" ReturnType="EventType" />
+    <Relationship Name="Login" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Login" />
+    <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
+  </Element>
+  <Element Name="DatabaseEncryptionKey">
+    <Relationship Name="AsymmetricKey" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AsymmetricKey" />
+    <Relationship Name="Certificate" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
+  </Element>
+  <Element Name="DatabaseEventNotification">
+    <Relationship Name="EventGroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="EventGroup" />
+    <Relationship Name="EventType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Model" ReturnType="EventType" />
+  </Element>
+  <Element Name="DatabaseMirroringLanguageSpecifier">
+    <Relationship Name="AuthenticationCertificate" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
+  </Element>
+  <Element Name="DatabaseOptions">
+    <Relationship Name="DefaultFilegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="DefaultFileStreamFilegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+  </Element>
+  <Element Name="DataCompressionOption">
+  </Element>
+  <Element Name="DataType">
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+    <Relationship Name="Type" Specialize="False" ReturnTypeNamespace="System" ReturnType="Type" />
+  </Element>
+  <Element Name="Default">
+    <!--<Relationship Name="BoundObjects" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BoundObjects" />-->
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+  <Element Name="DefaultConstraint">
+    <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
+    <Relationship Name="Host" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExtendedProperty" />
+    <Relationship Name="TargetColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+  </Element>
+  <Element Name="DmlTrigger">
+    <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
+    <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BodyDependencies" /> ISqlLegacyDataConstraintTarget: should we expose this?-->
+    <Relationship Name="Login" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Login" />
+    <!--<Relationship Name="TriggerObject" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TriggerObject" /> is this Parent?-->
+    <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
+  </Element>
+  <Element Name="Endpoint">
+    <Relationship Name="Authorizer" SpecializeForVersion="False" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+    <Relationship Name="PayloadSpecifier" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="IEndpointLanguageSpecifier" />
+    <Relationship Name="ProtocolSpecifier" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="IProtocolSpecifier " />
+  </Element>
+  <Element Name="ErrorMessage">
+  </Element>
+  <Element Name="EventGroup">
+  </Element>
+  <Element Name="EventSession">
+    <!--<Relationship Name="EventDefinitions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="EventDefinition" />-->
+    <!--<Relationship Name="EventTargets" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="EventTargets" />-->
+  </Element>
+  <Element Name="EventSessionAction">
+  </Element>
+  <Element Name="EventSessionDefinitions">
+    <Relationship Name="Actions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="EventSessionAction" />
+    <!--<Relationship Name="AttributeSettings" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AttributeSetting" />-->
+  </Element>
+  <Element Name="EventSessionSetting">
+  </Element>
+  <Element Name="EventSessionTarget">
+    <!--<Relationship Name="ParameterSettings" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ParameterSetting" />-->
+  </Element>
+  <Element Name="EventTypeSpecifier">
+  </Element>
+  <Element Name="ExtendedProcedure">
+    <Relationship Name="Login" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Login" />
+    <Relationship Name="Parameters" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Parameter" />
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+    <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
+  </Element>
+  <Element Name="ExtendedProperty">
+    <Relationship Name="Host" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="IExtendedPropertyHost" />
+  </Element>
+  <Element Name="Filegroup">
+  </Element>
+  <Element Name="FileTable">
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
+    <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="FileStreamFilegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="FileStreamPartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+    <Relationship Name="PartitionColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="PartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+  <Element Name="ForeignKeyConstraint">
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="ForeignColumns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="ForeignTable" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Table" />
+    <Relationship Name="Host" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExtendedProperty" />
+  </Element>
+  <Element Name="FullTextCatalog">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+    <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+  </Element>
+  <Element Name="FullTextIndex">
+    <!--<Relationship Name="Catalog" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Catalog" />-->
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="IndexedObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlColumnSource" />
+    <Relationship Name="SearchPropertyList" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="SearchPropertyList" />
+    <!--<Relationship Name="StopList" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="StopList" />-->
+    <!--<Relationship Name="UniqueIndexName" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="UniqueIndexName" /> what does this map to?-->
+  </Element>
+  <Element Name="FullTextIndexColumnSpecifier">
+    <Relationship Name="Column" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="TypeColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+  </Element>
+  <Element Name="FullTextStopList">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+  </Element>
+  <Element Name="HttpProtocolSpecifier">
+  </Element>
+  <Element Name="Index">
+    <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BodyDependencies" />-->
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
+    <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="FileStreamFilegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="FileStreamPartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+    <Relationship Name="IncludedColumns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="IndexedObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlColumnSource" />
+    <Relationship Name="PartitionColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="PartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+  </Element>
+  <Element Name="LinkedServer">
+  </Element>
+  <Element Name="LinkedServerLogin">
+    <Relationship Name="LinkedServer" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="LinkedServer" />
+    <Relationship Name="LocalLogin" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Login" />
+  </Element>
+  <Element Name="Login">
+    <Relationship Name="AsymmetricKey" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AsymmetricKey" />
+    <Relationship Name="Certificate" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
+    <Relationship Name="Credential" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Credential" />
+  </Element>
+  <Element Name="MasterKey">
+  </Element>
+  <Element Name="MessageType">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+    <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="XmlSchemaCollection" />
+  </Element>
+  <Element Name="Parameter">
+    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataType" />
+    <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="XmlSchemaCollection" />
+  </Element>
+  <Element Name="PartitionFunction">
+    <Relationship Name="BoundaryValues" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionValue" />
+    <Relationship Name="ParameterType" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlTypeSpecifierBase" />
+  </Element>
+  <Element Name="PartitionScheme">
+    <Relationship Name="Filegroups" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="PartitionFunction" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionFunction" />
+  </Element>
+  <Element Name="PartitionValue">
+    <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
+  </Element>
+  <Element Name="Permission">
+    <Relationship Name="ExcludedColumns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="Grantee" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlSecurityPrincipal " />
+    <Relationship Name="Grantor" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlSecurityPrincipal " />
+    <Relationship Name="RevokedGrantOptionColumns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="SecuredObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlSecurable" />
+  </Element>
+  <Element Name="PrimaryKeyConstraint">
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
+    <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="FileStreamFilegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="FileStreamPartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+    <Relationship Name="Host" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExtendedProperty" />
+    <Relationship Name="PartitionColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="PartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+  </Element>
+  <Element Name="Procedure">
+    <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
+    <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BodyDependencies" />-->
+    <Relationship Name="Login" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Login" />
+    <Relationship Name="Parameters" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Parameter" />
+    <Relationship Name="ParentProcedure" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Procedure" />
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+    <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
+  </Element>
+  <Element Name="PromotedNodePathForSqlType">
+    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataType" />
+  </Element>
+  <Element Name="PromotedNodePathForXQueryType">
+  </Element>
+  <Element Name="Queue">
+    <Relationship Name="ActivationProcedure" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Procedure" />
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="Login" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Login" />
+    <Relationship Name="PartitionColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="PartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+    <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
+  </Element>
+  <Element Name="QueueEventNotification">
+    <Relationship Name="EventGroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="EventGroup" />
+    <Relationship Name="EventType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Model" ReturnType="EventType" />
+    <Relationship Name="Queue" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Queue" />
+  </Element>
+  <Element Name="RemoteServiceBinding">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+    <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
+  </Element>
+  <Element Name="ResourceGovernor">
+    <!--<Relationship Name="ClassifierFunction" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ClassifierFunction" />-->
+  </Element>
+  <Element Name="ResourcePool">
+  </Element>
+  <Element Name="Role">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+  </Element>
+  <Element Name="RoleMembership">
+    <Relationship Name="Member" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlDatabaseSecurityPrincipal" />
+    <Relationship Name="Role" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Role" />
+  </Element>
+  <Element Name="Route">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+  </Element>
+  <Element Name="Rule">
+    <!--<Relationship Name="BoundObjects" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BoundObjects" />-->
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+  <Element Name="ScalarFunction">
+    <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
+    <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BodyDependencies" />-->
+    <Relationship Name="Login" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Login" />
+    <Relationship Name="Parameters" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Parameter" />
+    <Relationship Name="ReturnType" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlTypeSpecifierBase" />
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+    <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
+  </Element>
+  <Element Name="Schema">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+  </Element>
+  <Element Name="SearchProperty">
+    <Relationship Name="SearchPropertyList" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="SearchPropertyList" />
+  </Element>
+  <Element Name="SearchPropertyList">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+  </Element>
+  <Element Name="SelectiveXmlIndex">
+    <Relationship Name="Column" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="IndexedObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlColumnSource" />
+    <Relationship Name="PrimaryPromotedPath" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlPromotedNodePath" />
+    <Relationship Name="PrimarySelectiveXmlIndex" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="SelectiveXmlIndex" />
+    <Relationship Name="PromotedPaths" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlPromotedNodePath" />
+    <Relationship Name="XmlNamespaces" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="XmlNamespace" />
+  </Element>
+  <Element Name="Sequence">
+    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataType" />
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+  <Element Name="ServerAudit">
+  </Element>
+  <Element Name="ServerAuditSpecification">
+    <Relationship Name="AuditActionGroups" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AuditActionGroup" />
+    <Relationship Name="ServerAudit" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ServerAudit" />
+  </Element>
+  <Element Name="ServerDdlTrigger">
+    <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
+    <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BodyDependencies" />-->
+    <Relationship Name="EventGroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="EventGroup" />
+    <Relationship Name="EventType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Model" ReturnType="EventType" />
+    <Relationship Name="Login" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Login" />
+    <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
+  </Element>
+  <Element Name="ServerEventNotification">
+    <Relationship Name="EventGroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="EventGroup" />
+    <Relationship Name="EventType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Model" ReturnType="EventType" />
+  </Element>
+  <Element Name="ServerOptions">
+  </Element>
+  <Element Name="ServerRoleMembership">
+    <Relationship Name="Member" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="IServerSecurityPrincipal" />
+    <Relationship Name="Role" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Role" />
+  </Element>
+  <Element Name="Service">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+    <Relationship Name="Contracts" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Contract" />
+    <Relationship Name="Queue" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Queue" />
+  </Element>
+  <Element Name="ServiceBrokerLanguageSpecifier">
+    <Relationship Name="AuthenticationCertificate" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
+  </Element>
+  <Element Name="Signature">
+    <!--<Relationship Name="EncryptionMechanism" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="EncryptionMechanism" />-->
+    <!--<Relationship Name="SignedObject" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="SignedObject" />-->
+  </Element>
+  <Element Name="SignatureEncryptionMechanism">
+    <Relationship Name="AsymmetricKey" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AsymmetricKey" />
+    <Relationship Name="Certificate" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
+  </Element>
+  <Element Name="SoapLanguageSpecifier">
+    <Relationship Name="WebMethods" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="SoapMethodSpecification" />
+  </Element>
+  <Element Name="SoapMethodSpecification">
+    <!--<Relationship Name="RelatedMethod" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="RelatedMethod" /> this is SqlSubroutine.-->
+  </Element>
+  <Element Name="SpatialIndex">
+    <Relationship Name="Column" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="IndexedObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlColumnSource" />
+    <Relationship Name="PartitionColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="PartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+  </Element>
+  <Element Name="SqlFile">
+    <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+  </Element>
+  <Element Name="Statistics">
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
+    <!--<Relationship Name="OnObject" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="OnObject" />-->
+  </Element>
+  <Element Name="SymmetricKey">
+    <Relationship Name="AsymmetricKeys" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AsymmetricKey" />
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+    <Relationship Name="Certificates" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
+    <!--<Relationship Name="Passwords" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Password" />  why is this plural-->
+    <!--<Relationship Name="Provider" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Provider" />-->
+    <Relationship Name="SymmetricKeys" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="SymmetricKey" />
+  </Element>
+  <Element Name="SymmetricKeyPassword">
+  </Element>
+  <Element Name="Synonym">
+    <!--<Relationship Name="ForObject" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ForObject" />-->
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+  <Element Name="Table">
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
+    <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="FilegroupForTextImage" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="FileStreamFilegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="FileStreamPartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+    <Relationship Name="PartitionColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="PartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+  <Element Name="TableType">
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="Constraints" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ITableTypeConstraint" />
+    <Relationship Name="Indexes" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlIndex" />
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+  <Element Name="TableTypeCheckConstraint">
+    <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
+  </Element>
+  <Element Name="TableTypeColumn">
+    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataType" />
+    <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
+    <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="XmlSchemaCollection" />
+  </Element>
+  <Element Name="TableTypeDefaultConstraint">
+    <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
+    <Relationship Name="TargetColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+  </Element>
+  <Element Name="TableTypeIndex">
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+  </Element>
+  <Element Name="TableTypePrimaryKeyConstraint">
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+  </Element>
+  <Element Name="TableTypeUniqueConstraint">
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+  </Element>
+  <Element Name="TableValuedFunction">
+    <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
+    <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BodyDependencies" />-->
+    <Relationship Name="Login" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Login" />
+    <Relationship Name="OrderColumns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="Parameters" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Parameter" />
+    <Relationship Name="ReturnType" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlTypeSpecifierBase" />
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+    <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
+  </Element>
+  <Element Name="TcpProtocolSpecifier">
+  </Element>
+  <Element Name="UniqueConstraint">
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
+    <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="FileStreamFilegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
+    <Relationship Name="FileStreamPartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+    <Relationship Name="Host" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExtendedProperty" />
+    <Relationship Name="PartitionColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="PartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
+  </Element>
+  <Element Name="User">
+    <Relationship Name="AsymmetricKey" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AsymmetricKey" />
+    <Relationship Name="Certificate" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
+    <Relationship Name="DefaultSchema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+    <Relationship Name="Login" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Login" />
+  </Element>
+  <Element Name="UserDefinedServerRole">
+    <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
+  </Element>
+  <Element Name="UserDefinedType">
+    <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
+    <!--<Relationship Name="Methods" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ClrMethod" />-->
+    <!--<Relationship Name="Properties" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ClrProperty" />-->
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+  <Element Name="View">
+    <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BodyDependencies" />-->
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+  <Element Name="WorkloadGroup">
+    <Relationship Name="ResourcePool" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ResourcePool" />
+  </Element>
+  <Element Name="XmlIndex">
+    <Relationship Name="Column" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
+    <Relationship Name="IndexedObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlColumnSource" />
+    <Relationship Name="PrimaryXmlIndex" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="XmlIndex" />
+  </Element>
+  <Element Name="XmlNamespace">
+  </Element>
+  <Element Name="XmlSchemaCollection">
+    <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
+  </Element>
+</Model>
