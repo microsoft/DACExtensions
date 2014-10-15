@@ -71,7 +71,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicTSqlModelElement.cs" />
-    <Compile Include="typeAbstractions.cs" />
+    <Compile Include="MarkerInterfaces.cs" />
     <Compile Include="Utils.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

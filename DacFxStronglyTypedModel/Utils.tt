@@ -34,36 +34,69 @@ private static string GetPropertyTypeName(ModelPropertyClass property, out bool 
 	return typeName;
 
 }
-private static Dictionary<string, Dictionary<string, Tuple<bool, string,string>>> LoadOverrides(string teampleFile)
+
+private class ModelEntry
+{
+	public ModelEntry()
+    {
+		Interfaces = new List<string>();
+		RelationshipOverrides = new Dictionary<string,RelationshipOverride>();
+    }
+
+	public List<string> Interfaces {get;set;}
+	public Dictionary<string, RelationshipOverride> RelationshipOverrides {get;set;}
+}
+
+public class RelationshipOverride
+{
+	public string RelationshipName {get;set;}
+	public string ReturnType {get;set;}
+	public string ReturnTypeNamespace {get;set;}
+	public bool Specialize {get;set;}
+
+}
+private static Dictionary<string, ModelEntry> LoadOverrides(string teampleFile)
 {
 	XmlDocument configurationData = new XmlDocument();
     configurationData.Load( System.IO.Path.GetDirectoryName(teampleFile) +"\\modelmetadata.xml");
     XmlNode root = configurationData.SelectSingleNode("Model");
-	Dictionary<string, Dictionary<string, Tuple<bool,string,string>>> overrides = new Dictionary<string, Dictionary<string, Tuple<bool,string,string>>>();
+	Dictionary<string, ModelEntry> overrides = new Dictionary<string, ModelEntry>();
     foreach (XmlNode element in root.ChildNodes)
     {
-			if(element.NodeType == XmlNodeType.Comment)
-			{
-				continue;
-			}
+		List<string> interfaces = new List<string>();
+		if(element.NodeType == XmlNodeType.Comment)
+		{
+			//skip comments
+			continue;
+		}
+
         string elementName = element.Attributes["Name"].Value;
+		ModelEntry modelEntry = new ModelEntry();
+		overrides.Add(elementName, modelEntry);
         foreach (XmlNode relationship in element.ChildNodes)
         {
 			if(relationship.NodeType == XmlNodeType.Comment)
 			{
 				continue;
 			}
-            string propertyName = relationship.Attributes["Name"].Value;
-            string returnType = relationship.Attributes["ReturnType"].Value;
-			string returnTypeNamespace = relationship.Attributes["ReturnTypeNamespace"].Value;
-			bool specialize = bool.Parse(relationship.Attributes["Specialize"].Value);
-            Dictionary<string, Tuple<bool,string,string>> relationships;
-            if (!overrides.TryGetValue(elementName, out relationships))
+
+			else if(relationship.LocalName == "Implements")
             {
-                relationships = new Dictionary<string, Tuple<bool,string,string>>();
-                overrides[elementName] = relationships;
+				modelEntry.Interfaces.Add(relationship.Attributes["Name"].Value);
+				continue;
             }
-            relationships.Add(propertyName, Tuple.Create(specialize, returnTypeNamespace,returnType));
+			else if(relationship.LocalName == "Relationship")
+            {
+				string name = relationship.Attributes["Name"].Value;
+				
+				modelEntry.RelationshipOverrides.Add(name, new RelationshipOverride() 
+					{ 
+						RelationshipName= name, //todo: allow overriding name
+						ReturnType = relationship.Attributes["ReturnType"].Value, 
+						ReturnTypeNamespace=relationship.Attributes["ReturnTypeNamespace"].Value, 
+						Specialize=bool.Parse(relationship.Attributes["Specialize"].Value)
+					});
+            }
         }
     }
     return overrides;

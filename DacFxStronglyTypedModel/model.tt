@@ -1,0 +1,151 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ assembly name="$(DacFxExternals)\Microsoft.SqlServer.Dac.Extensions.dll" #>
+<#@ import namespace="Microsoft.SqlServer.Dac.Model"#>
+<#@ output extension=".cs" #>
+<#@ include file="Utils.tt" #>
+namespace <#=NamespaceName#>
+{
+	using System;
+	using System.Linq;
+	using Microsoft.SqlServer.Server;
+	using Microsoft.SqlServer.Dac.Model;
+	using System.Collections.Generic;
+<#
+    var overrides = LoadOverrides(this.Host.TemplateFile);
+{
+	#>
+public partial class TSqlModelElement
+{
+	///<summary>
+	///  Returns a strongly typed wrapper for the TSqlObject instance.
+	///</summary>
+	public static TSqlModelElement AdaptInstance(TSqlObject obj)
+    {
+		if(obj == null)
+		{
+			throw new ArgumentNullException("obj");
+		}
+<#
+	//create adapter method for public model
+	foreach(var type in  ModelSchema.SchemaInstance.AllTypes)
+	{
+#>
+		else if(obj.ObjectType == <#=type.Name#>.TypeClass)
+        {
+            return new <#=type.Name#>(obj);
+        }
+<#
+	}
+	#>
+		else
+		{
+			throw new ArgumentException("No type mapping exists for " + obj.ObjectType.Name);
+		}
+	}
+}
+<#
+    // Iterate over all types in the public model and create strongly typed adapter class.
+	foreach(var type in  ModelSchema.SchemaInstance.AllTypes)
+	{
+		ModelEntry modelEntry;
+		if(!overrides.TryGetValue(type.Name, out modelEntry))
+		{	
+			modelEntry = null;
+		}
+		string className = type.Name;
+		#>
+	public partial class <#= className #> : TSqlModelElement<#
+	if(modelEntry != null )
+    {
+		foreach(string interfaceName in modelEntry.Interfaces)
+        {
+		#>,<#=interfaceName#><#
+		}
+	}
+
+#>
+	{
+		private static ModelTypeClass typeClass = <#=type.Name#>.TypeClass;
+
+		/// <summary>
+		///	Create a strongly typed class <#= className #> to adapt the TSqlObject 
+		/// </summary>
+		public <#= className  #>(TSqlObject obj)  : base(obj)
+		{
+		}
+
+		public static ModelTypeClass TypeClass 
+		{
+			get { return typeClass;}
+		}
+<#
+        foreach (var property in type.Properties.OrderBy(p => p.Name))
+        {	
+			bool useGenericGetter;
+			string typeName = GetPropertyTypeName(property, out useGenericGetter);
+		#>
+		public <#= typeName #> <#= property.Name #> 
+		{
+		// Supported platforms = <#= property.SupportedPlatforms#>
+<#if (useGenericGetter) { #>
+			get { return Element.GetProperty<<#= typeName #>>(Microsoft.SqlServer.Dac.Model.<#=type.Name#>.<#=property.Name#>);}
+<#} else { #>
+			get { return (<#=typeName#>)Element.GetProperty(Microsoft.SqlServer.Dac.Model.<#=type.Name#>.<#=property.Name#>);}
+<#}#>
+		}
+
+<#
+		}// end property loop
+	// begin releationship loop
+	foreach (var relationship in type.Relationships.OrderBy( r => r.Name))
+	{
+		RelationshipOverride returnType = new RelationshipOverride()
+			{
+				Specialize = false,
+				ReturnTypeNamespace = "Microsoft.SqlServer.Dac.Model",
+				ReturnType = "TSqlObject"
+				};
+		string castExpression = "";
+		if(modelEntry != null)
+		{	
+			RelationshipOverride localoverride;		
+			if(modelEntry.RelationshipOverrides.TryGetValue(relationship.Name, out localoverride))
+			{
+				if(localoverride.Specialize)
+				{
+					castExpression = string.Format(".Select(o => ({0}.{1})TSqlModelElement.AdaptInstance(o))", localoverride.ReturnTypeNamespace, localoverride.ReturnType);
+				}
+				else
+				{
+					castExpression = string.Format(".Cast<{0}.{1}>()", localoverride.ReturnTypeNamespace, localoverride.ReturnType);
+				}
+				returnType = localoverride;
+			}
+		}	
+		   		
+	#>
+		//<#=relationship.Type#>
+		public IEnumerable<<#=returnType.ReturnTypeNamespace#>.<#=returnType.ReturnType#>> <#=relationship.Name #> 
+		{
+			get 
+			{
+				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.<#=type.Name#>.<#=relationship.Name#>)<#=castExpression#>;
+			}
+		}
+	<#
+		
+	} //end foreach relationship
+#>
+
+}
+<#
+	}
+}
+	#>
+}

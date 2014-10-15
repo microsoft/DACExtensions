@@ -491,8 +491,7 @@ public partial class TSqlModelElement
 		}
 	}
 }
-	public partial class Column : TSqlModelElement
-	{
+	public partial class Column : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Column.TypeClass;
 
 		/// <summary>
@@ -634,8 +633,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class TableValuedFunction : TSqlModelElement
-	{
+	public partial class TableValuedFunction : TSqlModelElement,ISqlColumnSource	{
 		private static ModelTypeClass typeClass = TableValuedFunction.TypeClass;
 
 		/// <summary>
@@ -823,8 +821,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ScalarFunction : TSqlModelElement
-	{
+	public partial class ScalarFunction : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ScalarFunction.TypeClass;
 
 		/// <summary>
@@ -998,8 +995,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Aggregate : TSqlModelElement
-	{
+	public partial class Aggregate : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Aggregate.TypeClass;
 
 		/// <summary>
@@ -1083,8 +1079,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ApplicationRole : TSqlModelElement
-	{
+	public partial class ApplicationRole : TSqlModelElement,ISqlDatabaseSecurityPrincipal	{
 		private static ModelTypeClass typeClass = ApplicationRole.TypeClass;
 
 		/// <summary>
@@ -1114,8 +1109,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Index : TSqlModelElement
-	{
+	public partial class Index : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = Index.TypeClass;
 
 		/// <summary>
@@ -1295,8 +1289,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Assembly : TSqlModelElement
-	{
+	public partial class Assembly : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Assembly.TypeClass;
 
 		/// <summary>
@@ -1348,8 +1341,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class AssemblySource : TSqlModelElement
-	{
+	public partial class AssemblySource : TSqlModelElement	{
 		private static ModelTypeClass typeClass = AssemblySource.TypeClass;
 
 		/// <summary>
@@ -1371,8 +1363,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class AsymmetricKey : TSqlModelElement
-	{
+	public partial class AsymmetricKey : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = AsymmetricKey.TypeClass;
 
 		/// <summary>
@@ -1454,8 +1445,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class AuditAction : TSqlModelElement
-	{
+	public partial class AuditAction : TSqlModelElement	{
 		private static ModelTypeClass typeClass = AuditAction.TypeClass;
 
 		/// <summary>
@@ -1477,8 +1467,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class AuditActionGroup : TSqlModelElement
-	{
+	public partial class AuditActionGroup : TSqlModelElement	{
 		private static ModelTypeClass typeClass = AuditActionGroup.TypeClass;
 
 		/// <summary>
@@ -1500,8 +1489,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class AuditActionSpecification : TSqlModelElement
-	{
+	public partial class AuditActionSpecification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = AuditActionSpecification.TypeClass;
 
 		/// <summary>
@@ -1541,8 +1529,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class BrokerPriority : TSqlModelElement
-	{
+	public partial class BrokerPriority : TSqlModelElement	{
 		private static ModelTypeClass typeClass = BrokerPriority.TypeClass;
 
 		/// <summary>
@@ -1586,8 +1573,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class BuiltInServerRole : TSqlModelElement
-	{
+	public partial class BuiltInServerRole : TSqlModelElement	{
 		private static ModelTypeClass typeClass = BuiltInServerRole.TypeClass;
 
 		/// <summary>
@@ -1603,8 +1589,7 @@ public partial class TSqlModelElement
 		}
 
 }
-	public partial class DataType : TSqlModelElement
-	{
+	public partial class DataType : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DataType.TypeClass;
 
 		/// <summary>
@@ -1672,8 +1657,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Certificate : TSqlModelElement
-	{
+	public partial class Certificate : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Certificate.TypeClass;
 
 		/// <summary>
@@ -1771,8 +1755,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class CheckConstraint : TSqlModelElement
-	{
+	public partial class CheckConstraint : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = CheckConstraint.TypeClass;
 
 		/// <summary>
@@ -1822,8 +1805,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ClrTypeMethod : TSqlModelElement
-	{
+	public partial class ClrTypeMethod : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ClrTypeMethod.TypeClass;
 
 		/// <summary>
@@ -1861,8 +1843,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ClrTypeMethodParameter : TSqlModelElement
-	{
+	public partial class ClrTypeMethodParameter : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ClrTypeMethodParameter.TypeClass;
 
 		/// <summary>
@@ -1898,8 +1879,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ClrTypeProperty : TSqlModelElement
-	{
+	public partial class ClrTypeProperty : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ClrTypeProperty.TypeClass;
 
 		/// <summary>
@@ -1929,8 +1909,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ColumnStoreIndex : TSqlModelElement
-	{
+	public partial class ColumnStoreIndex : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = ColumnStoreIndex.TypeClass;
 
 		/// <summary>
@@ -2006,8 +1985,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Contract : TSqlModelElement
-	{
+	public partial class Contract : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Contract.TypeClass;
 
 		/// <summary>
@@ -2039,8 +2017,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Credential : TSqlModelElement
-	{
+	public partial class Credential : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Credential.TypeClass;
 
 		/// <summary>
@@ -2076,8 +2053,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class CryptographicProvider : TSqlModelElement
-	{
+	public partial class CryptographicProvider : TSqlModelElement	{
 		private static ModelTypeClass typeClass = CryptographicProvider.TypeClass;
 
 		/// <summary>
@@ -2105,8 +2081,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class DatabaseAuditSpecification : TSqlModelElement
-	{
+	public partial class DatabaseAuditSpecification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DatabaseAuditSpecification.TypeClass;
 
 		/// <summary>
@@ -2152,8 +2127,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class DatabaseDdlTrigger : TSqlModelElement
-	{
+	public partial class DatabaseDdlTrigger : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DatabaseDdlTrigger.TypeClass;
 
 		/// <summary>
@@ -2277,8 +2251,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class DatabaseEncryptionKey : TSqlModelElement
-	{
+	public partial class DatabaseEncryptionKey : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DatabaseEncryptionKey.TypeClass;
 
 		/// <summary>
@@ -2316,8 +2289,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class DatabaseEventNotification : TSqlModelElement
-	{
+	public partial class DatabaseEventNotification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DatabaseEventNotification.TypeClass;
 
 		/// <summary>
@@ -2367,8 +2339,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class DatabaseMirroringLanguageSpecifier : TSqlModelElement
-	{
+	public partial class DatabaseMirroringLanguageSpecifier : TSqlModelElement,IEndpointLanguageSpecifier	{
 		private static ModelTypeClass typeClass = DatabaseMirroringLanguageSpecifier.TypeClass;
 
 		/// <summary>
@@ -2428,8 +2399,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class DatabaseOptions : TSqlModelElement
-	{
+	public partial class DatabaseOptions : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = DatabaseOptions.TypeClass;
 
 		/// <summary>
@@ -2779,8 +2749,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class DataCompressionOption : TSqlModelElement
-	{
+	public partial class DataCompressionOption : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DataCompressionOption.TypeClass;
 
 		/// <summary>
@@ -2808,8 +2777,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class Default : TSqlModelElement
-	{
+	public partial class Default : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Default.TypeClass;
 
 		/// <summary>
@@ -2847,8 +2815,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class DefaultConstraint : TSqlModelElement
-	{
+	public partial class DefaultConstraint : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = DefaultConstraint.TypeClass;
 
 		/// <summary>
@@ -2906,8 +2873,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class DmlTrigger : TSqlModelElement
-	{
+	public partial class DmlTrigger : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DmlTrigger.TypeClass;
 
 		/// <summary>
@@ -3071,8 +3037,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Endpoint : TSqlModelElement
-	{
+	public partial class Endpoint : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Endpoint.TypeClass;
 
 		/// <summary>
@@ -3130,8 +3095,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ErrorMessage : TSqlModelElement
-	{
+	public partial class ErrorMessage : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ErrorMessage.TypeClass;
 
 		/// <summary>
@@ -3177,8 +3141,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class EventGroup : TSqlModelElement
-	{
+	public partial class EventGroup : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventGroup.TypeClass;
 
 		/// <summary>
@@ -3200,8 +3163,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class EventSession : TSqlModelElement
-	{
+	public partial class EventSession : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventSession.TypeClass;
 
 		/// <summary>
@@ -3287,8 +3249,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class EventSessionAction : TSqlModelElement
-	{
+	public partial class EventSessionAction : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventSessionAction.TypeClass;
 
 		/// <summary>
@@ -3322,8 +3283,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class EventSessionDefinitions : TSqlModelElement
-	{
+	public partial class EventSessionDefinitions : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventSessionDefinitions.TypeClass;
 
 		/// <summary>
@@ -3379,8 +3339,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class EventSessionSetting : TSqlModelElement
-	{
+	public partial class EventSessionSetting : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventSessionSetting.TypeClass;
 
 		/// <summary>
@@ -3408,8 +3367,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class EventSessionTarget : TSqlModelElement
-	{
+	public partial class EventSessionTarget : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventSessionTarget.TypeClass;
 
 		/// <summary>
@@ -3451,8 +3409,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class EventTypeSpecifier : TSqlModelElement
-	{
+	public partial class EventTypeSpecifier : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventTypeSpecifier.TypeClass;
 
 		/// <summary>
@@ -3480,8 +3437,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class ExtendedProcedure : TSqlModelElement
-	{
+	public partial class ExtendedProcedure : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ExtendedProcedure.TypeClass;
 
 		/// <summary>
@@ -3553,8 +3509,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ExtendedProperty : TSqlModelElement
-	{
+	public partial class ExtendedProperty : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = ExtendedProperty.TypeClass;
 
 		/// <summary>
@@ -3584,8 +3539,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class SqlFile : TSqlModelElement
-	{
+	public partial class SqlFile : TSqlModelElement	{
 		private static ModelTypeClass typeClass = SqlFile.TypeClass;
 
 		/// <summary>
@@ -3669,8 +3623,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Filegroup : TSqlModelElement
-	{
+	public partial class Filegroup : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Filegroup.TypeClass;
 
 		/// <summary>
@@ -3704,8 +3657,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class ForeignKeyConstraint : TSqlModelElement
-	{
+	public partial class ForeignKeyConstraint : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = ForeignKeyConstraint.TypeClass;
 
 		/// <summary>
@@ -3777,8 +3729,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class FullTextCatalog : TSqlModelElement
-	{
+	public partial class FullTextCatalog : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = FullTextCatalog.TypeClass;
 
 		/// <summary>
@@ -3828,8 +3779,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class FullTextIndex : TSqlModelElement
-	{
+	public partial class FullTextIndex : TSqlModelElement	{
 		private static ModelTypeClass typeClass = FullTextIndex.TypeClass;
 
 		/// <summary>
@@ -3931,8 +3881,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class FullTextIndexColumnSpecifier : TSqlModelElement
-	{
+	public partial class FullTextIndexColumnSpecifier : TSqlModelElement	{
 		private static ModelTypeClass typeClass = FullTextIndexColumnSpecifier.TypeClass;
 
 		/// <summary>
@@ -3976,8 +3925,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class FullTextStopList : TSqlModelElement
-	{
+	public partial class FullTextStopList : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = FullTextStopList.TypeClass;
 
 		/// <summary>
@@ -4001,8 +3949,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class HttpProtocolSpecifier : TSqlModelElement
-	{
+	public partial class HttpProtocolSpecifier : TSqlModelElement,IProtocolSpecifier	{
 		private static ModelTypeClass typeClass = HttpProtocolSpecifier.TypeClass;
 
 		/// <summary>
@@ -4084,8 +4031,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class LinkedServer : TSqlModelElement
-	{
+	public partial class LinkedServer : TSqlModelElement	{
 		private static ModelTypeClass typeClass = LinkedServer.TypeClass;
 
 		/// <summary>
@@ -4215,8 +4161,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class LinkedServerLogin : TSqlModelElement
-	{
+	public partial class LinkedServerLogin : TSqlModelElement	{
 		private static ModelTypeClass typeClass = LinkedServerLogin.TypeClass;
 
 		/// <summary>
@@ -4266,8 +4211,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Login : TSqlModelElement
-	{
+	public partial class Login : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Login.TypeClass;
 
 		/// <summary>
@@ -4373,8 +4317,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class MasterKey : TSqlModelElement
-	{
+	public partial class MasterKey : TSqlModelElement	{
 		private static ModelTypeClass typeClass = MasterKey.TypeClass;
 
 		/// <summary>
@@ -4396,8 +4339,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class MessageType : TSqlModelElement
-	{
+	public partial class MessageType : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = MessageType.TypeClass;
 
 		/// <summary>
@@ -4435,8 +4377,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class PartitionFunction : TSqlModelElement
-	{
+	public partial class PartitionFunction : TSqlModelElement	{
 		private static ModelTypeClass typeClass = PartitionFunction.TypeClass;
 
 		/// <summary>
@@ -4474,8 +4415,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class PartitionScheme : TSqlModelElement
-	{
+	public partial class PartitionScheme : TSqlModelElement	{
 		private static ModelTypeClass typeClass = PartitionScheme.TypeClass;
 
 		/// <summary>
@@ -4513,8 +4453,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class PartitionValue : TSqlModelElement
-	{
+	public partial class PartitionValue : TSqlModelElement	{
 		private static ModelTypeClass typeClass = PartitionValue.TypeClass;
 
 		/// <summary>
@@ -4544,8 +4483,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Permission : TSqlModelElement
-	{
+	public partial class Permission : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Permission.TypeClass;
 
 		/// <summary>
@@ -4625,8 +4563,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class PrimaryKeyConstraint : TSqlModelElement
-	{
+	public partial class PrimaryKeyConstraint : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = PrimaryKeyConstraint.TypeClass;
 
 		/// <summary>
@@ -4772,8 +4709,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Procedure : TSqlModelElement
-	{
+	public partial class Procedure : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Procedure.TypeClass;
 
 		/// <summary>
@@ -4923,8 +4859,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Queue : TSqlModelElement
-	{
+	public partial class Queue : TSqlModelElement,ISqlColumnSource	{
 		private static ModelTypeClass typeClass = Queue.TypeClass;
 
 		/// <summary>
@@ -5052,8 +4987,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class QueueEventNotification : TSqlModelElement
-	{
+	public partial class QueueEventNotification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = QueueEventNotification.TypeClass;
 
 		/// <summary>
@@ -5111,8 +5045,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class RemoteServiceBinding : TSqlModelElement
-	{
+	public partial class RemoteServiceBinding : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = RemoteServiceBinding.TypeClass;
 
 		/// <summary>
@@ -5156,8 +5089,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ResourceGovernor : TSqlModelElement
-	{
+	public partial class ResourceGovernor : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ResourceGovernor.TypeClass;
 
 		/// <summary>
@@ -5187,8 +5119,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ResourcePool : TSqlModelElement
-	{
+	public partial class ResourcePool : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ResourcePool.TypeClass;
 
 		/// <summary>
@@ -5246,8 +5177,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class Role : TSqlModelElement
-	{
+	public partial class Role : TSqlModelElement,ISqlDatabaseSecurityPrincipal	{
 		private static ModelTypeClass typeClass = Role.TypeClass;
 
 		/// <summary>
@@ -5271,8 +5201,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class RoleMembership : TSqlModelElement
-	{
+	public partial class RoleMembership : TSqlModelElement	{
 		private static ModelTypeClass typeClass = RoleMembership.TypeClass;
 
 		/// <summary>
@@ -5304,8 +5233,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Route : TSqlModelElement
-	{
+	public partial class Route : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Route.TypeClass;
 
 		/// <summary>
@@ -5359,8 +5287,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Rule : TSqlModelElement
-	{
+	public partial class Rule : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Rule.TypeClass;
 
 		/// <summary>
@@ -5398,8 +5325,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Schema : TSqlModelElement
-	{
+	public partial class Schema : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Schema.TypeClass;
 
 		/// <summary>
@@ -5423,8 +5349,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class SearchProperty : TSqlModelElement
-	{
+	public partial class SearchProperty : TSqlModelElement	{
 		private static ModelTypeClass typeClass = SearchProperty.TypeClass;
 
 		/// <summary>
@@ -5466,8 +5391,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class SearchPropertyList : TSqlModelElement
-	{
+	public partial class SearchPropertyList : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = SearchPropertyList.TypeClass;
 
 		/// <summary>
@@ -5491,8 +5415,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Sequence : TSqlModelElement
-	{
+	public partial class Sequence : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Sequence.TypeClass;
 
 		/// <summary>
@@ -5578,8 +5501,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ServerAudit : TSqlModelElement
-	{
+	public partial class ServerAudit : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ServerAudit.TypeClass;
 
 		/// <summary>
@@ -5679,8 +5601,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class ServerAuditSpecification : TSqlModelElement
-	{
+	public partial class ServerAuditSpecification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ServerAuditSpecification.TypeClass;
 
 		/// <summary>
@@ -5718,8 +5639,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ServerDdlTrigger : TSqlModelElement
-	{
+	public partial class ServerDdlTrigger : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ServerDdlTrigger.TypeClass;
 
 		/// <summary>
@@ -5849,8 +5769,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ServerEventNotification : TSqlModelElement
-	{
+	public partial class ServerEventNotification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ServerEventNotification.TypeClass;
 
 		/// <summary>
@@ -5900,8 +5819,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ServerOptions : TSqlModelElement
-	{
+	public partial class ServerOptions : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = ServerOptions.TypeClass;
 
 		/// <summary>
@@ -5917,8 +5835,7 @@ public partial class TSqlModelElement
 		}
 
 }
-	public partial class ServerRoleMembership : TSqlModelElement
-	{
+	public partial class ServerRoleMembership : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ServerRoleMembership.TypeClass;
 
 		/// <summary>
@@ -5950,8 +5867,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Service : TSqlModelElement
-	{
+	public partial class Service : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Service.TypeClass;
 
 		/// <summary>
@@ -5997,8 +5913,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class ServiceBrokerLanguageSpecifier : TSqlModelElement
-	{
+	public partial class ServiceBrokerLanguageSpecifier : TSqlModelElement,IEndpointLanguageSpecifier	{
 		private static ModelTypeClass typeClass = ServiceBrokerLanguageSpecifier.TypeClass;
 
 		/// <summary>
@@ -6064,8 +5979,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Signature : TSqlModelElement
-	{
+	public partial class Signature : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Signature.TypeClass;
 
 		/// <summary>
@@ -6103,8 +6017,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class SignatureEncryptionMechanism : TSqlModelElement
-	{
+	public partial class SignatureEncryptionMechanism : TSqlModelElement	{
 		private static ModelTypeClass typeClass = SignatureEncryptionMechanism.TypeClass;
 
 		/// <summary>
@@ -6148,8 +6061,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class SoapLanguageSpecifier : TSqlModelElement
-	{
+	public partial class SoapLanguageSpecifier : TSqlModelElement,IEndpointLanguageSpecifier	{
 		private static ModelTypeClass typeClass = SoapLanguageSpecifier.TypeClass;
 
 		/// <summary>
@@ -6257,8 +6169,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class SoapMethodSpecification : TSqlModelElement
-	{
+	public partial class SoapMethodSpecification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = SoapMethodSpecification.TypeClass;
 
 		/// <summary>
@@ -6306,8 +6217,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class SpatialIndex : TSqlModelElement
-	{
+	public partial class SpatialIndex : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = SpatialIndex.TypeClass;
 
 		/// <summary>
@@ -6471,8 +6381,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Statistics : TSqlModelElement
-	{
+	public partial class Statistics : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Statistics.TypeClass;
 
 		/// <summary>
@@ -6548,8 +6457,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Parameter : TSqlModelElement
-	{
+	public partial class Parameter : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Parameter.TypeClass;
 
 		/// <summary>
@@ -6635,8 +6543,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class SymmetricKey : TSqlModelElement
-	{
+	public partial class SymmetricKey : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = SymmetricKey.TypeClass;
 
 		/// <summary>
@@ -6730,8 +6637,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class SymmetricKeyPassword : TSqlModelElement
-	{
+	public partial class SymmetricKeyPassword : TSqlModelElement	{
 		private static ModelTypeClass typeClass = SymmetricKeyPassword.TypeClass;
 
 		/// <summary>
@@ -6753,8 +6659,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class Synonym : TSqlModelElement
-	{
+	public partial class Synonym : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Synonym.TypeClass;
 
 		/// <summary>
@@ -6792,8 +6697,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class Table : TSqlModelElement
-	{
+	public partial class Table : TSqlModelElement,ISqlColumnSource	{
 		private static ModelTypeClass typeClass = Table.TypeClass;
 
 		/// <summary>
@@ -6965,8 +6869,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class FileTable : TSqlModelElement
-	{
+	public partial class FileTable : TSqlModelElement,ISqlColumnSource	{
 		private static ModelTypeClass typeClass = FileTable.TypeClass;
 
 		/// <summary>
@@ -7094,8 +6997,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class TableType : TSqlModelElement
-	{
+	public partial class TableType : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = TableType.TypeClass;
 
 		/// <summary>
@@ -7149,8 +7051,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class TableTypeCheckConstraint : TSqlModelElement
-	{
+	public partial class TableTypeCheckConstraint : TSqlModelElement,ITableTypeConstraint	{
 		private static ModelTypeClass typeClass = TableTypeCheckConstraint.TypeClass;
 
 		/// <summary>
@@ -7180,8 +7081,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class TableTypeColumn : TSqlModelElement
-	{
+	public partial class TableTypeColumn : TSqlModelElement	{
 		private static ModelTypeClass typeClass = TableTypeColumn.TypeClass;
 
 		/// <summary>
@@ -7305,8 +7205,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class TableTypeDefaultConstraint : TSqlModelElement
-	{
+	public partial class TableTypeDefaultConstraint : TSqlModelElement,ITableTypeConstraint	{
 		private static ModelTypeClass typeClass = TableTypeDefaultConstraint.TypeClass;
 
 		/// <summary>
@@ -7344,8 +7243,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class TableTypeIndex : TSqlModelElement
-	{
+	public partial class TableTypeIndex : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = TableTypeIndex.TypeClass;
 
 		/// <summary>
@@ -7387,8 +7285,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class TableTypePrimaryKeyConstraint : TSqlModelElement
-	{
+	public partial class TableTypePrimaryKeyConstraint : TSqlModelElement,ITableTypeConstraint	{
 		private static ModelTypeClass typeClass = TableTypePrimaryKeyConstraint.TypeClass;
 
 		/// <summary>
@@ -7436,8 +7333,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class TableTypeUniqueConstraint : TSqlModelElement
-	{
+	public partial class TableTypeUniqueConstraint : TSqlModelElement,ITableTypeConstraint	{
 		private static ModelTypeClass typeClass = TableTypeUniqueConstraint.TypeClass;
 
 		/// <summary>
@@ -7473,8 +7369,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class TcpProtocolSpecifier : TSqlModelElement
-	{
+	public partial class TcpProtocolSpecifier : TSqlModelElement,IProtocolSpecifier	{
 		private static ModelTypeClass typeClass = TcpProtocolSpecifier.TypeClass;
 
 		/// <summary>
@@ -7514,8 +7409,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class UniqueConstraint : TSqlModelElement
-	{
+	public partial class UniqueConstraint : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = UniqueConstraint.TypeClass;
 
 		/// <summary>
@@ -7649,8 +7543,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class User : TSqlModelElement
-	{
+	public partial class User : TSqlModelElement,ISqlDatabaseSecurityPrincipal	{
 		private static ModelTypeClass typeClass = User.TypeClass;
 
 		/// <summary>
@@ -7728,8 +7621,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class UserDefinedServerRole : TSqlModelElement
-	{
+	public partial class UserDefinedServerRole : TSqlModelElement	{
 		private static ModelTypeClass typeClass = UserDefinedServerRole.TypeClass;
 
 		/// <summary>
@@ -7753,8 +7645,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class UserDefinedType : TSqlModelElement
-	{
+	public partial class UserDefinedType : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = UserDefinedType.TypeClass;
 
 		/// <summary>
@@ -7838,8 +7729,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class View : TSqlModelElement
-	{
+	public partial class View : TSqlModelElement,ISqlColumnSource	{
 		private static ModelTypeClass typeClass = View.TypeClass;
 
 		/// <summary>
@@ -7927,8 +7817,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class WorkloadGroup : TSqlModelElement
-	{
+	public partial class WorkloadGroup : TSqlModelElement	{
 		private static ModelTypeClass typeClass = WorkloadGroup.TypeClass;
 
 		/// <summary>
@@ -7988,8 +7877,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class XmlIndex : TSqlModelElement
-	{
+	public partial class XmlIndex : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = XmlIndex.TypeClass;
 
 		/// <summary>
@@ -8083,8 +7971,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class SelectiveXmlIndex : TSqlModelElement
-	{
+	public partial class SelectiveXmlIndex : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = SelectiveXmlIndex.TypeClass;
 
 		/// <summary>
@@ -8196,8 +8083,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class XmlNamespace : TSqlModelElement
-	{
+	public partial class XmlNamespace : TSqlModelElement	{
 		private static ModelTypeClass typeClass = XmlNamespace.TypeClass;
 
 		/// <summary>
@@ -8225,8 +8111,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class PromotedNodePathForXQueryType : TSqlModelElement
-	{
+	public partial class PromotedNodePathForXQueryType : TSqlModelElement,ISqlPromotedNodePath	{
 		private static ModelTypeClass typeClass = PromotedNodePathForXQueryType.TypeClass;
 
 		/// <summary>
@@ -8266,8 +8151,7 @@ public partial class TSqlModelElement
 
 
 }
-	public partial class PromotedNodePathForSqlType : TSqlModelElement
-	{
+	public partial class PromotedNodePathForSqlType : TSqlModelElement,ISqlPromotedNodePath	{
 		private static ModelTypeClass typeClass = PromotedNodePathForSqlType.TypeClass;
 
 		/// <summary>
@@ -8327,8 +8211,7 @@ public partial class TSqlModelElement
 		}
 	
 }
-	public partial class XmlSchemaCollection : TSqlModelElement
-	{
+	public partial class XmlSchemaCollection : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = XmlSchemaCollection.TypeClass;
 
 		/// <summary>

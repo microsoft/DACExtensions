@@ -7,9 +7,11 @@
     <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
   </Element>
   <Element Name="ApplicationRole">
+    <Implements Name="ISqlDatabaseSecurityPrincipal"/>
     <Relationship Name="DefaultSchema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
   </Element>
   <Element Name="Assembly">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="AssemblySources" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AssemblySource" />
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
     <Relationship Name="ReferencedAssemblies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
@@ -17,6 +19,7 @@
   <Element Name="AssemblySource">
   </Element>
   <Element Name="AsymmetricKey">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
     <!--<Relationship Name="Provider" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Provider" />-->
@@ -37,10 +40,12 @@
   <Element Name="BuiltInServerRole">
   </Element>
   <Element Name="Certificate">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
     <Relationship Name="ExistingKeysAssembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
   </Element>
   <Element Name="CheckConstraint">
+    <Implements Name="IExtendedPropertyHost"/>
     <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
     <Relationship Name="Host" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExtendedProperty" />
   </Element>
@@ -55,11 +60,13 @@
     <Relationship Name="ClrType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlTypeSpecifierBase" />
   </Element>
   <Element Name="Column">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataType" />
     <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
     <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="XmlSchemaCollection" />
   </Element>
   <Element Name="ColumnStoreIndex">
+    <Implements Name="ISqlIndex"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
@@ -68,6 +75,7 @@
     <Relationship Name="PartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
   </Element>
   <Element Name="Contract">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
     <Relationship Name="Messages" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="MessageType" />
   </Element>
@@ -98,9 +106,11 @@
     <Relationship Name="EventType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Model" ReturnType="EventType" />
   </Element>
   <Element Name="DatabaseMirroringLanguageSpecifier">
+    <Implements Name="IEndpointLanguageSpecifier"/>
     <Relationship Name="AuthenticationCertificate" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
   </Element>
   <Element Name="DatabaseOptions">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="DefaultFilegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
     <Relationship Name="DefaultFileStreamFilegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
   </Element>
@@ -111,10 +121,12 @@
     <Relationship Name="Type" Specialize="False" ReturnTypeNamespace="System" ReturnType="Type" />
   </Element>
   <Element Name="Default">
+    <Implements Name="ISqlSecurable"/>
     <!--<Relationship Name="BoundObjects" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BoundObjects" />-->
     <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
   </Element>
   <Element Name="DefaultConstraint">
+    <Implements Name="IExtendedPropertyHost"/>
     <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
     <Relationship Name="Host" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExtendedProperty" />
     <Relationship Name="TargetColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
@@ -127,6 +139,7 @@
     <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
   </Element>
   <Element Name="Endpoint">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Authorizer" SpecializeForVersion="False" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
     <Relationship Name="PayloadSpecifier" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="IEndpointLanguageSpecifier" />
     <Relationship Name="ProtocolSpecifier" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="IProtocolSpecifier " />
@@ -159,11 +172,13 @@
     <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
   </Element>
   <Element Name="ExtendedProperty">
+    <Implements Name="IExtendedPropertyHost"/>
     <Relationship Name="Host" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="IExtendedPropertyHost" />
   </Element>
   <Element Name="Filegroup">
   </Element>
   <Element Name="FileTable">
+    <Implements Name="ISqlColumnSource"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
@@ -174,12 +189,14 @@
     <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
   </Element>
   <Element Name="ForeignKeyConstraint">
+    <Implements Name="IExtendedPropertyHost"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="ForeignColumns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="ForeignTable" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Table" />
     <Relationship Name="Host" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExtendedProperty" />
   </Element>
   <Element Name="FullTextCatalog">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
   </Element>
@@ -197,11 +214,14 @@
     <Relationship Name="TypeColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
   </Element>
   <Element Name="FullTextStopList">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
   </Element>
   <Element Name="HttpProtocolSpecifier">
+    <Implements Name="IProtocolSpecifier"/>
   </Element>
   <Element Name="Index">
+    <Implements Name="ISqlIndex"/>
     <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BodyDependencies" />-->
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
@@ -227,6 +247,7 @@
   <Element Name="MasterKey">
   </Element>
   <Element Name="MessageType">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
     <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="XmlSchemaCollection" />
   </Element>
@@ -253,6 +274,7 @@
     <Relationship Name="SecuredObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlSecurable" />
   </Element>
   <Element Name="PrimaryKeyConstraint">
+    <Implements Name="IExtendedPropertyHost"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
@@ -272,11 +294,14 @@
     <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
   </Element>
   <Element Name="PromotedNodePathForSqlType">
+    <Implements Name="ISqlPromotedNodePath"/>
     <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataType" />
   </Element>
   <Element Name="PromotedNodePathForXQueryType">
+    <Implements Name="ISqlPromotedNodePath"/>
   </Element>
   <Element Name="Queue">
+    <Implements Name="ISqlColumnSource"/>
     <Relationship Name="ActivationProcedure" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Procedure" />
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
@@ -292,6 +317,7 @@
     <Relationship Name="Queue" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Queue" />
   </Element>
   <Element Name="RemoteServiceBinding">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
     <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
   </Element>
@@ -301,6 +327,7 @@
   <Element Name="ResourcePool">
   </Element>
   <Element Name="Role">
+    <Implements Name="ISqlDatabaseSecurityPrincipal"/>
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
   </Element>
   <Element Name="RoleMembership">
@@ -308,6 +335,7 @@
     <Relationship Name="Role" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Role" />
   </Element>
   <Element Name="Route">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
   </Element>
   <Element Name="Rule">
@@ -324,15 +352,18 @@
     <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
   </Element>
   <Element Name="Schema">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
   </Element>
   <Element Name="SearchProperty">
     <Relationship Name="SearchPropertyList" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="SearchPropertyList" />
   </Element>
   <Element Name="SearchPropertyList">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
   </Element>
   <Element Name="SelectiveXmlIndex">
+    <Implements Name="ISqlIndex"/>
     <Relationship Name="Column" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="IndexedObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlColumnSource" />
     <Relationship Name="PrimaryPromotedPath" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlPromotedNodePath" />
@@ -363,17 +394,20 @@
     <Relationship Name="EventType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Model" ReturnType="EventType" />
   </Element>
   <Element Name="ServerOptions">
+    <Implements Name="ISqlSecurable"/>
   </Element>
   <Element Name="ServerRoleMembership">
     <Relationship Name="Member" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="IServerSecurityPrincipal" />
     <Relationship Name="Role" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Role" />
   </Element>
   <Element Name="Service">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
     <Relationship Name="Contracts" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Contract" />
     <Relationship Name="Queue" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Queue" />
   </Element>
   <Element Name="ServiceBrokerLanguageSpecifier">
+    <Implements Name="IEndpointLanguageSpecifier"/>
     <Relationship Name="AuthenticationCertificate" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
   </Element>
   <Element Name="Signature">
@@ -385,12 +419,14 @@
     <Relationship Name="Certificate" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
   </Element>
   <Element Name="SoapLanguageSpecifier">
+    <Implements Name="IEndpointLanguageSpecifier"/>
     <Relationship Name="WebMethods" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="SoapMethodSpecification" />
   </Element>
   <Element Name="SoapMethodSpecification">
     <!--<Relationship Name="RelatedMethod" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="RelatedMethod" /> this is SqlSubroutine.-->
   </Element>
   <Element Name="SpatialIndex">
+    <Implements Name="ISqlIndex"/>
     <Relationship Name="Column" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
     <Relationship Name="IndexedObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlColumnSource" />
@@ -406,6 +442,7 @@
     <!--<Relationship Name="OnObject" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="OnObject" />-->
   </Element>
   <Element Name="SymmetricKey">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="AsymmetricKeys" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AsymmetricKey" />
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
     <Relationship Name="Certificates" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
@@ -420,6 +457,7 @@
     <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
   </Element>
   <Element Name="Table">
+    <Implements Name="ISqlColumnSource"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
@@ -431,12 +469,14 @@
     <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
   </Element>
   <Element Name="TableType">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="Constraints" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ITableTypeConstraint" />
     <Relationship Name="Indexes" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlIndex" />
     <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
   </Element>
   <Element Name="TableTypeCheckConstraint">
+    <Implements Name="ITableTypeConstraint"/>
     <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
   </Element>
   <Element Name="TableTypeColumn">
@@ -445,19 +485,24 @@
     <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="XmlSchemaCollection" />
   </Element>
   <Element Name="TableTypeDefaultConstraint">
+    <Implements Name="ITableTypeConstraint"/>
     <!--<Relationship Name="ExpressionDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ExpressionDependencies" />-->
     <Relationship Name="TargetColumn" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
   </Element>
   <Element Name="TableTypeIndex">
+    <Implements Name="ISqlIndex"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
   </Element>
   <Element Name="TableTypePrimaryKeyConstraint">
+    <Implements Name="ITableTypeConstraint"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
   </Element>
   <Element Name="TableTypeUniqueConstraint">
+    <Implements Name="ITableTypeConstraint"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
   </Element>
   <Element Name="TableValuedFunction">
+    <Implements Name="ISqlColumnSource"/>
     <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
     <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BodyDependencies" />-->
     <Relationship Name="Login" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Login" />
@@ -468,8 +513,10 @@
     <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="User" />
   </Element>
   <Element Name="TcpProtocolSpecifier">
+    <Implements Name="IProtocolSpecifier"/>
   </Element>
   <Element Name="UniqueConstraint">
+    <Implements Name="IExtendedPropertyHost"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="DataCompressionOption" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Filegroup" />
@@ -480,6 +527,7 @@
     <Relationship Name="PartitionScheme" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="PartitionScheme" />
   </Element>
   <Element Name="User">
+    <Implements Name="ISqlDatabaseSecurityPrincipal"/>
     <Relationship Name="AsymmetricKey" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="AsymmetricKey" />
     <Relationship Name="Certificate" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Certificate" />
     <Relationship Name="DefaultSchema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
@@ -489,12 +537,14 @@
     <Relationship Name="Authorizer" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlObjectAuthorizer" />
   </Element>
   <Element Name="UserDefinedType">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Assembly" />
     <!--<Relationship Name="Methods" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ClrMethod" />-->
     <!--<Relationship Name="Properties" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ClrProperty" />-->
     <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
   </Element>
   <Element Name="View">
+    <Implements Name="ISqlColumnSource"/>
     <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="BodyDependencies" />-->
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
@@ -503,6 +553,7 @@
     <Relationship Name="ResourcePool" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ResourcePool" />
   </Element>
   <Element Name="XmlIndex">
+    <Implements Name="ISqlIndex"/>
     <Relationship Name="Column" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Column" />
     <Relationship Name="IndexedObject" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlColumnSource" />
     <Relationship Name="PrimaryXmlIndex" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="XmlIndex" />
@@ -510,6 +561,7 @@
   <Element Name="XmlNamespace">
   </Element>
   <Element Name="XmlSchemaCollection">
+    <Implements Name="ISqlSecurable"/>
     <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="Schema" />
   </Element>
 </Model>

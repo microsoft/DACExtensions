@@ -17,8 +17,8 @@ namespace <#=NamespaceName#>
 	using Microsoft.SqlServer.Dac.Model;
 	using System.Collections.Generic;
 <#
-    var overrides = LoadOverrides(this.Host.TemplateFile);
-	string typePrefix;
+var overrides = LoadOverrides(this.Host.TemplateFile);
+string typePrefix;
 foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVersion)))
 {
 	typePrefix = "I" + currentSQLVersion;
@@ -45,11 +45,10 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 <#
 		}// end property loop
 		
-		
-	Dictionary<string,Tuple<bool, string, string>> relationShipOverrides;
-	if(!overrides.TryGetValue(type.Name, out relationShipOverrides))
+	ModelEntry modelEntry;		
+	if(!overrides.TryGetValue(type.Name, out modelEntry))
 	{	
-		relationShipOverrides = null;
+		modelEntry = null;
 	}
 
 	// begin releationship loop
@@ -61,19 +60,19 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 		continue;
 	   }
 		string returnType = "TSqlObject";		
-		if(relationShipOverrides != null)
-		{	Tuple<bool, string, string> localoverride;		
-			if(relationShipOverrides.TryGetValue(relationship.Name, out localoverride))
+		if(modelEntry != null)
+		{	RelationshipOverride localoverride;		
+			if(modelEntry.RelationshipOverrides.TryGetValue(relationship.Name, out localoverride))
 			{				
-				if(localoverride.Item1)
+				if(localoverride.Specialize)
 				{
 					// specialize the return type for the sql server version
-					returnType = string.Format("{0}.{1}{2}", localoverride.Item2, typePrefix, localoverride.Item3);
+					returnType = string.Format("{0}.{1}{2}", localoverride.ReturnTypeNamespace, typePrefix, localoverride.ReturnType);
 				}
 				else
 				{
 					// do not specialize the return type for the sql server version
-					returnType = string.Format("{0}.{1}", localoverride.Item2, localoverride.Item3);
+					returnType = string.Format("{0}.{1}", localoverride.ReturnTypeNamespace, localoverride.ReturnType);
 				}
 			}
 		}	
