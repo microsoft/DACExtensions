@@ -1,4 +1,21 @@
-﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+﻿//------------------------------------------------------------------------------
+// <copyright company="Microsoft">
+//   Copyright 2014 Microsoft
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+// </copyright>
+//------------------------------------------------------------------------------
+<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="System.Xml" #>
 <#@ import namespace="System.Linq" #>
@@ -30,15 +47,15 @@ public partial class TSqlModelElement
 		if(obj == null)
 		{
 			throw new ArgumentNullException("obj");
-		}
+		}	
 <#
 	//create adapter method for public model
 	foreach(var type in  ModelSchema.SchemaInstance.AllTypes)
 	{
 #>
-		else if(obj.ObjectType == <#=type.Name#>.TypeClass)
+		else if(obj.ObjectType == <#=ClassNamePrefix + type.Name#>.TypeClass)
         {
-            return new <#=type.Name#>(obj);
+            return new <#=ClassNamePrefix + type.Name#>(obj);
         }
 <#
 	}
@@ -58,8 +75,14 @@ public partial class TSqlModelElement
 		{	
 			modelEntry = null;
 		}
-		string className = type.Name;
-		#>
+		string className = ClassNamePrefix + type.Name;
+#>
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:<#=type.Name#>"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.<#=type.Name.ToLowerInvariant()#>.aspx"><#=type.Name#></see>
+	///
 	public partial class <#= className #> : TSqlModelElement<#
 	if(modelEntry != null )
     {
@@ -74,9 +97,9 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = <#=type.Name#>.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class <#= className #> to adapt the TSqlObject 
+		///	Create a strongly typed class <#= className #> to adapt instances of <see cref="T:<#=type.Name#>"/>
 		/// </summary>
-		public <#= className  #>(TSqlObject obj)  : base(obj)
+		public <#= className  #>(TSqlObject obj)  : base(obj, <#=type.Name#>.TypeClass)
 		{
 		}
 
@@ -89,14 +112,18 @@ public partial class TSqlModelElement
         {	
 			bool useGenericGetter;
 			string typeName = GetPropertyTypeName(property, out useGenericGetter);
-		#>
+#>
+
+		///
+		/// Property wrapper for <see cref="M:<#=type.Name#>.<#=property.Name#>"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.<#=type.Name.ToLowerInvariant()#>.<#=property.Name.ToLowerInvariant()#>.aspx"><#=type.Name#>.<#=property.Name#></see>
+		///
 		public <#= typeName #> <#= property.Name #> 
 		{
-		// Supported platforms = <#= property.SupportedPlatforms#>
 <#if (useGenericGetter) { #>
-			get { return Element.GetProperty<<#= typeName #>>(Microsoft.SqlServer.Dac.Model.<#=type.Name#>.<#=property.Name#>);}
+			get { return Element.GetProperty<<#= typeName #>>(<#=type.Name#>.<#=property.Name#>);}
 <#} else { #>
-			get { return (<#=typeName#>)Element.GetProperty(Microsoft.SqlServer.Dac.Model.<#=type.Name#>.<#=property.Name#>);}
+			get { return (<#=typeName#>)Element.GetProperty(<#=type.Name#>.<#=property.Name#>);}
 <#}#>
 		}
 
@@ -129,16 +156,20 @@ public partial class TSqlModelElement
 			}
 		}	
 		   		
-	#>
-		//<#=relationship.Type#>
+#>
+
+		///
+		/// <#=relationship.Type#> relationship returning instances of <see cref=":T <#=returnType.ReturnTypeNamespace#>.<#=returnType.ReturnType#>"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.<#=type.Name.ToLowerInvariant()#>.<#=relationship.Name.ToLowerInvariant()#>.aspx"><#=type.Name#>.<#=relationship.Name#></see>
+		///
 		public IEnumerable<<#=returnType.ReturnTypeNamespace#>.<#=returnType.ReturnType#>> <#=relationship.Name #> 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.<#=type.Name#>.<#=relationship.Name#>)<#=castExpression#>;
+				return Element.GetReferenced(<#=type.Name#>.<#=relationship.Name#>)<#=castExpression#>;
 			}
 		}
-	<#
+<#
 		
 	} //end foreach relationship
 #>

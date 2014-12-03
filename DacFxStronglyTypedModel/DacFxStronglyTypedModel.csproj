@@ -69,9 +69,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelDefects.cs" />
+    <Compile Include="ModelExtensions.cs" />
+    <Compile Include="ModelUtilityMethods.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelUtilityMethods.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublicTSqlModelElement.cs" />
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TSqlModelElement.cs" />
     <Compile Include="MarkerInterfaces.cs" />
+    <Compile Include="TSqlTypedModel.cs" />
     <Compile Include="Utils.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -92,6 +105,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>model.cs</LastGenOutput>
     </None>
+    <None Include="ModelUtilityMethods.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelUtilityMethods.cs</LastGenOutput>
+    </None>
     <None Include="Utils.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Utils.cs</LastGenOutput>
@@ -105,7 +122,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="modelmetadata.xml" />
+    <Content Include="modelmetadata.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

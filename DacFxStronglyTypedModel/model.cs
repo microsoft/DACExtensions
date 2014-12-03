@@ -1,4 +1,21 @@
-﻿
+﻿//------------------------------------------------------------------------------
+// <copyright company="Microsoft">
+//   Copyright 2014 Microsoft
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+// </copyright>
+//------------------------------------------------------------------------------
+
 namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 {
 	using System;
@@ -11,479 +28,479 @@ public partial class TSqlModelElement
 	///<summary>
 	///  Returns a strongly typed wrapper for the TSqlObject instance.
 	///</summary>
-	public static TSqlModelElement AdaptInstance(TSqlObject obj)
+    public static ISqlModelElement AdaptInstance(TSqlObject obj)
     {
 		if(obj == null)
 		{
 			throw new ArgumentNullException("obj");
-		}
-		else if(obj.ObjectType == Column.TypeClass)
+		}	
+		else if(obj.ObjectType == TSqlColumn.TypeClass)
         {
-            return new Column(obj);
+            return new TSqlColumn(obj);
         }
-		else if(obj.ObjectType == TableValuedFunction.TypeClass)
+		else if(obj.ObjectType == TSqlTableValuedFunction.TypeClass)
         {
-            return new TableValuedFunction(obj);
+            return new TSqlTableValuedFunction(obj);
         }
-		else if(obj.ObjectType == ScalarFunction.TypeClass)
+		else if(obj.ObjectType == TSqlScalarFunction.TypeClass)
         {
-            return new ScalarFunction(obj);
+            return new TSqlScalarFunction(obj);
         }
-		else if(obj.ObjectType == Aggregate.TypeClass)
+		else if(obj.ObjectType == TSqlAggregate.TypeClass)
         {
-            return new Aggregate(obj);
+            return new TSqlAggregate(obj);
         }
-		else if(obj.ObjectType == ApplicationRole.TypeClass)
+		else if(obj.ObjectType == TSqlApplicationRole.TypeClass)
         {
-            return new ApplicationRole(obj);
+            return new TSqlApplicationRole(obj);
         }
-		else if(obj.ObjectType == Index.TypeClass)
+		else if(obj.ObjectType == TSqlIndex.TypeClass)
         {
-            return new Index(obj);
+            return new TSqlIndex(obj);
         }
-		else if(obj.ObjectType == Assembly.TypeClass)
+		else if(obj.ObjectType == TSqlAssembly.TypeClass)
         {
-            return new Assembly(obj);
+            return new TSqlAssembly(obj);
         }
-		else if(obj.ObjectType == AssemblySource.TypeClass)
+		else if(obj.ObjectType == TSqlAssemblySource.TypeClass)
         {
-            return new AssemblySource(obj);
+            return new TSqlAssemblySource(obj);
         }
-		else if(obj.ObjectType == AsymmetricKey.TypeClass)
+		else if(obj.ObjectType == TSqlAsymmetricKey.TypeClass)
         {
-            return new AsymmetricKey(obj);
+            return new TSqlAsymmetricKey(obj);
         }
-		else if(obj.ObjectType == AuditAction.TypeClass)
+		else if(obj.ObjectType == TSqlAuditAction.TypeClass)
         {
-            return new AuditAction(obj);
+            return new TSqlAuditAction(obj);
         }
-		else if(obj.ObjectType == AuditActionGroup.TypeClass)
+		else if(obj.ObjectType == TSqlAuditActionGroup.TypeClass)
         {
-            return new AuditActionGroup(obj);
+            return new TSqlAuditActionGroup(obj);
         }
-		else if(obj.ObjectType == AuditActionSpecification.TypeClass)
+		else if(obj.ObjectType == TSqlAuditActionSpecification.TypeClass)
         {
-            return new AuditActionSpecification(obj);
+            return new TSqlAuditActionSpecification(obj);
         }
-		else if(obj.ObjectType == BrokerPriority.TypeClass)
+		else if(obj.ObjectType == TSqlBrokerPriority.TypeClass)
         {
-            return new BrokerPriority(obj);
+            return new TSqlBrokerPriority(obj);
         }
-		else if(obj.ObjectType == BuiltInServerRole.TypeClass)
+		else if(obj.ObjectType == TSqlBuiltInServerRole.TypeClass)
         {
-            return new BuiltInServerRole(obj);
+            return new TSqlBuiltInServerRole(obj);
         }
-		else if(obj.ObjectType == DataType.TypeClass)
+		else if(obj.ObjectType == TSqlDataType.TypeClass)
         {
-            return new DataType(obj);
+            return new TSqlDataType(obj);
         }
-		else if(obj.ObjectType == Certificate.TypeClass)
+		else if(obj.ObjectType == TSqlCertificate.TypeClass)
         {
-            return new Certificate(obj);
+            return new TSqlCertificate(obj);
         }
-		else if(obj.ObjectType == CheckConstraint.TypeClass)
+		else if(obj.ObjectType == TSqlCheckConstraint.TypeClass)
         {
-            return new CheckConstraint(obj);
+            return new TSqlCheckConstraint(obj);
         }
-		else if(obj.ObjectType == ClrTypeMethod.TypeClass)
+		else if(obj.ObjectType == TSqlClrTypeMethod.TypeClass)
         {
-            return new ClrTypeMethod(obj);
+            return new TSqlClrTypeMethod(obj);
         }
-		else if(obj.ObjectType == ClrTypeMethodParameter.TypeClass)
+		else if(obj.ObjectType == TSqlClrTypeMethodParameter.TypeClass)
         {
-            return new ClrTypeMethodParameter(obj);
+            return new TSqlClrTypeMethodParameter(obj);
         }
-		else if(obj.ObjectType == ClrTypeProperty.TypeClass)
+		else if(obj.ObjectType == TSqlClrTypeProperty.TypeClass)
         {
-            return new ClrTypeProperty(obj);
+            return new TSqlClrTypeProperty(obj);
         }
-		else if(obj.ObjectType == ColumnStoreIndex.TypeClass)
+		else if(obj.ObjectType == TSqlColumnStoreIndex.TypeClass)
         {
-            return new ColumnStoreIndex(obj);
+            return new TSqlColumnStoreIndex(obj);
         }
-		else if(obj.ObjectType == Contract.TypeClass)
+		else if(obj.ObjectType == TSqlContract.TypeClass)
         {
-            return new Contract(obj);
+            return new TSqlContract(obj);
         }
-		else if(obj.ObjectType == Credential.TypeClass)
+		else if(obj.ObjectType == TSqlCredential.TypeClass)
         {
-            return new Credential(obj);
+            return new TSqlCredential(obj);
         }
-		else if(obj.ObjectType == CryptographicProvider.TypeClass)
+		else if(obj.ObjectType == TSqlCryptographicProvider.TypeClass)
         {
-            return new CryptographicProvider(obj);
+            return new TSqlCryptographicProvider(obj);
         }
-		else if(obj.ObjectType == DatabaseAuditSpecification.TypeClass)
+		else if(obj.ObjectType == TSqlDatabaseAuditSpecification.TypeClass)
         {
-            return new DatabaseAuditSpecification(obj);
+            return new TSqlDatabaseAuditSpecification(obj);
         }
-		else if(obj.ObjectType == DatabaseDdlTrigger.TypeClass)
+		else if(obj.ObjectType == TSqlDatabaseDdlTrigger.TypeClass)
         {
-            return new DatabaseDdlTrigger(obj);
+            return new TSqlDatabaseDdlTrigger(obj);
         }
-		else if(obj.ObjectType == DatabaseEncryptionKey.TypeClass)
+		else if(obj.ObjectType == TSqlDatabaseEncryptionKey.TypeClass)
         {
-            return new DatabaseEncryptionKey(obj);
+            return new TSqlDatabaseEncryptionKey(obj);
         }
-		else if(obj.ObjectType == DatabaseEventNotification.TypeClass)
+		else if(obj.ObjectType == TSqlDatabaseEventNotification.TypeClass)
         {
-            return new DatabaseEventNotification(obj);
+            return new TSqlDatabaseEventNotification(obj);
         }
-		else if(obj.ObjectType == DatabaseMirroringLanguageSpecifier.TypeClass)
+		else if(obj.ObjectType == TSqlDatabaseMirroringLanguageSpecifier.TypeClass)
         {
-            return new DatabaseMirroringLanguageSpecifier(obj);
+            return new TSqlDatabaseMirroringLanguageSpecifier(obj);
         }
-		else if(obj.ObjectType == DatabaseOptions.TypeClass)
+		else if(obj.ObjectType == TSqlDatabaseOptions.TypeClass)
         {
-            return new DatabaseOptions(obj);
+            return new TSqlDatabaseOptions(obj);
         }
-		else if(obj.ObjectType == DataCompressionOption.TypeClass)
+		else if(obj.ObjectType == TSqlDataCompressionOption.TypeClass)
         {
-            return new DataCompressionOption(obj);
+            return new TSqlDataCompressionOption(obj);
         }
-		else if(obj.ObjectType == Default.TypeClass)
+		else if(obj.ObjectType == TSqlDefault.TypeClass)
         {
-            return new Default(obj);
+            return new TSqlDefault(obj);
         }
-		else if(obj.ObjectType == DefaultConstraint.TypeClass)
+		else if(obj.ObjectType == TSqlDefaultConstraint.TypeClass)
         {
-            return new DefaultConstraint(obj);
+            return new TSqlDefaultConstraint(obj);
         }
-		else if(obj.ObjectType == DmlTrigger.TypeClass)
+		else if(obj.ObjectType == TSqlDmlTrigger.TypeClass)
         {
-            return new DmlTrigger(obj);
+            return new TSqlDmlTrigger(obj);
         }
-		else if(obj.ObjectType == Endpoint.TypeClass)
+		else if(obj.ObjectType == TSqlEndpoint.TypeClass)
         {
-            return new Endpoint(obj);
+            return new TSqlEndpoint(obj);
         }
-		else if(obj.ObjectType == ErrorMessage.TypeClass)
+		else if(obj.ObjectType == TSqlErrorMessage.TypeClass)
         {
-            return new ErrorMessage(obj);
+            return new TSqlErrorMessage(obj);
         }
-		else if(obj.ObjectType == EventGroup.TypeClass)
+		else if(obj.ObjectType == TSqlEventGroup.TypeClass)
         {
-            return new EventGroup(obj);
+            return new TSqlEventGroup(obj);
         }
-		else if(obj.ObjectType == EventSession.TypeClass)
+		else if(obj.ObjectType == TSqlEventSession.TypeClass)
         {
-            return new EventSession(obj);
+            return new TSqlEventSession(obj);
         }
-		else if(obj.ObjectType == EventSessionAction.TypeClass)
+		else if(obj.ObjectType == TSqlEventSessionAction.TypeClass)
         {
-            return new EventSessionAction(obj);
+            return new TSqlEventSessionAction(obj);
         }
-		else if(obj.ObjectType == EventSessionDefinitions.TypeClass)
+		else if(obj.ObjectType == TSqlEventSessionDefinitions.TypeClass)
         {
-            return new EventSessionDefinitions(obj);
+            return new TSqlEventSessionDefinitions(obj);
         }
-		else if(obj.ObjectType == EventSessionSetting.TypeClass)
+		else if(obj.ObjectType == TSqlEventSessionSetting.TypeClass)
         {
-            return new EventSessionSetting(obj);
+            return new TSqlEventSessionSetting(obj);
         }
-		else if(obj.ObjectType == EventSessionTarget.TypeClass)
+		else if(obj.ObjectType == TSqlEventSessionTarget.TypeClass)
         {
-            return new EventSessionTarget(obj);
+            return new TSqlEventSessionTarget(obj);
         }
-		else if(obj.ObjectType == EventTypeSpecifier.TypeClass)
+		else if(obj.ObjectType == TSqlEventTypeSpecifier.TypeClass)
         {
-            return new EventTypeSpecifier(obj);
+            return new TSqlEventTypeSpecifier(obj);
         }
-		else if(obj.ObjectType == ExtendedProcedure.TypeClass)
+		else if(obj.ObjectType == TSqlExtendedProcedure.TypeClass)
         {
-            return new ExtendedProcedure(obj);
+            return new TSqlExtendedProcedure(obj);
         }
-		else if(obj.ObjectType == ExtendedProperty.TypeClass)
+		else if(obj.ObjectType == TSqlExtendedProperty.TypeClass)
         {
-            return new ExtendedProperty(obj);
+            return new TSqlExtendedProperty(obj);
         }
-		else if(obj.ObjectType == SqlFile.TypeClass)
+		else if(obj.ObjectType == TSqlSqlFile.TypeClass)
         {
-            return new SqlFile(obj);
+            return new TSqlSqlFile(obj);
         }
-		else if(obj.ObjectType == Filegroup.TypeClass)
+		else if(obj.ObjectType == TSqlFilegroup.TypeClass)
         {
-            return new Filegroup(obj);
+            return new TSqlFilegroup(obj);
         }
-		else if(obj.ObjectType == ForeignKeyConstraint.TypeClass)
+		else if(obj.ObjectType == TSqlForeignKeyConstraint.TypeClass)
         {
-            return new ForeignKeyConstraint(obj);
+            return new TSqlForeignKeyConstraint(obj);
         }
-		else if(obj.ObjectType == FullTextCatalog.TypeClass)
+		else if(obj.ObjectType == TSqlFullTextCatalog.TypeClass)
         {
-            return new FullTextCatalog(obj);
+            return new TSqlFullTextCatalog(obj);
         }
-		else if(obj.ObjectType == FullTextIndex.TypeClass)
+		else if(obj.ObjectType == TSqlFullTextIndex.TypeClass)
         {
-            return new FullTextIndex(obj);
+            return new TSqlFullTextIndex(obj);
         }
-		else if(obj.ObjectType == FullTextIndexColumnSpecifier.TypeClass)
+		else if(obj.ObjectType == TSqlFullTextIndexColumnSpecifier.TypeClass)
         {
-            return new FullTextIndexColumnSpecifier(obj);
+            return new TSqlFullTextIndexColumnSpecifier(obj);
         }
-		else if(obj.ObjectType == FullTextStopList.TypeClass)
+		else if(obj.ObjectType == TSqlFullTextStopList.TypeClass)
         {
-            return new FullTextStopList(obj);
+            return new TSqlFullTextStopList(obj);
         }
-		else if(obj.ObjectType == HttpProtocolSpecifier.TypeClass)
+		else if(obj.ObjectType == TSqlHttpProtocolSpecifier.TypeClass)
         {
-            return new HttpProtocolSpecifier(obj);
+            return new TSqlHttpProtocolSpecifier(obj);
         }
-		else if(obj.ObjectType == LinkedServer.TypeClass)
+		else if(obj.ObjectType == TSqlLinkedServer.TypeClass)
         {
-            return new LinkedServer(obj);
+            return new TSqlLinkedServer(obj);
         }
-		else if(obj.ObjectType == LinkedServerLogin.TypeClass)
+		else if(obj.ObjectType == TSqlLinkedServerLogin.TypeClass)
         {
-            return new LinkedServerLogin(obj);
+            return new TSqlLinkedServerLogin(obj);
         }
-		else if(obj.ObjectType == Login.TypeClass)
+		else if(obj.ObjectType == TSqlLogin.TypeClass)
         {
-            return new Login(obj);
+            return new TSqlLogin(obj);
         }
-		else if(obj.ObjectType == MasterKey.TypeClass)
+		else if(obj.ObjectType == TSqlMasterKey.TypeClass)
         {
-            return new MasterKey(obj);
+            return new TSqlMasterKey(obj);
         }
-		else if(obj.ObjectType == MessageType.TypeClass)
+		else if(obj.ObjectType == TSqlMessageType.TypeClass)
         {
-            return new MessageType(obj);
+            return new TSqlMessageType(obj);
         }
-		else if(obj.ObjectType == PartitionFunction.TypeClass)
+		else if(obj.ObjectType == TSqlPartitionFunction.TypeClass)
         {
-            return new PartitionFunction(obj);
+            return new TSqlPartitionFunction(obj);
         }
-		else if(obj.ObjectType == PartitionScheme.TypeClass)
+		else if(obj.ObjectType == TSqlPartitionScheme.TypeClass)
         {
-            return new PartitionScheme(obj);
+            return new TSqlPartitionScheme(obj);
         }
-		else if(obj.ObjectType == PartitionValue.TypeClass)
+		else if(obj.ObjectType == TSqlPartitionValue.TypeClass)
         {
-            return new PartitionValue(obj);
+            return new TSqlPartitionValue(obj);
         }
-		else if(obj.ObjectType == Permission.TypeClass)
+		else if(obj.ObjectType == TSqlPermission.TypeClass)
         {
-            return new Permission(obj);
+            return new TSqlPermission(obj);
         }
-		else if(obj.ObjectType == PrimaryKeyConstraint.TypeClass)
+		else if(obj.ObjectType == TSqlPrimaryKeyConstraint.TypeClass)
         {
-            return new PrimaryKeyConstraint(obj);
+            return new TSqlPrimaryKeyConstraint(obj);
         }
-		else if(obj.ObjectType == Procedure.TypeClass)
+		else if(obj.ObjectType == TSqlProcedure.TypeClass)
         {
-            return new Procedure(obj);
+            return new TSqlProcedure(obj);
         }
-		else if(obj.ObjectType == Queue.TypeClass)
+		else if(obj.ObjectType == TSqlQueue.TypeClass)
         {
-            return new Queue(obj);
+            return new TSqlQueue(obj);
         }
-		else if(obj.ObjectType == QueueEventNotification.TypeClass)
+		else if(obj.ObjectType == TSqlQueueEventNotification.TypeClass)
         {
-            return new QueueEventNotification(obj);
+            return new TSqlQueueEventNotification(obj);
         }
-		else if(obj.ObjectType == RemoteServiceBinding.TypeClass)
+		else if(obj.ObjectType == TSqlRemoteServiceBinding.TypeClass)
         {
-            return new RemoteServiceBinding(obj);
+            return new TSqlRemoteServiceBinding(obj);
         }
-		else if(obj.ObjectType == ResourceGovernor.TypeClass)
+		else if(obj.ObjectType == TSqlResourceGovernor.TypeClass)
         {
-            return new ResourceGovernor(obj);
+            return new TSqlResourceGovernor(obj);
         }
-		else if(obj.ObjectType == ResourcePool.TypeClass)
+		else if(obj.ObjectType == TSqlResourcePool.TypeClass)
         {
-            return new ResourcePool(obj);
+            return new TSqlResourcePool(obj);
         }
-		else if(obj.ObjectType == Role.TypeClass)
+		else if(obj.ObjectType == TSqlRole.TypeClass)
         {
-            return new Role(obj);
+            return new TSqlRole(obj);
         }
-		else if(obj.ObjectType == RoleMembership.TypeClass)
+		else if(obj.ObjectType == TSqlRoleMembership.TypeClass)
         {
-            return new RoleMembership(obj);
+            return new TSqlRoleMembership(obj);
         }
-		else if(obj.ObjectType == Route.TypeClass)
+		else if(obj.ObjectType == TSqlRoute.TypeClass)
         {
-            return new Route(obj);
+            return new TSqlRoute(obj);
         }
-		else if(obj.ObjectType == Rule.TypeClass)
+		else if(obj.ObjectType == TSqlRule.TypeClass)
         {
-            return new Rule(obj);
+            return new TSqlRule(obj);
         }
-		else if(obj.ObjectType == Schema.TypeClass)
+		else if(obj.ObjectType == TSqlSchema.TypeClass)
         {
-            return new Schema(obj);
+            return new TSqlSchema(obj);
         }
-		else if(obj.ObjectType == SearchProperty.TypeClass)
+		else if(obj.ObjectType == TSqlSearchProperty.TypeClass)
         {
-            return new SearchProperty(obj);
+            return new TSqlSearchProperty(obj);
         }
-		else if(obj.ObjectType == SearchPropertyList.TypeClass)
+		else if(obj.ObjectType == TSqlSearchPropertyList.TypeClass)
         {
-            return new SearchPropertyList(obj);
+            return new TSqlSearchPropertyList(obj);
         }
-		else if(obj.ObjectType == Sequence.TypeClass)
+		else if(obj.ObjectType == TSqlSequence.TypeClass)
         {
-            return new Sequence(obj);
+            return new TSqlSequence(obj);
         }
-		else if(obj.ObjectType == ServerAudit.TypeClass)
+		else if(obj.ObjectType == TSqlServerAudit.TypeClass)
         {
-            return new ServerAudit(obj);
+            return new TSqlServerAudit(obj);
         }
-		else if(obj.ObjectType == ServerAuditSpecification.TypeClass)
+		else if(obj.ObjectType == TSqlServerAuditSpecification.TypeClass)
         {
-            return new ServerAuditSpecification(obj);
+            return new TSqlServerAuditSpecification(obj);
         }
-		else if(obj.ObjectType == ServerDdlTrigger.TypeClass)
+		else if(obj.ObjectType == TSqlServerDdlTrigger.TypeClass)
         {
-            return new ServerDdlTrigger(obj);
+            return new TSqlServerDdlTrigger(obj);
         }
-		else if(obj.ObjectType == ServerEventNotification.TypeClass)
+		else if(obj.ObjectType == TSqlServerEventNotification.TypeClass)
         {
-            return new ServerEventNotification(obj);
+            return new TSqlServerEventNotification(obj);
         }
-		else if(obj.ObjectType == ServerOptions.TypeClass)
+		else if(obj.ObjectType == TSqlServerOptions.TypeClass)
         {
-            return new ServerOptions(obj);
+            return new TSqlServerOptions(obj);
         }
-		else if(obj.ObjectType == ServerRoleMembership.TypeClass)
+		else if(obj.ObjectType == TSqlServerRoleMembership.TypeClass)
         {
-            return new ServerRoleMembership(obj);
+            return new TSqlServerRoleMembership(obj);
         }
-		else if(obj.ObjectType == Service.TypeClass)
+		else if(obj.ObjectType == TSqlService.TypeClass)
         {
-            return new Service(obj);
+            return new TSqlService(obj);
         }
-		else if(obj.ObjectType == ServiceBrokerLanguageSpecifier.TypeClass)
+		else if(obj.ObjectType == TSqlServiceBrokerLanguageSpecifier.TypeClass)
         {
-            return new ServiceBrokerLanguageSpecifier(obj);
+            return new TSqlServiceBrokerLanguageSpecifier(obj);
         }
-		else if(obj.ObjectType == Signature.TypeClass)
+		else if(obj.ObjectType == TSqlSignature.TypeClass)
         {
-            return new Signature(obj);
+            return new TSqlSignature(obj);
         }
-		else if(obj.ObjectType == SignatureEncryptionMechanism.TypeClass)
+		else if(obj.ObjectType == TSqlSignatureEncryptionMechanism.TypeClass)
         {
-            return new SignatureEncryptionMechanism(obj);
+            return new TSqlSignatureEncryptionMechanism(obj);
         }
-		else if(obj.ObjectType == SoapLanguageSpecifier.TypeClass)
+		else if(obj.ObjectType == TSqlSoapLanguageSpecifier.TypeClass)
         {
-            return new SoapLanguageSpecifier(obj);
+            return new TSqlSoapLanguageSpecifier(obj);
         }
-		else if(obj.ObjectType == SoapMethodSpecification.TypeClass)
+		else if(obj.ObjectType == TSqlSoapMethodSpecification.TypeClass)
         {
-            return new SoapMethodSpecification(obj);
+            return new TSqlSoapMethodSpecification(obj);
         }
-		else if(obj.ObjectType == SpatialIndex.TypeClass)
+		else if(obj.ObjectType == TSqlSpatialIndex.TypeClass)
         {
-            return new SpatialIndex(obj);
+            return new TSqlSpatialIndex(obj);
         }
-		else if(obj.ObjectType == Statistics.TypeClass)
+		else if(obj.ObjectType == TSqlStatistics.TypeClass)
         {
-            return new Statistics(obj);
+            return new TSqlStatistics(obj);
         }
-		else if(obj.ObjectType == Parameter.TypeClass)
+		else if(obj.ObjectType == TSqlParameter.TypeClass)
         {
-            return new Parameter(obj);
+            return new TSqlParameter(obj);
         }
-		else if(obj.ObjectType == SymmetricKey.TypeClass)
+		else if(obj.ObjectType == TSqlSymmetricKey.TypeClass)
         {
-            return new SymmetricKey(obj);
+            return new TSqlSymmetricKey(obj);
         }
-		else if(obj.ObjectType == SymmetricKeyPassword.TypeClass)
+		else if(obj.ObjectType == TSqlSymmetricKeyPassword.TypeClass)
         {
-            return new SymmetricKeyPassword(obj);
+            return new TSqlSymmetricKeyPassword(obj);
         }
-		else if(obj.ObjectType == Synonym.TypeClass)
+		else if(obj.ObjectType == TSqlSynonym.TypeClass)
         {
-            return new Synonym(obj);
+            return new TSqlSynonym(obj);
         }
-		else if(obj.ObjectType == Table.TypeClass)
+		else if(obj.ObjectType == TSqlTable.TypeClass)
         {
-            return new Table(obj);
+            return new TSqlTable(obj);
         }
-		else if(obj.ObjectType == FileTable.TypeClass)
+		else if(obj.ObjectType == TSqlFileTable.TypeClass)
         {
-            return new FileTable(obj);
+            return new TSqlFileTable(obj);
         }
-		else if(obj.ObjectType == TableType.TypeClass)
+		else if(obj.ObjectType == TSqlTableType.TypeClass)
         {
-            return new TableType(obj);
+            return new TSqlTableType(obj);
         }
-		else if(obj.ObjectType == TableTypeCheckConstraint.TypeClass)
+		else if(obj.ObjectType == TSqlTableTypeCheckConstraint.TypeClass)
         {
-            return new TableTypeCheckConstraint(obj);
+            return new TSqlTableTypeCheckConstraint(obj);
         }
-		else if(obj.ObjectType == TableTypeColumn.TypeClass)
+		else if(obj.ObjectType == TSqlTableTypeColumn.TypeClass)
         {
-            return new TableTypeColumn(obj);
+            return new TSqlTableTypeColumn(obj);
         }
-		else if(obj.ObjectType == TableTypeDefaultConstraint.TypeClass)
+		else if(obj.ObjectType == TSqlTableTypeDefaultConstraint.TypeClass)
         {
-            return new TableTypeDefaultConstraint(obj);
+            return new TSqlTableTypeDefaultConstraint(obj);
         }
-		else if(obj.ObjectType == TableTypeIndex.TypeClass)
+		else if(obj.ObjectType == TSqlTableTypeIndex.TypeClass)
         {
-            return new TableTypeIndex(obj);
+            return new TSqlTableTypeIndex(obj);
         }
-		else if(obj.ObjectType == TableTypePrimaryKeyConstraint.TypeClass)
+		else if(obj.ObjectType == TSqlTableTypePrimaryKeyConstraint.TypeClass)
         {
-            return new TableTypePrimaryKeyConstraint(obj);
+            return new TSqlTableTypePrimaryKeyConstraint(obj);
         }
-		else if(obj.ObjectType == TableTypeUniqueConstraint.TypeClass)
+		else if(obj.ObjectType == TSqlTableTypeUniqueConstraint.TypeClass)
         {
-            return new TableTypeUniqueConstraint(obj);
+            return new TSqlTableTypeUniqueConstraint(obj);
         }
-		else if(obj.ObjectType == TcpProtocolSpecifier.TypeClass)
+		else if(obj.ObjectType == TSqlTcpProtocolSpecifier.TypeClass)
         {
-            return new TcpProtocolSpecifier(obj);
+            return new TSqlTcpProtocolSpecifier(obj);
         }
-		else if(obj.ObjectType == UniqueConstraint.TypeClass)
+		else if(obj.ObjectType == TSqlUniqueConstraint.TypeClass)
         {
-            return new UniqueConstraint(obj);
+            return new TSqlUniqueConstraint(obj);
         }
-		else if(obj.ObjectType == User.TypeClass)
+		else if(obj.ObjectType == TSqlUser.TypeClass)
         {
-            return new User(obj);
+            return new TSqlUser(obj);
         }
-		else if(obj.ObjectType == UserDefinedServerRole.TypeClass)
+		else if(obj.ObjectType == TSqlUserDefinedServerRole.TypeClass)
         {
-            return new UserDefinedServerRole(obj);
+            return new TSqlUserDefinedServerRole(obj);
         }
-		else if(obj.ObjectType == UserDefinedType.TypeClass)
+		else if(obj.ObjectType == TSqlUserDefinedType.TypeClass)
         {
-            return new UserDefinedType(obj);
+            return new TSqlUserDefinedType(obj);
         }
-		else if(obj.ObjectType == View.TypeClass)
+		else if(obj.ObjectType == TSqlView.TypeClass)
         {
-            return new View(obj);
+            return new TSqlView(obj);
         }
-		else if(obj.ObjectType == WorkloadGroup.TypeClass)
+		else if(obj.ObjectType == TSqlWorkloadGroup.TypeClass)
         {
-            return new WorkloadGroup(obj);
+            return new TSqlWorkloadGroup(obj);
         }
-		else if(obj.ObjectType == XmlIndex.TypeClass)
+		else if(obj.ObjectType == TSqlXmlIndex.TypeClass)
         {
-            return new XmlIndex(obj);
+            return new TSqlXmlIndex(obj);
         }
-		else if(obj.ObjectType == SelectiveXmlIndex.TypeClass)
+		else if(obj.ObjectType == TSqlSelectiveXmlIndex.TypeClass)
         {
-            return new SelectiveXmlIndex(obj);
+            return new TSqlSelectiveXmlIndex(obj);
         }
-		else if(obj.ObjectType == XmlNamespace.TypeClass)
+		else if(obj.ObjectType == TSqlXmlNamespace.TypeClass)
         {
-            return new XmlNamespace(obj);
+            return new TSqlXmlNamespace(obj);
         }
-		else if(obj.ObjectType == PromotedNodePathForXQueryType.TypeClass)
+		else if(obj.ObjectType == TSqlPromotedNodePathForXQueryType.TypeClass)
         {
-            return new PromotedNodePathForXQueryType(obj);
+            return new TSqlPromotedNodePathForXQueryType(obj);
         }
-		else if(obj.ObjectType == PromotedNodePathForSqlType.TypeClass)
+		else if(obj.ObjectType == TSqlPromotedNodePathForSqlType.TypeClass)
         {
-            return new PromotedNodePathForSqlType(obj);
+            return new TSqlPromotedNodePathForSqlType(obj);
         }
-		else if(obj.ObjectType == XmlSchemaCollection.TypeClass)
+		else if(obj.ObjectType == TSqlXmlSchemaCollection.TypeClass)
         {
-            return new XmlSchemaCollection(obj);
+            return new TSqlXmlSchemaCollection(obj);
         }
 		else
 		{
@@ -491,13 +508,19 @@ public partial class TSqlModelElement
 		}
 	}
 }
-	public partial class Column : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Column"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.aspx">Column</see>
+	///
+	public partial class TSqlColumn : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Column.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Column to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlColumn to adapt instances of <see cref="T:Column"/>
 		/// </summary>
-		public Column(TSqlObject obj)  : base(obj)
+		public TSqlColumn(TSqlObject obj)  : base(obj, Column.TypeClass)
 		{
 		}
 
@@ -505,141 +528,227 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Column.Collation"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.collation.aspx">Column.Collation</see>
+		///
 		public String Collation 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Column.Collation);}
+			get { return Element.GetProperty<String>(Column.Collation);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.Expression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.expression.aspx">Column.Expression</see>
+		///
 		public String Expression 
 		{
-		// Supported platforms = 31
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.Column.Expression);}
+			get { return (String)Element.GetProperty(Column.Expression);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.IdentityIncrement"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.identityincrement.aspx">Column.IdentityIncrement</see>
+		///
 		public String IdentityIncrement 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Column.IdentityIncrement);}
+			get { return Element.GetProperty<String>(Column.IdentityIncrement);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.IdentitySeed"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.identityseed.aspx">Column.IdentitySeed</see>
+		///
 		public String IdentitySeed 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Column.IdentitySeed);}
+			get { return Element.GetProperty<String>(Column.IdentitySeed);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.IsFileStream"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.isfilestream.aspx">Column.IsFileStream</see>
+		///
 		public Boolean IsFileStream 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Column.IsFileStream);}
+			get { return Element.GetProperty<Boolean>(Column.IsFileStream);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.IsIdentity"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.isidentity.aspx">Column.IsIdentity</see>
+		///
 		public Boolean IsIdentity 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Column.IsIdentity);}
+			get { return Element.GetProperty<Boolean>(Column.IsIdentity);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.IsIdentityNotForReplication"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.isidentitynotforreplication.aspx">Column.IsIdentityNotForReplication</see>
+		///
 		public Boolean IsIdentityNotForReplication 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Column.IsIdentityNotForReplication);}
+			get { return Element.GetProperty<Boolean>(Column.IsIdentityNotForReplication);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.IsMax"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.ismax.aspx">Column.IsMax</see>
+		///
 		public Boolean IsMax 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Column.IsMax);}
+			get { return Element.GetProperty<Boolean>(Column.IsMax);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.IsRowGuidCol"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.isrowguidcol.aspx">Column.IsRowGuidCol</see>
+		///
 		public Boolean IsRowGuidCol 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Column.IsRowGuidCol);}
+			get { return Element.GetProperty<Boolean>(Column.IsRowGuidCol);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.Length"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.length.aspx">Column.Length</see>
+		///
 		public Int32 Length 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.Column.Length);}
+			get { return Element.GetProperty<Int32>(Column.Length);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.Nullable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.nullable.aspx">Column.Nullable</see>
+		///
 		public Boolean Nullable 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Column.Nullable);}
+			get { return Element.GetProperty<Boolean>(Column.Nullable);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.Persisted"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.persisted.aspx">Column.Persisted</see>
+		///
 		public Boolean Persisted 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Column.Persisted);}
+			get { return Element.GetProperty<Boolean>(Column.Persisted);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.PersistedNullable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.persistednullable.aspx">Column.PersistedNullable</see>
+		///
 		public Boolean? PersistedNullable 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.Column.PersistedNullable);}
+			get { return Element.GetProperty<Boolean?>(Column.PersistedNullable);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.Precision"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.precision.aspx">Column.Precision</see>
+		///
 		public Int32 Precision 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.Column.Precision);}
+			get { return Element.GetProperty<Int32>(Column.Precision);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.Scale"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.scale.aspx">Column.Scale</see>
+		///
 		public Int32 Scale 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.Column.Scale);}
+			get { return Element.GetProperty<Int32>(Column.Scale);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.Sparse"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.sparse.aspx">Column.Sparse</see>
+		///
 		public Boolean Sparse 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Column.Sparse);}
+			get { return Element.GetProperty<Boolean>(Column.Sparse);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Column.XmlStyle"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.xmlstyle.aspx">Column.XmlStyle</see>
+		///
 		public XmlStyle XmlStyle 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<XmlStyle>(Microsoft.SqlServer.Dac.Model.Column.XmlStyle);}
+			get { return Element.GetProperty<XmlStyle>(Column.XmlStyle);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataType> DataType 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.datatype.aspx">Column.DataType</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Column.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Column.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.expressiondependencies.aspx">Column.ExpressionDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Column.ExpressionDependencies);
+				return Element.GetReferenced(Column.ExpressionDependencies);
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.XmlSchemaCollection> XmlSchemaCollection 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.xmlschemacollection.aspx">Column.XmlSchemaCollection</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection> XmlSchemaCollection 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Column.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.XmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Column.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class TableValuedFunction : TSqlModelElement,ISqlColumnSource	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableValuedFunction"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.aspx">TableValuedFunction</see>
+	///
+	public partial class TSqlTableValuedFunction : TSqlModelElement,ISqlColumnSource,ISpecifiesIndex	{
 		private static ModelTypeClass typeClass = TableValuedFunction.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TableValuedFunction to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlTableValuedFunction to adapt instances of <see cref="T:TableValuedFunction"/>
 		/// </summary>
-		public TableValuedFunction(TSqlObject obj)  : base(obj)
+		public TSqlTableValuedFunction(TSqlObject obj)  : base(obj, TableValuedFunction.TypeClass)
 		{
 		}
 
@@ -647,187 +756,297 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.AnsiNullsOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.ansinullson.aspx">TableValuedFunction.AnsiNullsOn</see>
+		///
 		public Boolean? AnsiNullsOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.AnsiNullsOn);}
+			get { return Element.GetProperty<Boolean?>(TableValuedFunction.AnsiNullsOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.CalledOnNullInput"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.calledonnullinput.aspx">TableValuedFunction.CalledOnNullInput</see>
+		///
 		public Boolean CalledOnNullInput 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.CalledOnNullInput);}
+			get { return Element.GetProperty<Boolean>(TableValuedFunction.CalledOnNullInput);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.ClassName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.classname.aspx">TableValuedFunction.ClassName</see>
+		///
 		public String ClassName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.ClassName);}
+			get { return Element.GetProperty<String>(TableValuedFunction.ClassName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.DataAccess"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.dataaccess.aspx">TableValuedFunction.DataAccess</see>
+		///
 		public DataAccessKind? DataAccess 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<DataAccessKind?>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.DataAccess);}
+			get { return Element.GetProperty<DataAccessKind?>(TableValuedFunction.DataAccess);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.Deterministic"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.deterministic.aspx">TableValuedFunction.Deterministic</see>
+		///
 		public Boolean? Deterministic 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.Deterministic);}
+			get { return Element.GetProperty<Boolean?>(TableValuedFunction.Deterministic);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.ExecuteAsCaller"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.executeascaller.aspx">TableValuedFunction.ExecuteAsCaller</see>
+		///
 		public Boolean ExecuteAsCaller 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.ExecuteAsCaller);}
+			get { return Element.GetProperty<Boolean>(TableValuedFunction.ExecuteAsCaller);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.ExecuteAsOwner"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.executeasowner.aspx">TableValuedFunction.ExecuteAsOwner</see>
+		///
 		public Boolean ExecuteAsOwner 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.ExecuteAsOwner);}
+			get { return Element.GetProperty<Boolean>(TableValuedFunction.ExecuteAsOwner);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.ExecuteAsSelf"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.executeasself.aspx">TableValuedFunction.ExecuteAsSelf</see>
+		///
 		public Boolean ExecuteAsSelf 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.ExecuteAsSelf);}
+			get { return Element.GetProperty<Boolean>(TableValuedFunction.ExecuteAsSelf);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.FillRowMethodName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.fillrowmethodname.aspx">TableValuedFunction.FillRowMethodName</see>
+		///
 		public String FillRowMethodName 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.FillRowMethodName);}
+			get { return Element.GetProperty<String>(TableValuedFunction.FillRowMethodName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.IsReplicated"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.isreplicated.aspx">TableValuedFunction.IsReplicated</see>
+		///
 		public Boolean IsReplicated 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.IsReplicated);}
+			get { return Element.GetProperty<Boolean>(TableValuedFunction.IsReplicated);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.MethodName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.methodname.aspx">TableValuedFunction.MethodName</see>
+		///
 		public String MethodName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.MethodName);}
+			get { return Element.GetProperty<String>(TableValuedFunction.MethodName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.Precise"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.precise.aspx">TableValuedFunction.Precise</see>
+		///
 		public Boolean? Precise 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.Precise);}
+			get { return Element.GetProperty<Boolean?>(TableValuedFunction.Precise);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.QuotedIdentifierOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.quotedidentifieron.aspx">TableValuedFunction.QuotedIdentifierOn</see>
+		///
 		public Boolean? QuotedIdentifierOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.QuotedIdentifierOn);}
+			get { return Element.GetProperty<Boolean?>(TableValuedFunction.QuotedIdentifierOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.ReturnsNullOnNullInput"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.returnsnullonnullinput.aspx">TableValuedFunction.ReturnsNullOnNullInput</see>
+		///
 		public Boolean ReturnsNullOnNullInput 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.ReturnsNullOnNullInput);}
+			get { return Element.GetProperty<Boolean>(TableValuedFunction.ReturnsNullOnNullInput);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.ReturnTableVariableName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.returntablevariablename.aspx">TableValuedFunction.ReturnTableVariableName</see>
+		///
 		public String ReturnTableVariableName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.ReturnTableVariableName);}
+			get { return Element.GetProperty<String>(TableValuedFunction.ReturnTableVariableName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.SystemDataAccess"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.systemdataaccess.aspx">TableValuedFunction.SystemDataAccess</see>
+		///
 		public SystemDataAccessKind? SystemDataAccess 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<SystemDataAccessKind?>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.SystemDataAccess);}
+			get { return Element.GetProperty<SystemDataAccessKind?>(TableValuedFunction.SystemDataAccess);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.WithEncryption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.withencryption.aspx">TableValuedFunction.WithEncryption</see>
+		///
 		public Boolean WithEncryption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.WithEncryption);}
+			get { return Element.GetProperty<Boolean>(TableValuedFunction.WithEncryption);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableValuedFunction.WithSchemaBinding"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.withschemabinding.aspx">TableValuedFunction.WithSchemaBinding</see>
+		///
 		public Boolean WithSchemaBinding 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableValuedFunction.WithSchemaBinding);}
+			get { return Element.GetProperty<Boolean>(TableValuedFunction.WithSchemaBinding);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly> Assembly 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.assembly.aspx">TableValuedFunction.Assembly</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableValuedFunction.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableValuedFunction.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.bodydependencies.aspx">TableValuedFunction.BodyDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableValuedFunction.BodyDependencies);
+				return Element.GetReferenced(TableValuedFunction.BodyDependencies);
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Login> Login 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.login.aspx">TableValuedFunction.Login</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableValuedFunction.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Login)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableValuedFunction.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> OrderColumns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.ordercolumns.aspx">TableValuedFunction.OrderColumns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> OrderColumns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableValuedFunction.OrderColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableValuedFunction.OrderColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter> Parameters 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.parameters.aspx">TableValuedFunction.Parameters</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableValuedFunction.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableValuedFunction.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.returntype.aspx">TableValuedFunction.ReturnType</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableValuedFunction.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(TableValuedFunction.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.schema.aspx">TableValuedFunction.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableValuedFunction.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableValuedFunction.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.User> User 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.user.aspx">TableValuedFunction.User</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableValuedFunction.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.User)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableValuedFunction.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class ScalarFunction : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ScalarFunction"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.aspx">ScalarFunction</see>
+	///
+	public partial class TSqlScalarFunction : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ScalarFunction.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ScalarFunction to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlScalarFunction to adapt instances of <see cref="T:ScalarFunction"/>
 		/// </summary>
-		public ScalarFunction(TSqlObject obj)  : base(obj)
+		public TSqlScalarFunction(TSqlObject obj)  : base(obj, ScalarFunction.TypeClass)
 		{
 		}
 
@@ -835,173 +1054,275 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.AnsiNullsOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.ansinullson.aspx">ScalarFunction.AnsiNullsOn</see>
+		///
 		public Boolean? AnsiNullsOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.ScalarFunction.AnsiNullsOn);}
+			get { return Element.GetProperty<Boolean?>(ScalarFunction.AnsiNullsOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.CalledOnNullInput"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.calledonnullinput.aspx">ScalarFunction.CalledOnNullInput</see>
+		///
 		public Boolean CalledOnNullInput 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ScalarFunction.CalledOnNullInput);}
+			get { return Element.GetProperty<Boolean>(ScalarFunction.CalledOnNullInput);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.ClassName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.classname.aspx">ScalarFunction.ClassName</see>
+		///
 		public String ClassName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ScalarFunction.ClassName);}
+			get { return Element.GetProperty<String>(ScalarFunction.ClassName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.DataAccess"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.dataaccess.aspx">ScalarFunction.DataAccess</see>
+		///
 		public DataAccessKind? DataAccess 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<DataAccessKind?>(Microsoft.SqlServer.Dac.Model.ScalarFunction.DataAccess);}
+			get { return Element.GetProperty<DataAccessKind?>(ScalarFunction.DataAccess);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.Deterministic"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.deterministic.aspx">ScalarFunction.Deterministic</see>
+		///
 		public Boolean? Deterministic 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.ScalarFunction.Deterministic);}
+			get { return Element.GetProperty<Boolean?>(ScalarFunction.Deterministic);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.ExecuteAsCaller"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.executeascaller.aspx">ScalarFunction.ExecuteAsCaller</see>
+		///
 		public Boolean ExecuteAsCaller 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ScalarFunction.ExecuteAsCaller);}
+			get { return Element.GetProperty<Boolean>(ScalarFunction.ExecuteAsCaller);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.ExecuteAsOwner"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.executeasowner.aspx">ScalarFunction.ExecuteAsOwner</see>
+		///
 		public Boolean ExecuteAsOwner 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ScalarFunction.ExecuteAsOwner);}
+			get { return Element.GetProperty<Boolean>(ScalarFunction.ExecuteAsOwner);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.ExecuteAsSelf"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.executeasself.aspx">ScalarFunction.ExecuteAsSelf</see>
+		///
 		public Boolean ExecuteAsSelf 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ScalarFunction.ExecuteAsSelf);}
+			get { return Element.GetProperty<Boolean>(ScalarFunction.ExecuteAsSelf);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.FillRowMethodName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.fillrowmethodname.aspx">ScalarFunction.FillRowMethodName</see>
+		///
 		public String FillRowMethodName 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ScalarFunction.FillRowMethodName);}
+			get { return Element.GetProperty<String>(ScalarFunction.FillRowMethodName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.IsReplicated"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.isreplicated.aspx">ScalarFunction.IsReplicated</see>
+		///
 		public Boolean IsReplicated 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ScalarFunction.IsReplicated);}
+			get { return Element.GetProperty<Boolean>(ScalarFunction.IsReplicated);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.MethodName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.methodname.aspx">ScalarFunction.MethodName</see>
+		///
 		public String MethodName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ScalarFunction.MethodName);}
+			get { return Element.GetProperty<String>(ScalarFunction.MethodName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.Precise"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.precise.aspx">ScalarFunction.Precise</see>
+		///
 		public Boolean? Precise 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.ScalarFunction.Precise);}
+			get { return Element.GetProperty<Boolean?>(ScalarFunction.Precise);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.QuotedIdentifierOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.quotedidentifieron.aspx">ScalarFunction.QuotedIdentifierOn</see>
+		///
 		public Boolean? QuotedIdentifierOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.ScalarFunction.QuotedIdentifierOn);}
+			get { return Element.GetProperty<Boolean?>(ScalarFunction.QuotedIdentifierOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.ReturnsNullOnNullInput"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.returnsnullonnullinput.aspx">ScalarFunction.ReturnsNullOnNullInput</see>
+		///
 		public Boolean ReturnsNullOnNullInput 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ScalarFunction.ReturnsNullOnNullInput);}
+			get { return Element.GetProperty<Boolean>(ScalarFunction.ReturnsNullOnNullInput);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.SystemDataAccess"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.systemdataaccess.aspx">ScalarFunction.SystemDataAccess</see>
+		///
 		public SystemDataAccessKind? SystemDataAccess 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<SystemDataAccessKind?>(Microsoft.SqlServer.Dac.Model.ScalarFunction.SystemDataAccess);}
+			get { return Element.GetProperty<SystemDataAccessKind?>(ScalarFunction.SystemDataAccess);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.WithEncryption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.withencryption.aspx">ScalarFunction.WithEncryption</see>
+		///
 		public Boolean WithEncryption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ScalarFunction.WithEncryption);}
+			get { return Element.GetProperty<Boolean>(ScalarFunction.WithEncryption);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ScalarFunction.WithSchemaBinding"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.withschemabinding.aspx">ScalarFunction.WithSchemaBinding</see>
+		///
 		public Boolean WithSchemaBinding 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ScalarFunction.WithSchemaBinding);}
+			get { return Element.GetProperty<Boolean>(ScalarFunction.WithSchemaBinding);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly> Assembly 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.assembly.aspx">ScalarFunction.Assembly</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ScalarFunction.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ScalarFunction.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.bodydependencies.aspx">ScalarFunction.BodyDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ScalarFunction.BodyDependencies);
+				return Element.GetReferenced(ScalarFunction.BodyDependencies);
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Login> Login 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.login.aspx">ScalarFunction.Login</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ScalarFunction.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Login)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ScalarFunction.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter> Parameters 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.parameters.aspx">ScalarFunction.Parameters</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ScalarFunction.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ScalarFunction.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.returntype.aspx">ScalarFunction.ReturnType</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ScalarFunction.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(ScalarFunction.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.schema.aspx">ScalarFunction.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ScalarFunction.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ScalarFunction.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.User> User 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.user.aspx">ScalarFunction.User</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ScalarFunction.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.User)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ScalarFunction.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Aggregate : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Aggregate"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.aspx">Aggregate</see>
+	///
+	public partial class TSqlAggregate : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Aggregate.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Aggregate to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlAggregate to adapt instances of <see cref="T:Aggregate"/>
 		/// </summary>
-		public Aggregate(TSqlObject obj)  : base(obj)
+		public TSqlAggregate(TSqlObject obj)  : base(obj, Aggregate.TypeClass)
 		{
 		}
 
@@ -1009,83 +1330,129 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Aggregate.ClassName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.classname.aspx">Aggregate.ClassName</see>
+		///
 		public String ClassName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Aggregate.ClassName);}
+			get { return Element.GetProperty<String>(Aggregate.ClassName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Aggregate.Format"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.format.aspx">Aggregate.Format</see>
+		///
 		public Format Format 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Format>(Microsoft.SqlServer.Dac.Model.Aggregate.Format);}
+			get { return Element.GetProperty<Format>(Aggregate.Format);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Aggregate.InvariantToDuplicates"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.invarianttoduplicates.aspx">Aggregate.InvariantToDuplicates</see>
+		///
 		public Boolean? InvariantToDuplicates 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.Aggregate.InvariantToDuplicates);}
+			get { return Element.GetProperty<Boolean?>(Aggregate.InvariantToDuplicates);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Aggregate.InvariantToNulls"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.invarianttonulls.aspx">Aggregate.InvariantToNulls</see>
+		///
 		public Boolean? InvariantToNulls 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.Aggregate.InvariantToNulls);}
+			get { return Element.GetProperty<Boolean?>(Aggregate.InvariantToNulls);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Aggregate.MaxByteSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.maxbytesize.aspx">Aggregate.MaxByteSize</see>
+		///
 		public Int32? MaxByteSize 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.Aggregate.MaxByteSize);}
+			get { return Element.GetProperty<Int32?>(Aggregate.MaxByteSize);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Aggregate.NullIfEmpty"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.nullifempty.aspx">Aggregate.NullIfEmpty</see>
+		///
 		public Boolean? NullIfEmpty 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.Aggregate.NullIfEmpty);}
+			get { return Element.GetProperty<Boolean?>(Aggregate.NullIfEmpty);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly> Assembly 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.assembly.aspx">Aggregate.Assembly</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Aggregate.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Aggregate.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter> Parameters 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.parameters.aspx">Aggregate.Parameters</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Aggregate.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Aggregate.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.returntype.aspx">Aggregate.ReturnType</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Aggregate.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(Aggregate.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.schema.aspx">Aggregate.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Aggregate.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Aggregate.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class ApplicationRole : TSqlModelElement,ISqlDatabaseSecurityPrincipal	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ApplicationRole"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.applicationrole.aspx">ApplicationRole</see>
+	///
+	public partial class TSqlApplicationRole : TSqlModelElement,ISqlDatabaseSecurityPrincipal	{
 		private static ModelTypeClass typeClass = ApplicationRole.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ApplicationRole to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlApplicationRole to adapt instances of <see cref="T:ApplicationRole"/>
 		/// </summary>
-		public ApplicationRole(TSqlObject obj)  : base(obj)
+		public TSqlApplicationRole(TSqlObject obj)  : base(obj, ApplicationRole.TypeClass)
 		{
 		}
 
@@ -1093,29 +1460,43 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ApplicationRole.Password"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.applicationrole.password.aspx">ApplicationRole.Password</see>
+		///
 		public String Password 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ApplicationRole.Password);}
+			get { return Element.GetProperty<String>(ApplicationRole.Password);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> DefaultSchema 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.applicationrole.defaultschema.aspx">ApplicationRole.DefaultSchema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> DefaultSchema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ApplicationRole.DefaultSchema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ApplicationRole.DefaultSchema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Index : TSqlModelElement,ISqlIndex	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Index"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.aspx">Index</see>
+	///
+	public partial class TSqlIndex : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = Index.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Index to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlIndex to adapt instances of <see cref="T:Index"/>
 		/// </summary>
-		public Index(TSqlObject obj)  : base(obj)
+		public TSqlIndex(TSqlObject obj)  : base(obj, Index.TypeClass)
 		{
 		}
 
@@ -1123,179 +1504,281 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Index.AllowPageLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.allowpagelocks.aspx">Index.AllowPageLocks</see>
+		///
 		public Boolean AllowPageLocks 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Index.AllowPageLocks);}
+			get { return Element.GetProperty<Boolean>(Index.AllowPageLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.AllowRowLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.allowrowlocks.aspx">Index.AllowRowLocks</see>
+		///
 		public Boolean AllowRowLocks 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Index.AllowRowLocks);}
+			get { return Element.GetProperty<Boolean>(Index.AllowRowLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.BucketCount"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.bucketcount.aspx">Index.BucketCount</see>
+		///
 		public Int32? BucketCount 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.Index.BucketCount);}
+			get { return Element.GetProperty<Int32?>(Index.BucketCount);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.Clustered"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.clustered.aspx">Index.Clustered</see>
+		///
 		public Boolean Clustered 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Index.Clustered);}
+			get { return Element.GetProperty<Boolean>(Index.Clustered);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.disabled.aspx">Index.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Index.Disabled);}
+			get { return Element.GetProperty<Boolean>(Index.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.FileStreamNull"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.filestreamnull.aspx">Index.FileStreamNull</see>
+		///
 		public Boolean? FileStreamNull 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.Index.FileStreamNull);}
+			get { return Element.GetProperty<Boolean?>(Index.FileStreamNull);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.FillFactor"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.fillfactor.aspx">Index.FillFactor</see>
+		///
 		public Int32? FillFactor 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.Index.FillFactor);}
+			get { return Element.GetProperty<Int32?>(Index.FillFactor);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.FilterPredicate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.filterpredicate.aspx">Index.FilterPredicate</see>
+		///
 		public String FilterPredicate 
 		{
-		// Supported platforms = 30
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.Index.FilterPredicate);}
+			get { return (String)Element.GetProperty(Index.FilterPredicate);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.Hash"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.hash.aspx">Index.Hash</see>
+		///
 		public Boolean Hash 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Index.Hash);}
+			get { return Element.GetProperty<Boolean>(Index.Hash);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.IgnoreDuplicateKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.ignoreduplicatekey.aspx">Index.IgnoreDuplicateKey</see>
+		///
 		public Boolean IgnoreDuplicateKey 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Index.IgnoreDuplicateKey);}
+			get { return Element.GetProperty<Boolean>(Index.IgnoreDuplicateKey);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.IncrementalStatistics"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.incrementalstatistics.aspx">Index.IncrementalStatistics</see>
+		///
 		public Boolean IncrementalStatistics 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Index.IncrementalStatistics);}
+			get { return Element.GetProperty<Boolean>(Index.IncrementalStatistics);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.RecomputeStatistics"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.recomputestatistics.aspx">Index.RecomputeStatistics</see>
+		///
 		public Boolean RecomputeStatistics 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Index.RecomputeStatistics);}
+			get { return Element.GetProperty<Boolean>(Index.RecomputeStatistics);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.Unique"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.unique.aspx">Index.Unique</see>
+		///
 		public Boolean Unique 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Index.Unique);}
+			get { return Element.GetProperty<Boolean>(Index.Unique);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Index.WithPadIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.withpadindex.aspx">Index.WithPadIndex</see>
+		///
 		public Boolean WithPadIndex 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Index.WithPadIndex);}
+			get { return Element.GetProperty<Boolean>(Index.WithPadIndex);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.bodydependencies.aspx">Index.BodyDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Index.BodyDependencies);
+				return Element.GetReferenced(Index.BodyDependencies);
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.columns.aspx">Index.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Index.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Index.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption> DataCompressionOptions 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.datacompressionoptions.aspx">Index.DataCompressionOptions</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Index.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Index.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.filegroup.aspx">Index.Filegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Index.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Index.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> FileStreamFilegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.filestreamfilegroup.aspx">Index.FileStreamFilegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Index.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Index.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> FileStreamPartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.filestreampartitionscheme.aspx">Index.FileStreamPartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Index.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Index.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> IncludedColumns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.includedcolumns.aspx">Index.IncludedColumns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> IncludedColumns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Index.IncludedColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Index.IncludedColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> IndexedObject 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.indexedobject.aspx">Index.IndexedObject</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Index.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource>();
+				return Element.GetReferenced(Index.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> PartitionColumn 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.partitioncolumn.aspx">Index.PartitionColumn</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Index.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Index.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> PartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.partitionscheme.aspx">Index.PartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Index.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Index.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Assembly : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Assembly"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assembly.aspx">Assembly</see>
+	///
+	public partial class TSqlAssembly : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Assembly.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Assembly to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlAssembly to adapt instances of <see cref="T:Assembly"/>
 		/// </summary>
-		public Assembly(TSqlObject obj)  : base(obj)
+		public TSqlAssembly(TSqlObject obj)  : base(obj, Assembly.TypeClass)
 		{
 		}
 
@@ -1303,51 +1786,77 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Assembly.PermissionSet"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assembly.permissionset.aspx">Assembly.PermissionSet</see>
+		///
 		public AssemblyPermissionSet PermissionSet 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<AssemblyPermissionSet>(Microsoft.SqlServer.Dac.Model.Assembly.PermissionSet);}
+			get { return Element.GetProperty<AssemblyPermissionSet>(Assembly.PermissionSet);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Assembly.Visible"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assembly.visible.aspx">Assembly.Visible</see>
+		///
 		public Boolean Visible 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Assembly.Visible);}
+			get { return Element.GetProperty<Boolean>(Assembly.Visible);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.AssemblySource> AssemblySources 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblySource"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assembly.assemblysources.aspx">Assembly.AssemblySources</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblySource> AssemblySources 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Assembly.AssemblySources).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.AssemblySource)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Assembly.AssemblySources).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblySource)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assembly.authorizer.aspx">Assembly.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Assembly.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Assembly.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly> ReferencedAssemblies 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assembly.referencedassemblies.aspx">Assembly.ReferencedAssemblies</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> ReferencedAssemblies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Assembly.ReferencedAssemblies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Assembly.ReferencedAssemblies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class AssemblySource : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AssemblySource"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assemblysource.aspx">AssemblySource</see>
+	///
+	public partial class TSqlAssemblySource : TSqlModelElement	{
 		private static ModelTypeClass typeClass = AssemblySource.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class AssemblySource to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlAssemblySource to adapt instances of <see cref="T:AssemblySource"/>
 		/// </summary>
-		public AssemblySource(TSqlObject obj)  : base(obj)
+		public TSqlAssemblySource(TSqlObject obj)  : base(obj, AssemblySource.TypeClass)
 		{
 		}
 
@@ -1355,21 +1864,31 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:AssemblySource.Source"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assemblysource.source.aspx">AssemblySource.Source</see>
+		///
 		public String Source 
 		{
-		// Supported platforms = 31
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.AssemblySource.Source);}
+			get { return (String)Element.GetProperty(AssemblySource.Source);}
 		}
 
 
 }
-	public partial class AsymmetricKey : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AsymmetricKey"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.aspx">AsymmetricKey</see>
+	///
+	public partial class TSqlAsymmetricKey : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = AsymmetricKey.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class AsymmetricKey to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlAsymmetricKey to adapt instances of <see cref="T:AsymmetricKey"/>
 		/// </summary>
-		public AsymmetricKey(TSqlObject obj)  : base(obj)
+		public TSqlAsymmetricKey(TSqlObject obj)  : base(obj, AsymmetricKey.TypeClass)
 		{
 		}
 
@@ -1377,81 +1896,127 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:AsymmetricKey.Algorithm"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.algorithm.aspx">AsymmetricKey.Algorithm</see>
+		///
 		public AsymmetricKeyAlgorithm Algorithm 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<AsymmetricKeyAlgorithm>(Microsoft.SqlServer.Dac.Model.AsymmetricKey.Algorithm);}
+			get { return Element.GetProperty<AsymmetricKeyAlgorithm>(AsymmetricKey.Algorithm);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:AsymmetricKey.CreationDisposition"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.creationdisposition.aspx">AsymmetricKey.CreationDisposition</see>
+		///
 		public SymmetricKeyCreationDisposition CreationDisposition 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<SymmetricKeyCreationDisposition>(Microsoft.SqlServer.Dac.Model.AsymmetricKey.CreationDisposition);}
+			get { return Element.GetProperty<SymmetricKeyCreationDisposition>(AsymmetricKey.CreationDisposition);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:AsymmetricKey.EncryptedWithPassword"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.encryptedwithpassword.aspx">AsymmetricKey.EncryptedWithPassword</see>
+		///
 		public Boolean EncryptedWithPassword 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.AsymmetricKey.EncryptedWithPassword);}
+			get { return Element.GetProperty<Boolean>(AsymmetricKey.EncryptedWithPassword);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:AsymmetricKey.ExecutableFile"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.executablefile.aspx">AsymmetricKey.ExecutableFile</see>
+		///
 		public String ExecutableFile 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.AsymmetricKey.ExecutableFile);}
+			get { return Element.GetProperty<String>(AsymmetricKey.ExecutableFile);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:AsymmetricKey.File"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.file.aspx">AsymmetricKey.File</see>
+		///
 		public String File 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.AsymmetricKey.File);}
+			get { return Element.GetProperty<String>(AsymmetricKey.File);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:AsymmetricKey.Password"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.password.aspx">AsymmetricKey.Password</see>
+		///
 		public String Password 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.AsymmetricKey.Password);}
+			get { return Element.GetProperty<String>(AsymmetricKey.Password);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:AsymmetricKey.ProviderKeyName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.providerkeyname.aspx">AsymmetricKey.ProviderKeyName</see>
+		///
 		public String ProviderKeyName 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.AsymmetricKey.ProviderKeyName);}
+			get { return Element.GetProperty<String>(AsymmetricKey.ProviderKeyName);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly> Assembly 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.assembly.aspx">AsymmetricKey.Assembly</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.AsymmetricKey.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(AsymmetricKey.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.authorizer.aspx">AsymmetricKey.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.AsymmetricKey.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(AsymmetricKey.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.provider.aspx">AsymmetricKey.Provider</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Provider 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.AsymmetricKey.Provider);
+				return Element.GetReferenced(AsymmetricKey.Provider);
 			}
 		}
-	
+
 }
-	public partial class AuditAction : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AuditAction"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditaction.aspx">AuditAction</see>
+	///
+	public partial class TSqlAuditAction : TSqlModelElement	{
 		private static ModelTypeClass typeClass = AuditAction.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class AuditAction to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlAuditAction to adapt instances of <see cref="T:AuditAction"/>
 		/// </summary>
-		public AuditAction(TSqlObject obj)  : base(obj)
+		public TSqlAuditAction(TSqlObject obj)  : base(obj, AuditAction.TypeClass)
 		{
 		}
 
@@ -1459,21 +2024,31 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:AuditAction.Action"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditaction.action.aspx">AuditAction.Action</see>
+		///
 		public DatabaseAuditAction Action 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<DatabaseAuditAction>(Microsoft.SqlServer.Dac.Model.AuditAction.Action);}
+			get { return Element.GetProperty<DatabaseAuditAction>(AuditAction.Action);}
 		}
 
 
 }
-	public partial class AuditActionGroup : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AuditActionGroup"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditactiongroup.aspx">AuditActionGroup</see>
+	///
+	public partial class TSqlAuditActionGroup : TSqlModelElement	{
 		private static ModelTypeClass typeClass = AuditActionGroup.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class AuditActionGroup to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlAuditActionGroup to adapt instances of <see cref="T:AuditActionGroup"/>
 		/// </summary>
-		public AuditActionGroup(TSqlObject obj)  : base(obj)
+		public TSqlAuditActionGroup(TSqlObject obj)  : base(obj, AuditActionGroup.TypeClass)
 		{
 		}
 
@@ -1481,21 +2056,31 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:AuditActionGroup.ActionGroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditactiongroup.actiongroup.aspx">AuditActionGroup.ActionGroup</see>
+		///
 		public AuditActionGroupType ActionGroup 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<AuditActionGroupType>(Microsoft.SqlServer.Dac.Model.AuditActionGroup.ActionGroup);}
+			get { return Element.GetProperty<AuditActionGroupType>(AuditActionGroup.ActionGroup);}
 		}
 
 
 }
-	public partial class AuditActionSpecification : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AuditActionSpecification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditactionspecification.aspx">AuditActionSpecification</see>
+	///
+	public partial class TSqlAuditActionSpecification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = AuditActionSpecification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class AuditActionSpecification to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlAuditActionSpecification to adapt instances of <see cref="T:AuditActionSpecification"/>
 		/// </summary>
-		public AuditActionSpecification(TSqlObject obj)  : base(obj)
+		public TSqlAuditActionSpecification(TSqlObject obj)  : base(obj, AuditActionSpecification.TypeClass)
 		{
 		}
 
@@ -1503,39 +2088,57 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.AuditAction> AuditActions 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditactionspecification.auditactions.aspx">AuditActionSpecification.AuditActions</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction> AuditActions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.AuditActionSpecification.AuditActions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.AuditAction)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(AuditActionSpecification.AuditActions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditactionspecification.principals.aspx">AuditActionSpecification.Principals</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> Principals 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.AuditActionSpecification.Principals).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal>();
+				return Element.GetReferenced(AuditActionSpecification.Principals).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal>();
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditactionspecification.securedobject.aspx">AuditActionSpecification.SecuredObject</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> SecuredObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.AuditActionSpecification.SecuredObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable>();
+				return Element.GetReferenced(AuditActionSpecification.SecuredObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable>();
 			}
 		}
-	
+
 }
-	public partial class BrokerPriority : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:BrokerPriority"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.brokerpriority.aspx">BrokerPriority</see>
+	///
+	public partial class TSqlBrokerPriority : TSqlModelElement	{
 		private static ModelTypeClass typeClass = BrokerPriority.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class BrokerPriority to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlBrokerPriority to adapt instances of <see cref="T:BrokerPriority"/>
 		/// </summary>
-		public BrokerPriority(TSqlObject obj)  : base(obj)
+		public TSqlBrokerPriority(TSqlObject obj)  : base(obj, BrokerPriority.TypeClass)
 		{
 		}
 
@@ -1543,43 +2146,65 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:BrokerPriority.PriorityLevel"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.brokerpriority.prioritylevel.aspx">BrokerPriority.PriorityLevel</see>
+		///
 		public Int32 PriorityLevel 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.BrokerPriority.PriorityLevel);}
+			get { return Element.GetProperty<Int32>(BrokerPriority.PriorityLevel);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:BrokerPriority.RemoteServiceName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.brokerpriority.remoteservicename.aspx">BrokerPriority.RemoteServiceName</see>
+		///
 		public String RemoteServiceName 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.BrokerPriority.RemoteServiceName);}
+			get { return Element.GetProperty<String>(BrokerPriority.RemoteServiceName);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.brokerpriority.contractname.aspx">BrokerPriority.ContractName</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ContractName 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.BrokerPriority.ContractName);
+				return Element.GetReferenced(BrokerPriority.ContractName);
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.brokerpriority.localservicename.aspx">BrokerPriority.LocalServiceName</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> LocalServiceName 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.BrokerPriority.LocalServiceName);
+				return Element.GetReferenced(BrokerPriority.LocalServiceName);
 			}
 		}
-	
+
 }
-	public partial class BuiltInServerRole : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:BuiltInServerRole"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.builtinserverrole.aspx">BuiltInServerRole</see>
+	///
+	public partial class TSqlBuiltInServerRole : TSqlModelElement	{
 		private static ModelTypeClass typeClass = BuiltInServerRole.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class BuiltInServerRole to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlBuiltInServerRole to adapt instances of <see cref="T:BuiltInServerRole"/>
 		/// </summary>
-		public BuiltInServerRole(TSqlObject obj)  : base(obj)
+		public TSqlBuiltInServerRole(TSqlObject obj)  : base(obj, BuiltInServerRole.TypeClass)
 		{
 		}
 
@@ -1589,13 +2214,19 @@ public partial class TSqlModelElement
 		}
 
 }
-	public partial class DataType : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DataType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.aspx">DataType</see>
+	///
+	public partial class TSqlDataType : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DataType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class DataType to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlDataType to adapt instances of <see cref="T:DataType"/>
 		/// </summary>
-		public DataType(TSqlObject obj)  : base(obj)
+		public TSqlDataType(TSqlObject obj)  : base(obj, DataType.TypeClass)
 		{
 		}
 
@@ -1603,67 +2234,105 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:DataType.SqlDataType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.sqldatatype.aspx">DataType.SqlDataType</see>
+		///
 		public SqlDataType SqlDataType 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<SqlDataType>(Microsoft.SqlServer.Dac.Model.DataType.SqlDataType);}
+			get { return Element.GetProperty<SqlDataType>(DataType.SqlDataType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DataType.UddtIsMax"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.uddtismax.aspx">DataType.UddtIsMax</see>
+		///
 		public Boolean UddtIsMax 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DataType.UddtIsMax);}
+			get { return Element.GetProperty<Boolean>(DataType.UddtIsMax);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DataType.UddtLength"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.uddtlength.aspx">DataType.UddtLength</see>
+		///
 		public Int32 UddtLength 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.DataType.UddtLength);}
+			get { return Element.GetProperty<Int32>(DataType.UddtLength);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DataType.UddtNullable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.uddtnullable.aspx">DataType.UddtNullable</see>
+		///
 		public Boolean UddtNullable 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DataType.UddtNullable);}
+			get { return Element.GetProperty<Boolean>(DataType.UddtNullable);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DataType.UddtPrecision"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.uddtprecision.aspx">DataType.UddtPrecision</see>
+		///
 		public Int32 UddtPrecision 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.DataType.UddtPrecision);}
+			get { return Element.GetProperty<Int32>(DataType.UddtPrecision);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DataType.UddtScale"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.uddtscale.aspx">DataType.UddtScale</see>
+		///
 		public Int32 UddtScale 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.DataType.UddtScale);}
+			get { return Element.GetProperty<Int32>(DataType.UddtScale);}
 		}
 
-		//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.schema.aspx">DataType.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DataType.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DataType.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T System.Type"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.type.aspx">DataType.Type</see>
+		///
 		public IEnumerable<System.Type> Type 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DataType.Type).Cast<System.Type>();
+				return Element.GetReferenced(DataType.Type).Cast<System.Type>();
 			}
 		}
-	
+
 }
-	public partial class Certificate : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Certificate"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.aspx">Certificate</see>
+	///
+	public partial class TSqlCertificate : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Certificate.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Certificate to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlCertificate to adapt instances of <see cref="T:Certificate"/>
 		/// </summary>
-		public Certificate(TSqlObject obj)  : base(obj)
+		public TSqlCertificate(TSqlObject obj)  : base(obj, Certificate.TypeClass)
 		{
 		}
 
@@ -1671,97 +2340,155 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Certificate.ActiveForBeginDialog"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.activeforbegindialog.aspx">Certificate.ActiveForBeginDialog</see>
+		///
 		public Boolean ActiveForBeginDialog 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Certificate.ActiveForBeginDialog);}
+			get { return Element.GetProperty<Boolean>(Certificate.ActiveForBeginDialog);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Certificate.EncryptedWithPassword"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.encryptedwithpassword.aspx">Certificate.EncryptedWithPassword</see>
+		///
 		public Boolean EncryptedWithPassword 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Certificate.EncryptedWithPassword);}
+			get { return Element.GetProperty<Boolean>(Certificate.EncryptedWithPassword);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Certificate.EncryptionPassword"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.encryptionpassword.aspx">Certificate.EncryptionPassword</see>
+		///
 		public String EncryptionPassword 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Certificate.EncryptionPassword);}
+			get { return Element.GetProperty<String>(Certificate.EncryptionPassword);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Certificate.ExistingKeysFilePath"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.existingkeysfilepath.aspx">Certificate.ExistingKeysFilePath</see>
+		///
 		public String ExistingKeysFilePath 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Certificate.ExistingKeysFilePath);}
+			get { return Element.GetProperty<String>(Certificate.ExistingKeysFilePath);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Certificate.ExpiryDate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.expirydate.aspx">Certificate.ExpiryDate</see>
+		///
 		public String ExpiryDate 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Certificate.ExpiryDate);}
+			get { return Element.GetProperty<String>(Certificate.ExpiryDate);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Certificate.IsExistingKeyFileExecutable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.isexistingkeyfileexecutable.aspx">Certificate.IsExistingKeyFileExecutable</see>
+		///
 		public Boolean IsExistingKeyFileExecutable 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Certificate.IsExistingKeyFileExecutable);}
+			get { return Element.GetProperty<Boolean>(Certificate.IsExistingKeyFileExecutable);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Certificate.PrivateKeyDecryptionPassword"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.privatekeydecryptionpassword.aspx">Certificate.PrivateKeyDecryptionPassword</see>
+		///
 		public String PrivateKeyDecryptionPassword 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Certificate.PrivateKeyDecryptionPassword);}
+			get { return Element.GetProperty<String>(Certificate.PrivateKeyDecryptionPassword);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Certificate.PrivateKeyEncryptionPassword"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.privatekeyencryptionpassword.aspx">Certificate.PrivateKeyEncryptionPassword</see>
+		///
 		public String PrivateKeyEncryptionPassword 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Certificate.PrivateKeyEncryptionPassword);}
+			get { return Element.GetProperty<String>(Certificate.PrivateKeyEncryptionPassword);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Certificate.PrivateKeyFilePath"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.privatekeyfilepath.aspx">Certificate.PrivateKeyFilePath</see>
+		///
 		public String PrivateKeyFilePath 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Certificate.PrivateKeyFilePath);}
+			get { return Element.GetProperty<String>(Certificate.PrivateKeyFilePath);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Certificate.StartDate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.startdate.aspx">Certificate.StartDate</see>
+		///
 		public String StartDate 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Certificate.StartDate);}
+			get { return Element.GetProperty<String>(Certificate.StartDate);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Certificate.Subject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.subject.aspx">Certificate.Subject</see>
+		///
 		public String Subject 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Certificate.Subject);}
+			get { return Element.GetProperty<String>(Certificate.Subject);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.authorizer.aspx">Certificate.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Certificate.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Certificate.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly> ExistingKeysAssembly 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.existingkeysassembly.aspx">Certificate.ExistingKeysAssembly</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> ExistingKeysAssembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Certificate.ExistingKeysAssembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Certificate.ExistingKeysAssembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class CheckConstraint : TSqlModelElement,IExtendedPropertyHost	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:CheckConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.checkconstraint.aspx">CheckConstraint</see>
+	///
+	public partial class TSqlCheckConstraint : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = CheckConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class CheckConstraint to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlCheckConstraint to adapt instances of <see cref="T:CheckConstraint"/>
 		/// </summary>
-		public CheckConstraint(TSqlObject obj)  : base(obj)
+		public TSqlCheckConstraint(TSqlObject obj)  : base(obj, CheckConstraint.TypeClass)
 		{
 		}
 
@@ -1769,49 +2496,75 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:CheckConstraint.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.checkconstraint.disabled.aspx">CheckConstraint.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.CheckConstraint.Disabled);}
+			get { return Element.GetProperty<Boolean>(CheckConstraint.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:CheckConstraint.Expression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.checkconstraint.expression.aspx">CheckConstraint.Expression</see>
+		///
 		public String Expression 
 		{
-		// Supported platforms = 31
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.CheckConstraint.Expression);}
+			get { return (String)Element.GetProperty(CheckConstraint.Expression);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:CheckConstraint.NotForReplication"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.checkconstraint.notforreplication.aspx">CheckConstraint.NotForReplication</see>
+		///
 		public Boolean NotForReplication 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.CheckConstraint.NotForReplication);}
+			get { return Element.GetProperty<Boolean>(CheckConstraint.NotForReplication);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.checkconstraint.expressiondependencies.aspx">CheckConstraint.ExpressionDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.CheckConstraint.ExpressionDependencies);
+				return Element.GetReferenced(CheckConstraint.ExpressionDependencies);
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ExtendedProperty> Host 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.checkconstraint.host.aspx">CheckConstraint.Host</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.CheckConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ExtendedProperty)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(CheckConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class ClrTypeMethod : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTypeMethod"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethod.aspx">ClrTypeMethod</see>
+	///
+	public partial class TSqlClrTypeMethod : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ClrTypeMethod.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ClrTypeMethod to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlClrTypeMethod to adapt instances of <see cref="T:ClrTypeMethod"/>
 		/// </summary>
-		public ClrTypeMethod(TSqlObject obj)  : base(obj)
+		public TSqlClrTypeMethod(TSqlObject obj)  : base(obj, ClrTypeMethod.TypeClass)
 		{
 		}
 
@@ -1819,37 +2572,55 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ClrTypeMethod.Name"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethod.name.aspx">ClrTypeMethod.Name</see>
+		///
 		public String Name 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ClrTypeMethod.Name);}
+			get { return Element.GetProperty<String>(ClrTypeMethod.Name);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter> Parameters 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethod.parameters.aspx">ClrTypeMethod.Parameters</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ClrTypeMethod.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ClrTypeMethod.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethod.returntype.aspx">ClrTypeMethod.ReturnType</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ClrTypeMethod.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(ClrTypeMethod.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
 			}
 		}
-	
+
 }
-	public partial class ClrTypeMethodParameter : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTypeMethodParameter"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethodparameter.aspx">ClrTypeMethodParameter</see>
+	///
+	public partial class TSqlClrTypeMethodParameter : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ClrTypeMethodParameter.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ClrTypeMethodParameter to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlClrTypeMethodParameter to adapt instances of <see cref="T:ClrTypeMethodParameter"/>
 		/// </summary>
-		public ClrTypeMethodParameter(TSqlObject obj)  : base(obj)
+		public TSqlClrTypeMethodParameter(TSqlObject obj)  : base(obj, ClrTypeMethodParameter.TypeClass)
 		{
 		}
 
@@ -1857,35 +2628,53 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ClrTypeMethodParameter.IsOutput"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethodparameter.isoutput.aspx">ClrTypeMethodParameter.IsOutput</see>
+		///
 		public Boolean IsOutput 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ClrTypeMethodParameter.IsOutput);}
+			get { return Element.GetProperty<Boolean>(ClrTypeMethodParameter.IsOutput);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ClrTypeMethodParameter.Name"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethodparameter.name.aspx">ClrTypeMethodParameter.Name</see>
+		///
 		public String Name 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ClrTypeMethodParameter.Name);}
+			get { return Element.GetProperty<String>(ClrTypeMethodParameter.Name);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataType> DataType 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethodparameter.datatype.aspx">ClrTypeMethodParameter.DataType</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ClrTypeMethodParameter.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ClrTypeMethodParameter.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class ClrTypeProperty : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTypeProperty"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypeproperty.aspx">ClrTypeProperty</see>
+	///
+	public partial class TSqlClrTypeProperty : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ClrTypeProperty.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ClrTypeProperty to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlClrTypeProperty to adapt instances of <see cref="T:ClrTypeProperty"/>
 		/// </summary>
-		public ClrTypeProperty(TSqlObject obj)  : base(obj)
+		public TSqlClrTypeProperty(TSqlObject obj)  : base(obj, ClrTypeProperty.TypeClass)
 		{
 		}
 
@@ -1893,29 +2682,43 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ClrTypeProperty.Name"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypeproperty.name.aspx">ClrTypeProperty.Name</see>
+		///
 		public String Name 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ClrTypeProperty.Name);}
+			get { return Element.GetProperty<String>(ClrTypeProperty.Name);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypeproperty.clrtype.aspx">ClrTypeProperty.ClrType</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ClrType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ClrTypeProperty.ClrType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(ClrTypeProperty.ClrType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
 			}
 		}
-	
+
 }
-	public partial class ColumnStoreIndex : TSqlModelElement,ISqlIndex	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ColumnStoreIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.aspx">ColumnStoreIndex</see>
+	///
+	public partial class TSqlColumnStoreIndex : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = ColumnStoreIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ColumnStoreIndex to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlColumnStoreIndex to adapt instances of <see cref="T:ColumnStoreIndex"/>
 		/// </summary>
-		public ColumnStoreIndex(TSqlObject obj)  : base(obj)
+		public TSqlColumnStoreIndex(TSqlObject obj)  : base(obj, ColumnStoreIndex.TypeClass)
 		{
 		}
 
@@ -1923,75 +2726,113 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ColumnStoreIndex.Clustered"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.clustered.aspx">ColumnStoreIndex.Clustered</see>
+		///
 		public Boolean Clustered 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ColumnStoreIndex.Clustered);}
+			get { return Element.GetProperty<Boolean>(ColumnStoreIndex.Clustered);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ColumnStoreIndex.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.disabled.aspx">ColumnStoreIndex.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ColumnStoreIndex.Disabled);}
+			get { return Element.GetProperty<Boolean>(ColumnStoreIndex.Disabled);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.columns.aspx">ColumnStoreIndex.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ColumnStoreIndex.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ColumnStoreIndex.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption> DataCompressionOptions 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.datacompressionoptions.aspx">ColumnStoreIndex.DataCompressionOptions</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ColumnStoreIndex.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ColumnStoreIndex.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.filegroup.aspx">ColumnStoreIndex.Filegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ColumnStoreIndex.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ColumnStoreIndex.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> IndexedObject 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.indexedobject.aspx">ColumnStoreIndex.IndexedObject</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ColumnStoreIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource>();
+				return Element.GetReferenced(ColumnStoreIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> PartitionColumn 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.partitioncolumn.aspx">ColumnStoreIndex.PartitionColumn</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ColumnStoreIndex.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ColumnStoreIndex.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> PartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.partitionscheme.aspx">ColumnStoreIndex.PartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ColumnStoreIndex.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ColumnStoreIndex.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Contract : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Contract"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.contract.aspx">Contract</see>
+	///
+	public partial class TSqlContract : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Contract.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Contract to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlContract to adapt instances of <see cref="T:Contract"/>
 		/// </summary>
-		public Contract(TSqlObject obj)  : base(obj)
+		public TSqlContract(TSqlObject obj)  : base(obj, Contract.TypeClass)
 		{
 		}
 
@@ -1999,31 +2840,45 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.contract.authorizer.aspx">Contract.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Contract.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Contract.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.MessageType> Messages 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlMessageType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.contract.messages.aspx">Contract.Messages</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlMessageType> Messages 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Contract.Messages).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.MessageType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Contract.Messages).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlMessageType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Credential : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Credential"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.credential.aspx">Credential</see>
+	///
+	public partial class TSqlCredential : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Credential.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Credential to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlCredential to adapt instances of <see cref="T:Credential"/>
 		/// </summary>
-		public Credential(TSqlObject obj)  : base(obj)
+		public TSqlCredential(TSqlObject obj)  : base(obj, Credential.TypeClass)
 		{
 		}
 
@@ -2031,35 +2886,53 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Credential.Identity"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.credential.identity.aspx">Credential.Identity</see>
+		///
 		public String Identity 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Credential.Identity);}
+			get { return Element.GetProperty<String>(Credential.Identity);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Credential.Secret"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.credential.secret.aspx">Credential.Secret</see>
+		///
 		public String Secret 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Credential.Secret);}
+			get { return Element.GetProperty<String>(Credential.Secret);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.CryptographicProvider> CryptographicProvider 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCryptographicProvider"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.credential.cryptographicprovider.aspx">Credential.CryptographicProvider</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCryptographicProvider> CryptographicProvider 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Credential.CryptographicProvider).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.CryptographicProvider)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Credential.CryptographicProvider).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCryptographicProvider)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class CryptographicProvider : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:CryptographicProvider"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.cryptographicprovider.aspx">CryptographicProvider</see>
+	///
+	public partial class TSqlCryptographicProvider : TSqlModelElement	{
 		private static ModelTypeClass typeClass = CryptographicProvider.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class CryptographicProvider to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlCryptographicProvider to adapt instances of <see cref="T:CryptographicProvider"/>
 		/// </summary>
-		public CryptographicProvider(TSqlObject obj)  : base(obj)
+		public TSqlCryptographicProvider(TSqlObject obj)  : base(obj, CryptographicProvider.TypeClass)
 		{
 		}
 
@@ -2067,27 +2940,41 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:CryptographicProvider.DllPath"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.cryptographicprovider.dllpath.aspx">CryptographicProvider.DllPath</see>
+		///
 		public String DllPath 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.CryptographicProvider.DllPath);}
+			get { return Element.GetProperty<String>(CryptographicProvider.DllPath);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:CryptographicProvider.Enabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.cryptographicprovider.enabled.aspx">CryptographicProvider.Enabled</see>
+		///
 		public Boolean Enabled 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.CryptographicProvider.Enabled);}
+			get { return Element.GetProperty<Boolean>(CryptographicProvider.Enabled);}
 		}
 
 
 }
-	public partial class DatabaseAuditSpecification : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseAuditSpecification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseauditspecification.aspx">DatabaseAuditSpecification</see>
+	///
+	public partial class TSqlDatabaseAuditSpecification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DatabaseAuditSpecification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class DatabaseAuditSpecification to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlDatabaseAuditSpecification to adapt instances of <see cref="T:DatabaseAuditSpecification"/>
 		/// </summary>
-		public DatabaseAuditSpecification(TSqlObject obj)  : base(obj)
+		public TSqlDatabaseAuditSpecification(TSqlObject obj)  : base(obj, DatabaseAuditSpecification.TypeClass)
 		{
 		}
 
@@ -2095,45 +2982,67 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseAuditSpecification.WithState"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseauditspecification.withstate.aspx">DatabaseAuditSpecification.WithState</see>
+		///
 		public Boolean WithState 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseAuditSpecification.WithState);}
+			get { return Element.GetProperty<Boolean>(DatabaseAuditSpecification.WithState);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.AuditActionGroup> AuditActionGroups 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseauditspecification.auditactiongroups.aspx">DatabaseAuditSpecification.AuditActionGroups</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup> AuditActionGroups 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseAuditSpecification.AuditActionGroups).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.AuditActionGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseAuditSpecification.AuditActionGroups).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.AuditAction> AuditActions 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseauditspecification.auditactions.aspx">DatabaseAuditSpecification.AuditActions</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction> AuditActions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseAuditSpecification.AuditActions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.AuditAction)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseAuditSpecification.AuditActions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ServerAudit> ServerAudit 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseauditspecification.serveraudit.aspx">DatabaseAuditSpecification.ServerAudit</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit> ServerAudit 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseAuditSpecification.ServerAudit).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ServerAudit)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseAuditSpecification.ServerAudit).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class DatabaseDdlTrigger : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseDdlTrigger"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.aspx">DatabaseDdlTrigger</see>
+	///
+	public partial class TSqlDatabaseDdlTrigger : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DatabaseDdlTrigger.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class DatabaseDdlTrigger to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlDatabaseDdlTrigger to adapt instances of <see cref="T:DatabaseDdlTrigger"/>
 		/// </summary>
-		public DatabaseDdlTrigger(TSqlObject obj)  : base(obj)
+		public TSqlDatabaseDdlTrigger(TSqlObject obj)  : base(obj, DatabaseDdlTrigger.TypeClass)
 		{
 		}
 
@@ -2141,123 +3050,193 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseDdlTrigger.AnsiNullsOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.ansinullson.aspx">DatabaseDdlTrigger.AnsiNullsOn</see>
+		///
 		public Boolean? AnsiNullsOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.AnsiNullsOn);}
+			get { return Element.GetProperty<Boolean?>(DatabaseDdlTrigger.AnsiNullsOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseDdlTrigger.ClassName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.classname.aspx">DatabaseDdlTrigger.ClassName</see>
+		///
 		public String ClassName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.ClassName);}
+			get { return Element.GetProperty<String>(DatabaseDdlTrigger.ClassName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseDdlTrigger.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.disabled.aspx">DatabaseDdlTrigger.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.Disabled);}
+			get { return Element.GetProperty<Boolean>(DatabaseDdlTrigger.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseDdlTrigger.ExecuteAsCaller"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.executeascaller.aspx">DatabaseDdlTrigger.ExecuteAsCaller</see>
+		///
 		public Boolean ExecuteAsCaller 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.ExecuteAsCaller);}
+			get { return Element.GetProperty<Boolean>(DatabaseDdlTrigger.ExecuteAsCaller);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseDdlTrigger.ExecuteAsOwner"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.executeasowner.aspx">DatabaseDdlTrigger.ExecuteAsOwner</see>
+		///
 		public Boolean ExecuteAsOwner 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.ExecuteAsOwner);}
+			get { return Element.GetProperty<Boolean>(DatabaseDdlTrigger.ExecuteAsOwner);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseDdlTrigger.ExecuteAsSelf"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.executeasself.aspx">DatabaseDdlTrigger.ExecuteAsSelf</see>
+		///
 		public Boolean ExecuteAsSelf 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.ExecuteAsSelf);}
+			get { return Element.GetProperty<Boolean>(DatabaseDdlTrigger.ExecuteAsSelf);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseDdlTrigger.MethodName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.methodname.aspx">DatabaseDdlTrigger.MethodName</see>
+		///
 		public String MethodName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.MethodName);}
+			get { return Element.GetProperty<String>(DatabaseDdlTrigger.MethodName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseDdlTrigger.QuotedIdentifierOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.quotedidentifieron.aspx">DatabaseDdlTrigger.QuotedIdentifierOn</see>
+		///
 		public Boolean? QuotedIdentifierOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.QuotedIdentifierOn);}
+			get { return Element.GetProperty<Boolean?>(DatabaseDdlTrigger.QuotedIdentifierOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseDdlTrigger.TriggerType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.triggertype.aspx">DatabaseDdlTrigger.TriggerType</see>
+		///
 		public TriggerType TriggerType 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<TriggerType>(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.TriggerType);}
+			get { return Element.GetProperty<TriggerType>(DatabaseDdlTrigger.TriggerType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseDdlTrigger.WithEncryption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.withencryption.aspx">DatabaseDdlTrigger.WithEncryption</see>
+		///
 		public Boolean WithEncryption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.WithEncryption);}
+			get { return Element.GetProperty<Boolean>(DatabaseDdlTrigger.WithEncryption);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly> Assembly 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.assembly.aspx">DatabaseDdlTrigger.Assembly</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseDdlTrigger.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.bodydependencies.aspx">DatabaseDdlTrigger.BodyDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.BodyDependencies);
+				return Element.GetReferenced(DatabaseDdlTrigger.BodyDependencies);
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.EventGroup> EventGroup 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.eventgroup.aspx">DatabaseDdlTrigger.EventGroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup> EventGroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.EventGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseDdlTrigger.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.EventType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.eventtype.aspx">DatabaseDdlTrigger.EventType</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.EventType).Cast<Microsoft.SqlServer.Dac.Model.EventType>();
+				return Element.GetReferenced(DatabaseDdlTrigger.EventType).Cast<Microsoft.SqlServer.Dac.Model.EventType>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Login> Login 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.login.aspx">DatabaseDdlTrigger.Login</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Login)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseDdlTrigger.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.User> User 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.user.aspx">DatabaseDdlTrigger.User</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseDdlTrigger.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.User)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseDdlTrigger.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class DatabaseEncryptionKey : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseEncryptionKey"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseencryptionkey.aspx">DatabaseEncryptionKey</see>
+	///
+	public partial class TSqlDatabaseEncryptionKey : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DatabaseEncryptionKey.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class DatabaseEncryptionKey to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlDatabaseEncryptionKey to adapt instances of <see cref="T:DatabaseEncryptionKey"/>
 		/// </summary>
-		public DatabaseEncryptionKey(TSqlObject obj)  : base(obj)
+		public TSqlDatabaseEncryptionKey(TSqlObject obj)  : base(obj, DatabaseEncryptionKey.TypeClass)
 		{
 		}
 
@@ -2265,37 +3244,55 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseEncryptionKey.Algorithm"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseencryptionkey.algorithm.aspx">DatabaseEncryptionKey.Algorithm</see>
+		///
 		public SymmetricKeyAlgorithm Algorithm 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<SymmetricKeyAlgorithm>(Microsoft.SqlServer.Dac.Model.DatabaseEncryptionKey.Algorithm);}
+			get { return Element.GetProperty<SymmetricKeyAlgorithm>(DatabaseEncryptionKey.Algorithm);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.AsymmetricKey> AsymmetricKey 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseencryptionkey.asymmetrickey.aspx">DatabaseEncryptionKey.AsymmetricKey</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey> AsymmetricKey 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseEncryptionKey.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.AsymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseEncryptionKey.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate> Certificate 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseencryptionkey.certificate.aspx">DatabaseEncryptionKey.Certificate</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> Certificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseEncryptionKey.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseEncryptionKey.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class DatabaseEventNotification : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseEventNotification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseeventnotification.aspx">DatabaseEventNotification</see>
+	///
+	public partial class TSqlDatabaseEventNotification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DatabaseEventNotification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class DatabaseEventNotification to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlDatabaseEventNotification to adapt instances of <see cref="T:DatabaseEventNotification"/>
 		/// </summary>
-		public DatabaseEventNotification(TSqlObject obj)  : base(obj)
+		public TSqlDatabaseEventNotification(TSqlObject obj)  : base(obj, DatabaseEventNotification.TypeClass)
 		{
 		}
 
@@ -2303,49 +3300,75 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseEventNotification.BrokerInstanceSpecifier"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseeventnotification.brokerinstancespecifier.aspx">DatabaseEventNotification.BrokerInstanceSpecifier</see>
+		///
 		public String BrokerInstanceSpecifier 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.DatabaseEventNotification.BrokerInstanceSpecifier);}
+			get { return Element.GetProperty<String>(DatabaseEventNotification.BrokerInstanceSpecifier);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseEventNotification.BrokerService"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseeventnotification.brokerservice.aspx">DatabaseEventNotification.BrokerService</see>
+		///
 		public String BrokerService 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.DatabaseEventNotification.BrokerService);}
+			get { return Element.GetProperty<String>(DatabaseEventNotification.BrokerService);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseEventNotification.WithFanIn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseeventnotification.withfanin.aspx">DatabaseEventNotification.WithFanIn</see>
+		///
 		public Boolean WithFanIn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseEventNotification.WithFanIn);}
+			get { return Element.GetProperty<Boolean>(DatabaseEventNotification.WithFanIn);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.EventGroup> EventGroup 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseeventnotification.eventgroup.aspx">DatabaseEventNotification.EventGroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup> EventGroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseEventNotification.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.EventGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseEventNotification.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.EventType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseeventnotification.eventtype.aspx">DatabaseEventNotification.EventType</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseEventNotification.EventType).Cast<Microsoft.SqlServer.Dac.Model.EventType>();
+				return Element.GetReferenced(DatabaseEventNotification.EventType).Cast<Microsoft.SqlServer.Dac.Model.EventType>();
 			}
 		}
-	
+
 }
-	public partial class DatabaseMirroringLanguageSpecifier : TSqlModelElement,IEndpointLanguageSpecifier	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseMirroringLanguageSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databasemirroringlanguagespecifier.aspx">DatabaseMirroringLanguageSpecifier</see>
+	///
+	public partial class TSqlDatabaseMirroringLanguageSpecifier : TSqlModelElement,IEndpointLanguageSpecifier	{
 		private static ModelTypeClass typeClass = DatabaseMirroringLanguageSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class DatabaseMirroringLanguageSpecifier to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlDatabaseMirroringLanguageSpecifier to adapt instances of <see cref="T:DatabaseMirroringLanguageSpecifier"/>
 		/// </summary>
-		public DatabaseMirroringLanguageSpecifier(TSqlObject obj)  : base(obj)
+		public TSqlDatabaseMirroringLanguageSpecifier(TSqlObject obj)  : base(obj, DatabaseMirroringLanguageSpecifier.TypeClass)
 		{
 		}
 
@@ -2353,59 +3376,93 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databasemirroringlanguagespecifier.encryptionalgorithmpart1.aspx">DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1</see>
+		///
 		public ServiceBrokerEncryptionAlgorithm EncryptionAlgorithmPart1 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<ServiceBrokerEncryptionAlgorithm>(Microsoft.SqlServer.Dac.Model.DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1);}
+			get { return Element.GetProperty<ServiceBrokerEncryptionAlgorithm>(DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databasemirroringlanguagespecifier.encryptionalgorithmpart2.aspx">DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2</see>
+		///
 		public ServiceBrokerEncryptionAlgorithm EncryptionAlgorithmPart2 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<ServiceBrokerEncryptionAlgorithm>(Microsoft.SqlServer.Dac.Model.DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2);}
+			get { return Element.GetProperty<ServiceBrokerEncryptionAlgorithm>(DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseMirroringLanguageSpecifier.EncryptionMode"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databasemirroringlanguagespecifier.encryptionmode.aspx">DatabaseMirroringLanguageSpecifier.EncryptionMode</see>
+		///
 		public EncryptionMode EncryptionMode 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<EncryptionMode>(Microsoft.SqlServer.Dac.Model.DatabaseMirroringLanguageSpecifier.EncryptionMode);}
+			get { return Element.GetProperty<EncryptionMode>(DatabaseMirroringLanguageSpecifier.EncryptionMode);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseMirroringLanguageSpecifier.RoleType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databasemirroringlanguagespecifier.roletype.aspx">DatabaseMirroringLanguageSpecifier.RoleType</see>
+		///
 		public DatabaseMirroringRole RoleType 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<DatabaseMirroringRole>(Microsoft.SqlServer.Dac.Model.DatabaseMirroringLanguageSpecifier.RoleType);}
+			get { return Element.GetProperty<DatabaseMirroringRole>(DatabaseMirroringLanguageSpecifier.RoleType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseMirroringLanguageSpecifier.UseCertificateFirst"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databasemirroringlanguagespecifier.usecertificatefirst.aspx">DatabaseMirroringLanguageSpecifier.UseCertificateFirst</see>
+		///
 		public Boolean UseCertificateFirst 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseMirroringLanguageSpecifier.UseCertificateFirst);}
+			get { return Element.GetProperty<Boolean>(DatabaseMirroringLanguageSpecifier.UseCertificateFirst);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databasemirroringlanguagespecifier.windowsauthenticationmode.aspx">DatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode</see>
+		///
 		public AuthenticationModes WindowsAuthenticationMode 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<AuthenticationModes>(Microsoft.SqlServer.Dac.Model.DatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode);}
+			get { return Element.GetProperty<AuthenticationModes>(DatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate> AuthenticationCertificate 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databasemirroringlanguagespecifier.authenticationcertificate.aspx">DatabaseMirroringLanguageSpecifier.AuthenticationCertificate</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> AuthenticationCertificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseMirroringLanguageSpecifier.AuthenticationCertificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseMirroringLanguageSpecifier.AuthenticationCertificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class DatabaseOptions : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseOptions"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.aspx">DatabaseOptions</see>
+	///
+	public partial class TSqlDatabaseOptions : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = DatabaseOptions.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class DatabaseOptions to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlDatabaseOptions to adapt instances of <see cref="T:DatabaseOptions"/>
 		/// </summary>
-		public DatabaseOptions(TSqlObject obj)  : base(obj)
+		public TSqlDatabaseOptions(TSqlObject obj)  : base(obj, DatabaseOptions.TypeClass)
 		{
 		}
 
@@ -2413,349 +3470,575 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.AllowSnapshotIsolation"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.allowsnapshotisolation.aspx">DatabaseOptions.AllowSnapshotIsolation</see>
+		///
 		public Boolean AllowSnapshotIsolation 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.AllowSnapshotIsolation);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.AllowSnapshotIsolation);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.AnsiNullDefaultOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.ansinulldefaulton.aspx">DatabaseOptions.AnsiNullDefaultOn</see>
+		///
 		public Boolean AnsiNullDefaultOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.AnsiNullDefaultOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.AnsiNullDefaultOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.AnsiNullsOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.ansinullson.aspx">DatabaseOptions.AnsiNullsOn</see>
+		///
 		public Boolean AnsiNullsOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.AnsiNullsOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.AnsiNullsOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.AnsiPaddingOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.ansipaddingon.aspx">DatabaseOptions.AnsiPaddingOn</see>
+		///
 		public Boolean AnsiPaddingOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.AnsiPaddingOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.AnsiPaddingOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.AnsiWarningsOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.ansiwarningson.aspx">DatabaseOptions.AnsiWarningsOn</see>
+		///
 		public Boolean AnsiWarningsOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.AnsiWarningsOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.AnsiWarningsOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.ArithAbortOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.arithaborton.aspx">DatabaseOptions.ArithAbortOn</see>
+		///
 		public Boolean ArithAbortOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.ArithAbortOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.ArithAbortOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.AutoClose"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.autoclose.aspx">DatabaseOptions.AutoClose</see>
+		///
 		public Boolean AutoClose 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.AutoClose);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.AutoClose);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.AutoCreateStatistics"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.autocreatestatistics.aspx">DatabaseOptions.AutoCreateStatistics</see>
+		///
 		public Boolean AutoCreateStatistics 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.AutoCreateStatistics);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.AutoCreateStatistics);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.AutoCreateStatisticsIncremental"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.autocreatestatisticsincremental.aspx">DatabaseOptions.AutoCreateStatisticsIncremental</see>
+		///
 		public Boolean AutoCreateStatisticsIncremental 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.AutoCreateStatisticsIncremental);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.AutoCreateStatisticsIncremental);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.AutoShrink"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.autoshrink.aspx">DatabaseOptions.AutoShrink</see>
+		///
 		public Boolean AutoShrink 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.AutoShrink);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.AutoShrink);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.AutoUpdateStatistics"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.autoupdatestatistics.aspx">DatabaseOptions.AutoUpdateStatistics</see>
+		///
 		public Boolean AutoUpdateStatistics 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.AutoUpdateStatistics);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.AutoUpdateStatistics);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.AutoUpdateStatisticsAsync"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.autoupdatestatisticsasync.aspx">DatabaseOptions.AutoUpdateStatisticsAsync</see>
+		///
 		public Boolean AutoUpdateStatisticsAsync 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.AutoUpdateStatisticsAsync);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.AutoUpdateStatisticsAsync);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.ChangeTrackingAutoCleanup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.changetrackingautocleanup.aspx">DatabaseOptions.ChangeTrackingAutoCleanup</see>
+		///
 		public Boolean ChangeTrackingAutoCleanup 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.ChangeTrackingAutoCleanup);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.ChangeTrackingAutoCleanup);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.ChangeTrackingEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.changetrackingenabled.aspx">DatabaseOptions.ChangeTrackingEnabled</see>
+		///
 		public Boolean ChangeTrackingEnabled 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.ChangeTrackingEnabled);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.ChangeTrackingEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.ChangeTrackingRetentionPeriod"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.changetrackingretentionperiod.aspx">DatabaseOptions.ChangeTrackingRetentionPeriod</see>
+		///
 		public Int32 ChangeTrackingRetentionPeriod 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.ChangeTrackingRetentionPeriod);}
+			get { return Element.GetProperty<Int32>(DatabaseOptions.ChangeTrackingRetentionPeriod);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.ChangeTrackingRetentionUnit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.changetrackingretentionunit.aspx">DatabaseOptions.ChangeTrackingRetentionUnit</see>
+		///
 		public TimeUnit ChangeTrackingRetentionUnit 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<TimeUnit>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.ChangeTrackingRetentionUnit);}
+			get { return Element.GetProperty<TimeUnit>(DatabaseOptions.ChangeTrackingRetentionUnit);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.Collation"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.collation.aspx">DatabaseOptions.Collation</see>
+		///
 		public String Collation 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.Collation);}
+			get { return Element.GetProperty<String>(DatabaseOptions.Collation);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.CompatibilityLevel"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.compatibilitylevel.aspx">DatabaseOptions.CompatibilityLevel</see>
+		///
 		public Int32 CompatibilityLevel 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.CompatibilityLevel);}
+			get { return Element.GetProperty<Int32>(DatabaseOptions.CompatibilityLevel);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.ConcatNullYieldsNull"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.concatnullyieldsnull.aspx">DatabaseOptions.ConcatNullYieldsNull</see>
+		///
 		public Boolean ConcatNullYieldsNull 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.ConcatNullYieldsNull);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.ConcatNullYieldsNull);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.Containment"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.containment.aspx">DatabaseOptions.Containment</see>
+		///
 		public Containment Containment 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Containment>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.Containment);}
+			get { return Element.GetProperty<Containment>(DatabaseOptions.Containment);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.CursorCloseOnCommit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.cursorcloseoncommit.aspx">DatabaseOptions.CursorCloseOnCommit</see>
+		///
 		public Boolean CursorCloseOnCommit 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.CursorCloseOnCommit);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.CursorCloseOnCommit);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.CursorDefaultGlobalScope"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.cursordefaultglobalscope.aspx">DatabaseOptions.CursorDefaultGlobalScope</see>
+		///
 		public Boolean CursorDefaultGlobalScope 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.CursorDefaultGlobalScope);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.CursorDefaultGlobalScope);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.DatabaseStateOffline"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.databasestateoffline.aspx">DatabaseOptions.DatabaseStateOffline</see>
+		///
 		public Boolean DatabaseStateOffline 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.DatabaseStateOffline);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.DatabaseStateOffline);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.DateCorrelationOptimizationOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.datecorrelationoptimizationon.aspx">DatabaseOptions.DateCorrelationOptimizationOn</see>
+		///
 		public Boolean DateCorrelationOptimizationOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.DateCorrelationOptimizationOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.DateCorrelationOptimizationOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.DBChainingOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.dbchainingon.aspx">DatabaseOptions.DBChainingOn</see>
+		///
 		public Boolean DBChainingOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.DBChainingOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.DBChainingOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.DefaultFullTextLanguage"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.defaultfulltextlanguage.aspx">DatabaseOptions.DefaultFullTextLanguage</see>
+		///
 		public String DefaultFullTextLanguage 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.DefaultFullTextLanguage);}
+			get { return Element.GetProperty<String>(DatabaseOptions.DefaultFullTextLanguage);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.DefaultLanguage"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.defaultlanguage.aspx">DatabaseOptions.DefaultLanguage</see>
+		///
 		public String DefaultLanguage 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.DefaultLanguage);}
+			get { return Element.GetProperty<String>(DatabaseOptions.DefaultLanguage);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.DelayedDurabilityMode"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.delayeddurabilitymode.aspx">DatabaseOptions.DelayedDurabilityMode</see>
+		///
 		public DelayedDurabilityMode DelayedDurabilityMode 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<DelayedDurabilityMode>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.DelayedDurabilityMode);}
+			get { return Element.GetProperty<DelayedDurabilityMode>(DatabaseOptions.DelayedDurabilityMode);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.FileStreamDirectoryName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.filestreamdirectoryname.aspx">DatabaseOptions.FileStreamDirectoryName</see>
+		///
 		public String FileStreamDirectoryName 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.FileStreamDirectoryName);}
+			get { return Element.GetProperty<String>(DatabaseOptions.FileStreamDirectoryName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.FullTextEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.fulltextenabled.aspx">DatabaseOptions.FullTextEnabled</see>
+		///
 		public Boolean FullTextEnabled 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.FullTextEnabled);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.FullTextEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.HonorBrokerPriority"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.honorbrokerpriority.aspx">DatabaseOptions.HonorBrokerPriority</see>
+		///
 		public Boolean HonorBrokerPriority 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.HonorBrokerPriority);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.HonorBrokerPriority);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.MemoryOptimizedElevateToSnapshot"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.memoryoptimizedelevatetosnapshot.aspx">DatabaseOptions.MemoryOptimizedElevateToSnapshot</see>
+		///
 		public Boolean MemoryOptimizedElevateToSnapshot 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.MemoryOptimizedElevateToSnapshot);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.MemoryOptimizedElevateToSnapshot);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.NestedTriggersOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.nestedtriggerson.aspx">DatabaseOptions.NestedTriggersOn</see>
+		///
 		public Boolean NestedTriggersOn 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.NestedTriggersOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.NestedTriggersOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.NonTransactedFileStreamAccess"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.nontransactedfilestreamaccess.aspx">DatabaseOptions.NonTransactedFileStreamAccess</see>
+		///
 		public NonTransactedFileStreamAccess NonTransactedFileStreamAccess 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<NonTransactedFileStreamAccess>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.NonTransactedFileStreamAccess);}
+			get { return Element.GetProperty<NonTransactedFileStreamAccess>(DatabaseOptions.NonTransactedFileStreamAccess);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.NumericRoundAbortOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.numericroundaborton.aspx">DatabaseOptions.NumericRoundAbortOn</see>
+		///
 		public Boolean NumericRoundAbortOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.NumericRoundAbortOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.NumericRoundAbortOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.PageVerifyMode"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.pageverifymode.aspx">DatabaseOptions.PageVerifyMode</see>
+		///
 		public PageVerifyMode PageVerifyMode 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<PageVerifyMode>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.PageVerifyMode);}
+			get { return Element.GetProperty<PageVerifyMode>(DatabaseOptions.PageVerifyMode);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.ParameterizationOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.parameterizationoption.aspx">DatabaseOptions.ParameterizationOption</see>
+		///
 		public ParameterizationOption ParameterizationOption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<ParameterizationOption>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.ParameterizationOption);}
+			get { return Element.GetProperty<ParameterizationOption>(DatabaseOptions.ParameterizationOption);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.QuotedIdentifierOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.quotedidentifieron.aspx">DatabaseOptions.QuotedIdentifierOn</see>
+		///
 		public Boolean QuotedIdentifierOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.QuotedIdentifierOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.QuotedIdentifierOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.ReadOnly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.readonly.aspx">DatabaseOptions.ReadOnly</see>
+		///
 		public Boolean ReadOnly 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.ReadOnly);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.ReadOnly);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.RecoveryMode"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.recoverymode.aspx">DatabaseOptions.RecoveryMode</see>
+		///
 		public RecoveryMode RecoveryMode 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<RecoveryMode>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.RecoveryMode);}
+			get { return Element.GetProperty<RecoveryMode>(DatabaseOptions.RecoveryMode);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.RecursiveTriggersOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.recursivetriggerson.aspx">DatabaseOptions.RecursiveTriggersOn</see>
+		///
 		public Boolean RecursiveTriggersOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.RecursiveTriggersOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.RecursiveTriggersOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.ServiceBrokerOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.servicebrokeroption.aspx">DatabaseOptions.ServiceBrokerOption</see>
+		///
 		public ServiceBrokerOption ServiceBrokerOption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<ServiceBrokerOption>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.ServiceBrokerOption);}
+			get { return Element.GetProperty<ServiceBrokerOption>(DatabaseOptions.ServiceBrokerOption);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.SupplementalLoggingOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.supplementalloggingon.aspx">DatabaseOptions.SupplementalLoggingOn</see>
+		///
 		public Boolean SupplementalLoggingOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.SupplementalLoggingOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.SupplementalLoggingOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.TargetRecoveryTimePeriod"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.targetrecoverytimeperiod.aspx">DatabaseOptions.TargetRecoveryTimePeriod</see>
+		///
 		public Int32 TargetRecoveryTimePeriod 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.TargetRecoveryTimePeriod);}
+			get { return Element.GetProperty<Int32>(DatabaseOptions.TargetRecoveryTimePeriod);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.TargetRecoveryTimeUnit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.targetrecoverytimeunit.aspx">DatabaseOptions.TargetRecoveryTimeUnit</see>
+		///
 		public TimeUnit TargetRecoveryTimeUnit 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<TimeUnit>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.TargetRecoveryTimeUnit);}
+			get { return Element.GetProperty<TimeUnit>(DatabaseOptions.TargetRecoveryTimeUnit);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.TornPageProtectionOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.tornpageprotectionon.aspx">DatabaseOptions.TornPageProtectionOn</see>
+		///
 		public Boolean TornPageProtectionOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.TornPageProtectionOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.TornPageProtectionOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.TransactionIsolationReadCommittedSnapshot"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.transactionisolationreadcommittedsnapshot.aspx">DatabaseOptions.TransactionIsolationReadCommittedSnapshot</see>
+		///
 		public Boolean TransactionIsolationReadCommittedSnapshot 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.TransactionIsolationReadCommittedSnapshot);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.TransactionIsolationReadCommittedSnapshot);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.TransformNoiseWords"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.transformnoisewords.aspx">DatabaseOptions.TransformNoiseWords</see>
+		///
 		public Boolean TransformNoiseWords 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.TransformNoiseWords);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.TransformNoiseWords);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.Trustworthy"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.trustworthy.aspx">DatabaseOptions.Trustworthy</see>
+		///
 		public Boolean Trustworthy 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.Trustworthy);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.Trustworthy);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.TwoDigitYearCutoff"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.twodigityearcutoff.aspx">DatabaseOptions.TwoDigitYearCutoff</see>
+		///
 		public Int16 TwoDigitYearCutoff 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Int16>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.TwoDigitYearCutoff);}
+			get { return Element.GetProperty<Int16>(DatabaseOptions.TwoDigitYearCutoff);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.UserAccessOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.useraccessoption.aspx">DatabaseOptions.UserAccessOption</see>
+		///
 		public UserAccessOption UserAccessOption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<UserAccessOption>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.UserAccessOption);}
+			get { return Element.GetProperty<UserAccessOption>(DatabaseOptions.UserAccessOption);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.VardecimalStorageFormatOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.vardecimalstorageformaton.aspx">DatabaseOptions.VardecimalStorageFormatOn</see>
+		///
 		public Boolean VardecimalStorageFormatOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.VardecimalStorageFormatOn);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.VardecimalStorageFormatOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DatabaseOptions.WithEncryption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.withencryption.aspx">DatabaseOptions.WithEncryption</see>
+		///
 		public Boolean WithEncryption 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DatabaseOptions.WithEncryption);}
+			get { return Element.GetProperty<Boolean>(DatabaseOptions.WithEncryption);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> DefaultFilegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.defaultfilegroup.aspx">DatabaseOptions.DefaultFilegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> DefaultFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseOptions.DefaultFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseOptions.DefaultFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> DefaultFileStreamFilegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.defaultfilestreamfilegroup.aspx">DatabaseOptions.DefaultFileStreamFilegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> DefaultFileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DatabaseOptions.DefaultFileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseOptions.DefaultFileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class DataCompressionOption : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DataCompressionOption"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datacompressionoption.aspx">DataCompressionOption</see>
+	///
+	public partial class TSqlDataCompressionOption : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DataCompressionOption.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class DataCompressionOption to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlDataCompressionOption to adapt instances of <see cref="T:DataCompressionOption"/>
 		/// </summary>
-		public DataCompressionOption(TSqlObject obj)  : base(obj)
+		public TSqlDataCompressionOption(TSqlObject obj)  : base(obj, DataCompressionOption.TypeClass)
 		{
 		}
 
@@ -2763,27 +4046,41 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:DataCompressionOption.CompressionLevel"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datacompressionoption.compressionlevel.aspx">DataCompressionOption.CompressionLevel</see>
+		///
 		public CompressionLevel CompressionLevel 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<CompressionLevel>(Microsoft.SqlServer.Dac.Model.DataCompressionOption.CompressionLevel);}
+			get { return Element.GetProperty<CompressionLevel>(DataCompressionOption.CompressionLevel);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DataCompressionOption.PartitionNumber"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datacompressionoption.partitionnumber.aspx">DataCompressionOption.PartitionNumber</see>
+		///
 		public Int32 PartitionNumber 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.DataCompressionOption.PartitionNumber);}
+			get { return Element.GetProperty<Int32>(DataCompressionOption.PartitionNumber);}
 		}
 
 
 }
-	public partial class Default : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Default"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.default.aspx">Default</see>
+	///
+	public partial class TSqlDefault : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Default.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Default to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlDefault to adapt instances of <see cref="T:Default"/>
 		/// </summary>
-		public Default(TSqlObject obj)  : base(obj)
+		public TSqlDefault(TSqlObject obj)  : base(obj, Default.TypeClass)
 		{
 		}
 
@@ -2791,37 +4088,55 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Default.Expression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.default.expression.aspx">Default.Expression</see>
+		///
 		public String Expression 
 		{
-		// Supported platforms = 27
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.Default.Expression);}
+			get { return (String)Element.GetProperty(Default.Expression);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.default.boundobjects.aspx">Default.BoundObjects</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BoundObjects 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Default.BoundObjects);
+				return Element.GetReferenced(Default.BoundObjects);
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.default.schema.aspx">Default.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Default.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Default.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class DefaultConstraint : TSqlModelElement,IExtendedPropertyHost	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DefaultConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.defaultconstraint.aspx">DefaultConstraint</see>
+	///
+	public partial class TSqlDefaultConstraint : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = DefaultConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class DefaultConstraint to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlDefaultConstraint to adapt instances of <see cref="T:DefaultConstraint"/>
 		/// </summary>
-		public DefaultConstraint(TSqlObject obj)  : base(obj)
+		public TSqlDefaultConstraint(TSqlObject obj)  : base(obj, DefaultConstraint.TypeClass)
 		{
 		}
 
@@ -2829,57 +4144,87 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:DefaultConstraint.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.defaultconstraint.disabled.aspx">DefaultConstraint.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DefaultConstraint.Disabled);}
+			get { return Element.GetProperty<Boolean>(DefaultConstraint.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DefaultConstraint.Expression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.defaultconstraint.expression.aspx">DefaultConstraint.Expression</see>
+		///
 		public String Expression 
 		{
-		// Supported platforms = 31
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.DefaultConstraint.Expression);}
+			get { return (String)Element.GetProperty(DefaultConstraint.Expression);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DefaultConstraint.WithValues"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.defaultconstraint.withvalues.aspx">DefaultConstraint.WithValues</see>
+		///
 		public Boolean WithValues 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DefaultConstraint.WithValues);}
+			get { return Element.GetProperty<Boolean>(DefaultConstraint.WithValues);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.defaultconstraint.expressiondependencies.aspx">DefaultConstraint.ExpressionDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DefaultConstraint.ExpressionDependencies);
+				return Element.GetReferenced(DefaultConstraint.ExpressionDependencies);
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ExtendedProperty> Host 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.defaultconstraint.host.aspx">DefaultConstraint.Host</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DefaultConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ExtendedProperty)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DefaultConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> TargetColumn 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.defaultconstraint.targetcolumn.aspx">DefaultConstraint.TargetColumn</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> TargetColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DefaultConstraint.TargetColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DefaultConstraint.TargetColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class DmlTrigger : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DmlTrigger"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.aspx">DmlTrigger</see>
+	///
+	public partial class TSqlDmlTrigger : TSqlModelElement	{
 		private static ModelTypeClass typeClass = DmlTrigger.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class DmlTrigger to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlDmlTrigger to adapt instances of <see cref="T:DmlTrigger"/>
 		/// </summary>
-		public DmlTrigger(TSqlObject obj)  : base(obj)
+		public TSqlDmlTrigger(TSqlObject obj)  : base(obj, DmlTrigger.TypeClass)
 		{
 		}
 
@@ -2887,163 +4232,261 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.AnsiNullsOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.ansinullson.aspx">DmlTrigger.AnsiNullsOn</see>
+		///
 		public Boolean? AnsiNullsOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.DmlTrigger.AnsiNullsOn);}
+			get { return Element.GetProperty<Boolean?>(DmlTrigger.AnsiNullsOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.ClassName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.classname.aspx">DmlTrigger.ClassName</see>
+		///
 		public String ClassName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.DmlTrigger.ClassName);}
+			get { return Element.GetProperty<String>(DmlTrigger.ClassName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.DeleteOrderRestriction"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.deleteorderrestriction.aspx">DmlTrigger.DeleteOrderRestriction</see>
+		///
 		public OrderRestriction DeleteOrderRestriction 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<OrderRestriction>(Microsoft.SqlServer.Dac.Model.DmlTrigger.DeleteOrderRestriction);}
+			get { return Element.GetProperty<OrderRestriction>(DmlTrigger.DeleteOrderRestriction);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.disabled.aspx">DmlTrigger.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DmlTrigger.Disabled);}
+			get { return Element.GetProperty<Boolean>(DmlTrigger.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.ExecuteAsCaller"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.executeascaller.aspx">DmlTrigger.ExecuteAsCaller</see>
+		///
 		public Boolean ExecuteAsCaller 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DmlTrigger.ExecuteAsCaller);}
+			get { return Element.GetProperty<Boolean>(DmlTrigger.ExecuteAsCaller);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.ExecuteAsOwner"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.executeasowner.aspx">DmlTrigger.ExecuteAsOwner</see>
+		///
 		public Boolean ExecuteAsOwner 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DmlTrigger.ExecuteAsOwner);}
+			get { return Element.GetProperty<Boolean>(DmlTrigger.ExecuteAsOwner);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.ExecuteAsSelf"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.executeasself.aspx">DmlTrigger.ExecuteAsSelf</see>
+		///
 		public Boolean ExecuteAsSelf 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DmlTrigger.ExecuteAsSelf);}
+			get { return Element.GetProperty<Boolean>(DmlTrigger.ExecuteAsSelf);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.InsertOrderRestriction"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.insertorderrestriction.aspx">DmlTrigger.InsertOrderRestriction</see>
+		///
 		public OrderRestriction InsertOrderRestriction 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<OrderRestriction>(Microsoft.SqlServer.Dac.Model.DmlTrigger.InsertOrderRestriction);}
+			get { return Element.GetProperty<OrderRestriction>(DmlTrigger.InsertOrderRestriction);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.IsDeleteTrigger"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.isdeletetrigger.aspx">DmlTrigger.IsDeleteTrigger</see>
+		///
 		public Boolean IsDeleteTrigger 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DmlTrigger.IsDeleteTrigger);}
+			get { return Element.GetProperty<Boolean>(DmlTrigger.IsDeleteTrigger);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.IsInsertTrigger"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.isinserttrigger.aspx">DmlTrigger.IsInsertTrigger</see>
+		///
 		public Boolean IsInsertTrigger 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DmlTrigger.IsInsertTrigger);}
+			get { return Element.GetProperty<Boolean>(DmlTrigger.IsInsertTrigger);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.IsUpdateTrigger"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.isupdatetrigger.aspx">DmlTrigger.IsUpdateTrigger</see>
+		///
 		public Boolean IsUpdateTrigger 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DmlTrigger.IsUpdateTrigger);}
+			get { return Element.GetProperty<Boolean>(DmlTrigger.IsUpdateTrigger);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.MethodName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.methodname.aspx">DmlTrigger.MethodName</see>
+		///
 		public String MethodName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.DmlTrigger.MethodName);}
+			get { return Element.GetProperty<String>(DmlTrigger.MethodName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.NotForReplication"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.notforreplication.aspx">DmlTrigger.NotForReplication</see>
+		///
 		public Boolean NotForReplication 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DmlTrigger.NotForReplication);}
+			get { return Element.GetProperty<Boolean>(DmlTrigger.NotForReplication);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.QuotedIdentifierOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.quotedidentifieron.aspx">DmlTrigger.QuotedIdentifierOn</see>
+		///
 		public Boolean? QuotedIdentifierOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.DmlTrigger.QuotedIdentifierOn);}
+			get { return Element.GetProperty<Boolean?>(DmlTrigger.QuotedIdentifierOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.TriggerType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.triggertype.aspx">DmlTrigger.TriggerType</see>
+		///
 		public TriggerType TriggerType 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<TriggerType>(Microsoft.SqlServer.Dac.Model.DmlTrigger.TriggerType);}
+			get { return Element.GetProperty<TriggerType>(DmlTrigger.TriggerType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.UpdateOrderRestriction"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.updateorderrestriction.aspx">DmlTrigger.UpdateOrderRestriction</see>
+		///
 		public OrderRestriction UpdateOrderRestriction 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<OrderRestriction>(Microsoft.SqlServer.Dac.Model.DmlTrigger.UpdateOrderRestriction);}
+			get { return Element.GetProperty<OrderRestriction>(DmlTrigger.UpdateOrderRestriction);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.WithAppend"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.withappend.aspx">DmlTrigger.WithAppend</see>
+		///
 		public Boolean WithAppend 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DmlTrigger.WithAppend);}
+			get { return Element.GetProperty<Boolean>(DmlTrigger.WithAppend);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:DmlTrigger.WithEncryption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.withencryption.aspx">DmlTrigger.WithEncryption</see>
+		///
 		public Boolean WithEncryption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.DmlTrigger.WithEncryption);}
+			get { return Element.GetProperty<Boolean>(DmlTrigger.WithEncryption);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly> Assembly 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.assembly.aspx">DmlTrigger.Assembly</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DmlTrigger.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DmlTrigger.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.bodydependencies.aspx">DmlTrigger.BodyDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DmlTrigger.BodyDependencies);
+				return Element.GetReferenced(DmlTrigger.BodyDependencies);
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Login> Login 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.login.aspx">DmlTrigger.Login</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DmlTrigger.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Login)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DmlTrigger.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.triggerobject.aspx">DmlTrigger.TriggerObject</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> TriggerObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DmlTrigger.TriggerObject);
+				return Element.GetReferenced(DmlTrigger.TriggerObject);
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.User> User 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.user.aspx">DmlTrigger.User</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.DmlTrigger.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.User)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DmlTrigger.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Endpoint : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Endpoint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.endpoint.aspx">Endpoint</see>
+	///
+	public partial class TSqlEndpoint : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Endpoint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Endpoint to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlEndpoint to adapt instances of <see cref="T:Endpoint"/>
 		/// </summary>
-		public Endpoint(TSqlObject obj)  : base(obj)
+		public TSqlEndpoint(TSqlObject obj)  : base(obj, Endpoint.TypeClass)
 		{
 		}
 
@@ -3051,57 +4494,87 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Endpoint.Payload"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.endpoint.payload.aspx">Endpoint.Payload</see>
+		///
 		public Payload Payload 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Payload>(Microsoft.SqlServer.Dac.Model.Endpoint.Payload);}
+			get { return Element.GetProperty<Payload>(Endpoint.Payload);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Endpoint.Protocol"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.endpoint.protocol.aspx">Endpoint.Protocol</see>
+		///
 		public Protocol Protocol 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Protocol>(Microsoft.SqlServer.Dac.Model.Endpoint.Protocol);}
+			get { return Element.GetProperty<Protocol>(Endpoint.Protocol);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Endpoint.State"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.endpoint.state.aspx">Endpoint.State</see>
+		///
 		public State State 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<State>(Microsoft.SqlServer.Dac.Model.Endpoint.State);}
+			get { return Element.GetProperty<State>(Endpoint.State);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.endpoint.authorizer.aspx">Endpoint.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Endpoint.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Endpoint.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.endpoint.payloadspecifier.aspx">Endpoint.PayloadSpecifier</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier> PayloadSpecifier 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Endpoint.PayloadSpecifier).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier>();
+				return Element.GetReferenced(Endpoint.PayloadSpecifier).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier>();
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier "/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.endpoint.protocolspecifier.aspx">Endpoint.ProtocolSpecifier</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier > ProtocolSpecifier 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Endpoint.ProtocolSpecifier).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier >();
+				return Element.GetReferenced(Endpoint.ProtocolSpecifier).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier >();
 			}
 		}
-	
+
 }
-	public partial class ErrorMessage : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ErrorMessage"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.errormessage.aspx">ErrorMessage</see>
+	///
+	public partial class TSqlErrorMessage : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ErrorMessage.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ErrorMessage to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlErrorMessage to adapt instances of <see cref="T:ErrorMessage"/>
 		/// </summary>
-		public ErrorMessage(TSqlObject obj)  : base(obj)
+		public TSqlErrorMessage(TSqlObject obj)  : base(obj, ErrorMessage.TypeClass)
 		{
 		}
 
@@ -3109,45 +4582,71 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ErrorMessage.Language"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.errormessage.language.aspx">ErrorMessage.Language</see>
+		///
 		public String Language 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ErrorMessage.Language);}
+			get { return Element.GetProperty<String>(ErrorMessage.Language);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ErrorMessage.MessageNumber"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.errormessage.messagenumber.aspx">ErrorMessage.MessageNumber</see>
+		///
 		public Int32 MessageNumber 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.ErrorMessage.MessageNumber);}
+			get { return Element.GetProperty<Int32>(ErrorMessage.MessageNumber);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ErrorMessage.MessageText"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.errormessage.messagetext.aspx">ErrorMessage.MessageText</see>
+		///
 		public String MessageText 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ErrorMessage.MessageText);}
+			get { return Element.GetProperty<String>(ErrorMessage.MessageText);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ErrorMessage.Severity"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.errormessage.severity.aspx">ErrorMessage.Severity</see>
+		///
 		public Int32 Severity 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.ErrorMessage.Severity);}
+			get { return Element.GetProperty<Int32>(ErrorMessage.Severity);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ErrorMessage.WithLog"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.errormessage.withlog.aspx">ErrorMessage.WithLog</see>
+		///
 		public Boolean WithLog 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ErrorMessage.WithLog);}
+			get { return Element.GetProperty<Boolean>(ErrorMessage.WithLog);}
 		}
 
 
 }
-	public partial class EventGroup : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventGroup"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventgroup.aspx">EventGroup</see>
+	///
+	public partial class TSqlEventGroup : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventGroup.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class EventGroup to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlEventGroup to adapt instances of <see cref="T:EventGroup"/>
 		/// </summary>
-		public EventGroup(TSqlObject obj)  : base(obj)
+		public TSqlEventGroup(TSqlObject obj)  : base(obj, EventGroup.TypeClass)
 		{
 		}
 
@@ -3155,21 +4654,31 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:EventGroup.Group"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventgroup.group.aspx">EventGroup.Group</see>
+		///
 		public EventGroupType Group 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<EventGroupType>(Microsoft.SqlServer.Dac.Model.EventGroup.Group);}
+			get { return Element.GetProperty<EventGroupType>(EventGroup.Group);}
 		}
 
 
 }
-	public partial class EventSession : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSession"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.aspx">EventSession</see>
+	///
+	public partial class TSqlEventSession : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventSession.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class EventSession to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlEventSession to adapt instances of <see cref="T:EventSession"/>
 		/// </summary>
-		public EventSession(TSqlObject obj)  : base(obj)
+		public TSqlEventSession(TSqlObject obj)  : base(obj, EventSession.TypeClass)
 		{
 		}
 
@@ -3177,85 +4686,135 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:EventSession.EventRetentionMode"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.eventretentionmode.aspx">EventSession.EventRetentionMode</see>
+		///
 		public EventRetentionMode EventRetentionMode 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<EventRetentionMode>(Microsoft.SqlServer.Dac.Model.EventSession.EventRetentionMode);}
+			get { return Element.GetProperty<EventRetentionMode>(EventSession.EventRetentionMode);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSession.MaxDispatchLatency"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.maxdispatchlatency.aspx">EventSession.MaxDispatchLatency</see>
+		///
 		public Int32 MaxDispatchLatency 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.EventSession.MaxDispatchLatency);}
+			get { return Element.GetProperty<Int32>(EventSession.MaxDispatchLatency);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSession.MaxEventSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.maxeventsize.aspx">EventSession.MaxEventSize</see>
+		///
 		public Int32 MaxEventSize 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.EventSession.MaxEventSize);}
+			get { return Element.GetProperty<Int32>(EventSession.MaxEventSize);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSession.MaxEventSizeUnit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.maxeventsizeunit.aspx">EventSession.MaxEventSizeUnit</see>
+		///
 		public MemoryUnit MaxEventSizeUnit 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<MemoryUnit>(Microsoft.SqlServer.Dac.Model.EventSession.MaxEventSizeUnit);}
+			get { return Element.GetProperty<MemoryUnit>(EventSession.MaxEventSizeUnit);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSession.MaxMemory"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.maxmemory.aspx">EventSession.MaxMemory</see>
+		///
 		public Int32 MaxMemory 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.EventSession.MaxMemory);}
+			get { return Element.GetProperty<Int32>(EventSession.MaxMemory);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSession.MaxMemoryUnit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.maxmemoryunit.aspx">EventSession.MaxMemoryUnit</see>
+		///
 		public MemoryUnit MaxMemoryUnit 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<MemoryUnit>(Microsoft.SqlServer.Dac.Model.EventSession.MaxMemoryUnit);}
+			get { return Element.GetProperty<MemoryUnit>(EventSession.MaxMemoryUnit);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSession.MemoryPartitionMode"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.memorypartitionmode.aspx">EventSession.MemoryPartitionMode</see>
+		///
 		public MemoryPartitionMode MemoryPartitionMode 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<MemoryPartitionMode>(Microsoft.SqlServer.Dac.Model.EventSession.MemoryPartitionMode);}
+			get { return Element.GetProperty<MemoryPartitionMode>(EventSession.MemoryPartitionMode);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSession.StartupState"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.startupstate.aspx">EventSession.StartupState</see>
+		///
 		public Boolean StartupState 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.EventSession.StartupState);}
+			get { return Element.GetProperty<Boolean>(EventSession.StartupState);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSession.TrackCausality"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.trackcausality.aspx">EventSession.TrackCausality</see>
+		///
 		public Boolean TrackCausality 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.EventSession.TrackCausality);}
+			get { return Element.GetProperty<Boolean>(EventSession.TrackCausality);}
 		}
 
-		//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.eventdefinitions.aspx">EventSession.EventDefinitions</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> EventDefinitions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.EventSession.EventDefinitions);
+				return Element.GetReferenced(EventSession.EventDefinitions);
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.eventtargets.aspx">EventSession.EventTargets</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> EventTargets 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.EventSession.EventTargets);
+				return Element.GetReferenced(EventSession.EventTargets);
 			}
 		}
-	
+
 }
-	public partial class EventSessionAction : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionAction"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessionaction.aspx">EventSessionAction</see>
+	///
+	public partial class TSqlEventSessionAction : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventSessionAction.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class EventSessionAction to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlEventSessionAction to adapt instances of <see cref="T:EventSessionAction"/>
 		/// </summary>
-		public EventSessionAction(TSqlObject obj)  : base(obj)
+		public TSqlEventSessionAction(TSqlObject obj)  : base(obj, EventSessionAction.TypeClass)
 		{
 		}
 
@@ -3263,33 +4822,51 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionAction.ActionName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessionaction.actionname.aspx">EventSessionAction.ActionName</see>
+		///
 		public String ActionName 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.EventSessionAction.ActionName);}
+			get { return Element.GetProperty<String>(EventSessionAction.ActionName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionAction.EventModuleGuid"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessionaction.eventmoduleguid.aspx">EventSessionAction.EventModuleGuid</see>
+		///
 		public String EventModuleGuid 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.EventSessionAction.EventModuleGuid);}
+			get { return Element.GetProperty<String>(EventSessionAction.EventModuleGuid);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionAction.EventPackageName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessionaction.eventpackagename.aspx">EventSessionAction.EventPackageName</see>
+		///
 		public String EventPackageName 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.EventSessionAction.EventPackageName);}
+			get { return Element.GetProperty<String>(EventSessionAction.EventPackageName);}
 		}
 
 
 }
-	public partial class EventSessionDefinitions : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionDefinitions"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiondefinitions.aspx">EventSessionDefinitions</see>
+	///
+	public partial class TSqlEventSessionDefinitions : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventSessionDefinitions.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class EventSessionDefinitions to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlEventSessionDefinitions to adapt instances of <see cref="T:EventSessionDefinitions"/>
 		/// </summary>
-		public EventSessionDefinitions(TSqlObject obj)  : base(obj)
+		public TSqlEventSessionDefinitions(TSqlObject obj)  : base(obj, EventSessionDefinitions.TypeClass)
 		{
 		}
 
@@ -3297,55 +4874,85 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionDefinitions.EventModuleGuid"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiondefinitions.eventmoduleguid.aspx">EventSessionDefinitions.EventModuleGuid</see>
+		///
 		public String EventModuleGuid 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.EventSessionDefinitions.EventModuleGuid);}
+			get { return Element.GetProperty<String>(EventSessionDefinitions.EventModuleGuid);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionDefinitions.EventName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiondefinitions.eventname.aspx">EventSessionDefinitions.EventName</see>
+		///
 		public String EventName 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.EventSessionDefinitions.EventName);}
+			get { return Element.GetProperty<String>(EventSessionDefinitions.EventName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionDefinitions.EventPackageName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiondefinitions.eventpackagename.aspx">EventSessionDefinitions.EventPackageName</see>
+		///
 		public String EventPackageName 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.EventSessionDefinitions.EventPackageName);}
+			get { return Element.GetProperty<String>(EventSessionDefinitions.EventPackageName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionDefinitions.WhereExpression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiondefinitions.whereexpression.aspx">EventSessionDefinitions.WhereExpression</see>
+		///
 		public String WhereExpression 
 		{
-		// Supported platforms = 26
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.EventSessionDefinitions.WhereExpression);}
+			get { return (String)Element.GetProperty(EventSessionDefinitions.WhereExpression);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.EventSessionAction> Actions 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventSessionAction"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiondefinitions.actions.aspx">EventSessionDefinitions.Actions</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventSessionAction> Actions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.EventSessionDefinitions.Actions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.EventSessionAction)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(EventSessionDefinitions.Actions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventSessionAction)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiondefinitions.attributesettings.aspx">EventSessionDefinitions.AttributeSettings</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> AttributeSettings 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.EventSessionDefinitions.AttributeSettings);
+				return Element.GetReferenced(EventSessionDefinitions.AttributeSettings);
 			}
 		}
-	
+
 }
-	public partial class EventSessionSetting : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionSetting"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessionsetting.aspx">EventSessionSetting</see>
+	///
+	public partial class TSqlEventSessionSetting : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventSessionSetting.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class EventSessionSetting to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlEventSessionSetting to adapt instances of <see cref="T:EventSessionSetting"/>
 		/// </summary>
-		public EventSessionSetting(TSqlObject obj)  : base(obj)
+		public TSqlEventSessionSetting(TSqlObject obj)  : base(obj, EventSessionSetting.TypeClass)
 		{
 		}
 
@@ -3353,27 +4960,41 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionSetting.SettingName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessionsetting.settingname.aspx">EventSessionSetting.SettingName</see>
+		///
 		public String SettingName 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.EventSessionSetting.SettingName);}
+			get { return Element.GetProperty<String>(EventSessionSetting.SettingName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionSetting.SettingValue"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessionsetting.settingvalue.aspx">EventSessionSetting.SettingValue</see>
+		///
 		public String SettingValue 
 		{
-		// Supported platforms = 26
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.EventSessionSetting.SettingValue);}
+			get { return (String)Element.GetProperty(EventSessionSetting.SettingValue);}
 		}
 
 
 }
-	public partial class EventSessionTarget : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionTarget"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiontarget.aspx">EventSessionTarget</see>
+	///
+	public partial class TSqlEventSessionTarget : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventSessionTarget.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class EventSessionTarget to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlEventSessionTarget to adapt instances of <see cref="T:EventSessionTarget"/>
 		/// </summary>
-		public EventSessionTarget(TSqlObject obj)  : base(obj)
+		public TSqlEventSessionTarget(TSqlObject obj)  : base(obj, EventSessionTarget.TypeClass)
 		{
 		}
 
@@ -3381,41 +5002,63 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionTarget.EventModuleGuid"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiontarget.eventmoduleguid.aspx">EventSessionTarget.EventModuleGuid</see>
+		///
 		public String EventModuleGuid 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.EventSessionTarget.EventModuleGuid);}
+			get { return Element.GetProperty<String>(EventSessionTarget.EventModuleGuid);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionTarget.EventPackageName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiontarget.eventpackagename.aspx">EventSessionTarget.EventPackageName</see>
+		///
 		public String EventPackageName 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.EventSessionTarget.EventPackageName);}
+			get { return Element.GetProperty<String>(EventSessionTarget.EventPackageName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventSessionTarget.TargetName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiontarget.targetname.aspx">EventSessionTarget.TargetName</see>
+		///
 		public String TargetName 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.EventSessionTarget.TargetName);}
+			get { return Element.GetProperty<String>(EventSessionTarget.TargetName);}
 		}
 
-		//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiontarget.parametersettings.aspx">EventSessionTarget.ParameterSettings</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ParameterSettings 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.EventSessionTarget.ParameterSettings);
+				return Element.GetReferenced(EventSessionTarget.ParameterSettings);
 			}
 		}
-	
+
 }
-	public partial class EventTypeSpecifier : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventTypeSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventtypespecifier.aspx">EventTypeSpecifier</see>
+	///
+	public partial class TSqlEventTypeSpecifier : TSqlModelElement	{
 		private static ModelTypeClass typeClass = EventTypeSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class EventTypeSpecifier to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlEventTypeSpecifier to adapt instances of <see cref="T:EventTypeSpecifier"/>
 		/// </summary>
-		public EventTypeSpecifier(TSqlObject obj)  : base(obj)
+		public TSqlEventTypeSpecifier(TSqlObject obj)  : base(obj, EventTypeSpecifier.TypeClass)
 		{
 		}
 
@@ -3423,27 +5066,41 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:EventTypeSpecifier.EventType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventtypespecifier.eventtype.aspx">EventTypeSpecifier.EventType</see>
+		///
 		public EventType EventType 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<EventType>(Microsoft.SqlServer.Dac.Model.EventTypeSpecifier.EventType);}
+			get { return Element.GetProperty<EventType>(EventTypeSpecifier.EventType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:EventTypeSpecifier.Order"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventtypespecifier.order.aspx">EventTypeSpecifier.Order</see>
+		///
 		public OrderRestriction Order 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<OrderRestriction>(Microsoft.SqlServer.Dac.Model.EventTypeSpecifier.Order);}
+			get { return Element.GetProperty<OrderRestriction>(EventTypeSpecifier.Order);}
 		}
 
 
 }
-	public partial class ExtendedProcedure : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ExtendedProcedure"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.aspx">ExtendedProcedure</see>
+	///
+	public partial class TSqlExtendedProcedure : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ExtendedProcedure.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ExtendedProcedure to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlExtendedProcedure to adapt instances of <see cref="T:ExtendedProcedure"/>
 		/// </summary>
-		public ExtendedProcedure(TSqlObject obj)  : base(obj)
+		public TSqlExtendedProcedure(TSqlObject obj)  : base(obj, ExtendedProcedure.TypeClass)
 		{
 		}
 
@@ -3451,71 +5108,109 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ExtendedProcedure.ExeccuteAsCaller"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.execcuteascaller.aspx">ExtendedProcedure.ExeccuteAsCaller</see>
+		///
 		public Boolean ExeccuteAsCaller 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ExtendedProcedure.ExeccuteAsCaller);}
+			get { return Element.GetProperty<Boolean>(ExtendedProcedure.ExeccuteAsCaller);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ExtendedProcedure.ExecuteAsOwner"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.executeasowner.aspx">ExtendedProcedure.ExecuteAsOwner</see>
+		///
 		public Boolean ExecuteAsOwner 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ExtendedProcedure.ExecuteAsOwner);}
+			get { return Element.GetProperty<Boolean>(ExtendedProcedure.ExecuteAsOwner);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ExtendedProcedure.ExecuteAsSelf"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.executeasself.aspx">ExtendedProcedure.ExecuteAsSelf</see>
+		///
 		public Boolean ExecuteAsSelf 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ExtendedProcedure.ExecuteAsSelf);}
+			get { return Element.GetProperty<Boolean>(ExtendedProcedure.ExecuteAsSelf);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ExtendedProcedure.WithEncryption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.withencryption.aspx">ExtendedProcedure.WithEncryption</see>
+		///
 		public Boolean WithEncryption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ExtendedProcedure.WithEncryption);}
+			get { return Element.GetProperty<Boolean>(ExtendedProcedure.WithEncryption);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Login> Login 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.login.aspx">ExtendedProcedure.Login</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ExtendedProcedure.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Login)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ExtendedProcedure.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter> Parameters 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.parameters.aspx">ExtendedProcedure.Parameters</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ExtendedProcedure.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ExtendedProcedure.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.schema.aspx">ExtendedProcedure.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ExtendedProcedure.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ExtendedProcedure.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.User> User 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.user.aspx">ExtendedProcedure.User</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ExtendedProcedure.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.User)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ExtendedProcedure.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class ExtendedProperty : TSqlModelElement,IExtendedPropertyHost	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ExtendedProperty"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedproperty.aspx">ExtendedProperty</see>
+	///
+	public partial class TSqlExtendedProperty : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = ExtendedProperty.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ExtendedProperty to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlExtendedProperty to adapt instances of <see cref="T:ExtendedProperty"/>
 		/// </summary>
-		public ExtendedProperty(TSqlObject obj)  : base(obj)
+		public TSqlExtendedProperty(TSqlObject obj)  : base(obj, ExtendedProperty.TypeClass)
 		{
 		}
 
@@ -3523,29 +5218,43 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ExtendedProperty.Value"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedproperty.value.aspx">ExtendedProperty.Value</see>
+		///
 		public String Value 
 		{
-		// Supported platforms = 27
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.ExtendedProperty.Value);}
+			get { return (String)Element.GetProperty(ExtendedProperty.Value);}
 		}
 
-		//Hierarchical
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedproperty.host.aspx">ExtendedProperty.Host</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ExtendedProperty.Host).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost>();
+				return Element.GetReferenced(ExtendedProperty.Host).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost>();
 			}
 		}
-	
+
 }
-	public partial class SqlFile : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SqlFile"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.aspx">SqlFile</see>
+	///
+	public partial class TSqlSqlFile : TSqlModelElement	{
 		private static ModelTypeClass typeClass = SqlFile.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class SqlFile to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSqlFile to adapt instances of <see cref="T:SqlFile"/>
 		/// </summary>
-		public SqlFile(TSqlObject obj)  : base(obj)
+		public TSqlSqlFile(TSqlObject obj)  : base(obj, SqlFile.TypeClass)
 		{
 		}
 
@@ -3553,83 +5262,133 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:SqlFile.FileGrowth"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.filegrowth.aspx">SqlFile.FileGrowth</see>
+		///
 		public Int32? FileGrowth 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.SqlFile.FileGrowth);}
+			get { return Element.GetProperty<Int32?>(SqlFile.FileGrowth);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SqlFile.FileGrowthUnit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.filegrowthunit.aspx">SqlFile.FileGrowthUnit</see>
+		///
 		public MemoryUnit FileGrowthUnit 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<MemoryUnit>(Microsoft.SqlServer.Dac.Model.SqlFile.FileGrowthUnit);}
+			get { return Element.GetProperty<MemoryUnit>(SqlFile.FileGrowthUnit);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SqlFile.FileName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.filename.aspx">SqlFile.FileName</see>
+		///
 		public String FileName 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SqlFile.FileName);}
+			get { return Element.GetProperty<String>(SqlFile.FileName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SqlFile.IsLogFile"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.islogfile.aspx">SqlFile.IsLogFile</see>
+		///
 		public Boolean IsLogFile 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SqlFile.IsLogFile);}
+			get { return Element.GetProperty<Boolean>(SqlFile.IsLogFile);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SqlFile.MaxSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.maxsize.aspx">SqlFile.MaxSize</see>
+		///
 		public Int32? MaxSize 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.SqlFile.MaxSize);}
+			get { return Element.GetProperty<Int32?>(SqlFile.MaxSize);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SqlFile.MaxSizeUnit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.maxsizeunit.aspx">SqlFile.MaxSizeUnit</see>
+		///
 		public MemoryUnit MaxSizeUnit 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<MemoryUnit>(Microsoft.SqlServer.Dac.Model.SqlFile.MaxSizeUnit);}
+			get { return Element.GetProperty<MemoryUnit>(SqlFile.MaxSizeUnit);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SqlFile.Offline"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.offline.aspx">SqlFile.Offline</see>
+		///
 		public Boolean Offline 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SqlFile.Offline);}
+			get { return Element.GetProperty<Boolean>(SqlFile.Offline);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SqlFile.Size"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.size.aspx">SqlFile.Size</see>
+		///
 		public Int32? Size 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.SqlFile.Size);}
+			get { return Element.GetProperty<Int32?>(SqlFile.Size);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SqlFile.SizeUnit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.sizeunit.aspx">SqlFile.SizeUnit</see>
+		///
 		public MemoryUnit SizeUnit 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<MemoryUnit>(Microsoft.SqlServer.Dac.Model.SqlFile.SizeUnit);}
+			get { return Element.GetProperty<MemoryUnit>(SqlFile.SizeUnit);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SqlFile.Unlimited"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.unlimited.aspx">SqlFile.Unlimited</see>
+		///
 		public Boolean Unlimited 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SqlFile.Unlimited);}
+			get { return Element.GetProperty<Boolean>(SqlFile.Unlimited);}
 		}
 
-		//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroup 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.filegroup.aspx">SqlFile.Filegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SqlFile.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SqlFile.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Filegroup : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Filegroup"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filegroup.aspx">Filegroup</see>
+	///
+	public partial class TSqlFilegroup : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Filegroup.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Filegroup to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlFilegroup to adapt instances of <see cref="T:Filegroup"/>
 		/// </summary>
-		public Filegroup(TSqlObject obj)  : base(obj)
+		public TSqlFilegroup(TSqlObject obj)  : base(obj, Filegroup.TypeClass)
 		{
 		}
 
@@ -3637,33 +5396,51 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Filegroup.ContainsFileStream"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filegroup.containsfilestream.aspx">Filegroup.ContainsFileStream</see>
+		///
 		public Boolean ContainsFileStream 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Filegroup.ContainsFileStream);}
+			get { return Element.GetProperty<Boolean>(Filegroup.ContainsFileStream);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Filegroup.ContainsMemoryOptimizedData"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filegroup.containsmemoryoptimizeddata.aspx">Filegroup.ContainsMemoryOptimizedData</see>
+		///
 		public Boolean ContainsMemoryOptimizedData 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Filegroup.ContainsMemoryOptimizedData);}
+			get { return Element.GetProperty<Boolean>(Filegroup.ContainsMemoryOptimizedData);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Filegroup.ReadOnly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filegroup.readonly.aspx">Filegroup.ReadOnly</see>
+		///
 		public Boolean ReadOnly 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Filegroup.ReadOnly);}
+			get { return Element.GetProperty<Boolean>(Filegroup.ReadOnly);}
 		}
 
 
 }
-	public partial class ForeignKeyConstraint : TSqlModelElement,IExtendedPropertyHost	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ForeignKeyConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.aspx">ForeignKeyConstraint</see>
+	///
+	public partial class TSqlForeignKeyConstraint : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = ForeignKeyConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ForeignKeyConstraint to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlForeignKeyConstraint to adapt instances of <see cref="T:ForeignKeyConstraint"/>
 		/// </summary>
-		public ForeignKeyConstraint(TSqlObject obj)  : base(obj)
+		public TSqlForeignKeyConstraint(TSqlObject obj)  : base(obj, ForeignKeyConstraint.TypeClass)
 		{
 		}
 
@@ -3671,71 +5448,109 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ForeignKeyConstraint.DeleteAction"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.deleteaction.aspx">ForeignKeyConstraint.DeleteAction</see>
+		///
 		public ForeignKeyAction DeleteAction 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<ForeignKeyAction>(Microsoft.SqlServer.Dac.Model.ForeignKeyConstraint.DeleteAction);}
+			get { return Element.GetProperty<ForeignKeyAction>(ForeignKeyConstraint.DeleteAction);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ForeignKeyConstraint.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.disabled.aspx">ForeignKeyConstraint.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ForeignKeyConstraint.Disabled);}
+			get { return Element.GetProperty<Boolean>(ForeignKeyConstraint.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ForeignKeyConstraint.NotForReplication"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.notforreplication.aspx">ForeignKeyConstraint.NotForReplication</see>
+		///
 		public Boolean NotForReplication 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ForeignKeyConstraint.NotForReplication);}
+			get { return Element.GetProperty<Boolean>(ForeignKeyConstraint.NotForReplication);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ForeignKeyConstraint.UpdateAction"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.updateaction.aspx">ForeignKeyConstraint.UpdateAction</see>
+		///
 		public ForeignKeyAction UpdateAction 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<ForeignKeyAction>(Microsoft.SqlServer.Dac.Model.ForeignKeyConstraint.UpdateAction);}
+			get { return Element.GetProperty<ForeignKeyAction>(ForeignKeyConstraint.UpdateAction);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.columns.aspx">ForeignKeyConstraint.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ForeignKeyConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ForeignKeyConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> ForeignColumns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.foreigncolumns.aspx">ForeignKeyConstraint.ForeignColumns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> ForeignColumns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ForeignKeyConstraint.ForeignColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ForeignKeyConstraint.ForeignColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Table> ForeignTable 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.foreigntable.aspx">ForeignKeyConstraint.ForeignTable</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> ForeignTable 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ForeignKeyConstraint.ForeignTable).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Table)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ForeignKeyConstraint.ForeignTable).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ExtendedProperty> Host 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.host.aspx">ForeignKeyConstraint.Host</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ForeignKeyConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ExtendedProperty)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ForeignKeyConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class FullTextCatalog : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextCatalog"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextcatalog.aspx">FullTextCatalog</see>
+	///
+	public partial class TSqlFullTextCatalog : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = FullTextCatalog.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class FullTextCatalog to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlFullTextCatalog to adapt instances of <see cref="T:FullTextCatalog"/>
 		/// </summary>
-		public FullTextCatalog(TSqlObject obj)  : base(obj)
+		public TSqlFullTextCatalog(TSqlObject obj)  : base(obj, FullTextCatalog.TypeClass)
 		{
 		}
 
@@ -3743,49 +5558,75 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:FullTextCatalog.AccentSensitivity"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextcatalog.accentsensitivity.aspx">FullTextCatalog.AccentSensitivity</see>
+		///
 		public Boolean? AccentSensitivity 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.FullTextCatalog.AccentSensitivity);}
+			get { return Element.GetProperty<Boolean?>(FullTextCatalog.AccentSensitivity);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FullTextCatalog.IsDefault"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextcatalog.isdefault.aspx">FullTextCatalog.IsDefault</see>
+		///
 		public Boolean IsDefault 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.FullTextCatalog.IsDefault);}
+			get { return Element.GetProperty<Boolean>(FullTextCatalog.IsDefault);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FullTextCatalog.Path"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextcatalog.path.aspx">FullTextCatalog.Path</see>
+		///
 		public String Path 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.FullTextCatalog.Path);}
+			get { return Element.GetProperty<String>(FullTextCatalog.Path);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextcatalog.authorizer.aspx">FullTextCatalog.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextCatalog.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(FullTextCatalog.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextcatalog.filegroup.aspx">FullTextCatalog.Filegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextCatalog.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FullTextCatalog.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class FullTextIndex : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.aspx">FullTextIndex</see>
+	///
+	public partial class TSqlFullTextIndex : TSqlModelElement	{
 		private static ModelTypeClass typeClass = FullTextIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class FullTextIndex to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlFullTextIndex to adapt instances of <see cref="T:FullTextIndex"/>
 		/// </summary>
-		public FullTextIndex(TSqlObject obj)  : base(obj)
+		public TSqlFullTextIndex(TSqlObject obj)  : base(obj, FullTextIndex.TypeClass)
 		{
 		}
 
@@ -3793,101 +5634,155 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:FullTextIndex.ChangeTracking"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.changetracking.aspx">FullTextIndex.ChangeTracking</see>
+		///
 		public ChangeTrackingOption ChangeTracking 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<ChangeTrackingOption>(Microsoft.SqlServer.Dac.Model.FullTextIndex.ChangeTracking);}
+			get { return Element.GetProperty<ChangeTrackingOption>(FullTextIndex.ChangeTracking);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FullTextIndex.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.disabled.aspx">FullTextIndex.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.FullTextIndex.Disabled);}
+			get { return Element.GetProperty<Boolean>(FullTextIndex.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FullTextIndex.Replicated"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.replicated.aspx">FullTextIndex.Replicated</see>
+		///
 		public Boolean Replicated 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.FullTextIndex.Replicated);}
+			get { return Element.GetProperty<Boolean>(FullTextIndex.Replicated);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FullTextIndex.StopListOff"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.stoplistoff.aspx">FullTextIndex.StopListOff</see>
+		///
 		public Boolean StopListOff 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.FullTextIndex.StopListOff);}
+			get { return Element.GetProperty<Boolean>(FullTextIndex.StopListOff);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FullTextIndex.UseSystemStopList"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.usesystemstoplist.aspx">FullTextIndex.UseSystemStopList</see>
+		///
 		public Boolean UseSystemStopList 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.FullTextIndex.UseSystemStopList);}
+			get { return Element.GetProperty<Boolean>(FullTextIndex.UseSystemStopList);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.catalog.aspx">FullTextIndex.Catalog</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Catalog 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextIndex.Catalog);
+				return Element.GetReferenced(FullTextIndex.Catalog);
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.columns.aspx">FullTextIndex.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextIndex.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FullTextIndex.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.filegroup.aspx">FullTextIndex.Filegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextIndex.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FullTextIndex.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> IndexedObject 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.indexedobject.aspx">FullTextIndex.IndexedObject</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource>();
+				return Element.GetReferenced(FullTextIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.SearchPropertyList> SearchPropertyList 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.searchpropertylist.aspx">FullTextIndex.SearchPropertyList</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList> SearchPropertyList 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextIndex.SearchPropertyList).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.SearchPropertyList)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FullTextIndex.SearchPropertyList).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.stoplist.aspx">FullTextIndex.StopList</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> StopList 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextIndex.StopList);
+				return Element.GetReferenced(FullTextIndex.StopList);
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.uniqueindexname.aspx">FullTextIndex.UniqueIndexName</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> UniqueIndexName 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextIndex.UniqueIndexName);
+				return Element.GetReferenced(FullTextIndex.UniqueIndexName);
 			}
 		}
-	
+
 }
-	public partial class FullTextIndexColumnSpecifier : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextIndexColumnSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindexcolumnspecifier.aspx">FullTextIndexColumnSpecifier</see>
+	///
+	public partial class TSqlFullTextIndexColumnSpecifier : TSqlModelElement	{
 		private static ModelTypeClass typeClass = FullTextIndexColumnSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class FullTextIndexColumnSpecifier to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlFullTextIndexColumnSpecifier to adapt instances of <see cref="T:FullTextIndexColumnSpecifier"/>
 		/// </summary>
-		public FullTextIndexColumnSpecifier(TSqlObject obj)  : base(obj)
+		public TSqlFullTextIndexColumnSpecifier(TSqlObject obj)  : base(obj, FullTextIndexColumnSpecifier.TypeClass)
 		{
 		}
 
@@ -3895,43 +5790,65 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:FullTextIndexColumnSpecifier.LanguageId"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindexcolumnspecifier.languageid.aspx">FullTextIndexColumnSpecifier.LanguageId</see>
+		///
 		public Int32? LanguageId 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.FullTextIndexColumnSpecifier.LanguageId);}
+			get { return Element.GetProperty<Int32?>(FullTextIndexColumnSpecifier.LanguageId);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FullTextIndexColumnSpecifier.PartOfStatisticalSemantics"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindexcolumnspecifier.partofstatisticalsemantics.aspx">FullTextIndexColumnSpecifier.PartOfStatisticalSemantics</see>
+		///
 		public Boolean PartOfStatisticalSemantics 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.FullTextIndexColumnSpecifier.PartOfStatisticalSemantics);}
+			get { return Element.GetProperty<Boolean>(FullTextIndexColumnSpecifier.PartOfStatisticalSemantics);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Column 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindexcolumnspecifier.column.aspx">FullTextIndexColumnSpecifier.Column</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Column 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextIndexColumnSpecifier.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FullTextIndexColumnSpecifier.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> TypeColumn 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindexcolumnspecifier.typecolumn.aspx">FullTextIndexColumnSpecifier.TypeColumn</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> TypeColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextIndexColumnSpecifier.TypeColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FullTextIndexColumnSpecifier.TypeColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class FullTextStopList : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextStopList"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextstoplist.aspx">FullTextStopList</see>
+	///
+	public partial class TSqlFullTextStopList : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = FullTextStopList.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class FullTextStopList to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlFullTextStopList to adapt instances of <see cref="T:FullTextStopList"/>
 		/// </summary>
-		public FullTextStopList(TSqlObject obj)  : base(obj)
+		public TSqlFullTextStopList(TSqlObject obj)  : base(obj, FullTextStopList.TypeClass)
 		{
 		}
 
@@ -3939,23 +5856,33 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextstoplist.authorizer.aspx">FullTextStopList.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FullTextStopList.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(FullTextStopList.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-	
+
 }
-	public partial class HttpProtocolSpecifier : TSqlModelElement,IProtocolSpecifier	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:HttpProtocolSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.aspx">HttpProtocolSpecifier</see>
+	///
+	public partial class TSqlHttpProtocolSpecifier : TSqlModelElement,IProtocolSpecifier	{
 		private static ModelTypeClass typeClass = HttpProtocolSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class HttpProtocolSpecifier to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlHttpProtocolSpecifier to adapt instances of <see cref="T:HttpProtocolSpecifier"/>
 		/// </summary>
-		public HttpProtocolSpecifier(TSqlObject obj)  : base(obj)
+		public TSqlHttpProtocolSpecifier(TSqlObject obj)  : base(obj, HttpProtocolSpecifier.TypeClass)
 		{
 		}
 
@@ -3963,81 +5890,131 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:HttpProtocolSpecifier.AuthenticationMode"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.authenticationmode.aspx">HttpProtocolSpecifier.AuthenticationMode</see>
+		///
 		public AuthenticationModes AuthenticationMode 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<AuthenticationModes>(Microsoft.SqlServer.Dac.Model.HttpProtocolSpecifier.AuthenticationMode);}
+			get { return Element.GetProperty<AuthenticationModes>(HttpProtocolSpecifier.AuthenticationMode);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:HttpProtocolSpecifier.AuthenticationRealm"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.authenticationrealm.aspx">HttpProtocolSpecifier.AuthenticationRealm</see>
+		///
 		public String AuthenticationRealm 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.HttpProtocolSpecifier.AuthenticationRealm);}
+			get { return Element.GetProperty<String>(HttpProtocolSpecifier.AuthenticationRealm);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:HttpProtocolSpecifier.ClearPort"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.clearport.aspx">HttpProtocolSpecifier.ClearPort</see>
+		///
 		public Int32? ClearPort 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.HttpProtocolSpecifier.ClearPort);}
+			get { return Element.GetProperty<Int32?>(HttpProtocolSpecifier.ClearPort);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:HttpProtocolSpecifier.CompressionEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.compressionenabled.aspx">HttpProtocolSpecifier.CompressionEnabled</see>
+		///
 		public Boolean CompressionEnabled 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.HttpProtocolSpecifier.CompressionEnabled);}
+			get { return Element.GetProperty<Boolean>(HttpProtocolSpecifier.CompressionEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:HttpProtocolSpecifier.DefaultLogonDomain"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.defaultlogondomain.aspx">HttpProtocolSpecifier.DefaultLogonDomain</see>
+		///
 		public String DefaultLogonDomain 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.HttpProtocolSpecifier.DefaultLogonDomain);}
+			get { return Element.GetProperty<String>(HttpProtocolSpecifier.DefaultLogonDomain);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:HttpProtocolSpecifier.ListeningOnAllNoneReservedSites"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.listeningonallnonereservedsites.aspx">HttpProtocolSpecifier.ListeningOnAllNoneReservedSites</see>
+		///
 		public Boolean ListeningOnAllNoneReservedSites 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.HttpProtocolSpecifier.ListeningOnAllNoneReservedSites);}
+			get { return Element.GetProperty<Boolean>(HttpProtocolSpecifier.ListeningOnAllNoneReservedSites);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:HttpProtocolSpecifier.ListeningOnAllSites"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.listeningonallsites.aspx">HttpProtocolSpecifier.ListeningOnAllSites</see>
+		///
 		public Boolean ListeningOnAllSites 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.HttpProtocolSpecifier.ListeningOnAllSites);}
+			get { return Element.GetProperty<Boolean>(HttpProtocolSpecifier.ListeningOnAllSites);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:HttpProtocolSpecifier.Path"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.path.aspx">HttpProtocolSpecifier.Path</see>
+		///
 		public String Path 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.HttpProtocolSpecifier.Path);}
+			get { return Element.GetProperty<String>(HttpProtocolSpecifier.Path);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:HttpProtocolSpecifier.Ports"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.ports.aspx">HttpProtocolSpecifier.Ports</see>
+		///
 		public HttpPorts Ports 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<HttpPorts>(Microsoft.SqlServer.Dac.Model.HttpProtocolSpecifier.Ports);}
+			get { return Element.GetProperty<HttpPorts>(HttpProtocolSpecifier.Ports);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:HttpProtocolSpecifier.SslPort"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.sslport.aspx">HttpProtocolSpecifier.SslPort</see>
+		///
 		public Int32? SslPort 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.HttpProtocolSpecifier.SslPort);}
+			get { return Element.GetProperty<Int32?>(HttpProtocolSpecifier.SslPort);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:HttpProtocolSpecifier.Website"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.website.aspx">HttpProtocolSpecifier.Website</see>
+		///
 		public String Website 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.HttpProtocolSpecifier.Website);}
+			get { return Element.GetProperty<String>(HttpProtocolSpecifier.Website);}
 		}
 
 
 }
-	public partial class LinkedServer : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:LinkedServer"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.aspx">LinkedServer</see>
+	///
+	public partial class TSqlLinkedServer : TSqlModelElement	{
 		private static ModelTypeClass typeClass = LinkedServer.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class LinkedServer to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlLinkedServer to adapt instances of <see cref="T:LinkedServer"/>
 		/// </summary>
-		public LinkedServer(TSqlObject obj)  : base(obj)
+		public TSqlLinkedServer(TSqlObject obj)  : base(obj, LinkedServer.TypeClass)
 		{
 		}
 
@@ -4045,129 +6022,211 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.Catalog"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.catalog.aspx">LinkedServer.Catalog</see>
+		///
 		public String Catalog 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.LinkedServer.Catalog);}
+			get { return Element.GetProperty<String>(LinkedServer.Catalog);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.CollationCompatible"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.collationcompatible.aspx">LinkedServer.CollationCompatible</see>
+		///
 		public Boolean CollationCompatible 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.LinkedServer.CollationCompatible);}
+			get { return Element.GetProperty<Boolean>(LinkedServer.CollationCompatible);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.CollationName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.collationname.aspx">LinkedServer.CollationName</see>
+		///
 		public String CollationName 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.LinkedServer.CollationName);}
+			get { return Element.GetProperty<String>(LinkedServer.CollationName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.ConnectTimeout"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.connecttimeout.aspx">LinkedServer.ConnectTimeout</see>
+		///
 		public Int32 ConnectTimeout 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.LinkedServer.ConnectTimeout);}
+			get { return Element.GetProperty<Int32>(LinkedServer.ConnectTimeout);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.DataAccess"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.dataaccess.aspx">LinkedServer.DataAccess</see>
+		///
 		public Boolean DataAccess 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.LinkedServer.DataAccess);}
+			get { return Element.GetProperty<Boolean>(LinkedServer.DataAccess);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.DataSource"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.datasource.aspx">LinkedServer.DataSource</see>
+		///
 		public String DataSource 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.LinkedServer.DataSource);}
+			get { return Element.GetProperty<String>(LinkedServer.DataSource);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.IsDistributor"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.isdistributor.aspx">LinkedServer.IsDistributor</see>
+		///
 		public Boolean IsDistributor 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.LinkedServer.IsDistributor);}
+			get { return Element.GetProperty<Boolean>(LinkedServer.IsDistributor);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.IsPublisher"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.ispublisher.aspx">LinkedServer.IsPublisher</see>
+		///
 		public Boolean IsPublisher 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.LinkedServer.IsPublisher);}
+			get { return Element.GetProperty<Boolean>(LinkedServer.IsPublisher);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.IsSubscriber"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.issubscriber.aspx">LinkedServer.IsSubscriber</see>
+		///
 		public Boolean IsSubscriber 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.LinkedServer.IsSubscriber);}
+			get { return Element.GetProperty<Boolean>(LinkedServer.IsSubscriber);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.LazySchemaValidationEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.lazyschemavalidationenabled.aspx">LinkedServer.LazySchemaValidationEnabled</see>
+		///
 		public Boolean LazySchemaValidationEnabled 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.LinkedServer.LazySchemaValidationEnabled);}
+			get { return Element.GetProperty<Boolean>(LinkedServer.LazySchemaValidationEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.Location"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.location.aspx">LinkedServer.Location</see>
+		///
 		public String Location 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.LinkedServer.Location);}
+			get { return Element.GetProperty<String>(LinkedServer.Location);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.ProductName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.productname.aspx">LinkedServer.ProductName</see>
+		///
 		public String ProductName 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.LinkedServer.ProductName);}
+			get { return Element.GetProperty<String>(LinkedServer.ProductName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.ProviderName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.providername.aspx">LinkedServer.ProviderName</see>
+		///
 		public String ProviderName 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.LinkedServer.ProviderName);}
+			get { return Element.GetProperty<String>(LinkedServer.ProviderName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.ProviderString"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.providerstring.aspx">LinkedServer.ProviderString</see>
+		///
 		public String ProviderString 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.LinkedServer.ProviderString);}
+			get { return Element.GetProperty<String>(LinkedServer.ProviderString);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.QueryTimeout"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.querytimeout.aspx">LinkedServer.QueryTimeout</see>
+		///
 		public Int32 QueryTimeout 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.LinkedServer.QueryTimeout);}
+			get { return Element.GetProperty<Int32>(LinkedServer.QueryTimeout);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.RemoteProcTransactionPromotionEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.remoteproctransactionpromotionenabled.aspx">LinkedServer.RemoteProcTransactionPromotionEnabled</see>
+		///
 		public Boolean RemoteProcTransactionPromotionEnabled 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.LinkedServer.RemoteProcTransactionPromotionEnabled);}
+			get { return Element.GetProperty<Boolean>(LinkedServer.RemoteProcTransactionPromotionEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.RpcEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.rpcenabled.aspx">LinkedServer.RpcEnabled</see>
+		///
 		public Boolean RpcEnabled 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.LinkedServer.RpcEnabled);}
+			get { return Element.GetProperty<Boolean>(LinkedServer.RpcEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.RpcOutEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.rpcoutenabled.aspx">LinkedServer.RpcOutEnabled</see>
+		///
 		public Boolean RpcOutEnabled 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.LinkedServer.RpcOutEnabled);}
+			get { return Element.GetProperty<Boolean>(LinkedServer.RpcOutEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServer.UseRemoteCollation"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.useremotecollation.aspx">LinkedServer.UseRemoteCollation</see>
+		///
 		public Boolean UseRemoteCollation 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.LinkedServer.UseRemoteCollation);}
+			get { return Element.GetProperty<Boolean>(LinkedServer.UseRemoteCollation);}
 		}
 
 
 }
-	public partial class LinkedServerLogin : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:LinkedServerLogin"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserverlogin.aspx">LinkedServerLogin</see>
+	///
+	public partial class TSqlLinkedServerLogin : TSqlModelElement	{
 		private static ModelTypeClass typeClass = LinkedServerLogin.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class LinkedServerLogin to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlLinkedServerLogin to adapt instances of <see cref="T:LinkedServerLogin"/>
 		/// </summary>
-		public LinkedServerLogin(TSqlObject obj)  : base(obj)
+		public TSqlLinkedServerLogin(TSqlObject obj)  : base(obj, LinkedServerLogin.TypeClass)
 		{
 		}
 
@@ -4175,49 +6234,75 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServerLogin.LinkedServerLoginName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserverlogin.linkedserverloginname.aspx">LinkedServerLogin.LinkedServerLoginName</see>
+		///
 		public String LinkedServerLoginName 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.LinkedServerLogin.LinkedServerLoginName);}
+			get { return Element.GetProperty<String>(LinkedServerLogin.LinkedServerLoginName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServerLogin.LinkedServerPassword"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserverlogin.linkedserverpassword.aspx">LinkedServerLogin.LinkedServerPassword</see>
+		///
 		public String LinkedServerPassword 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.LinkedServerLogin.LinkedServerPassword);}
+			get { return Element.GetProperty<String>(LinkedServerLogin.LinkedServerPassword);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:LinkedServerLogin.UseSelf"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserverlogin.useself.aspx">LinkedServerLogin.UseSelf</see>
+		///
 		public Boolean UseSelf 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.LinkedServerLogin.UseSelf);}
+			get { return Element.GetProperty<Boolean>(LinkedServerLogin.UseSelf);}
 		}
 
-		//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.LinkedServer> LinkedServer 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLinkedServer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserverlogin.linkedserver.aspx">LinkedServerLogin.LinkedServer</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLinkedServer> LinkedServer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.LinkedServerLogin.LinkedServer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.LinkedServer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(LinkedServerLogin.LinkedServer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLinkedServer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Login> LocalLogin 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserverlogin.locallogin.aspx">LinkedServerLogin.LocalLogin</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> LocalLogin 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.LinkedServerLogin.LocalLogin).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Login)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(LinkedServerLogin.LocalLogin).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Login : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Login"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.aspx">Login</see>
+	///
+	public partial class TSqlLogin : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Login.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Login to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlLogin to adapt instances of <see cref="T:Login"/>
 		/// </summary>
-		public Login(TSqlObject obj)  : base(obj)
+		public TSqlLogin(TSqlObject obj)  : base(obj, Login.TypeClass)
 		{
 		}
 
@@ -4225,105 +6310,167 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Login.CheckExpiration"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.checkexpiration.aspx">Login.CheckExpiration</see>
+		///
 		public Boolean CheckExpiration 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Login.CheckExpiration);}
+			get { return Element.GetProperty<Boolean>(Login.CheckExpiration);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Login.CheckPolicy"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.checkpolicy.aspx">Login.CheckPolicy</see>
+		///
 		public Boolean CheckPolicy 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Login.CheckPolicy);}
+			get { return Element.GetProperty<Boolean>(Login.CheckPolicy);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Login.DefaultDatabase"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.defaultdatabase.aspx">Login.DefaultDatabase</see>
+		///
 		public String DefaultDatabase 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Login.DefaultDatabase);}
+			get { return Element.GetProperty<String>(Login.DefaultDatabase);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Login.DefaultLanguage"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.defaultlanguage.aspx">Login.DefaultLanguage</see>
+		///
 		public String DefaultLanguage 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Login.DefaultLanguage);}
+			get { return Element.GetProperty<String>(Login.DefaultLanguage);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Login.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.disabled.aspx">Login.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Login.Disabled);}
+			get { return Element.GetProperty<Boolean>(Login.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Login.EncryptionOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.encryptionoption.aspx">Login.EncryptionOption</see>
+		///
 		public LoginEncryptionOption EncryptionOption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<LoginEncryptionOption>(Microsoft.SqlServer.Dac.Model.Login.EncryptionOption);}
+			get { return Element.GetProperty<LoginEncryptionOption>(Login.EncryptionOption);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Login.MappedToWindowsLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.mappedtowindowslogin.aspx">Login.MappedToWindowsLogin</see>
+		///
 		public Boolean MappedToWindowsLogin 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Login.MappedToWindowsLogin);}
+			get { return Element.GetProperty<Boolean>(Login.MappedToWindowsLogin);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Login.Password"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.password.aspx">Login.Password</see>
+		///
 		public String Password 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Login.Password);}
+			get { return Element.GetProperty<String>(Login.Password);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Login.PasswordHashed"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.passwordhashed.aspx">Login.PasswordHashed</see>
+		///
 		public Boolean PasswordHashed 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Login.PasswordHashed);}
+			get { return Element.GetProperty<Boolean>(Login.PasswordHashed);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Login.PasswordMustChange"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.passwordmustchange.aspx">Login.PasswordMustChange</see>
+		///
 		public Boolean PasswordMustChange 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Login.PasswordMustChange);}
+			get { return Element.GetProperty<Boolean>(Login.PasswordMustChange);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Login.Sid"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.sid.aspx">Login.Sid</see>
+		///
 		public String Sid 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Login.Sid);}
+			get { return Element.GetProperty<String>(Login.Sid);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.AsymmetricKey> AsymmetricKey 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.asymmetrickey.aspx">Login.AsymmetricKey</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey> AsymmetricKey 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Login.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.AsymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Login.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate> Certificate 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.certificate.aspx">Login.Certificate</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> Certificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Login.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Login.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Credential> Credential 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCredential"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.credential.aspx">Login.Credential</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCredential> Credential 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Login.Credential).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Credential)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Login.Credential).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCredential)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class MasterKey : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:MasterKey"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.masterkey.aspx">MasterKey</see>
+	///
+	public partial class TSqlMasterKey : TSqlModelElement	{
 		private static ModelTypeClass typeClass = MasterKey.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class MasterKey to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlMasterKey to adapt instances of <see cref="T:MasterKey"/>
 		/// </summary>
-		public MasterKey(TSqlObject obj)  : base(obj)
+		public TSqlMasterKey(TSqlObject obj)  : base(obj, MasterKey.TypeClass)
 		{
 		}
 
@@ -4331,21 +6478,31 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:MasterKey.Password"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.masterkey.password.aspx">MasterKey.Password</see>
+		///
 		public String Password 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.MasterKey.Password);}
+			get { return Element.GetProperty<String>(MasterKey.Password);}
 		}
 
 
 }
-	public partial class MessageType : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:MessageType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.messagetype.aspx">MessageType</see>
+	///
+	public partial class TSqlMessageType : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = MessageType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class MessageType to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlMessageType to adapt instances of <see cref="T:MessageType"/>
 		/// </summary>
-		public MessageType(TSqlObject obj)  : base(obj)
+		public TSqlMessageType(TSqlObject obj)  : base(obj, MessageType.TypeClass)
 		{
 		}
 
@@ -4353,37 +6510,55 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:MessageType.ValidationMethod"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.messagetype.validationmethod.aspx">MessageType.ValidationMethod</see>
+		///
 		public ValidationMethod ValidationMethod 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<ValidationMethod>(Microsoft.SqlServer.Dac.Model.MessageType.ValidationMethod);}
+			get { return Element.GetProperty<ValidationMethod>(MessageType.ValidationMethod);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.messagetype.authorizer.aspx">MessageType.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.MessageType.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(MessageType.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.XmlSchemaCollection> XmlSchemaCollection 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.messagetype.xmlschemacollection.aspx">MessageType.XmlSchemaCollection</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection> XmlSchemaCollection 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.MessageType.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.XmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(MessageType.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class PartitionFunction : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PartitionFunction"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionfunction.aspx">PartitionFunction</see>
+	///
+	public partial class TSqlPartitionFunction : TSqlModelElement	{
 		private static ModelTypeClass typeClass = PartitionFunction.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class PartitionFunction to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlPartitionFunction to adapt instances of <see cref="T:PartitionFunction"/>
 		/// </summary>
-		public PartitionFunction(TSqlObject obj)  : base(obj)
+		public TSqlPartitionFunction(TSqlObject obj)  : base(obj, PartitionFunction.TypeClass)
 		{
 		}
 
@@ -4391,37 +6566,55 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:PartitionFunction.Range"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionfunction.range.aspx">PartitionFunction.Range</see>
+		///
 		public PartitionRange Range 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<PartitionRange>(Microsoft.SqlServer.Dac.Model.PartitionFunction.Range);}
+			get { return Element.GetProperty<PartitionRange>(PartitionFunction.Range);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionValue> BoundaryValues 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionValue"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionfunction.boundaryvalues.aspx">PartitionFunction.BoundaryValues</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionValue> BoundaryValues 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PartitionFunction.BoundaryValues).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionValue)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PartitionFunction.BoundaryValues).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionValue)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionfunction.parametertype.aspx">PartitionFunction.ParameterType</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ParameterType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PartitionFunction.ParameterType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(PartitionFunction.ParameterType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
 			}
 		}
-	
+
 }
-	public partial class PartitionScheme : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PartitionScheme"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionscheme.aspx">PartitionScheme</see>
+	///
+	public partial class TSqlPartitionScheme : TSqlModelElement	{
 		private static ModelTypeClass typeClass = PartitionScheme.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class PartitionScheme to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlPartitionScheme to adapt instances of <see cref="T:PartitionScheme"/>
 		/// </summary>
-		public PartitionScheme(TSqlObject obj)  : base(obj)
+		public TSqlPartitionScheme(TSqlObject obj)  : base(obj, PartitionScheme.TypeClass)
 		{
 		}
 
@@ -4429,37 +6622,55 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:PartitionScheme.AllToOneFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionscheme.alltoonefilegroup.aspx">PartitionScheme.AllToOneFilegroup</see>
+		///
 		public Boolean AllToOneFilegroup 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PartitionScheme.AllToOneFilegroup);}
+			get { return Element.GetProperty<Boolean>(PartitionScheme.AllToOneFilegroup);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroups 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionscheme.filegroups.aspx">PartitionScheme.Filegroups</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroups 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PartitionScheme.Filegroups).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PartitionScheme.Filegroups).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionFunction> PartitionFunction 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionFunction"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionscheme.partitionfunction.aspx">PartitionScheme.PartitionFunction</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionFunction> PartitionFunction 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PartitionScheme.PartitionFunction).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionFunction)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PartitionScheme.PartitionFunction).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionFunction)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class PartitionValue : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PartitionValue"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionvalue.aspx">PartitionValue</see>
+	///
+	public partial class TSqlPartitionValue : TSqlModelElement	{
 		private static ModelTypeClass typeClass = PartitionValue.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class PartitionValue to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlPartitionValue to adapt instances of <see cref="T:PartitionValue"/>
 		/// </summary>
-		public PartitionValue(TSqlObject obj)  : base(obj)
+		public TSqlPartitionValue(TSqlObject obj)  : base(obj, PartitionValue.TypeClass)
 		{
 		}
 
@@ -4467,29 +6678,43 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:PartitionValue.Expression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionvalue.expression.aspx">PartitionValue.Expression</see>
+		///
 		public String Expression 
 		{
-		// Supported platforms = 27
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.PartitionValue.Expression);}
+			get { return (String)Element.GetProperty(PartitionValue.Expression);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionvalue.expressiondependencies.aspx">PartitionValue.ExpressionDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PartitionValue.ExpressionDependencies);
+				return Element.GetReferenced(PartitionValue.ExpressionDependencies);
 			}
 		}
-	
+
 }
-	public partial class Permission : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Permission"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.aspx">Permission</see>
+	///
+	public partial class TSqlPermission : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Permission.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Permission to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlPermission to adapt instances of <see cref="T:Permission"/>
 		/// </summary>
-		public Permission(TSqlObject obj)  : base(obj)
+		public TSqlPermission(TSqlObject obj)  : base(obj, Permission.TypeClass)
 		{
 		}
 
@@ -4497,79 +6722,121 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Permission.PermissionAction"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.permissionaction.aspx">Permission.PermissionAction</see>
+		///
 		public PermissionAction PermissionAction 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<PermissionAction>(Microsoft.SqlServer.Dac.Model.Permission.PermissionAction);}
+			get { return Element.GetProperty<PermissionAction>(Permission.PermissionAction);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Permission.PermissionType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.permissiontype.aspx">Permission.PermissionType</see>
+		///
 		public PermissionType PermissionType 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<PermissionType>(Microsoft.SqlServer.Dac.Model.Permission.PermissionType);}
+			get { return Element.GetProperty<PermissionType>(Permission.PermissionType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Permission.WithAllPrivileges"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.withallprivileges.aspx">Permission.WithAllPrivileges</see>
+		///
 		public Boolean WithAllPrivileges 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Permission.WithAllPrivileges);}
+			get { return Element.GetProperty<Boolean>(Permission.WithAllPrivileges);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Permission.WithGrantOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.withgrantoption.aspx">Permission.WithGrantOption</see>
+		///
 		public Boolean WithGrantOption 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Permission.WithGrantOption);}
+			get { return Element.GetProperty<Boolean>(Permission.WithGrantOption);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> ExcludedColumns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.excludedcolumns.aspx">Permission.ExcludedColumns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> ExcludedColumns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Permission.ExcludedColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Permission.ExcludedColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal "/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.grantee.aspx">Permission.Grantee</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > Grantee 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Permission.Grantee).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal >();
+				return Element.GetReferenced(Permission.Grantee).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal >();
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal "/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.grantor.aspx">Permission.Grantor</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > Grantor 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Permission.Grantor).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal >();
+				return Element.GetReferenced(Permission.Grantor).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal >();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> RevokedGrantOptionColumns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.revokedgrantoptioncolumns.aspx">Permission.RevokedGrantOptionColumns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Permission.RevokedGrantOptionColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Permission.RevokedGrantOptionColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.securedobject.aspx">Permission.SecuredObject</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> SecuredObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Permission.SecuredObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable>();
+				return Element.GetReferenced(Permission.SecuredObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable>();
 			}
 		}
-	
+
 }
-	public partial class PrimaryKeyConstraint : TSqlModelElement,IExtendedPropertyHost	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PrimaryKeyConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.aspx">PrimaryKeyConstraint</see>
+	///
+	public partial class TSqlPrimaryKeyConstraint : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = PrimaryKeyConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class PrimaryKeyConstraint to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlPrimaryKeyConstraint to adapt instances of <see cref="T:PrimaryKeyConstraint"/>
 		/// </summary>
-		public PrimaryKeyConstraint(TSqlObject obj)  : base(obj)
+		public TSqlPrimaryKeyConstraint(TSqlObject obj)  : base(obj, PrimaryKeyConstraint.TypeClass)
 		{
 		}
 
@@ -4577,145 +6844,227 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:PrimaryKeyConstraint.AllowPageLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.allowpagelocks.aspx">PrimaryKeyConstraint.AllowPageLocks</see>
+		///
 		public Boolean AllowPageLocks 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.AllowPageLocks);}
+			get { return Element.GetProperty<Boolean>(PrimaryKeyConstraint.AllowPageLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PrimaryKeyConstraint.AllowRowLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.allowrowlocks.aspx">PrimaryKeyConstraint.AllowRowLocks</see>
+		///
 		public Boolean AllowRowLocks 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.AllowRowLocks);}
+			get { return Element.GetProperty<Boolean>(PrimaryKeyConstraint.AllowRowLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PrimaryKeyConstraint.BucketCount"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.bucketcount.aspx">PrimaryKeyConstraint.BucketCount</see>
+		///
 		public Int32? BucketCount 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.BucketCount);}
+			get { return Element.GetProperty<Int32?>(PrimaryKeyConstraint.BucketCount);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PrimaryKeyConstraint.Clustered"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.clustered.aspx">PrimaryKeyConstraint.Clustered</see>
+		///
 		public Boolean Clustered 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.Clustered);}
+			get { return Element.GetProperty<Boolean>(PrimaryKeyConstraint.Clustered);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PrimaryKeyConstraint.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.disabled.aspx">PrimaryKeyConstraint.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.Disabled);}
+			get { return Element.GetProperty<Boolean>(PrimaryKeyConstraint.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PrimaryKeyConstraint.FileStreamNull"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.filestreamnull.aspx">PrimaryKeyConstraint.FileStreamNull</see>
+		///
 		public Boolean? FileStreamNull 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.FileStreamNull);}
+			get { return Element.GetProperty<Boolean?>(PrimaryKeyConstraint.FileStreamNull);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PrimaryKeyConstraint.FillFactor"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.fillfactor.aspx">PrimaryKeyConstraint.FillFactor</see>
+		///
 		public Int32? FillFactor 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.FillFactor);}
+			get { return Element.GetProperty<Int32?>(PrimaryKeyConstraint.FillFactor);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PrimaryKeyConstraint.Hash"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.hash.aspx">PrimaryKeyConstraint.Hash</see>
+		///
 		public Boolean Hash 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.Hash);}
+			get { return Element.GetProperty<Boolean>(PrimaryKeyConstraint.Hash);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PrimaryKeyConstraint.IgnoreDuplicateKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.ignoreduplicatekey.aspx">PrimaryKeyConstraint.IgnoreDuplicateKey</see>
+		///
 		public Boolean IgnoreDuplicateKey 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.IgnoreDuplicateKey);}
+			get { return Element.GetProperty<Boolean>(PrimaryKeyConstraint.IgnoreDuplicateKey);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PrimaryKeyConstraint.RecomputeStatistics"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.recomputestatistics.aspx">PrimaryKeyConstraint.RecomputeStatistics</see>
+		///
 		public Boolean RecomputeStatistics 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.RecomputeStatistics);}
+			get { return Element.GetProperty<Boolean>(PrimaryKeyConstraint.RecomputeStatistics);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PrimaryKeyConstraint.WithPadIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.withpadindex.aspx">PrimaryKeyConstraint.WithPadIndex</see>
+		///
 		public Boolean WithPadIndex 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.WithPadIndex);}
+			get { return Element.GetProperty<Boolean>(PrimaryKeyConstraint.WithPadIndex);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.columns.aspx">PrimaryKeyConstraint.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PrimaryKeyConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption> DataCompressionOptions 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.datacompressionoptions.aspx">PrimaryKeyConstraint.DataCompressionOptions</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PrimaryKeyConstraint.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.filegroup.aspx">PrimaryKeyConstraint.Filegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PrimaryKeyConstraint.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> FileStreamFilegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.filestreamfilegroup.aspx">PrimaryKeyConstraint.FileStreamFilegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PrimaryKeyConstraint.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> FileStreamPartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.filestreampartitionscheme.aspx">PrimaryKeyConstraint.FileStreamPartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PrimaryKeyConstraint.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ExtendedProperty> Host 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.host.aspx">PrimaryKeyConstraint.Host</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ExtendedProperty)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PrimaryKeyConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> PartitionColumn 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.partitioncolumn.aspx">PrimaryKeyConstraint.PartitionColumn</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PrimaryKeyConstraint.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> PartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.partitionscheme.aspx">PrimaryKeyConstraint.PartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PrimaryKeyConstraint.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PrimaryKeyConstraint.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Procedure : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Procedure"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.aspx">Procedure</see>
+	///
+	public partial class TSqlProcedure : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Procedure.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Procedure to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlProcedure to adapt instances of <see cref="T:Procedure"/>
 		/// </summary>
-		public Procedure(TSqlObject obj)  : base(obj)
+		public TSqlProcedure(TSqlObject obj)  : base(obj, Procedure.TypeClass)
 		{
 		}
 
@@ -4723,149 +7072,235 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.AnsiNullsOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.ansinullson.aspx">Procedure.AnsiNullsOn</see>
+		///
 		public Boolean? AnsiNullsOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.Procedure.AnsiNullsOn);}
+			get { return Element.GetProperty<Boolean?>(Procedure.AnsiNullsOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.ClassName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.classname.aspx">Procedure.ClassName</see>
+		///
 		public String ClassName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Procedure.ClassName);}
+			get { return Element.GetProperty<String>(Procedure.ClassName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.ExecuteAsCaller"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.executeascaller.aspx">Procedure.ExecuteAsCaller</see>
+		///
 		public Boolean ExecuteAsCaller 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Procedure.ExecuteAsCaller);}
+			get { return Element.GetProperty<Boolean>(Procedure.ExecuteAsCaller);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.ExecuteAsOwner"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.executeasowner.aspx">Procedure.ExecuteAsOwner</see>
+		///
 		public Boolean ExecuteAsOwner 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Procedure.ExecuteAsOwner);}
+			get { return Element.GetProperty<Boolean>(Procedure.ExecuteAsOwner);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.ExecuteAsSelf"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.executeasself.aspx">Procedure.ExecuteAsSelf</see>
+		///
 		public Boolean ExecuteAsSelf 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Procedure.ExecuteAsSelf);}
+			get { return Element.GetProperty<Boolean>(Procedure.ExecuteAsSelf);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.ForReplication"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.forreplication.aspx">Procedure.ForReplication</see>
+		///
 		public Boolean ForReplication 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Procedure.ForReplication);}
+			get { return Element.GetProperty<Boolean>(Procedure.ForReplication);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.IsReplicated"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.isreplicated.aspx">Procedure.IsReplicated</see>
+		///
 		public Boolean IsReplicated 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Procedure.IsReplicated);}
+			get { return Element.GetProperty<Boolean>(Procedure.IsReplicated);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.MethodName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.methodname.aspx">Procedure.MethodName</see>
+		///
 		public String MethodName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Procedure.MethodName);}
+			get { return Element.GetProperty<String>(Procedure.MethodName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.QuotedIdentifierOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.quotedidentifieron.aspx">Procedure.QuotedIdentifierOn</see>
+		///
 		public Boolean? QuotedIdentifierOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.Procedure.QuotedIdentifierOn);}
+			get { return Element.GetProperty<Boolean?>(Procedure.QuotedIdentifierOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.WithEncryption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.withencryption.aspx">Procedure.WithEncryption</see>
+		///
 		public Boolean WithEncryption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Procedure.WithEncryption);}
+			get { return Element.GetProperty<Boolean>(Procedure.WithEncryption);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.WithNativeCompilation"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.withnativecompilation.aspx">Procedure.WithNativeCompilation</see>
+		///
 		public Boolean WithNativeCompilation 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Procedure.WithNativeCompilation);}
+			get { return Element.GetProperty<Boolean>(Procedure.WithNativeCompilation);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.WithRecompile"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.withrecompile.aspx">Procedure.WithRecompile</see>
+		///
 		public Boolean WithRecompile 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Procedure.WithRecompile);}
+			get { return Element.GetProperty<Boolean>(Procedure.WithRecompile);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Procedure.WithSchemaBinding"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.withschemabinding.aspx">Procedure.WithSchemaBinding</see>
+		///
 		public Boolean WithSchemaBinding 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Procedure.WithSchemaBinding);}
+			get { return Element.GetProperty<Boolean>(Procedure.WithSchemaBinding);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly> Assembly 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.assembly.aspx">Procedure.Assembly</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Procedure.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Procedure.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.bodydependencies.aspx">Procedure.BodyDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Procedure.BodyDependencies);
+				return Element.GetReferenced(Procedure.BodyDependencies);
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Login> Login 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.login.aspx">Procedure.Login</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Procedure.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Login)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Procedure.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter> Parameters 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.parameters.aspx">Procedure.Parameters</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Procedure.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Parameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Procedure.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Procedure> ParentProcedure 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.parentprocedure.aspx">Procedure.ParentProcedure</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure> ParentProcedure 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Procedure.ParentProcedure).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Procedure)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Procedure.ParentProcedure).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.schema.aspx">Procedure.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Procedure.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Procedure.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.User> User 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.user.aspx">Procedure.User</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Procedure.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.User)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Procedure.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Queue : TSqlModelElement,ISqlColumnSource	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Queue"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.aspx">Queue</see>
+	///
+	public partial class TSqlQueue : TSqlModelElement,ISqlColumnSource	{
 		private static ModelTypeClass typeClass = Queue.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Queue to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlQueue to adapt instances of <see cref="T:Queue"/>
 		/// </summary>
-		public Queue(TSqlObject obj)  : base(obj)
+		public TSqlQueue(TSqlObject obj)  : base(obj, Queue.TypeClass)
 		{
 		}
 
@@ -4873,127 +7308,197 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Queue.ActivationExecuteAsCaller"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.activationexecuteascaller.aspx">Queue.ActivationExecuteAsCaller</see>
+		///
 		public Boolean ActivationExecuteAsCaller 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Queue.ActivationExecuteAsCaller);}
+			get { return Element.GetProperty<Boolean>(Queue.ActivationExecuteAsCaller);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Queue.ActivationExecuteAsOwner"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.activationexecuteasowner.aspx">Queue.ActivationExecuteAsOwner</see>
+		///
 		public Boolean ActivationExecuteAsOwner 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Queue.ActivationExecuteAsOwner);}
+			get { return Element.GetProperty<Boolean>(Queue.ActivationExecuteAsOwner);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Queue.ActivationExecuteAsSelf"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.activationexecuteasself.aspx">Queue.ActivationExecuteAsSelf</see>
+		///
 		public Boolean ActivationExecuteAsSelf 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Queue.ActivationExecuteAsSelf);}
+			get { return Element.GetProperty<Boolean>(Queue.ActivationExecuteAsSelf);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Queue.ActivationMaxQueueReaders"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.activationmaxqueuereaders.aspx">Queue.ActivationMaxQueueReaders</see>
+		///
 		public Int32? ActivationMaxQueueReaders 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.Queue.ActivationMaxQueueReaders);}
+			get { return Element.GetProperty<Int32?>(Queue.ActivationMaxQueueReaders);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Queue.ActivationStatusOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.activationstatuson.aspx">Queue.ActivationStatusOn</see>
+		///
 		public Boolean? ActivationStatusOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.Queue.ActivationStatusOn);}
+			get { return Element.GetProperty<Boolean?>(Queue.ActivationStatusOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Queue.PoisonMessageHandlingStatusOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.poisonmessagehandlingstatuson.aspx">Queue.PoisonMessageHandlingStatusOn</see>
+		///
 		public Boolean PoisonMessageHandlingStatusOn 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Queue.PoisonMessageHandlingStatusOn);}
+			get { return Element.GetProperty<Boolean>(Queue.PoisonMessageHandlingStatusOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Queue.RetentionOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.retentionon.aspx">Queue.RetentionOn</see>
+		///
 		public Boolean RetentionOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Queue.RetentionOn);}
+			get { return Element.GetProperty<Boolean>(Queue.RetentionOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Queue.StatusOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.statuson.aspx">Queue.StatusOn</see>
+		///
 		public Boolean StatusOn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Queue.StatusOn);}
+			get { return Element.GetProperty<Boolean>(Queue.StatusOn);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Procedure> ActivationProcedure 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.activationprocedure.aspx">Queue.ActivationProcedure</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure> ActivationProcedure 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Queue.ActivationProcedure).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Procedure)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Queue.ActivationProcedure).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.columns.aspx">Queue.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Queue.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Queue.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.filegroup.aspx">Queue.Filegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Queue.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Queue.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Login> Login 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.login.aspx">Queue.Login</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Queue.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Login)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Queue.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> PartitionColumn 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.partitioncolumn.aspx">Queue.PartitionColumn</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Queue.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Queue.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> PartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.partitionscheme.aspx">Queue.PartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Queue.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Queue.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.schema.aspx">Queue.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Queue.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Queue.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.User> User 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.user.aspx">Queue.User</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Queue.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.User)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Queue.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class QueueEventNotification : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:QueueEventNotification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queueeventnotification.aspx">QueueEventNotification</see>
+	///
+	public partial class TSqlQueueEventNotification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = QueueEventNotification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class QueueEventNotification to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlQueueEventNotification to adapt instances of <see cref="T:QueueEventNotification"/>
 		/// </summary>
-		public QueueEventNotification(TSqlObject obj)  : base(obj)
+		public TSqlQueueEventNotification(TSqlObject obj)  : base(obj, QueueEventNotification.TypeClass)
 		{
 		}
 
@@ -5001,57 +7506,87 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:QueueEventNotification.BrokerInstanceSpecifier"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queueeventnotification.brokerinstancespecifier.aspx">QueueEventNotification.BrokerInstanceSpecifier</see>
+		///
 		public String BrokerInstanceSpecifier 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.QueueEventNotification.BrokerInstanceSpecifier);}
+			get { return Element.GetProperty<String>(QueueEventNotification.BrokerInstanceSpecifier);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:QueueEventNotification.BrokerService"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queueeventnotification.brokerservice.aspx">QueueEventNotification.BrokerService</see>
+		///
 		public String BrokerService 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.QueueEventNotification.BrokerService);}
+			get { return Element.GetProperty<String>(QueueEventNotification.BrokerService);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:QueueEventNotification.WithFanIn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queueeventnotification.withfanin.aspx">QueueEventNotification.WithFanIn</see>
+		///
 		public Boolean WithFanIn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.QueueEventNotification.WithFanIn);}
+			get { return Element.GetProperty<Boolean>(QueueEventNotification.WithFanIn);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.EventGroup> EventGroup 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queueeventnotification.eventgroup.aspx">QueueEventNotification.EventGroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup> EventGroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.QueueEventNotification.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.EventGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(QueueEventNotification.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.EventType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queueeventnotification.eventtype.aspx">QueueEventNotification.EventType</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.QueueEventNotification.EventType).Cast<Microsoft.SqlServer.Dac.Model.EventType>();
+				return Element.GetReferenced(QueueEventNotification.EventType).Cast<Microsoft.SqlServer.Dac.Model.EventType>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Queue> Queue 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queueeventnotification.queue.aspx">QueueEventNotification.Queue</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue> Queue 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.QueueEventNotification.Queue).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Queue)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(QueueEventNotification.Queue).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class RemoteServiceBinding : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:RemoteServiceBinding"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.remoteservicebinding.aspx">RemoteServiceBinding</see>
+	///
+	public partial class TSqlRemoteServiceBinding : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = RemoteServiceBinding.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class RemoteServiceBinding to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlRemoteServiceBinding to adapt instances of <see cref="T:RemoteServiceBinding"/>
 		/// </summary>
-		public RemoteServiceBinding(TSqlObject obj)  : base(obj)
+		public TSqlRemoteServiceBinding(TSqlObject obj)  : base(obj, RemoteServiceBinding.TypeClass)
 		{
 		}
 
@@ -5059,43 +7594,65 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:RemoteServiceBinding.Anonymous"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.remoteservicebinding.anonymous.aspx">RemoteServiceBinding.Anonymous</see>
+		///
 		public Boolean Anonymous 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.RemoteServiceBinding.Anonymous);}
+			get { return Element.GetProperty<Boolean>(RemoteServiceBinding.Anonymous);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:RemoteServiceBinding.Service"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.remoteservicebinding.service.aspx">RemoteServiceBinding.Service</see>
+		///
 		public String Service 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.RemoteServiceBinding.Service);}
+			get { return Element.GetProperty<String>(RemoteServiceBinding.Service);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.remoteservicebinding.authorizer.aspx">RemoteServiceBinding.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.RemoteServiceBinding.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(RemoteServiceBinding.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.User> User 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.remoteservicebinding.user.aspx">RemoteServiceBinding.User</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.RemoteServiceBinding.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.User)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(RemoteServiceBinding.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class ResourceGovernor : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ResourceGovernor"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcegovernor.aspx">ResourceGovernor</see>
+	///
+	public partial class TSqlResourceGovernor : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ResourceGovernor.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ResourceGovernor to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlResourceGovernor to adapt instances of <see cref="T:ResourceGovernor"/>
 		/// </summary>
-		public ResourceGovernor(TSqlObject obj)  : base(obj)
+		public TSqlResourceGovernor(TSqlObject obj)  : base(obj, ResourceGovernor.TypeClass)
 		{
 		}
 
@@ -5103,29 +7660,43 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ResourceGovernor.Enabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcegovernor.enabled.aspx">ResourceGovernor.Enabled</see>
+		///
 		public Boolean? Enabled 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.ResourceGovernor.Enabled);}
+			get { return Element.GetProperty<Boolean?>(ResourceGovernor.Enabled);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcegovernor.classifierfunction.aspx">ResourceGovernor.ClassifierFunction</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ClassifierFunction 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ResourceGovernor.ClassifierFunction);
+				return Element.GetReferenced(ResourceGovernor.ClassifierFunction);
 			}
 		}
-	
+
 }
-	public partial class ResourcePool : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ResourcePool"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcepool.aspx">ResourcePool</see>
+	///
+	public partial class TSqlResourcePool : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ResourcePool.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ResourcePool to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlResourcePool to adapt instances of <see cref="T:ResourcePool"/>
 		/// </summary>
-		public ResourcePool(TSqlObject obj)  : base(obj)
+		public TSqlResourcePool(TSqlObject obj)  : base(obj, ResourcePool.TypeClass)
 		{
 		}
 
@@ -5133,57 +7704,91 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ResourcePool.CapCpuPercent"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcepool.capcpupercent.aspx">ResourcePool.CapCpuPercent</see>
+		///
 		public Int32 CapCpuPercent 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.ResourcePool.CapCpuPercent);}
+			get { return Element.GetProperty<Int32>(ResourcePool.CapCpuPercent);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ResourcePool.MaxCpuPercent"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcepool.maxcpupercent.aspx">ResourcePool.MaxCpuPercent</see>
+		///
 		public Int32 MaxCpuPercent 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.ResourcePool.MaxCpuPercent);}
+			get { return Element.GetProperty<Int32>(ResourcePool.MaxCpuPercent);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ResourcePool.MaxIopsPerVolume"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcepool.maxiopspervolume.aspx">ResourcePool.MaxIopsPerVolume</see>
+		///
 		public Int32 MaxIopsPerVolume 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.ResourcePool.MaxIopsPerVolume);}
+			get { return Element.GetProperty<Int32>(ResourcePool.MaxIopsPerVolume);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ResourcePool.MaxMemoryPercent"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcepool.maxmemorypercent.aspx">ResourcePool.MaxMemoryPercent</see>
+		///
 		public Int32 MaxMemoryPercent 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.ResourcePool.MaxMemoryPercent);}
+			get { return Element.GetProperty<Int32>(ResourcePool.MaxMemoryPercent);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ResourcePool.MinCpuPercent"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcepool.mincpupercent.aspx">ResourcePool.MinCpuPercent</see>
+		///
 		public Int32 MinCpuPercent 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.ResourcePool.MinCpuPercent);}
+			get { return Element.GetProperty<Int32>(ResourcePool.MinCpuPercent);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ResourcePool.MinIopsPerVolume"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcepool.miniopspervolume.aspx">ResourcePool.MinIopsPerVolume</see>
+		///
 		public Int32 MinIopsPerVolume 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.ResourcePool.MinIopsPerVolume);}
+			get { return Element.GetProperty<Int32>(ResourcePool.MinIopsPerVolume);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ResourcePool.MinMemoryPercent"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcepool.minmemorypercent.aspx">ResourcePool.MinMemoryPercent</see>
+		///
 		public Int32 MinMemoryPercent 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.ResourcePool.MinMemoryPercent);}
+			get { return Element.GetProperty<Int32>(ResourcePool.MinMemoryPercent);}
 		}
 
 
 }
-	public partial class Role : TSqlModelElement,ISqlDatabaseSecurityPrincipal	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Role"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.role.aspx">Role</see>
+	///
+	public partial class TSqlRole : TSqlModelElement,ISqlDatabaseSecurityPrincipal	{
 		private static ModelTypeClass typeClass = Role.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Role to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlRole to adapt instances of <see cref="T:Role"/>
 		/// </summary>
-		public Role(TSqlObject obj)  : base(obj)
+		public TSqlRole(TSqlObject obj)  : base(obj, Role.TypeClass)
 		{
 		}
 
@@ -5191,23 +7796,33 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.role.authorizer.aspx">Role.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Role.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Role.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-	
+
 }
-	public partial class RoleMembership : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:RoleMembership"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rolemembership.aspx">RoleMembership</see>
+	///
+	public partial class TSqlRoleMembership : TSqlModelElement	{
 		private static ModelTypeClass typeClass = RoleMembership.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class RoleMembership to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlRoleMembership to adapt instances of <see cref="T:RoleMembership"/>
 		/// </summary>
-		public RoleMembership(TSqlObject obj)  : base(obj)
+		public TSqlRoleMembership(TSqlObject obj)  : base(obj, RoleMembership.TypeClass)
 		{
 		}
 
@@ -5215,31 +7830,45 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rolemembership.member.aspx">RoleMembership.Member</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> Member 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.RoleMembership.Member).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal>();
+				return Element.GetReferenced(RoleMembership.Member).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal>();
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Role> Role 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rolemembership.role.aspx">RoleMembership.Role</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole> Role 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.RoleMembership.Role).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Role)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(RoleMembership.Role).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Route : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Route"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.route.aspx">Route</see>
+	///
+	public partial class TSqlRoute : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Route.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Route to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlRoute to adapt instances of <see cref="T:Route"/>
 		/// </summary>
-		public Route(TSqlObject obj)  : base(obj)
+		public TSqlRoute(TSqlObject obj)  : base(obj, Route.TypeClass)
 		{
 		}
 
@@ -5247,53 +7876,83 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Route.Address"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.route.address.aspx">Route.Address</see>
+		///
 		public String Address 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Route.Address);}
+			get { return Element.GetProperty<String>(Route.Address);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Route.BrokerInstance"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.route.brokerinstance.aspx">Route.BrokerInstance</see>
+		///
 		public String BrokerInstance 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Route.BrokerInstance);}
+			get { return Element.GetProperty<String>(Route.BrokerInstance);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Route.Lifetime"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.route.lifetime.aspx">Route.Lifetime</see>
+		///
 		public Int32? Lifetime 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.Route.Lifetime);}
+			get { return Element.GetProperty<Int32?>(Route.Lifetime);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Route.MirrorAddress"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.route.mirroraddress.aspx">Route.MirrorAddress</see>
+		///
 		public String MirrorAddress 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Route.MirrorAddress);}
+			get { return Element.GetProperty<String>(Route.MirrorAddress);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Route.ServiceName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.route.servicename.aspx">Route.ServiceName</see>
+		///
 		public String ServiceName 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Route.ServiceName);}
+			get { return Element.GetProperty<String>(Route.ServiceName);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.route.authorizer.aspx">Route.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Route.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Route.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-	
+
 }
-	public partial class Rule : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Rule"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rule.aspx">Rule</see>
+	///
+	public partial class TSqlRule : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Rule.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Rule to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlRule to adapt instances of <see cref="T:Rule"/>
 		/// </summary>
-		public Rule(TSqlObject obj)  : base(obj)
+		public TSqlRule(TSqlObject obj)  : base(obj, Rule.TypeClass)
 		{
 		}
 
@@ -5301,37 +7960,55 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Rule.Expression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rule.expression.aspx">Rule.Expression</see>
+		///
 		public String Expression 
 		{
-		// Supported platforms = 27
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.Rule.Expression);}
+			get { return (String)Element.GetProperty(Rule.Expression);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rule.boundobjects.aspx">Rule.BoundObjects</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BoundObjects 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Rule.BoundObjects);
+				return Element.GetReferenced(Rule.BoundObjects);
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rule.schema.aspx">Rule.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Rule.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Rule.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Schema : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Schema"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.schema.aspx">Schema</see>
+	///
+	public partial class TSqlSchema : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Schema.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Schema to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSchema to adapt instances of <see cref="T:Schema"/>
 		/// </summary>
-		public Schema(TSqlObject obj)  : base(obj)
+		public TSqlSchema(TSqlObject obj)  : base(obj, Schema.TypeClass)
 		{
 		}
 
@@ -5339,23 +8016,33 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.schema.authorizer.aspx">Schema.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Schema.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Schema.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-	
+
 }
-	public partial class SearchProperty : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SearchProperty"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.searchproperty.aspx">SearchProperty</see>
+	///
+	public partial class TSqlSearchProperty : TSqlModelElement	{
 		private static ModelTypeClass typeClass = SearchProperty.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class SearchProperty to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSearchProperty to adapt instances of <see cref="T:SearchProperty"/>
 		/// </summary>
-		public SearchProperty(TSqlObject obj)  : base(obj)
+		public TSqlSearchProperty(TSqlObject obj)  : base(obj, SearchProperty.TypeClass)
 		{
 		}
 
@@ -5363,41 +8050,63 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:SearchProperty.Description"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.searchproperty.description.aspx">SearchProperty.Description</see>
+		///
 		public String Description 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SearchProperty.Description);}
+			get { return Element.GetProperty<String>(SearchProperty.Description);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SearchProperty.Identifier"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.searchproperty.identifier.aspx">SearchProperty.Identifier</see>
+		///
 		public Int32 Identifier 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.SearchProperty.Identifier);}
+			get { return Element.GetProperty<Int32>(SearchProperty.Identifier);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SearchProperty.PropertySetGuid"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.searchproperty.propertysetguid.aspx">SearchProperty.PropertySetGuid</see>
+		///
 		public String PropertySetGuid 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SearchProperty.PropertySetGuid);}
+			get { return Element.GetProperty<String>(SearchProperty.PropertySetGuid);}
 		}
 
-		//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.SearchPropertyList> SearchPropertyList 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.searchproperty.searchpropertylist.aspx">SearchProperty.SearchPropertyList</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList> SearchPropertyList 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SearchProperty.SearchPropertyList).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.SearchPropertyList)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SearchProperty.SearchPropertyList).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class SearchPropertyList : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SearchPropertyList"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.searchpropertylist.aspx">SearchPropertyList</see>
+	///
+	public partial class TSqlSearchPropertyList : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = SearchPropertyList.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class SearchPropertyList to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSearchPropertyList to adapt instances of <see cref="T:SearchPropertyList"/>
 		/// </summary>
-		public SearchPropertyList(TSqlObject obj)  : base(obj)
+		public TSqlSearchPropertyList(TSqlObject obj)  : base(obj, SearchPropertyList.TypeClass)
 		{
 		}
 
@@ -5405,23 +8114,33 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.searchpropertylist.authorizer.aspx">SearchPropertyList.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SearchPropertyList.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(SearchPropertyList.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-	
+
 }
-	public partial class Sequence : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Sequence"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.aspx">Sequence</see>
+	///
+	public partial class TSqlSequence : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Sequence.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Sequence to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSequence to adapt instances of <see cref="T:Sequence"/>
 		/// </summary>
-		public Sequence(TSqlObject obj)  : base(obj)
+		public TSqlSequence(TSqlObject obj)  : base(obj, Sequence.TypeClass)
 		{
 		}
 
@@ -5429,85 +8148,135 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Sequence.CacheSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.cachesize.aspx">Sequence.CacheSize</see>
+		///
 		public Int32? CacheSize 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.Sequence.CacheSize);}
+			get { return Element.GetProperty<Int32?>(Sequence.CacheSize);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Sequence.IncrementValue"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.incrementvalue.aspx">Sequence.IncrementValue</see>
+		///
 		public String IncrementValue 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Sequence.IncrementValue);}
+			get { return Element.GetProperty<String>(Sequence.IncrementValue);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Sequence.IsCached"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.iscached.aspx">Sequence.IsCached</see>
+		///
 		public Boolean IsCached 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Sequence.IsCached);}
+			get { return Element.GetProperty<Boolean>(Sequence.IsCached);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Sequence.IsCycling"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.iscycling.aspx">Sequence.IsCycling</see>
+		///
 		public Boolean IsCycling 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Sequence.IsCycling);}
+			get { return Element.GetProperty<Boolean>(Sequence.IsCycling);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Sequence.MaxValue"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.maxvalue.aspx">Sequence.MaxValue</see>
+		///
 		public String MaxValue 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Sequence.MaxValue);}
+			get { return Element.GetProperty<String>(Sequence.MaxValue);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Sequence.MinValue"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.minvalue.aspx">Sequence.MinValue</see>
+		///
 		public String MinValue 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Sequence.MinValue);}
+			get { return Element.GetProperty<String>(Sequence.MinValue);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Sequence.NoMaxValue"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.nomaxvalue.aspx">Sequence.NoMaxValue</see>
+		///
 		public Boolean NoMaxValue 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Sequence.NoMaxValue);}
+			get { return Element.GetProperty<Boolean>(Sequence.NoMaxValue);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Sequence.NoMinValue"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.nominvalue.aspx">Sequence.NoMinValue</see>
+		///
 		public Boolean NoMinValue 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Sequence.NoMinValue);}
+			get { return Element.GetProperty<Boolean>(Sequence.NoMinValue);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Sequence.StartValue"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.startvalue.aspx">Sequence.StartValue</see>
+		///
 		public String StartValue 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Sequence.StartValue);}
+			get { return Element.GetProperty<String>(Sequence.StartValue);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataType> DataType 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.datatype.aspx">Sequence.DataType</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Sequence.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Sequence.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.schema.aspx">Sequence.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Sequence.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Sequence.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class ServerAudit : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerAudit"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.aspx">ServerAudit</see>
+	///
+	public partial class TSqlServerAudit : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ServerAudit.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ServerAudit to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlServerAudit to adapt instances of <see cref="T:ServerAudit"/>
 		/// </summary>
-		public ServerAudit(TSqlObject obj)  : base(obj)
+		public TSqlServerAudit(TSqlObject obj)  : base(obj, ServerAudit.TypeClass)
 		{
 		}
 
@@ -5515,99 +8284,161 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.AuditGuid"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.auditguid.aspx">ServerAudit.AuditGuid</see>
+		///
 		public String AuditGuid 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ServerAudit.AuditGuid);}
+			get { return Element.GetProperty<String>(ServerAudit.AuditGuid);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.AuditTarget"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.audittarget.aspx">ServerAudit.AuditTarget</see>
+		///
 		public AuditTarget AuditTarget 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<AuditTarget>(Microsoft.SqlServer.Dac.Model.ServerAudit.AuditTarget);}
+			get { return Element.GetProperty<AuditTarget>(ServerAudit.AuditTarget);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.disabled.aspx">ServerAudit.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerAudit.Disabled);}
+			get { return Element.GetProperty<Boolean>(ServerAudit.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.FilePath"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.filepath.aspx">ServerAudit.FilePath</see>
+		///
 		public String FilePath 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ServerAudit.FilePath);}
+			get { return Element.GetProperty<String>(ServerAudit.FilePath);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.MaxFiles"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.maxfiles.aspx">ServerAudit.MaxFiles</see>
+		///
 		public Int32? MaxFiles 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.ServerAudit.MaxFiles);}
+			get { return Element.GetProperty<Int32?>(ServerAudit.MaxFiles);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.MaxRolloverFiles"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.maxrolloverfiles.aspx">ServerAudit.MaxRolloverFiles</see>
+		///
 		public Int32? MaxRolloverFiles 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.ServerAudit.MaxRolloverFiles);}
+			get { return Element.GetProperty<Int32?>(ServerAudit.MaxRolloverFiles);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.MaxSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.maxsize.aspx">ServerAudit.MaxSize</see>
+		///
 		public Int32? MaxSize 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.ServerAudit.MaxSize);}
+			get { return Element.GetProperty<Int32?>(ServerAudit.MaxSize);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.MaxSizeUnit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.maxsizeunit.aspx">ServerAudit.MaxSizeUnit</see>
+		///
 		public MemoryUnit MaxSizeUnit 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<MemoryUnit>(Microsoft.SqlServer.Dac.Model.ServerAudit.MaxSizeUnit);}
+			get { return Element.GetProperty<MemoryUnit>(ServerAudit.MaxSizeUnit);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.OnFailure"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.onfailure.aspx">ServerAudit.OnFailure</see>
+		///
 		public FailureAction OnFailure 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<FailureAction>(Microsoft.SqlServer.Dac.Model.ServerAudit.OnFailure);}
+			get { return Element.GetProperty<FailureAction>(ServerAudit.OnFailure);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.PredicateExpression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.predicateexpression.aspx">ServerAudit.PredicateExpression</see>
+		///
 		public String PredicateExpression 
 		{
-		// Supported platforms = 24
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.ServerAudit.PredicateExpression);}
+			get { return (String)Element.GetProperty(ServerAudit.PredicateExpression);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.QueueDelay"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.queuedelay.aspx">ServerAudit.QueueDelay</see>
+		///
 		public Int32 QueueDelay 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.ServerAudit.QueueDelay);}
+			get { return Element.GetProperty<Int32>(ServerAudit.QueueDelay);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.ReserveDiskSpace"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.reservediskspace.aspx">ServerAudit.ReserveDiskSpace</see>
+		///
 		public Boolean ReserveDiskSpace 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerAudit.ReserveDiskSpace);}
+			get { return Element.GetProperty<Boolean>(ServerAudit.ReserveDiskSpace);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.UnlimitedFileSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.unlimitedfilesize.aspx">ServerAudit.UnlimitedFileSize</see>
+		///
 		public Boolean UnlimitedFileSize 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerAudit.UnlimitedFileSize);}
+			get { return Element.GetProperty<Boolean>(ServerAudit.UnlimitedFileSize);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerAudit.UnlimitedMaxRolloverFiles"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.unlimitedmaxrolloverfiles.aspx">ServerAudit.UnlimitedMaxRolloverFiles</see>
+		///
 		public Boolean UnlimitedMaxRolloverFiles 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerAudit.UnlimitedMaxRolloverFiles);}
+			get { return Element.GetProperty<Boolean>(ServerAudit.UnlimitedMaxRolloverFiles);}
 		}
 
 
 }
-	public partial class ServerAuditSpecification : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerAuditSpecification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverauditspecification.aspx">ServerAuditSpecification</see>
+	///
+	public partial class TSqlServerAuditSpecification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ServerAuditSpecification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ServerAuditSpecification to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlServerAuditSpecification to adapt instances of <see cref="T:ServerAuditSpecification"/>
 		/// </summary>
-		public ServerAuditSpecification(TSqlObject obj)  : base(obj)
+		public TSqlServerAuditSpecification(TSqlObject obj)  : base(obj, ServerAuditSpecification.TypeClass)
 		{
 		}
 
@@ -5615,37 +8446,55 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ServerAuditSpecification.StateOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverauditspecification.stateon.aspx">ServerAuditSpecification.StateOn</see>
+		///
 		public Boolean StateOn 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerAuditSpecification.StateOn);}
+			get { return Element.GetProperty<Boolean>(ServerAuditSpecification.StateOn);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.AuditActionGroup> AuditActionGroups 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverauditspecification.auditactiongroups.aspx">ServerAuditSpecification.AuditActionGroups</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup> AuditActionGroups 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerAuditSpecification.AuditActionGroups).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.AuditActionGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServerAuditSpecification.AuditActionGroups).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ServerAudit> ServerAudit 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverauditspecification.serveraudit.aspx">ServerAuditSpecification.ServerAudit</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit> ServerAudit 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerAuditSpecification.ServerAudit).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ServerAudit)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServerAuditSpecification.ServerAudit).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class ServerDdlTrigger : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerDdlTrigger"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.aspx">ServerDdlTrigger</see>
+	///
+	public partial class TSqlServerDdlTrigger : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ServerDdlTrigger.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ServerDdlTrigger to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlServerDdlTrigger to adapt instances of <see cref="T:ServerDdlTrigger"/>
 		/// </summary>
-		public ServerDdlTrigger(TSqlObject obj)  : base(obj)
+		public TSqlServerDdlTrigger(TSqlObject obj)  : base(obj, ServerDdlTrigger.TypeClass)
 		{
 		}
 
@@ -5653,129 +8502,203 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ServerDdlTrigger.AnsiNullsOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.ansinullson.aspx">ServerDdlTrigger.AnsiNullsOn</see>
+		///
 		public Boolean? AnsiNullsOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.AnsiNullsOn);}
+			get { return Element.GetProperty<Boolean?>(ServerDdlTrigger.AnsiNullsOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerDdlTrigger.ClassName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.classname.aspx">ServerDdlTrigger.ClassName</see>
+		///
 		public String ClassName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.ClassName);}
+			get { return Element.GetProperty<String>(ServerDdlTrigger.ClassName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerDdlTrigger.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.disabled.aspx">ServerDdlTrigger.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.Disabled);}
+			get { return Element.GetProperty<Boolean>(ServerDdlTrigger.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerDdlTrigger.ExecuteAsCaller"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.executeascaller.aspx">ServerDdlTrigger.ExecuteAsCaller</see>
+		///
 		public Boolean ExecuteAsCaller 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.ExecuteAsCaller);}
+			get { return Element.GetProperty<Boolean>(ServerDdlTrigger.ExecuteAsCaller);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerDdlTrigger.ExecuteAsOwner"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.executeasowner.aspx">ServerDdlTrigger.ExecuteAsOwner</see>
+		///
 		public Boolean ExecuteAsOwner 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.ExecuteAsOwner);}
+			get { return Element.GetProperty<Boolean>(ServerDdlTrigger.ExecuteAsOwner);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerDdlTrigger.ExecuteAsSelf"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.executeasself.aspx">ServerDdlTrigger.ExecuteAsSelf</see>
+		///
 		public Boolean ExecuteAsSelf 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.ExecuteAsSelf);}
+			get { return Element.GetProperty<Boolean>(ServerDdlTrigger.ExecuteAsSelf);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerDdlTrigger.IsLogon"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.islogon.aspx">ServerDdlTrigger.IsLogon</see>
+		///
 		public Boolean IsLogon 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.IsLogon);}
+			get { return Element.GetProperty<Boolean>(ServerDdlTrigger.IsLogon);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerDdlTrigger.MethodName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.methodname.aspx">ServerDdlTrigger.MethodName</see>
+		///
 		public String MethodName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.MethodName);}
+			get { return Element.GetProperty<String>(ServerDdlTrigger.MethodName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerDdlTrigger.QuotedIdentifierOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.quotedidentifieron.aspx">ServerDdlTrigger.QuotedIdentifierOn</see>
+		///
 		public Boolean? QuotedIdentifierOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.QuotedIdentifierOn);}
+			get { return Element.GetProperty<Boolean?>(ServerDdlTrigger.QuotedIdentifierOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerDdlTrigger.TriggerType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.triggertype.aspx">ServerDdlTrigger.TriggerType</see>
+		///
 		public TriggerType TriggerType 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<TriggerType>(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.TriggerType);}
+			get { return Element.GetProperty<TriggerType>(ServerDdlTrigger.TriggerType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerDdlTrigger.WithEncryption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.withencryption.aspx">ServerDdlTrigger.WithEncryption</see>
+		///
 		public Boolean WithEncryption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.WithEncryption);}
+			get { return Element.GetProperty<Boolean>(ServerDdlTrigger.WithEncryption);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly> Assembly 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.assembly.aspx">ServerDdlTrigger.Assembly</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServerDdlTrigger.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.bodydependencies.aspx">ServerDdlTrigger.BodyDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.BodyDependencies);
+				return Element.GetReferenced(ServerDdlTrigger.BodyDependencies);
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.EventGroup> EventGroup 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.eventgroup.aspx">ServerDdlTrigger.EventGroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup> EventGroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.EventGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServerDdlTrigger.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.EventType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.eventtype.aspx">ServerDdlTrigger.EventType</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.EventType).Cast<Microsoft.SqlServer.Dac.Model.EventType>();
+				return Element.GetReferenced(ServerDdlTrigger.EventType).Cast<Microsoft.SqlServer.Dac.Model.EventType>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Login> Login 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.login.aspx">ServerDdlTrigger.Login</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Login)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServerDdlTrigger.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.User> User 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.user.aspx">ServerDdlTrigger.User</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerDdlTrigger.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.User)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServerDdlTrigger.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class ServerEventNotification : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerEventNotification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servereventnotification.aspx">ServerEventNotification</see>
+	///
+	public partial class TSqlServerEventNotification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ServerEventNotification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ServerEventNotification to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlServerEventNotification to adapt instances of <see cref="T:ServerEventNotification"/>
 		/// </summary>
-		public ServerEventNotification(TSqlObject obj)  : base(obj)
+		public TSqlServerEventNotification(TSqlObject obj)  : base(obj, ServerEventNotification.TypeClass)
 		{
 		}
 
@@ -5783,49 +8706,75 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ServerEventNotification.BrokerInstanceSpecifier"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servereventnotification.brokerinstancespecifier.aspx">ServerEventNotification.BrokerInstanceSpecifier</see>
+		///
 		public String BrokerInstanceSpecifier 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ServerEventNotification.BrokerInstanceSpecifier);}
+			get { return Element.GetProperty<String>(ServerEventNotification.BrokerInstanceSpecifier);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerEventNotification.BrokerService"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servereventnotification.brokerservice.aspx">ServerEventNotification.BrokerService</see>
+		///
 		public String BrokerService 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.ServerEventNotification.BrokerService);}
+			get { return Element.GetProperty<String>(ServerEventNotification.BrokerService);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServerEventNotification.WithFanIn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servereventnotification.withfanin.aspx">ServerEventNotification.WithFanIn</see>
+		///
 		public Boolean WithFanIn 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServerEventNotification.WithFanIn);}
+			get { return Element.GetProperty<Boolean>(ServerEventNotification.WithFanIn);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.EventGroup> EventGroup 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servereventnotification.eventgroup.aspx">ServerEventNotification.EventGroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup> EventGroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerEventNotification.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.EventGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServerEventNotification.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.EventType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servereventnotification.eventtype.aspx">ServerEventNotification.EventType</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerEventNotification.EventType).Cast<Microsoft.SqlServer.Dac.Model.EventType>();
+				return Element.GetReferenced(ServerEventNotification.EventType).Cast<Microsoft.SqlServer.Dac.Model.EventType>();
 			}
 		}
-	
+
 }
-	public partial class ServerOptions : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerOptions"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveroptions.aspx">ServerOptions</see>
+	///
+	public partial class TSqlServerOptions : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = ServerOptions.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ServerOptions to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlServerOptions to adapt instances of <see cref="T:ServerOptions"/>
 		/// </summary>
-		public ServerOptions(TSqlObject obj)  : base(obj)
+		public TSqlServerOptions(TSqlObject obj)  : base(obj, ServerOptions.TypeClass)
 		{
 		}
 
@@ -5835,13 +8784,19 @@ public partial class TSqlModelElement
 		}
 
 }
-	public partial class ServerRoleMembership : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerRoleMembership"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverrolemembership.aspx">ServerRoleMembership</see>
+	///
+	public partial class TSqlServerRoleMembership : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ServerRoleMembership.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ServerRoleMembership to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlServerRoleMembership to adapt instances of <see cref="T:ServerRoleMembership"/>
 		/// </summary>
-		public ServerRoleMembership(TSqlObject obj)  : base(obj)
+		public TSqlServerRoleMembership(TSqlObject obj)  : base(obj, ServerRoleMembership.TypeClass)
 		{
 		}
 
@@ -5849,31 +8804,45 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverrolemembership.member.aspx">ServerRoleMembership.Member</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> Member 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerRoleMembership.Member).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal>();
+				return Element.GetReferenced(ServerRoleMembership.Member).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal>();
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Role> Role 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverrolemembership.role.aspx">ServerRoleMembership.Role</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole> Role 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServerRoleMembership.Role).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Role)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServerRoleMembership.Role).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Service : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Service"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.service.aspx">Service</see>
+	///
+	public partial class TSqlService : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = Service.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Service to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlService to adapt instances of <see cref="T:Service"/>
 		/// </summary>
-		public Service(TSqlObject obj)  : base(obj)
+		public TSqlService(TSqlObject obj)  : base(obj, Service.TypeClass)
 		{
 		}
 
@@ -5881,45 +8850,67 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Service.UseDefaultContract"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.service.usedefaultcontract.aspx">Service.UseDefaultContract</see>
+		///
 		public Boolean UseDefaultContract 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Service.UseDefaultContract);}
+			get { return Element.GetProperty<Boolean>(Service.UseDefaultContract);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.service.authorizer.aspx">Service.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Service.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Service.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Contract> Contracts 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlContract"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.service.contracts.aspx">Service.Contracts</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlContract> Contracts 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Service.Contracts).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Contract)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Service.Contracts).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlContract)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Queue> Queue 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.service.queue.aspx">Service.Queue</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue> Queue 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Service.Queue).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Queue)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Service.Queue).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class ServiceBrokerLanguageSpecifier : TSqlModelElement,IEndpointLanguageSpecifier	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServiceBrokerLanguageSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servicebrokerlanguagespecifier.aspx">ServiceBrokerLanguageSpecifier</see>
+	///
+	public partial class TSqlServiceBrokerLanguageSpecifier : TSqlModelElement,IEndpointLanguageSpecifier	{
 		private static ModelTypeClass typeClass = ServiceBrokerLanguageSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class ServiceBrokerLanguageSpecifier to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlServiceBrokerLanguageSpecifier to adapt instances of <see cref="T:ServiceBrokerLanguageSpecifier"/>
 		/// </summary>
-		public ServiceBrokerLanguageSpecifier(TSqlObject obj)  : base(obj)
+		public TSqlServiceBrokerLanguageSpecifier(TSqlObject obj)  : base(obj, ServiceBrokerLanguageSpecifier.TypeClass)
 		{
 		}
 
@@ -5927,65 +8918,103 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servicebrokerlanguagespecifier.encryptionalgorithmpart1.aspx">ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1</see>
+		///
 		public ServiceBrokerEncryptionAlgorithm EncryptionAlgorithmPart1 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<ServiceBrokerEncryptionAlgorithm>(Microsoft.SqlServer.Dac.Model.ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1);}
+			get { return Element.GetProperty<ServiceBrokerEncryptionAlgorithm>(ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servicebrokerlanguagespecifier.encryptionalgorithmpart2.aspx">ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2</see>
+		///
 		public ServiceBrokerEncryptionAlgorithm EncryptionAlgorithmPart2 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<ServiceBrokerEncryptionAlgorithm>(Microsoft.SqlServer.Dac.Model.ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2);}
+			get { return Element.GetProperty<ServiceBrokerEncryptionAlgorithm>(ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServiceBrokerLanguageSpecifier.EncryptionMode"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servicebrokerlanguagespecifier.encryptionmode.aspx">ServiceBrokerLanguageSpecifier.EncryptionMode</see>
+		///
 		public EncryptionMode EncryptionMode 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<EncryptionMode>(Microsoft.SqlServer.Dac.Model.ServiceBrokerLanguageSpecifier.EncryptionMode);}
+			get { return Element.GetProperty<EncryptionMode>(ServiceBrokerLanguageSpecifier.EncryptionMode);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServiceBrokerLanguageSpecifier.MessageForwardingEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servicebrokerlanguagespecifier.messageforwardingenabled.aspx">ServiceBrokerLanguageSpecifier.MessageForwardingEnabled</see>
+		///
 		public Boolean MessageForwardingEnabled 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServiceBrokerLanguageSpecifier.MessageForwardingEnabled);}
+			get { return Element.GetProperty<Boolean>(ServiceBrokerLanguageSpecifier.MessageForwardingEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServiceBrokerLanguageSpecifier.MessageForwardSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servicebrokerlanguagespecifier.messageforwardsize.aspx">ServiceBrokerLanguageSpecifier.MessageForwardSize</see>
+		///
 		public Int32 MessageForwardSize 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.ServiceBrokerLanguageSpecifier.MessageForwardSize);}
+			get { return Element.GetProperty<Int32>(ServiceBrokerLanguageSpecifier.MessageForwardSize);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServiceBrokerLanguageSpecifier.UseCertificateFirst"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servicebrokerlanguagespecifier.usecertificatefirst.aspx">ServiceBrokerLanguageSpecifier.UseCertificateFirst</see>
+		///
 		public Boolean UseCertificateFirst 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.ServiceBrokerLanguageSpecifier.UseCertificateFirst);}
+			get { return Element.GetProperty<Boolean>(ServiceBrokerLanguageSpecifier.UseCertificateFirst);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:ServiceBrokerLanguageSpecifier.WindowsAuthenticationMode"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servicebrokerlanguagespecifier.windowsauthenticationmode.aspx">ServiceBrokerLanguageSpecifier.WindowsAuthenticationMode</see>
+		///
 		public AuthenticationModes WindowsAuthenticationMode 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<AuthenticationModes>(Microsoft.SqlServer.Dac.Model.ServiceBrokerLanguageSpecifier.WindowsAuthenticationMode);}
+			get { return Element.GetProperty<AuthenticationModes>(ServiceBrokerLanguageSpecifier.WindowsAuthenticationMode);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate> AuthenticationCertificate 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servicebrokerlanguagespecifier.authenticationcertificate.aspx">ServiceBrokerLanguageSpecifier.AuthenticationCertificate</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> AuthenticationCertificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.ServiceBrokerLanguageSpecifier.AuthenticationCertificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServiceBrokerLanguageSpecifier.AuthenticationCertificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Signature : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Signature"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signature.aspx">Signature</see>
+	///
+	public partial class TSqlSignature : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Signature.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Signature to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSignature to adapt instances of <see cref="T:Signature"/>
 		/// </summary>
-		public Signature(TSqlObject obj)  : base(obj)
+		public TSqlSignature(TSqlObject obj)  : base(obj, Signature.TypeClass)
 		{
 		}
 
@@ -5993,37 +9022,55 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Signature.IsCounterSignature"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signature.iscountersignature.aspx">Signature.IsCounterSignature</see>
+		///
 		public Boolean IsCounterSignature 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Signature.IsCounterSignature);}
+			get { return Element.GetProperty<Boolean>(Signature.IsCounterSignature);}
 		}
 
-		//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signature.encryptionmechanism.aspx">Signature.EncryptionMechanism</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> EncryptionMechanism 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Signature.EncryptionMechanism);
+				return Element.GetReferenced(Signature.EncryptionMechanism);
 			}
 		}
-			//Hierarchical
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signature.signedobject.aspx">Signature.SignedObject</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> SignedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Signature.SignedObject);
+				return Element.GetReferenced(Signature.SignedObject);
 			}
 		}
-	
+
 }
-	public partial class SignatureEncryptionMechanism : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SignatureEncryptionMechanism"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signatureencryptionmechanism.aspx">SignatureEncryptionMechanism</see>
+	///
+	public partial class TSqlSignatureEncryptionMechanism : TSqlModelElement	{
 		private static ModelTypeClass typeClass = SignatureEncryptionMechanism.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class SignatureEncryptionMechanism to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSignatureEncryptionMechanism to adapt instances of <see cref="T:SignatureEncryptionMechanism"/>
 		/// </summary>
-		public SignatureEncryptionMechanism(TSqlObject obj)  : base(obj)
+		public TSqlSignatureEncryptionMechanism(TSqlObject obj)  : base(obj, SignatureEncryptionMechanism.TypeClass)
 		{
 		}
 
@@ -6031,43 +9078,65 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:SignatureEncryptionMechanism.Password"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signatureencryptionmechanism.password.aspx">SignatureEncryptionMechanism.Password</see>
+		///
 		public String Password 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SignatureEncryptionMechanism.Password);}
+			get { return Element.GetProperty<String>(SignatureEncryptionMechanism.Password);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SignatureEncryptionMechanism.SignedBlob"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signatureencryptionmechanism.signedblob.aspx">SignatureEncryptionMechanism.SignedBlob</see>
+		///
 		public String SignedBlob 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SignatureEncryptionMechanism.SignedBlob);}
+			get { return Element.GetProperty<String>(SignatureEncryptionMechanism.SignedBlob);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.AsymmetricKey> AsymmetricKey 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signatureencryptionmechanism.asymmetrickey.aspx">SignatureEncryptionMechanism.AsymmetricKey</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey> AsymmetricKey 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SignatureEncryptionMechanism.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.AsymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SignatureEncryptionMechanism.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate> Certificate 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signatureencryptionmechanism.certificate.aspx">SignatureEncryptionMechanism.Certificate</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> Certificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SignatureEncryptionMechanism.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SignatureEncryptionMechanism.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class SoapLanguageSpecifier : TSqlModelElement,IEndpointLanguageSpecifier	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SoapLanguageSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.aspx">SoapLanguageSpecifier</see>
+	///
+	public partial class TSqlSoapLanguageSpecifier : TSqlModelElement,IEndpointLanguageSpecifier	{
 		private static ModelTypeClass typeClass = SoapLanguageSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class SoapLanguageSpecifier to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSoapLanguageSpecifier to adapt instances of <see cref="T:SoapLanguageSpecifier"/>
 		/// </summary>
-		public SoapLanguageSpecifier(TSqlObject obj)  : base(obj)
+		public TSqlSoapLanguageSpecifier(TSqlObject obj)  : base(obj, SoapLanguageSpecifier.TypeClass)
 		{
 		}
 
@@ -6075,107 +9144,173 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.BatchesEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.batchesenabled.aspx">SoapLanguageSpecifier.BatchesEnabled</see>
+		///
 		public Boolean BatchesEnabled 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.BatchesEnabled);}
+			get { return Element.GetProperty<Boolean>(SoapLanguageSpecifier.BatchesEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.CharacterSet"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.characterset.aspx">SoapLanguageSpecifier.CharacterSet</see>
+		///
 		public CharacterSet CharacterSet 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<CharacterSet>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.CharacterSet);}
+			get { return Element.GetProperty<CharacterSet>(SoapLanguageSpecifier.CharacterSet);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.DatabaseName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.databasename.aspx">SoapLanguageSpecifier.DatabaseName</see>
+		///
 		public String DatabaseName 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.DatabaseName);}
+			get { return Element.GetProperty<String>(SoapLanguageSpecifier.DatabaseName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.HeaderLimit"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.headerlimit.aspx">SoapLanguageSpecifier.HeaderLimit</see>
+		///
 		public Int32 HeaderLimit 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.HeaderLimit);}
+			get { return Element.GetProperty<Int32>(SoapLanguageSpecifier.HeaderLimit);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.IsDefaultDatabase"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.isdefaultdatabase.aspx">SoapLanguageSpecifier.IsDefaultDatabase</see>
+		///
 		public Boolean IsDefaultDatabase 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.IsDefaultDatabase);}
+			get { return Element.GetProperty<Boolean>(SoapLanguageSpecifier.IsDefaultDatabase);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.IsDefaultNamespace"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.isdefaultnamespace.aspx">SoapLanguageSpecifier.IsDefaultNamespace</see>
+		///
 		public Boolean IsDefaultNamespace 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.IsDefaultNamespace);}
+			get { return Element.GetProperty<Boolean>(SoapLanguageSpecifier.IsDefaultNamespace);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.IsDefaultWsdlSpName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.isdefaultwsdlspname.aspx">SoapLanguageSpecifier.IsDefaultWsdlSpName</see>
+		///
 		public Boolean IsDefaultWsdlSpName 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.IsDefaultWsdlSpName);}
+			get { return Element.GetProperty<Boolean>(SoapLanguageSpecifier.IsDefaultWsdlSpName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.LoginType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.logintype.aspx">SoapLanguageSpecifier.LoginType</see>
+		///
 		public SoapLoginType LoginType 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<SoapLoginType>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.LoginType);}
+			get { return Element.GetProperty<SoapLoginType>(SoapLanguageSpecifier.LoginType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.Namespace"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.namespace.aspx">SoapLanguageSpecifier.Namespace</see>
+		///
 		public String Namespace 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.Namespace);}
+			get { return Element.GetProperty<String>(SoapLanguageSpecifier.Namespace);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.SchemaType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.schematype.aspx">SoapLanguageSpecifier.SchemaType</see>
+		///
 		public SoapSchema SchemaType 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<SoapSchema>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.SchemaType);}
+			get { return Element.GetProperty<SoapSchema>(SoapLanguageSpecifier.SchemaType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.SessionsEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.sessionsenabled.aspx">SoapLanguageSpecifier.SessionsEnabled</see>
+		///
 		public Boolean SessionsEnabled 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.SessionsEnabled);}
+			get { return Element.GetProperty<Boolean>(SoapLanguageSpecifier.SessionsEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.SessionTimeout"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.sessiontimeout.aspx">SoapLanguageSpecifier.SessionTimeout</see>
+		///
 		public Int32 SessionTimeout 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.SessionTimeout);}
+			get { return Element.GetProperty<Int32>(SoapLanguageSpecifier.SessionTimeout);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.SessionTimeoutNever"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.sessiontimeoutnever.aspx">SoapLanguageSpecifier.SessionTimeoutNever</see>
+		///
 		public Boolean SessionTimeoutNever 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.SessionTimeoutNever);}
+			get { return Element.GetProperty<Boolean>(SoapLanguageSpecifier.SessionTimeoutNever);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapLanguageSpecifier.WsdlSpName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.wsdlspname.aspx">SoapLanguageSpecifier.WsdlSpName</see>
+		///
 		public String WsdlSpName 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.WsdlSpName);}
+			get { return Element.GetProperty<String>(SoapLanguageSpecifier.WsdlSpName);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.SoapMethodSpecification> WebMethods 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSoapMethodSpecification"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.webmethods.aspx">SoapLanguageSpecifier.WebMethods</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSoapMethodSpecification> WebMethods 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SoapLanguageSpecifier.WebMethods).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.SoapMethodSpecification)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SoapLanguageSpecifier.WebMethods).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSoapMethodSpecification)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class SoapMethodSpecification : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SoapMethodSpecification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soapmethodspecification.aspx">SoapMethodSpecification</see>
+	///
+	public partial class TSqlSoapMethodSpecification : TSqlModelElement	{
 		private static ModelTypeClass typeClass = SoapMethodSpecification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class SoapMethodSpecification to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSoapMethodSpecification to adapt instances of <see cref="T:SoapMethodSpecification"/>
 		/// </summary>
-		public SoapMethodSpecification(TSqlObject obj)  : base(obj)
+		public TSqlSoapMethodSpecification(TSqlObject obj)  : base(obj, SoapMethodSpecification.TypeClass)
 		{
 		}
 
@@ -6183,47 +9318,73 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:SoapMethodSpecification.Format"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soapmethodspecification.format.aspx">SoapMethodSpecification.Format</see>
+		///
 		public SoapFormat Format 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<SoapFormat>(Microsoft.SqlServer.Dac.Model.SoapMethodSpecification.Format);}
+			get { return Element.GetProperty<SoapFormat>(SoapMethodSpecification.Format);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapMethodSpecification.SchemaType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soapmethodspecification.schematype.aspx">SoapMethodSpecification.SchemaType</see>
+		///
 		public SoapSchema SchemaType 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<SoapSchema>(Microsoft.SqlServer.Dac.Model.SoapMethodSpecification.SchemaType);}
+			get { return Element.GetProperty<SoapSchema>(SoapMethodSpecification.SchemaType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapMethodSpecification.WebMethodAlias"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soapmethodspecification.webmethodalias.aspx">SoapMethodSpecification.WebMethodAlias</see>
+		///
 		public String WebMethodAlias 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SoapMethodSpecification.WebMethodAlias);}
+			get { return Element.GetProperty<String>(SoapMethodSpecification.WebMethodAlias);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SoapMethodSpecification.WebMethodNamespace"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soapmethodspecification.webmethodnamespace.aspx">SoapMethodSpecification.WebMethodNamespace</see>
+		///
 		public String WebMethodNamespace 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SoapMethodSpecification.WebMethodNamespace);}
+			get { return Element.GetProperty<String>(SoapMethodSpecification.WebMethodNamespace);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soapmethodspecification.relatedmethod.aspx">SoapMethodSpecification.RelatedMethod</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> RelatedMethod 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SoapMethodSpecification.RelatedMethod);
+				return Element.GetReferenced(SoapMethodSpecification.RelatedMethod);
 			}
 		}
-	
+
 }
-	public partial class SpatialIndex : TSqlModelElement,ISqlIndex	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SpatialIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.aspx">SpatialIndex</see>
+	///
+	public partial class TSqlSpatialIndex : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = SpatialIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class SpatialIndex to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSpatialIndex to adapt instances of <see cref="T:SpatialIndex"/>
 		/// </summary>
-		public SpatialIndex(TSqlObject obj)  : base(obj)
+		public TSqlSpatialIndex(TSqlObject obj)  : base(obj, SpatialIndex.TypeClass)
 		{
 		}
 
@@ -6231,163 +9392,261 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.AllowPageLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.allowpagelocks.aspx">SpatialIndex.AllowPageLocks</see>
+		///
 		public Boolean AllowPageLocks 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SpatialIndex.AllowPageLocks);}
+			get { return Element.GetProperty<Boolean>(SpatialIndex.AllowPageLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.AllowRowLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.allowrowlocks.aspx">SpatialIndex.AllowRowLocks</see>
+		///
 		public Boolean AllowRowLocks 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SpatialIndex.AllowRowLocks);}
+			get { return Element.GetProperty<Boolean>(SpatialIndex.AllowRowLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.CellsPerObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.cellsperobject.aspx">SpatialIndex.CellsPerObject</see>
+		///
 		public Int32? CellsPerObject 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.SpatialIndex.CellsPerObject);}
+			get { return Element.GetProperty<Int32?>(SpatialIndex.CellsPerObject);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.DataCompression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.datacompression.aspx">SpatialIndex.DataCompression</see>
+		///
 		public CompressionLevel DataCompression 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<CompressionLevel>(Microsoft.SqlServer.Dac.Model.SpatialIndex.DataCompression);}
+			get { return Element.GetProperty<CompressionLevel>(SpatialIndex.DataCompression);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.disabled.aspx">SpatialIndex.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SpatialIndex.Disabled);}
+			get { return Element.GetProperty<Boolean>(SpatialIndex.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.FillFactor"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.fillfactor.aspx">SpatialIndex.FillFactor</see>
+		///
 		public Int32 FillFactor 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.SpatialIndex.FillFactor);}
+			get { return Element.GetProperty<Int32>(SpatialIndex.FillFactor);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.GridLevel1Density"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.gridlevel1density.aspx">SpatialIndex.GridLevel1Density</see>
+		///
 		public Degree GridLevel1Density 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Degree>(Microsoft.SqlServer.Dac.Model.SpatialIndex.GridLevel1Density);}
+			get { return Element.GetProperty<Degree>(SpatialIndex.GridLevel1Density);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.GridLevel2Density"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.gridlevel2density.aspx">SpatialIndex.GridLevel2Density</see>
+		///
 		public Degree GridLevel2Density 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Degree>(Microsoft.SqlServer.Dac.Model.SpatialIndex.GridLevel2Density);}
+			get { return Element.GetProperty<Degree>(SpatialIndex.GridLevel2Density);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.GridLevel3Density"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.gridlevel3density.aspx">SpatialIndex.GridLevel3Density</see>
+		///
 		public Degree GridLevel3Density 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Degree>(Microsoft.SqlServer.Dac.Model.SpatialIndex.GridLevel3Density);}
+			get { return Element.GetProperty<Degree>(SpatialIndex.GridLevel3Density);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.GridLevel4Density"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.gridlevel4density.aspx">SpatialIndex.GridLevel4Density</see>
+		///
 		public Degree GridLevel4Density 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Degree>(Microsoft.SqlServer.Dac.Model.SpatialIndex.GridLevel4Density);}
+			get { return Element.GetProperty<Degree>(SpatialIndex.GridLevel4Density);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.IgnoreDuplicateKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.ignoreduplicatekey.aspx">SpatialIndex.IgnoreDuplicateKey</see>
+		///
 		public Boolean IgnoreDuplicateKey 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SpatialIndex.IgnoreDuplicateKey);}
+			get { return Element.GetProperty<Boolean>(SpatialIndex.IgnoreDuplicateKey);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.RecomputeStatistics"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.recomputestatistics.aspx">SpatialIndex.RecomputeStatistics</see>
+		///
 		public Boolean RecomputeStatistics 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SpatialIndex.RecomputeStatistics);}
+			get { return Element.GetProperty<Boolean>(SpatialIndex.RecomputeStatistics);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.Tessellation"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.tessellation.aspx">SpatialIndex.Tessellation</see>
+		///
 		public Tessellation Tessellation 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Tessellation>(Microsoft.SqlServer.Dac.Model.SpatialIndex.Tessellation);}
+			get { return Element.GetProperty<Tessellation>(SpatialIndex.Tessellation);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.WithPadIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.withpadindex.aspx">SpatialIndex.WithPadIndex</see>
+		///
 		public Boolean WithPadIndex 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SpatialIndex.WithPadIndex);}
+			get { return Element.GetProperty<Boolean>(SpatialIndex.WithPadIndex);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.XMax"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.xmax.aspx">SpatialIndex.XMax</see>
+		///
 		public Double? XMax 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Double?>(Microsoft.SqlServer.Dac.Model.SpatialIndex.XMax);}
+			get { return Element.GetProperty<Double?>(SpatialIndex.XMax);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.XMin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.xmin.aspx">SpatialIndex.XMin</see>
+		///
 		public Double? XMin 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Double?>(Microsoft.SqlServer.Dac.Model.SpatialIndex.XMin);}
+			get { return Element.GetProperty<Double?>(SpatialIndex.XMin);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.YMax"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.ymax.aspx">SpatialIndex.YMax</see>
+		///
 		public Double? YMax 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Double?>(Microsoft.SqlServer.Dac.Model.SpatialIndex.YMax);}
+			get { return Element.GetProperty<Double?>(SpatialIndex.YMax);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SpatialIndex.YMin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.ymin.aspx">SpatialIndex.YMin</see>
+		///
 		public Double? YMin 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Double?>(Microsoft.SqlServer.Dac.Model.SpatialIndex.YMin);}
+			get { return Element.GetProperty<Double?>(SpatialIndex.YMin);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Column 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.column.aspx">SpatialIndex.Column</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Column 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SpatialIndex.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SpatialIndex.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.filegroup.aspx">SpatialIndex.Filegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SpatialIndex.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SpatialIndex.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> IndexedObject 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.indexedobject.aspx">SpatialIndex.IndexedObject</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SpatialIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource>();
+				return Element.GetReferenced(SpatialIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> PartitionColumn 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.partitioncolumn.aspx">SpatialIndex.PartitionColumn</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SpatialIndex.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SpatialIndex.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> PartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.partitionscheme.aspx">SpatialIndex.PartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SpatialIndex.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SpatialIndex.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Statistics : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Statistics"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.aspx">Statistics</see>
+	///
+	public partial class TSqlStatistics : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Statistics.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Statistics to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlStatistics to adapt instances of <see cref="T:Statistics"/>
 		/// </summary>
-		public Statistics(TSqlObject obj)  : base(obj)
+		public TSqlStatistics(TSqlObject obj)  : base(obj, Statistics.TypeClass)
 		{
 		}
 
@@ -6395,75 +9654,117 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Statistics.FilterPredicate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.filterpredicate.aspx">Statistics.FilterPredicate</see>
+		///
 		public String FilterPredicate 
 		{
-		// Supported platforms = 30
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.Statistics.FilterPredicate);}
+			get { return (String)Element.GetProperty(Statistics.FilterPredicate);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Statistics.Incremental"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.incremental.aspx">Statistics.Incremental</see>
+		///
 		public Boolean Incremental 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Statistics.Incremental);}
+			get { return Element.GetProperty<Boolean>(Statistics.Incremental);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Statistics.NoRecompute"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.norecompute.aspx">Statistics.NoRecompute</see>
+		///
 		public Boolean NoRecompute 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Statistics.NoRecompute);}
+			get { return Element.GetProperty<Boolean>(Statistics.NoRecompute);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Statistics.SampleSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.samplesize.aspx">Statistics.SampleSize</see>
+		///
 		public Int32 SampleSize 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.Statistics.SampleSize);}
+			get { return Element.GetProperty<Int32>(Statistics.SampleSize);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Statistics.SamplingStyle"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.samplingstyle.aspx">Statistics.SamplingStyle</see>
+		///
 		public SamplingStyle SamplingStyle 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<SamplingStyle>(Microsoft.SqlServer.Dac.Model.Statistics.SamplingStyle);}
+			get { return Element.GetProperty<SamplingStyle>(Statistics.SamplingStyle);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Statistics.StatsStream"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.statsstream.aspx">Statistics.StatsStream</see>
+		///
 		public String StatsStream 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.Statistics.StatsStream);}
+			get { return Element.GetProperty<String>(Statistics.StatsStream);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.columns.aspx">Statistics.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Statistics.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Statistics.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.expressiondependencies.aspx">Statistics.ExpressionDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Statistics.ExpressionDependencies);
+				return Element.GetReferenced(Statistics.ExpressionDependencies);
 			}
 		}
-			//Hierarchical
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.onobject.aspx">Statistics.OnObject</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> OnObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Statistics.OnObject);
+				return Element.GetReferenced(Statistics.OnObject);
 			}
 		}
-	
+
 }
-	public partial class Parameter : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Parameter"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.aspx">Parameter</see>
+	///
+	public partial class TSqlParameter : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Parameter.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Parameter to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlParameter to adapt instances of <see cref="T:Parameter"/>
 		/// </summary>
-		public Parameter(TSqlObject obj)  : base(obj)
+		public TSqlParameter(TSqlObject obj)  : base(obj, Parameter.TypeClass)
 		{
 		}
 
@@ -6471,85 +9772,135 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Parameter.DefaultExpression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.defaultexpression.aspx">Parameter.DefaultExpression</see>
+		///
 		public String DefaultExpression 
 		{
-		// Supported platforms = 31
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.Parameter.DefaultExpression);}
+			get { return (String)Element.GetProperty(Parameter.DefaultExpression);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Parameter.IsMax"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.ismax.aspx">Parameter.IsMax</see>
+		///
 		public Boolean IsMax 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Parameter.IsMax);}
+			get { return Element.GetProperty<Boolean>(Parameter.IsMax);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Parameter.IsOutput"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.isoutput.aspx">Parameter.IsOutput</see>
+		///
 		public Boolean IsOutput 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Parameter.IsOutput);}
+			get { return Element.GetProperty<Boolean>(Parameter.IsOutput);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Parameter.Length"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.length.aspx">Parameter.Length</see>
+		///
 		public Int32 Length 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.Parameter.Length);}
+			get { return Element.GetProperty<Int32>(Parameter.Length);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Parameter.Precision"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.precision.aspx">Parameter.Precision</see>
+		///
 		public Int32 Precision 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.Parameter.Precision);}
+			get { return Element.GetProperty<Int32>(Parameter.Precision);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Parameter.ReadOnly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.readonly.aspx">Parameter.ReadOnly</see>
+		///
 		public Boolean ReadOnly 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Parameter.ReadOnly);}
+			get { return Element.GetProperty<Boolean>(Parameter.ReadOnly);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Parameter.Scale"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.scale.aspx">Parameter.Scale</see>
+		///
 		public Int32 Scale 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.Parameter.Scale);}
+			get { return Element.GetProperty<Int32>(Parameter.Scale);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Parameter.Varying"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.varying.aspx">Parameter.Varying</see>
+		///
 		public Boolean Varying 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Parameter.Varying);}
+			get { return Element.GetProperty<Boolean>(Parameter.Varying);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Parameter.XmlStyle"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.xmlstyle.aspx">Parameter.XmlStyle</see>
+		///
 		public XmlStyle XmlStyle 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<XmlStyle>(Microsoft.SqlServer.Dac.Model.Parameter.XmlStyle);}
+			get { return Element.GetProperty<XmlStyle>(Parameter.XmlStyle);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataType> DataType 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.datatype.aspx">Parameter.DataType</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Parameter.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Parameter.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.XmlSchemaCollection> XmlSchemaCollection 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.xmlschemacollection.aspx">Parameter.XmlSchemaCollection</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection> XmlSchemaCollection 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Parameter.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.XmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Parameter.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class SymmetricKey : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SymmetricKey"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.aspx">SymmetricKey</see>
+	///
+	public partial class TSqlSymmetricKey : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = SymmetricKey.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class SymmetricKey to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSymmetricKey to adapt instances of <see cref="T:SymmetricKey"/>
 		/// </summary>
-		public SymmetricKey(TSqlObject obj)  : base(obj)
+		public TSqlSymmetricKey(TSqlObject obj)  : base(obj, SymmetricKey.TypeClass)
 		{
 		}
 
@@ -6557,93 +9908,143 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:SymmetricKey.Algorithm"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.algorithm.aspx">SymmetricKey.Algorithm</see>
+		///
 		public SymmetricKeyAlgorithm Algorithm 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<SymmetricKeyAlgorithm>(Microsoft.SqlServer.Dac.Model.SymmetricKey.Algorithm);}
+			get { return Element.GetProperty<SymmetricKeyAlgorithm>(SymmetricKey.Algorithm);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SymmetricKey.CreationDisposition"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.creationdisposition.aspx">SymmetricKey.CreationDisposition</see>
+		///
 		public SymmetricKeyCreationDisposition CreationDisposition 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<SymmetricKeyCreationDisposition>(Microsoft.SqlServer.Dac.Model.SymmetricKey.CreationDisposition);}
+			get { return Element.GetProperty<SymmetricKeyCreationDisposition>(SymmetricKey.CreationDisposition);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SymmetricKey.IdentityValue"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.identityvalue.aspx">SymmetricKey.IdentityValue</see>
+		///
 		public String IdentityValue 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SymmetricKey.IdentityValue);}
+			get { return Element.GetProperty<String>(SymmetricKey.IdentityValue);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SymmetricKey.KeySource"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.keysource.aspx">SymmetricKey.KeySource</see>
+		///
 		public String KeySource 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SymmetricKey.KeySource);}
+			get { return Element.GetProperty<String>(SymmetricKey.KeySource);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SymmetricKey.ProviderKeyName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.providerkeyname.aspx">SymmetricKey.ProviderKeyName</see>
+		///
 		public String ProviderKeyName 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SymmetricKey.ProviderKeyName);}
+			get { return Element.GetProperty<String>(SymmetricKey.ProviderKeyName);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.AsymmetricKey> AsymmetricKeys 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.asymmetrickeys.aspx">SymmetricKey.AsymmetricKeys</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey> AsymmetricKeys 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SymmetricKey.AsymmetricKeys).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.AsymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SymmetricKey.AsymmetricKeys).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.authorizer.aspx">SymmetricKey.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SymmetricKey.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(SymmetricKey.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate> Certificates 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.certificates.aspx">SymmetricKey.Certificates</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> Certificates 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SymmetricKey.Certificates).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SymmetricKey.Certificates).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.passwords.aspx">SymmetricKey.Passwords</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Passwords 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SymmetricKey.Passwords);
+				return Element.GetReferenced(SymmetricKey.Passwords);
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.provider.aspx">SymmetricKey.Provider</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Provider 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SymmetricKey.Provider);
+				return Element.GetReferenced(SymmetricKey.Provider);
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.SymmetricKey> SymmetricKeys 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSymmetricKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.symmetrickeys.aspx">SymmetricKey.SymmetricKeys</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSymmetricKey> SymmetricKeys 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SymmetricKey.SymmetricKeys).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.SymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SymmetricKey.SymmetricKeys).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSymmetricKey)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class SymmetricKeyPassword : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SymmetricKeyPassword"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickeypassword.aspx">SymmetricKeyPassword</see>
+	///
+	public partial class TSqlSymmetricKeyPassword : TSqlModelElement	{
 		private static ModelTypeClass typeClass = SymmetricKeyPassword.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class SymmetricKeyPassword to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSymmetricKeyPassword to adapt instances of <see cref="T:SymmetricKeyPassword"/>
 		/// </summary>
-		public SymmetricKeyPassword(TSqlObject obj)  : base(obj)
+		public TSqlSymmetricKeyPassword(TSqlObject obj)  : base(obj, SymmetricKeyPassword.TypeClass)
 		{
 		}
 
@@ -6651,21 +10052,31 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:SymmetricKeyPassword.Password"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickeypassword.password.aspx">SymmetricKeyPassword.Password</see>
+		///
 		public String Password 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.SymmetricKeyPassword.Password);}
+			get { return Element.GetProperty<String>(SymmetricKeyPassword.Password);}
 		}
 
 
 }
-	public partial class Synonym : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Synonym"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.synonym.aspx">Synonym</see>
+	///
+	public partial class TSqlSynonym : TSqlModelElement	{
 		private static ModelTypeClass typeClass = Synonym.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Synonym to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSynonym to adapt instances of <see cref="T:Synonym"/>
 		/// </summary>
-		public Synonym(TSqlObject obj)  : base(obj)
+		public TSqlSynonym(TSqlObject obj)  : base(obj, Synonym.TypeClass)
 		{
 		}
 
@@ -6673,37 +10084,55 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Synonym.ForObjectName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.synonym.forobjectname.aspx">Synonym.ForObjectName</see>
+		///
 		public String ForObjectName 
 		{
-		// Supported platforms = 31
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.Synonym.ForObjectName);}
+			get { return (String)Element.GetProperty(Synonym.ForObjectName);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.synonym.forobject.aspx">Synonym.ForObject</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ForObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Synonym.ForObject);
+				return Element.GetReferenced(Synonym.ForObject);
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.synonym.schema.aspx">Synonym.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Synonym.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Synonym.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class Table : TSqlModelElement,ISqlColumnSource	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Table"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.aspx">Table</see>
+	///
+	public partial class TSqlTable : TSqlModelElement,ISqlColumnSource,ISpecifiesIndex	{
 		private static ModelTypeClass typeClass = Table.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class Table to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlTable to adapt instances of <see cref="T:Table"/>
 		/// </summary>
-		public Table(TSqlObject obj)  : base(obj)
+		public TSqlTable(TSqlObject obj)  : base(obj, Table.TypeClass)
 		{
 		}
 
@@ -6711,171 +10140,269 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:Table.AnsiNullsOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.ansinullson.aspx">Table.AnsiNullsOn</see>
+		///
 		public Boolean? AnsiNullsOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.Table.AnsiNullsOn);}
+			get { return Element.GetProperty<Boolean?>(Table.AnsiNullsOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.ChangeDataCaptureEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.changedatacaptureenabled.aspx">Table.ChangeDataCaptureEnabled</see>
+		///
 		public Boolean ChangeDataCaptureEnabled 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Table.ChangeDataCaptureEnabled);}
+			get { return Element.GetProperty<Boolean>(Table.ChangeDataCaptureEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.ChangeTrackingEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.changetrackingenabled.aspx">Table.ChangeTrackingEnabled</see>
+		///
 		public Boolean ChangeTrackingEnabled 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Table.ChangeTrackingEnabled);}
+			get { return Element.GetProperty<Boolean>(Table.ChangeTrackingEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.Durability"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.durability.aspx">Table.Durability</see>
+		///
 		public Durability Durability 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<Durability>(Microsoft.SqlServer.Dac.Model.Table.Durability);}
+			get { return Element.GetProperty<Durability>(Table.Durability);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.FileStreamNull"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.filestreamnull.aspx">Table.FileStreamNull</see>
+		///
 		public Boolean? FileStreamNull 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.Table.FileStreamNull);}
+			get { return Element.GetProperty<Boolean?>(Table.FileStreamNull);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.IsReplicated"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.isreplicated.aspx">Table.IsReplicated</see>
+		///
 		public Boolean IsReplicated 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Table.IsReplicated);}
+			get { return Element.GetProperty<Boolean>(Table.IsReplicated);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.LargeValueTypesOutOfRow"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.largevaluetypesoutofrow.aspx">Table.LargeValueTypesOutOfRow</see>
+		///
 		public Boolean LargeValueTypesOutOfRow 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Table.LargeValueTypesOutOfRow);}
+			get { return Element.GetProperty<Boolean>(Table.LargeValueTypesOutOfRow);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.LockEscalation"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.lockescalation.aspx">Table.LockEscalation</see>
+		///
 		public LockEscalationMethod LockEscalation 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<LockEscalationMethod>(Microsoft.SqlServer.Dac.Model.Table.LockEscalation);}
+			get { return Element.GetProperty<LockEscalationMethod>(Table.LockEscalation);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.MemoryOptimized"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.memoryoptimized.aspx">Table.MemoryOptimized</see>
+		///
 		public Boolean MemoryOptimized 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Table.MemoryOptimized);}
+			get { return Element.GetProperty<Boolean>(Table.MemoryOptimized);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.QuotedIdentifierOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.quotedidentifieron.aspx">Table.QuotedIdentifierOn</see>
+		///
 		public Boolean? QuotedIdentifierOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.Table.QuotedIdentifierOn);}
+			get { return Element.GetProperty<Boolean?>(Table.QuotedIdentifierOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.TableLockOnBulkLoad"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.tablelockonbulkload.aspx">Table.TableLockOnBulkLoad</see>
+		///
 		public Boolean TableLockOnBulkLoad 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Table.TableLockOnBulkLoad);}
+			get { return Element.GetProperty<Boolean>(Table.TableLockOnBulkLoad);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.TextInRowSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.textinrowsize.aspx">Table.TextInRowSize</see>
+		///
 		public Int32 TextInRowSize 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.Table.TextInRowSize);}
+			get { return Element.GetProperty<Int32>(Table.TextInRowSize);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.TrackColumnsUpdated"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.trackcolumnsupdated.aspx">Table.TrackColumnsUpdated</see>
+		///
 		public Boolean TrackColumnsUpdated 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Table.TrackColumnsUpdated);}
+			get { return Element.GetProperty<Boolean>(Table.TrackColumnsUpdated);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:Table.VardecimalStorageFormatEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.vardecimalstorageformatenabled.aspx">Table.VardecimalStorageFormatEnabled</see>
+		///
 		public Boolean VardecimalStorageFormatEnabled 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.Table.VardecimalStorageFormatEnabled);}
+			get { return Element.GetProperty<Boolean>(Table.VardecimalStorageFormatEnabled);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.columns.aspx">Table.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Table.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Table.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption> DataCompressionOptions 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.datacompressionoptions.aspx">Table.DataCompressionOptions</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Table.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Table.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.filegroup.aspx">Table.Filegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Table.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Table.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> FilegroupForTextImage 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.filegroupfortextimage.aspx">Table.FilegroupForTextImage</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FilegroupForTextImage 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Table.FilegroupForTextImage).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Table.FilegroupForTextImage).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> FileStreamFilegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.filestreamfilegroup.aspx">Table.FileStreamFilegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Table.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Table.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> FileStreamPartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.filestreampartitionscheme.aspx">Table.FileStreamPartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Table.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Table.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> PartitionColumn 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.partitioncolumn.aspx">Table.PartitionColumn</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Table.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Table.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> PartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.partitionscheme.aspx">Table.PartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Table.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Table.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.schema.aspx">Table.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.Table.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Table.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class FileTable : TSqlModelElement,ISqlColumnSource	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FileTable"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.aspx">FileTable</see>
+	///
+	public partial class TSqlFileTable : TSqlModelElement,ISqlColumnSource,ISpecifiesIndex	{
 		private static ModelTypeClass typeClass = FileTable.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class FileTable to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlFileTable to adapt instances of <see cref="T:FileTable"/>
 		/// </summary>
-		public FileTable(TSqlObject obj)  : base(obj)
+		public TSqlFileTable(TSqlObject obj)  : base(obj, FileTable.TypeClass)
 		{
 		}
 
@@ -6883,127 +10410,197 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:FileTable.AnsiNullsOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.ansinullson.aspx">FileTable.AnsiNullsOn</see>
+		///
 		public Boolean? AnsiNullsOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.FileTable.AnsiNullsOn);}
+			get { return Element.GetProperty<Boolean?>(FileTable.AnsiNullsOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FileTable.FileStreamNull"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.filestreamnull.aspx">FileTable.FileStreamNull</see>
+		///
 		public Boolean? FileStreamNull 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.FileTable.FileStreamNull);}
+			get { return Element.GetProperty<Boolean?>(FileTable.FileStreamNull);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FileTable.FileTableCollateFilename"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.filetablecollatefilename.aspx">FileTable.FileTableCollateFilename</see>
+		///
 		public String FileTableCollateFilename 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.FileTable.FileTableCollateFilename);}
+			get { return Element.GetProperty<String>(FileTable.FileTableCollateFilename);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FileTable.FileTableDirectory"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.filetabledirectory.aspx">FileTable.FileTableDirectory</see>
+		///
 		public String FileTableDirectory 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.FileTable.FileTableDirectory);}
+			get { return Element.GetProperty<String>(FileTable.FileTableDirectory);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FileTable.FileTableNamespaceEnabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.filetablenamespaceenabled.aspx">FileTable.FileTableNamespaceEnabled</see>
+		///
 		public Boolean FileTableNamespaceEnabled 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.FileTable.FileTableNamespaceEnabled);}
+			get { return Element.GetProperty<Boolean>(FileTable.FileTableNamespaceEnabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FileTable.LockEscalation"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.lockescalation.aspx">FileTable.LockEscalation</see>
+		///
 		public LockEscalationMethod LockEscalation 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<LockEscalationMethod>(Microsoft.SqlServer.Dac.Model.FileTable.LockEscalation);}
+			get { return Element.GetProperty<LockEscalationMethod>(FileTable.LockEscalation);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FileTable.QuotedIdentifierOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.quotedidentifieron.aspx">FileTable.QuotedIdentifierOn</see>
+		///
 		public Boolean? QuotedIdentifierOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.FileTable.QuotedIdentifierOn);}
+			get { return Element.GetProperty<Boolean?>(FileTable.QuotedIdentifierOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:FileTable.TableLockOnBulkLoad"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.tablelockonbulkload.aspx">FileTable.TableLockOnBulkLoad</see>
+		///
 		public Boolean TableLockOnBulkLoad 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.FileTable.TableLockOnBulkLoad);}
+			get { return Element.GetProperty<Boolean>(FileTable.TableLockOnBulkLoad);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.columns.aspx">FileTable.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FileTable.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FileTable.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption> DataCompressionOptions 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.datacompressionoptions.aspx">FileTable.DataCompressionOptions</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FileTable.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FileTable.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.filegroup.aspx">FileTable.Filegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FileTable.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FileTable.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> FileStreamFilegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.filestreamfilegroup.aspx">FileTable.FileStreamFilegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FileTable.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FileTable.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> FileStreamPartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.filestreampartitionscheme.aspx">FileTable.FileStreamPartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FileTable.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FileTable.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> PartitionColumn 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.partitioncolumn.aspx">FileTable.PartitionColumn</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FileTable.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FileTable.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> PartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.partitionscheme.aspx">FileTable.PartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FileTable.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FileTable.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.schema.aspx">FileTable.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.FileTable.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FileTable.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class TableType : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.aspx">TableType</see>
+	///
+	public partial class TSqlTableType : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = TableType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TableType to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlTableType to adapt instances of <see cref="T:TableType"/>
 		/// </summary>
-		public TableType(TSqlObject obj)  : base(obj)
+		public TSqlTableType(TSqlObject obj)  : base(obj, TableType.TypeClass)
 		{
 		}
 
@@ -7011,53 +10608,79 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:TableType.MemoryOptimized"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.memoryoptimized.aspx">TableType.MemoryOptimized</see>
+		///
 		public Boolean MemoryOptimized 
 		{
-		// Supported platforms = 16
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableType.MemoryOptimized);}
+			get { return Element.GetProperty<Boolean>(TableType.MemoryOptimized);}
 		}
 
-		//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.columns.aspx">TableType.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableType.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableType.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.constraints.aspx">TableType.Constraints</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> Constraints 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableType.Constraints).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint>();
+				return Element.GetReferenced(TableType.Constraints).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint>();
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlIndex> Indexes 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.indexes.aspx">TableType.Indexes</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlIndex> Indexes 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableType.Indexes).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlIndex>();
+				return Element.GetReferenced(TableType.Indexes).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlIndex>();
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.schema.aspx">TableType.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableType.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableType.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class TableTypeCheckConstraint : TSqlModelElement,ITableTypeConstraint	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeCheckConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecheckconstraint.aspx">TableTypeCheckConstraint</see>
+	///
+	public partial class TSqlTableTypeCheckConstraint : TSqlModelElement,ITableTypeConstraint	{
 		private static ModelTypeClass typeClass = TableTypeCheckConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TableTypeCheckConstraint to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlTableTypeCheckConstraint to adapt instances of <see cref="T:TableTypeCheckConstraint"/>
 		/// </summary>
-		public TableTypeCheckConstraint(TSqlObject obj)  : base(obj)
+		public TSqlTableTypeCheckConstraint(TSqlObject obj)  : base(obj, TableTypeCheckConstraint.TypeClass)
 		{
 		}
 
@@ -7065,29 +10688,43 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeCheckConstraint.Expression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecheckconstraint.expression.aspx">TableTypeCheckConstraint.Expression</see>
+		///
 		public String Expression 
 		{
-		// Supported platforms = 30
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.TableTypeCheckConstraint.Expression);}
+			get { return (String)Element.GetProperty(TableTypeCheckConstraint.Expression);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecheckconstraint.expressiondependencies.aspx">TableTypeCheckConstraint.ExpressionDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableTypeCheckConstraint.ExpressionDependencies);
+				return Element.GetReferenced(TableTypeCheckConstraint.ExpressionDependencies);
 			}
 		}
-	
+
 }
-	public partial class TableTypeColumn : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeColumn"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.aspx">TableTypeColumn</see>
+	///
+	public partial class TSqlTableTypeColumn : TSqlModelElement	{
 		private static ModelTypeClass typeClass = TableTypeColumn.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TableTypeColumn to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlTableTypeColumn to adapt instances of <see cref="T:TableTypeColumn"/>
 		/// </summary>
-		public TableTypeColumn(TSqlObject obj)  : base(obj)
+		public TSqlTableTypeColumn(TSqlObject obj)  : base(obj, TableTypeColumn.TypeClass)
 		{
 		}
 
@@ -7095,123 +10732,197 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.Collation"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.collation.aspx">TableTypeColumn.Collation</see>
+		///
 		public String Collation 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.Collation);}
+			get { return Element.GetProperty<String>(TableTypeColumn.Collation);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.Expression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.expression.aspx">TableTypeColumn.Expression</see>
+		///
 		public String Expression 
 		{
-		// Supported platforms = 30
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.TableTypeColumn.Expression);}
+			get { return (String)Element.GetProperty(TableTypeColumn.Expression);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.IdentityIncrement"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.identityincrement.aspx">TableTypeColumn.IdentityIncrement</see>
+		///
 		public String IdentityIncrement 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.IdentityIncrement);}
+			get { return Element.GetProperty<String>(TableTypeColumn.IdentityIncrement);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.IdentitySeed"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.identityseed.aspx">TableTypeColumn.IdentitySeed</see>
+		///
 		public String IdentitySeed 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.IdentitySeed);}
+			get { return Element.GetProperty<String>(TableTypeColumn.IdentitySeed);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.IsIdentity"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.isidentity.aspx">TableTypeColumn.IsIdentity</see>
+		///
 		public Boolean IsIdentity 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.IsIdentity);}
+			get { return Element.GetProperty<Boolean>(TableTypeColumn.IsIdentity);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.IsMax"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.ismax.aspx">TableTypeColumn.IsMax</see>
+		///
 		public Boolean IsMax 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.IsMax);}
+			get { return Element.GetProperty<Boolean>(TableTypeColumn.IsMax);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.IsRowGuidCol"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.isrowguidcol.aspx">TableTypeColumn.IsRowGuidCol</see>
+		///
 		public Boolean IsRowGuidCol 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.IsRowGuidCol);}
+			get { return Element.GetProperty<Boolean>(TableTypeColumn.IsRowGuidCol);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.Length"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.length.aspx">TableTypeColumn.Length</see>
+		///
 		public Int32 Length 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.Length);}
+			get { return Element.GetProperty<Int32>(TableTypeColumn.Length);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.Nullable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.nullable.aspx">TableTypeColumn.Nullable</see>
+		///
 		public Boolean Nullable 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.Nullable);}
+			get { return Element.GetProperty<Boolean>(TableTypeColumn.Nullable);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.Persisted"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.persisted.aspx">TableTypeColumn.Persisted</see>
+		///
 		public Boolean Persisted 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.Persisted);}
+			get { return Element.GetProperty<Boolean>(TableTypeColumn.Persisted);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.PersistedNullable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.persistednullable.aspx">TableTypeColumn.PersistedNullable</see>
+		///
 		public Boolean? PersistedNullable 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.PersistedNullable);}
+			get { return Element.GetProperty<Boolean?>(TableTypeColumn.PersistedNullable);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.Precision"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.precision.aspx">TableTypeColumn.Precision</see>
+		///
 		public Int32 Precision 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.Precision);}
+			get { return Element.GetProperty<Int32>(TableTypeColumn.Precision);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.Scale"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.scale.aspx">TableTypeColumn.Scale</see>
+		///
 		public Int32 Scale 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.Scale);}
+			get { return Element.GetProperty<Int32>(TableTypeColumn.Scale);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeColumn.XmlStyle"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.xmlstyle.aspx">TableTypeColumn.XmlStyle</see>
+		///
 		public XmlStyle XmlStyle 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<XmlStyle>(Microsoft.SqlServer.Dac.Model.TableTypeColumn.XmlStyle);}
+			get { return Element.GetProperty<XmlStyle>(TableTypeColumn.XmlStyle);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataType> DataType 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.datatype.aspx">TableTypeColumn.DataType</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableTypeColumn.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableTypeColumn.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.expressiondependencies.aspx">TableTypeColumn.ExpressionDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableTypeColumn.ExpressionDependencies);
+				return Element.GetReferenced(TableTypeColumn.ExpressionDependencies);
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.XmlSchemaCollection> XmlSchemaCollection 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.xmlschemacollection.aspx">TableTypeColumn.XmlSchemaCollection</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection> XmlSchemaCollection 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableTypeColumn.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.XmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableTypeColumn.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class TableTypeDefaultConstraint : TSqlModelElement,ITableTypeConstraint	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeDefaultConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypedefaultconstraint.aspx">TableTypeDefaultConstraint</see>
+	///
+	public partial class TSqlTableTypeDefaultConstraint : TSqlModelElement,ITableTypeConstraint	{
 		private static ModelTypeClass typeClass = TableTypeDefaultConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TableTypeDefaultConstraint to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlTableTypeDefaultConstraint to adapt instances of <see cref="T:TableTypeDefaultConstraint"/>
 		/// </summary>
-		public TableTypeDefaultConstraint(TSqlObject obj)  : base(obj)
+		public TSqlTableTypeDefaultConstraint(TSqlObject obj)  : base(obj, TableTypeDefaultConstraint.TypeClass)
 		{
 		}
 
@@ -7219,37 +10930,55 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeDefaultConstraint.Expression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypedefaultconstraint.expression.aspx">TableTypeDefaultConstraint.Expression</see>
+		///
 		public String Expression 
 		{
-		// Supported platforms = 30
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.TableTypeDefaultConstraint.Expression);}
+			get { return (String)Element.GetProperty(TableTypeDefaultConstraint.Expression);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypedefaultconstraint.expressiondependencies.aspx">TableTypeDefaultConstraint.ExpressionDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableTypeDefaultConstraint.ExpressionDependencies);
+				return Element.GetReferenced(TableTypeDefaultConstraint.ExpressionDependencies);
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> TargetColumn 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypedefaultconstraint.targetcolumn.aspx">TableTypeDefaultConstraint.TargetColumn</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> TargetColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableTypeDefaultConstraint.TargetColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableTypeDefaultConstraint.TargetColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class TableTypeIndex : TSqlModelElement,ISqlIndex	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeindex.aspx">TableTypeIndex</see>
+	///
+	public partial class TSqlTableTypeIndex : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = TableTypeIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TableTypeIndex to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlTableTypeIndex to adapt instances of <see cref="T:TableTypeIndex"/>
 		/// </summary>
-		public TableTypeIndex(TSqlObject obj)  : base(obj)
+		public TSqlTableTypeIndex(TSqlObject obj)  : base(obj, TableTypeIndex.TypeClass)
 		{
 		}
 
@@ -7257,41 +10986,63 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeIndex.BucketCount"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeindex.bucketcount.aspx">TableTypeIndex.BucketCount</see>
+		///
 		public Int32? BucketCount 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.TableTypeIndex.BucketCount);}
+			get { return Element.GetProperty<Int32?>(TableTypeIndex.BucketCount);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeIndex.Hash"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeindex.hash.aspx">TableTypeIndex.Hash</see>
+		///
 		public Boolean Hash 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypeIndex.Hash);}
+			get { return Element.GetProperty<Boolean>(TableTypeIndex.Hash);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeIndex.IsDisabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeindex.isdisabled.aspx">TableTypeIndex.IsDisabled</see>
+		///
 		public Boolean IsDisabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypeIndex.IsDisabled);}
+			get { return Element.GetProperty<Boolean>(TableTypeIndex.IsDisabled);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeindex.columns.aspx">TableTypeIndex.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableTypeIndex.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableTypeIndex.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class TableTypePrimaryKeyConstraint : TSqlModelElement,ITableTypeConstraint	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypePrimaryKeyConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeprimarykeyconstraint.aspx">TableTypePrimaryKeyConstraint</see>
+	///
+	public partial class TSqlTableTypePrimaryKeyConstraint : TSqlModelElement,ITableTypeConstraint	{
 		private static ModelTypeClass typeClass = TableTypePrimaryKeyConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TableTypePrimaryKeyConstraint to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlTableTypePrimaryKeyConstraint to adapt instances of <see cref="T:TableTypePrimaryKeyConstraint"/>
 		/// </summary>
-		public TableTypePrimaryKeyConstraint(TSqlObject obj)  : base(obj)
+		public TSqlTableTypePrimaryKeyConstraint(TSqlObject obj)  : base(obj, TableTypePrimaryKeyConstraint.TypeClass)
 		{
 		}
 
@@ -7299,47 +11050,73 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:TableTypePrimaryKeyConstraint.BucketCount"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeprimarykeyconstraint.bucketcount.aspx">TableTypePrimaryKeyConstraint.BucketCount</see>
+		///
 		public Int32? BucketCount 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.TableTypePrimaryKeyConstraint.BucketCount);}
+			get { return Element.GetProperty<Int32?>(TableTypePrimaryKeyConstraint.BucketCount);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypePrimaryKeyConstraint.Clustered"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeprimarykeyconstraint.clustered.aspx">TableTypePrimaryKeyConstraint.Clustered</see>
+		///
 		public Boolean Clustered 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypePrimaryKeyConstraint.Clustered);}
+			get { return Element.GetProperty<Boolean>(TableTypePrimaryKeyConstraint.Clustered);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypePrimaryKeyConstraint.Hash"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeprimarykeyconstraint.hash.aspx">TableTypePrimaryKeyConstraint.Hash</see>
+		///
 		public Boolean Hash 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypePrimaryKeyConstraint.Hash);}
+			get { return Element.GetProperty<Boolean>(TableTypePrimaryKeyConstraint.Hash);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypePrimaryKeyConstraint.IgnoreDuplicateKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeprimarykeyconstraint.ignoreduplicatekey.aspx">TableTypePrimaryKeyConstraint.IgnoreDuplicateKey</see>
+		///
 		public Boolean IgnoreDuplicateKey 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypePrimaryKeyConstraint.IgnoreDuplicateKey);}
+			get { return Element.GetProperty<Boolean>(TableTypePrimaryKeyConstraint.IgnoreDuplicateKey);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeprimarykeyconstraint.columns.aspx">TableTypePrimaryKeyConstraint.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableTypePrimaryKeyConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableTypePrimaryKeyConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class TableTypeUniqueConstraint : TSqlModelElement,ITableTypeConstraint	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeUniqueConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeuniqueconstraint.aspx">TableTypeUniqueConstraint</see>
+	///
+	public partial class TSqlTableTypeUniqueConstraint : TSqlModelElement,ITableTypeConstraint	{
 		private static ModelTypeClass typeClass = TableTypeUniqueConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TableTypeUniqueConstraint to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlTableTypeUniqueConstraint to adapt instances of <see cref="T:TableTypeUniqueConstraint"/>
 		/// </summary>
-		public TableTypeUniqueConstraint(TSqlObject obj)  : base(obj)
+		public TSqlTableTypeUniqueConstraint(TSqlObject obj)  : base(obj, TableTypeUniqueConstraint.TypeClass)
 		{
 		}
 
@@ -7347,35 +11124,53 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeUniqueConstraint.Clustered"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeuniqueconstraint.clustered.aspx">TableTypeUniqueConstraint.Clustered</see>
+		///
 		public Boolean Clustered 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypeUniqueConstraint.Clustered);}
+			get { return Element.GetProperty<Boolean>(TableTypeUniqueConstraint.Clustered);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TableTypeUniqueConstraint.IgnoreDuplicateKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeuniqueconstraint.ignoreduplicatekey.aspx">TableTypeUniqueConstraint.IgnoreDuplicateKey</see>
+		///
 		public Boolean IgnoreDuplicateKey 
 		{
-		// Supported platforms = 30
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TableTypeUniqueConstraint.IgnoreDuplicateKey);}
+			get { return Element.GetProperty<Boolean>(TableTypeUniqueConstraint.IgnoreDuplicateKey);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeuniqueconstraint.columns.aspx">TableTypeUniqueConstraint.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.TableTypeUniqueConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableTypeUniqueConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class TcpProtocolSpecifier : TSqlModelElement,IProtocolSpecifier	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TcpProtocolSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tcpprotocolspecifier.aspx">TcpProtocolSpecifier</see>
+	///
+	public partial class TSqlTcpProtocolSpecifier : TSqlModelElement,IProtocolSpecifier	{
 		private static ModelTypeClass typeClass = TcpProtocolSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TcpProtocolSpecifier to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlTcpProtocolSpecifier to adapt instances of <see cref="T:TcpProtocolSpecifier"/>
 		/// </summary>
-		public TcpProtocolSpecifier(TSqlObject obj)  : base(obj)
+		public TSqlTcpProtocolSpecifier(TSqlObject obj)  : base(obj, TcpProtocolSpecifier.TypeClass)
 		{
 		}
 
@@ -7383,39 +11178,61 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:TcpProtocolSpecifier.ListenerIPv4"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tcpprotocolspecifier.listeneripv4.aspx">TcpProtocolSpecifier.ListenerIPv4</see>
+		///
 		public String ListenerIPv4 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.TcpProtocolSpecifier.ListenerIPv4);}
+			get { return Element.GetProperty<String>(TcpProtocolSpecifier.ListenerIPv4);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TcpProtocolSpecifier.ListenerIPv6"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tcpprotocolspecifier.listeneripv6.aspx">TcpProtocolSpecifier.ListenerIPv6</see>
+		///
 		public String ListenerIPv6 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.TcpProtocolSpecifier.ListenerIPv6);}
+			get { return Element.GetProperty<String>(TcpProtocolSpecifier.ListenerIPv6);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TcpProtocolSpecifier.ListenerPort"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tcpprotocolspecifier.listenerport.aspx">TcpProtocolSpecifier.ListenerPort</see>
+		///
 		public Int32 ListenerPort 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.TcpProtocolSpecifier.ListenerPort);}
+			get { return Element.GetProperty<Int32>(TcpProtocolSpecifier.ListenerPort);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:TcpProtocolSpecifier.ListeningOnAllIPs"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tcpprotocolspecifier.listeningonallips.aspx">TcpProtocolSpecifier.ListeningOnAllIPs</see>
+		///
 		public Boolean ListeningOnAllIPs 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.TcpProtocolSpecifier.ListeningOnAllIPs);}
+			get { return Element.GetProperty<Boolean>(TcpProtocolSpecifier.ListeningOnAllIPs);}
 		}
 
 
 }
-	public partial class UniqueConstraint : TSqlModelElement,IExtendedPropertyHost	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:UniqueConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.aspx">UniqueConstraint</see>
+	///
+	public partial class TSqlUniqueConstraint : TSqlModelElement,IExtendedPropertyHost	{
 		private static ModelTypeClass typeClass = UniqueConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class UniqueConstraint to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlUniqueConstraint to adapt instances of <see cref="T:UniqueConstraint"/>
 		/// </summary>
-		public UniqueConstraint(TSqlObject obj)  : base(obj)
+		public TSqlUniqueConstraint(TSqlObject obj)  : base(obj, UniqueConstraint.TypeClass)
 		{
 		}
 
@@ -7423,133 +11240,207 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:UniqueConstraint.AllowPageLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.allowpagelocks.aspx">UniqueConstraint.AllowPageLocks</see>
+		///
 		public Boolean AllowPageLocks 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.UniqueConstraint.AllowPageLocks);}
+			get { return Element.GetProperty<Boolean>(UniqueConstraint.AllowPageLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UniqueConstraint.AllowRowLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.allowrowlocks.aspx">UniqueConstraint.AllowRowLocks</see>
+		///
 		public Boolean AllowRowLocks 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.UniqueConstraint.AllowRowLocks);}
+			get { return Element.GetProperty<Boolean>(UniqueConstraint.AllowRowLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UniqueConstraint.Clustered"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.clustered.aspx">UniqueConstraint.Clustered</see>
+		///
 		public Boolean Clustered 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.UniqueConstraint.Clustered);}
+			get { return Element.GetProperty<Boolean>(UniqueConstraint.Clustered);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UniqueConstraint.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.disabled.aspx">UniqueConstraint.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.UniqueConstraint.Disabled);}
+			get { return Element.GetProperty<Boolean>(UniqueConstraint.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UniqueConstraint.FileStreamNull"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.filestreamnull.aspx">UniqueConstraint.FileStreamNull</see>
+		///
 		public Boolean? FileStreamNull 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.UniqueConstraint.FileStreamNull);}
+			get { return Element.GetProperty<Boolean?>(UniqueConstraint.FileStreamNull);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UniqueConstraint.FillFactor"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.fillfactor.aspx">UniqueConstraint.FillFactor</see>
+		///
 		public Int32? FillFactor 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.UniqueConstraint.FillFactor);}
+			get { return Element.GetProperty<Int32?>(UniqueConstraint.FillFactor);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UniqueConstraint.IgnoreDuplicateKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.ignoreduplicatekey.aspx">UniqueConstraint.IgnoreDuplicateKey</see>
+		///
 		public Boolean IgnoreDuplicateKey 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.UniqueConstraint.IgnoreDuplicateKey);}
+			get { return Element.GetProperty<Boolean>(UniqueConstraint.IgnoreDuplicateKey);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UniqueConstraint.RecomputeStatistics"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.recomputestatistics.aspx">UniqueConstraint.RecomputeStatistics</see>
+		///
 		public Boolean RecomputeStatistics 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.UniqueConstraint.RecomputeStatistics);}
+			get { return Element.GetProperty<Boolean>(UniqueConstraint.RecomputeStatistics);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UniqueConstraint.WithPadIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.withpadindex.aspx">UniqueConstraint.WithPadIndex</see>
+		///
 		public Boolean WithPadIndex 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.UniqueConstraint.WithPadIndex);}
+			get { return Element.GetProperty<Boolean>(UniqueConstraint.WithPadIndex);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.columns.aspx">UniqueConstraint.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UniqueConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(UniqueConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption> DataCompressionOptions 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.datacompressionoptions.aspx">UniqueConstraint.DataCompressionOptions</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UniqueConstraint.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(UniqueConstraint.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> Filegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.filegroup.aspx">UniqueConstraint.Filegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UniqueConstraint.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(UniqueConstraint.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup> FileStreamFilegroup 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.filestreamfilegroup.aspx">UniqueConstraint.FileStreamFilegroup</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UniqueConstraint.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Filegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(UniqueConstraint.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> FileStreamPartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.filestreampartitionscheme.aspx">UniqueConstraint.FileStreamPartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UniqueConstraint.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(UniqueConstraint.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ExtendedProperty> Host 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.host.aspx">UniqueConstraint.Host</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UniqueConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ExtendedProperty)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(UniqueConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> PartitionColumn 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.partitioncolumn.aspx">UniqueConstraint.PartitionColumn</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UniqueConstraint.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(UniqueConstraint.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme> PartitionScheme 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.partitionscheme.aspx">UniqueConstraint.PartitionScheme</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UniqueConstraint.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(UniqueConstraint.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class User : TSqlModelElement,ISqlDatabaseSecurityPrincipal	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:User"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.aspx">User</see>
+	///
+	public partial class TSqlUser : TSqlModelElement,ISqlDatabaseSecurityPrincipal	{
 		private static ModelTypeClass typeClass = User.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class User to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlUser to adapt instances of <see cref="T:User"/>
 		/// </summary>
-		public User(TSqlObject obj)  : base(obj)
+		public TSqlUser(TSqlObject obj)  : base(obj, User.TypeClass)
 		{
 		}
 
@@ -7557,77 +11448,119 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:User.AuthenticationType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.authenticationtype.aspx">User.AuthenticationType</see>
+		///
 		public AuthenticationType AuthenticationType 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<AuthenticationType>(Microsoft.SqlServer.Dac.Model.User.AuthenticationType);}
+			get { return Element.GetProperty<AuthenticationType>(User.AuthenticationType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:User.DefaultLanguage"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.defaultlanguage.aspx">User.DefaultLanguage</see>
+		///
 		public String DefaultLanguage 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.User.DefaultLanguage);}
+			get { return Element.GetProperty<String>(User.DefaultLanguage);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:User.Password"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.password.aspx">User.Password</see>
+		///
 		public String Password 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.User.Password);}
+			get { return Element.GetProperty<String>(User.Password);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:User.Sid"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.sid.aspx">User.Sid</see>
+		///
 		public String Sid 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.User.Sid);}
+			get { return Element.GetProperty<String>(User.Sid);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:User.WithoutLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.withoutlogin.aspx">User.WithoutLogin</see>
+		///
 		public Boolean WithoutLogin 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.User.WithoutLogin);}
+			get { return Element.GetProperty<Boolean>(User.WithoutLogin);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.AsymmetricKey> AsymmetricKey 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.asymmetrickey.aspx">User.AsymmetricKey</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey> AsymmetricKey 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.User.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.AsymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(User.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate> Certificate 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.certificate.aspx">User.Certificate</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> Certificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.User.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Certificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(User.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> DefaultSchema 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.defaultschema.aspx">User.DefaultSchema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> DefaultSchema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.User.DefaultSchema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(User.DefaultSchema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Login> Login 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.login.aspx">User.Login</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.User.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Login)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(User.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class UserDefinedServerRole : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:UserDefinedServerRole"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedserverrole.aspx">UserDefinedServerRole</see>
+	///
+	public partial class TSqlUserDefinedServerRole : TSqlModelElement	{
 		private static ModelTypeClass typeClass = UserDefinedServerRole.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class UserDefinedServerRole to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlUserDefinedServerRole to adapt instances of <see cref="T:UserDefinedServerRole"/>
 		/// </summary>
-		public UserDefinedServerRole(TSqlObject obj)  : base(obj)
+		public TSqlUserDefinedServerRole(TSqlObject obj)  : base(obj, UserDefinedServerRole.TypeClass)
 		{
 		}
 
@@ -7635,23 +11568,33 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedserverrole.authorizer.aspx">UserDefinedServerRole.Authorizer</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UserDefinedServerRole.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(UserDefinedServerRole.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
 			}
 		}
-	
+
 }
-	public partial class UserDefinedType : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:UserDefinedType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.aspx">UserDefinedType</see>
+	///
+	public partial class TSqlUserDefinedType : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = UserDefinedType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class UserDefinedType to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlUserDefinedType to adapt instances of <see cref="T:UserDefinedType"/>
 		/// </summary>
-		public UserDefinedType(TSqlObject obj)  : base(obj)
+		public TSqlUserDefinedType(TSqlObject obj)  : base(obj, UserDefinedType.TypeClass)
 		{
 		}
 
@@ -7659,83 +11602,129 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:UserDefinedType.ByteOrdered"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.byteordered.aspx">UserDefinedType.ByteOrdered</see>
+		///
 		public Boolean? ByteOrdered 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.UserDefinedType.ByteOrdered);}
+			get { return Element.GetProperty<Boolean?>(UserDefinedType.ByteOrdered);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UserDefinedType.ClassName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.classname.aspx">UserDefinedType.ClassName</see>
+		///
 		public String ClassName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.UserDefinedType.ClassName);}
+			get { return Element.GetProperty<String>(UserDefinedType.ClassName);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UserDefinedType.FixedLength"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.fixedlength.aspx">UserDefinedType.FixedLength</see>
+		///
 		public Boolean? FixedLength 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.UserDefinedType.FixedLength);}
+			get { return Element.GetProperty<Boolean?>(UserDefinedType.FixedLength);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UserDefinedType.Format"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.format.aspx">UserDefinedType.Format</see>
+		///
 		public Format Format 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Format>(Microsoft.SqlServer.Dac.Model.UserDefinedType.Format);}
+			get { return Element.GetProperty<Format>(UserDefinedType.Format);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UserDefinedType.MaxByteSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.maxbytesize.aspx">UserDefinedType.MaxByteSize</see>
+		///
 		public Int32? MaxByteSize 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.UserDefinedType.MaxByteSize);}
+			get { return Element.GetProperty<Int32?>(UserDefinedType.MaxByteSize);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:UserDefinedType.ValidationMethodName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.validationmethodname.aspx">UserDefinedType.ValidationMethodName</see>
+		///
 		public String ValidationMethodName 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.UserDefinedType.ValidationMethodName);}
+			get { return Element.GetProperty<String>(UserDefinedType.ValidationMethodName);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly> Assembly 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.assembly.aspx">UserDefinedType.Assembly</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UserDefinedType.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Assembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(UserDefinedType.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.methods.aspx">UserDefinedType.Methods</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Methods 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UserDefinedType.Methods);
+				return Element.GetReferenced(UserDefinedType.Methods);
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.properties.aspx">UserDefinedType.Properties</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Properties 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UserDefinedType.Properties);
+				return Element.GetReferenced(UserDefinedType.Properties);
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.schema.aspx">UserDefinedType.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.UserDefinedType.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(UserDefinedType.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class View : TSqlModelElement,ISqlColumnSource	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:View"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.aspx">View</see>
+	///
+	public partial class TSqlView : TSqlModelElement,ISqlColumnSource,ISpecifiesIndex	{
 		private static ModelTypeClass typeClass = View.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class View to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlView to adapt instances of <see cref="T:View"/>
 		/// </summary>
-		public View(TSqlObject obj)  : base(obj)
+		public TSqlView(TSqlObject obj)  : base(obj, View.TypeClass)
 		{
 		}
 
@@ -7743,87 +11732,137 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:View.AnsiNullsOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.ansinullson.aspx">View.AnsiNullsOn</see>
+		///
 		public Boolean? AnsiNullsOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.View.AnsiNullsOn);}
+			get { return Element.GetProperty<Boolean?>(View.AnsiNullsOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:View.QuotedIdentifierOn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.quotedidentifieron.aspx">View.QuotedIdentifierOn</see>
+		///
 		public Boolean? QuotedIdentifierOn 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean?>(Microsoft.SqlServer.Dac.Model.View.QuotedIdentifierOn);}
+			get { return Element.GetProperty<Boolean?>(View.QuotedIdentifierOn);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:View.Replicated"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.replicated.aspx">View.Replicated</see>
+		///
 		public Boolean Replicated 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.View.Replicated);}
+			get { return Element.GetProperty<Boolean>(View.Replicated);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:View.SelectStatement"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.selectstatement.aspx">View.SelectStatement</see>
+		///
 		public String SelectStatement 
 		{
-		// Supported platforms = 31
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.View.SelectStatement);}
+			get { return (String)Element.GetProperty(View.SelectStatement);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:View.WithCheckOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.withcheckoption.aspx">View.WithCheckOption</see>
+		///
 		public Boolean WithCheckOption 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.View.WithCheckOption);}
+			get { return Element.GetProperty<Boolean>(View.WithCheckOption);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:View.WithEncryption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.withencryption.aspx">View.WithEncryption</see>
+		///
 		public Boolean WithEncryption 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.View.WithEncryption);}
+			get { return Element.GetProperty<Boolean>(View.WithEncryption);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:View.WithSchemaBinding"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.withschemabinding.aspx">View.WithSchemaBinding</see>
+		///
 		public Boolean WithSchemaBinding 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.View.WithSchemaBinding);}
+			get { return Element.GetProperty<Boolean>(View.WithSchemaBinding);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:View.WithViewMetadata"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.withviewmetadata.aspx">View.WithViewMetadata</see>
+		///
 		public Boolean WithViewMetadata 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.View.WithViewMetadata);}
+			get { return Element.GetProperty<Boolean>(View.WithViewMetadata);}
 		}
 
-		//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.bodydependencies.aspx">View.BodyDependencies</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.View.BodyDependencies);
+				return Element.GetReferenced(View.BodyDependencies);
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Columns 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.columns.aspx">View.Columns</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.View.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(View.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.schema.aspx">View.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.View.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(View.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class WorkloadGroup : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:WorkloadGroup"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.workloadgroup.aspx">WorkloadGroup</see>
+	///
+	public partial class TSqlWorkloadGroup : TSqlModelElement	{
 		private static ModelTypeClass typeClass = WorkloadGroup.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class WorkloadGroup to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlWorkloadGroup to adapt instances of <see cref="T:WorkloadGroup"/>
 		/// </summary>
-		public WorkloadGroup(TSqlObject obj)  : base(obj)
+		public TSqlWorkloadGroup(TSqlObject obj)  : base(obj, WorkloadGroup.TypeClass)
 		{
 		}
 
@@ -7831,59 +11870,93 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:WorkloadGroup.GroupMaxRequests"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.workloadgroup.groupmaxrequests.aspx">WorkloadGroup.GroupMaxRequests</see>
+		///
 		public Int32 GroupMaxRequests 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.WorkloadGroup.GroupMaxRequests);}
+			get { return Element.GetProperty<Int32>(WorkloadGroup.GroupMaxRequests);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:WorkloadGroup.Importance"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.workloadgroup.importance.aspx">WorkloadGroup.Importance</see>
+		///
 		public Degree Importance 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Degree>(Microsoft.SqlServer.Dac.Model.WorkloadGroup.Importance);}
+			get { return Element.GetProperty<Degree>(WorkloadGroup.Importance);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:WorkloadGroup.MaxDop"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.workloadgroup.maxdop.aspx">WorkloadGroup.MaxDop</see>
+		///
 		public Int32 MaxDop 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.WorkloadGroup.MaxDop);}
+			get { return Element.GetProperty<Int32>(WorkloadGroup.MaxDop);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:WorkloadGroup.RequestMaxCpuTimeSec"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.workloadgroup.requestmaxcputimesec.aspx">WorkloadGroup.RequestMaxCpuTimeSec</see>
+		///
 		public Int32 RequestMaxCpuTimeSec 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.WorkloadGroup.RequestMaxCpuTimeSec);}
+			get { return Element.GetProperty<Int32>(WorkloadGroup.RequestMaxCpuTimeSec);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:WorkloadGroup.RequestMaxMemoryGrantPercent"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.workloadgroup.requestmaxmemorygrantpercent.aspx">WorkloadGroup.RequestMaxMemoryGrantPercent</see>
+		///
 		public Int32 RequestMaxMemoryGrantPercent 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.WorkloadGroup.RequestMaxMemoryGrantPercent);}
+			get { return Element.GetProperty<Int32>(WorkloadGroup.RequestMaxMemoryGrantPercent);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:WorkloadGroup.RequestMemoryGrantTimeoutSec"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.workloadgroup.requestmemorygranttimeoutsec.aspx">WorkloadGroup.RequestMemoryGrantTimeoutSec</see>
+		///
 		public Int32 RequestMemoryGrantTimeoutSec 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.WorkloadGroup.RequestMemoryGrantTimeoutSec);}
+			get { return Element.GetProperty<Int32>(WorkloadGroup.RequestMemoryGrantTimeoutSec);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ResourcePool> ResourcePool 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlResourcePool"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.workloadgroup.resourcepool.aspx">WorkloadGroup.ResourcePool</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlResourcePool> ResourcePool 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.WorkloadGroup.ResourcePool).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ResourcePool)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(WorkloadGroup.ResourcePool).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlResourcePool)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class XmlIndex : TSqlModelElement,ISqlIndex	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:XmlIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.aspx">XmlIndex</see>
+	///
+	public partial class TSqlXmlIndex : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = XmlIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class XmlIndex to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlXmlIndex to adapt instances of <see cref="T:XmlIndex"/>
 		/// </summary>
-		public XmlIndex(TSqlObject obj)  : base(obj)
+		public TSqlXmlIndex(TSqlObject obj)  : base(obj, XmlIndex.TypeClass)
 		{
 		}
 
@@ -7891,93 +11964,147 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:XmlIndex.AllowPageLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.allowpagelocks.aspx">XmlIndex.AllowPageLocks</see>
+		///
 		public Boolean AllowPageLocks 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.XmlIndex.AllowPageLocks);}
+			get { return Element.GetProperty<Boolean>(XmlIndex.AllowPageLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:XmlIndex.AllowRowLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.allowrowlocks.aspx">XmlIndex.AllowRowLocks</see>
+		///
 		public Boolean AllowRowLocks 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.XmlIndex.AllowRowLocks);}
+			get { return Element.GetProperty<Boolean>(XmlIndex.AllowRowLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:XmlIndex.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.disabled.aspx">XmlIndex.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.XmlIndex.Disabled);}
+			get { return Element.GetProperty<Boolean>(XmlIndex.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:XmlIndex.FillFactor"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.fillfactor.aspx">XmlIndex.FillFactor</see>
+		///
 		public Int32? FillFactor 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.XmlIndex.FillFactor);}
+			get { return Element.GetProperty<Int32?>(XmlIndex.FillFactor);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:XmlIndex.IgnoreDuplicateKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.ignoreduplicatekey.aspx">XmlIndex.IgnoreDuplicateKey</see>
+		///
 		public Boolean IgnoreDuplicateKey 
 		{
-		// Supported platforms = 26
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.XmlIndex.IgnoreDuplicateKey);}
+			get { return Element.GetProperty<Boolean>(XmlIndex.IgnoreDuplicateKey);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:XmlIndex.IsPrimary"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.isprimary.aspx">XmlIndex.IsPrimary</see>
+		///
 		public Boolean IsPrimary 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.XmlIndex.IsPrimary);}
+			get { return Element.GetProperty<Boolean>(XmlIndex.IsPrimary);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:XmlIndex.RecomputeStatistics"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.recomputestatistics.aspx">XmlIndex.RecomputeStatistics</see>
+		///
 		public Boolean RecomputeStatistics 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.XmlIndex.RecomputeStatistics);}
+			get { return Element.GetProperty<Boolean>(XmlIndex.RecomputeStatistics);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:XmlIndex.SecondaryXmlIndexType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.secondaryxmlindextype.aspx">XmlIndex.SecondaryXmlIndexType</see>
+		///
 		public SecondaryXmlIndexType SecondaryXmlIndexType 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<SecondaryXmlIndexType>(Microsoft.SqlServer.Dac.Model.XmlIndex.SecondaryXmlIndexType);}
+			get { return Element.GetProperty<SecondaryXmlIndexType>(XmlIndex.SecondaryXmlIndexType);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:XmlIndex.WithPadIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.withpadindex.aspx">XmlIndex.WithPadIndex</see>
+		///
 		public Boolean WithPadIndex 
 		{
-		// Supported platforms = 27
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.XmlIndex.WithPadIndex);}
+			get { return Element.GetProperty<Boolean>(XmlIndex.WithPadIndex);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Column 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.column.aspx">XmlIndex.Column</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Column 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.XmlIndex.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(XmlIndex.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> IndexedObject 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.indexedobject.aspx">XmlIndex.IndexedObject</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.XmlIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource>();
+				return Element.GetReferenced(XmlIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.XmlIndex> PrimaryXmlIndex 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.primaryxmlindex.aspx">XmlIndex.PrimaryXmlIndex</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlIndex> PrimaryXmlIndex 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.XmlIndex.PrimaryXmlIndex).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.XmlIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(XmlIndex.PrimaryXmlIndex).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class SelectiveXmlIndex : TSqlModelElement,ISqlIndex	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SelectiveXmlIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.aspx">SelectiveXmlIndex</see>
+	///
+	public partial class TSqlSelectiveXmlIndex : TSqlModelElement,ISqlIndex	{
 		private static ModelTypeClass typeClass = SelectiveXmlIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class SelectiveXmlIndex to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlSelectiveXmlIndex to adapt instances of <see cref="T:SelectiveXmlIndex"/>
 		/// </summary>
-		public SelectiveXmlIndex(TSqlObject obj)  : base(obj)
+		public TSqlSelectiveXmlIndex(TSqlObject obj)  : base(obj, SelectiveXmlIndex.TypeClass)
 		{
 		}
 
@@ -7985,111 +12112,173 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:SelectiveXmlIndex.AllowPageLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.allowpagelocks.aspx">SelectiveXmlIndex.AllowPageLocks</see>
+		///
 		public Boolean AllowPageLocks 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.AllowPageLocks);}
+			get { return Element.GetProperty<Boolean>(SelectiveXmlIndex.AllowPageLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SelectiveXmlIndex.AllowRowLocks"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.allowrowlocks.aspx">SelectiveXmlIndex.AllowRowLocks</see>
+		///
 		public Boolean AllowRowLocks 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.AllowRowLocks);}
+			get { return Element.GetProperty<Boolean>(SelectiveXmlIndex.AllowRowLocks);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SelectiveXmlIndex.Disabled"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.disabled.aspx">SelectiveXmlIndex.Disabled</see>
+		///
 		public Boolean Disabled 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.Disabled);}
+			get { return Element.GetProperty<Boolean>(SelectiveXmlIndex.Disabled);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SelectiveXmlIndex.FillFactor"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.fillfactor.aspx">SelectiveXmlIndex.FillFactor</see>
+		///
 		public Int32? FillFactor 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.FillFactor);}
+			get { return Element.GetProperty<Int32?>(SelectiveXmlIndex.FillFactor);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SelectiveXmlIndex.IgnoreDuplicateKey"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.ignoreduplicatekey.aspx">SelectiveXmlIndex.IgnoreDuplicateKey</see>
+		///
 		public Boolean IgnoreDuplicateKey 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.IgnoreDuplicateKey);}
+			get { return Element.GetProperty<Boolean>(SelectiveXmlIndex.IgnoreDuplicateKey);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SelectiveXmlIndex.IsPrimary"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.isprimary.aspx">SelectiveXmlIndex.IsPrimary</see>
+		///
 		public Boolean IsPrimary 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.IsPrimary);}
+			get { return Element.GetProperty<Boolean>(SelectiveXmlIndex.IsPrimary);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SelectiveXmlIndex.RecomputeStatistics"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.recomputestatistics.aspx">SelectiveXmlIndex.RecomputeStatistics</see>
+		///
 		public Boolean RecomputeStatistics 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.RecomputeStatistics);}
+			get { return Element.GetProperty<Boolean>(SelectiveXmlIndex.RecomputeStatistics);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:SelectiveXmlIndex.WithPadIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.withpadindex.aspx">SelectiveXmlIndex.WithPadIndex</see>
+		///
 		public Boolean WithPadIndex 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.WithPadIndex);}
+			get { return Element.GetProperty<Boolean>(SelectiveXmlIndex.WithPadIndex);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Column> Column 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.column.aspx">SelectiveXmlIndex.Column</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Column 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Column)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SelectiveXmlIndex.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> IndexedObject 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.indexedobject.aspx">SelectiveXmlIndex.IndexedObject</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource>();
+				return Element.GetReferenced(SelectiveXmlIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
 			}
 		}
-			//Peer
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.primarypromotedpath.aspx">SelectiveXmlIndex.PrimaryPromotedPath</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> PrimaryPromotedPath 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.PrimaryPromotedPath).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath>();
+				return Element.GetReferenced(SelectiveXmlIndex.PrimaryPromotedPath).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath>();
 			}
 		}
-			//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.SelectiveXmlIndex> PrimarySelectiveXmlIndex 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSelectiveXmlIndex"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.primaryselectivexmlindex.aspx">SelectiveXmlIndex.PrimarySelectiveXmlIndex</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSelectiveXmlIndex> PrimarySelectiveXmlIndex 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.PrimarySelectiveXmlIndex).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.SelectiveXmlIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SelectiveXmlIndex.PrimarySelectiveXmlIndex).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSelectiveXmlIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-			//Composing
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.promotedpaths.aspx">SelectiveXmlIndex.PromotedPaths</see>
+		///
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> PromotedPaths 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.PromotedPaths).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath>();
+				return Element.GetReferenced(SelectiveXmlIndex.PromotedPaths).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath>();
 			}
 		}
-			//Composing
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.XmlNamespace> XmlNamespaces 
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlNamespace"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.xmlnamespaces.aspx">SelectiveXmlIndex.XmlNamespaces</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlNamespace> XmlNamespaces 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.XmlNamespaces).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.XmlNamespace)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SelectiveXmlIndex.XmlNamespaces).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlNamespace)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class XmlNamespace : TSqlModelElement	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:XmlNamespace"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlnamespace.aspx">XmlNamespace</see>
+	///
+	public partial class TSqlXmlNamespace : TSqlModelElement	{
 		private static ModelTypeClass typeClass = XmlNamespace.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class XmlNamespace to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlXmlNamespace to adapt instances of <see cref="T:XmlNamespace"/>
 		/// </summary>
-		public XmlNamespace(TSqlObject obj)  : base(obj)
+		public TSqlXmlNamespace(TSqlObject obj)  : base(obj, XmlNamespace.TypeClass)
 		{
 		}
 
@@ -8097,27 +12286,41 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:XmlNamespace.NamespaceUri"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlnamespace.namespaceuri.aspx">XmlNamespace.NamespaceUri</see>
+		///
 		public String NamespaceUri 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.XmlNamespace.NamespaceUri);}
+			get { return Element.GetProperty<String>(XmlNamespace.NamespaceUri);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:XmlNamespace.Prefix"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlnamespace.prefix.aspx">XmlNamespace.Prefix</see>
+		///
 		public String Prefix 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.XmlNamespace.Prefix);}
+			get { return Element.GetProperty<String>(XmlNamespace.Prefix);}
 		}
 
 
 }
-	public partial class PromotedNodePathForXQueryType : TSqlModelElement,ISqlPromotedNodePath	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PromotedNodePathForXQueryType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforxquerytype.aspx">PromotedNodePathForXQueryType</see>
+	///
+	public partial class TSqlPromotedNodePathForXQueryType : TSqlModelElement,ISqlPromotedNodePath	{
 		private static ModelTypeClass typeClass = PromotedNodePathForXQueryType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class PromotedNodePathForXQueryType to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlPromotedNodePathForXQueryType to adapt instances of <see cref="T:PromotedNodePathForXQueryType"/>
 		/// </summary>
-		public PromotedNodePathForXQueryType(TSqlObject obj)  : base(obj)
+		public TSqlPromotedNodePathForXQueryType(TSqlObject obj)  : base(obj, PromotedNodePathForXQueryType.TypeClass)
 		{
 		}
 
@@ -8125,39 +12328,61 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:PromotedNodePathForXQueryType.IsSingleton"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforxquerytype.issingleton.aspx">PromotedNodePathForXQueryType.IsSingleton</see>
+		///
 		public Boolean IsSingleton 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PromotedNodePathForXQueryType.IsSingleton);}
+			get { return Element.GetProperty<Boolean>(PromotedNodePathForXQueryType.IsSingleton);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PromotedNodePathForXQueryType.MaxLength"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforxquerytype.maxlength.aspx">PromotedNodePathForXQueryType.MaxLength</see>
+		///
 		public Int32? MaxLength 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Int32?>(Microsoft.SqlServer.Dac.Model.PromotedNodePathForXQueryType.MaxLength);}
+			get { return Element.GetProperty<Int32?>(PromotedNodePathForXQueryType.MaxLength);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PromotedNodePathForXQueryType.NodePath"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforxquerytype.nodepath.aspx">PromotedNodePathForXQueryType.NodePath</see>
+		///
 		public String NodePath 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.PromotedNodePathForXQueryType.NodePath);}
+			get { return Element.GetProperty<String>(PromotedNodePathForXQueryType.NodePath);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PromotedNodePathForXQueryType.Type"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforxquerytype.type.aspx">PromotedNodePathForXQueryType.Type</see>
+		///
 		public String Type 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.PromotedNodePathForXQueryType.Type);}
+			get { return Element.GetProperty<String>(PromotedNodePathForXQueryType.Type);}
 		}
 
 
 }
-	public partial class PromotedNodePathForSqlType : TSqlModelElement,ISqlPromotedNodePath	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PromotedNodePathForSqlType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforsqltype.aspx">PromotedNodePathForSqlType</see>
+	///
+	public partial class TSqlPromotedNodePathForSqlType : TSqlModelElement,ISqlPromotedNodePath	{
 		private static ModelTypeClass typeClass = PromotedNodePathForSqlType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class PromotedNodePathForSqlType to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlPromotedNodePathForSqlType to adapt instances of <see cref="T:PromotedNodePathForSqlType"/>
 		/// </summary>
-		public PromotedNodePathForSqlType(TSqlObject obj)  : base(obj)
+		public TSqlPromotedNodePathForSqlType(TSqlObject obj)  : base(obj, PromotedNodePathForSqlType.TypeClass)
 		{
 		}
 
@@ -8165,59 +12390,93 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:PromotedNodePathForSqlType.IsMax"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforsqltype.ismax.aspx">PromotedNodePathForSqlType.IsMax</see>
+		///
 		public Boolean IsMax 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PromotedNodePathForSqlType.IsMax);}
+			get { return Element.GetProperty<Boolean>(PromotedNodePathForSqlType.IsMax);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PromotedNodePathForSqlType.IsSingleton"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforsqltype.issingleton.aspx">PromotedNodePathForSqlType.IsSingleton</see>
+		///
 		public Boolean IsSingleton 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<Boolean>(Microsoft.SqlServer.Dac.Model.PromotedNodePathForSqlType.IsSingleton);}
+			get { return Element.GetProperty<Boolean>(PromotedNodePathForSqlType.IsSingleton);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PromotedNodePathForSqlType.Length"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforsqltype.length.aspx">PromotedNodePathForSqlType.Length</see>
+		///
 		public Int32 Length 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.PromotedNodePathForSqlType.Length);}
+			get { return Element.GetProperty<Int32>(PromotedNodePathForSqlType.Length);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PromotedNodePathForSqlType.NodePath"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforsqltype.nodepath.aspx">PromotedNodePathForSqlType.NodePath</see>
+		///
 		public String NodePath 
 		{
-		// Supported platforms = 24
-			get { return Element.GetProperty<String>(Microsoft.SqlServer.Dac.Model.PromotedNodePathForSqlType.NodePath);}
+			get { return Element.GetProperty<String>(PromotedNodePathForSqlType.NodePath);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PromotedNodePathForSqlType.Precision"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforsqltype.precision.aspx">PromotedNodePathForSqlType.Precision</see>
+		///
 		public Int32 Precision 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.PromotedNodePathForSqlType.Precision);}
+			get { return Element.GetProperty<Int32>(PromotedNodePathForSqlType.Precision);}
 		}
 
+
+		///
+		/// Property wrapper for <see cref="M:PromotedNodePathForSqlType.Scale"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforsqltype.scale.aspx">PromotedNodePathForSqlType.Scale</see>
+		///
 		public Int32 Scale 
 		{
-		// Supported platforms = 31
-			get { return Element.GetProperty<Int32>(Microsoft.SqlServer.Dac.Model.PromotedNodePathForSqlType.Scale);}
+			get { return Element.GetProperty<Int32>(PromotedNodePathForSqlType.Scale);}
 		}
 
-		//Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.DataType> DataType 
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforsqltype.datatype.aspx">PromotedNodePathForSqlType.DataType</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.PromotedNodePathForSqlType.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.DataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PromotedNodePathForSqlType.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
-	public partial class XmlSchemaCollection : TSqlModelElement,ISqlSecurable	{
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:XmlSchemaCollection"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlschemacollection.aspx">XmlSchemaCollection</see>
+	///
+	public partial class TSqlXmlSchemaCollection : TSqlModelElement,ISqlSecurable	{
 		private static ModelTypeClass typeClass = XmlSchemaCollection.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class XmlSchemaCollection to adapt the TSqlObject 
+		///	Create a strongly typed class TSqlXmlSchemaCollection to adapt instances of <see cref="T:XmlSchemaCollection"/>
 		/// </summary>
-		public XmlSchemaCollection(TSqlObject obj)  : base(obj)
+		public TSqlXmlSchemaCollection(TSqlObject obj)  : base(obj, XmlSchemaCollection.TypeClass)
 		{
 		}
 
@@ -8225,20 +12484,28 @@ public partial class TSqlModelElement
 		{
 			get { return typeClass;}
 		}
+
+		///
+		/// Property wrapper for <see cref="M:XmlSchemaCollection.Expression"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlschemacollection.expression.aspx">XmlSchemaCollection.Expression</see>
+		///
 		public String Expression 
 		{
-		// Supported platforms = 27
-			get { return (String)Element.GetProperty(Microsoft.SqlServer.Dac.Model.XmlSchemaCollection.Expression);}
+			get { return (String)Element.GetProperty(XmlSchemaCollection.Expression);}
 		}
 
-		//Hierarchical
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.Schema> Schema 
+
+		///
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlschemacollection.schema.aspx">XmlSchemaCollection.Schema</see>
+		///
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Microsoft.SqlServer.Dac.Model.XmlSchemaCollection.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.Schema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(XmlSchemaCollection.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
 			}
 		}
-	
+
 }
 }

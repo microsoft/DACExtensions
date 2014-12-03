@@ -1,4 +1,21 @@
-﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+﻿//------------------------------------------------------------------------------
+// <copyright company="Microsoft">
+//   Copyright 2014 Microsoft
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+// </copyright>
+//------------------------------------------------------------------------------
+<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="System.Xml" #>
 <#@ import namespace="System.Linq" #>
@@ -24,9 +41,17 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 	typePrefix = "I" + currentSQLVersion;
 	foreach(var type in  ModelSchema.SchemaInstance.AllTypes)
 	{
-		string interfaceName = typePrefix + type.Name;
+		if(!SupportsVersion(type.SupportedPlatforms, currentSQLVersion))
+        {
+			// skipping type as it does not support the platform
+			continue;
+        }
+		string interfaceName = typePrefix + ClassNamePrefix + type.Name;
 		#>
-	public partial class <#= type.Name#> : <#=interfaceName#>
+	/// <summary>
+	/// Explicit implementation of <see cref="<#=interfaceName#>"/>.
+	/// </summary>
+	public partial class <#= ClassNamePrefix + type.Name#> : <#=interfaceName#>
 	{		
 <#
         foreach (var property in type.Properties.OrderBy(p => p.Name))
@@ -60,6 +85,7 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 		continue;
 	   }
 		string returnType = "TSqlObject";		
+		string castExpression = "";
 		if(modelEntry != null)
 		{	RelationshipOverride localoverride;		
 			if(modelEntry.RelationshipOverrides.TryGetValue(relationship.Name, out localoverride))
@@ -68,6 +94,7 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 				{
 					// specialize the return type for the sql server version
 					returnType = string.Format("{0}.{1}{2}", localoverride.ReturnTypeNamespace, typePrefix, localoverride.ReturnType);
+					castExpression = string.Format(".Cast<{0}>()", returnType);
 				}
 				else
 				{
@@ -76,17 +103,15 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 				}
 			}
 		}	
-		
-			
 		{
 		#>
 
-		//<#=relationship.Type#>
+		// <#=relationship.Type#> relationship		
 		IEnumerable<<#=returnType#>> <#=interfaceName#>.<#=relationship.Name #> 
 		{
 			get 
 			{
-				return this.<#=relationship.Name#>;
+				return this.<#=relationship.Name + castExpression#>;
 			}
 		}
 <#		

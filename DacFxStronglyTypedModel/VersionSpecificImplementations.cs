@@ -1,4 +1,21 @@
-﻿
+﻿//------------------------------------------------------------------------------
+// <copyright company="Microsoft">
+//   Copyright 2014 Microsoft
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+// </copyright>
+//------------------------------------------------------------------------------
+
 namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 {
 	using System;
@@ -6,80 +23,83 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	using Microsoft.SqlServer.Server;
 	using Microsoft.SqlServer.Dac.Model;
 	using System.Collections.Generic;
-	public partial class Column : ISql90Column
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlColumn"/>.
+	/// </summary>
+	public partial class TSqlColumn : ISql90TSqlColumn
 	{		
-		String ISql90Column.Collation 
+		String ISql90TSqlColumn.Collation 
 		{
 			get { return this.Collation;}
 		}
-		String ISql90Column.Expression 
+		String ISql90TSqlColumn.Expression 
 		{
 			get { return this.Expression;}
 		}
-		String ISql90Column.IdentityIncrement 
+		String ISql90TSqlColumn.IdentityIncrement 
 		{
 			get { return this.IdentityIncrement;}
 		}
-		String ISql90Column.IdentitySeed 
+		String ISql90TSqlColumn.IdentitySeed 
 		{
 			get { return this.IdentitySeed;}
 		}
-		Boolean ISql90Column.IsIdentity 
+		Boolean ISql90TSqlColumn.IsIdentity 
 		{
 			get { return this.IsIdentity;}
 		}
-		Boolean ISql90Column.IsIdentityNotForReplication 
+		Boolean ISql90TSqlColumn.IsIdentityNotForReplication 
 		{
 			get { return this.IsIdentityNotForReplication;}
 		}
-		Boolean ISql90Column.IsMax 
+		Boolean ISql90TSqlColumn.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql90Column.IsRowGuidCol 
+		Boolean ISql90TSqlColumn.IsRowGuidCol 
 		{
 			get { return this.IsRowGuidCol;}
 		}
-		Int32 ISql90Column.Length 
+		Int32 ISql90TSqlColumn.Length 
 		{
 			get { return this.Length;}
 		}
-		Boolean ISql90Column.Nullable 
+		Boolean ISql90TSqlColumn.Nullable 
 		{
 			get { return this.Nullable;}
 		}
-		Boolean ISql90Column.Persisted 
+		Boolean ISql90TSqlColumn.Persisted 
 		{
 			get { return this.Persisted;}
 		}
-		Boolean? ISql90Column.PersistedNullable 
+		Boolean? ISql90TSqlColumn.PersistedNullable 
 		{
 			get { return this.PersistedNullable;}
 		}
-		Int32 ISql90Column.Precision 
+		Int32 ISql90TSqlColumn.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISql90Column.Scale 
+		Int32 ISql90TSqlColumn.Scale 
 		{
 			get { return this.Scale;}
 		}
-		XmlStyle ISql90Column.XmlStyle 
+		XmlStyle ISql90TSqlColumn.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90DataType> ISql90Column.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90Column.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -87,101 +107,104 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90XmlSchemaCollection> ISql90Column.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection> ISql90TSqlColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class TableValuedFunction : ISql90TableValuedFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlTableValuedFunction"/>.
+	/// </summary>
+	public partial class TSqlTableValuedFunction : ISql90TSqlTableValuedFunction
 	{		
-		Boolean? ISql90TableValuedFunction.AnsiNullsOn 
+		Boolean? ISql90TSqlTableValuedFunction.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql90TableValuedFunction.CalledOnNullInput 
+		Boolean ISql90TSqlTableValuedFunction.CalledOnNullInput 
 		{
 			get { return this.CalledOnNullInput;}
 		}
-		String ISql90TableValuedFunction.ClassName 
+		String ISql90TSqlTableValuedFunction.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		DataAccessKind? ISql90TableValuedFunction.DataAccess 
+		DataAccessKind? ISql90TSqlTableValuedFunction.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		Boolean? ISql90TableValuedFunction.Deterministic 
+		Boolean? ISql90TSqlTableValuedFunction.Deterministic 
 		{
 			get { return this.Deterministic;}
 		}
-		Boolean ISql90TableValuedFunction.ExecuteAsCaller 
+		Boolean ISql90TSqlTableValuedFunction.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql90TableValuedFunction.ExecuteAsOwner 
+		Boolean ISql90TSqlTableValuedFunction.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql90TableValuedFunction.ExecuteAsSelf 
+		Boolean ISql90TSqlTableValuedFunction.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql90TableValuedFunction.FillRowMethodName 
+		String ISql90TSqlTableValuedFunction.FillRowMethodName 
 		{
 			get { return this.FillRowMethodName;}
 		}
-		Boolean ISql90TableValuedFunction.IsReplicated 
+		Boolean ISql90TSqlTableValuedFunction.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql90TableValuedFunction.MethodName 
+		String ISql90TSqlTableValuedFunction.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql90TableValuedFunction.Precise 
+		Boolean? ISql90TSqlTableValuedFunction.Precise 
 		{
 			get { return this.Precise;}
 		}
-		Boolean? ISql90TableValuedFunction.QuotedIdentifierOn 
+		Boolean? ISql90TSqlTableValuedFunction.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql90TableValuedFunction.ReturnsNullOnNullInput 
+		Boolean ISql90TSqlTableValuedFunction.ReturnsNullOnNullInput 
 		{
 			get { return this.ReturnsNullOnNullInput;}
 		}
-		String ISql90TableValuedFunction.ReturnTableVariableName 
+		String ISql90TSqlTableValuedFunction.ReturnTableVariableName 
 		{
 			get { return this.ReturnTableVariableName;}
 		}
-		SystemDataAccessKind? ISql90TableValuedFunction.SystemDataAccess 
+		SystemDataAccessKind? ISql90TSqlTableValuedFunction.SystemDataAccess 
 		{
 			get { return this.SystemDataAccess;}
 		}
-		Boolean ISql90TableValuedFunction.WithEncryption 
+		Boolean ISql90TSqlTableValuedFunction.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql90TableValuedFunction.WithSchemaBinding 
+		Boolean ISql90TSqlTableValuedFunction.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Assembly> ISql90TableValuedFunction.Assembly 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlTableValuedFunction.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90TableValuedFunction.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlTableValuedFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -189,35 +212,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Login> ISql90TableValuedFunction.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90TableValuedFunction.OrderColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlTableValuedFunction.OrderColumns 
 		{
 			get 
 			{
-				return this.OrderColumns;
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Parameter> ISql90TableValuedFunction.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter> ISql90TSqlTableValuedFunction.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TableValuedFunction.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
@@ -225,106 +248,109 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90TableValuedFunction.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlTableValuedFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90User> ISql90TableValuedFunction.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlTableValuedFunction.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
 			}
 		}
 	}
-	public partial class ScalarFunction : ISql90ScalarFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlScalarFunction"/>.
+	/// </summary>
+	public partial class TSqlScalarFunction : ISql90TSqlScalarFunction
 	{		
-		Boolean? ISql90ScalarFunction.AnsiNullsOn 
+		Boolean? ISql90TSqlScalarFunction.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql90ScalarFunction.CalledOnNullInput 
+		Boolean ISql90TSqlScalarFunction.CalledOnNullInput 
 		{
 			get { return this.CalledOnNullInput;}
 		}
-		String ISql90ScalarFunction.ClassName 
+		String ISql90TSqlScalarFunction.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		DataAccessKind? ISql90ScalarFunction.DataAccess 
+		DataAccessKind? ISql90TSqlScalarFunction.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		Boolean? ISql90ScalarFunction.Deterministic 
+		Boolean? ISql90TSqlScalarFunction.Deterministic 
 		{
 			get { return this.Deterministic;}
 		}
-		Boolean ISql90ScalarFunction.ExecuteAsCaller 
+		Boolean ISql90TSqlScalarFunction.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql90ScalarFunction.ExecuteAsOwner 
+		Boolean ISql90TSqlScalarFunction.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql90ScalarFunction.ExecuteAsSelf 
+		Boolean ISql90TSqlScalarFunction.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql90ScalarFunction.FillRowMethodName 
+		String ISql90TSqlScalarFunction.FillRowMethodName 
 		{
 			get { return this.FillRowMethodName;}
 		}
-		Boolean ISql90ScalarFunction.IsReplicated 
+		Boolean ISql90TSqlScalarFunction.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql90ScalarFunction.MethodName 
+		String ISql90TSqlScalarFunction.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql90ScalarFunction.Precise 
+		Boolean? ISql90TSqlScalarFunction.Precise 
 		{
 			get { return this.Precise;}
 		}
-		Boolean? ISql90ScalarFunction.QuotedIdentifierOn 
+		Boolean? ISql90TSqlScalarFunction.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql90ScalarFunction.ReturnsNullOnNullInput 
+		Boolean ISql90TSqlScalarFunction.ReturnsNullOnNullInput 
 		{
 			get { return this.ReturnsNullOnNullInput;}
 		}
-		SystemDataAccessKind? ISql90ScalarFunction.SystemDataAccess 
+		SystemDataAccessKind? ISql90TSqlScalarFunction.SystemDataAccess 
 		{
 			get { return this.SystemDataAccess;}
 		}
-		Boolean ISql90ScalarFunction.WithEncryption 
+		Boolean ISql90TSqlScalarFunction.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql90ScalarFunction.WithSchemaBinding 
+		Boolean ISql90TSqlScalarFunction.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Assembly> ISql90ScalarFunction.Assembly 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlScalarFunction.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90ScalarFunction.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlScalarFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -332,26 +358,26 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Login> ISql90ScalarFunction.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlScalarFunction.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Parameter> ISql90ScalarFunction.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter> ISql90TSqlScalarFunction.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90ScalarFunction.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
@@ -359,71 +385,74 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90ScalarFunction.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlScalarFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90User> ISql90ScalarFunction.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlScalarFunction.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
 			}
 		}
 	}
-	public partial class Aggregate : ISql90Aggregate
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlAggregate"/>.
+	/// </summary>
+	public partial class TSqlAggregate : ISql90TSqlAggregate
 	{		
-		String ISql90Aggregate.ClassName 
+		String ISql90TSqlAggregate.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Format ISql90Aggregate.Format 
+		Format ISql90TSqlAggregate.Format 
 		{
 			get { return this.Format;}
 		}
-		Boolean? ISql90Aggregate.InvariantToDuplicates 
+		Boolean? ISql90TSqlAggregate.InvariantToDuplicates 
 		{
 			get { return this.InvariantToDuplicates;}
 		}
-		Boolean? ISql90Aggregate.InvariantToNulls 
+		Boolean? ISql90TSqlAggregate.InvariantToNulls 
 		{
 			get { return this.InvariantToNulls;}
 		}
-		Int32? ISql90Aggregate.MaxByteSize 
+		Int32? ISql90TSqlAggregate.MaxByteSize 
 		{
 			get { return this.MaxByteSize;}
 		}
-		Boolean? ISql90Aggregate.NullIfEmpty 
+		Boolean? ISql90TSqlAggregate.NullIfEmpty 
 		{
 			get { return this.NullIfEmpty;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Assembly> ISql90Aggregate.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlAggregate.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Parameter> ISql90Aggregate.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter> ISql90TSqlAggregate.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90Aggregate.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlAggregate.ReturnType 
 		{
 			get 
 			{
@@ -431,107 +460,113 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90Aggregate.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlAggregate.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 	}
-	public partial class ApplicationRole : ISql90ApplicationRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlApplicationRole"/>.
+	/// </summary>
+	public partial class TSqlApplicationRole : ISql90TSqlApplicationRole
 	{		
-		String ISql90ApplicationRole.Password 
+		String ISql90TSqlApplicationRole.Password 
 		{
 			get { return this.Password;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90ApplicationRole.DefaultSchema 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlApplicationRole.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema;
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 	}
-	public partial class Index : ISql90Index
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlIndex"/>.
+	/// </summary>
+	public partial class TSqlIndex : ISql90TSqlIndex
 	{		
-		Boolean ISql90Index.AllowPageLocks 
+		Boolean ISql90TSqlIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql90Index.AllowRowLocks 
+		Boolean ISql90TSqlIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Int32? ISql90Index.BucketCount 
+		Int32? ISql90TSqlIndex.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql90Index.Clustered 
+		Boolean ISql90TSqlIndex.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql90Index.Disabled 
+		Boolean ISql90TSqlIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32? ISql90Index.FillFactor 
+		Int32? ISql90TSqlIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql90Index.Hash 
+		Boolean ISql90TSqlIndex.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql90Index.IgnoreDuplicateKey 
+		Boolean ISql90TSqlIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql90Index.RecomputeStatistics 
+		Boolean ISql90TSqlIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql90Index.Unique 
+		Boolean ISql90TSqlIndex.Unique 
 		{
 			get { return this.Unique;}
 		}
-		Boolean ISql90Index.WithPadIndex 
+		Boolean ISql90TSqlIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90Index.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90Index.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90Index.IncludedColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlIndex.IncludedColumns 
 		{
 			get 
 			{
-				return this.IncludedColumns;
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql90Index.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql90TSqlIndex.IndexedObject 
 		{
 			get 
 			{
@@ -539,46 +574,49 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90Index.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90PartitionScheme> ISql90Index.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme> ISql90TSqlIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Assembly : ISql90Assembly
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlAssembly"/>.
+	/// </summary>
+	public partial class TSqlAssembly : ISql90TSqlAssembly
 	{		
-		AssemblyPermissionSet ISql90Assembly.PermissionSet 
+		AssemblyPermissionSet ISql90TSqlAssembly.PermissionSet 
 		{
 			get { return this.PermissionSet;}
 		}
-		Boolean ISql90Assembly.Visible 
+		Boolean ISql90TSqlAssembly.Visible 
 		{
 			get { return this.Visible;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90AssemblySource> ISql90Assembly.AssemblySources 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblySource> ISql90TSqlAssembly.AssemblySources 
 		{
 			get 
 			{
-				return this.AssemblySources;
+				return this.AssemblySources.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblySource>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90Assembly.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlAssembly.Authorizer 
 		{
 			get 
 			{
@@ -586,56 +624,62 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Assembly> ISql90Assembly.ReferencedAssemblies 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlAssembly.ReferencedAssemblies 
 		{
 			get 
 			{
-				return this.ReferencedAssemblies;
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
 			}
 		}
 	}
-	public partial class AssemblySource : ISql90AssemblySource
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlAssemblySource"/>.
+	/// </summary>
+	public partial class TSqlAssemblySource : ISql90TSqlAssemblySource
 	{		
-		String ISql90AssemblySource.Source 
+		String ISql90TSqlAssemblySource.Source 
 		{
 			get { return this.Source;}
 		}
 	}
-	public partial class AsymmetricKey : ISql90AsymmetricKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlAsymmetricKey"/>.
+	/// </summary>
+	public partial class TSqlAsymmetricKey : ISql90TSqlAsymmetricKey
 	{		
-		AsymmetricKeyAlgorithm ISql90AsymmetricKey.Algorithm 
+		AsymmetricKeyAlgorithm ISql90TSqlAsymmetricKey.Algorithm 
 		{
 			get { return this.Algorithm;}
 		}
-		Boolean ISql90AsymmetricKey.EncryptedWithPassword 
+		Boolean ISql90TSqlAsymmetricKey.EncryptedWithPassword 
 		{
 			get { return this.EncryptedWithPassword;}
 		}
-		String ISql90AsymmetricKey.ExecutableFile 
+		String ISql90TSqlAsymmetricKey.ExecutableFile 
 		{
 			get { return this.ExecutableFile;}
 		}
-		String ISql90AsymmetricKey.File 
+		String ISql90TSqlAsymmetricKey.File 
 		{
 			get { return this.File;}
 		}
-		String ISql90AsymmetricKey.Password 
+		String ISql90TSqlAsymmetricKey.Password 
 		{
 			get { return this.Password;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Assembly> ISql90AsymmetricKey.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlAsymmetricKey.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90AsymmetricKey.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlAsymmetricKey.Authorizer 
 		{
 			get 
 			{
@@ -643,59 +687,53 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class AuditAction : ISql90AuditAction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlBuiltInServerRole"/>.
+	/// </summary>
+	public partial class TSqlBuiltInServerRole : ISql90TSqlBuiltInServerRole
 	{		
 	}
-	public partial class AuditActionGroup : ISql90AuditActionGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlDataType"/>.
+	/// </summary>
+	public partial class TSqlDataType : ISql90TSqlDataType
 	{		
-	}
-	public partial class AuditActionSpecification : ISql90AuditActionSpecification
-	{		
-	}
-	public partial class BrokerPriority : ISql90BrokerPriority
-	{		
-	}
-	public partial class BuiltInServerRole : ISql90BuiltInServerRole
-	{		
-	}
-	public partial class DataType : ISql90DataType
-	{		
-		SqlDataType ISql90DataType.SqlDataType 
+		SqlDataType ISql90TSqlDataType.SqlDataType 
 		{
 			get { return this.SqlDataType;}
 		}
-		Boolean ISql90DataType.UddtIsMax 
+		Boolean ISql90TSqlDataType.UddtIsMax 
 		{
 			get { return this.UddtIsMax;}
 		}
-		Int32 ISql90DataType.UddtLength 
+		Int32 ISql90TSqlDataType.UddtLength 
 		{
 			get { return this.UddtLength;}
 		}
-		Boolean ISql90DataType.UddtNullable 
+		Boolean ISql90TSqlDataType.UddtNullable 
 		{
 			get { return this.UddtNullable;}
 		}
-		Int32 ISql90DataType.UddtPrecision 
+		Int32 ISql90TSqlDataType.UddtPrecision 
 		{
 			get { return this.UddtPrecision;}
 		}
-		Int32 ISql90DataType.UddtScale 
+		Int32 ISql90TSqlDataType.UddtScale 
 		{
 			get { return this.UddtScale;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90DataType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlDataType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<System.Type> ISql90DataType.Type 
+		// Peer relationship		
+		IEnumerable<System.Type> ISql90TSqlDataType.Type 
 		{
 			get 
 			{
@@ -703,55 +741,58 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Certificate : ISql90Certificate
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlCertificate"/>.
+	/// </summary>
+	public partial class TSqlCertificate : ISql90TSqlCertificate
 	{		
-		Boolean ISql90Certificate.ActiveForBeginDialog 
+		Boolean ISql90TSqlCertificate.ActiveForBeginDialog 
 		{
 			get { return this.ActiveForBeginDialog;}
 		}
-		Boolean ISql90Certificate.EncryptedWithPassword 
+		Boolean ISql90TSqlCertificate.EncryptedWithPassword 
 		{
 			get { return this.EncryptedWithPassword;}
 		}
-		String ISql90Certificate.EncryptionPassword 
+		String ISql90TSqlCertificate.EncryptionPassword 
 		{
 			get { return this.EncryptionPassword;}
 		}
-		String ISql90Certificate.ExistingKeysFilePath 
+		String ISql90TSqlCertificate.ExistingKeysFilePath 
 		{
 			get { return this.ExistingKeysFilePath;}
 		}
-		String ISql90Certificate.ExpiryDate 
+		String ISql90TSqlCertificate.ExpiryDate 
 		{
 			get { return this.ExpiryDate;}
 		}
-		Boolean ISql90Certificate.IsExistingKeyFileExecutable 
+		Boolean ISql90TSqlCertificate.IsExistingKeyFileExecutable 
 		{
 			get { return this.IsExistingKeyFileExecutable;}
 		}
-		String ISql90Certificate.PrivateKeyDecryptionPassword 
+		String ISql90TSqlCertificate.PrivateKeyDecryptionPassword 
 		{
 			get { return this.PrivateKeyDecryptionPassword;}
 		}
-		String ISql90Certificate.PrivateKeyEncryptionPassword 
+		String ISql90TSqlCertificate.PrivateKeyEncryptionPassword 
 		{
 			get { return this.PrivateKeyEncryptionPassword;}
 		}
-		String ISql90Certificate.PrivateKeyFilePath 
+		String ISql90TSqlCertificate.PrivateKeyFilePath 
 		{
 			get { return this.PrivateKeyFilePath;}
 		}
-		String ISql90Certificate.StartDate 
+		String ISql90TSqlCertificate.StartDate 
 		{
 			get { return this.StartDate;}
 		}
-		String ISql90Certificate.Subject 
+		String ISql90TSqlCertificate.Subject 
 		{
 			get { return this.Subject;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90Certificate.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlCertificate.Authorizer 
 		{
 			get 
 			{
@@ -759,32 +800,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Assembly> ISql90Certificate.ExistingKeysAssembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlCertificate.ExistingKeysAssembly 
 		{
 			get 
 			{
-				return this.ExistingKeysAssembly;
+				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
 			}
 		}
 	}
-	public partial class CheckConstraint : ISql90CheckConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlCheckConstraint"/>.
+	/// </summary>
+	public partial class TSqlCheckConstraint : ISql90TSqlCheckConstraint
 	{		
-		Boolean ISql90CheckConstraint.Disabled 
+		Boolean ISql90TSqlCheckConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISql90CheckConstraint.Expression 
+		String ISql90TSqlCheckConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
-		Boolean ISql90CheckConstraint.NotForReplication 
+		Boolean ISql90TSqlCheckConstraint.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90CheckConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -792,33 +836,36 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90ExtendedProperty> ISql90CheckConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlCheckConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
 			}
 		}
 	}
-	public partial class ClrTypeMethod : ISql90ClrTypeMethod
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlClrTypeMethod"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethod : ISql90TSqlClrTypeMethod
 	{		
-		String ISql90ClrTypeMethod.Name 
+		String ISql90TSqlClrTypeMethod.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Parameter> ISql90ClrTypeMethod.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter> ISql90TSqlClrTypeMethod.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90ClrTypeMethod.ReturnType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlClrTypeMethod.ReturnType 
 		{
 			get 
 			{
@@ -826,35 +873,41 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ClrTypeMethodParameter : ISql90ClrTypeMethodParameter
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlClrTypeMethodParameter"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethodParameter : ISql90TSqlClrTypeMethodParameter
 	{		
-		Boolean ISql90ClrTypeMethodParameter.IsOutput 
+		Boolean ISql90TSqlClrTypeMethodParameter.IsOutput 
 		{
 			get { return this.IsOutput;}
 		}
-		String ISql90ClrTypeMethodParameter.Name 
+		String ISql90TSqlClrTypeMethodParameter.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90DataType> ISql90ClrTypeMethodParameter.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
 			}
 		}
 	}
-	public partial class ClrTypeProperty : ISql90ClrTypeProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlClrTypeProperty"/>.
+	/// </summary>
+	public partial class TSqlClrTypeProperty : ISql90TSqlClrTypeProperty
 	{		
-		String ISql90ClrTypeProperty.Name 
+		String ISql90TSqlClrTypeProperty.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90ClrTypeProperty.ClrType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
@@ -862,58 +915,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ColumnStoreIndex : ISql90ColumnStoreIndex
-	{		
-		Boolean ISql90ColumnStoreIndex.Clustered 
-		{
-			get { return this.Clustered;}
-		}
-		Boolean ISql90ColumnStoreIndex.Disabled 
-		{
-			get { return this.Disabled;}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90ColumnStoreIndex.Filegroup 
-		{
-			get 
-			{
-				return this.Filegroup;
-			}
-		}
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql90ColumnStoreIndex.IndexedObject 
-		{
-			get 
-			{
-				return this.IndexedObject;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90ColumnStoreIndex.PartitionColumn 
-		{
-			get 
-			{
-				return this.PartitionColumn;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90PartitionScheme> ISql90ColumnStoreIndex.PartitionScheme 
-		{
-			get 
-			{
-				return this.PartitionScheme;
-			}
-		}
-	}
-	public partial class Contract : ISql90Contract
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlContract"/>.
+	/// </summary>
+	public partial class TSqlContract : ISql90TSqlContract
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90Contract.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlContract.Authorizer 
 		{
 			get 
 			{
@@ -921,86 +930,86 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90MessageType> ISql90Contract.Messages 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlMessageType> ISql90TSqlContract.Messages 
 		{
 			get 
 			{
-				return this.Messages;
+				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlMessageType>();
 			}
 		}
 	}
-	public partial class Credential : ISql90Credential
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlCredential"/>.
+	/// </summary>
+	public partial class TSqlCredential : ISql90TSqlCredential
 	{		
-		String ISql90Credential.Identity 
+		String ISql90TSqlCredential.Identity 
 		{
 			get { return this.Identity;}
 		}
-		String ISql90Credential.Secret 
+		String ISql90TSqlCredential.Secret 
 		{
 			get { return this.Secret;}
 		}
 	}
-	public partial class CryptographicProvider : ISql90CryptographicProvider
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlDatabaseDdlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDatabaseDdlTrigger : ISql90TSqlDatabaseDdlTrigger
 	{		
-	}
-	public partial class DatabaseAuditSpecification : ISql90DatabaseAuditSpecification
-	{		
-	}
-	public partial class DatabaseDdlTrigger : ISql90DatabaseDdlTrigger
-	{		
-		Boolean? ISql90DatabaseDdlTrigger.AnsiNullsOn 
+		Boolean? ISql90TSqlDatabaseDdlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql90DatabaseDdlTrigger.ClassName 
+		String ISql90TSqlDatabaseDdlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql90DatabaseDdlTrigger.Disabled 
+		Boolean ISql90TSqlDatabaseDdlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql90DatabaseDdlTrigger.ExecuteAsCaller 
+		Boolean ISql90TSqlDatabaseDdlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql90DatabaseDdlTrigger.ExecuteAsOwner 
+		Boolean ISql90TSqlDatabaseDdlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql90DatabaseDdlTrigger.ExecuteAsSelf 
+		Boolean ISql90TSqlDatabaseDdlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql90DatabaseDdlTrigger.MethodName 
+		String ISql90TSqlDatabaseDdlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql90DatabaseDdlTrigger.QuotedIdentifierOn 
+		Boolean? ISql90TSqlDatabaseDdlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql90DatabaseDdlTrigger.TriggerType 
+		TriggerType ISql90TSqlDatabaseDdlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		Boolean ISql90DatabaseDdlTrigger.WithEncryption 
+		Boolean ISql90TSqlDatabaseDdlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Assembly> ISql90DatabaseDdlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlDatabaseDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90DatabaseDdlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlDatabaseDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -1008,17 +1017,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90EventGroup> ISql90DatabaseDdlTrigger.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlEventGroup> ISql90TSqlDatabaseDdlTrigger.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql90DatabaseDdlTrigger.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql90TSqlDatabaseDdlTrigger.EventType 
 		{
 			get 
 			{
@@ -1026,53 +1035,53 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Login> ISql90DatabaseDdlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlDatabaseDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90User> ISql90DatabaseDdlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlDatabaseDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
 			}
 		}
 	}
-	public partial class DatabaseEncryptionKey : ISql90DatabaseEncryptionKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlDatabaseEventNotification"/>.
+	/// </summary>
+	public partial class TSqlDatabaseEventNotification : ISql90TSqlDatabaseEventNotification
 	{		
-	}
-	public partial class DatabaseEventNotification : ISql90DatabaseEventNotification
-	{		
-		String ISql90DatabaseEventNotification.BrokerInstanceSpecifier 
+		String ISql90TSqlDatabaseEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql90DatabaseEventNotification.BrokerService 
+		String ISql90TSqlDatabaseEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql90DatabaseEventNotification.WithFanIn 
+		Boolean ISql90TSqlDatabaseEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90EventGroup> ISql90DatabaseEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlEventGroup> ISql90TSqlDatabaseEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql90DatabaseEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql90TSqlDatabaseEventNotification.EventType 
 		{
 			get 
 			{
@@ -1080,206 +1089,212 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class DatabaseMirroringLanguageSpecifier : ISql90DatabaseMirroringLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlDatabaseMirroringLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlDatabaseMirroringLanguageSpecifier : ISql90TSqlDatabaseMirroringLanguageSpecifier
 	{		
-		ServiceBrokerEncryptionAlgorithm ISql90DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1 
+		ServiceBrokerEncryptionAlgorithm ISql90TSqlDatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1 
 		{
 			get { return this.EncryptionAlgorithmPart1;}
 		}
-		ServiceBrokerEncryptionAlgorithm ISql90DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2 
+		ServiceBrokerEncryptionAlgorithm ISql90TSqlDatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2 
 		{
 			get { return this.EncryptionAlgorithmPart2;}
 		}
-		EncryptionMode ISql90DatabaseMirroringLanguageSpecifier.EncryptionMode 
+		EncryptionMode ISql90TSqlDatabaseMirroringLanguageSpecifier.EncryptionMode 
 		{
 			get { return this.EncryptionMode;}
 		}
-		DatabaseMirroringRole ISql90DatabaseMirroringLanguageSpecifier.RoleType 
+		DatabaseMirroringRole ISql90TSqlDatabaseMirroringLanguageSpecifier.RoleType 
 		{
 			get { return this.RoleType;}
 		}
-		Boolean ISql90DatabaseMirroringLanguageSpecifier.UseCertificateFirst 
+		Boolean ISql90TSqlDatabaseMirroringLanguageSpecifier.UseCertificateFirst 
 		{
 			get { return this.UseCertificateFirst;}
 		}
-		AuthenticationModes ISql90DatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode 
+		AuthenticationModes ISql90TSqlDatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode 
 		{
 			get { return this.WindowsAuthenticationMode;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Certificate> ISql90DatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate;
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
 			}
 		}
 	}
-	public partial class DatabaseOptions : ISql90DatabaseOptions
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlDatabaseOptions"/>.
+	/// </summary>
+	public partial class TSqlDatabaseOptions : ISql90TSqlDatabaseOptions
 	{		
-		Boolean ISql90DatabaseOptions.AllowSnapshotIsolation 
+		Boolean ISql90TSqlDatabaseOptions.AllowSnapshotIsolation 
 		{
 			get { return this.AllowSnapshotIsolation;}
 		}
-		Boolean ISql90DatabaseOptions.AnsiNullDefaultOn 
+		Boolean ISql90TSqlDatabaseOptions.AnsiNullDefaultOn 
 		{
 			get { return this.AnsiNullDefaultOn;}
 		}
-		Boolean ISql90DatabaseOptions.AnsiNullsOn 
+		Boolean ISql90TSqlDatabaseOptions.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql90DatabaseOptions.AnsiPaddingOn 
+		Boolean ISql90TSqlDatabaseOptions.AnsiPaddingOn 
 		{
 			get { return this.AnsiPaddingOn;}
 		}
-		Boolean ISql90DatabaseOptions.AnsiWarningsOn 
+		Boolean ISql90TSqlDatabaseOptions.AnsiWarningsOn 
 		{
 			get { return this.AnsiWarningsOn;}
 		}
-		Boolean ISql90DatabaseOptions.ArithAbortOn 
+		Boolean ISql90TSqlDatabaseOptions.ArithAbortOn 
 		{
 			get { return this.ArithAbortOn;}
 		}
-		Boolean ISql90DatabaseOptions.AutoClose 
+		Boolean ISql90TSqlDatabaseOptions.AutoClose 
 		{
 			get { return this.AutoClose;}
 		}
-		Boolean ISql90DatabaseOptions.AutoCreateStatistics 
+		Boolean ISql90TSqlDatabaseOptions.AutoCreateStatistics 
 		{
 			get { return this.AutoCreateStatistics;}
 		}
-		Boolean ISql90DatabaseOptions.AutoShrink 
+		Boolean ISql90TSqlDatabaseOptions.AutoShrink 
 		{
 			get { return this.AutoShrink;}
 		}
-		Boolean ISql90DatabaseOptions.AutoUpdateStatistics 
+		Boolean ISql90TSqlDatabaseOptions.AutoUpdateStatistics 
 		{
 			get { return this.AutoUpdateStatistics;}
 		}
-		Boolean ISql90DatabaseOptions.AutoUpdateStatisticsAsync 
+		Boolean ISql90TSqlDatabaseOptions.AutoUpdateStatisticsAsync 
 		{
 			get { return this.AutoUpdateStatisticsAsync;}
 		}
-		String ISql90DatabaseOptions.Collation 
+		String ISql90TSqlDatabaseOptions.Collation 
 		{
 			get { return this.Collation;}
 		}
-		Int32 ISql90DatabaseOptions.CompatibilityLevel 
+		Int32 ISql90TSqlDatabaseOptions.CompatibilityLevel 
 		{
 			get { return this.CompatibilityLevel;}
 		}
-		Boolean ISql90DatabaseOptions.ConcatNullYieldsNull 
+		Boolean ISql90TSqlDatabaseOptions.ConcatNullYieldsNull 
 		{
 			get { return this.ConcatNullYieldsNull;}
 		}
-		Boolean ISql90DatabaseOptions.CursorCloseOnCommit 
+		Boolean ISql90TSqlDatabaseOptions.CursorCloseOnCommit 
 		{
 			get { return this.CursorCloseOnCommit;}
 		}
-		Boolean ISql90DatabaseOptions.CursorDefaultGlobalScope 
+		Boolean ISql90TSqlDatabaseOptions.CursorDefaultGlobalScope 
 		{
 			get { return this.CursorDefaultGlobalScope;}
 		}
-		Boolean ISql90DatabaseOptions.DatabaseStateOffline 
+		Boolean ISql90TSqlDatabaseOptions.DatabaseStateOffline 
 		{
 			get { return this.DatabaseStateOffline;}
 		}
-		Boolean ISql90DatabaseOptions.DateCorrelationOptimizationOn 
+		Boolean ISql90TSqlDatabaseOptions.DateCorrelationOptimizationOn 
 		{
 			get { return this.DateCorrelationOptimizationOn;}
 		}
-		Boolean ISql90DatabaseOptions.DBChainingOn 
+		Boolean ISql90TSqlDatabaseOptions.DBChainingOn 
 		{
 			get { return this.DBChainingOn;}
 		}
-		Boolean ISql90DatabaseOptions.FullTextEnabled 
+		Boolean ISql90TSqlDatabaseOptions.FullTextEnabled 
 		{
 			get { return this.FullTextEnabled;}
 		}
-		Boolean ISql90DatabaseOptions.MemoryOptimizedElevateToSnapshot 
+		Boolean ISql90TSqlDatabaseOptions.MemoryOptimizedElevateToSnapshot 
 		{
 			get { return this.MemoryOptimizedElevateToSnapshot;}
 		}
-		Boolean ISql90DatabaseOptions.NumericRoundAbortOn 
+		Boolean ISql90TSqlDatabaseOptions.NumericRoundAbortOn 
 		{
 			get { return this.NumericRoundAbortOn;}
 		}
-		PageVerifyMode ISql90DatabaseOptions.PageVerifyMode 
+		PageVerifyMode ISql90TSqlDatabaseOptions.PageVerifyMode 
 		{
 			get { return this.PageVerifyMode;}
 		}
-		ParameterizationOption ISql90DatabaseOptions.ParameterizationOption 
+		ParameterizationOption ISql90TSqlDatabaseOptions.ParameterizationOption 
 		{
 			get { return this.ParameterizationOption;}
 		}
-		Boolean ISql90DatabaseOptions.QuotedIdentifierOn 
+		Boolean ISql90TSqlDatabaseOptions.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql90DatabaseOptions.ReadOnly 
+		Boolean ISql90TSqlDatabaseOptions.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
-		RecoveryMode ISql90DatabaseOptions.RecoveryMode 
+		RecoveryMode ISql90TSqlDatabaseOptions.RecoveryMode 
 		{
 			get { return this.RecoveryMode;}
 		}
-		Boolean ISql90DatabaseOptions.RecursiveTriggersOn 
+		Boolean ISql90TSqlDatabaseOptions.RecursiveTriggersOn 
 		{
 			get { return this.RecursiveTriggersOn;}
 		}
-		ServiceBrokerOption ISql90DatabaseOptions.ServiceBrokerOption 
+		ServiceBrokerOption ISql90TSqlDatabaseOptions.ServiceBrokerOption 
 		{
 			get { return this.ServiceBrokerOption;}
 		}
-		Boolean ISql90DatabaseOptions.SupplementalLoggingOn 
+		Boolean ISql90TSqlDatabaseOptions.SupplementalLoggingOn 
 		{
 			get { return this.SupplementalLoggingOn;}
 		}
-		Boolean ISql90DatabaseOptions.TornPageProtectionOn 
+		Boolean ISql90TSqlDatabaseOptions.TornPageProtectionOn 
 		{
 			get { return this.TornPageProtectionOn;}
 		}
-		Boolean ISql90DatabaseOptions.TransactionIsolationReadCommittedSnapshot 
+		Boolean ISql90TSqlDatabaseOptions.TransactionIsolationReadCommittedSnapshot 
 		{
 			get { return this.TransactionIsolationReadCommittedSnapshot;}
 		}
-		Boolean ISql90DatabaseOptions.Trustworthy 
+		Boolean ISql90TSqlDatabaseOptions.Trustworthy 
 		{
 			get { return this.Trustworthy;}
 		}
-		UserAccessOption ISql90DatabaseOptions.UserAccessOption 
+		UserAccessOption ISql90TSqlDatabaseOptions.UserAccessOption 
 		{
 			get { return this.UserAccessOption;}
 		}
-		Boolean ISql90DatabaseOptions.VardecimalStorageFormatOn 
+		Boolean ISql90TSqlDatabaseOptions.VardecimalStorageFormatOn 
 		{
 			get { return this.VardecimalStorageFormatOn;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90DatabaseOptions.DefaultFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlDatabaseOptions.DefaultFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFilegroup;
+				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class DataCompressionOption : ISql90DataCompressionOption
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlDefault"/>.
+	/// </summary>
+	public partial class TSqlDefault : ISql90TSqlDefault
 	{		
-	}
-	public partial class Default : ISql90Default
-	{		
-		String ISql90Default.Expression 
+		String ISql90TSqlDefault.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90Default.BoundObjects 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlDefault.BoundObjects 
 		{
 			get 
 			{
@@ -1287,32 +1302,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90Default.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlDefault.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 	}
-	public partial class DefaultConstraint : ISql90DefaultConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlDefaultConstraint"/>.
+	/// </summary>
+	public partial class TSqlDefaultConstraint : ISql90TSqlDefaultConstraint
 	{		
-		Boolean ISql90DefaultConstraint.Disabled 
+		Boolean ISql90TSqlDefaultConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISql90DefaultConstraint.Expression 
+		String ISql90TSqlDefaultConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
-		Boolean ISql90DefaultConstraint.WithValues 
+		Boolean ISql90TSqlDefaultConstraint.WithValues 
 		{
 			get { return this.WithValues;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90DefaultConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -1320,110 +1338,113 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90ExtendedProperty> ISql90DefaultConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlDefaultConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90DefaultConstraint.TargetColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn;
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 	}
-	public partial class DmlTrigger : ISql90DmlTrigger
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlDmlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDmlTrigger : ISql90TSqlDmlTrigger
 	{		
-		Boolean? ISql90DmlTrigger.AnsiNullsOn 
+		Boolean? ISql90TSqlDmlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql90DmlTrigger.ClassName 
+		String ISql90TSqlDmlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		OrderRestriction ISql90DmlTrigger.DeleteOrderRestriction 
+		OrderRestriction ISql90TSqlDmlTrigger.DeleteOrderRestriction 
 		{
 			get { return this.DeleteOrderRestriction;}
 		}
-		Boolean ISql90DmlTrigger.Disabled 
+		Boolean ISql90TSqlDmlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql90DmlTrigger.ExecuteAsCaller 
+		Boolean ISql90TSqlDmlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql90DmlTrigger.ExecuteAsOwner 
+		Boolean ISql90TSqlDmlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql90DmlTrigger.ExecuteAsSelf 
+		Boolean ISql90TSqlDmlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		OrderRestriction ISql90DmlTrigger.InsertOrderRestriction 
+		OrderRestriction ISql90TSqlDmlTrigger.InsertOrderRestriction 
 		{
 			get { return this.InsertOrderRestriction;}
 		}
-		Boolean ISql90DmlTrigger.IsDeleteTrigger 
+		Boolean ISql90TSqlDmlTrigger.IsDeleteTrigger 
 		{
 			get { return this.IsDeleteTrigger;}
 		}
-		Boolean ISql90DmlTrigger.IsInsertTrigger 
+		Boolean ISql90TSqlDmlTrigger.IsInsertTrigger 
 		{
 			get { return this.IsInsertTrigger;}
 		}
-		Boolean ISql90DmlTrigger.IsUpdateTrigger 
+		Boolean ISql90TSqlDmlTrigger.IsUpdateTrigger 
 		{
 			get { return this.IsUpdateTrigger;}
 		}
-		String ISql90DmlTrigger.MethodName 
+		String ISql90TSqlDmlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean ISql90DmlTrigger.NotForReplication 
+		Boolean ISql90TSqlDmlTrigger.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
-		Boolean? ISql90DmlTrigger.QuotedIdentifierOn 
+		Boolean? ISql90TSqlDmlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql90DmlTrigger.TriggerType 
+		TriggerType ISql90TSqlDmlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		OrderRestriction ISql90DmlTrigger.UpdateOrderRestriction 
+		OrderRestriction ISql90TSqlDmlTrigger.UpdateOrderRestriction 
 		{
 			get { return this.UpdateOrderRestriction;}
 		}
-		Boolean ISql90DmlTrigger.WithAppend 
+		Boolean ISql90TSqlDmlTrigger.WithAppend 
 		{
 			get { return this.WithAppend;}
 		}
-		Boolean ISql90DmlTrigger.WithEncryption 
+		Boolean ISql90TSqlDmlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Assembly> ISql90DmlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlDmlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90DmlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlDmlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -1431,17 +1452,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Login> ISql90DmlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlDmlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql90DmlTrigger.TriggerObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql90TSqlDmlTrigger.TriggerObject 
 		{
 			get 
 			{
@@ -1449,32 +1470,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90User> ISql90DmlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlDmlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
 			}
 		}
 	}
-	public partial class Endpoint : ISql90Endpoint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlEndpoint"/>.
+	/// </summary>
+	public partial class TSqlEndpoint : ISql90TSqlEndpoint
 	{		
-		Payload ISql90Endpoint.Payload 
+		Payload ISql90TSqlEndpoint.Payload 
 		{
 			get { return this.Payload;}
 		}
-		Protocol ISql90Endpoint.Protocol 
+		Protocol ISql90TSqlEndpoint.Protocol 
 		{
 			get { return this.Protocol;}
 		}
-		State ISql90Endpoint.State 
+		State ISql90TSqlEndpoint.State 
 		{
 			get { return this.State;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90Endpoint.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlEndpoint.Authorizer 
 		{
 			get 
 			{
@@ -1482,8 +1506,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier> ISql90Endpoint.PayloadSpecifier 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier> ISql90TSqlEndpoint.PayloadSpecifier 
 		{
 			get 
 			{
@@ -1491,8 +1515,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier > ISql90Endpoint.ProtocolSpecifier 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier > ISql90TSqlEndpoint.ProtocolSpecifier 
 		{
 			get 
 			{
@@ -1500,126 +1524,126 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ErrorMessage : ISql90ErrorMessage
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlErrorMessage"/>.
+	/// </summary>
+	public partial class TSqlErrorMessage : ISql90TSqlErrorMessage
 	{		
-		String ISql90ErrorMessage.Language 
+		String ISql90TSqlErrorMessage.Language 
 		{
 			get { return this.Language;}
 		}
-		Int32 ISql90ErrorMessage.MessageNumber 
+		Int32 ISql90TSqlErrorMessage.MessageNumber 
 		{
 			get { return this.MessageNumber;}
 		}
-		String ISql90ErrorMessage.MessageText 
+		String ISql90TSqlErrorMessage.MessageText 
 		{
 			get { return this.MessageText;}
 		}
-		Int32 ISql90ErrorMessage.Severity 
+		Int32 ISql90TSqlErrorMessage.Severity 
 		{
 			get { return this.Severity;}
 		}
-		Boolean ISql90ErrorMessage.WithLog 
+		Boolean ISql90TSqlErrorMessage.WithLog 
 		{
 			get { return this.WithLog;}
 		}
 	}
-	public partial class EventGroup : ISql90EventGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlEventGroup"/>.
+	/// </summary>
+	public partial class TSqlEventGroup : ISql90TSqlEventGroup
 	{		
-		EventGroupType ISql90EventGroup.Group 
+		EventGroupType ISql90TSqlEventGroup.Group 
 		{
 			get { return this.Group;}
 		}
 	}
-	public partial class EventSession : ISql90EventSession
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlEventTypeSpecifier"/>.
+	/// </summary>
+	public partial class TSqlEventTypeSpecifier : ISql90TSqlEventTypeSpecifier
 	{		
-	}
-	public partial class EventSessionAction : ISql90EventSessionAction
-	{		
-	}
-	public partial class EventSessionDefinitions : ISql90EventSessionDefinitions
-	{		
-	}
-	public partial class EventSessionSetting : ISql90EventSessionSetting
-	{		
-	}
-	public partial class EventSessionTarget : ISql90EventSessionTarget
-	{		
-	}
-	public partial class EventTypeSpecifier : ISql90EventTypeSpecifier
-	{		
-		EventType ISql90EventTypeSpecifier.EventType 
+		EventType ISql90TSqlEventTypeSpecifier.EventType 
 		{
 			get { return this.EventType;}
 		}
-		OrderRestriction ISql90EventTypeSpecifier.Order 
+		OrderRestriction ISql90TSqlEventTypeSpecifier.Order 
 		{
 			get { return this.Order;}
 		}
 	}
-	public partial class ExtendedProcedure : ISql90ExtendedProcedure
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlExtendedProcedure"/>.
+	/// </summary>
+	public partial class TSqlExtendedProcedure : ISql90TSqlExtendedProcedure
 	{		
-		Boolean ISql90ExtendedProcedure.ExeccuteAsCaller 
+		Boolean ISql90TSqlExtendedProcedure.ExeccuteAsCaller 
 		{
 			get { return this.ExeccuteAsCaller;}
 		}
-		Boolean ISql90ExtendedProcedure.ExecuteAsOwner 
+		Boolean ISql90TSqlExtendedProcedure.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql90ExtendedProcedure.ExecuteAsSelf 
+		Boolean ISql90TSqlExtendedProcedure.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql90ExtendedProcedure.WithEncryption 
+		Boolean ISql90TSqlExtendedProcedure.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Login> ISql90ExtendedProcedure.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlExtendedProcedure.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Parameter> ISql90ExtendedProcedure.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter> ISql90TSqlExtendedProcedure.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90ExtendedProcedure.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlExtendedProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90User> ISql90ExtendedProcedure.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlExtendedProcedure.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
 			}
 		}
 	}
-	public partial class ExtendedProperty : ISql90ExtendedProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlExtendedProperty"/>.
+	/// </summary>
+	public partial class TSqlExtendedProperty : ISql90TSqlExtendedProperty
 	{		
-		String ISql90ExtendedProperty.Value 
+		String ISql90TSqlExtendedProperty.Value 
 		{
 			get { return this.Value;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> ISql90ExtendedProperty.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> ISql90TSqlExtendedProperty.Host 
 		{
 			get 
 			{
@@ -1627,137 +1651,149 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SqlFile : ISql90SqlFile
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlSqlFile"/>.
+	/// </summary>
+	public partial class TSqlSqlFile : ISql90TSqlSqlFile
 	{		
-		Int32? ISql90SqlFile.FileGrowth 
+		Int32? ISql90TSqlSqlFile.FileGrowth 
 		{
 			get { return this.FileGrowth;}
 		}
-		MemoryUnit ISql90SqlFile.FileGrowthUnit 
+		MemoryUnit ISql90TSqlSqlFile.FileGrowthUnit 
 		{
 			get { return this.FileGrowthUnit;}
 		}
-		String ISql90SqlFile.FileName 
+		String ISql90TSqlSqlFile.FileName 
 		{
 			get { return this.FileName;}
 		}
-		Boolean ISql90SqlFile.IsLogFile 
+		Boolean ISql90TSqlSqlFile.IsLogFile 
 		{
 			get { return this.IsLogFile;}
 		}
-		Int32? ISql90SqlFile.MaxSize 
+		Int32? ISql90TSqlSqlFile.MaxSize 
 		{
 			get { return this.MaxSize;}
 		}
-		MemoryUnit ISql90SqlFile.MaxSizeUnit 
+		MemoryUnit ISql90TSqlSqlFile.MaxSizeUnit 
 		{
 			get { return this.MaxSizeUnit;}
 		}
-		Boolean ISql90SqlFile.Offline 
+		Boolean ISql90TSqlSqlFile.Offline 
 		{
 			get { return this.Offline;}
 		}
-		Int32? ISql90SqlFile.Size 
+		Int32? ISql90TSqlSqlFile.Size 
 		{
 			get { return this.Size;}
 		}
-		MemoryUnit ISql90SqlFile.SizeUnit 
+		MemoryUnit ISql90TSqlSqlFile.SizeUnit 
 		{
 			get { return this.SizeUnit;}
 		}
-		Boolean ISql90SqlFile.Unlimited 
+		Boolean ISql90TSqlSqlFile.Unlimited 
 		{
 			get { return this.Unlimited;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90SqlFile.Filegroup 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlSqlFile.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class Filegroup : ISql90Filegroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlFilegroup"/>.
+	/// </summary>
+	public partial class TSqlFilegroup : ISql90TSqlFilegroup
 	{		
-		Boolean ISql90Filegroup.ReadOnly 
+		Boolean ISql90TSqlFilegroup.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
 	}
-	public partial class ForeignKeyConstraint : ISql90ForeignKeyConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlForeignKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlForeignKeyConstraint : ISql90TSqlForeignKeyConstraint
 	{		
-		ForeignKeyAction ISql90ForeignKeyConstraint.DeleteAction 
+		ForeignKeyAction ISql90TSqlForeignKeyConstraint.DeleteAction 
 		{
 			get { return this.DeleteAction;}
 		}
-		Boolean ISql90ForeignKeyConstraint.Disabled 
+		Boolean ISql90TSqlForeignKeyConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql90ForeignKeyConstraint.NotForReplication 
+		Boolean ISql90TSqlForeignKeyConstraint.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
-		ForeignKeyAction ISql90ForeignKeyConstraint.UpdateAction 
+		ForeignKeyAction ISql90TSqlForeignKeyConstraint.UpdateAction 
 		{
 			get { return this.UpdateAction;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90ForeignKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlForeignKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90ForeignKeyConstraint.ForeignColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlForeignKeyConstraint.ForeignColumns 
 		{
 			get 
 			{
-				return this.ForeignColumns;
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Table> ISql90ForeignKeyConstraint.ForeignTable 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlForeignKeyConstraint.ForeignTable 
 		{
 			get 
 			{
-				return this.ForeignTable;
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90ExtendedProperty> ISql90ForeignKeyConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlForeignKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
 			}
 		}
 	}
-	public partial class FullTextCatalog : ISql90FullTextCatalog
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlFullTextCatalog"/>.
+	/// </summary>
+	public partial class TSqlFullTextCatalog : ISql90TSqlFullTextCatalog
 	{		
-		Boolean? ISql90FullTextCatalog.AccentSensitivity 
+		Boolean? ISql90TSqlFullTextCatalog.AccentSensitivity 
 		{
 			get { return this.AccentSensitivity;}
 		}
-		Boolean ISql90FullTextCatalog.IsDefault 
+		Boolean ISql90TSqlFullTextCatalog.IsDefault 
 		{
 			get { return this.IsDefault;}
 		}
-		String ISql90FullTextCatalog.Path 
+		String ISql90TSqlFullTextCatalog.Path 
 		{
 			get { return this.Path;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90FullTextCatalog.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlFullTextCatalog.Authorizer 
 		{
 			get 
 			{
@@ -1765,32 +1801,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90FullTextCatalog.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlFullTextCatalog.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class FullTextIndex : ISql90FullTextIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlFullTextIndex"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndex : ISql90TSqlFullTextIndex
 	{		
-		ChangeTrackingOption ISql90FullTextIndex.ChangeTracking 
+		ChangeTrackingOption ISql90TSqlFullTextIndex.ChangeTracking 
 		{
 			get { return this.ChangeTracking;}
 		}
-		Boolean ISql90FullTextIndex.Disabled 
+		Boolean ISql90TSqlFullTextIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql90FullTextIndex.Replicated 
+		Boolean ISql90TSqlFullTextIndex.Replicated 
 		{
 			get { return this.Replicated;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90FullTextIndex.Catalog 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlFullTextIndex.Catalog 
 		{
 			get 
 			{
@@ -1798,17 +1837,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90FullTextIndex.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlFullTextIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql90FullTextIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql90TSqlFullTextIndex.IndexedObject 
 		{
 			get 
 			{
@@ -1816,8 +1855,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90FullTextIndex.UniqueIndexName 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlFullTextIndex.UniqueIndexName 
 		{
 			get 
 			{
@@ -1825,288 +1864,297 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class FullTextIndexColumnSpecifier : ISql90FullTextIndexColumnSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlFullTextIndexColumnSpecifier"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndexColumnSpecifier : ISql90TSqlFullTextIndexColumnSpecifier
 	{		
-		Int32? ISql90FullTextIndexColumnSpecifier.LanguageId 
+		Int32? ISql90TSqlFullTextIndexColumnSpecifier.LanguageId 
 		{
 			get { return this.LanguageId;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90FullTextIndexColumnSpecifier.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlFullTextIndexColumnSpecifier.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90FullTextIndexColumnSpecifier.TypeColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlFullTextIndexColumnSpecifier.TypeColumn 
 		{
 			get 
 			{
-				return this.TypeColumn;
+				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 	}
-	public partial class FullTextStopList : ISql90FullTextStopList
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlHttpProtocolSpecifier"/>.
+	/// </summary>
+	public partial class TSqlHttpProtocolSpecifier : ISql90TSqlHttpProtocolSpecifier
 	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90FullTextStopList.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class HttpProtocolSpecifier : ISql90HttpProtocolSpecifier
-	{		
-		AuthenticationModes ISql90HttpProtocolSpecifier.AuthenticationMode 
+		AuthenticationModes ISql90TSqlHttpProtocolSpecifier.AuthenticationMode 
 		{
 			get { return this.AuthenticationMode;}
 		}
-		String ISql90HttpProtocolSpecifier.AuthenticationRealm 
+		String ISql90TSqlHttpProtocolSpecifier.AuthenticationRealm 
 		{
 			get { return this.AuthenticationRealm;}
 		}
-		Int32? ISql90HttpProtocolSpecifier.ClearPort 
+		Int32? ISql90TSqlHttpProtocolSpecifier.ClearPort 
 		{
 			get { return this.ClearPort;}
 		}
-		Boolean ISql90HttpProtocolSpecifier.CompressionEnabled 
+		Boolean ISql90TSqlHttpProtocolSpecifier.CompressionEnabled 
 		{
 			get { return this.CompressionEnabled;}
 		}
-		String ISql90HttpProtocolSpecifier.DefaultLogonDomain 
+		String ISql90TSqlHttpProtocolSpecifier.DefaultLogonDomain 
 		{
 			get { return this.DefaultLogonDomain;}
 		}
-		Boolean ISql90HttpProtocolSpecifier.ListeningOnAllNoneReservedSites 
+		Boolean ISql90TSqlHttpProtocolSpecifier.ListeningOnAllNoneReservedSites 
 		{
 			get { return this.ListeningOnAllNoneReservedSites;}
 		}
-		Boolean ISql90HttpProtocolSpecifier.ListeningOnAllSites 
+		Boolean ISql90TSqlHttpProtocolSpecifier.ListeningOnAllSites 
 		{
 			get { return this.ListeningOnAllSites;}
 		}
-		String ISql90HttpProtocolSpecifier.Path 
+		String ISql90TSqlHttpProtocolSpecifier.Path 
 		{
 			get { return this.Path;}
 		}
-		HttpPorts ISql90HttpProtocolSpecifier.Ports 
+		HttpPorts ISql90TSqlHttpProtocolSpecifier.Ports 
 		{
 			get { return this.Ports;}
 		}
-		Int32? ISql90HttpProtocolSpecifier.SslPort 
+		Int32? ISql90TSqlHttpProtocolSpecifier.SslPort 
 		{
 			get { return this.SslPort;}
 		}
-		String ISql90HttpProtocolSpecifier.Website 
+		String ISql90TSqlHttpProtocolSpecifier.Website 
 		{
 			get { return this.Website;}
 		}
 	}
-	public partial class LinkedServer : ISql90LinkedServer
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlLinkedServer"/>.
+	/// </summary>
+	public partial class TSqlLinkedServer : ISql90TSqlLinkedServer
 	{		
-		String ISql90LinkedServer.Catalog 
+		String ISql90TSqlLinkedServer.Catalog 
 		{
 			get { return this.Catalog;}
 		}
-		Boolean ISql90LinkedServer.CollationCompatible 
+		Boolean ISql90TSqlLinkedServer.CollationCompatible 
 		{
 			get { return this.CollationCompatible;}
 		}
-		String ISql90LinkedServer.CollationName 
+		String ISql90TSqlLinkedServer.CollationName 
 		{
 			get { return this.CollationName;}
 		}
-		Int32 ISql90LinkedServer.ConnectTimeout 
+		Int32 ISql90TSqlLinkedServer.ConnectTimeout 
 		{
 			get { return this.ConnectTimeout;}
 		}
-		Boolean ISql90LinkedServer.DataAccess 
+		Boolean ISql90TSqlLinkedServer.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		String ISql90LinkedServer.DataSource 
+		String ISql90TSqlLinkedServer.DataSource 
 		{
 			get { return this.DataSource;}
 		}
-		Boolean ISql90LinkedServer.IsDistributor 
+		Boolean ISql90TSqlLinkedServer.IsDistributor 
 		{
 			get { return this.IsDistributor;}
 		}
-		Boolean ISql90LinkedServer.IsPublisher 
+		Boolean ISql90TSqlLinkedServer.IsPublisher 
 		{
 			get { return this.IsPublisher;}
 		}
-		Boolean ISql90LinkedServer.IsSubscriber 
+		Boolean ISql90TSqlLinkedServer.IsSubscriber 
 		{
 			get { return this.IsSubscriber;}
 		}
-		Boolean ISql90LinkedServer.LazySchemaValidationEnabled 
+		Boolean ISql90TSqlLinkedServer.LazySchemaValidationEnabled 
 		{
 			get { return this.LazySchemaValidationEnabled;}
 		}
-		String ISql90LinkedServer.Location 
+		String ISql90TSqlLinkedServer.Location 
 		{
 			get { return this.Location;}
 		}
-		String ISql90LinkedServer.ProductName 
+		String ISql90TSqlLinkedServer.ProductName 
 		{
 			get { return this.ProductName;}
 		}
-		String ISql90LinkedServer.ProviderName 
+		String ISql90TSqlLinkedServer.ProviderName 
 		{
 			get { return this.ProviderName;}
 		}
-		String ISql90LinkedServer.ProviderString 
+		String ISql90TSqlLinkedServer.ProviderString 
 		{
 			get { return this.ProviderString;}
 		}
-		Int32 ISql90LinkedServer.QueryTimeout 
+		Int32 ISql90TSqlLinkedServer.QueryTimeout 
 		{
 			get { return this.QueryTimeout;}
 		}
-		Boolean ISql90LinkedServer.RpcEnabled 
+		Boolean ISql90TSqlLinkedServer.RpcEnabled 
 		{
 			get { return this.RpcEnabled;}
 		}
-		Boolean ISql90LinkedServer.RpcOutEnabled 
+		Boolean ISql90TSqlLinkedServer.RpcOutEnabled 
 		{
 			get { return this.RpcOutEnabled;}
 		}
-		Boolean ISql90LinkedServer.UseRemoteCollation 
+		Boolean ISql90TSqlLinkedServer.UseRemoteCollation 
 		{
 			get { return this.UseRemoteCollation;}
 		}
 	}
-	public partial class LinkedServerLogin : ISql90LinkedServerLogin
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlLinkedServerLogin"/>.
+	/// </summary>
+	public partial class TSqlLinkedServerLogin : ISql90TSqlLinkedServerLogin
 	{		
-		String ISql90LinkedServerLogin.LinkedServerLoginName 
+		String ISql90TSqlLinkedServerLogin.LinkedServerLoginName 
 		{
 			get { return this.LinkedServerLoginName;}
 		}
-		String ISql90LinkedServerLogin.LinkedServerPassword 
+		String ISql90TSqlLinkedServerLogin.LinkedServerPassword 
 		{
 			get { return this.LinkedServerPassword;}
 		}
-		Boolean ISql90LinkedServerLogin.UseSelf 
+		Boolean ISql90TSqlLinkedServerLogin.UseSelf 
 		{
 			get { return this.UseSelf;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90LinkedServer> ISql90LinkedServerLogin.LinkedServer 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLinkedServer> ISql90TSqlLinkedServerLogin.LinkedServer 
 		{
 			get 
 			{
-				return this.LinkedServer;
+				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLinkedServer>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Login> ISql90LinkedServerLogin.LocalLogin 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlLinkedServerLogin.LocalLogin 
 		{
 			get 
 			{
-				return this.LocalLogin;
+				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
 			}
 		}
 	}
-	public partial class Login : ISql90Login
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlLogin"/>.
+	/// </summary>
+	public partial class TSqlLogin : ISql90TSqlLogin
 	{		
-		Boolean ISql90Login.CheckExpiration 
+		Boolean ISql90TSqlLogin.CheckExpiration 
 		{
 			get { return this.CheckExpiration;}
 		}
-		Boolean ISql90Login.CheckPolicy 
+		Boolean ISql90TSqlLogin.CheckPolicy 
 		{
 			get { return this.CheckPolicy;}
 		}
-		String ISql90Login.DefaultDatabase 
+		String ISql90TSqlLogin.DefaultDatabase 
 		{
 			get { return this.DefaultDatabase;}
 		}
-		String ISql90Login.DefaultLanguage 
+		String ISql90TSqlLogin.DefaultLanguage 
 		{
 			get { return this.DefaultLanguage;}
 		}
-		Boolean ISql90Login.Disabled 
+		Boolean ISql90TSqlLogin.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		LoginEncryptionOption ISql90Login.EncryptionOption 
+		LoginEncryptionOption ISql90TSqlLogin.EncryptionOption 
 		{
 			get { return this.EncryptionOption;}
 		}
-		Boolean ISql90Login.MappedToWindowsLogin 
+		Boolean ISql90TSqlLogin.MappedToWindowsLogin 
 		{
 			get { return this.MappedToWindowsLogin;}
 		}
-		String ISql90Login.Password 
+		String ISql90TSqlLogin.Password 
 		{
 			get { return this.Password;}
 		}
-		Boolean ISql90Login.PasswordHashed 
+		Boolean ISql90TSqlLogin.PasswordHashed 
 		{
 			get { return this.PasswordHashed;}
 		}
-		Boolean ISql90Login.PasswordMustChange 
+		Boolean ISql90TSqlLogin.PasswordMustChange 
 		{
 			get { return this.PasswordMustChange;}
 		}
-		String ISql90Login.Sid 
+		String ISql90TSqlLogin.Sid 
 		{
 			get { return this.Sid;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90AsymmetricKey> ISql90Login.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey> ISql90TSqlLogin.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Certificate> ISql90Login.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlLogin.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Credential> ISql90Login.Credential 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCredential> ISql90TSqlLogin.Credential 
 		{
 			get 
 			{
-				return this.Credential;
+				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCredential>();
 			}
 		}
 	}
-	public partial class MasterKey : ISql90MasterKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlMasterKey"/>.
+	/// </summary>
+	public partial class TSqlMasterKey : ISql90TSqlMasterKey
 	{		
-		String ISql90MasterKey.Password 
+		String ISql90TSqlMasterKey.Password 
 		{
 			get { return this.Password;}
 		}
 	}
-	public partial class MessageType : ISql90MessageType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlMessageType"/>.
+	/// </summary>
+	public partial class TSqlMessageType : ISql90TSqlMessageType
 	{		
-		ValidationMethod ISql90MessageType.ValidationMethod 
+		ValidationMethod ISql90TSqlMessageType.ValidationMethod 
 		{
 			get { return this.ValidationMethod;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90MessageType.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlMessageType.Authorizer 
 		{
 			get 
 			{
@@ -2114,33 +2162,36 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90XmlSchemaCollection> ISql90MessageType.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection> ISql90TSqlMessageType.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class PartitionFunction : ISql90PartitionFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlPartitionFunction"/>.
+	/// </summary>
+	public partial class TSqlPartitionFunction : ISql90TSqlPartitionFunction
 	{		
-		PartitionRange ISql90PartitionFunction.Range 
+		PartitionRange ISql90TSqlPartitionFunction.Range 
 		{
 			get { return this.Range;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90PartitionValue> ISql90PartitionFunction.BoundaryValues 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionValue> ISql90TSqlPartitionFunction.BoundaryValues 
 		{
 			get 
 			{
-				return this.BoundaryValues;
+				return this.BoundaryValues.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionValue>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90PartitionFunction.ParameterType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
@@ -2148,40 +2199,46 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class PartitionScheme : ISql90PartitionScheme
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlPartitionScheme"/>.
+	/// </summary>
+	public partial class TSqlPartitionScheme : ISql90TSqlPartitionScheme
 	{		
-		Boolean ISql90PartitionScheme.AllToOneFilegroup 
+		Boolean ISql90TSqlPartitionScheme.AllToOneFilegroup 
 		{
 			get { return this.AllToOneFilegroup;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90PartitionScheme.Filegroups 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlPartitionScheme.Filegroups 
 		{
 			get 
 			{
-				return this.Filegroups;
+				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90PartitionFunction> ISql90PartitionScheme.PartitionFunction 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionFunction> ISql90TSqlPartitionScheme.PartitionFunction 
 		{
 			get 
 			{
-				return this.PartitionFunction;
+				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionFunction>();
 			}
 		}
 	}
-	public partial class PartitionValue : ISql90PartitionValue
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlPartitionValue"/>.
+	/// </summary>
+	public partial class TSqlPartitionValue : ISql90TSqlPartitionValue
 	{		
-		String ISql90PartitionValue.Expression 
+		String ISql90TSqlPartitionValue.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90PartitionValue.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlPartitionValue.ExpressionDependencies 
 		{
 			get 
 			{
@@ -2189,36 +2246,39 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Permission : ISql90Permission
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlPermission"/>.
+	/// </summary>
+	public partial class TSqlPermission : ISql90TSqlPermission
 	{		
-		PermissionAction ISql90Permission.PermissionAction 
+		PermissionAction ISql90TSqlPermission.PermissionAction 
 		{
 			get { return this.PermissionAction;}
 		}
-		PermissionType ISql90Permission.PermissionType 
+		PermissionType ISql90TSqlPermission.PermissionType 
 		{
 			get { return this.PermissionType;}
 		}
-		Boolean ISql90Permission.WithAllPrivileges 
+		Boolean ISql90TSqlPermission.WithAllPrivileges 
 		{
 			get { return this.WithAllPrivileges;}
 		}
-		Boolean ISql90Permission.WithGrantOption 
+		Boolean ISql90TSqlPermission.WithGrantOption 
 		{
 			get { return this.WithGrantOption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90Permission.ExcludedColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlPermission.ExcludedColumns 
 		{
 			get 
 			{
-				return this.ExcludedColumns;
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql90Permission.Grantee 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql90TSqlPermission.Grantee 
 		{
 			get 
 			{
@@ -2226,8 +2286,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql90Permission.Grantor 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql90TSqlPermission.Grantor 
 		{
 			get 
 			{
@@ -2235,17 +2295,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90Permission.RevokedGrantOptionColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlPermission.RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return this.RevokedGrantOptionColumns;
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql90Permission.SecuredObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql90TSqlPermission.SecuredObject 
 		{
 			get 
 			{
@@ -2253,152 +2313,158 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class PrimaryKeyConstraint : ISql90PrimaryKeyConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlPrimaryKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlPrimaryKeyConstraint : ISql90TSqlPrimaryKeyConstraint
 	{		
-		Boolean ISql90PrimaryKeyConstraint.AllowPageLocks 
+		Boolean ISql90TSqlPrimaryKeyConstraint.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql90PrimaryKeyConstraint.AllowRowLocks 
+		Boolean ISql90TSqlPrimaryKeyConstraint.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Int32? ISql90PrimaryKeyConstraint.BucketCount 
+		Int32? ISql90TSqlPrimaryKeyConstraint.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql90PrimaryKeyConstraint.Clustered 
+		Boolean ISql90TSqlPrimaryKeyConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql90PrimaryKeyConstraint.Disabled 
+		Boolean ISql90TSqlPrimaryKeyConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32? ISql90PrimaryKeyConstraint.FillFactor 
+		Int32? ISql90TSqlPrimaryKeyConstraint.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql90PrimaryKeyConstraint.Hash 
+		Boolean ISql90TSqlPrimaryKeyConstraint.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql90PrimaryKeyConstraint.IgnoreDuplicateKey 
+		Boolean ISql90TSqlPrimaryKeyConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql90PrimaryKeyConstraint.RecomputeStatistics 
+		Boolean ISql90TSqlPrimaryKeyConstraint.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql90PrimaryKeyConstraint.WithPadIndex 
+		Boolean ISql90TSqlPrimaryKeyConstraint.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90PrimaryKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlPrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90PrimaryKeyConstraint.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlPrimaryKeyConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90ExtendedProperty> ISql90PrimaryKeyConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlPrimaryKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90PrimaryKeyConstraint.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlPrimaryKeyConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90PartitionScheme> ISql90PrimaryKeyConstraint.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme> ISql90TSqlPrimaryKeyConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Procedure : ISql90Procedure
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlProcedure"/>.
+	/// </summary>
+	public partial class TSqlProcedure : ISql90TSqlProcedure
 	{		
-		Boolean? ISql90Procedure.AnsiNullsOn 
+		Boolean? ISql90TSqlProcedure.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql90Procedure.ClassName 
+		String ISql90TSqlProcedure.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql90Procedure.ExecuteAsCaller 
+		Boolean ISql90TSqlProcedure.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql90Procedure.ExecuteAsOwner 
+		Boolean ISql90TSqlProcedure.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql90Procedure.ExecuteAsSelf 
+		Boolean ISql90TSqlProcedure.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql90Procedure.ForReplication 
+		Boolean ISql90TSqlProcedure.ForReplication 
 		{
 			get { return this.ForReplication;}
 		}
-		Boolean ISql90Procedure.IsReplicated 
+		Boolean ISql90TSqlProcedure.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql90Procedure.MethodName 
+		String ISql90TSqlProcedure.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql90Procedure.QuotedIdentifierOn 
+		Boolean? ISql90TSqlProcedure.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql90Procedure.WithEncryption 
+		Boolean ISql90TSqlProcedure.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql90Procedure.WithRecompile 
+		Boolean ISql90TSqlProcedure.WithRecompile 
 		{
 			get { return this.WithRecompile;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Assembly> ISql90Procedure.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlProcedure.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90Procedure.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlProcedure.BodyDependencies 
 		{
 			get 
 			{
@@ -2406,180 +2472,186 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Login> ISql90Procedure.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlProcedure.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Parameter> ISql90Procedure.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter> ISql90TSqlProcedure.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Procedure> ISql90Procedure.ParentProcedure 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedure> ISql90TSqlProcedure.ParentProcedure 
 		{
 			get 
 			{
-				return this.ParentProcedure;
+				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedure>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90Procedure.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90User> ISql90Procedure.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlProcedure.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
 			}
 		}
 	}
-	public partial class Queue : ISql90Queue
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlQueue"/>.
+	/// </summary>
+	public partial class TSqlQueue : ISql90TSqlQueue
 	{		
-		Boolean ISql90Queue.ActivationExecuteAsCaller 
+		Boolean ISql90TSqlQueue.ActivationExecuteAsCaller 
 		{
 			get { return this.ActivationExecuteAsCaller;}
 		}
-		Boolean ISql90Queue.ActivationExecuteAsOwner 
+		Boolean ISql90TSqlQueue.ActivationExecuteAsOwner 
 		{
 			get { return this.ActivationExecuteAsOwner;}
 		}
-		Boolean ISql90Queue.ActivationExecuteAsSelf 
+		Boolean ISql90TSqlQueue.ActivationExecuteAsSelf 
 		{
 			get { return this.ActivationExecuteAsSelf;}
 		}
-		Int32? ISql90Queue.ActivationMaxQueueReaders 
+		Int32? ISql90TSqlQueue.ActivationMaxQueueReaders 
 		{
 			get { return this.ActivationMaxQueueReaders;}
 		}
-		Boolean? ISql90Queue.ActivationStatusOn 
+		Boolean? ISql90TSqlQueue.ActivationStatusOn 
 		{
 			get { return this.ActivationStatusOn;}
 		}
-		Boolean ISql90Queue.RetentionOn 
+		Boolean ISql90TSqlQueue.RetentionOn 
 		{
 			get { return this.RetentionOn;}
 		}
-		Boolean ISql90Queue.StatusOn 
+		Boolean ISql90TSqlQueue.StatusOn 
 		{
 			get { return this.StatusOn;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Procedure> ISql90Queue.ActivationProcedure 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedure> ISql90TSqlQueue.ActivationProcedure 
 		{
 			get 
 			{
-				return this.ActivationProcedure;
+				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedure>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90Queue.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlQueue.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90Queue.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlQueue.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Login> ISql90Queue.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlQueue.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90Queue.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlQueue.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90PartitionScheme> ISql90Queue.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme> ISql90TSqlQueue.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90Queue.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlQueue.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90User> ISql90Queue.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlQueue.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
 			}
 		}
 	}
-	public partial class QueueEventNotification : ISql90QueueEventNotification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlQueueEventNotification"/>.
+	/// </summary>
+	public partial class TSqlQueueEventNotification : ISql90TSqlQueueEventNotification
 	{		
-		String ISql90QueueEventNotification.BrokerInstanceSpecifier 
+		String ISql90TSqlQueueEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql90QueueEventNotification.BrokerService 
+		String ISql90TSqlQueueEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql90QueueEventNotification.WithFanIn 
+		Boolean ISql90TSqlQueueEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90EventGroup> ISql90QueueEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlEventGroup> ISql90TSqlQueueEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql90QueueEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql90TSqlQueueEventNotification.EventType 
 		{
 			get 
 			{
@@ -2587,28 +2659,31 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Queue> ISql90QueueEventNotification.Queue 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueue> ISql90TSqlQueueEventNotification.Queue 
 		{
 			get 
 			{
-				return this.Queue;
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueue>();
 			}
 		}
 	}
-	public partial class RemoteServiceBinding : ISql90RemoteServiceBinding
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlRemoteServiceBinding"/>.
+	/// </summary>
+	public partial class TSqlRemoteServiceBinding : ISql90TSqlRemoteServiceBinding
 	{		
-		Boolean ISql90RemoteServiceBinding.Anonymous 
+		Boolean ISql90TSqlRemoteServiceBinding.Anonymous 
 		{
 			get { return this.Anonymous;}
 		}
-		String ISql90RemoteServiceBinding.Service 
+		String ISql90TSqlRemoteServiceBinding.Service 
 		{
 			get { return this.Service;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90RemoteServiceBinding.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlRemoteServiceBinding.Authorizer 
 		{
 			get 
 			{
@@ -2616,26 +2691,23 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90User> ISql90RemoteServiceBinding.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlRemoteServiceBinding.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
 			}
 		}
 	}
-	public partial class ResourceGovernor : ISql90ResourceGovernor
-	{		
-	}
-	public partial class ResourcePool : ISql90ResourcePool
-	{		
-	}
-	public partial class Role : ISql90Role
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlRole"/>.
+	/// </summary>
+	public partial class TSqlRole : ISql90TSqlRole
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90Role.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlRole.Authorizer 
 		{
 			get 
 			{
@@ -2643,11 +2715,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class RoleMembership : ISql90RoleMembership
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlRoleMembership : ISql90TSqlRoleMembership
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql90RoleMembership.Member 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql90TSqlRoleMembership.Member 
 		{
 			get 
 			{
@@ -2655,40 +2730,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Role> ISql90RoleMembership.Role 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRole> ISql90TSqlRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role;
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRole>();
 			}
 		}
 	}
-	public partial class Route : ISql90Route
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlRoute"/>.
+	/// </summary>
+	public partial class TSqlRoute : ISql90TSqlRoute
 	{		
-		String ISql90Route.Address 
+		String ISql90TSqlRoute.Address 
 		{
 			get { return this.Address;}
 		}
-		String ISql90Route.BrokerInstance 
+		String ISql90TSqlRoute.BrokerInstance 
 		{
 			get { return this.BrokerInstance;}
 		}
-		Int32? ISql90Route.Lifetime 
+		Int32? ISql90TSqlRoute.Lifetime 
 		{
 			get { return this.Lifetime;}
 		}
-		String ISql90Route.MirrorAddress 
+		String ISql90TSqlRoute.MirrorAddress 
 		{
 			get { return this.MirrorAddress;}
 		}
-		String ISql90Route.ServiceName 
+		String ISql90TSqlRoute.ServiceName 
 		{
 			get { return this.ServiceName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90Route.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlRoute.Authorizer 
 		{
 			get 
 			{
@@ -2696,15 +2774,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Rule : ISql90Rule
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlRule"/>.
+	/// </summary>
+	public partial class TSqlRule : ISql90TSqlRule
 	{		
-		String ISql90Rule.Expression 
+		String ISql90TSqlRule.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90Rule.BoundObjects 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlRule.BoundObjects 
 		{
 			get 
 			{
@@ -2712,20 +2793,23 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90Rule.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlRule.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 	}
-	public partial class Schema : ISql90Schema
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlSchema"/>.
+	/// </summary>
+	public partial class TSqlSchema : ISql90TSqlSchema
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90Schema.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlSchema.Authorizer 
 		{
 			get 
 			{
@@ -2733,97 +2817,67 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SearchProperty : ISql90SearchProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlServerDdlTrigger"/>.
+	/// </summary>
+	public partial class TSqlServerDdlTrigger : ISql90TSqlServerDdlTrigger
 	{		
-	}
-	public partial class SearchPropertyList : ISql90SearchPropertyList
-	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90SearchPropertyList.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class Sequence : ISql90Sequence
-	{		
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90Sequence.Schema 
-		{
-			get 
-			{
-				return this.Schema;
-			}
-		}
-	}
-	public partial class ServerAudit : ISql90ServerAudit
-	{		
-	}
-	public partial class ServerAuditSpecification : ISql90ServerAuditSpecification
-	{		
-	}
-	public partial class ServerDdlTrigger : ISql90ServerDdlTrigger
-	{		
-		Boolean? ISql90ServerDdlTrigger.AnsiNullsOn 
+		Boolean? ISql90TSqlServerDdlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql90ServerDdlTrigger.ClassName 
+		String ISql90TSqlServerDdlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql90ServerDdlTrigger.Disabled 
+		Boolean ISql90TSqlServerDdlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql90ServerDdlTrigger.ExecuteAsCaller 
+		Boolean ISql90TSqlServerDdlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql90ServerDdlTrigger.ExecuteAsOwner 
+		Boolean ISql90TSqlServerDdlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql90ServerDdlTrigger.ExecuteAsSelf 
+		Boolean ISql90TSqlServerDdlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql90ServerDdlTrigger.IsLogon 
+		Boolean ISql90TSqlServerDdlTrigger.IsLogon 
 		{
 			get { return this.IsLogon;}
 		}
-		String ISql90ServerDdlTrigger.MethodName 
+		String ISql90TSqlServerDdlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql90ServerDdlTrigger.QuotedIdentifierOn 
+		Boolean? ISql90TSqlServerDdlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql90ServerDdlTrigger.TriggerType 
+		TriggerType ISql90TSqlServerDdlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		Boolean ISql90ServerDdlTrigger.WithEncryption 
+		Boolean ISql90TSqlServerDdlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Assembly> ISql90ServerDdlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlServerDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90ServerDdlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlServerDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -2831,17 +2885,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90EventGroup> ISql90ServerDdlTrigger.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlEventGroup> ISql90TSqlServerDdlTrigger.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql90ServerDdlTrigger.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql90TSqlServerDdlTrigger.EventType 
 		{
 			get 
 			{
@@ -2849,50 +2903,53 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Login> ISql90ServerDdlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlServerDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90User> ISql90ServerDdlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlServerDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
 			}
 		}
 	}
-	public partial class ServerEventNotification : ISql90ServerEventNotification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlServerEventNotification"/>.
+	/// </summary>
+	public partial class TSqlServerEventNotification : ISql90TSqlServerEventNotification
 	{		
-		String ISql90ServerEventNotification.BrokerInstanceSpecifier 
+		String ISql90TSqlServerEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql90ServerEventNotification.BrokerService 
+		String ISql90TSqlServerEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql90ServerEventNotification.WithFanIn 
+		Boolean ISql90TSqlServerEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90EventGroup> ISql90ServerEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlEventGroup> ISql90TSqlServerEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql90ServerEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql90TSqlServerEventNotification.EventType 
 		{
 			get 
 			{
@@ -2900,14 +2957,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ServerOptions : ISql90ServerOptions
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlServerOptions"/>.
+	/// </summary>
+	public partial class TSqlServerOptions : ISql90TSqlServerOptions
 	{		
 	}
-	public partial class ServerRoleMembership : ISql90ServerRoleMembership
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlServerRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlServerRoleMembership : ISql90TSqlServerRoleMembership
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> ISql90ServerRoleMembership.Member 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> ISql90TSqlServerRoleMembership.Member 
 		{
 			get 
 			{
@@ -2915,24 +2978,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Role> ISql90ServerRoleMembership.Role 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRole> ISql90TSqlServerRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role;
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRole>();
 			}
 		}
 	}
-	public partial class Service : ISql90Service
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlService"/>.
+	/// </summary>
+	public partial class TSqlService : ISql90TSqlService
 	{		
-		Boolean ISql90Service.UseDefaultContract 
+		Boolean ISql90TSqlService.UseDefaultContract 
 		{
 			get { return this.UseDefaultContract;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90Service.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlService.Authorizer 
 		{
 			get 
 			{
@@ -2940,73 +3006,79 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Contract> ISql90Service.Contracts 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlContract> ISql90TSqlService.Contracts 
 		{
 			get 
 			{
-				return this.Contracts;
+				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlContract>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Queue> ISql90Service.Queue 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueue> ISql90TSqlService.Queue 
 		{
 			get 
 			{
-				return this.Queue;
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueue>();
 			}
 		}
 	}
-	public partial class ServiceBrokerLanguageSpecifier : ISql90ServiceBrokerLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlServiceBrokerLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlServiceBrokerLanguageSpecifier : ISql90TSqlServiceBrokerLanguageSpecifier
 	{		
-		ServiceBrokerEncryptionAlgorithm ISql90ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1 
+		ServiceBrokerEncryptionAlgorithm ISql90TSqlServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1 
 		{
 			get { return this.EncryptionAlgorithmPart1;}
 		}
-		ServiceBrokerEncryptionAlgorithm ISql90ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2 
+		ServiceBrokerEncryptionAlgorithm ISql90TSqlServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2 
 		{
 			get { return this.EncryptionAlgorithmPart2;}
 		}
-		EncryptionMode ISql90ServiceBrokerLanguageSpecifier.EncryptionMode 
+		EncryptionMode ISql90TSqlServiceBrokerLanguageSpecifier.EncryptionMode 
 		{
 			get { return this.EncryptionMode;}
 		}
-		Boolean ISql90ServiceBrokerLanguageSpecifier.MessageForwardingEnabled 
+		Boolean ISql90TSqlServiceBrokerLanguageSpecifier.MessageForwardingEnabled 
 		{
 			get { return this.MessageForwardingEnabled;}
 		}
-		Int32 ISql90ServiceBrokerLanguageSpecifier.MessageForwardSize 
+		Int32 ISql90TSqlServiceBrokerLanguageSpecifier.MessageForwardSize 
 		{
 			get { return this.MessageForwardSize;}
 		}
-		Boolean ISql90ServiceBrokerLanguageSpecifier.UseCertificateFirst 
+		Boolean ISql90TSqlServiceBrokerLanguageSpecifier.UseCertificateFirst 
 		{
 			get { return this.UseCertificateFirst;}
 		}
-		AuthenticationModes ISql90ServiceBrokerLanguageSpecifier.WindowsAuthenticationMode 
+		AuthenticationModes ISql90TSqlServiceBrokerLanguageSpecifier.WindowsAuthenticationMode 
 		{
 			get { return this.WindowsAuthenticationMode;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Certificate> ISql90ServiceBrokerLanguageSpecifier.AuthenticationCertificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate;
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
 			}
 		}
 	}
-	public partial class Signature : ISql90Signature
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlSignature"/>.
+	/// </summary>
+	public partial class TSqlSignature : ISql90TSqlSignature
 	{		
-		Boolean ISql90Signature.IsCounterSignature 
+		Boolean ISql90TSqlSignature.IsCounterSignature 
 		{
 			get { return this.IsCounterSignature;}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql90Signature.EncryptionMechanism 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql90TSqlSignature.EncryptionMechanism 
 		{
 			get 
 			{
@@ -3014,8 +3086,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql90Signature.SignedObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql90TSqlSignature.SignedObject 
 		{
 			get 
 			{
@@ -3023,124 +3095,133 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SignatureEncryptionMechanism : ISql90SignatureEncryptionMechanism
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlSignatureEncryptionMechanism"/>.
+	/// </summary>
+	public partial class TSqlSignatureEncryptionMechanism : ISql90TSqlSignatureEncryptionMechanism
 	{		
-		String ISql90SignatureEncryptionMechanism.Password 
+		String ISql90TSqlSignatureEncryptionMechanism.Password 
 		{
 			get { return this.Password;}
 		}
-		String ISql90SignatureEncryptionMechanism.SignedBlob 
+		String ISql90TSqlSignatureEncryptionMechanism.SignedBlob 
 		{
 			get { return this.SignedBlob;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90AsymmetricKey> ISql90SignatureEncryptionMechanism.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey> ISql90TSqlSignatureEncryptionMechanism.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Certificate> ISql90SignatureEncryptionMechanism.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlSignatureEncryptionMechanism.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
 			}
 		}
 	}
-	public partial class SoapLanguageSpecifier : ISql90SoapLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlSoapLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlSoapLanguageSpecifier : ISql90TSqlSoapLanguageSpecifier
 	{		
-		Boolean ISql90SoapLanguageSpecifier.BatchesEnabled 
+		Boolean ISql90TSqlSoapLanguageSpecifier.BatchesEnabled 
 		{
 			get { return this.BatchesEnabled;}
 		}
-		CharacterSet ISql90SoapLanguageSpecifier.CharacterSet 
+		CharacterSet ISql90TSqlSoapLanguageSpecifier.CharacterSet 
 		{
 			get { return this.CharacterSet;}
 		}
-		String ISql90SoapLanguageSpecifier.DatabaseName 
+		String ISql90TSqlSoapLanguageSpecifier.DatabaseName 
 		{
 			get { return this.DatabaseName;}
 		}
-		Int32 ISql90SoapLanguageSpecifier.HeaderLimit 
+		Int32 ISql90TSqlSoapLanguageSpecifier.HeaderLimit 
 		{
 			get { return this.HeaderLimit;}
 		}
-		Boolean ISql90SoapLanguageSpecifier.IsDefaultDatabase 
+		Boolean ISql90TSqlSoapLanguageSpecifier.IsDefaultDatabase 
 		{
 			get { return this.IsDefaultDatabase;}
 		}
-		Boolean ISql90SoapLanguageSpecifier.IsDefaultNamespace 
+		Boolean ISql90TSqlSoapLanguageSpecifier.IsDefaultNamespace 
 		{
 			get { return this.IsDefaultNamespace;}
 		}
-		Boolean ISql90SoapLanguageSpecifier.IsDefaultWsdlSpName 
+		Boolean ISql90TSqlSoapLanguageSpecifier.IsDefaultWsdlSpName 
 		{
 			get { return this.IsDefaultWsdlSpName;}
 		}
-		SoapLoginType ISql90SoapLanguageSpecifier.LoginType 
+		SoapLoginType ISql90TSqlSoapLanguageSpecifier.LoginType 
 		{
 			get { return this.LoginType;}
 		}
-		String ISql90SoapLanguageSpecifier.Namespace 
+		String ISql90TSqlSoapLanguageSpecifier.Namespace 
 		{
 			get { return this.Namespace;}
 		}
-		SoapSchema ISql90SoapLanguageSpecifier.SchemaType 
+		SoapSchema ISql90TSqlSoapLanguageSpecifier.SchemaType 
 		{
 			get { return this.SchemaType;}
 		}
-		Boolean ISql90SoapLanguageSpecifier.SessionsEnabled 
+		Boolean ISql90TSqlSoapLanguageSpecifier.SessionsEnabled 
 		{
 			get { return this.SessionsEnabled;}
 		}
-		Int32 ISql90SoapLanguageSpecifier.SessionTimeout 
+		Int32 ISql90TSqlSoapLanguageSpecifier.SessionTimeout 
 		{
 			get { return this.SessionTimeout;}
 		}
-		Boolean ISql90SoapLanguageSpecifier.SessionTimeoutNever 
+		Boolean ISql90TSqlSoapLanguageSpecifier.SessionTimeoutNever 
 		{
 			get { return this.SessionTimeoutNever;}
 		}
-		String ISql90SoapLanguageSpecifier.WsdlSpName 
+		String ISql90TSqlSoapLanguageSpecifier.WsdlSpName 
 		{
 			get { return this.WsdlSpName;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90SoapMethodSpecification> ISql90SoapLanguageSpecifier.WebMethods 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSoapMethodSpecification> ISql90TSqlSoapLanguageSpecifier.WebMethods 
 		{
 			get 
 			{
-				return this.WebMethods;
+				return this.WebMethods.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSoapMethodSpecification>();
 			}
 		}
 	}
-	public partial class SoapMethodSpecification : ISql90SoapMethodSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlSoapMethodSpecification"/>.
+	/// </summary>
+	public partial class TSqlSoapMethodSpecification : ISql90TSqlSoapMethodSpecification
 	{		
-		SoapFormat ISql90SoapMethodSpecification.Format 
+		SoapFormat ISql90TSqlSoapMethodSpecification.Format 
 		{
 			get { return this.Format;}
 		}
-		SoapSchema ISql90SoapMethodSpecification.SchemaType 
+		SoapSchema ISql90TSqlSoapMethodSpecification.SchemaType 
 		{
 			get { return this.SchemaType;}
 		}
-		String ISql90SoapMethodSpecification.WebMethodAlias 
+		String ISql90TSqlSoapMethodSpecification.WebMethodAlias 
 		{
 			get { return this.WebMethodAlias;}
 		}
-		String ISql90SoapMethodSpecification.WebMethodNamespace 
+		String ISql90TSqlSoapMethodSpecification.WebMethodNamespace 
 		{
 			get { return this.WebMethodNamespace;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90SoapMethodSpecification.RelatedMethod 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlSoapMethodSpecification.RelatedMethod 
 		{
 			get 
 			{
@@ -3148,70 +3229,39 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SpatialIndex : ISql90SpatialIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlStatistics"/>.
+	/// </summary>
+	public partial class TSqlStatistics : ISql90TSqlStatistics
 	{		
-		Boolean ISql90SpatialIndex.Disabled 
-		{
-			get { return this.Disabled;}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90SpatialIndex.Filegroup 
-		{
-			get 
-			{
-				return this.Filegroup;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90SpatialIndex.PartitionColumn 
-		{
-			get 
-			{
-				return this.PartitionColumn;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90PartitionScheme> ISql90SpatialIndex.PartitionScheme 
-		{
-			get 
-			{
-				return this.PartitionScheme;
-			}
-		}
-	}
-	public partial class Statistics : ISql90Statistics
-	{		
-		Boolean ISql90Statistics.NoRecompute 
+		Boolean ISql90TSqlStatistics.NoRecompute 
 		{
 			get { return this.NoRecompute;}
 		}
-		Int32 ISql90Statistics.SampleSize 
+		Int32 ISql90TSqlStatistics.SampleSize 
 		{
 			get { return this.SampleSize;}
 		}
-		SamplingStyle ISql90Statistics.SamplingStyle 
+		SamplingStyle ISql90TSqlStatistics.SamplingStyle 
 		{
 			get { return this.SamplingStyle;}
 		}
-		String ISql90Statistics.StatsStream 
+		String ISql90TSqlStatistics.StatsStream 
 		{
 			get { return this.StatsStream;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90Statistics.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlStatistics.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql90Statistics.OnObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql90TSqlStatistics.OnObject 
 		{
 			get 
 			{
@@ -3219,85 +3269,91 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Parameter : ISql90Parameter
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlParameter"/>.
+	/// </summary>
+	public partial class TSqlParameter : ISql90TSqlParameter
 	{		
-		String ISql90Parameter.DefaultExpression 
+		String ISql90TSqlParameter.DefaultExpression 
 		{
 			get { return this.DefaultExpression;}
 		}
-		Boolean ISql90Parameter.IsMax 
+		Boolean ISql90TSqlParameter.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql90Parameter.IsOutput 
+		Boolean ISql90TSqlParameter.IsOutput 
 		{
 			get { return this.IsOutput;}
 		}
-		Int32 ISql90Parameter.Length 
+		Int32 ISql90TSqlParameter.Length 
 		{
 			get { return this.Length;}
 		}
-		Int32 ISql90Parameter.Precision 
+		Int32 ISql90TSqlParameter.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISql90Parameter.Scale 
+		Int32 ISql90TSqlParameter.Scale 
 		{
 			get { return this.Scale;}
 		}
-		Boolean ISql90Parameter.Varying 
+		Boolean ISql90TSqlParameter.Varying 
 		{
 			get { return this.Varying;}
 		}
-		XmlStyle ISql90Parameter.XmlStyle 
+		XmlStyle ISql90TSqlParameter.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90DataType> ISql90Parameter.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90XmlSchemaCollection> ISql90Parameter.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection> ISql90TSqlParameter.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class SymmetricKey : ISql90SymmetricKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlSymmetricKey"/>.
+	/// </summary>
+	public partial class TSqlSymmetricKey : ISql90TSqlSymmetricKey
 	{		
-		SymmetricKeyAlgorithm ISql90SymmetricKey.Algorithm 
+		SymmetricKeyAlgorithm ISql90TSqlSymmetricKey.Algorithm 
 		{
 			get { return this.Algorithm;}
 		}
-		String ISql90SymmetricKey.IdentityValue 
+		String ISql90TSqlSymmetricKey.IdentityValue 
 		{
 			get { return this.IdentityValue;}
 		}
-		String ISql90SymmetricKey.KeySource 
+		String ISql90TSqlSymmetricKey.KeySource 
 		{
 			get { return this.KeySource;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90AsymmetricKey> ISql90SymmetricKey.AsymmetricKeys 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey> ISql90TSqlSymmetricKey.AsymmetricKeys 
 		{
 			get 
 			{
-				return this.AsymmetricKeys;
+				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90SymmetricKey.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90TSqlSymmetricKey.Authorizer 
 		{
 			get 
 			{
@@ -3305,17 +3361,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Certificate> ISql90SymmetricKey.Certificates 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlSymmetricKey.Certificates 
 		{
 			get 
 			{
-				return this.Certificates;
+				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql90SymmetricKey.Passwords 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql90TSqlSymmetricKey.Passwords 
 		{
 			get 
 			{
@@ -3323,31 +3379,37 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90SymmetricKey> ISql90SymmetricKey.SymmetricKeys 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSymmetricKey> ISql90TSqlSymmetricKey.SymmetricKeys 
 		{
 			get 
 			{
-				return this.SymmetricKeys;
+				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSymmetricKey>();
 			}
 		}
 	}
-	public partial class SymmetricKeyPassword : ISql90SymmetricKeyPassword
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlSymmetricKeyPassword"/>.
+	/// </summary>
+	public partial class TSqlSymmetricKeyPassword : ISql90TSqlSymmetricKeyPassword
 	{		
-		String ISql90SymmetricKeyPassword.Password 
+		String ISql90TSqlSymmetricKeyPassword.Password 
 		{
 			get { return this.Password;}
 		}
 	}
-	public partial class Synonym : ISql90Synonym
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlSynonym"/>.
+	/// </summary>
+	public partial class TSqlSynonym : ISql90TSqlSynonym
 	{		
-		String ISql90Synonym.ForObjectName 
+		String ISql90TSqlSynonym.ForObjectName 
 		{
 			get { return this.ForObjectName;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90Synonym.ForObject 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlSynonym.ForObject 
 		{
 			get 
 			{
@@ -3355,431 +3417,295 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90Synonym.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlSynonym.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 	}
-	public partial class Table : ISql90Table
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlTable"/>.
+	/// </summary>
+	public partial class TSqlTable : ISql90TSqlTable
 	{		
-		Boolean? ISql90Table.AnsiNullsOn 
+		Boolean? ISql90TSqlTable.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql90Table.IsReplicated 
+		Boolean ISql90TSqlTable.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		Boolean ISql90Table.LargeValueTypesOutOfRow 
+		Boolean ISql90TSqlTable.LargeValueTypesOutOfRow 
 		{
 			get { return this.LargeValueTypesOutOfRow;}
 		}
-		Boolean? ISql90Table.QuotedIdentifierOn 
+		Boolean? ISql90TSqlTable.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql90Table.TableLockOnBulkLoad 
+		Boolean ISql90TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
 		}
-		Int32 ISql90Table.TextInRowSize 
+		Int32 ISql90TSqlTable.TextInRowSize 
 		{
 			get { return this.TextInRowSize;}
 		}
-		Boolean ISql90Table.VardecimalStorageFormatEnabled 
+		Boolean ISql90TSqlTable.VardecimalStorageFormatEnabled 
 		{
 			get { return this.VardecimalStorageFormatEnabled;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90Table.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlTable.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90Table.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90Table.FilegroupForTextImage 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlTable.FilegroupForTextImage 
 		{
 			get 
 			{
-				return this.FilegroupForTextImage;
+				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90Table.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90PartitionScheme> ISql90Table.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme> ISql90TSqlTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90Table.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlTable.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 	}
-	public partial class FileTable : ISql90FileTable
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlTcpProtocolSpecifier"/>.
+	/// </summary>
+	public partial class TSqlTcpProtocolSpecifier : ISql90TSqlTcpProtocolSpecifier
 	{		
-		Boolean? ISql90FileTable.AnsiNullsOn 
-		{
-			get { return this.AnsiNullsOn;}
-		}
-		Boolean? ISql90FileTable.QuotedIdentifierOn 
-		{
-			get { return this.QuotedIdentifierOn;}
-		}
-		Boolean ISql90FileTable.TableLockOnBulkLoad 
-		{
-			get { return this.TableLockOnBulkLoad;}
-		}
-
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90FileTable.Columns 
-		{
-			get 
-			{
-				return this.Columns;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90FileTable.Filegroup 
-		{
-			get 
-			{
-				return this.Filegroup;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90FileTable.PartitionColumn 
-		{
-			get 
-			{
-				return this.PartitionColumn;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90PartitionScheme> ISql90FileTable.PartitionScheme 
-		{
-			get 
-			{
-				return this.PartitionScheme;
-			}
-		}
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90FileTable.Schema 
-		{
-			get 
-			{
-				return this.Schema;
-			}
-		}
-	}
-	public partial class TableType : ISql90TableType
-	{		
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90TableType.Schema 
-		{
-			get 
-			{
-				return this.Schema;
-			}
-		}
-	}
-	public partial class TableTypeCheckConstraint : ISql90TableTypeCheckConstraint
-	{		
-	}
-	public partial class TableTypeColumn : ISql90TableTypeColumn
-	{		
-		Boolean ISql90TableTypeColumn.IsMax 
-		{
-			get { return this.IsMax;}
-		}
-		Int32 ISql90TableTypeColumn.Length 
-		{
-			get { return this.Length;}
-		}
-		Int32 ISql90TableTypeColumn.Precision 
-		{
-			get { return this.Precision;}
-		}
-		Int32 ISql90TableTypeColumn.Scale 
-		{
-			get { return this.Scale;}
-		}
-		XmlStyle ISql90TableTypeColumn.XmlStyle 
-		{
-			get { return this.XmlStyle;}
-		}
-	}
-	public partial class TableTypeDefaultConstraint : ISql90TableTypeDefaultConstraint
-	{		
-	}
-	public partial class TableTypeIndex : ISql90TableTypeIndex
-	{		
-		Int32? ISql90TableTypeIndex.BucketCount 
-		{
-			get { return this.BucketCount;}
-		}
-		Boolean ISql90TableTypeIndex.Hash 
-		{
-			get { return this.Hash;}
-		}
-		Boolean ISql90TableTypeIndex.IsDisabled 
-		{
-			get { return this.IsDisabled;}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90TableTypeIndex.Columns 
-		{
-			get 
-			{
-				return this.Columns;
-			}
-		}
-	}
-	public partial class TableTypePrimaryKeyConstraint : ISql90TableTypePrimaryKeyConstraint
-	{		
-		Int32? ISql90TableTypePrimaryKeyConstraint.BucketCount 
-		{
-			get { return this.BucketCount;}
-		}
-		Boolean ISql90TableTypePrimaryKeyConstraint.Hash 
-		{
-			get { return this.Hash;}
-		}
-	}
-	public partial class TableTypeUniqueConstraint : ISql90TableTypeUniqueConstraint
-	{		
-	}
-	public partial class TcpProtocolSpecifier : ISql90TcpProtocolSpecifier
-	{		
-		String ISql90TcpProtocolSpecifier.ListenerIPv4 
+		String ISql90TSqlTcpProtocolSpecifier.ListenerIPv4 
 		{
 			get { return this.ListenerIPv4;}
 		}
-		String ISql90TcpProtocolSpecifier.ListenerIPv6 
+		String ISql90TSqlTcpProtocolSpecifier.ListenerIPv6 
 		{
 			get { return this.ListenerIPv6;}
 		}
-		Int32 ISql90TcpProtocolSpecifier.ListenerPort 
+		Int32 ISql90TSqlTcpProtocolSpecifier.ListenerPort 
 		{
 			get { return this.ListenerPort;}
 		}
-		Boolean ISql90TcpProtocolSpecifier.ListeningOnAllIPs 
+		Boolean ISql90TSqlTcpProtocolSpecifier.ListeningOnAllIPs 
 		{
 			get { return this.ListeningOnAllIPs;}
 		}
 	}
-	public partial class UniqueConstraint : ISql90UniqueConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlUniqueConstraint"/>.
+	/// </summary>
+	public partial class TSqlUniqueConstraint : ISql90TSqlUniqueConstraint
 	{		
-		Boolean ISql90UniqueConstraint.AllowPageLocks 
+		Boolean ISql90TSqlUniqueConstraint.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql90UniqueConstraint.AllowRowLocks 
+		Boolean ISql90TSqlUniqueConstraint.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Boolean ISql90UniqueConstraint.Clustered 
+		Boolean ISql90TSqlUniqueConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql90UniqueConstraint.Disabled 
+		Boolean ISql90TSqlUniqueConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32? ISql90UniqueConstraint.FillFactor 
+		Int32? ISql90TSqlUniqueConstraint.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql90UniqueConstraint.IgnoreDuplicateKey 
+		Boolean ISql90TSqlUniqueConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql90UniqueConstraint.RecomputeStatistics 
+		Boolean ISql90TSqlUniqueConstraint.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql90UniqueConstraint.WithPadIndex 
+		Boolean ISql90TSqlUniqueConstraint.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90UniqueConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Filegroup> ISql90UniqueConstraint.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlUniqueConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90ExtendedProperty> ISql90UniqueConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlUniqueConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90UniqueConstraint.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlUniqueConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90PartitionScheme> ISql90UniqueConstraint.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme> ISql90TSqlUniqueConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class User : ISql90User
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlUser"/>.
+	/// </summary>
+	public partial class TSqlUser : ISql90TSqlUser
 	{		
-		Boolean ISql90User.WithoutLogin 
+		Boolean ISql90TSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90AsymmetricKey> ISql90User.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey> ISql90TSqlUser.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Certificate> ISql90User.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlUser.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90User.DefaultSchema 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlUser.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema;
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Login> ISql90User.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlUser.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
 			}
 		}
 	}
-	public partial class UserDefinedServerRole : ISql90UserDefinedServerRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlUserDefinedType"/>.
+	/// </summary>
+	public partial class TSqlUserDefinedType : ISql90TSqlUserDefinedType
 	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql90UserDefinedServerRole.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class UserDefinedType : ISql90UserDefinedType
-	{		
-		Boolean? ISql90UserDefinedType.ByteOrdered 
+		Boolean? ISql90TSqlUserDefinedType.ByteOrdered 
 		{
 			get { return this.ByteOrdered;}
 		}
-		String ISql90UserDefinedType.ClassName 
+		String ISql90TSqlUserDefinedType.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean? ISql90UserDefinedType.FixedLength 
+		Boolean? ISql90TSqlUserDefinedType.FixedLength 
 		{
 			get { return this.FixedLength;}
 		}
-		Format ISql90UserDefinedType.Format 
+		Format ISql90TSqlUserDefinedType.Format 
 		{
 			get { return this.Format;}
 		}
-		Int32? ISql90UserDefinedType.MaxByteSize 
+		Int32? ISql90TSqlUserDefinedType.MaxByteSize 
 		{
 			get { return this.MaxByteSize;}
 		}
-		String ISql90UserDefinedType.ValidationMethodName 
+		String ISql90TSqlUserDefinedType.ValidationMethodName 
 		{
 			get { return this.ValidationMethodName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Assembly> ISql90UserDefinedType.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlUserDefinedType.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql90UserDefinedType.Methods 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql90TSqlUserDefinedType.Methods 
 		{
 			get 
 			{
@@ -3787,8 +3713,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql90UserDefinedType.Properties 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql90TSqlUserDefinedType.Properties 
 		{
 			get 
 			{
@@ -3796,52 +3722,55 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90UserDefinedType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlUserDefinedType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 	}
-	public partial class View : ISql90View
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlView"/>.
+	/// </summary>
+	public partial class TSqlView : ISql90TSqlView
 	{		
-		Boolean? ISql90View.AnsiNullsOn 
+		Boolean? ISql90TSqlView.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean? ISql90View.QuotedIdentifierOn 
+		Boolean? ISql90TSqlView.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql90View.Replicated 
+		Boolean ISql90TSqlView.Replicated 
 		{
 			get { return this.Replicated;}
 		}
-		String ISql90View.SelectStatement 
+		String ISql90TSqlView.SelectStatement 
 		{
 			get { return this.SelectStatement;}
 		}
-		Boolean ISql90View.WithCheckOption 
+		Boolean ISql90TSqlView.WithCheckOption 
 		{
 			get { return this.WithCheckOption;}
 		}
-		Boolean ISql90View.WithEncryption 
+		Boolean ISql90TSqlView.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql90View.WithSchemaBinding 
+		Boolean ISql90TSqlView.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
-		Boolean ISql90View.WithViewMetadata 
+		Boolean ISql90TSqlView.WithViewMetadata 
 		{
 			get { return this.WithViewMetadata;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql90View.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql90TSqlView.BodyDependencies 
 		{
 			get 
 			{
@@ -3849,73 +3778,73 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90View.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlView.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90View.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlView.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 	}
-	public partial class WorkloadGroup : ISql90WorkloadGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlXmlIndex"/>.
+	/// </summary>
+	public partial class TSqlXmlIndex : ISql90TSqlXmlIndex
 	{		
-	}
-	public partial class XmlIndex : ISql90XmlIndex
-	{		
-		Boolean ISql90XmlIndex.AllowPageLocks 
+		Boolean ISql90TSqlXmlIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql90XmlIndex.AllowRowLocks 
+		Boolean ISql90TSqlXmlIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Boolean ISql90XmlIndex.Disabled 
+		Boolean ISql90TSqlXmlIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32? ISql90XmlIndex.FillFactor 
+		Int32? ISql90TSqlXmlIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql90XmlIndex.IsPrimary 
+		Boolean ISql90TSqlXmlIndex.IsPrimary 
 		{
 			get { return this.IsPrimary;}
 		}
-		Boolean ISql90XmlIndex.RecomputeStatistics 
+		Boolean ISql90TSqlXmlIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		SecondaryXmlIndexType ISql90XmlIndex.SecondaryXmlIndexType 
+		SecondaryXmlIndexType ISql90TSqlXmlIndex.SecondaryXmlIndexType 
 		{
 			get { return this.SecondaryXmlIndexType;}
 		}
-		Boolean ISql90XmlIndex.WithPadIndex 
+		Boolean ISql90TSqlXmlIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Column> ISql90XmlIndex.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql90XmlIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql90TSqlXmlIndex.IndexedObject 
 		{
 			get 
 			{
@@ -3923,145 +3852,119 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90XmlIndex> ISql90XmlIndex.PrimaryXmlIndex 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlIndex> ISql90TSqlXmlIndex.PrimaryXmlIndex 
 		{
 			get 
 			{
-				return this.PrimaryXmlIndex;
+				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlIndex>();
 			}
 		}
 	}
-	public partial class SelectiveXmlIndex : ISql90SelectiveXmlIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlXmlSchemaCollection"/>.
+	/// </summary>
+	public partial class TSqlXmlSchemaCollection : ISql90TSqlXmlSchemaCollection
 	{		
-		Boolean ISql90SelectiveXmlIndex.Disabled 
-		{
-			get { return this.Disabled;}
-		}
-	}
-	public partial class XmlNamespace : ISql90XmlNamespace
-	{		
-	}
-	public partial class PromotedNodePathForXQueryType : ISql90PromotedNodePathForXQueryType
-	{		
-	}
-	public partial class PromotedNodePathForSqlType : ISql90PromotedNodePathForSqlType
-	{		
-		Boolean ISql90PromotedNodePathForSqlType.IsMax 
-		{
-			get { return this.IsMax;}
-		}
-		Int32 ISql90PromotedNodePathForSqlType.Length 
-		{
-			get { return this.Length;}
-		}
-		Int32 ISql90PromotedNodePathForSqlType.Precision 
-		{
-			get { return this.Precision;}
-		}
-		Int32 ISql90PromotedNodePathForSqlType.Scale 
-		{
-			get { return this.Scale;}
-		}
-	}
-	public partial class XmlSchemaCollection : ISql90XmlSchemaCollection
-	{		
-		String ISql90XmlSchemaCollection.Expression 
+		String ISql90TSqlXmlSchemaCollection.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90Schema> ISql90XmlSchemaCollection.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlXmlSchemaCollection.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
 			}
 		}
 	}
-	public partial class Column : ISql100Column
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlColumn"/>.
+	/// </summary>
+	public partial class TSqlColumn : ISql100TSqlColumn
 	{		
-		String ISql100Column.Collation 
+		String ISql100TSqlColumn.Collation 
 		{
 			get { return this.Collation;}
 		}
-		String ISql100Column.Expression 
+		String ISql100TSqlColumn.Expression 
 		{
 			get { return this.Expression;}
 		}
-		String ISql100Column.IdentityIncrement 
+		String ISql100TSqlColumn.IdentityIncrement 
 		{
 			get { return this.IdentityIncrement;}
 		}
-		String ISql100Column.IdentitySeed 
+		String ISql100TSqlColumn.IdentitySeed 
 		{
 			get { return this.IdentitySeed;}
 		}
-		Boolean ISql100Column.IsFileStream 
+		Boolean ISql100TSqlColumn.IsFileStream 
 		{
 			get { return this.IsFileStream;}
 		}
-		Boolean ISql100Column.IsIdentity 
+		Boolean ISql100TSqlColumn.IsIdentity 
 		{
 			get { return this.IsIdentity;}
 		}
-		Boolean ISql100Column.IsIdentityNotForReplication 
+		Boolean ISql100TSqlColumn.IsIdentityNotForReplication 
 		{
 			get { return this.IsIdentityNotForReplication;}
 		}
-		Boolean ISql100Column.IsMax 
+		Boolean ISql100TSqlColumn.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql100Column.IsRowGuidCol 
+		Boolean ISql100TSqlColumn.IsRowGuidCol 
 		{
 			get { return this.IsRowGuidCol;}
 		}
-		Int32 ISql100Column.Length 
+		Int32 ISql100TSqlColumn.Length 
 		{
 			get { return this.Length;}
 		}
-		Boolean ISql100Column.Nullable 
+		Boolean ISql100TSqlColumn.Nullable 
 		{
 			get { return this.Nullable;}
 		}
-		Boolean ISql100Column.Persisted 
+		Boolean ISql100TSqlColumn.Persisted 
 		{
 			get { return this.Persisted;}
 		}
-		Boolean? ISql100Column.PersistedNullable 
+		Boolean? ISql100TSqlColumn.PersistedNullable 
 		{
 			get { return this.PersistedNullable;}
 		}
-		Int32 ISql100Column.Precision 
+		Int32 ISql100TSqlColumn.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISql100Column.Scale 
+		Int32 ISql100TSqlColumn.Scale 
 		{
 			get { return this.Scale;}
 		}
-		Boolean ISql100Column.Sparse 
+		Boolean ISql100TSqlColumn.Sparse 
 		{
 			get { return this.Sparse;}
 		}
-		XmlStyle ISql100Column.XmlStyle 
+		XmlStyle ISql100TSqlColumn.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100DataType> ISql100Column.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100Column.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -4069,101 +3972,104 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100XmlSchemaCollection> ISql100Column.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection> ISql100TSqlColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class TableValuedFunction : ISql100TableValuedFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlTableValuedFunction"/>.
+	/// </summary>
+	public partial class TSqlTableValuedFunction : ISql100TSqlTableValuedFunction
 	{		
-		Boolean? ISql100TableValuedFunction.AnsiNullsOn 
+		Boolean? ISql100TSqlTableValuedFunction.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql100TableValuedFunction.CalledOnNullInput 
+		Boolean ISql100TSqlTableValuedFunction.CalledOnNullInput 
 		{
 			get { return this.CalledOnNullInput;}
 		}
-		String ISql100TableValuedFunction.ClassName 
+		String ISql100TSqlTableValuedFunction.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		DataAccessKind? ISql100TableValuedFunction.DataAccess 
+		DataAccessKind? ISql100TSqlTableValuedFunction.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		Boolean? ISql100TableValuedFunction.Deterministic 
+		Boolean? ISql100TSqlTableValuedFunction.Deterministic 
 		{
 			get { return this.Deterministic;}
 		}
-		Boolean ISql100TableValuedFunction.ExecuteAsCaller 
+		Boolean ISql100TSqlTableValuedFunction.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql100TableValuedFunction.ExecuteAsOwner 
+		Boolean ISql100TSqlTableValuedFunction.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql100TableValuedFunction.ExecuteAsSelf 
+		Boolean ISql100TSqlTableValuedFunction.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql100TableValuedFunction.FillRowMethodName 
+		String ISql100TSqlTableValuedFunction.FillRowMethodName 
 		{
 			get { return this.FillRowMethodName;}
 		}
-		Boolean ISql100TableValuedFunction.IsReplicated 
+		Boolean ISql100TSqlTableValuedFunction.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql100TableValuedFunction.MethodName 
+		String ISql100TSqlTableValuedFunction.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql100TableValuedFunction.Precise 
+		Boolean? ISql100TSqlTableValuedFunction.Precise 
 		{
 			get { return this.Precise;}
 		}
-		Boolean? ISql100TableValuedFunction.QuotedIdentifierOn 
+		Boolean? ISql100TSqlTableValuedFunction.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql100TableValuedFunction.ReturnsNullOnNullInput 
+		Boolean ISql100TSqlTableValuedFunction.ReturnsNullOnNullInput 
 		{
 			get { return this.ReturnsNullOnNullInput;}
 		}
-		String ISql100TableValuedFunction.ReturnTableVariableName 
+		String ISql100TSqlTableValuedFunction.ReturnTableVariableName 
 		{
 			get { return this.ReturnTableVariableName;}
 		}
-		SystemDataAccessKind? ISql100TableValuedFunction.SystemDataAccess 
+		SystemDataAccessKind? ISql100TSqlTableValuedFunction.SystemDataAccess 
 		{
 			get { return this.SystemDataAccess;}
 		}
-		Boolean ISql100TableValuedFunction.WithEncryption 
+		Boolean ISql100TSqlTableValuedFunction.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql100TableValuedFunction.WithSchemaBinding 
+		Boolean ISql100TSqlTableValuedFunction.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Assembly> ISql100TableValuedFunction.Assembly 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlTableValuedFunction.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100TableValuedFunction.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlTableValuedFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -4171,35 +4077,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Login> ISql100TableValuedFunction.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100TableValuedFunction.OrderColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableValuedFunction.OrderColumns 
 		{
 			get 
 			{
-				return this.OrderColumns;
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Parameter> ISql100TableValuedFunction.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter> ISql100TSqlTableValuedFunction.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TableValuedFunction.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
@@ -4207,106 +4113,109 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100TableValuedFunction.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlTableValuedFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100User> ISql100TableValuedFunction.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlTableValuedFunction.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
 			}
 		}
 	}
-	public partial class ScalarFunction : ISql100ScalarFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlScalarFunction"/>.
+	/// </summary>
+	public partial class TSqlScalarFunction : ISql100TSqlScalarFunction
 	{		
-		Boolean? ISql100ScalarFunction.AnsiNullsOn 
+		Boolean? ISql100TSqlScalarFunction.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql100ScalarFunction.CalledOnNullInput 
+		Boolean ISql100TSqlScalarFunction.CalledOnNullInput 
 		{
 			get { return this.CalledOnNullInput;}
 		}
-		String ISql100ScalarFunction.ClassName 
+		String ISql100TSqlScalarFunction.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		DataAccessKind? ISql100ScalarFunction.DataAccess 
+		DataAccessKind? ISql100TSqlScalarFunction.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		Boolean? ISql100ScalarFunction.Deterministic 
+		Boolean? ISql100TSqlScalarFunction.Deterministic 
 		{
 			get { return this.Deterministic;}
 		}
-		Boolean ISql100ScalarFunction.ExecuteAsCaller 
+		Boolean ISql100TSqlScalarFunction.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql100ScalarFunction.ExecuteAsOwner 
+		Boolean ISql100TSqlScalarFunction.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql100ScalarFunction.ExecuteAsSelf 
+		Boolean ISql100TSqlScalarFunction.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql100ScalarFunction.FillRowMethodName 
+		String ISql100TSqlScalarFunction.FillRowMethodName 
 		{
 			get { return this.FillRowMethodName;}
 		}
-		Boolean ISql100ScalarFunction.IsReplicated 
+		Boolean ISql100TSqlScalarFunction.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql100ScalarFunction.MethodName 
+		String ISql100TSqlScalarFunction.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql100ScalarFunction.Precise 
+		Boolean? ISql100TSqlScalarFunction.Precise 
 		{
 			get { return this.Precise;}
 		}
-		Boolean? ISql100ScalarFunction.QuotedIdentifierOn 
+		Boolean? ISql100TSqlScalarFunction.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql100ScalarFunction.ReturnsNullOnNullInput 
+		Boolean ISql100TSqlScalarFunction.ReturnsNullOnNullInput 
 		{
 			get { return this.ReturnsNullOnNullInput;}
 		}
-		SystemDataAccessKind? ISql100ScalarFunction.SystemDataAccess 
+		SystemDataAccessKind? ISql100TSqlScalarFunction.SystemDataAccess 
 		{
 			get { return this.SystemDataAccess;}
 		}
-		Boolean ISql100ScalarFunction.WithEncryption 
+		Boolean ISql100TSqlScalarFunction.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql100ScalarFunction.WithSchemaBinding 
+		Boolean ISql100TSqlScalarFunction.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Assembly> ISql100ScalarFunction.Assembly 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlScalarFunction.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100ScalarFunction.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlScalarFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -4314,26 +4223,26 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Login> ISql100ScalarFunction.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlScalarFunction.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Parameter> ISql100ScalarFunction.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter> ISql100TSqlScalarFunction.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100ScalarFunction.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
@@ -4341,71 +4250,74 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100ScalarFunction.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlScalarFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100User> ISql100ScalarFunction.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlScalarFunction.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
 			}
 		}
 	}
-	public partial class Aggregate : ISql100Aggregate
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlAggregate"/>.
+	/// </summary>
+	public partial class TSqlAggregate : ISql100TSqlAggregate
 	{		
-		String ISql100Aggregate.ClassName 
+		String ISql100TSqlAggregate.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Format ISql100Aggregate.Format 
+		Format ISql100TSqlAggregate.Format 
 		{
 			get { return this.Format;}
 		}
-		Boolean? ISql100Aggregate.InvariantToDuplicates 
+		Boolean? ISql100TSqlAggregate.InvariantToDuplicates 
 		{
 			get { return this.InvariantToDuplicates;}
 		}
-		Boolean? ISql100Aggregate.InvariantToNulls 
+		Boolean? ISql100TSqlAggregate.InvariantToNulls 
 		{
 			get { return this.InvariantToNulls;}
 		}
-		Int32? ISql100Aggregate.MaxByteSize 
+		Int32? ISql100TSqlAggregate.MaxByteSize 
 		{
 			get { return this.MaxByteSize;}
 		}
-		Boolean? ISql100Aggregate.NullIfEmpty 
+		Boolean? ISql100TSqlAggregate.NullIfEmpty 
 		{
 			get { return this.NullIfEmpty;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Assembly> ISql100Aggregate.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlAggregate.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Parameter> ISql100Aggregate.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter> ISql100TSqlAggregate.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100Aggregate.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlAggregate.ReturnType 
 		{
 			get 
 			{
@@ -4413,88 +4325,94 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100Aggregate.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlAggregate.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 	}
-	public partial class ApplicationRole : ISql100ApplicationRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlApplicationRole"/>.
+	/// </summary>
+	public partial class TSqlApplicationRole : ISql100TSqlApplicationRole
 	{		
-		String ISql100ApplicationRole.Password 
+		String ISql100TSqlApplicationRole.Password 
 		{
 			get { return this.Password;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100ApplicationRole.DefaultSchema 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlApplicationRole.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema;
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 	}
-	public partial class Index : ISql100Index
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlIndex"/>.
+	/// </summary>
+	public partial class TSqlIndex : ISql100TSqlIndex
 	{		
-		Boolean ISql100Index.AllowPageLocks 
+		Boolean ISql100TSqlIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql100Index.AllowRowLocks 
+		Boolean ISql100TSqlIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Int32? ISql100Index.BucketCount 
+		Int32? ISql100TSqlIndex.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql100Index.Clustered 
+		Boolean ISql100TSqlIndex.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql100Index.Disabled 
+		Boolean ISql100TSqlIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean? ISql100Index.FileStreamNull 
+		Boolean? ISql100TSqlIndex.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Int32? ISql100Index.FillFactor 
+		Int32? ISql100TSqlIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		String ISql100Index.FilterPredicate 
+		String ISql100TSqlIndex.FilterPredicate 
 		{
 			get { return this.FilterPredicate;}
 		}
-		Boolean ISql100Index.Hash 
+		Boolean ISql100TSqlIndex.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql100Index.IgnoreDuplicateKey 
+		Boolean ISql100TSqlIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql100Index.RecomputeStatistics 
+		Boolean ISql100TSqlIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql100Index.Unique 
+		Boolean ISql100TSqlIndex.Unique 
 		{
 			get { return this.Unique;}
 		}
-		Boolean ISql100Index.WithPadIndex 
+		Boolean ISql100TSqlIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100Index.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlIndex.BodyDependencies 
 		{
 			get 
 			{
@@ -4502,62 +4420,62 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100Index.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100DataCompressionOption> ISql100Index.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataCompressionOption> ISql100TSqlIndex.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100Index.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100Index.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlIndex.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100Index.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlIndex.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100Index.IncludedColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlIndex.IncludedColumns 
 		{
 			get 
 			{
-				return this.IncludedColumns;
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql100Index.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql100TSqlIndex.IndexedObject 
 		{
 			get 
 			{
@@ -4565,46 +4483,49 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100Index.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100Index.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Assembly : ISql100Assembly
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlAssembly"/>.
+	/// </summary>
+	public partial class TSqlAssembly : ISql100TSqlAssembly
 	{		
-		AssemblyPermissionSet ISql100Assembly.PermissionSet 
+		AssemblyPermissionSet ISql100TSqlAssembly.PermissionSet 
 		{
 			get { return this.PermissionSet;}
 		}
-		Boolean ISql100Assembly.Visible 
+		Boolean ISql100TSqlAssembly.Visible 
 		{
 			get { return this.Visible;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100AssemblySource> ISql100Assembly.AssemblySources 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblySource> ISql100TSqlAssembly.AssemblySources 
 		{
 			get 
 			{
-				return this.AssemblySources;
+				return this.AssemblySources.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblySource>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100Assembly.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlAssembly.Authorizer 
 		{
 			get 
 			{
@@ -4612,64 +4533,70 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Assembly> ISql100Assembly.ReferencedAssemblies 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlAssembly.ReferencedAssemblies 
 		{
 			get 
 			{
-				return this.ReferencedAssemblies;
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
 			}
 		}
 	}
-	public partial class AssemblySource : ISql100AssemblySource
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlAssemblySource"/>.
+	/// </summary>
+	public partial class TSqlAssemblySource : ISql100TSqlAssemblySource
 	{		
-		String ISql100AssemblySource.Source 
+		String ISql100TSqlAssemblySource.Source 
 		{
 			get { return this.Source;}
 		}
 	}
-	public partial class AsymmetricKey : ISql100AsymmetricKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlAsymmetricKey"/>.
+	/// </summary>
+	public partial class TSqlAsymmetricKey : ISql100TSqlAsymmetricKey
 	{		
-		AsymmetricKeyAlgorithm ISql100AsymmetricKey.Algorithm 
+		AsymmetricKeyAlgorithm ISql100TSqlAsymmetricKey.Algorithm 
 		{
 			get { return this.Algorithm;}
 		}
-		SymmetricKeyCreationDisposition ISql100AsymmetricKey.CreationDisposition 
+		SymmetricKeyCreationDisposition ISql100TSqlAsymmetricKey.CreationDisposition 
 		{
 			get { return this.CreationDisposition;}
 		}
-		Boolean ISql100AsymmetricKey.EncryptedWithPassword 
+		Boolean ISql100TSqlAsymmetricKey.EncryptedWithPassword 
 		{
 			get { return this.EncryptedWithPassword;}
 		}
-		String ISql100AsymmetricKey.ExecutableFile 
+		String ISql100TSqlAsymmetricKey.ExecutableFile 
 		{
 			get { return this.ExecutableFile;}
 		}
-		String ISql100AsymmetricKey.File 
+		String ISql100TSqlAsymmetricKey.File 
 		{
 			get { return this.File;}
 		}
-		String ISql100AsymmetricKey.Password 
+		String ISql100TSqlAsymmetricKey.Password 
 		{
 			get { return this.Password;}
 		}
-		String ISql100AsymmetricKey.ProviderKeyName 
+		String ISql100TSqlAsymmetricKey.ProviderKeyName 
 		{
 			get { return this.ProviderKeyName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Assembly> ISql100AsymmetricKey.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlAsymmetricKey.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100AsymmetricKey.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlAsymmetricKey.Authorizer 
 		{
 			get 
 			{
@@ -4677,8 +4604,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100AsymmetricKey.Provider 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlAsymmetricKey.Provider 
 		{
 			get 
 			{
@@ -4686,34 +4613,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class AuditAction : ISql100AuditAction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlAuditAction"/>.
+	/// </summary>
+	public partial class TSqlAuditAction : ISql100TSqlAuditAction
 	{		
-		DatabaseAuditAction ISql100AuditAction.Action 
+		DatabaseAuditAction ISql100TSqlAuditAction.Action 
 		{
 			get { return this.Action;}
 		}
 	}
-	public partial class AuditActionGroup : ISql100AuditActionGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlAuditActionGroup"/>.
+	/// </summary>
+	public partial class TSqlAuditActionGroup : ISql100TSqlAuditActionGroup
 	{		
-		AuditActionGroupType ISql100AuditActionGroup.ActionGroup 
+		AuditActionGroupType ISql100TSqlAuditActionGroup.ActionGroup 
 		{
 			get { return this.ActionGroup;}
 		}
 	}
-	public partial class AuditActionSpecification : ISql100AuditActionSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlAuditActionSpecification"/>.
+	/// </summary>
+	public partial class TSqlAuditActionSpecification : ISql100TSqlAuditActionSpecification
 	{		
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100AuditAction> ISql100AuditActionSpecification.AuditActions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAuditAction> ISql100TSqlAuditActionSpecification.AuditActions 
 		{
 			get 
 			{
-				return this.AuditActions;
+				return this.AuditActions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAuditAction>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql100AuditActionSpecification.Principals 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql100TSqlAuditActionSpecification.Principals 
 		{
 			get 
 			{
@@ -4721,8 +4657,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql100AuditActionSpecification.SecuredObject 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql100TSqlAuditActionSpecification.SecuredObject 
 		{
 			get 
 			{
@@ -4730,19 +4666,22 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class BrokerPriority : ISql100BrokerPriority
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlBrokerPriority"/>.
+	/// </summary>
+	public partial class TSqlBrokerPriority : ISql100TSqlBrokerPriority
 	{		
-		Int32 ISql100BrokerPriority.PriorityLevel 
+		Int32 ISql100TSqlBrokerPriority.PriorityLevel 
 		{
 			get { return this.PriorityLevel;}
 		}
-		String ISql100BrokerPriority.RemoteServiceName 
+		String ISql100TSqlBrokerPriority.RemoteServiceName 
 		{
 			get { return this.RemoteServiceName;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100BrokerPriority.ContractName 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlBrokerPriority.ContractName 
 		{
 			get 
 			{
@@ -4750,8 +4689,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100BrokerPriority.LocalServiceName 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlBrokerPriority.LocalServiceName 
 		{
 			get 
 			{
@@ -4759,47 +4698,53 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class BuiltInServerRole : ISql100BuiltInServerRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlBuiltInServerRole"/>.
+	/// </summary>
+	public partial class TSqlBuiltInServerRole : ISql100TSqlBuiltInServerRole
 	{		
 	}
-	public partial class DataType : ISql100DataType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlDataType"/>.
+	/// </summary>
+	public partial class TSqlDataType : ISql100TSqlDataType
 	{		
-		SqlDataType ISql100DataType.SqlDataType 
+		SqlDataType ISql100TSqlDataType.SqlDataType 
 		{
 			get { return this.SqlDataType;}
 		}
-		Boolean ISql100DataType.UddtIsMax 
+		Boolean ISql100TSqlDataType.UddtIsMax 
 		{
 			get { return this.UddtIsMax;}
 		}
-		Int32 ISql100DataType.UddtLength 
+		Int32 ISql100TSqlDataType.UddtLength 
 		{
 			get { return this.UddtLength;}
 		}
-		Boolean ISql100DataType.UddtNullable 
+		Boolean ISql100TSqlDataType.UddtNullable 
 		{
 			get { return this.UddtNullable;}
 		}
-		Int32 ISql100DataType.UddtPrecision 
+		Int32 ISql100TSqlDataType.UddtPrecision 
 		{
 			get { return this.UddtPrecision;}
 		}
-		Int32 ISql100DataType.UddtScale 
+		Int32 ISql100TSqlDataType.UddtScale 
 		{
 			get { return this.UddtScale;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100DataType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlDataType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<System.Type> ISql100DataType.Type 
+		// Peer relationship		
+		IEnumerable<System.Type> ISql100TSqlDataType.Type 
 		{
 			get 
 			{
@@ -4807,55 +4752,58 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Certificate : ISql100Certificate
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlCertificate"/>.
+	/// </summary>
+	public partial class TSqlCertificate : ISql100TSqlCertificate
 	{		
-		Boolean ISql100Certificate.ActiveForBeginDialog 
+		Boolean ISql100TSqlCertificate.ActiveForBeginDialog 
 		{
 			get { return this.ActiveForBeginDialog;}
 		}
-		Boolean ISql100Certificate.EncryptedWithPassword 
+		Boolean ISql100TSqlCertificate.EncryptedWithPassword 
 		{
 			get { return this.EncryptedWithPassword;}
 		}
-		String ISql100Certificate.EncryptionPassword 
+		String ISql100TSqlCertificate.EncryptionPassword 
 		{
 			get { return this.EncryptionPassword;}
 		}
-		String ISql100Certificate.ExistingKeysFilePath 
+		String ISql100TSqlCertificate.ExistingKeysFilePath 
 		{
 			get { return this.ExistingKeysFilePath;}
 		}
-		String ISql100Certificate.ExpiryDate 
+		String ISql100TSqlCertificate.ExpiryDate 
 		{
 			get { return this.ExpiryDate;}
 		}
-		Boolean ISql100Certificate.IsExistingKeyFileExecutable 
+		Boolean ISql100TSqlCertificate.IsExistingKeyFileExecutable 
 		{
 			get { return this.IsExistingKeyFileExecutable;}
 		}
-		String ISql100Certificate.PrivateKeyDecryptionPassword 
+		String ISql100TSqlCertificate.PrivateKeyDecryptionPassword 
 		{
 			get { return this.PrivateKeyDecryptionPassword;}
 		}
-		String ISql100Certificate.PrivateKeyEncryptionPassword 
+		String ISql100TSqlCertificate.PrivateKeyEncryptionPassword 
 		{
 			get { return this.PrivateKeyEncryptionPassword;}
 		}
-		String ISql100Certificate.PrivateKeyFilePath 
+		String ISql100TSqlCertificate.PrivateKeyFilePath 
 		{
 			get { return this.PrivateKeyFilePath;}
 		}
-		String ISql100Certificate.StartDate 
+		String ISql100TSqlCertificate.StartDate 
 		{
 			get { return this.StartDate;}
 		}
-		String ISql100Certificate.Subject 
+		String ISql100TSqlCertificate.Subject 
 		{
 			get { return this.Subject;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100Certificate.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlCertificate.Authorizer 
 		{
 			get 
 			{
@@ -4863,32 +4811,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Assembly> ISql100Certificate.ExistingKeysAssembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlCertificate.ExistingKeysAssembly 
 		{
 			get 
 			{
-				return this.ExistingKeysAssembly;
+				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
 			}
 		}
 	}
-	public partial class CheckConstraint : ISql100CheckConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlCheckConstraint"/>.
+	/// </summary>
+	public partial class TSqlCheckConstraint : ISql100TSqlCheckConstraint
 	{		
-		Boolean ISql100CheckConstraint.Disabled 
+		Boolean ISql100TSqlCheckConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISql100CheckConstraint.Expression 
+		String ISql100TSqlCheckConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
-		Boolean ISql100CheckConstraint.NotForReplication 
+		Boolean ISql100TSqlCheckConstraint.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100CheckConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -4896,33 +4847,36 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100ExtendedProperty> ISql100CheckConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlCheckConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
 			}
 		}
 	}
-	public partial class ClrTypeMethod : ISql100ClrTypeMethod
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlClrTypeMethod"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethod : ISql100TSqlClrTypeMethod
 	{		
-		String ISql100ClrTypeMethod.Name 
+		String ISql100TSqlClrTypeMethod.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Parameter> ISql100ClrTypeMethod.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter> ISql100TSqlClrTypeMethod.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100ClrTypeMethod.ReturnType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlClrTypeMethod.ReturnType 
 		{
 			get 
 			{
@@ -4930,35 +4884,41 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ClrTypeMethodParameter : ISql100ClrTypeMethodParameter
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlClrTypeMethodParameter"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethodParameter : ISql100TSqlClrTypeMethodParameter
 	{		
-		Boolean ISql100ClrTypeMethodParameter.IsOutput 
+		Boolean ISql100TSqlClrTypeMethodParameter.IsOutput 
 		{
 			get { return this.IsOutput;}
 		}
-		String ISql100ClrTypeMethodParameter.Name 
+		String ISql100TSqlClrTypeMethodParameter.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100DataType> ISql100ClrTypeMethodParameter.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
 			}
 		}
 	}
-	public partial class ClrTypeProperty : ISql100ClrTypeProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlClrTypeProperty"/>.
+	/// </summary>
+	public partial class TSqlClrTypeProperty : ISql100TSqlClrTypeProperty
 	{		
-		String ISql100ClrTypeProperty.Name 
+		String ISql100TSqlClrTypeProperty.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100ClrTypeProperty.ClrType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
@@ -4966,67 +4926,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ColumnStoreIndex : ISql100ColumnStoreIndex
-	{		
-		Boolean ISql100ColumnStoreIndex.Clustered 
-		{
-			get { return this.Clustered;}
-		}
-		Boolean ISql100ColumnStoreIndex.Disabled 
-		{
-			get { return this.Disabled;}
-		}
-
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100DataCompressionOption> ISql100ColumnStoreIndex.DataCompressionOptions 
-		{
-			get 
-			{
-				return this.DataCompressionOptions;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100ColumnStoreIndex.Filegroup 
-		{
-			get 
-			{
-				return this.Filegroup;
-			}
-		}
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql100ColumnStoreIndex.IndexedObject 
-		{
-			get 
-			{
-				return this.IndexedObject;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100ColumnStoreIndex.PartitionColumn 
-		{
-			get 
-			{
-				return this.PartitionColumn;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100ColumnStoreIndex.PartitionScheme 
-		{
-			get 
-			{
-				return this.PartitionScheme;
-			}
-		}
-	}
-	public partial class Contract : ISql100Contract
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlContract"/>.
+	/// </summary>
+	public partial class TSqlContract : ISql100TSqlContract
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100Contract.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlContract.Authorizer 
 		{
 			get 
 			{
@@ -5034,134 +4941,146 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100MessageType> ISql100Contract.Messages 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlMessageType> ISql100TSqlContract.Messages 
 		{
 			get 
 			{
-				return this.Messages;
+				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlMessageType>();
 			}
 		}
 	}
-	public partial class Credential : ISql100Credential
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlCredential"/>.
+	/// </summary>
+	public partial class TSqlCredential : ISql100TSqlCredential
 	{		
-		String ISql100Credential.Identity 
+		String ISql100TSqlCredential.Identity 
 		{
 			get { return this.Identity;}
 		}
-		String ISql100Credential.Secret 
+		String ISql100TSqlCredential.Secret 
 		{
 			get { return this.Secret;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100CryptographicProvider> ISql100Credential.CryptographicProvider 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCryptographicProvider> ISql100TSqlCredential.CryptographicProvider 
 		{
 			get 
 			{
-				return this.CryptographicProvider;
+				return this.CryptographicProvider.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCryptographicProvider>();
 			}
 		}
 	}
-	public partial class CryptographicProvider : ISql100CryptographicProvider
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlCryptographicProvider"/>.
+	/// </summary>
+	public partial class TSqlCryptographicProvider : ISql100TSqlCryptographicProvider
 	{		
-		String ISql100CryptographicProvider.DllPath 
+		String ISql100TSqlCryptographicProvider.DllPath 
 		{
 			get { return this.DllPath;}
 		}
-		Boolean ISql100CryptographicProvider.Enabled 
+		Boolean ISql100TSqlCryptographicProvider.Enabled 
 		{
 			get { return this.Enabled;}
 		}
 	}
-	public partial class DatabaseAuditSpecification : ISql100DatabaseAuditSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlDatabaseAuditSpecification"/>.
+	/// </summary>
+	public partial class TSqlDatabaseAuditSpecification : ISql100TSqlDatabaseAuditSpecification
 	{		
-		Boolean ISql100DatabaseAuditSpecification.WithState 
+		Boolean ISql100TSqlDatabaseAuditSpecification.WithState 
 		{
 			get { return this.WithState;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100AuditActionGroup> ISql100DatabaseAuditSpecification.AuditActionGroups 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAuditActionGroup> ISql100TSqlDatabaseAuditSpecification.AuditActionGroups 
 		{
 			get 
 			{
-				return this.AuditActionGroups;
+				return this.AuditActionGroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAuditActionGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100AuditAction> ISql100DatabaseAuditSpecification.AuditActions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAuditAction> ISql100TSqlDatabaseAuditSpecification.AuditActions 
 		{
 			get 
 			{
-				return this.AuditActions;
+				return this.AuditActions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAuditAction>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100ServerAudit> ISql100DatabaseAuditSpecification.ServerAudit 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAudit> ISql100TSqlDatabaseAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit;
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAudit>();
 			}
 		}
 	}
-	public partial class DatabaseDdlTrigger : ISql100DatabaseDdlTrigger
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlDatabaseDdlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDatabaseDdlTrigger : ISql100TSqlDatabaseDdlTrigger
 	{		
-		Boolean? ISql100DatabaseDdlTrigger.AnsiNullsOn 
+		Boolean? ISql100TSqlDatabaseDdlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql100DatabaseDdlTrigger.ClassName 
+		String ISql100TSqlDatabaseDdlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql100DatabaseDdlTrigger.Disabled 
+		Boolean ISql100TSqlDatabaseDdlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql100DatabaseDdlTrigger.ExecuteAsCaller 
+		Boolean ISql100TSqlDatabaseDdlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql100DatabaseDdlTrigger.ExecuteAsOwner 
+		Boolean ISql100TSqlDatabaseDdlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql100DatabaseDdlTrigger.ExecuteAsSelf 
+		Boolean ISql100TSqlDatabaseDdlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql100DatabaseDdlTrigger.MethodName 
+		String ISql100TSqlDatabaseDdlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql100DatabaseDdlTrigger.QuotedIdentifierOn 
+		Boolean? ISql100TSqlDatabaseDdlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql100DatabaseDdlTrigger.TriggerType 
+		TriggerType ISql100TSqlDatabaseDdlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		Boolean ISql100DatabaseDdlTrigger.WithEncryption 
+		Boolean ISql100TSqlDatabaseDdlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Assembly> ISql100DatabaseDdlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlDatabaseDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100DatabaseDdlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlDatabaseDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -5169,17 +5088,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100EventGroup> ISql100DatabaseDdlTrigger.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventGroup> ISql100TSqlDatabaseDdlTrigger.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql100DatabaseDdlTrigger.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql100TSqlDatabaseDdlTrigger.EventType 
 		{
 			get 
 			{
@@ -5187,75 +5106,81 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Login> ISql100DatabaseDdlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlDatabaseDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100User> ISql100DatabaseDdlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlDatabaseDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
 			}
 		}
 	}
-	public partial class DatabaseEncryptionKey : ISql100DatabaseEncryptionKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlDatabaseEncryptionKey"/>.
+	/// </summary>
+	public partial class TSqlDatabaseEncryptionKey : ISql100TSqlDatabaseEncryptionKey
 	{		
-		SymmetricKeyAlgorithm ISql100DatabaseEncryptionKey.Algorithm 
+		SymmetricKeyAlgorithm ISql100TSqlDatabaseEncryptionKey.Algorithm 
 		{
 			get { return this.Algorithm;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100AsymmetricKey> ISql100DatabaseEncryptionKey.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey> ISql100TSqlDatabaseEncryptionKey.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Certificate> ISql100DatabaseEncryptionKey.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlDatabaseEncryptionKey.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
 			}
 		}
 	}
-	public partial class DatabaseEventNotification : ISql100DatabaseEventNotification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlDatabaseEventNotification"/>.
+	/// </summary>
+	public partial class TSqlDatabaseEventNotification : ISql100TSqlDatabaseEventNotification
 	{		
-		String ISql100DatabaseEventNotification.BrokerInstanceSpecifier 
+		String ISql100TSqlDatabaseEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql100DatabaseEventNotification.BrokerService 
+		String ISql100TSqlDatabaseEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql100DatabaseEventNotification.WithFanIn 
+		Boolean ISql100TSqlDatabaseEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100EventGroup> ISql100DatabaseEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventGroup> ISql100TSqlDatabaseEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql100DatabaseEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql100TSqlDatabaseEventNotification.EventType 
 		{
 			get 
 			{
@@ -5263,247 +5188,259 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class DatabaseMirroringLanguageSpecifier : ISql100DatabaseMirroringLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlDatabaseMirroringLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlDatabaseMirroringLanguageSpecifier : ISql100TSqlDatabaseMirroringLanguageSpecifier
 	{		
-		ServiceBrokerEncryptionAlgorithm ISql100DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1 
+		ServiceBrokerEncryptionAlgorithm ISql100TSqlDatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1 
 		{
 			get { return this.EncryptionAlgorithmPart1;}
 		}
-		ServiceBrokerEncryptionAlgorithm ISql100DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2 
+		ServiceBrokerEncryptionAlgorithm ISql100TSqlDatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2 
 		{
 			get { return this.EncryptionAlgorithmPart2;}
 		}
-		EncryptionMode ISql100DatabaseMirroringLanguageSpecifier.EncryptionMode 
+		EncryptionMode ISql100TSqlDatabaseMirroringLanguageSpecifier.EncryptionMode 
 		{
 			get { return this.EncryptionMode;}
 		}
-		DatabaseMirroringRole ISql100DatabaseMirroringLanguageSpecifier.RoleType 
+		DatabaseMirroringRole ISql100TSqlDatabaseMirroringLanguageSpecifier.RoleType 
 		{
 			get { return this.RoleType;}
 		}
-		Boolean ISql100DatabaseMirroringLanguageSpecifier.UseCertificateFirst 
+		Boolean ISql100TSqlDatabaseMirroringLanguageSpecifier.UseCertificateFirst 
 		{
 			get { return this.UseCertificateFirst;}
 		}
-		AuthenticationModes ISql100DatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode 
+		AuthenticationModes ISql100TSqlDatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode 
 		{
 			get { return this.WindowsAuthenticationMode;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Certificate> ISql100DatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate;
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
 			}
 		}
 	}
-	public partial class DatabaseOptions : ISql100DatabaseOptions
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlDatabaseOptions"/>.
+	/// </summary>
+	public partial class TSqlDatabaseOptions : ISql100TSqlDatabaseOptions
 	{		
-		Boolean ISql100DatabaseOptions.AllowSnapshotIsolation 
+		Boolean ISql100TSqlDatabaseOptions.AllowSnapshotIsolation 
 		{
 			get { return this.AllowSnapshotIsolation;}
 		}
-		Boolean ISql100DatabaseOptions.AnsiNullDefaultOn 
+		Boolean ISql100TSqlDatabaseOptions.AnsiNullDefaultOn 
 		{
 			get { return this.AnsiNullDefaultOn;}
 		}
-		Boolean ISql100DatabaseOptions.AnsiNullsOn 
+		Boolean ISql100TSqlDatabaseOptions.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql100DatabaseOptions.AnsiPaddingOn 
+		Boolean ISql100TSqlDatabaseOptions.AnsiPaddingOn 
 		{
 			get { return this.AnsiPaddingOn;}
 		}
-		Boolean ISql100DatabaseOptions.AnsiWarningsOn 
+		Boolean ISql100TSqlDatabaseOptions.AnsiWarningsOn 
 		{
 			get { return this.AnsiWarningsOn;}
 		}
-		Boolean ISql100DatabaseOptions.ArithAbortOn 
+		Boolean ISql100TSqlDatabaseOptions.ArithAbortOn 
 		{
 			get { return this.ArithAbortOn;}
 		}
-		Boolean ISql100DatabaseOptions.AutoClose 
+		Boolean ISql100TSqlDatabaseOptions.AutoClose 
 		{
 			get { return this.AutoClose;}
 		}
-		Boolean ISql100DatabaseOptions.AutoCreateStatistics 
+		Boolean ISql100TSqlDatabaseOptions.AutoCreateStatistics 
 		{
 			get { return this.AutoCreateStatistics;}
 		}
-		Boolean ISql100DatabaseOptions.AutoShrink 
+		Boolean ISql100TSqlDatabaseOptions.AutoShrink 
 		{
 			get { return this.AutoShrink;}
 		}
-		Boolean ISql100DatabaseOptions.AutoUpdateStatistics 
+		Boolean ISql100TSqlDatabaseOptions.AutoUpdateStatistics 
 		{
 			get { return this.AutoUpdateStatistics;}
 		}
-		Boolean ISql100DatabaseOptions.AutoUpdateStatisticsAsync 
+		Boolean ISql100TSqlDatabaseOptions.AutoUpdateStatisticsAsync 
 		{
 			get { return this.AutoUpdateStatisticsAsync;}
 		}
-		Boolean ISql100DatabaseOptions.ChangeTrackingAutoCleanup 
+		Boolean ISql100TSqlDatabaseOptions.ChangeTrackingAutoCleanup 
 		{
 			get { return this.ChangeTrackingAutoCleanup;}
 		}
-		Boolean ISql100DatabaseOptions.ChangeTrackingEnabled 
+		Boolean ISql100TSqlDatabaseOptions.ChangeTrackingEnabled 
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
-		Int32 ISql100DatabaseOptions.ChangeTrackingRetentionPeriod 
+		Int32 ISql100TSqlDatabaseOptions.ChangeTrackingRetentionPeriod 
 		{
 			get { return this.ChangeTrackingRetentionPeriod;}
 		}
-		TimeUnit ISql100DatabaseOptions.ChangeTrackingRetentionUnit 
+		TimeUnit ISql100TSqlDatabaseOptions.ChangeTrackingRetentionUnit 
 		{
 			get { return this.ChangeTrackingRetentionUnit;}
 		}
-		String ISql100DatabaseOptions.Collation 
+		String ISql100TSqlDatabaseOptions.Collation 
 		{
 			get { return this.Collation;}
 		}
-		Int32 ISql100DatabaseOptions.CompatibilityLevel 
+		Int32 ISql100TSqlDatabaseOptions.CompatibilityLevel 
 		{
 			get { return this.CompatibilityLevel;}
 		}
-		Boolean ISql100DatabaseOptions.ConcatNullYieldsNull 
+		Boolean ISql100TSqlDatabaseOptions.ConcatNullYieldsNull 
 		{
 			get { return this.ConcatNullYieldsNull;}
 		}
-		Boolean ISql100DatabaseOptions.CursorCloseOnCommit 
+		Boolean ISql100TSqlDatabaseOptions.CursorCloseOnCommit 
 		{
 			get { return this.CursorCloseOnCommit;}
 		}
-		Boolean ISql100DatabaseOptions.CursorDefaultGlobalScope 
+		Boolean ISql100TSqlDatabaseOptions.CursorDefaultGlobalScope 
 		{
 			get { return this.CursorDefaultGlobalScope;}
 		}
-		Boolean ISql100DatabaseOptions.DatabaseStateOffline 
+		Boolean ISql100TSqlDatabaseOptions.DatabaseStateOffline 
 		{
 			get { return this.DatabaseStateOffline;}
 		}
-		Boolean ISql100DatabaseOptions.DateCorrelationOptimizationOn 
+		Boolean ISql100TSqlDatabaseOptions.DateCorrelationOptimizationOn 
 		{
 			get { return this.DateCorrelationOptimizationOn;}
 		}
-		Boolean ISql100DatabaseOptions.DBChainingOn 
+		Boolean ISql100TSqlDatabaseOptions.DBChainingOn 
 		{
 			get { return this.DBChainingOn;}
 		}
-		Boolean ISql100DatabaseOptions.FullTextEnabled 
+		Boolean ISql100TSqlDatabaseOptions.FullTextEnabled 
 		{
 			get { return this.FullTextEnabled;}
 		}
-		Boolean ISql100DatabaseOptions.HonorBrokerPriority 
+		Boolean ISql100TSqlDatabaseOptions.HonorBrokerPriority 
 		{
 			get { return this.HonorBrokerPriority;}
 		}
-		Boolean ISql100DatabaseOptions.MemoryOptimizedElevateToSnapshot 
+		Boolean ISql100TSqlDatabaseOptions.MemoryOptimizedElevateToSnapshot 
 		{
 			get { return this.MemoryOptimizedElevateToSnapshot;}
 		}
-		Boolean ISql100DatabaseOptions.NumericRoundAbortOn 
+		Boolean ISql100TSqlDatabaseOptions.NumericRoundAbortOn 
 		{
 			get { return this.NumericRoundAbortOn;}
 		}
-		PageVerifyMode ISql100DatabaseOptions.PageVerifyMode 
+		PageVerifyMode ISql100TSqlDatabaseOptions.PageVerifyMode 
 		{
 			get { return this.PageVerifyMode;}
 		}
-		ParameterizationOption ISql100DatabaseOptions.ParameterizationOption 
+		ParameterizationOption ISql100TSqlDatabaseOptions.ParameterizationOption 
 		{
 			get { return this.ParameterizationOption;}
 		}
-		Boolean ISql100DatabaseOptions.QuotedIdentifierOn 
+		Boolean ISql100TSqlDatabaseOptions.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql100DatabaseOptions.ReadOnly 
+		Boolean ISql100TSqlDatabaseOptions.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
-		RecoveryMode ISql100DatabaseOptions.RecoveryMode 
+		RecoveryMode ISql100TSqlDatabaseOptions.RecoveryMode 
 		{
 			get { return this.RecoveryMode;}
 		}
-		Boolean ISql100DatabaseOptions.RecursiveTriggersOn 
+		Boolean ISql100TSqlDatabaseOptions.RecursiveTriggersOn 
 		{
 			get { return this.RecursiveTriggersOn;}
 		}
-		ServiceBrokerOption ISql100DatabaseOptions.ServiceBrokerOption 
+		ServiceBrokerOption ISql100TSqlDatabaseOptions.ServiceBrokerOption 
 		{
 			get { return this.ServiceBrokerOption;}
 		}
-		Boolean ISql100DatabaseOptions.SupplementalLoggingOn 
+		Boolean ISql100TSqlDatabaseOptions.SupplementalLoggingOn 
 		{
 			get { return this.SupplementalLoggingOn;}
 		}
-		Boolean ISql100DatabaseOptions.TornPageProtectionOn 
+		Boolean ISql100TSqlDatabaseOptions.TornPageProtectionOn 
 		{
 			get { return this.TornPageProtectionOn;}
 		}
-		Boolean ISql100DatabaseOptions.TransactionIsolationReadCommittedSnapshot 
+		Boolean ISql100TSqlDatabaseOptions.TransactionIsolationReadCommittedSnapshot 
 		{
 			get { return this.TransactionIsolationReadCommittedSnapshot;}
 		}
-		Boolean ISql100DatabaseOptions.Trustworthy 
+		Boolean ISql100TSqlDatabaseOptions.Trustworthy 
 		{
 			get { return this.Trustworthy;}
 		}
-		UserAccessOption ISql100DatabaseOptions.UserAccessOption 
+		UserAccessOption ISql100TSqlDatabaseOptions.UserAccessOption 
 		{
 			get { return this.UserAccessOption;}
 		}
-		Boolean ISql100DatabaseOptions.VardecimalStorageFormatOn 
+		Boolean ISql100TSqlDatabaseOptions.VardecimalStorageFormatOn 
 		{
 			get { return this.VardecimalStorageFormatOn;}
 		}
-		Boolean ISql100DatabaseOptions.WithEncryption 
+		Boolean ISql100TSqlDatabaseOptions.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100DatabaseOptions.DefaultFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlDatabaseOptions.DefaultFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFilegroup;
+				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100DatabaseOptions.DefaultFileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlDatabaseOptions.DefaultFileStreamFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFileStreamFilegroup;
+				return this.DefaultFileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class DataCompressionOption : ISql100DataCompressionOption
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlDataCompressionOption"/>.
+	/// </summary>
+	public partial class TSqlDataCompressionOption : ISql100TSqlDataCompressionOption
 	{		
-		CompressionLevel ISql100DataCompressionOption.CompressionLevel 
+		CompressionLevel ISql100TSqlDataCompressionOption.CompressionLevel 
 		{
 			get { return this.CompressionLevel;}
 		}
-		Int32 ISql100DataCompressionOption.PartitionNumber 
+		Int32 ISql100TSqlDataCompressionOption.PartitionNumber 
 		{
 			get { return this.PartitionNumber;}
 		}
 	}
-	public partial class Default : ISql100Default
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlDefault"/>.
+	/// </summary>
+	public partial class TSqlDefault : ISql100TSqlDefault
 	{		
-		String ISql100Default.Expression 
+		String ISql100TSqlDefault.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100Default.BoundObjects 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlDefault.BoundObjects 
 		{
 			get 
 			{
@@ -5511,32 +5448,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100Default.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlDefault.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 	}
-	public partial class DefaultConstraint : ISql100DefaultConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlDefaultConstraint"/>.
+	/// </summary>
+	public partial class TSqlDefaultConstraint : ISql100TSqlDefaultConstraint
 	{		
-		Boolean ISql100DefaultConstraint.Disabled 
+		Boolean ISql100TSqlDefaultConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISql100DefaultConstraint.Expression 
+		String ISql100TSqlDefaultConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
-		Boolean ISql100DefaultConstraint.WithValues 
+		Boolean ISql100TSqlDefaultConstraint.WithValues 
 		{
 			get { return this.WithValues;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100DefaultConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -5544,110 +5484,113 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100ExtendedProperty> ISql100DefaultConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlDefaultConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100DefaultConstraint.TargetColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn;
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 	}
-	public partial class DmlTrigger : ISql100DmlTrigger
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlDmlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDmlTrigger : ISql100TSqlDmlTrigger
 	{		
-		Boolean? ISql100DmlTrigger.AnsiNullsOn 
+		Boolean? ISql100TSqlDmlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql100DmlTrigger.ClassName 
+		String ISql100TSqlDmlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		OrderRestriction ISql100DmlTrigger.DeleteOrderRestriction 
+		OrderRestriction ISql100TSqlDmlTrigger.DeleteOrderRestriction 
 		{
 			get { return this.DeleteOrderRestriction;}
 		}
-		Boolean ISql100DmlTrigger.Disabled 
+		Boolean ISql100TSqlDmlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql100DmlTrigger.ExecuteAsCaller 
+		Boolean ISql100TSqlDmlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql100DmlTrigger.ExecuteAsOwner 
+		Boolean ISql100TSqlDmlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql100DmlTrigger.ExecuteAsSelf 
+		Boolean ISql100TSqlDmlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		OrderRestriction ISql100DmlTrigger.InsertOrderRestriction 
+		OrderRestriction ISql100TSqlDmlTrigger.InsertOrderRestriction 
 		{
 			get { return this.InsertOrderRestriction;}
 		}
-		Boolean ISql100DmlTrigger.IsDeleteTrigger 
+		Boolean ISql100TSqlDmlTrigger.IsDeleteTrigger 
 		{
 			get { return this.IsDeleteTrigger;}
 		}
-		Boolean ISql100DmlTrigger.IsInsertTrigger 
+		Boolean ISql100TSqlDmlTrigger.IsInsertTrigger 
 		{
 			get { return this.IsInsertTrigger;}
 		}
-		Boolean ISql100DmlTrigger.IsUpdateTrigger 
+		Boolean ISql100TSqlDmlTrigger.IsUpdateTrigger 
 		{
 			get { return this.IsUpdateTrigger;}
 		}
-		String ISql100DmlTrigger.MethodName 
+		String ISql100TSqlDmlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean ISql100DmlTrigger.NotForReplication 
+		Boolean ISql100TSqlDmlTrigger.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
-		Boolean? ISql100DmlTrigger.QuotedIdentifierOn 
+		Boolean? ISql100TSqlDmlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql100DmlTrigger.TriggerType 
+		TriggerType ISql100TSqlDmlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		OrderRestriction ISql100DmlTrigger.UpdateOrderRestriction 
+		OrderRestriction ISql100TSqlDmlTrigger.UpdateOrderRestriction 
 		{
 			get { return this.UpdateOrderRestriction;}
 		}
-		Boolean ISql100DmlTrigger.WithAppend 
+		Boolean ISql100TSqlDmlTrigger.WithAppend 
 		{
 			get { return this.WithAppend;}
 		}
-		Boolean ISql100DmlTrigger.WithEncryption 
+		Boolean ISql100TSqlDmlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Assembly> ISql100DmlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlDmlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100DmlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlDmlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -5655,17 +5598,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Login> ISql100DmlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlDmlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql100DmlTrigger.TriggerObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql100TSqlDmlTrigger.TriggerObject 
 		{
 			get 
 			{
@@ -5673,32 +5616,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100User> ISql100DmlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlDmlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
 			}
 		}
 	}
-	public partial class Endpoint : ISql100Endpoint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlEndpoint"/>.
+	/// </summary>
+	public partial class TSqlEndpoint : ISql100TSqlEndpoint
 	{		
-		Payload ISql100Endpoint.Payload 
+		Payload ISql100TSqlEndpoint.Payload 
 		{
 			get { return this.Payload;}
 		}
-		Protocol ISql100Endpoint.Protocol 
+		Protocol ISql100TSqlEndpoint.Protocol 
 		{
 			get { return this.Protocol;}
 		}
-		State ISql100Endpoint.State 
+		State ISql100TSqlEndpoint.State 
 		{
 			get { return this.State;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100Endpoint.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlEndpoint.Authorizer 
 		{
 			get 
 			{
@@ -5706,8 +5652,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier> ISql100Endpoint.PayloadSpecifier 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier> ISql100TSqlEndpoint.PayloadSpecifier 
 		{
 			get 
 			{
@@ -5715,8 +5661,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier > ISql100Endpoint.ProtocolSpecifier 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier > ISql100TSqlEndpoint.ProtocolSpecifier 
 		{
 			get 
 			{
@@ -5724,77 +5670,86 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ErrorMessage : ISql100ErrorMessage
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlErrorMessage"/>.
+	/// </summary>
+	public partial class TSqlErrorMessage : ISql100TSqlErrorMessage
 	{		
-		String ISql100ErrorMessage.Language 
+		String ISql100TSqlErrorMessage.Language 
 		{
 			get { return this.Language;}
 		}
-		Int32 ISql100ErrorMessage.MessageNumber 
+		Int32 ISql100TSqlErrorMessage.MessageNumber 
 		{
 			get { return this.MessageNumber;}
 		}
-		String ISql100ErrorMessage.MessageText 
+		String ISql100TSqlErrorMessage.MessageText 
 		{
 			get { return this.MessageText;}
 		}
-		Int32 ISql100ErrorMessage.Severity 
+		Int32 ISql100TSqlErrorMessage.Severity 
 		{
 			get { return this.Severity;}
 		}
-		Boolean ISql100ErrorMessage.WithLog 
+		Boolean ISql100TSqlErrorMessage.WithLog 
 		{
 			get { return this.WithLog;}
 		}
 	}
-	public partial class EventGroup : ISql100EventGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlEventGroup"/>.
+	/// </summary>
+	public partial class TSqlEventGroup : ISql100TSqlEventGroup
 	{		
-		EventGroupType ISql100EventGroup.Group 
+		EventGroupType ISql100TSqlEventGroup.Group 
 		{
 			get { return this.Group;}
 		}
 	}
-	public partial class EventSession : ISql100EventSession
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlEventSession"/>.
+	/// </summary>
+	public partial class TSqlEventSession : ISql100TSqlEventSession
 	{		
-		EventRetentionMode ISql100EventSession.EventRetentionMode 
+		EventRetentionMode ISql100TSqlEventSession.EventRetentionMode 
 		{
 			get { return this.EventRetentionMode;}
 		}
-		Int32 ISql100EventSession.MaxDispatchLatency 
+		Int32 ISql100TSqlEventSession.MaxDispatchLatency 
 		{
 			get { return this.MaxDispatchLatency;}
 		}
-		Int32 ISql100EventSession.MaxEventSize 
+		Int32 ISql100TSqlEventSession.MaxEventSize 
 		{
 			get { return this.MaxEventSize;}
 		}
-		MemoryUnit ISql100EventSession.MaxEventSizeUnit 
+		MemoryUnit ISql100TSqlEventSession.MaxEventSizeUnit 
 		{
 			get { return this.MaxEventSizeUnit;}
 		}
-		Int32 ISql100EventSession.MaxMemory 
+		Int32 ISql100TSqlEventSession.MaxMemory 
 		{
 			get { return this.MaxMemory;}
 		}
-		MemoryUnit ISql100EventSession.MaxMemoryUnit 
+		MemoryUnit ISql100TSqlEventSession.MaxMemoryUnit 
 		{
 			get { return this.MaxMemoryUnit;}
 		}
-		MemoryPartitionMode ISql100EventSession.MemoryPartitionMode 
+		MemoryPartitionMode ISql100TSqlEventSession.MemoryPartitionMode 
 		{
 			get { return this.MemoryPartitionMode;}
 		}
-		Boolean ISql100EventSession.StartupState 
+		Boolean ISql100TSqlEventSession.StartupState 
 		{
 			get { return this.StartupState;}
 		}
-		Boolean ISql100EventSession.TrackCausality 
+		Boolean ISql100TSqlEventSession.TrackCausality 
 		{
 			get { return this.TrackCausality;}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql100EventSession.EventDefinitions 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql100TSqlEventSession.EventDefinitions 
 		{
 			get 
 			{
@@ -5802,8 +5757,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql100EventSession.EventTargets 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql100TSqlEventSession.EventTargets 
 		{
 			get 
 			{
@@ -5811,51 +5766,57 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class EventSessionAction : ISql100EventSessionAction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlEventSessionAction"/>.
+	/// </summary>
+	public partial class TSqlEventSessionAction : ISql100TSqlEventSessionAction
 	{		
-		String ISql100EventSessionAction.ActionName 
+		String ISql100TSqlEventSessionAction.ActionName 
 		{
 			get { return this.ActionName;}
 		}
-		String ISql100EventSessionAction.EventModuleGuid 
+		String ISql100TSqlEventSessionAction.EventModuleGuid 
 		{
 			get { return this.EventModuleGuid;}
 		}
-		String ISql100EventSessionAction.EventPackageName 
+		String ISql100TSqlEventSessionAction.EventPackageName 
 		{
 			get { return this.EventPackageName;}
 		}
 	}
-	public partial class EventSessionDefinitions : ISql100EventSessionDefinitions
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlEventSessionDefinitions"/>.
+	/// </summary>
+	public partial class TSqlEventSessionDefinitions : ISql100TSqlEventSessionDefinitions
 	{		
-		String ISql100EventSessionDefinitions.EventModuleGuid 
+		String ISql100TSqlEventSessionDefinitions.EventModuleGuid 
 		{
 			get { return this.EventModuleGuid;}
 		}
-		String ISql100EventSessionDefinitions.EventName 
+		String ISql100TSqlEventSessionDefinitions.EventName 
 		{
 			get { return this.EventName;}
 		}
-		String ISql100EventSessionDefinitions.EventPackageName 
+		String ISql100TSqlEventSessionDefinitions.EventPackageName 
 		{
 			get { return this.EventPackageName;}
 		}
-		String ISql100EventSessionDefinitions.WhereExpression 
+		String ISql100TSqlEventSessionDefinitions.WhereExpression 
 		{
 			get { return this.WhereExpression;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100EventSessionAction> ISql100EventSessionDefinitions.Actions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventSessionAction> ISql100TSqlEventSessionDefinitions.Actions 
 		{
 			get 
 			{
-				return this.Actions;
+				return this.Actions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventSessionAction>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql100EventSessionDefinitions.AttributeSettings 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql100TSqlEventSessionDefinitions.AttributeSettings 
 		{
 			get 
 			{
@@ -5863,34 +5824,40 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class EventSessionSetting : ISql100EventSessionSetting
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlEventSessionSetting"/>.
+	/// </summary>
+	public partial class TSqlEventSessionSetting : ISql100TSqlEventSessionSetting
 	{		
-		String ISql100EventSessionSetting.SettingName 
+		String ISql100TSqlEventSessionSetting.SettingName 
 		{
 			get { return this.SettingName;}
 		}
-		String ISql100EventSessionSetting.SettingValue 
+		String ISql100TSqlEventSessionSetting.SettingValue 
 		{
 			get { return this.SettingValue;}
 		}
 	}
-	public partial class EventSessionTarget : ISql100EventSessionTarget
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlEventSessionTarget"/>.
+	/// </summary>
+	public partial class TSqlEventSessionTarget : ISql100TSqlEventSessionTarget
 	{		
-		String ISql100EventSessionTarget.EventModuleGuid 
+		String ISql100TSqlEventSessionTarget.EventModuleGuid 
 		{
 			get { return this.EventModuleGuid;}
 		}
-		String ISql100EventSessionTarget.EventPackageName 
+		String ISql100TSqlEventSessionTarget.EventPackageName 
 		{
 			get { return this.EventPackageName;}
 		}
-		String ISql100EventSessionTarget.TargetName 
+		String ISql100TSqlEventSessionTarget.TargetName 
 		{
 			get { return this.TargetName;}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql100EventSessionTarget.ParameterSettings 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql100TSqlEventSessionTarget.ParameterSettings 
 		{
 			get 
 			{
@@ -5898,81 +5865,90 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class EventTypeSpecifier : ISql100EventTypeSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlEventTypeSpecifier"/>.
+	/// </summary>
+	public partial class TSqlEventTypeSpecifier : ISql100TSqlEventTypeSpecifier
 	{		
-		EventType ISql100EventTypeSpecifier.EventType 
+		EventType ISql100TSqlEventTypeSpecifier.EventType 
 		{
 			get { return this.EventType;}
 		}
-		OrderRestriction ISql100EventTypeSpecifier.Order 
+		OrderRestriction ISql100TSqlEventTypeSpecifier.Order 
 		{
 			get { return this.Order;}
 		}
 	}
-	public partial class ExtendedProcedure : ISql100ExtendedProcedure
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlExtendedProcedure"/>.
+	/// </summary>
+	public partial class TSqlExtendedProcedure : ISql100TSqlExtendedProcedure
 	{		
-		Boolean ISql100ExtendedProcedure.ExeccuteAsCaller 
+		Boolean ISql100TSqlExtendedProcedure.ExeccuteAsCaller 
 		{
 			get { return this.ExeccuteAsCaller;}
 		}
-		Boolean ISql100ExtendedProcedure.ExecuteAsOwner 
+		Boolean ISql100TSqlExtendedProcedure.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql100ExtendedProcedure.ExecuteAsSelf 
+		Boolean ISql100TSqlExtendedProcedure.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql100ExtendedProcedure.WithEncryption 
+		Boolean ISql100TSqlExtendedProcedure.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Login> ISql100ExtendedProcedure.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlExtendedProcedure.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Parameter> ISql100ExtendedProcedure.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter> ISql100TSqlExtendedProcedure.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100ExtendedProcedure.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlExtendedProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100User> ISql100ExtendedProcedure.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlExtendedProcedure.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
 			}
 		}
 	}
-	public partial class ExtendedProperty : ISql100ExtendedProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlExtendedProperty"/>.
+	/// </summary>
+	public partial class TSqlExtendedProperty : ISql100TSqlExtendedProperty
 	{		
-		String ISql100ExtendedProperty.Value 
+		String ISql100TSqlExtendedProperty.Value 
 		{
 			get { return this.Value;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> ISql100ExtendedProperty.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> ISql100TSqlExtendedProperty.Host 
 		{
 			get 
 			{
@@ -5980,141 +5956,153 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SqlFile : ISql100SqlFile
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlSqlFile"/>.
+	/// </summary>
+	public partial class TSqlSqlFile : ISql100TSqlSqlFile
 	{		
-		Int32? ISql100SqlFile.FileGrowth 
+		Int32? ISql100TSqlSqlFile.FileGrowth 
 		{
 			get { return this.FileGrowth;}
 		}
-		MemoryUnit ISql100SqlFile.FileGrowthUnit 
+		MemoryUnit ISql100TSqlSqlFile.FileGrowthUnit 
 		{
 			get { return this.FileGrowthUnit;}
 		}
-		String ISql100SqlFile.FileName 
+		String ISql100TSqlSqlFile.FileName 
 		{
 			get { return this.FileName;}
 		}
-		Boolean ISql100SqlFile.IsLogFile 
+		Boolean ISql100TSqlSqlFile.IsLogFile 
 		{
 			get { return this.IsLogFile;}
 		}
-		Int32? ISql100SqlFile.MaxSize 
+		Int32? ISql100TSqlSqlFile.MaxSize 
 		{
 			get { return this.MaxSize;}
 		}
-		MemoryUnit ISql100SqlFile.MaxSizeUnit 
+		MemoryUnit ISql100TSqlSqlFile.MaxSizeUnit 
 		{
 			get { return this.MaxSizeUnit;}
 		}
-		Boolean ISql100SqlFile.Offline 
+		Boolean ISql100TSqlSqlFile.Offline 
 		{
 			get { return this.Offline;}
 		}
-		Int32? ISql100SqlFile.Size 
+		Int32? ISql100TSqlSqlFile.Size 
 		{
 			get { return this.Size;}
 		}
-		MemoryUnit ISql100SqlFile.SizeUnit 
+		MemoryUnit ISql100TSqlSqlFile.SizeUnit 
 		{
 			get { return this.SizeUnit;}
 		}
-		Boolean ISql100SqlFile.Unlimited 
+		Boolean ISql100TSqlSqlFile.Unlimited 
 		{
 			get { return this.Unlimited;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100SqlFile.Filegroup 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlSqlFile.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class Filegroup : ISql100Filegroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlFilegroup"/>.
+	/// </summary>
+	public partial class TSqlFilegroup : ISql100TSqlFilegroup
 	{		
-		Boolean ISql100Filegroup.ContainsFileStream 
+		Boolean ISql100TSqlFilegroup.ContainsFileStream 
 		{
 			get { return this.ContainsFileStream;}
 		}
-		Boolean ISql100Filegroup.ReadOnly 
+		Boolean ISql100TSqlFilegroup.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
 	}
-	public partial class ForeignKeyConstraint : ISql100ForeignKeyConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlForeignKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlForeignKeyConstraint : ISql100TSqlForeignKeyConstraint
 	{		
-		ForeignKeyAction ISql100ForeignKeyConstraint.DeleteAction 
+		ForeignKeyAction ISql100TSqlForeignKeyConstraint.DeleteAction 
 		{
 			get { return this.DeleteAction;}
 		}
-		Boolean ISql100ForeignKeyConstraint.Disabled 
+		Boolean ISql100TSqlForeignKeyConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql100ForeignKeyConstraint.NotForReplication 
+		Boolean ISql100TSqlForeignKeyConstraint.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
-		ForeignKeyAction ISql100ForeignKeyConstraint.UpdateAction 
+		ForeignKeyAction ISql100TSqlForeignKeyConstraint.UpdateAction 
 		{
 			get { return this.UpdateAction;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100ForeignKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlForeignKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100ForeignKeyConstraint.ForeignColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlForeignKeyConstraint.ForeignColumns 
 		{
 			get 
 			{
-				return this.ForeignColumns;
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Table> ISql100ForeignKeyConstraint.ForeignTable 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlForeignKeyConstraint.ForeignTable 
 		{
 			get 
 			{
-				return this.ForeignTable;
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100ExtendedProperty> ISql100ForeignKeyConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlForeignKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
 			}
 		}
 	}
-	public partial class FullTextCatalog : ISql100FullTextCatalog
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlFullTextCatalog"/>.
+	/// </summary>
+	public partial class TSqlFullTextCatalog : ISql100TSqlFullTextCatalog
 	{		
-		Boolean? ISql100FullTextCatalog.AccentSensitivity 
+		Boolean? ISql100TSqlFullTextCatalog.AccentSensitivity 
 		{
 			get { return this.AccentSensitivity;}
 		}
-		Boolean ISql100FullTextCatalog.IsDefault 
+		Boolean ISql100TSqlFullTextCatalog.IsDefault 
 		{
 			get { return this.IsDefault;}
 		}
-		String ISql100FullTextCatalog.Path 
+		String ISql100TSqlFullTextCatalog.Path 
 		{
 			get { return this.Path;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100FullTextCatalog.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlFullTextCatalog.Authorizer 
 		{
 			get 
 			{
@@ -6122,40 +6110,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100FullTextCatalog.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlFullTextCatalog.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class FullTextIndex : ISql100FullTextIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlFullTextIndex"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndex : ISql100TSqlFullTextIndex
 	{		
-		ChangeTrackingOption ISql100FullTextIndex.ChangeTracking 
+		ChangeTrackingOption ISql100TSqlFullTextIndex.ChangeTracking 
 		{
 			get { return this.ChangeTracking;}
 		}
-		Boolean ISql100FullTextIndex.Disabled 
+		Boolean ISql100TSqlFullTextIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql100FullTextIndex.Replicated 
+		Boolean ISql100TSqlFullTextIndex.Replicated 
 		{
 			get { return this.Replicated;}
 		}
-		Boolean ISql100FullTextIndex.StopListOff 
+		Boolean ISql100TSqlFullTextIndex.StopListOff 
 		{
 			get { return this.StopListOff;}
 		}
-		Boolean ISql100FullTextIndex.UseSystemStopList 
+		Boolean ISql100TSqlFullTextIndex.UseSystemStopList 
 		{
 			get { return this.UseSystemStopList;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100FullTextIndex.Catalog 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlFullTextIndex.Catalog 
 		{
 			get 
 			{
@@ -6163,26 +6154,26 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100FullTextIndex.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlFullTextIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100FullTextIndex.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlFullTextIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql100FullTextIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql100TSqlFullTextIndex.IndexedObject 
 		{
 			get 
 			{
@@ -6190,8 +6181,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100FullTextIndex.StopList 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlFullTextIndex.StopList 
 		{
 			get 
 			{
@@ -6199,8 +6190,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100FullTextIndex.UniqueIndexName 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlFullTextIndex.UniqueIndexName 
 		{
 			get 
 			{
@@ -6208,36 +6199,42 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class FullTextIndexColumnSpecifier : ISql100FullTextIndexColumnSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlFullTextIndexColumnSpecifier"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndexColumnSpecifier : ISql100TSqlFullTextIndexColumnSpecifier
 	{		
-		Int32? ISql100FullTextIndexColumnSpecifier.LanguageId 
+		Int32? ISql100TSqlFullTextIndexColumnSpecifier.LanguageId 
 		{
 			get { return this.LanguageId;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100FullTextIndexColumnSpecifier.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlFullTextIndexColumnSpecifier.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100FullTextIndexColumnSpecifier.TypeColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlFullTextIndexColumnSpecifier.TypeColumn 
 		{
 			get 
 			{
-				return this.TypeColumn;
+				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 	}
-	public partial class FullTextStopList : ISql100FullTextStopList
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlFullTextStopList"/>.
+	/// </summary>
+	public partial class TSqlFullTextStopList : ISql100TSqlFullTextStopList
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100FullTextStopList.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlFullTextStopList.Authorizer 
 		{
 			get 
 			{
@@ -6245,255 +6242,273 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class HttpProtocolSpecifier : ISql100HttpProtocolSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlHttpProtocolSpecifier"/>.
+	/// </summary>
+	public partial class TSqlHttpProtocolSpecifier : ISql100TSqlHttpProtocolSpecifier
 	{		
-		AuthenticationModes ISql100HttpProtocolSpecifier.AuthenticationMode 
+		AuthenticationModes ISql100TSqlHttpProtocolSpecifier.AuthenticationMode 
 		{
 			get { return this.AuthenticationMode;}
 		}
-		String ISql100HttpProtocolSpecifier.AuthenticationRealm 
+		String ISql100TSqlHttpProtocolSpecifier.AuthenticationRealm 
 		{
 			get { return this.AuthenticationRealm;}
 		}
-		Int32? ISql100HttpProtocolSpecifier.ClearPort 
+		Int32? ISql100TSqlHttpProtocolSpecifier.ClearPort 
 		{
 			get { return this.ClearPort;}
 		}
-		Boolean ISql100HttpProtocolSpecifier.CompressionEnabled 
+		Boolean ISql100TSqlHttpProtocolSpecifier.CompressionEnabled 
 		{
 			get { return this.CompressionEnabled;}
 		}
-		String ISql100HttpProtocolSpecifier.DefaultLogonDomain 
+		String ISql100TSqlHttpProtocolSpecifier.DefaultLogonDomain 
 		{
 			get { return this.DefaultLogonDomain;}
 		}
-		Boolean ISql100HttpProtocolSpecifier.ListeningOnAllNoneReservedSites 
+		Boolean ISql100TSqlHttpProtocolSpecifier.ListeningOnAllNoneReservedSites 
 		{
 			get { return this.ListeningOnAllNoneReservedSites;}
 		}
-		Boolean ISql100HttpProtocolSpecifier.ListeningOnAllSites 
+		Boolean ISql100TSqlHttpProtocolSpecifier.ListeningOnAllSites 
 		{
 			get { return this.ListeningOnAllSites;}
 		}
-		String ISql100HttpProtocolSpecifier.Path 
+		String ISql100TSqlHttpProtocolSpecifier.Path 
 		{
 			get { return this.Path;}
 		}
-		HttpPorts ISql100HttpProtocolSpecifier.Ports 
+		HttpPorts ISql100TSqlHttpProtocolSpecifier.Ports 
 		{
 			get { return this.Ports;}
 		}
-		Int32? ISql100HttpProtocolSpecifier.SslPort 
+		Int32? ISql100TSqlHttpProtocolSpecifier.SslPort 
 		{
 			get { return this.SslPort;}
 		}
-		String ISql100HttpProtocolSpecifier.Website 
+		String ISql100TSqlHttpProtocolSpecifier.Website 
 		{
 			get { return this.Website;}
 		}
 	}
-	public partial class LinkedServer : ISql100LinkedServer
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlLinkedServer"/>.
+	/// </summary>
+	public partial class TSqlLinkedServer : ISql100TSqlLinkedServer
 	{		
-		String ISql100LinkedServer.Catalog 
+		String ISql100TSqlLinkedServer.Catalog 
 		{
 			get { return this.Catalog;}
 		}
-		Boolean ISql100LinkedServer.CollationCompatible 
+		Boolean ISql100TSqlLinkedServer.CollationCompatible 
 		{
 			get { return this.CollationCompatible;}
 		}
-		String ISql100LinkedServer.CollationName 
+		String ISql100TSqlLinkedServer.CollationName 
 		{
 			get { return this.CollationName;}
 		}
-		Int32 ISql100LinkedServer.ConnectTimeout 
+		Int32 ISql100TSqlLinkedServer.ConnectTimeout 
 		{
 			get { return this.ConnectTimeout;}
 		}
-		Boolean ISql100LinkedServer.DataAccess 
+		Boolean ISql100TSqlLinkedServer.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		String ISql100LinkedServer.DataSource 
+		String ISql100TSqlLinkedServer.DataSource 
 		{
 			get { return this.DataSource;}
 		}
-		Boolean ISql100LinkedServer.IsDistributor 
+		Boolean ISql100TSqlLinkedServer.IsDistributor 
 		{
 			get { return this.IsDistributor;}
 		}
-		Boolean ISql100LinkedServer.IsPublisher 
+		Boolean ISql100TSqlLinkedServer.IsPublisher 
 		{
 			get { return this.IsPublisher;}
 		}
-		Boolean ISql100LinkedServer.IsSubscriber 
+		Boolean ISql100TSqlLinkedServer.IsSubscriber 
 		{
 			get { return this.IsSubscriber;}
 		}
-		Boolean ISql100LinkedServer.LazySchemaValidationEnabled 
+		Boolean ISql100TSqlLinkedServer.LazySchemaValidationEnabled 
 		{
 			get { return this.LazySchemaValidationEnabled;}
 		}
-		String ISql100LinkedServer.Location 
+		String ISql100TSqlLinkedServer.Location 
 		{
 			get { return this.Location;}
 		}
-		String ISql100LinkedServer.ProductName 
+		String ISql100TSqlLinkedServer.ProductName 
 		{
 			get { return this.ProductName;}
 		}
-		String ISql100LinkedServer.ProviderName 
+		String ISql100TSqlLinkedServer.ProviderName 
 		{
 			get { return this.ProviderName;}
 		}
-		String ISql100LinkedServer.ProviderString 
+		String ISql100TSqlLinkedServer.ProviderString 
 		{
 			get { return this.ProviderString;}
 		}
-		Int32 ISql100LinkedServer.QueryTimeout 
+		Int32 ISql100TSqlLinkedServer.QueryTimeout 
 		{
 			get { return this.QueryTimeout;}
 		}
-		Boolean ISql100LinkedServer.RemoteProcTransactionPromotionEnabled 
+		Boolean ISql100TSqlLinkedServer.RemoteProcTransactionPromotionEnabled 
 		{
 			get { return this.RemoteProcTransactionPromotionEnabled;}
 		}
-		Boolean ISql100LinkedServer.RpcEnabled 
+		Boolean ISql100TSqlLinkedServer.RpcEnabled 
 		{
 			get { return this.RpcEnabled;}
 		}
-		Boolean ISql100LinkedServer.RpcOutEnabled 
+		Boolean ISql100TSqlLinkedServer.RpcOutEnabled 
 		{
 			get { return this.RpcOutEnabled;}
 		}
-		Boolean ISql100LinkedServer.UseRemoteCollation 
+		Boolean ISql100TSqlLinkedServer.UseRemoteCollation 
 		{
 			get { return this.UseRemoteCollation;}
 		}
 	}
-	public partial class LinkedServerLogin : ISql100LinkedServerLogin
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlLinkedServerLogin"/>.
+	/// </summary>
+	public partial class TSqlLinkedServerLogin : ISql100TSqlLinkedServerLogin
 	{		
-		String ISql100LinkedServerLogin.LinkedServerLoginName 
+		String ISql100TSqlLinkedServerLogin.LinkedServerLoginName 
 		{
 			get { return this.LinkedServerLoginName;}
 		}
-		String ISql100LinkedServerLogin.LinkedServerPassword 
+		String ISql100TSqlLinkedServerLogin.LinkedServerPassword 
 		{
 			get { return this.LinkedServerPassword;}
 		}
-		Boolean ISql100LinkedServerLogin.UseSelf 
+		Boolean ISql100TSqlLinkedServerLogin.UseSelf 
 		{
 			get { return this.UseSelf;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100LinkedServer> ISql100LinkedServerLogin.LinkedServer 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLinkedServer> ISql100TSqlLinkedServerLogin.LinkedServer 
 		{
 			get 
 			{
-				return this.LinkedServer;
+				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLinkedServer>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Login> ISql100LinkedServerLogin.LocalLogin 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlLinkedServerLogin.LocalLogin 
 		{
 			get 
 			{
-				return this.LocalLogin;
+				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
 			}
 		}
 	}
-	public partial class Login : ISql100Login
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlLogin"/>.
+	/// </summary>
+	public partial class TSqlLogin : ISql100TSqlLogin
 	{		
-		Boolean ISql100Login.CheckExpiration 
+		Boolean ISql100TSqlLogin.CheckExpiration 
 		{
 			get { return this.CheckExpiration;}
 		}
-		Boolean ISql100Login.CheckPolicy 
+		Boolean ISql100TSqlLogin.CheckPolicy 
 		{
 			get { return this.CheckPolicy;}
 		}
-		String ISql100Login.DefaultDatabase 
+		String ISql100TSqlLogin.DefaultDatabase 
 		{
 			get { return this.DefaultDatabase;}
 		}
-		String ISql100Login.DefaultLanguage 
+		String ISql100TSqlLogin.DefaultLanguage 
 		{
 			get { return this.DefaultLanguage;}
 		}
-		Boolean ISql100Login.Disabled 
+		Boolean ISql100TSqlLogin.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		LoginEncryptionOption ISql100Login.EncryptionOption 
+		LoginEncryptionOption ISql100TSqlLogin.EncryptionOption 
 		{
 			get { return this.EncryptionOption;}
 		}
-		Boolean ISql100Login.MappedToWindowsLogin 
+		Boolean ISql100TSqlLogin.MappedToWindowsLogin 
 		{
 			get { return this.MappedToWindowsLogin;}
 		}
-		String ISql100Login.Password 
+		String ISql100TSqlLogin.Password 
 		{
 			get { return this.Password;}
 		}
-		Boolean ISql100Login.PasswordHashed 
+		Boolean ISql100TSqlLogin.PasswordHashed 
 		{
 			get { return this.PasswordHashed;}
 		}
-		Boolean ISql100Login.PasswordMustChange 
+		Boolean ISql100TSqlLogin.PasswordMustChange 
 		{
 			get { return this.PasswordMustChange;}
 		}
-		String ISql100Login.Sid 
+		String ISql100TSqlLogin.Sid 
 		{
 			get { return this.Sid;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100AsymmetricKey> ISql100Login.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey> ISql100TSqlLogin.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Certificate> ISql100Login.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlLogin.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Credential> ISql100Login.Credential 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCredential> ISql100TSqlLogin.Credential 
 		{
 			get 
 			{
-				return this.Credential;
+				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCredential>();
 			}
 		}
 	}
-	public partial class MasterKey : ISql100MasterKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlMasterKey"/>.
+	/// </summary>
+	public partial class TSqlMasterKey : ISql100TSqlMasterKey
 	{		
-		String ISql100MasterKey.Password 
+		String ISql100TSqlMasterKey.Password 
 		{
 			get { return this.Password;}
 		}
 	}
-	public partial class MessageType : ISql100MessageType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlMessageType"/>.
+	/// </summary>
+	public partial class TSqlMessageType : ISql100TSqlMessageType
 	{		
-		ValidationMethod ISql100MessageType.ValidationMethod 
+		ValidationMethod ISql100TSqlMessageType.ValidationMethod 
 		{
 			get { return this.ValidationMethod;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100MessageType.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlMessageType.Authorizer 
 		{
 			get 
 			{
@@ -6501,33 +6516,36 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100XmlSchemaCollection> ISql100MessageType.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection> ISql100TSqlMessageType.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class PartitionFunction : ISql100PartitionFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlPartitionFunction"/>.
+	/// </summary>
+	public partial class TSqlPartitionFunction : ISql100TSqlPartitionFunction
 	{		
-		PartitionRange ISql100PartitionFunction.Range 
+		PartitionRange ISql100TSqlPartitionFunction.Range 
 		{
 			get { return this.Range;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionValue> ISql100PartitionFunction.BoundaryValues 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionValue> ISql100TSqlPartitionFunction.BoundaryValues 
 		{
 			get 
 			{
-				return this.BoundaryValues;
+				return this.BoundaryValues.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionValue>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100PartitionFunction.ParameterType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
@@ -6535,40 +6553,46 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class PartitionScheme : ISql100PartitionScheme
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlPartitionScheme"/>.
+	/// </summary>
+	public partial class TSqlPartitionScheme : ISql100TSqlPartitionScheme
 	{		
-		Boolean ISql100PartitionScheme.AllToOneFilegroup 
+		Boolean ISql100TSqlPartitionScheme.AllToOneFilegroup 
 		{
 			get { return this.AllToOneFilegroup;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100PartitionScheme.Filegroups 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlPartitionScheme.Filegroups 
 		{
 			get 
 			{
-				return this.Filegroups;
+				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionFunction> ISql100PartitionScheme.PartitionFunction 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionFunction> ISql100TSqlPartitionScheme.PartitionFunction 
 		{
 			get 
 			{
-				return this.PartitionFunction;
+				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionFunction>();
 			}
 		}
 	}
-	public partial class PartitionValue : ISql100PartitionValue
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlPartitionValue"/>.
+	/// </summary>
+	public partial class TSqlPartitionValue : ISql100TSqlPartitionValue
 	{		
-		String ISql100PartitionValue.Expression 
+		String ISql100TSqlPartitionValue.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100PartitionValue.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlPartitionValue.ExpressionDependencies 
 		{
 			get 
 			{
@@ -6576,36 +6600,39 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Permission : ISql100Permission
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlPermission"/>.
+	/// </summary>
+	public partial class TSqlPermission : ISql100TSqlPermission
 	{		
-		PermissionAction ISql100Permission.PermissionAction 
+		PermissionAction ISql100TSqlPermission.PermissionAction 
 		{
 			get { return this.PermissionAction;}
 		}
-		PermissionType ISql100Permission.PermissionType 
+		PermissionType ISql100TSqlPermission.PermissionType 
 		{
 			get { return this.PermissionType;}
 		}
-		Boolean ISql100Permission.WithAllPrivileges 
+		Boolean ISql100TSqlPermission.WithAllPrivileges 
 		{
 			get { return this.WithAllPrivileges;}
 		}
-		Boolean ISql100Permission.WithGrantOption 
+		Boolean ISql100TSqlPermission.WithGrantOption 
 		{
 			get { return this.WithGrantOption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100Permission.ExcludedColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlPermission.ExcludedColumns 
 		{
 			get 
 			{
-				return this.ExcludedColumns;
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql100Permission.Grantee 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql100TSqlPermission.Grantee 
 		{
 			get 
 			{
@@ -6613,8 +6640,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql100Permission.Grantor 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql100TSqlPermission.Grantor 
 		{
 			get 
 			{
@@ -6622,17 +6649,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100Permission.RevokedGrantOptionColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlPermission.RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return this.RevokedGrantOptionColumns;
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql100Permission.SecuredObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql100TSqlPermission.SecuredObject 
 		{
 			get 
 			{
@@ -6640,183 +6667,189 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class PrimaryKeyConstraint : ISql100PrimaryKeyConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlPrimaryKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlPrimaryKeyConstraint : ISql100TSqlPrimaryKeyConstraint
 	{		
-		Boolean ISql100PrimaryKeyConstraint.AllowPageLocks 
+		Boolean ISql100TSqlPrimaryKeyConstraint.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql100PrimaryKeyConstraint.AllowRowLocks 
+		Boolean ISql100TSqlPrimaryKeyConstraint.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Int32? ISql100PrimaryKeyConstraint.BucketCount 
+		Int32? ISql100TSqlPrimaryKeyConstraint.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql100PrimaryKeyConstraint.Clustered 
+		Boolean ISql100TSqlPrimaryKeyConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql100PrimaryKeyConstraint.Disabled 
+		Boolean ISql100TSqlPrimaryKeyConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean? ISql100PrimaryKeyConstraint.FileStreamNull 
+		Boolean? ISql100TSqlPrimaryKeyConstraint.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Int32? ISql100PrimaryKeyConstraint.FillFactor 
+		Int32? ISql100TSqlPrimaryKeyConstraint.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql100PrimaryKeyConstraint.Hash 
+		Boolean ISql100TSqlPrimaryKeyConstraint.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql100PrimaryKeyConstraint.IgnoreDuplicateKey 
+		Boolean ISql100TSqlPrimaryKeyConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql100PrimaryKeyConstraint.RecomputeStatistics 
+		Boolean ISql100TSqlPrimaryKeyConstraint.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql100PrimaryKeyConstraint.WithPadIndex 
+		Boolean ISql100TSqlPrimaryKeyConstraint.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100PrimaryKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlPrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100DataCompressionOption> ISql100PrimaryKeyConstraint.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataCompressionOption> ISql100TSqlPrimaryKeyConstraint.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100PrimaryKeyConstraint.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlPrimaryKeyConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100PrimaryKeyConstraint.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlPrimaryKeyConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100PrimaryKeyConstraint.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlPrimaryKeyConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100ExtendedProperty> ISql100PrimaryKeyConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlPrimaryKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100PrimaryKeyConstraint.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlPrimaryKeyConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100PrimaryKeyConstraint.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlPrimaryKeyConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Procedure : ISql100Procedure
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlProcedure"/>.
+	/// </summary>
+	public partial class TSqlProcedure : ISql100TSqlProcedure
 	{		
-		Boolean? ISql100Procedure.AnsiNullsOn 
+		Boolean? ISql100TSqlProcedure.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql100Procedure.ClassName 
+		String ISql100TSqlProcedure.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql100Procedure.ExecuteAsCaller 
+		Boolean ISql100TSqlProcedure.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql100Procedure.ExecuteAsOwner 
+		Boolean ISql100TSqlProcedure.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql100Procedure.ExecuteAsSelf 
+		Boolean ISql100TSqlProcedure.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql100Procedure.ForReplication 
+		Boolean ISql100TSqlProcedure.ForReplication 
 		{
 			get { return this.ForReplication;}
 		}
-		Boolean ISql100Procedure.IsReplicated 
+		Boolean ISql100TSqlProcedure.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql100Procedure.MethodName 
+		String ISql100TSqlProcedure.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql100Procedure.QuotedIdentifierOn 
+		Boolean? ISql100TSqlProcedure.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql100Procedure.WithEncryption 
+		Boolean ISql100TSqlProcedure.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql100Procedure.WithRecompile 
+		Boolean ISql100TSqlProcedure.WithRecompile 
 		{
 			get { return this.WithRecompile;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Assembly> ISql100Procedure.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlProcedure.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100Procedure.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlProcedure.BodyDependencies 
 		{
 			get 
 			{
@@ -6824,184 +6857,190 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Login> ISql100Procedure.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlProcedure.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Parameter> ISql100Procedure.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter> ISql100TSqlProcedure.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Procedure> ISql100Procedure.ParentProcedure 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedure> ISql100TSqlProcedure.ParentProcedure 
 		{
 			get 
 			{
-				return this.ParentProcedure;
+				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedure>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100Procedure.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100User> ISql100Procedure.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlProcedure.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
 			}
 		}
 	}
-	public partial class Queue : ISql100Queue
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlQueue"/>.
+	/// </summary>
+	public partial class TSqlQueue : ISql100TSqlQueue
 	{		
-		Boolean ISql100Queue.ActivationExecuteAsCaller 
+		Boolean ISql100TSqlQueue.ActivationExecuteAsCaller 
 		{
 			get { return this.ActivationExecuteAsCaller;}
 		}
-		Boolean ISql100Queue.ActivationExecuteAsOwner 
+		Boolean ISql100TSqlQueue.ActivationExecuteAsOwner 
 		{
 			get { return this.ActivationExecuteAsOwner;}
 		}
-		Boolean ISql100Queue.ActivationExecuteAsSelf 
+		Boolean ISql100TSqlQueue.ActivationExecuteAsSelf 
 		{
 			get { return this.ActivationExecuteAsSelf;}
 		}
-		Int32? ISql100Queue.ActivationMaxQueueReaders 
+		Int32? ISql100TSqlQueue.ActivationMaxQueueReaders 
 		{
 			get { return this.ActivationMaxQueueReaders;}
 		}
-		Boolean? ISql100Queue.ActivationStatusOn 
+		Boolean? ISql100TSqlQueue.ActivationStatusOn 
 		{
 			get { return this.ActivationStatusOn;}
 		}
-		Boolean ISql100Queue.PoisonMessageHandlingStatusOn 
+		Boolean ISql100TSqlQueue.PoisonMessageHandlingStatusOn 
 		{
 			get { return this.PoisonMessageHandlingStatusOn;}
 		}
-		Boolean ISql100Queue.RetentionOn 
+		Boolean ISql100TSqlQueue.RetentionOn 
 		{
 			get { return this.RetentionOn;}
 		}
-		Boolean ISql100Queue.StatusOn 
+		Boolean ISql100TSqlQueue.StatusOn 
 		{
 			get { return this.StatusOn;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Procedure> ISql100Queue.ActivationProcedure 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedure> ISql100TSqlQueue.ActivationProcedure 
 		{
 			get 
 			{
-				return this.ActivationProcedure;
+				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedure>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100Queue.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlQueue.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100Queue.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlQueue.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Login> ISql100Queue.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlQueue.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100Queue.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlQueue.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100Queue.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlQueue.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100Queue.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlQueue.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100User> ISql100Queue.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlQueue.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
 			}
 		}
 	}
-	public partial class QueueEventNotification : ISql100QueueEventNotification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlQueueEventNotification"/>.
+	/// </summary>
+	public partial class TSqlQueueEventNotification : ISql100TSqlQueueEventNotification
 	{		
-		String ISql100QueueEventNotification.BrokerInstanceSpecifier 
+		String ISql100TSqlQueueEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql100QueueEventNotification.BrokerService 
+		String ISql100TSqlQueueEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql100QueueEventNotification.WithFanIn 
+		Boolean ISql100TSqlQueueEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100EventGroup> ISql100QueueEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventGroup> ISql100TSqlQueueEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql100QueueEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql100TSqlQueueEventNotification.EventType 
 		{
 			get 
 			{
@@ -7009,28 +7048,31 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Queue> ISql100QueueEventNotification.Queue 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueue> ISql100TSqlQueueEventNotification.Queue 
 		{
 			get 
 			{
-				return this.Queue;
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueue>();
 			}
 		}
 	}
-	public partial class RemoteServiceBinding : ISql100RemoteServiceBinding
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlRemoteServiceBinding"/>.
+	/// </summary>
+	public partial class TSqlRemoteServiceBinding : ISql100TSqlRemoteServiceBinding
 	{		
-		Boolean ISql100RemoteServiceBinding.Anonymous 
+		Boolean ISql100TSqlRemoteServiceBinding.Anonymous 
 		{
 			get { return this.Anonymous;}
 		}
-		String ISql100RemoteServiceBinding.Service 
+		String ISql100TSqlRemoteServiceBinding.Service 
 		{
 			get { return this.Service;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100RemoteServiceBinding.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlRemoteServiceBinding.Authorizer 
 		{
 			get 
 			{
@@ -7038,24 +7080,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100User> ISql100RemoteServiceBinding.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlRemoteServiceBinding.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
 			}
 		}
 	}
-	public partial class ResourceGovernor : ISql100ResourceGovernor
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlResourceGovernor"/>.
+	/// </summary>
+	public partial class TSqlResourceGovernor : ISql100TSqlResourceGovernor
 	{		
-		Boolean? ISql100ResourceGovernor.Enabled 
+		Boolean? ISql100TSqlResourceGovernor.Enabled 
 		{
 			get { return this.Enabled;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100ResourceGovernor.ClassifierFunction 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlResourceGovernor.ClassifierFunction 
 		{
 			get 
 			{
@@ -7063,30 +7108,36 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ResourcePool : ISql100ResourcePool
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlResourcePool"/>.
+	/// </summary>
+	public partial class TSqlResourcePool : ISql100TSqlResourcePool
 	{		
-		Int32 ISql100ResourcePool.MaxCpuPercent 
+		Int32 ISql100TSqlResourcePool.MaxCpuPercent 
 		{
 			get { return this.MaxCpuPercent;}
 		}
-		Int32 ISql100ResourcePool.MaxMemoryPercent 
+		Int32 ISql100TSqlResourcePool.MaxMemoryPercent 
 		{
 			get { return this.MaxMemoryPercent;}
 		}
-		Int32 ISql100ResourcePool.MinCpuPercent 
+		Int32 ISql100TSqlResourcePool.MinCpuPercent 
 		{
 			get { return this.MinCpuPercent;}
 		}
-		Int32 ISql100ResourcePool.MinMemoryPercent 
+		Int32 ISql100TSqlResourcePool.MinMemoryPercent 
 		{
 			get { return this.MinMemoryPercent;}
 		}
 	}
-	public partial class Role : ISql100Role
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlRole"/>.
+	/// </summary>
+	public partial class TSqlRole : ISql100TSqlRole
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100Role.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlRole.Authorizer 
 		{
 			get 
 			{
@@ -7094,11 +7145,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class RoleMembership : ISql100RoleMembership
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlRoleMembership : ISql100TSqlRoleMembership
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql100RoleMembership.Member 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql100TSqlRoleMembership.Member 
 		{
 			get 
 			{
@@ -7106,40 +7160,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Role> ISql100RoleMembership.Role 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRole> ISql100TSqlRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role;
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRole>();
 			}
 		}
 	}
-	public partial class Route : ISql100Route
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlRoute"/>.
+	/// </summary>
+	public partial class TSqlRoute : ISql100TSqlRoute
 	{		
-		String ISql100Route.Address 
+		String ISql100TSqlRoute.Address 
 		{
 			get { return this.Address;}
 		}
-		String ISql100Route.BrokerInstance 
+		String ISql100TSqlRoute.BrokerInstance 
 		{
 			get { return this.BrokerInstance;}
 		}
-		Int32? ISql100Route.Lifetime 
+		Int32? ISql100TSqlRoute.Lifetime 
 		{
 			get { return this.Lifetime;}
 		}
-		String ISql100Route.MirrorAddress 
+		String ISql100TSqlRoute.MirrorAddress 
 		{
 			get { return this.MirrorAddress;}
 		}
-		String ISql100Route.ServiceName 
+		String ISql100TSqlRoute.ServiceName 
 		{
 			get { return this.ServiceName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100Route.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlRoute.Authorizer 
 		{
 			get 
 			{
@@ -7147,15 +7204,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Rule : ISql100Rule
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlRule"/>.
+	/// </summary>
+	public partial class TSqlRule : ISql100TSqlRule
 	{		
-		String ISql100Rule.Expression 
+		String ISql100TSqlRule.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100Rule.BoundObjects 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlRule.BoundObjects 
 		{
 			get 
 			{
@@ -7163,20 +7223,23 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100Rule.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlRule.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 	}
-	public partial class Schema : ISql100Schema
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlSchema"/>.
+	/// </summary>
+	public partial class TSqlSchema : ISql100TSqlSchema
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100Schema.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlSchema.Authorizer 
 		{
 			get 
 			{
@@ -7184,167 +7247,149 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SearchProperty : ISql100SearchProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlServerAudit"/>.
+	/// </summary>
+	public partial class TSqlServerAudit : ISql100TSqlServerAudit
 	{		
-	}
-	public partial class SearchPropertyList : ISql100SearchPropertyList
-	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100SearchPropertyList.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class Sequence : ISql100Sequence
-	{		
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100Sequence.Schema 
-		{
-			get 
-			{
-				return this.Schema;
-			}
-		}
-	}
-	public partial class ServerAudit : ISql100ServerAudit
-	{		
-		String ISql100ServerAudit.AuditGuid 
+		String ISql100TSqlServerAudit.AuditGuid 
 		{
 			get { return this.AuditGuid;}
 		}
-		AuditTarget ISql100ServerAudit.AuditTarget 
+		AuditTarget ISql100TSqlServerAudit.AuditTarget 
 		{
 			get { return this.AuditTarget;}
 		}
-		Boolean ISql100ServerAudit.Disabled 
+		Boolean ISql100TSqlServerAudit.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISql100ServerAudit.FilePath 
+		String ISql100TSqlServerAudit.FilePath 
 		{
 			get { return this.FilePath;}
 		}
-		Int32? ISql100ServerAudit.MaxRolloverFiles 
+		Int32? ISql100TSqlServerAudit.MaxRolloverFiles 
 		{
 			get { return this.MaxRolloverFiles;}
 		}
-		Int32? ISql100ServerAudit.MaxSize 
+		Int32? ISql100TSqlServerAudit.MaxSize 
 		{
 			get { return this.MaxSize;}
 		}
-		MemoryUnit ISql100ServerAudit.MaxSizeUnit 
+		MemoryUnit ISql100TSqlServerAudit.MaxSizeUnit 
 		{
 			get { return this.MaxSizeUnit;}
 		}
-		FailureAction ISql100ServerAudit.OnFailure 
+		FailureAction ISql100TSqlServerAudit.OnFailure 
 		{
 			get { return this.OnFailure;}
 		}
-		Int32 ISql100ServerAudit.QueueDelay 
+		Int32 ISql100TSqlServerAudit.QueueDelay 
 		{
 			get { return this.QueueDelay;}
 		}
-		Boolean ISql100ServerAudit.ReserveDiskSpace 
+		Boolean ISql100TSqlServerAudit.ReserveDiskSpace 
 		{
 			get { return this.ReserveDiskSpace;}
 		}
-		Boolean ISql100ServerAudit.UnlimitedFileSize 
+		Boolean ISql100TSqlServerAudit.UnlimitedFileSize 
 		{
 			get { return this.UnlimitedFileSize;}
 		}
-		Boolean ISql100ServerAudit.UnlimitedMaxRolloverFiles 
+		Boolean ISql100TSqlServerAudit.UnlimitedMaxRolloverFiles 
 		{
 			get { return this.UnlimitedMaxRolloverFiles;}
 		}
 	}
-	public partial class ServerAuditSpecification : ISql100ServerAuditSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlServerAuditSpecification"/>.
+	/// </summary>
+	public partial class TSqlServerAuditSpecification : ISql100TSqlServerAuditSpecification
 	{		
-		Boolean ISql100ServerAuditSpecification.StateOn 
+		Boolean ISql100TSqlServerAuditSpecification.StateOn 
 		{
 			get { return this.StateOn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100AuditActionGroup> ISql100ServerAuditSpecification.AuditActionGroups 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAuditActionGroup> ISql100TSqlServerAuditSpecification.AuditActionGroups 
 		{
 			get 
 			{
-				return this.AuditActionGroups;
+				return this.AuditActionGroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAuditActionGroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100ServerAudit> ISql100ServerAuditSpecification.ServerAudit 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAudit> ISql100TSqlServerAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit;
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAudit>();
 			}
 		}
 	}
-	public partial class ServerDdlTrigger : ISql100ServerDdlTrigger
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlServerDdlTrigger"/>.
+	/// </summary>
+	public partial class TSqlServerDdlTrigger : ISql100TSqlServerDdlTrigger
 	{		
-		Boolean? ISql100ServerDdlTrigger.AnsiNullsOn 
+		Boolean? ISql100TSqlServerDdlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql100ServerDdlTrigger.ClassName 
+		String ISql100TSqlServerDdlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql100ServerDdlTrigger.Disabled 
+		Boolean ISql100TSqlServerDdlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql100ServerDdlTrigger.ExecuteAsCaller 
+		Boolean ISql100TSqlServerDdlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql100ServerDdlTrigger.ExecuteAsOwner 
+		Boolean ISql100TSqlServerDdlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql100ServerDdlTrigger.ExecuteAsSelf 
+		Boolean ISql100TSqlServerDdlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql100ServerDdlTrigger.IsLogon 
+		Boolean ISql100TSqlServerDdlTrigger.IsLogon 
 		{
 			get { return this.IsLogon;}
 		}
-		String ISql100ServerDdlTrigger.MethodName 
+		String ISql100TSqlServerDdlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql100ServerDdlTrigger.QuotedIdentifierOn 
+		Boolean? ISql100TSqlServerDdlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql100ServerDdlTrigger.TriggerType 
+		TriggerType ISql100TSqlServerDdlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		Boolean ISql100ServerDdlTrigger.WithEncryption 
+		Boolean ISql100TSqlServerDdlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Assembly> ISql100ServerDdlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlServerDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100ServerDdlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlServerDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -7352,17 +7397,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100EventGroup> ISql100ServerDdlTrigger.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventGroup> ISql100TSqlServerDdlTrigger.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql100ServerDdlTrigger.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql100TSqlServerDdlTrigger.EventType 
 		{
 			get 
 			{
@@ -7370,50 +7415,53 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Login> ISql100ServerDdlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlServerDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100User> ISql100ServerDdlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlServerDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
 			}
 		}
 	}
-	public partial class ServerEventNotification : ISql100ServerEventNotification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlServerEventNotification"/>.
+	/// </summary>
+	public partial class TSqlServerEventNotification : ISql100TSqlServerEventNotification
 	{		
-		String ISql100ServerEventNotification.BrokerInstanceSpecifier 
+		String ISql100TSqlServerEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql100ServerEventNotification.BrokerService 
+		String ISql100TSqlServerEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql100ServerEventNotification.WithFanIn 
+		Boolean ISql100TSqlServerEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100EventGroup> ISql100ServerEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventGroup> ISql100TSqlServerEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql100ServerEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql100TSqlServerEventNotification.EventType 
 		{
 			get 
 			{
@@ -7421,14 +7469,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ServerOptions : ISql100ServerOptions
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlServerOptions"/>.
+	/// </summary>
+	public partial class TSqlServerOptions : ISql100TSqlServerOptions
 	{		
 	}
-	public partial class ServerRoleMembership : ISql100ServerRoleMembership
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlServerRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlServerRoleMembership : ISql100TSqlServerRoleMembership
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> ISql100ServerRoleMembership.Member 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> ISql100TSqlServerRoleMembership.Member 
 		{
 			get 
 			{
@@ -7436,24 +7490,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Role> ISql100ServerRoleMembership.Role 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRole> ISql100TSqlServerRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role;
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRole>();
 			}
 		}
 	}
-	public partial class Service : ISql100Service
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlService"/>.
+	/// </summary>
+	public partial class TSqlService : ISql100TSqlService
 	{		
-		Boolean ISql100Service.UseDefaultContract 
+		Boolean ISql100TSqlService.UseDefaultContract 
 		{
 			get { return this.UseDefaultContract;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100Service.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlService.Authorizer 
 		{
 			get 
 			{
@@ -7461,73 +7518,79 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Contract> ISql100Service.Contracts 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlContract> ISql100TSqlService.Contracts 
 		{
 			get 
 			{
-				return this.Contracts;
+				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlContract>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Queue> ISql100Service.Queue 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueue> ISql100TSqlService.Queue 
 		{
 			get 
 			{
-				return this.Queue;
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueue>();
 			}
 		}
 	}
-	public partial class ServiceBrokerLanguageSpecifier : ISql100ServiceBrokerLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlServiceBrokerLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlServiceBrokerLanguageSpecifier : ISql100TSqlServiceBrokerLanguageSpecifier
 	{		
-		ServiceBrokerEncryptionAlgorithm ISql100ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1 
+		ServiceBrokerEncryptionAlgorithm ISql100TSqlServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1 
 		{
 			get { return this.EncryptionAlgorithmPart1;}
 		}
-		ServiceBrokerEncryptionAlgorithm ISql100ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2 
+		ServiceBrokerEncryptionAlgorithm ISql100TSqlServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2 
 		{
 			get { return this.EncryptionAlgorithmPart2;}
 		}
-		EncryptionMode ISql100ServiceBrokerLanguageSpecifier.EncryptionMode 
+		EncryptionMode ISql100TSqlServiceBrokerLanguageSpecifier.EncryptionMode 
 		{
 			get { return this.EncryptionMode;}
 		}
-		Boolean ISql100ServiceBrokerLanguageSpecifier.MessageForwardingEnabled 
+		Boolean ISql100TSqlServiceBrokerLanguageSpecifier.MessageForwardingEnabled 
 		{
 			get { return this.MessageForwardingEnabled;}
 		}
-		Int32 ISql100ServiceBrokerLanguageSpecifier.MessageForwardSize 
+		Int32 ISql100TSqlServiceBrokerLanguageSpecifier.MessageForwardSize 
 		{
 			get { return this.MessageForwardSize;}
 		}
-		Boolean ISql100ServiceBrokerLanguageSpecifier.UseCertificateFirst 
+		Boolean ISql100TSqlServiceBrokerLanguageSpecifier.UseCertificateFirst 
 		{
 			get { return this.UseCertificateFirst;}
 		}
-		AuthenticationModes ISql100ServiceBrokerLanguageSpecifier.WindowsAuthenticationMode 
+		AuthenticationModes ISql100TSqlServiceBrokerLanguageSpecifier.WindowsAuthenticationMode 
 		{
 			get { return this.WindowsAuthenticationMode;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Certificate> ISql100ServiceBrokerLanguageSpecifier.AuthenticationCertificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate;
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
 			}
 		}
 	}
-	public partial class Signature : ISql100Signature
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlSignature"/>.
+	/// </summary>
+	public partial class TSqlSignature : ISql100TSqlSignature
 	{		
-		Boolean ISql100Signature.IsCounterSignature 
+		Boolean ISql100TSqlSignature.IsCounterSignature 
 		{
 			get { return this.IsCounterSignature;}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql100Signature.EncryptionMechanism 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql100TSqlSignature.EncryptionMechanism 
 		{
 			get 
 			{
@@ -7535,8 +7598,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql100Signature.SignedObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql100TSqlSignature.SignedObject 
 		{
 			get 
 			{
@@ -7544,124 +7607,133 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SignatureEncryptionMechanism : ISql100SignatureEncryptionMechanism
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlSignatureEncryptionMechanism"/>.
+	/// </summary>
+	public partial class TSqlSignatureEncryptionMechanism : ISql100TSqlSignatureEncryptionMechanism
 	{		
-		String ISql100SignatureEncryptionMechanism.Password 
+		String ISql100TSqlSignatureEncryptionMechanism.Password 
 		{
 			get { return this.Password;}
 		}
-		String ISql100SignatureEncryptionMechanism.SignedBlob 
+		String ISql100TSqlSignatureEncryptionMechanism.SignedBlob 
 		{
 			get { return this.SignedBlob;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100AsymmetricKey> ISql100SignatureEncryptionMechanism.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey> ISql100TSqlSignatureEncryptionMechanism.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Certificate> ISql100SignatureEncryptionMechanism.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlSignatureEncryptionMechanism.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
 			}
 		}
 	}
-	public partial class SoapLanguageSpecifier : ISql100SoapLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlSoapLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlSoapLanguageSpecifier : ISql100TSqlSoapLanguageSpecifier
 	{		
-		Boolean ISql100SoapLanguageSpecifier.BatchesEnabled 
+		Boolean ISql100TSqlSoapLanguageSpecifier.BatchesEnabled 
 		{
 			get { return this.BatchesEnabled;}
 		}
-		CharacterSet ISql100SoapLanguageSpecifier.CharacterSet 
+		CharacterSet ISql100TSqlSoapLanguageSpecifier.CharacterSet 
 		{
 			get { return this.CharacterSet;}
 		}
-		String ISql100SoapLanguageSpecifier.DatabaseName 
+		String ISql100TSqlSoapLanguageSpecifier.DatabaseName 
 		{
 			get { return this.DatabaseName;}
 		}
-		Int32 ISql100SoapLanguageSpecifier.HeaderLimit 
+		Int32 ISql100TSqlSoapLanguageSpecifier.HeaderLimit 
 		{
 			get { return this.HeaderLimit;}
 		}
-		Boolean ISql100SoapLanguageSpecifier.IsDefaultDatabase 
+		Boolean ISql100TSqlSoapLanguageSpecifier.IsDefaultDatabase 
 		{
 			get { return this.IsDefaultDatabase;}
 		}
-		Boolean ISql100SoapLanguageSpecifier.IsDefaultNamespace 
+		Boolean ISql100TSqlSoapLanguageSpecifier.IsDefaultNamespace 
 		{
 			get { return this.IsDefaultNamespace;}
 		}
-		Boolean ISql100SoapLanguageSpecifier.IsDefaultWsdlSpName 
+		Boolean ISql100TSqlSoapLanguageSpecifier.IsDefaultWsdlSpName 
 		{
 			get { return this.IsDefaultWsdlSpName;}
 		}
-		SoapLoginType ISql100SoapLanguageSpecifier.LoginType 
+		SoapLoginType ISql100TSqlSoapLanguageSpecifier.LoginType 
 		{
 			get { return this.LoginType;}
 		}
-		String ISql100SoapLanguageSpecifier.Namespace 
+		String ISql100TSqlSoapLanguageSpecifier.Namespace 
 		{
 			get { return this.Namespace;}
 		}
-		SoapSchema ISql100SoapLanguageSpecifier.SchemaType 
+		SoapSchema ISql100TSqlSoapLanguageSpecifier.SchemaType 
 		{
 			get { return this.SchemaType;}
 		}
-		Boolean ISql100SoapLanguageSpecifier.SessionsEnabled 
+		Boolean ISql100TSqlSoapLanguageSpecifier.SessionsEnabled 
 		{
 			get { return this.SessionsEnabled;}
 		}
-		Int32 ISql100SoapLanguageSpecifier.SessionTimeout 
+		Int32 ISql100TSqlSoapLanguageSpecifier.SessionTimeout 
 		{
 			get { return this.SessionTimeout;}
 		}
-		Boolean ISql100SoapLanguageSpecifier.SessionTimeoutNever 
+		Boolean ISql100TSqlSoapLanguageSpecifier.SessionTimeoutNever 
 		{
 			get { return this.SessionTimeoutNever;}
 		}
-		String ISql100SoapLanguageSpecifier.WsdlSpName 
+		String ISql100TSqlSoapLanguageSpecifier.WsdlSpName 
 		{
 			get { return this.WsdlSpName;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100SoapMethodSpecification> ISql100SoapLanguageSpecifier.WebMethods 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSoapMethodSpecification> ISql100TSqlSoapLanguageSpecifier.WebMethods 
 		{
 			get 
 			{
-				return this.WebMethods;
+				return this.WebMethods.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSoapMethodSpecification>();
 			}
 		}
 	}
-	public partial class SoapMethodSpecification : ISql100SoapMethodSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlSoapMethodSpecification"/>.
+	/// </summary>
+	public partial class TSqlSoapMethodSpecification : ISql100TSqlSoapMethodSpecification
 	{		
-		SoapFormat ISql100SoapMethodSpecification.Format 
+		SoapFormat ISql100TSqlSoapMethodSpecification.Format 
 		{
 			get { return this.Format;}
 		}
-		SoapSchema ISql100SoapMethodSpecification.SchemaType 
+		SoapSchema ISql100TSqlSoapMethodSpecification.SchemaType 
 		{
 			get { return this.SchemaType;}
 		}
-		String ISql100SoapMethodSpecification.WebMethodAlias 
+		String ISql100TSqlSoapMethodSpecification.WebMethodAlias 
 		{
 			get { return this.WebMethodAlias;}
 		}
-		String ISql100SoapMethodSpecification.WebMethodNamespace 
+		String ISql100TSqlSoapMethodSpecification.WebMethodNamespace 
 		{
 			get { return this.WebMethodNamespace;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100SoapMethodSpecification.RelatedMethod 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlSoapMethodSpecification.RelatedMethod 
 		{
 			get 
 			{
@@ -7669,97 +7741,100 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SpatialIndex : ISql100SpatialIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlSpatialIndex"/>.
+	/// </summary>
+	public partial class TSqlSpatialIndex : ISql100TSqlSpatialIndex
 	{		
-		Boolean ISql100SpatialIndex.AllowPageLocks 
+		Boolean ISql100TSqlSpatialIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql100SpatialIndex.AllowRowLocks 
+		Boolean ISql100TSqlSpatialIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Int32? ISql100SpatialIndex.CellsPerObject 
+		Int32? ISql100TSqlSpatialIndex.CellsPerObject 
 		{
 			get { return this.CellsPerObject;}
 		}
-		Boolean ISql100SpatialIndex.Disabled 
+		Boolean ISql100TSqlSpatialIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32 ISql100SpatialIndex.FillFactor 
+		Int32 ISql100TSqlSpatialIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Degree ISql100SpatialIndex.GridLevel1Density 
+		Degree ISql100TSqlSpatialIndex.GridLevel1Density 
 		{
 			get { return this.GridLevel1Density;}
 		}
-		Degree ISql100SpatialIndex.GridLevel2Density 
+		Degree ISql100TSqlSpatialIndex.GridLevel2Density 
 		{
 			get { return this.GridLevel2Density;}
 		}
-		Degree ISql100SpatialIndex.GridLevel3Density 
+		Degree ISql100TSqlSpatialIndex.GridLevel3Density 
 		{
 			get { return this.GridLevel3Density;}
 		}
-		Degree ISql100SpatialIndex.GridLevel4Density 
+		Degree ISql100TSqlSpatialIndex.GridLevel4Density 
 		{
 			get { return this.GridLevel4Density;}
 		}
-		Boolean ISql100SpatialIndex.IgnoreDuplicateKey 
+		Boolean ISql100TSqlSpatialIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql100SpatialIndex.RecomputeStatistics 
+		Boolean ISql100TSqlSpatialIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Tessellation ISql100SpatialIndex.Tessellation 
+		Tessellation ISql100TSqlSpatialIndex.Tessellation 
 		{
 			get { return this.Tessellation;}
 		}
-		Boolean ISql100SpatialIndex.WithPadIndex 
+		Boolean ISql100TSqlSpatialIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
-		Double? ISql100SpatialIndex.XMax 
+		Double? ISql100TSqlSpatialIndex.XMax 
 		{
 			get { return this.XMax;}
 		}
-		Double? ISql100SpatialIndex.XMin 
+		Double? ISql100TSqlSpatialIndex.XMin 
 		{
 			get { return this.XMin;}
 		}
-		Double? ISql100SpatialIndex.YMax 
+		Double? ISql100TSqlSpatialIndex.YMax 
 		{
 			get { return this.YMax;}
 		}
-		Double? ISql100SpatialIndex.YMin 
+		Double? ISql100TSqlSpatialIndex.YMin 
 		{
 			get { return this.YMin;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100SpatialIndex.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlSpatialIndex.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100SpatialIndex.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlSpatialIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql100SpatialIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql100TSqlSpatialIndex.IndexedObject 
 		{
 			get 
 			{
@@ -7767,58 +7842,61 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100SpatialIndex.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlSpatialIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100SpatialIndex.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlSpatialIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Statistics : ISql100Statistics
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlStatistics"/>.
+	/// </summary>
+	public partial class TSqlStatistics : ISql100TSqlStatistics
 	{		
-		String ISql100Statistics.FilterPredicate 
+		String ISql100TSqlStatistics.FilterPredicate 
 		{
 			get { return this.FilterPredicate;}
 		}
-		Boolean ISql100Statistics.NoRecompute 
+		Boolean ISql100TSqlStatistics.NoRecompute 
 		{
 			get { return this.NoRecompute;}
 		}
-		Int32 ISql100Statistics.SampleSize 
+		Int32 ISql100TSqlStatistics.SampleSize 
 		{
 			get { return this.SampleSize;}
 		}
-		SamplingStyle ISql100Statistics.SamplingStyle 
+		SamplingStyle ISql100TSqlStatistics.SamplingStyle 
 		{
 			get { return this.SamplingStyle;}
 		}
-		String ISql100Statistics.StatsStream 
+		String ISql100TSqlStatistics.StatsStream 
 		{
 			get { return this.StatsStream;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100Statistics.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlStatistics.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100Statistics.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlStatistics.ExpressionDependencies 
 		{
 			get 
 			{
@@ -7826,8 +7904,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql100Statistics.OnObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql100TSqlStatistics.OnObject 
 		{
 			get 
 			{
@@ -7835,97 +7913,103 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Parameter : ISql100Parameter
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlParameter"/>.
+	/// </summary>
+	public partial class TSqlParameter : ISql100TSqlParameter
 	{		
-		String ISql100Parameter.DefaultExpression 
+		String ISql100TSqlParameter.DefaultExpression 
 		{
 			get { return this.DefaultExpression;}
 		}
-		Boolean ISql100Parameter.IsMax 
+		Boolean ISql100TSqlParameter.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql100Parameter.IsOutput 
+		Boolean ISql100TSqlParameter.IsOutput 
 		{
 			get { return this.IsOutput;}
 		}
-		Int32 ISql100Parameter.Length 
+		Int32 ISql100TSqlParameter.Length 
 		{
 			get { return this.Length;}
 		}
-		Int32 ISql100Parameter.Precision 
+		Int32 ISql100TSqlParameter.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Boolean ISql100Parameter.ReadOnly 
+		Boolean ISql100TSqlParameter.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
-		Int32 ISql100Parameter.Scale 
+		Int32 ISql100TSqlParameter.Scale 
 		{
 			get { return this.Scale;}
 		}
-		Boolean ISql100Parameter.Varying 
+		Boolean ISql100TSqlParameter.Varying 
 		{
 			get { return this.Varying;}
 		}
-		XmlStyle ISql100Parameter.XmlStyle 
+		XmlStyle ISql100TSqlParameter.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100DataType> ISql100Parameter.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100XmlSchemaCollection> ISql100Parameter.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection> ISql100TSqlParameter.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class SymmetricKey : ISql100SymmetricKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlSymmetricKey"/>.
+	/// </summary>
+	public partial class TSqlSymmetricKey : ISql100TSqlSymmetricKey
 	{		
-		SymmetricKeyAlgorithm ISql100SymmetricKey.Algorithm 
+		SymmetricKeyAlgorithm ISql100TSqlSymmetricKey.Algorithm 
 		{
 			get { return this.Algorithm;}
 		}
-		SymmetricKeyCreationDisposition ISql100SymmetricKey.CreationDisposition 
+		SymmetricKeyCreationDisposition ISql100TSqlSymmetricKey.CreationDisposition 
 		{
 			get { return this.CreationDisposition;}
 		}
-		String ISql100SymmetricKey.IdentityValue 
+		String ISql100TSqlSymmetricKey.IdentityValue 
 		{
 			get { return this.IdentityValue;}
 		}
-		String ISql100SymmetricKey.KeySource 
+		String ISql100TSqlSymmetricKey.KeySource 
 		{
 			get { return this.KeySource;}
 		}
-		String ISql100SymmetricKey.ProviderKeyName 
+		String ISql100TSqlSymmetricKey.ProviderKeyName 
 		{
 			get { return this.ProviderKeyName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100AsymmetricKey> ISql100SymmetricKey.AsymmetricKeys 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey> ISql100TSqlSymmetricKey.AsymmetricKeys 
 		{
 			get 
 			{
-				return this.AsymmetricKeys;
+				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100SymmetricKey.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100TSqlSymmetricKey.Authorizer 
 		{
 			get 
 			{
@@ -7933,17 +8017,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Certificate> ISql100SymmetricKey.Certificates 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlSymmetricKey.Certificates 
 		{
 			get 
 			{
-				return this.Certificates;
+				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql100SymmetricKey.Passwords 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql100TSqlSymmetricKey.Passwords 
 		{
 			get 
 			{
@@ -7951,8 +8035,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100SymmetricKey.Provider 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlSymmetricKey.Provider 
 		{
 			get 
 			{
@@ -7960,31 +8044,37 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100SymmetricKey> ISql100SymmetricKey.SymmetricKeys 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSymmetricKey> ISql100TSqlSymmetricKey.SymmetricKeys 
 		{
 			get 
 			{
-				return this.SymmetricKeys;
+				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSymmetricKey>();
 			}
 		}
 	}
-	public partial class SymmetricKeyPassword : ISql100SymmetricKeyPassword
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlSymmetricKeyPassword"/>.
+	/// </summary>
+	public partial class TSqlSymmetricKeyPassword : ISql100TSqlSymmetricKeyPassword
 	{		
-		String ISql100SymmetricKeyPassword.Password 
+		String ISql100TSqlSymmetricKeyPassword.Password 
 		{
 			get { return this.Password;}
 		}
 	}
-	public partial class Synonym : ISql100Synonym
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlSynonym"/>.
+	/// </summary>
+	public partial class TSqlSynonym : ISql100TSqlSynonym
 	{		
-		String ISql100Synonym.ForObjectName 
+		String ISql100TSqlSynonym.ForObjectName 
 		{
 			get { return this.ForObjectName;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100Synonym.ForObject 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlSynonym.ForObject 
 		{
 			get 
 			{
@@ -7992,256 +8082,167 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100Synonym.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlSynonym.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 	}
-	public partial class Table : ISql100Table
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlTable"/>.
+	/// </summary>
+	public partial class TSqlTable : ISql100TSqlTable
 	{		
-		Boolean? ISql100Table.AnsiNullsOn 
+		Boolean? ISql100TSqlTable.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql100Table.ChangeDataCaptureEnabled 
+		Boolean ISql100TSqlTable.ChangeDataCaptureEnabled 
 		{
 			get { return this.ChangeDataCaptureEnabled;}
 		}
-		Boolean ISql100Table.ChangeTrackingEnabled 
+		Boolean ISql100TSqlTable.ChangeTrackingEnabled 
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
-		Boolean? ISql100Table.FileStreamNull 
+		Boolean? ISql100TSqlTable.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Boolean ISql100Table.IsReplicated 
+		Boolean ISql100TSqlTable.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		Boolean ISql100Table.LargeValueTypesOutOfRow 
+		Boolean ISql100TSqlTable.LargeValueTypesOutOfRow 
 		{
 			get { return this.LargeValueTypesOutOfRow;}
 		}
-		LockEscalationMethod ISql100Table.LockEscalation 
+		LockEscalationMethod ISql100TSqlTable.LockEscalation 
 		{
 			get { return this.LockEscalation;}
 		}
-		Boolean? ISql100Table.QuotedIdentifierOn 
+		Boolean? ISql100TSqlTable.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql100Table.TableLockOnBulkLoad 
+		Boolean ISql100TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
 		}
-		Int32 ISql100Table.TextInRowSize 
+		Int32 ISql100TSqlTable.TextInRowSize 
 		{
 			get { return this.TextInRowSize;}
 		}
-		Boolean ISql100Table.TrackColumnsUpdated 
+		Boolean ISql100TSqlTable.TrackColumnsUpdated 
 		{
 			get { return this.TrackColumnsUpdated;}
 		}
-		Boolean ISql100Table.VardecimalStorageFormatEnabled 
+		Boolean ISql100TSqlTable.VardecimalStorageFormatEnabled 
 		{
 			get { return this.VardecimalStorageFormatEnabled;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100Table.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTable.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100DataCompressionOption> ISql100Table.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataCompressionOption> ISql100TSqlTable.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100Table.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100Table.FilegroupForTextImage 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlTable.FilegroupForTextImage 
 		{
 			get 
 			{
-				return this.FilegroupForTextImage;
+				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100Table.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlTable.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100Table.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlTable.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100Table.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100Table.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100Table.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlTable.Schema 
 		{
 			get 
 			{
-				return this.Schema;
-			}
-		}
-	}
-	public partial class FileTable : ISql100FileTable
-	{		
-		Boolean? ISql100FileTable.AnsiNullsOn 
-		{
-			get { return this.AnsiNullsOn;}
-		}
-		Boolean? ISql100FileTable.FileStreamNull 
-		{
-			get { return this.FileStreamNull;}
-		}
-		LockEscalationMethod ISql100FileTable.LockEscalation 
-		{
-			get { return this.LockEscalation;}
-		}
-		Boolean? ISql100FileTable.QuotedIdentifierOn 
-		{
-			get { return this.QuotedIdentifierOn;}
-		}
-		Boolean ISql100FileTable.TableLockOnBulkLoad 
-		{
-			get { return this.TableLockOnBulkLoad;}
-		}
-
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100FileTable.Columns 
-		{
-			get 
-			{
-				return this.Columns;
-			}
-		}
-
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100DataCompressionOption> ISql100FileTable.DataCompressionOptions 
-		{
-			get 
-			{
-				return this.DataCompressionOptions;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100FileTable.Filegroup 
-		{
-			get 
-			{
-				return this.Filegroup;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100FileTable.FileStreamFilegroup 
-		{
-			get 
-			{
-				return this.FileStreamFilegroup;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100FileTable.FileStreamPartitionScheme 
-		{
-			get 
-			{
-				return this.FileStreamPartitionScheme;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100FileTable.PartitionColumn 
-		{
-			get 
-			{
-				return this.PartitionColumn;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100FileTable.PartitionScheme 
-		{
-			get 
-			{
-				return this.PartitionScheme;
-			}
-		}
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100FileTable.Schema 
-		{
-			get 
-			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 	}
-	public partial class TableType : ISql100TableType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlTableType"/>.
+	/// </summary>
+	public partial class TSqlTableType : ISql100TSqlTableType
 	{		
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100TableType.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableType.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> ISql100TableType.Constraints 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> ISql100TSqlTableType.Constraints 
 		{
 			get 
 			{
@@ -8249,24 +8250,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100TableType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlTableType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 	}
-	public partial class TableTypeCheckConstraint : ISql100TableTypeCheckConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlTableTypeCheckConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeCheckConstraint : ISql100TSqlTableTypeCheckConstraint
 	{		
-		String ISql100TableTypeCheckConstraint.Expression 
+		String ISql100TSqlTableTypeCheckConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100TableTypeCheckConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlTableTypeCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -8274,76 +8278,79 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class TableTypeColumn : ISql100TableTypeColumn
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlTableTypeColumn"/>.
+	/// </summary>
+	public partial class TSqlTableTypeColumn : ISql100TSqlTableTypeColumn
 	{		
-		String ISql100TableTypeColumn.Collation 
+		String ISql100TSqlTableTypeColumn.Collation 
 		{
 			get { return this.Collation;}
 		}
-		String ISql100TableTypeColumn.Expression 
+		String ISql100TSqlTableTypeColumn.Expression 
 		{
 			get { return this.Expression;}
 		}
-		String ISql100TableTypeColumn.IdentityIncrement 
+		String ISql100TSqlTableTypeColumn.IdentityIncrement 
 		{
 			get { return this.IdentityIncrement;}
 		}
-		String ISql100TableTypeColumn.IdentitySeed 
+		String ISql100TSqlTableTypeColumn.IdentitySeed 
 		{
 			get { return this.IdentitySeed;}
 		}
-		Boolean ISql100TableTypeColumn.IsIdentity 
+		Boolean ISql100TSqlTableTypeColumn.IsIdentity 
 		{
 			get { return this.IsIdentity;}
 		}
-		Boolean ISql100TableTypeColumn.IsMax 
+		Boolean ISql100TSqlTableTypeColumn.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql100TableTypeColumn.IsRowGuidCol 
+		Boolean ISql100TSqlTableTypeColumn.IsRowGuidCol 
 		{
 			get { return this.IsRowGuidCol;}
 		}
-		Int32 ISql100TableTypeColumn.Length 
+		Int32 ISql100TSqlTableTypeColumn.Length 
 		{
 			get { return this.Length;}
 		}
-		Boolean ISql100TableTypeColumn.Nullable 
+		Boolean ISql100TSqlTableTypeColumn.Nullable 
 		{
 			get { return this.Nullable;}
 		}
-		Boolean ISql100TableTypeColumn.Persisted 
+		Boolean ISql100TSqlTableTypeColumn.Persisted 
 		{
 			get { return this.Persisted;}
 		}
-		Boolean? ISql100TableTypeColumn.PersistedNullable 
+		Boolean? ISql100TSqlTableTypeColumn.PersistedNullable 
 		{
 			get { return this.PersistedNullable;}
 		}
-		Int32 ISql100TableTypeColumn.Precision 
+		Int32 ISql100TSqlTableTypeColumn.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISql100TableTypeColumn.Scale 
+		Int32 ISql100TSqlTableTypeColumn.Scale 
 		{
 			get { return this.Scale;}
 		}
-		XmlStyle ISql100TableTypeColumn.XmlStyle 
+		XmlStyle ISql100TSqlTableTypeColumn.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100DataType> ISql100TableTypeColumn.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100TableTypeColumn.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlTableTypeColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -8351,24 +8358,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100XmlSchemaCollection> ISql100TableTypeColumn.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection> ISql100TSqlTableTypeColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class TableTypeDefaultConstraint : ISql100TableTypeDefaultConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlTableTypeDefaultConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeDefaultConstraint : ISql100TSqlTableTypeDefaultConstraint
 	{		
-		String ISql100TableTypeDefaultConstraint.Expression 
+		String ISql100TSqlTableTypeDefaultConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100TableTypeDefaultConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlTableTypeDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -8376,310 +8386,292 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100TableTypeDefaultConstraint.TargetColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableTypeDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn;
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 	}
-	public partial class TableTypeIndex : ISql100TableTypeIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlTableTypePrimaryKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypePrimaryKeyConstraint : ISql100TSqlTableTypePrimaryKeyConstraint
 	{		
-		Int32? ISql100TableTypeIndex.BucketCount 
+		Int32? ISql100TSqlTableTypePrimaryKeyConstraint.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql100TableTypeIndex.Hash 
-		{
-			get { return this.Hash;}
-		}
-		Boolean ISql100TableTypeIndex.IsDisabled 
-		{
-			get { return this.IsDisabled;}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100TableTypeIndex.Columns 
-		{
-			get 
-			{
-				return this.Columns;
-			}
-		}
-	}
-	public partial class TableTypePrimaryKeyConstraint : ISql100TableTypePrimaryKeyConstraint
-	{		
-		Int32? ISql100TableTypePrimaryKeyConstraint.BucketCount 
-		{
-			get { return this.BucketCount;}
-		}
-		Boolean ISql100TableTypePrimaryKeyConstraint.Clustered 
+		Boolean ISql100TSqlTableTypePrimaryKeyConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql100TableTypePrimaryKeyConstraint.Hash 
+		Boolean ISql100TSqlTableTypePrimaryKeyConstraint.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql100TableTypePrimaryKeyConstraint.IgnoreDuplicateKey 
+		Boolean ISql100TSqlTableTypePrimaryKeyConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100TableTypePrimaryKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableTypePrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 	}
-	public partial class TableTypeUniqueConstraint : ISql100TableTypeUniqueConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlTableTypeUniqueConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeUniqueConstraint : ISql100TSqlTableTypeUniqueConstraint
 	{		
-		Boolean ISql100TableTypeUniqueConstraint.Clustered 
+		Boolean ISql100TSqlTableTypeUniqueConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql100TableTypeUniqueConstraint.IgnoreDuplicateKey 
+		Boolean ISql100TSqlTableTypeUniqueConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100TableTypeUniqueConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableTypeUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 	}
-	public partial class TcpProtocolSpecifier : ISql100TcpProtocolSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlTcpProtocolSpecifier"/>.
+	/// </summary>
+	public partial class TSqlTcpProtocolSpecifier : ISql100TSqlTcpProtocolSpecifier
 	{		
-		String ISql100TcpProtocolSpecifier.ListenerIPv4 
+		String ISql100TSqlTcpProtocolSpecifier.ListenerIPv4 
 		{
 			get { return this.ListenerIPv4;}
 		}
-		String ISql100TcpProtocolSpecifier.ListenerIPv6 
+		String ISql100TSqlTcpProtocolSpecifier.ListenerIPv6 
 		{
 			get { return this.ListenerIPv6;}
 		}
-		Int32 ISql100TcpProtocolSpecifier.ListenerPort 
+		Int32 ISql100TSqlTcpProtocolSpecifier.ListenerPort 
 		{
 			get { return this.ListenerPort;}
 		}
-		Boolean ISql100TcpProtocolSpecifier.ListeningOnAllIPs 
+		Boolean ISql100TSqlTcpProtocolSpecifier.ListeningOnAllIPs 
 		{
 			get { return this.ListeningOnAllIPs;}
 		}
 	}
-	public partial class UniqueConstraint : ISql100UniqueConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlUniqueConstraint"/>.
+	/// </summary>
+	public partial class TSqlUniqueConstraint : ISql100TSqlUniqueConstraint
 	{		
-		Boolean ISql100UniqueConstraint.AllowPageLocks 
+		Boolean ISql100TSqlUniqueConstraint.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql100UniqueConstraint.AllowRowLocks 
+		Boolean ISql100TSqlUniqueConstraint.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Boolean ISql100UniqueConstraint.Clustered 
+		Boolean ISql100TSqlUniqueConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql100UniqueConstraint.Disabled 
+		Boolean ISql100TSqlUniqueConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean? ISql100UniqueConstraint.FileStreamNull 
+		Boolean? ISql100TSqlUniqueConstraint.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Int32? ISql100UniqueConstraint.FillFactor 
+		Int32? ISql100TSqlUniqueConstraint.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql100UniqueConstraint.IgnoreDuplicateKey 
+		Boolean ISql100TSqlUniqueConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql100UniqueConstraint.RecomputeStatistics 
+		Boolean ISql100TSqlUniqueConstraint.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql100UniqueConstraint.WithPadIndex 
+		Boolean ISql100TSqlUniqueConstraint.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100UniqueConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100DataCompressionOption> ISql100UniqueConstraint.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataCompressionOption> ISql100TSqlUniqueConstraint.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100UniqueConstraint.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlUniqueConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Filegroup> ISql100UniqueConstraint.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlUniqueConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100UniqueConstraint.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlUniqueConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100ExtendedProperty> ISql100UniqueConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlUniqueConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100UniqueConstraint.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlUniqueConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100PartitionScheme> ISql100UniqueConstraint.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlUniqueConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class User : ISql100User
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlUser"/>.
+	/// </summary>
+	public partial class TSqlUser : ISql100TSqlUser
 	{		
-		Boolean ISql100User.WithoutLogin 
+		Boolean ISql100TSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100AsymmetricKey> ISql100User.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey> ISql100TSqlUser.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Certificate> ISql100User.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlUser.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100User.DefaultSchema 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlUser.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema;
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Login> ISql100User.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlUser.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
 			}
 		}
 	}
-	public partial class UserDefinedServerRole : ISql100UserDefinedServerRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlUserDefinedType"/>.
+	/// </summary>
+	public partial class TSqlUserDefinedType : ISql100TSqlUserDefinedType
 	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql100UserDefinedServerRole.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class UserDefinedType : ISql100UserDefinedType
-	{		
-		Boolean? ISql100UserDefinedType.ByteOrdered 
+		Boolean? ISql100TSqlUserDefinedType.ByteOrdered 
 		{
 			get { return this.ByteOrdered;}
 		}
-		String ISql100UserDefinedType.ClassName 
+		String ISql100TSqlUserDefinedType.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean? ISql100UserDefinedType.FixedLength 
+		Boolean? ISql100TSqlUserDefinedType.FixedLength 
 		{
 			get { return this.FixedLength;}
 		}
-		Format ISql100UserDefinedType.Format 
+		Format ISql100TSqlUserDefinedType.Format 
 		{
 			get { return this.Format;}
 		}
-		Int32? ISql100UserDefinedType.MaxByteSize 
+		Int32? ISql100TSqlUserDefinedType.MaxByteSize 
 		{
 			get { return this.MaxByteSize;}
 		}
-		String ISql100UserDefinedType.ValidationMethodName 
+		String ISql100TSqlUserDefinedType.ValidationMethodName 
 		{
 			get { return this.ValidationMethodName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Assembly> ISql100UserDefinedType.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlUserDefinedType.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql100UserDefinedType.Methods 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql100TSqlUserDefinedType.Methods 
 		{
 			get 
 			{
@@ -8687,8 +8679,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql100UserDefinedType.Properties 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql100TSqlUserDefinedType.Properties 
 		{
 			get 
 			{
@@ -8696,52 +8688,55 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100UserDefinedType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlUserDefinedType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 	}
-	public partial class View : ISql100View
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlView"/>.
+	/// </summary>
+	public partial class TSqlView : ISql100TSqlView
 	{		
-		Boolean? ISql100View.AnsiNullsOn 
+		Boolean? ISql100TSqlView.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean? ISql100View.QuotedIdentifierOn 
+		Boolean? ISql100TSqlView.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql100View.Replicated 
+		Boolean ISql100TSqlView.Replicated 
 		{
 			get { return this.Replicated;}
 		}
-		String ISql100View.SelectStatement 
+		String ISql100TSqlView.SelectStatement 
 		{
 			get { return this.SelectStatement;}
 		}
-		Boolean ISql100View.WithCheckOption 
+		Boolean ISql100TSqlView.WithCheckOption 
 		{
 			get { return this.WithCheckOption;}
 		}
-		Boolean ISql100View.WithEncryption 
+		Boolean ISql100TSqlView.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql100View.WithSchemaBinding 
+		Boolean ISql100TSqlView.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
-		Boolean ISql100View.WithViewMetadata 
+		Boolean ISql100TSqlView.WithViewMetadata 
 		{
 			get { return this.WithViewMetadata;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql100View.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql100TSqlView.BodyDependencies 
 		{
 			get 
 			{
@@ -8749,110 +8744,116 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100View.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlView.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100View.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlView.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 	}
-	public partial class WorkloadGroup : ISql100WorkloadGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlWorkloadGroup"/>.
+	/// </summary>
+	public partial class TSqlWorkloadGroup : ISql100TSqlWorkloadGroup
 	{		
-		Int32 ISql100WorkloadGroup.GroupMaxRequests 
+		Int32 ISql100TSqlWorkloadGroup.GroupMaxRequests 
 		{
 			get { return this.GroupMaxRequests;}
 		}
-		Degree ISql100WorkloadGroup.Importance 
+		Degree ISql100TSqlWorkloadGroup.Importance 
 		{
 			get { return this.Importance;}
 		}
-		Int32 ISql100WorkloadGroup.MaxDop 
+		Int32 ISql100TSqlWorkloadGroup.MaxDop 
 		{
 			get { return this.MaxDop;}
 		}
-		Int32 ISql100WorkloadGroup.RequestMaxCpuTimeSec 
+		Int32 ISql100TSqlWorkloadGroup.RequestMaxCpuTimeSec 
 		{
 			get { return this.RequestMaxCpuTimeSec;}
 		}
-		Int32 ISql100WorkloadGroup.RequestMaxMemoryGrantPercent 
+		Int32 ISql100TSqlWorkloadGroup.RequestMaxMemoryGrantPercent 
 		{
 			get { return this.RequestMaxMemoryGrantPercent;}
 		}
-		Int32 ISql100WorkloadGroup.RequestMemoryGrantTimeoutSec 
+		Int32 ISql100TSqlWorkloadGroup.RequestMemoryGrantTimeoutSec 
 		{
 			get { return this.RequestMemoryGrantTimeoutSec;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100ResourcePool> ISql100WorkloadGroup.ResourcePool 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlResourcePool> ISql100TSqlWorkloadGroup.ResourcePool 
 		{
 			get 
 			{
-				return this.ResourcePool;
+				return this.ResourcePool.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlResourcePool>();
 			}
 		}
 	}
-	public partial class XmlIndex : ISql100XmlIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlXmlIndex"/>.
+	/// </summary>
+	public partial class TSqlXmlIndex : ISql100TSqlXmlIndex
 	{		
-		Boolean ISql100XmlIndex.AllowPageLocks 
+		Boolean ISql100TSqlXmlIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql100XmlIndex.AllowRowLocks 
+		Boolean ISql100TSqlXmlIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Boolean ISql100XmlIndex.Disabled 
+		Boolean ISql100TSqlXmlIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32? ISql100XmlIndex.FillFactor 
+		Int32? ISql100TSqlXmlIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql100XmlIndex.IgnoreDuplicateKey 
+		Boolean ISql100TSqlXmlIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql100XmlIndex.IsPrimary 
+		Boolean ISql100TSqlXmlIndex.IsPrimary 
 		{
 			get { return this.IsPrimary;}
 		}
-		Boolean ISql100XmlIndex.RecomputeStatistics 
+		Boolean ISql100TSqlXmlIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		SecondaryXmlIndexType ISql100XmlIndex.SecondaryXmlIndexType 
+		SecondaryXmlIndexType ISql100TSqlXmlIndex.SecondaryXmlIndexType 
 		{
 			get { return this.SecondaryXmlIndexType;}
 		}
-		Boolean ISql100XmlIndex.WithPadIndex 
+		Boolean ISql100TSqlXmlIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Column> ISql100XmlIndex.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql100XmlIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql100TSqlXmlIndex.IndexedObject 
 		{
 			get 
 			{
@@ -8860,133 +8861,107 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100XmlIndex> ISql100XmlIndex.PrimaryXmlIndex 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlIndex> ISql100TSqlXmlIndex.PrimaryXmlIndex 
 		{
 			get 
 			{
-				return this.PrimaryXmlIndex;
+				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlIndex>();
 			}
 		}
 	}
-	public partial class SelectiveXmlIndex : ISql100SelectiveXmlIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlXmlSchemaCollection"/>.
+	/// </summary>
+	public partial class TSqlXmlSchemaCollection : ISql100TSqlXmlSchemaCollection
 	{		
-		Boolean ISql100SelectiveXmlIndex.Disabled 
-		{
-			get { return this.Disabled;}
-		}
-	}
-	public partial class XmlNamespace : ISql100XmlNamespace
-	{		
-	}
-	public partial class PromotedNodePathForXQueryType : ISql100PromotedNodePathForXQueryType
-	{		
-	}
-	public partial class PromotedNodePathForSqlType : ISql100PromotedNodePathForSqlType
-	{		
-		Boolean ISql100PromotedNodePathForSqlType.IsMax 
-		{
-			get { return this.IsMax;}
-		}
-		Int32 ISql100PromotedNodePathForSqlType.Length 
-		{
-			get { return this.Length;}
-		}
-		Int32 ISql100PromotedNodePathForSqlType.Precision 
-		{
-			get { return this.Precision;}
-		}
-		Int32 ISql100PromotedNodePathForSqlType.Scale 
-		{
-			get { return this.Scale;}
-		}
-	}
-	public partial class XmlSchemaCollection : ISql100XmlSchemaCollection
-	{		
-		String ISql100XmlSchemaCollection.Expression 
+		String ISql100TSqlXmlSchemaCollection.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100Schema> ISql100XmlSchemaCollection.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlXmlSchemaCollection.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
 			}
 		}
 	}
-	public partial class Column : ISqlAzureColumn
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlColumn"/>.
+	/// </summary>
+	public partial class TSqlColumn : ISqlAzureTSqlColumn
 	{		
-		String ISqlAzureColumn.Collation 
+		String ISqlAzureTSqlColumn.Collation 
 		{
 			get { return this.Collation;}
 		}
-		String ISqlAzureColumn.Expression 
+		String ISqlAzureTSqlColumn.Expression 
 		{
 			get { return this.Expression;}
 		}
-		String ISqlAzureColumn.IdentityIncrement 
+		String ISqlAzureTSqlColumn.IdentityIncrement 
 		{
 			get { return this.IdentityIncrement;}
 		}
-		String ISqlAzureColumn.IdentitySeed 
+		String ISqlAzureTSqlColumn.IdentitySeed 
 		{
 			get { return this.IdentitySeed;}
 		}
-		Boolean ISqlAzureColumn.IsIdentity 
+		Boolean ISqlAzureTSqlColumn.IsIdentity 
 		{
 			get { return this.IsIdentity;}
 		}
-		Boolean ISqlAzureColumn.IsMax 
+		Boolean ISqlAzureTSqlColumn.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Int32 ISqlAzureColumn.Length 
+		Int32 ISqlAzureTSqlColumn.Length 
 		{
 			get { return this.Length;}
 		}
-		Boolean ISqlAzureColumn.Nullable 
+		Boolean ISqlAzureTSqlColumn.Nullable 
 		{
 			get { return this.Nullable;}
 		}
-		Boolean ISqlAzureColumn.Persisted 
+		Boolean ISqlAzureTSqlColumn.Persisted 
 		{
 			get { return this.Persisted;}
 		}
-		Boolean? ISqlAzureColumn.PersistedNullable 
+		Boolean? ISqlAzureTSqlColumn.PersistedNullable 
 		{
 			get { return this.PersistedNullable;}
 		}
-		Int32 ISqlAzureColumn.Precision 
+		Int32 ISqlAzureTSqlColumn.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISqlAzureColumn.Scale 
+		Int32 ISqlAzureTSqlColumn.Scale 
 		{
 			get { return this.Scale;}
 		}
-		Boolean ISqlAzureColumn.Sparse 
+		Boolean ISqlAzureTSqlColumn.Sparse 
 		{
 			get { return this.Sparse;}
 		}
-		XmlStyle ISqlAzureColumn.XmlStyle 
+		XmlStyle ISqlAzureTSqlColumn.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureDataType> ISqlAzureColumn.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureColumn.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -8994,73 +8969,76 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureXmlSchemaCollection> ISqlAzureColumn.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection> ISqlAzureTSqlColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class TableValuedFunction : ISqlAzureTableValuedFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlTableValuedFunction"/>.
+	/// </summary>
+	public partial class TSqlTableValuedFunction : ISqlAzureTSqlTableValuedFunction
 	{		
-		Boolean? ISqlAzureTableValuedFunction.AnsiNullsOn 
+		Boolean? ISqlAzureTSqlTableValuedFunction.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISqlAzureTableValuedFunction.CalledOnNullInput 
+		Boolean ISqlAzureTSqlTableValuedFunction.CalledOnNullInput 
 		{
 			get { return this.CalledOnNullInput;}
 		}
-		String ISqlAzureTableValuedFunction.ClassName 
+		String ISqlAzureTSqlTableValuedFunction.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISqlAzureTableValuedFunction.ExecuteAsCaller 
+		Boolean ISqlAzureTSqlTableValuedFunction.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISqlAzureTableValuedFunction.ExecuteAsOwner 
+		Boolean ISqlAzureTSqlTableValuedFunction.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISqlAzureTableValuedFunction.ExecuteAsSelf 
+		Boolean ISqlAzureTSqlTableValuedFunction.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISqlAzureTableValuedFunction.MethodName 
+		String ISqlAzureTSqlTableValuedFunction.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISqlAzureTableValuedFunction.QuotedIdentifierOn 
+		Boolean? ISqlAzureTSqlTableValuedFunction.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISqlAzureTableValuedFunction.ReturnsNullOnNullInput 
+		Boolean ISqlAzureTSqlTableValuedFunction.ReturnsNullOnNullInput 
 		{
 			get { return this.ReturnsNullOnNullInput;}
 		}
-		String ISqlAzureTableValuedFunction.ReturnTableVariableName 
+		String ISqlAzureTSqlTableValuedFunction.ReturnTableVariableName 
 		{
 			get { return this.ReturnTableVariableName;}
 		}
-		Boolean ISqlAzureTableValuedFunction.WithSchemaBinding 
+		Boolean ISqlAzureTSqlTableValuedFunction.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureAssembly> ISqlAzureTableValuedFunction.Assembly 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlTableValuedFunction.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureTableValuedFunction.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlTableValuedFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -9068,35 +9046,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureLogin> ISqlAzureTableValuedFunction.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlTableValuedFunction.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureTableValuedFunction.OrderColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableValuedFunction.OrderColumns 
 		{
 			get 
 			{
-				return this.OrderColumns;
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureParameter> ISqlAzureTableValuedFunction.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlParameter> ISqlAzureTSqlTableValuedFunction.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureTableValuedFunction.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureTSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
@@ -9104,78 +9082,81 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureTableValuedFunction.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlTableValuedFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureUser> ISqlAzureTableValuedFunction.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser> ISqlAzureTSqlTableValuedFunction.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser>();
 			}
 		}
 	}
-	public partial class ScalarFunction : ISqlAzureScalarFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlScalarFunction"/>.
+	/// </summary>
+	public partial class TSqlScalarFunction : ISqlAzureTSqlScalarFunction
 	{		
-		Boolean? ISqlAzureScalarFunction.AnsiNullsOn 
+		Boolean? ISqlAzureTSqlScalarFunction.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISqlAzureScalarFunction.CalledOnNullInput 
+		Boolean ISqlAzureTSqlScalarFunction.CalledOnNullInput 
 		{
 			get { return this.CalledOnNullInput;}
 		}
-		String ISqlAzureScalarFunction.ClassName 
+		String ISqlAzureTSqlScalarFunction.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISqlAzureScalarFunction.ExecuteAsCaller 
+		Boolean ISqlAzureTSqlScalarFunction.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISqlAzureScalarFunction.ExecuteAsOwner 
+		Boolean ISqlAzureTSqlScalarFunction.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISqlAzureScalarFunction.ExecuteAsSelf 
+		Boolean ISqlAzureTSqlScalarFunction.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISqlAzureScalarFunction.MethodName 
+		String ISqlAzureTSqlScalarFunction.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISqlAzureScalarFunction.QuotedIdentifierOn 
+		Boolean? ISqlAzureTSqlScalarFunction.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISqlAzureScalarFunction.ReturnsNullOnNullInput 
+		Boolean ISqlAzureTSqlScalarFunction.ReturnsNullOnNullInput 
 		{
 			get { return this.ReturnsNullOnNullInput;}
 		}
-		Boolean ISqlAzureScalarFunction.WithSchemaBinding 
+		Boolean ISqlAzureTSqlScalarFunction.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureAssembly> ISqlAzureScalarFunction.Assembly 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlScalarFunction.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureScalarFunction.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlScalarFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -9183,26 +9164,26 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureLogin> ISqlAzureScalarFunction.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlScalarFunction.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureParameter> ISqlAzureScalarFunction.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlParameter> ISqlAzureTSqlScalarFunction.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureScalarFunction.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureTSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
@@ -9210,125 +9191,82 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureScalarFunction.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlScalarFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureUser> ISqlAzureScalarFunction.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser> ISqlAzureTSqlScalarFunction.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser>();
 			}
 		}
 	}
-	public partial class Aggregate : ISqlAzureAggregate
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlIndex"/>.
+	/// </summary>
+	public partial class TSqlIndex : ISqlAzureTSqlIndex
 	{		
-		String ISqlAzureAggregate.ClassName 
-		{
-			get { return this.ClassName;}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureAssembly> ISqlAzureAggregate.Assembly 
-		{
-			get 
-			{
-				return this.Assembly;
-			}
-		}
-
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureParameter> ISqlAzureAggregate.Parameters 
-		{
-			get 
-			{
-				return this.Parameters;
-			}
-		}
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureAggregate.Schema 
-		{
-			get 
-			{
-				return this.Schema;
-			}
-		}
-	}
-	public partial class ApplicationRole : ISqlAzureApplicationRole
-	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureApplicationRole.DefaultSchema 
-		{
-			get 
-			{
-				return this.DefaultSchema;
-			}
-		}
-	}
-	public partial class Index : ISqlAzureIndex
-	{		
-		Int32? ISqlAzureIndex.BucketCount 
+		Int32? ISqlAzureTSqlIndex.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISqlAzureIndex.Clustered 
+		Boolean ISqlAzureTSqlIndex.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISqlAzureIndex.Disabled 
+		Boolean ISqlAzureTSqlIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISqlAzureIndex.FilterPredicate 
+		String ISqlAzureTSqlIndex.FilterPredicate 
 		{
 			get { return this.FilterPredicate;}
 		}
-		Boolean ISqlAzureIndex.Hash 
+		Boolean ISqlAzureTSqlIndex.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISqlAzureIndex.IgnoreDuplicateKey 
+		Boolean ISqlAzureTSqlIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISqlAzureIndex.RecomputeStatistics 
+		Boolean ISqlAzureTSqlIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISqlAzureIndex.Unique 
+		Boolean ISqlAzureTSqlIndex.Unique 
 		{
 			get { return this.Unique;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureIndex.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureIndex.IncludedColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlIndex.IncludedColumns 
 		{
 			get 
 			{
-				return this.IncludedColumns;
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISqlAzureIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISqlAzureTSqlIndex.IndexedObject 
 		{
 			get 
 			{
@@ -9336,28 +9274,31 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Assembly : ISqlAzureAssembly
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlAssembly"/>.
+	/// </summary>
+	public partial class TSqlAssembly : ISqlAzureTSqlAssembly
 	{		
-		AssemblyPermissionSet ISqlAzureAssembly.PermissionSet 
+		AssemblyPermissionSet ISqlAzureTSqlAssembly.PermissionSet 
 		{
 			get { return this.PermissionSet;}
 		}
-		Boolean ISqlAzureAssembly.Visible 
+		Boolean ISqlAzureTSqlAssembly.Visible 
 		{
 			get { return this.Visible;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureAssemblySource> ISqlAzureAssembly.AssemblySources 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblySource> ISqlAzureTSqlAssembly.AssemblySources 
 		{
 			get 
 			{
-				return this.AssemblySources;
+				return this.AssemblySources.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblySource>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureAssembly.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureTSqlAssembly.Authorizer 
 		{
 			get 
 			{
@@ -9365,87 +9306,72 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureAssembly> ISqlAzureAssembly.ReferencedAssemblies 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlAssembly.ReferencedAssemblies 
 		{
 			get 
 			{
-				return this.ReferencedAssemblies;
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
 			}
 		}
 	}
-	public partial class AssemblySource : ISqlAzureAssemblySource
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlAssemblySource"/>.
+	/// </summary>
+	public partial class TSqlAssemblySource : ISqlAzureTSqlAssemblySource
 	{		
-		String ISqlAzureAssemblySource.Source 
+		String ISqlAzureTSqlAssemblySource.Source 
 		{
 			get { return this.Source;}
 		}
 	}
-	public partial class AsymmetricKey : ISqlAzureAsymmetricKey
-	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureAsymmetricKey.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class AuditAction : ISqlAzureAuditAction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlBuiltInServerRole"/>.
+	/// </summary>
+	public partial class TSqlBuiltInServerRole : ISqlAzureTSqlBuiltInServerRole
 	{		
 	}
-	public partial class AuditActionGroup : ISqlAzureAuditActionGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlDataType"/>.
+	/// </summary>
+	public partial class TSqlDataType : ISqlAzureTSqlDataType
 	{		
-	}
-	public partial class AuditActionSpecification : ISqlAzureAuditActionSpecification
-	{		
-	}
-	public partial class BrokerPriority : ISqlAzureBrokerPriority
-	{		
-	}
-	public partial class BuiltInServerRole : ISqlAzureBuiltInServerRole
-	{		
-	}
-	public partial class DataType : ISqlAzureDataType
-	{		
-		SqlDataType ISqlAzureDataType.SqlDataType 
+		SqlDataType ISqlAzureTSqlDataType.SqlDataType 
 		{
 			get { return this.SqlDataType;}
 		}
-		Boolean ISqlAzureDataType.UddtIsMax 
+		Boolean ISqlAzureTSqlDataType.UddtIsMax 
 		{
 			get { return this.UddtIsMax;}
 		}
-		Int32 ISqlAzureDataType.UddtLength 
+		Int32 ISqlAzureTSqlDataType.UddtLength 
 		{
 			get { return this.UddtLength;}
 		}
-		Boolean ISqlAzureDataType.UddtNullable 
+		Boolean ISqlAzureTSqlDataType.UddtNullable 
 		{
 			get { return this.UddtNullable;}
 		}
-		Int32 ISqlAzureDataType.UddtPrecision 
+		Int32 ISqlAzureTSqlDataType.UddtPrecision 
 		{
 			get { return this.UddtPrecision;}
 		}
-		Int32 ISqlAzureDataType.UddtScale 
+		Int32 ISqlAzureTSqlDataType.UddtScale 
 		{
 			get { return this.UddtScale;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureDataType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlDataType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<System.Type> ISqlAzureDataType.Type 
+		// Peer relationship		
+		IEnumerable<System.Type> ISqlAzureTSqlDataType.Type 
 		{
 			get 
 			{
@@ -9453,31 +9379,22 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Certificate : ISqlAzureCertificate
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlCheckConstraint"/>.
+	/// </summary>
+	public partial class TSqlCheckConstraint : ISqlAzureTSqlCheckConstraint
 	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureCertificate.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class CheckConstraint : ISqlAzureCheckConstraint
-	{		
-		Boolean ISqlAzureCheckConstraint.Disabled 
+		Boolean ISqlAzureTSqlCheckConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISqlAzureCheckConstraint.Expression 
+		String ISqlAzureTSqlCheckConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureCheckConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -9485,33 +9402,36 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureExtendedProperty> ISqlAzureCheckConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlCheckConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
 			}
 		}
 	}
-	public partial class ClrTypeMethod : ISqlAzureClrTypeMethod
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlClrTypeMethod"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethod : ISqlAzureTSqlClrTypeMethod
 	{		
-		String ISqlAzureClrTypeMethod.Name 
+		String ISqlAzureTSqlClrTypeMethod.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureParameter> ISqlAzureClrTypeMethod.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlParameter> ISqlAzureTSqlClrTypeMethod.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlParameter>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureClrTypeMethod.ReturnType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureTSqlClrTypeMethod.ReturnType 
 		{
 			get 
 			{
@@ -9519,35 +9439,41 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ClrTypeMethodParameter : ISqlAzureClrTypeMethodParameter
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlClrTypeMethodParameter"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethodParameter : ISqlAzureTSqlClrTypeMethodParameter
 	{		
-		Boolean ISqlAzureClrTypeMethodParameter.IsOutput 
+		Boolean ISqlAzureTSqlClrTypeMethodParameter.IsOutput 
 		{
 			get { return this.IsOutput;}
 		}
-		String ISqlAzureClrTypeMethodParameter.Name 
+		String ISqlAzureTSqlClrTypeMethodParameter.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureDataType> ISqlAzureClrTypeMethodParameter.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
 			}
 		}
 	}
-	public partial class ClrTypeProperty : ISqlAzureClrTypeProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlClrTypeProperty"/>.
+	/// </summary>
+	public partial class TSqlClrTypeProperty : ISqlAzureTSqlClrTypeProperty
 	{		
-		String ISqlAzureClrTypeProperty.Name 
+		String ISqlAzureTSqlClrTypeProperty.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureClrTypeProperty.ClrType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureTSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
@@ -9555,97 +9481,59 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ColumnStoreIndex : ISqlAzureColumnStoreIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlDatabaseDdlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDatabaseDdlTrigger : ISqlAzureTSqlDatabaseDdlTrigger
 	{		
-		Boolean ISqlAzureColumnStoreIndex.Clustered 
-		{
-			get { return this.Clustered;}
-		}
-		Boolean ISqlAzureColumnStoreIndex.Disabled 
-		{
-			get { return this.Disabled;}
-		}
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISqlAzureColumnStoreIndex.IndexedObject 
-		{
-			get 
-			{
-				return this.IndexedObject;
-			}
-		}
-	}
-	public partial class Contract : ISqlAzureContract
-	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureContract.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class Credential : ISqlAzureCredential
-	{		
-	}
-	public partial class CryptographicProvider : ISqlAzureCryptographicProvider
-	{		
-	}
-	public partial class DatabaseAuditSpecification : ISqlAzureDatabaseAuditSpecification
-	{		
-	}
-	public partial class DatabaseDdlTrigger : ISqlAzureDatabaseDdlTrigger
-	{		
-		Boolean? ISqlAzureDatabaseDdlTrigger.AnsiNullsOn 
+		Boolean? ISqlAzureTSqlDatabaseDdlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISqlAzureDatabaseDdlTrigger.ClassName 
+		String ISqlAzureTSqlDatabaseDdlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISqlAzureDatabaseDdlTrigger.Disabled 
+		Boolean ISqlAzureTSqlDatabaseDdlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISqlAzureDatabaseDdlTrigger.ExecuteAsCaller 
+		Boolean ISqlAzureTSqlDatabaseDdlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISqlAzureDatabaseDdlTrigger.ExecuteAsOwner 
+		Boolean ISqlAzureTSqlDatabaseDdlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISqlAzureDatabaseDdlTrigger.ExecuteAsSelf 
+		Boolean ISqlAzureTSqlDatabaseDdlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISqlAzureDatabaseDdlTrigger.MethodName 
+		String ISqlAzureTSqlDatabaseDdlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISqlAzureDatabaseDdlTrigger.QuotedIdentifierOn 
+		Boolean? ISqlAzureTSqlDatabaseDdlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISqlAzureDatabaseDdlTrigger.TriggerType 
+		TriggerType ISqlAzureTSqlDatabaseDdlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureAssembly> ISqlAzureDatabaseDdlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlDatabaseDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureDatabaseDdlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlDatabaseDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -9653,17 +9541,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureEventGroup> ISqlAzureDatabaseDdlTrigger.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlEventGroup> ISqlAzureTSqlDatabaseDdlTrigger.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISqlAzureDatabaseDdlTrigger.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISqlAzureTSqlDatabaseDdlTrigger.EventType 
 		{
 			get 
 			{
@@ -9671,76 +9559,58 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureLogin> ISqlAzureDatabaseDdlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlDatabaseDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureUser> ISqlAzureDatabaseDdlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser> ISqlAzureTSqlDatabaseDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser>();
 			}
 		}
 	}
-	public partial class DatabaseEncryptionKey : ISqlAzureDatabaseEncryptionKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlDatabaseOptions"/>.
+	/// </summary>
+	public partial class TSqlDatabaseOptions : ISqlAzureTSqlDatabaseOptions
 	{		
-	}
-	public partial class DatabaseEventNotification : ISqlAzureDatabaseEventNotification
-	{		
-	}
-	public partial class DatabaseMirroringLanguageSpecifier : ISqlAzureDatabaseMirroringLanguageSpecifier
-	{		
-	}
-	public partial class DatabaseOptions : ISqlAzureDatabaseOptions
-	{		
-		String ISqlAzureDatabaseOptions.Collation 
+		String ISqlAzureTSqlDatabaseOptions.Collation 
 		{
 			get { return this.Collation;}
 		}
-		Boolean ISqlAzureDatabaseOptions.ReadOnly 
+		Boolean ISqlAzureTSqlDatabaseOptions.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
 	}
-	public partial class DataCompressionOption : ISqlAzureDataCompressionOption
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlDefaultConstraint"/>.
+	/// </summary>
+	public partial class TSqlDefaultConstraint : ISqlAzureTSqlDefaultConstraint
 	{		
-	}
-	public partial class Default : ISqlAzureDefault
-	{		
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureDefault.Schema 
-		{
-			get 
-			{
-				return this.Schema;
-			}
-		}
-	}
-	public partial class DefaultConstraint : ISqlAzureDefaultConstraint
-	{		
-		Boolean ISqlAzureDefaultConstraint.Disabled 
+		Boolean ISqlAzureTSqlDefaultConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISqlAzureDefaultConstraint.Expression 
+		String ISqlAzureTSqlDefaultConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
-		Boolean ISqlAzureDefaultConstraint.WithValues 
+		Boolean ISqlAzureTSqlDefaultConstraint.WithValues 
 		{
 			get { return this.WithValues;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureDefaultConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -9748,98 +9618,101 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureExtendedProperty> ISqlAzureDefaultConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlDefaultConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureDefaultConstraint.TargetColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn;
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 	}
-	public partial class DmlTrigger : ISqlAzureDmlTrigger
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlDmlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDmlTrigger : ISqlAzureTSqlDmlTrigger
 	{		
-		Boolean? ISqlAzureDmlTrigger.AnsiNullsOn 
+		Boolean? ISqlAzureTSqlDmlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISqlAzureDmlTrigger.ClassName 
+		String ISqlAzureTSqlDmlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		OrderRestriction ISqlAzureDmlTrigger.DeleteOrderRestriction 
+		OrderRestriction ISqlAzureTSqlDmlTrigger.DeleteOrderRestriction 
 		{
 			get { return this.DeleteOrderRestriction;}
 		}
-		Boolean ISqlAzureDmlTrigger.Disabled 
+		Boolean ISqlAzureTSqlDmlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISqlAzureDmlTrigger.ExecuteAsCaller 
+		Boolean ISqlAzureTSqlDmlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISqlAzureDmlTrigger.ExecuteAsOwner 
+		Boolean ISqlAzureTSqlDmlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISqlAzureDmlTrigger.ExecuteAsSelf 
+		Boolean ISqlAzureTSqlDmlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		OrderRestriction ISqlAzureDmlTrigger.InsertOrderRestriction 
+		OrderRestriction ISqlAzureTSqlDmlTrigger.InsertOrderRestriction 
 		{
 			get { return this.InsertOrderRestriction;}
 		}
-		Boolean ISqlAzureDmlTrigger.IsDeleteTrigger 
+		Boolean ISqlAzureTSqlDmlTrigger.IsDeleteTrigger 
 		{
 			get { return this.IsDeleteTrigger;}
 		}
-		Boolean ISqlAzureDmlTrigger.IsInsertTrigger 
+		Boolean ISqlAzureTSqlDmlTrigger.IsInsertTrigger 
 		{
 			get { return this.IsInsertTrigger;}
 		}
-		Boolean ISqlAzureDmlTrigger.IsUpdateTrigger 
+		Boolean ISqlAzureTSqlDmlTrigger.IsUpdateTrigger 
 		{
 			get { return this.IsUpdateTrigger;}
 		}
-		String ISqlAzureDmlTrigger.MethodName 
+		String ISqlAzureTSqlDmlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISqlAzureDmlTrigger.QuotedIdentifierOn 
+		Boolean? ISqlAzureTSqlDmlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISqlAzureDmlTrigger.TriggerType 
+		TriggerType ISqlAzureTSqlDmlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		OrderRestriction ISqlAzureDmlTrigger.UpdateOrderRestriction 
+		OrderRestriction ISqlAzureTSqlDmlTrigger.UpdateOrderRestriction 
 		{
 			get { return this.UpdateOrderRestriction;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureAssembly> ISqlAzureDmlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlDmlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureDmlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlDmlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -9847,17 +9720,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureLogin> ISqlAzureDmlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlDmlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISqlAzureDmlTrigger.TriggerObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlDmlTrigger.TriggerObject 
 		{
 			get 
 			{
@@ -9865,299 +9738,146 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureUser> ISqlAzureDmlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser> ISqlAzureTSqlDmlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser>();
 			}
 		}
 	}
-	public partial class Endpoint : ISqlAzureEndpoint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlEventGroup"/>.
+	/// </summary>
+	public partial class TSqlEventGroup : ISqlAzureTSqlEventGroup
 	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureEndpoint.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class ErrorMessage : ISqlAzureErrorMessage
-	{		
-	}
-	public partial class EventGroup : ISqlAzureEventGroup
-	{		
-		EventGroupType ISqlAzureEventGroup.Group 
+		EventGroupType ISqlAzureTSqlEventGroup.Group 
 		{
 			get { return this.Group;}
 		}
 	}
-	public partial class EventSession : ISqlAzureEventSession
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlEventTypeSpecifier"/>.
+	/// </summary>
+	public partial class TSqlEventTypeSpecifier : ISqlAzureTSqlEventTypeSpecifier
 	{		
-	}
-	public partial class EventSessionAction : ISqlAzureEventSessionAction
-	{		
-	}
-	public partial class EventSessionDefinitions : ISqlAzureEventSessionDefinitions
-	{		
-	}
-	public partial class EventSessionSetting : ISqlAzureEventSessionSetting
-	{		
-	}
-	public partial class EventSessionTarget : ISqlAzureEventSessionTarget
-	{		
-	}
-	public partial class EventTypeSpecifier : ISqlAzureEventTypeSpecifier
-	{		
-		EventType ISqlAzureEventTypeSpecifier.EventType 
+		EventType ISqlAzureTSqlEventTypeSpecifier.EventType 
 		{
 			get { return this.EventType;}
 		}
-		OrderRestriction ISqlAzureEventTypeSpecifier.Order 
+		OrderRestriction ISqlAzureTSqlEventTypeSpecifier.Order 
 		{
 			get { return this.Order;}
 		}
 	}
-	public partial class ExtendedProcedure : ISqlAzureExtendedProcedure
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlForeignKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlForeignKeyConstraint : ISqlAzureTSqlForeignKeyConstraint
 	{		
-		Boolean ISqlAzureExtendedProcedure.ExeccuteAsCaller 
-		{
-			get { return this.ExeccuteAsCaller;}
-		}
-		Boolean ISqlAzureExtendedProcedure.ExecuteAsOwner 
-		{
-			get { return this.ExecuteAsOwner;}
-		}
-		Boolean ISqlAzureExtendedProcedure.ExecuteAsSelf 
-		{
-			get { return this.ExecuteAsSelf;}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureLogin> ISqlAzureExtendedProcedure.Login 
-		{
-			get 
-			{
-				return this.Login;
-			}
-		}
-
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureParameter> ISqlAzureExtendedProcedure.Parameters 
-		{
-			get 
-			{
-				return this.Parameters;
-			}
-		}
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureExtendedProcedure.Schema 
-		{
-			get 
-			{
-				return this.Schema;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureUser> ISqlAzureExtendedProcedure.User 
-		{
-			get 
-			{
-				return this.User;
-			}
-		}
-	}
-	public partial class ExtendedProperty : ISqlAzureExtendedProperty
-	{		
-	}
-	public partial class SqlFile : ISqlAzureSqlFile
-	{		
-	}
-	public partial class Filegroup : ISqlAzureFilegroup
-	{		
-	}
-	public partial class ForeignKeyConstraint : ISqlAzureForeignKeyConstraint
-	{		
-		ForeignKeyAction ISqlAzureForeignKeyConstraint.DeleteAction 
+		ForeignKeyAction ISqlAzureTSqlForeignKeyConstraint.DeleteAction 
 		{
 			get { return this.DeleteAction;}
 		}
-		Boolean ISqlAzureForeignKeyConstraint.Disabled 
+		Boolean ISqlAzureTSqlForeignKeyConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		ForeignKeyAction ISqlAzureForeignKeyConstraint.UpdateAction 
+		ForeignKeyAction ISqlAzureTSqlForeignKeyConstraint.UpdateAction 
 		{
 			get { return this.UpdateAction;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureForeignKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlForeignKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureForeignKeyConstraint.ForeignColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlForeignKeyConstraint.ForeignColumns 
 		{
 			get 
 			{
-				return this.ForeignColumns;
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTable> ISqlAzureForeignKeyConstraint.ForeignTable 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlForeignKeyConstraint.ForeignTable 
 		{
 			get 
 			{
-				return this.ForeignTable;
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureExtendedProperty> ISqlAzureForeignKeyConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlForeignKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
 			}
 		}
 	}
-	public partial class FullTextCatalog : ISqlAzureFullTextCatalog
-	{		
-		Boolean? ISqlAzureFullTextCatalog.AccentSensitivity 
-		{
-			get { return this.AccentSensitivity;}
-		}
-		Boolean ISqlAzureFullTextCatalog.IsDefault 
-		{
-			get { return this.IsDefault;}
-		}
-		String ISqlAzureFullTextCatalog.Path 
-		{
-			get { return this.Path;}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureFullTextCatalog.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureFilegroup> ISqlAzureFullTextCatalog.Filegroup 
-		{
-			get 
-			{
-				return this.Filegroup;
-			}
-		}
-	}
-	public partial class FullTextIndex : ISqlAzureFullTextIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlFullTextIndexColumnSpecifier"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndexColumnSpecifier : ISqlAzureTSqlFullTextIndexColumnSpecifier
 	{		
 	}
-	public partial class FullTextIndexColumnSpecifier : ISqlAzureFullTextIndexColumnSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlLogin"/>.
+	/// </summary>
+	public partial class TSqlLogin : ISqlAzureTSqlLogin
 	{		
-	}
-	public partial class FullTextStopList : ISqlAzureFullTextStopList
-	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureFullTextStopList.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class HttpProtocolSpecifier : ISqlAzureHttpProtocolSpecifier
-	{		
-	}
-	public partial class LinkedServer : ISqlAzureLinkedServer
-	{		
-	}
-	public partial class LinkedServerLogin : ISqlAzureLinkedServerLogin
-	{		
-	}
-	public partial class Login : ISqlAzureLogin
-	{		
-		Boolean ISqlAzureLogin.Disabled 
+		Boolean ISqlAzureTSqlLogin.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISqlAzureLogin.Password 
+		String ISqlAzureTSqlLogin.Password 
 		{
 			get { return this.Password;}
 		}
 	}
-	public partial class MasterKey : ISqlAzureMasterKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlPermission"/>.
+	/// </summary>
+	public partial class TSqlPermission : ISqlAzureTSqlPermission
 	{		
-	}
-	public partial class MessageType : ISqlAzureMessageType
-	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureMessageType.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class PartitionFunction : ISqlAzurePartitionFunction
-	{		
-	}
-	public partial class PartitionScheme : ISqlAzurePartitionScheme
-	{		
-	}
-	public partial class PartitionValue : ISqlAzurePartitionValue
-	{		
-	}
-	public partial class Permission : ISqlAzurePermission
-	{		
-		PermissionAction ISqlAzurePermission.PermissionAction 
+		PermissionAction ISqlAzureTSqlPermission.PermissionAction 
 		{
 			get { return this.PermissionAction;}
 		}
-		PermissionType ISqlAzurePermission.PermissionType 
+		PermissionType ISqlAzureTSqlPermission.PermissionType 
 		{
 			get { return this.PermissionType;}
 		}
-		Boolean ISqlAzurePermission.WithAllPrivileges 
+		Boolean ISqlAzureTSqlPermission.WithAllPrivileges 
 		{
 			get { return this.WithAllPrivileges;}
 		}
-		Boolean ISqlAzurePermission.WithGrantOption 
+		Boolean ISqlAzureTSqlPermission.WithGrantOption 
 		{
 			get { return this.WithGrantOption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzurePermission.ExcludedColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlPermission.ExcludedColumns 
 		{
 			get 
 			{
-				return this.ExcludedColumns;
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISqlAzurePermission.Grantee 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISqlAzureTSqlPermission.Grantee 
 		{
 			get 
 			{
@@ -10165,8 +9885,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISqlAzurePermission.Grantor 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISqlAzureTSqlPermission.Grantor 
 		{
 			get 
 			{
@@ -10174,17 +9894,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzurePermission.RevokedGrantOptionColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlPermission.RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return this.RevokedGrantOptionColumns;
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISqlAzurePermission.SecuredObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISqlAzureTSqlPermission.SecuredObject 
 		{
 			get 
 			{
@@ -10192,97 +9912,103 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class PrimaryKeyConstraint : ISqlAzurePrimaryKeyConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlPrimaryKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlPrimaryKeyConstraint : ISqlAzureTSqlPrimaryKeyConstraint
 	{		
-		Int32? ISqlAzurePrimaryKeyConstraint.BucketCount 
+		Int32? ISqlAzureTSqlPrimaryKeyConstraint.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISqlAzurePrimaryKeyConstraint.Clustered 
+		Boolean ISqlAzureTSqlPrimaryKeyConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISqlAzurePrimaryKeyConstraint.Disabled 
+		Boolean ISqlAzureTSqlPrimaryKeyConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISqlAzurePrimaryKeyConstraint.Hash 
+		Boolean ISqlAzureTSqlPrimaryKeyConstraint.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISqlAzurePrimaryKeyConstraint.IgnoreDuplicateKey 
+		Boolean ISqlAzureTSqlPrimaryKeyConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISqlAzurePrimaryKeyConstraint.RecomputeStatistics 
+		Boolean ISqlAzureTSqlPrimaryKeyConstraint.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzurePrimaryKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlPrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureExtendedProperty> ISqlAzurePrimaryKeyConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlPrimaryKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
 			}
 		}
 	}
-	public partial class Procedure : ISqlAzureProcedure
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlProcedure"/>.
+	/// </summary>
+	public partial class TSqlProcedure : ISqlAzureTSqlProcedure
 	{		
-		Boolean? ISqlAzureProcedure.AnsiNullsOn 
+		Boolean? ISqlAzureTSqlProcedure.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISqlAzureProcedure.ClassName 
+		String ISqlAzureTSqlProcedure.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISqlAzureProcedure.ExecuteAsCaller 
+		Boolean ISqlAzureTSqlProcedure.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISqlAzureProcedure.ExecuteAsOwner 
+		Boolean ISqlAzureTSqlProcedure.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISqlAzureProcedure.ExecuteAsSelf 
+		Boolean ISqlAzureTSqlProcedure.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISqlAzureProcedure.MethodName 
+		String ISqlAzureTSqlProcedure.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISqlAzureProcedure.QuotedIdentifierOn 
+		Boolean? ISqlAzureTSqlProcedure.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISqlAzureProcedure.WithRecompile 
+		Boolean ISqlAzureTSqlProcedure.WithRecompile 
 		{
 			get { return this.WithRecompile;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureAssembly> ISqlAzureProcedure.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlProcedure.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureProcedure.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlProcedure.BodyDependencies 
 		{
 			get 
 			{
@@ -10290,101 +10016,50 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureLogin> ISqlAzureProcedure.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlProcedure.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureParameter> ISqlAzureProcedure.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlParameter> ISqlAzureTSqlProcedure.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlParameter>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureProcedure.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureUser> ISqlAzureProcedure.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser> ISqlAzureTSqlProcedure.User 
 		{
 			get 
 			{
-				return this.User;
-			}
-		}
-	}
-	public partial class Queue : ISqlAzureQueue
-	{		
-		Boolean ISqlAzureQueue.ActivationExecuteAsCaller 
-		{
-			get { return this.ActivationExecuteAsCaller;}
-		}
-		Boolean ISqlAzureQueue.ActivationExecuteAsOwner 
-		{
-			get { return this.ActivationExecuteAsOwner;}
-		}
-		Boolean ISqlAzureQueue.ActivationExecuteAsSelf 
-		{
-			get { return this.ActivationExecuteAsSelf;}
-		}
-
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureQueue.Columns 
-		{
-			get 
-			{
-				return this.Columns;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureLogin> ISqlAzureQueue.Login 
-		{
-			get 
-			{
-				return this.Login;
-			}
-		}
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureQueue.Schema 
-		{
-			get 
-			{
-				return this.Schema;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureUser> ISqlAzureQueue.User 
-		{
-			get 
-			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser>();
 			}
 		}
 	}
-	public partial class QueueEventNotification : ISqlAzureQueueEventNotification
-	{		
-	}
-	public partial class RemoteServiceBinding : ISqlAzureRemoteServiceBinding
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlRole"/>.
+	/// </summary>
+	public partial class TSqlRole : ISqlAzureTSqlRole
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureRemoteServiceBinding.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureTSqlRole.Authorizer 
 		{
 			get 
 			{
@@ -10392,29 +10067,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ResourceGovernor : ISqlAzureResourceGovernor
-	{		
-	}
-	public partial class ResourcePool : ISqlAzureResourcePool
-	{		
-	}
-	public partial class Role : ISqlAzureRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlRoleMembership : ISqlAzureTSqlRoleMembership
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureRole.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class RoleMembership : ISqlAzureRoleMembership
-	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISqlAzureRoleMembership.Member 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISqlAzureTSqlRoleMembership.Member 
 		{
 			get 
 			{
@@ -10422,44 +10082,23 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureRole> ISqlAzureRoleMembership.Role 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRole> ISqlAzureTSqlRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role;
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRole>();
 			}
 		}
 	}
-	public partial class Route : ISqlAzureRoute
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlSchema"/>.
+	/// </summary>
+	public partial class TSqlSchema : ISqlAzureTSqlSchema
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureRoute.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class Rule : ISqlAzureRule
-	{		
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureRule.Schema 
-		{
-			get 
-			{
-				return this.Schema;
-			}
-		}
-	}
-	public partial class Schema : ISqlAzureSchema
-	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureSchema.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureTSqlSchema.Authorizer 
 		{
 			get 
 			{
@@ -10467,143 +10106,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SearchProperty : ISqlAzureSearchProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlServerOptions"/>.
+	/// </summary>
+	public partial class TSqlServerOptions : ISqlAzureTSqlServerOptions
 	{		
 	}
-	public partial class SearchPropertyList : ISqlAzureSearchPropertyList
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlServerRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlServerRoleMembership : ISqlAzureTSqlServerRoleMembership
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureSearchPropertyList.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class Sequence : ISqlAzureSequence
-	{		
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureSequence.Schema 
-		{
-			get 
-			{
-				return this.Schema;
-			}
-		}
-	}
-	public partial class ServerAudit : ISqlAzureServerAudit
-	{		
-	}
-	public partial class ServerAuditSpecification : ISqlAzureServerAuditSpecification
-	{		
-	}
-	public partial class ServerDdlTrigger : ISqlAzureServerDdlTrigger
-	{		
-		Boolean? ISqlAzureServerDdlTrigger.AnsiNullsOn 
-		{
-			get { return this.AnsiNullsOn;}
-		}
-		String ISqlAzureServerDdlTrigger.ClassName 
-		{
-			get { return this.ClassName;}
-		}
-		Boolean ISqlAzureServerDdlTrigger.Disabled 
-		{
-			get { return this.Disabled;}
-		}
-		Boolean ISqlAzureServerDdlTrigger.ExecuteAsCaller 
-		{
-			get { return this.ExecuteAsCaller;}
-		}
-		Boolean ISqlAzureServerDdlTrigger.ExecuteAsOwner 
-		{
-			get { return this.ExecuteAsOwner;}
-		}
-		Boolean ISqlAzureServerDdlTrigger.ExecuteAsSelf 
-		{
-			get { return this.ExecuteAsSelf;}
-		}
-		String ISqlAzureServerDdlTrigger.MethodName 
-		{
-			get { return this.MethodName;}
-		}
-		Boolean? ISqlAzureServerDdlTrigger.QuotedIdentifierOn 
-		{
-			get { return this.QuotedIdentifierOn;}
-		}
-		TriggerType ISqlAzureServerDdlTrigger.TriggerType 
-		{
-			get { return this.TriggerType;}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureAssembly> ISqlAzureServerDdlTrigger.Assembly 
-		{
-			get 
-			{
-				return this.Assembly;
-			}
-		}
-
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureServerDdlTrigger.BodyDependencies 
-		{
-			get 
-			{
-				return this.BodyDependencies;
-			}
-		}
-
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureEventGroup> ISqlAzureServerDdlTrigger.EventGroup 
-		{
-			get 
-			{
-				return this.EventGroup;
-			}
-		}
-
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISqlAzureServerDdlTrigger.EventType 
-		{
-			get 
-			{
-				return this.EventType;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureLogin> ISqlAzureServerDdlTrigger.Login 
-		{
-			get 
-			{
-				return this.Login;
-			}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureUser> ISqlAzureServerDdlTrigger.User 
-		{
-			get 
-			{
-				return this.User;
-			}
-		}
-	}
-	public partial class ServerEventNotification : ISqlAzureServerEventNotification
-	{		
-	}
-	public partial class ServerOptions : ISqlAzureServerOptions
-	{		
-	}
-	public partial class ServerRoleMembership : ISqlAzureServerRoleMembership
-	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> ISqlAzureServerRoleMembership.Member 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> ISqlAzureTSqlServerRoleMembership.Member 
 		{
 			get 
 			{
@@ -10611,108 +10127,84 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureRole> ISqlAzureServerRoleMembership.Role 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRole> ISqlAzureTSqlServerRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role;
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRole>();
 			}
 		}
 	}
-	public partial class Service : ISqlAzureService
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlSpatialIndex"/>.
+	/// </summary>
+	public partial class TSqlSpatialIndex : ISqlAzureTSqlSpatialIndex
 	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureService.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class ServiceBrokerLanguageSpecifier : ISqlAzureServiceBrokerLanguageSpecifier
-	{		
-	}
-	public partial class Signature : ISqlAzureSignature
-	{		
-	}
-	public partial class SignatureEncryptionMechanism : ISqlAzureSignatureEncryptionMechanism
-	{		
-	}
-	public partial class SoapLanguageSpecifier : ISqlAzureSoapLanguageSpecifier
-	{		
-	}
-	public partial class SoapMethodSpecification : ISqlAzureSoapMethodSpecification
-	{		
-	}
-	public partial class SpatialIndex : ISqlAzureSpatialIndex
-	{		
-		Int32? ISqlAzureSpatialIndex.CellsPerObject 
+		Int32? ISqlAzureTSqlSpatialIndex.CellsPerObject 
 		{
 			get { return this.CellsPerObject;}
 		}
-		Boolean ISqlAzureSpatialIndex.Disabled 
+		Boolean ISqlAzureTSqlSpatialIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Degree ISqlAzureSpatialIndex.GridLevel1Density 
+		Degree ISqlAzureTSqlSpatialIndex.GridLevel1Density 
 		{
 			get { return this.GridLevel1Density;}
 		}
-		Degree ISqlAzureSpatialIndex.GridLevel2Density 
+		Degree ISqlAzureTSqlSpatialIndex.GridLevel2Density 
 		{
 			get { return this.GridLevel2Density;}
 		}
-		Degree ISqlAzureSpatialIndex.GridLevel3Density 
+		Degree ISqlAzureTSqlSpatialIndex.GridLevel3Density 
 		{
 			get { return this.GridLevel3Density;}
 		}
-		Degree ISqlAzureSpatialIndex.GridLevel4Density 
+		Degree ISqlAzureTSqlSpatialIndex.GridLevel4Density 
 		{
 			get { return this.GridLevel4Density;}
 		}
-		Boolean ISqlAzureSpatialIndex.IgnoreDuplicateKey 
+		Boolean ISqlAzureTSqlSpatialIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISqlAzureSpatialIndex.RecomputeStatistics 
+		Boolean ISqlAzureTSqlSpatialIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Tessellation ISqlAzureSpatialIndex.Tessellation 
+		Tessellation ISqlAzureTSqlSpatialIndex.Tessellation 
 		{
 			get { return this.Tessellation;}
 		}
-		Double? ISqlAzureSpatialIndex.XMax 
+		Double? ISqlAzureTSqlSpatialIndex.XMax 
 		{
 			get { return this.XMax;}
 		}
-		Double? ISqlAzureSpatialIndex.XMin 
+		Double? ISqlAzureTSqlSpatialIndex.XMin 
 		{
 			get { return this.XMin;}
 		}
-		Double? ISqlAzureSpatialIndex.YMax 
+		Double? ISqlAzureTSqlSpatialIndex.YMax 
 		{
 			get { return this.YMax;}
 		}
-		Double? ISqlAzureSpatialIndex.YMin 
+		Double? ISqlAzureTSqlSpatialIndex.YMin 
 		{
 			get { return this.YMin;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureSpatialIndex.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlSpatialIndex.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISqlAzureSpatialIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISqlAzureTSqlSpatialIndex.IndexedObject 
 		{
 			get 
 			{
@@ -10720,40 +10212,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Statistics : ISqlAzureStatistics
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlStatistics"/>.
+	/// </summary>
+	public partial class TSqlStatistics : ISqlAzureTSqlStatistics
 	{		
-		String ISqlAzureStatistics.FilterPredicate 
+		String ISqlAzureTSqlStatistics.FilterPredicate 
 		{
 			get { return this.FilterPredicate;}
 		}
-		Boolean ISqlAzureStatistics.NoRecompute 
+		Boolean ISqlAzureTSqlStatistics.NoRecompute 
 		{
 			get { return this.NoRecompute;}
 		}
-		Int32 ISqlAzureStatistics.SampleSize 
+		Int32 ISqlAzureTSqlStatistics.SampleSize 
 		{
 			get { return this.SampleSize;}
 		}
-		SamplingStyle ISqlAzureStatistics.SamplingStyle 
+		SamplingStyle ISqlAzureTSqlStatistics.SamplingStyle 
 		{
 			get { return this.SamplingStyle;}
 		}
-		String ISqlAzureStatistics.StatsStream 
+		String ISqlAzureTSqlStatistics.StatsStream 
 		{
 			get { return this.StatsStream;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureStatistics.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlStatistics.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureStatistics.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlStatistics.ExpressionDependencies 
 		{
 			get 
 			{
@@ -10761,8 +10256,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISqlAzureStatistics.OnObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlStatistics.OnObject 
 		{
 			get 
 			{
@@ -10770,87 +10265,78 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Parameter : ISqlAzureParameter
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlParameter"/>.
+	/// </summary>
+	public partial class TSqlParameter : ISqlAzureTSqlParameter
 	{		
-		String ISqlAzureParameter.DefaultExpression 
+		String ISqlAzureTSqlParameter.DefaultExpression 
 		{
 			get { return this.DefaultExpression;}
 		}
-		Boolean ISqlAzureParameter.IsMax 
+		Boolean ISqlAzureTSqlParameter.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISqlAzureParameter.IsOutput 
+		Boolean ISqlAzureTSqlParameter.IsOutput 
 		{
 			get { return this.IsOutput;}
 		}
-		Int32 ISqlAzureParameter.Length 
+		Int32 ISqlAzureTSqlParameter.Length 
 		{
 			get { return this.Length;}
 		}
-		Int32 ISqlAzureParameter.Precision 
+		Int32 ISqlAzureTSqlParameter.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Boolean ISqlAzureParameter.ReadOnly 
+		Boolean ISqlAzureTSqlParameter.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
-		Int32 ISqlAzureParameter.Scale 
+		Int32 ISqlAzureTSqlParameter.Scale 
 		{
 			get { return this.Scale;}
 		}
-		Boolean ISqlAzureParameter.Varying 
+		Boolean ISqlAzureTSqlParameter.Varying 
 		{
 			get { return this.Varying;}
 		}
-		XmlStyle ISqlAzureParameter.XmlStyle 
+		XmlStyle ISqlAzureTSqlParameter.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureDataType> ISqlAzureParameter.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureXmlSchemaCollection> ISqlAzureParameter.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection> ISqlAzureTSqlParameter.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class SymmetricKey : ISqlAzureSymmetricKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlSynonym"/>.
+	/// </summary>
+	public partial class TSqlSynonym : ISqlAzureTSqlSynonym
 	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureSymmetricKey.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class SymmetricKeyPassword : ISqlAzureSymmetricKeyPassword
-	{		
-	}
-	public partial class Synonym : ISqlAzureSynonym
-	{		
-		String ISqlAzureSynonym.ForObjectName 
+		String ISqlAzureTSqlSynonym.ForObjectName 
 		{
 			get { return this.ForObjectName;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureSynonym.ForObject 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlSynonym.ForObject 
 		{
 			get 
 			{
@@ -10858,111 +10344,80 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureSynonym.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlSynonym.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
 			}
 		}
 	}
-	public partial class Table : ISqlAzureTable
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlTable"/>.
+	/// </summary>
+	public partial class TSqlTable : ISqlAzureTSqlTable
 	{		
-		Boolean? ISqlAzureTable.AnsiNullsOn 
+		Boolean? ISqlAzureTSqlTable.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISqlAzureTable.LargeValueTypesOutOfRow 
+		Boolean ISqlAzureTSqlTable.LargeValueTypesOutOfRow 
 		{
 			get { return this.LargeValueTypesOutOfRow;}
 		}
-		LockEscalationMethod ISqlAzureTable.LockEscalation 
+		LockEscalationMethod ISqlAzureTSqlTable.LockEscalation 
 		{
 			get { return this.LockEscalation;}
 		}
-		Boolean? ISqlAzureTable.QuotedIdentifierOn 
+		Boolean? ISqlAzureTSqlTable.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISqlAzureTable.TableLockOnBulkLoad 
+		Boolean ISqlAzureTSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
 		}
-		Int32 ISqlAzureTable.TextInRowSize 
+		Int32 ISqlAzureTSqlTable.TextInRowSize 
 		{
 			get { return this.TextInRowSize;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureTable.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTable.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureTable.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlTable.Schema 
 		{
 			get 
 			{
-				return this.Schema;
-			}
-		}
-	}
-	public partial class FileTable : ISqlAzureFileTable
-	{		
-		Boolean? ISqlAzureFileTable.AnsiNullsOn 
-		{
-			get { return this.AnsiNullsOn;}
-		}
-		LockEscalationMethod ISqlAzureFileTable.LockEscalation 
-		{
-			get { return this.LockEscalation;}
-		}
-		Boolean? ISqlAzureFileTable.QuotedIdentifierOn 
-		{
-			get { return this.QuotedIdentifierOn;}
-		}
-		Boolean ISqlAzureFileTable.TableLockOnBulkLoad 
-		{
-			get { return this.TableLockOnBulkLoad;}
-		}
-
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureFileTable.Columns 
-		{
-			get 
-			{
-				return this.Columns;
-			}
-		}
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureFileTable.Schema 
-		{
-			get 
-			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
 			}
 		}
 	}
-	public partial class TableType : ISqlAzureTableType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlTableType"/>.
+	/// </summary>
+	public partial class TSqlTableType : ISqlAzureTSqlTableType
 	{		
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureTableType.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableType.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> ISqlAzureTableType.Constraints 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> ISqlAzureTSqlTableType.Constraints 
 		{
 			get 
 			{
@@ -10970,24 +10425,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureTableType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlTableType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
 			}
 		}
 	}
-	public partial class TableTypeCheckConstraint : ISqlAzureTableTypeCheckConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlTableTypeCheckConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeCheckConstraint : ISqlAzureTSqlTableTypeCheckConstraint
 	{		
-		String ISqlAzureTableTypeCheckConstraint.Expression 
+		String ISqlAzureTSqlTableTypeCheckConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureTableTypeCheckConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlTableTypeCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -10995,72 +10453,75 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class TableTypeColumn : ISqlAzureTableTypeColumn
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlTableTypeColumn"/>.
+	/// </summary>
+	public partial class TSqlTableTypeColumn : ISqlAzureTSqlTableTypeColumn
 	{		
-		String ISqlAzureTableTypeColumn.Collation 
+		String ISqlAzureTSqlTableTypeColumn.Collation 
 		{
 			get { return this.Collation;}
 		}
-		String ISqlAzureTableTypeColumn.Expression 
+		String ISqlAzureTSqlTableTypeColumn.Expression 
 		{
 			get { return this.Expression;}
 		}
-		String ISqlAzureTableTypeColumn.IdentityIncrement 
+		String ISqlAzureTSqlTableTypeColumn.IdentityIncrement 
 		{
 			get { return this.IdentityIncrement;}
 		}
-		String ISqlAzureTableTypeColumn.IdentitySeed 
+		String ISqlAzureTSqlTableTypeColumn.IdentitySeed 
 		{
 			get { return this.IdentitySeed;}
 		}
-		Boolean ISqlAzureTableTypeColumn.IsIdentity 
+		Boolean ISqlAzureTSqlTableTypeColumn.IsIdentity 
 		{
 			get { return this.IsIdentity;}
 		}
-		Boolean ISqlAzureTableTypeColumn.IsMax 
+		Boolean ISqlAzureTSqlTableTypeColumn.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Int32 ISqlAzureTableTypeColumn.Length 
+		Int32 ISqlAzureTSqlTableTypeColumn.Length 
 		{
 			get { return this.Length;}
 		}
-		Boolean ISqlAzureTableTypeColumn.Nullable 
+		Boolean ISqlAzureTSqlTableTypeColumn.Nullable 
 		{
 			get { return this.Nullable;}
 		}
-		Boolean ISqlAzureTableTypeColumn.Persisted 
+		Boolean ISqlAzureTSqlTableTypeColumn.Persisted 
 		{
 			get { return this.Persisted;}
 		}
-		Boolean? ISqlAzureTableTypeColumn.PersistedNullable 
+		Boolean? ISqlAzureTSqlTableTypeColumn.PersistedNullable 
 		{
 			get { return this.PersistedNullable;}
 		}
-		Int32 ISqlAzureTableTypeColumn.Precision 
+		Int32 ISqlAzureTSqlTableTypeColumn.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISqlAzureTableTypeColumn.Scale 
+		Int32 ISqlAzureTSqlTableTypeColumn.Scale 
 		{
 			get { return this.Scale;}
 		}
-		XmlStyle ISqlAzureTableTypeColumn.XmlStyle 
+		XmlStyle ISqlAzureTSqlTableTypeColumn.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureDataType> ISqlAzureTableTypeColumn.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureTableTypeColumn.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlTableTypeColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -11068,24 +10529,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureXmlSchemaCollection> ISqlAzureTableTypeColumn.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection> ISqlAzureTSqlTableTypeColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class TableTypeDefaultConstraint : ISqlAzureTableTypeDefaultConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlTableTypeDefaultConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeDefaultConstraint : ISqlAzureTSqlTableTypeDefaultConstraint
 	{		
-		String ISqlAzureTableTypeDefaultConstraint.Expression 
+		String ISqlAzureTSqlTableTypeDefaultConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureTableTypeDefaultConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlTableTypeDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -11093,202 +10557,178 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureTableTypeDefaultConstraint.TargetColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableTypeDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn;
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 	}
-	public partial class TableTypeIndex : ISqlAzureTableTypeIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlTableTypePrimaryKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypePrimaryKeyConstraint : ISqlAzureTSqlTableTypePrimaryKeyConstraint
 	{		
-		Int32? ISqlAzureTableTypeIndex.BucketCount 
+		Int32? ISqlAzureTSqlTableTypePrimaryKeyConstraint.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISqlAzureTableTypeIndex.Hash 
-		{
-			get { return this.Hash;}
-		}
-		Boolean ISqlAzureTableTypeIndex.IsDisabled 
-		{
-			get { return this.IsDisabled;}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureTableTypeIndex.Columns 
-		{
-			get 
-			{
-				return this.Columns;
-			}
-		}
-	}
-	public partial class TableTypePrimaryKeyConstraint : ISqlAzureTableTypePrimaryKeyConstraint
-	{		
-		Int32? ISqlAzureTableTypePrimaryKeyConstraint.BucketCount 
-		{
-			get { return this.BucketCount;}
-		}
-		Boolean ISqlAzureTableTypePrimaryKeyConstraint.Clustered 
+		Boolean ISqlAzureTSqlTableTypePrimaryKeyConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISqlAzureTableTypePrimaryKeyConstraint.Hash 
+		Boolean ISqlAzureTSqlTableTypePrimaryKeyConstraint.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISqlAzureTableTypePrimaryKeyConstraint.IgnoreDuplicateKey 
+		Boolean ISqlAzureTSqlTableTypePrimaryKeyConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureTableTypePrimaryKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableTypePrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 	}
-	public partial class TableTypeUniqueConstraint : ISqlAzureTableTypeUniqueConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlTableTypeUniqueConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeUniqueConstraint : ISqlAzureTSqlTableTypeUniqueConstraint
 	{		
-		Boolean ISqlAzureTableTypeUniqueConstraint.Clustered 
+		Boolean ISqlAzureTSqlTableTypeUniqueConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISqlAzureTableTypeUniqueConstraint.IgnoreDuplicateKey 
+		Boolean ISqlAzureTSqlTableTypeUniqueConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureTableTypeUniqueConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableTypeUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 	}
-	public partial class TcpProtocolSpecifier : ISqlAzureTcpProtocolSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlUniqueConstraint"/>.
+	/// </summary>
+	public partial class TSqlUniqueConstraint : ISqlAzureTSqlUniqueConstraint
 	{		
-	}
-	public partial class UniqueConstraint : ISqlAzureUniqueConstraint
-	{		
-		Boolean ISqlAzureUniqueConstraint.Clustered 
+		Boolean ISqlAzureTSqlUniqueConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISqlAzureUniqueConstraint.Disabled 
+		Boolean ISqlAzureTSqlUniqueConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISqlAzureUniqueConstraint.IgnoreDuplicateKey 
+		Boolean ISqlAzureTSqlUniqueConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISqlAzureUniqueConstraint.RecomputeStatistics 
+		Boolean ISqlAzureTSqlUniqueConstraint.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureUniqueConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureExtendedProperty> ISqlAzureUniqueConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlUniqueConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
 			}
 		}
 	}
-	public partial class User : ISqlAzureUser
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlUser"/>.
+	/// </summary>
+	public partial class TSqlUser : ISqlAzureTSqlUser
 	{		
-		Boolean ISqlAzureUser.WithoutLogin 
+		Boolean ISqlAzureTSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureUser.DefaultSchema 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlUser.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema;
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureLogin> ISqlAzureUser.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlUser.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
 			}
 		}
 	}
-	public partial class UserDefinedServerRole : ISqlAzureUserDefinedServerRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlUserDefinedType"/>.
+	/// </summary>
+	public partial class TSqlUserDefinedType : ISqlAzureTSqlUserDefinedType
 	{		
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureUserDefinedServerRole.Authorizer 
-		{
-			get 
-			{
-				return this.Authorizer;
-			}
-		}
-	}
-	public partial class UserDefinedType : ISqlAzureUserDefinedType
-	{		
-		Boolean? ISqlAzureUserDefinedType.ByteOrdered 
+		Boolean? ISqlAzureTSqlUserDefinedType.ByteOrdered 
 		{
 			get { return this.ByteOrdered;}
 		}
-		String ISqlAzureUserDefinedType.ClassName 
+		String ISqlAzureTSqlUserDefinedType.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean? ISqlAzureUserDefinedType.FixedLength 
+		Boolean? ISqlAzureTSqlUserDefinedType.FixedLength 
 		{
 			get { return this.FixedLength;}
 		}
-		Format ISqlAzureUserDefinedType.Format 
+		Format ISqlAzureTSqlUserDefinedType.Format 
 		{
 			get { return this.Format;}
 		}
-		Int32? ISqlAzureUserDefinedType.MaxByteSize 
+		Int32? ISqlAzureTSqlUserDefinedType.MaxByteSize 
 		{
 			get { return this.MaxByteSize;}
 		}
-		String ISqlAzureUserDefinedType.ValidationMethodName 
+		String ISqlAzureTSqlUserDefinedType.ValidationMethodName 
 		{
 			get { return this.ValidationMethodName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureAssembly> ISqlAzureUserDefinedType.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlUserDefinedType.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISqlAzureUserDefinedType.Methods 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlUserDefinedType.Methods 
 		{
 			get 
 			{
@@ -11296,8 +10736,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISqlAzureUserDefinedType.Properties 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlUserDefinedType.Properties 
 		{
 			get 
 			{
@@ -11305,44 +10745,47 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureUserDefinedType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlUserDefinedType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
 			}
 		}
 	}
-	public partial class View : ISqlAzureView
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureTSqlView"/>.
+	/// </summary>
+	public partial class TSqlView : ISqlAzureTSqlView
 	{		
-		Boolean? ISqlAzureView.AnsiNullsOn 
+		Boolean? ISqlAzureTSqlView.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean? ISqlAzureView.QuotedIdentifierOn 
+		Boolean? ISqlAzureTSqlView.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		String ISqlAzureView.SelectStatement 
+		String ISqlAzureTSqlView.SelectStatement 
 		{
 			get { return this.SelectStatement;}
 		}
-		Boolean ISqlAzureView.WithCheckOption 
+		Boolean ISqlAzureTSqlView.WithCheckOption 
 		{
 			get { return this.WithCheckOption;}
 		}
-		Boolean ISqlAzureView.WithSchemaBinding 
+		Boolean ISqlAzureTSqlView.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
-		Boolean ISqlAzureView.WithViewMetadata 
+		Boolean ISqlAzureTSqlView.WithViewMetadata 
 		{
 			get { return this.WithViewMetadata;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISqlAzureView.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureTSqlView.BodyDependencies 
 		{
 			get 
 			{
@@ -11350,160 +10793,109 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureColumn> ISqlAzureView.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlView.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureView.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlView.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
 			}
 		}
 	}
-	public partial class WorkloadGroup : ISqlAzureWorkloadGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlColumn"/>.
+	/// </summary>
+	public partial class TSqlColumn : ISql110TSqlColumn
 	{		
-	}
-	public partial class XmlIndex : ISqlAzureXmlIndex
-	{		
-		Boolean ISqlAzureXmlIndex.Disabled 
-		{
-			get { return this.Disabled;}
-		}
-	}
-	public partial class SelectiveXmlIndex : ISqlAzureSelectiveXmlIndex
-	{		
-		Boolean ISqlAzureSelectiveXmlIndex.Disabled 
-		{
-			get { return this.Disabled;}
-		}
-	}
-	public partial class XmlNamespace : ISqlAzureXmlNamespace
-	{		
-	}
-	public partial class PromotedNodePathForXQueryType : ISqlAzurePromotedNodePathForXQueryType
-	{		
-	}
-	public partial class PromotedNodePathForSqlType : ISqlAzurePromotedNodePathForSqlType
-	{		
-		Boolean ISqlAzurePromotedNodePathForSqlType.IsMax 
-		{
-			get { return this.IsMax;}
-		}
-		Int32 ISqlAzurePromotedNodePathForSqlType.Length 
-		{
-			get { return this.Length;}
-		}
-		Int32 ISqlAzurePromotedNodePathForSqlType.Precision 
-		{
-			get { return this.Precision;}
-		}
-		Int32 ISqlAzurePromotedNodePathForSqlType.Scale 
-		{
-			get { return this.Scale;}
-		}
-	}
-	public partial class XmlSchemaCollection : ISqlAzureXmlSchemaCollection
-	{		
-
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureSchema> ISqlAzureXmlSchemaCollection.Schema 
-		{
-			get 
-			{
-				return this.Schema;
-			}
-		}
-	}
-	public partial class Column : ISql110Column
-	{		
-		String ISql110Column.Collation 
+		String ISql110TSqlColumn.Collation 
 		{
 			get { return this.Collation;}
 		}
-		String ISql110Column.Expression 
+		String ISql110TSqlColumn.Expression 
 		{
 			get { return this.Expression;}
 		}
-		String ISql110Column.IdentityIncrement 
+		String ISql110TSqlColumn.IdentityIncrement 
 		{
 			get { return this.IdentityIncrement;}
 		}
-		String ISql110Column.IdentitySeed 
+		String ISql110TSqlColumn.IdentitySeed 
 		{
 			get { return this.IdentitySeed;}
 		}
-		Boolean ISql110Column.IsFileStream 
+		Boolean ISql110TSqlColumn.IsFileStream 
 		{
 			get { return this.IsFileStream;}
 		}
-		Boolean ISql110Column.IsIdentity 
+		Boolean ISql110TSqlColumn.IsIdentity 
 		{
 			get { return this.IsIdentity;}
 		}
-		Boolean ISql110Column.IsIdentityNotForReplication 
+		Boolean ISql110TSqlColumn.IsIdentityNotForReplication 
 		{
 			get { return this.IsIdentityNotForReplication;}
 		}
-		Boolean ISql110Column.IsMax 
+		Boolean ISql110TSqlColumn.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql110Column.IsRowGuidCol 
+		Boolean ISql110TSqlColumn.IsRowGuidCol 
 		{
 			get { return this.IsRowGuidCol;}
 		}
-		Int32 ISql110Column.Length 
+		Int32 ISql110TSqlColumn.Length 
 		{
 			get { return this.Length;}
 		}
-		Boolean ISql110Column.Nullable 
+		Boolean ISql110TSqlColumn.Nullable 
 		{
 			get { return this.Nullable;}
 		}
-		Boolean ISql110Column.Persisted 
+		Boolean ISql110TSqlColumn.Persisted 
 		{
 			get { return this.Persisted;}
 		}
-		Boolean? ISql110Column.PersistedNullable 
+		Boolean? ISql110TSqlColumn.PersistedNullable 
 		{
 			get { return this.PersistedNullable;}
 		}
-		Int32 ISql110Column.Precision 
+		Int32 ISql110TSqlColumn.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISql110Column.Scale 
+		Int32 ISql110TSqlColumn.Scale 
 		{
 			get { return this.Scale;}
 		}
-		Boolean ISql110Column.Sparse 
+		Boolean ISql110TSqlColumn.Sparse 
 		{
 			get { return this.Sparse;}
 		}
-		XmlStyle ISql110Column.XmlStyle 
+		XmlStyle ISql110TSqlColumn.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataType> ISql110Column.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110Column.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -11511,101 +10903,104 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110XmlSchemaCollection> ISql110Column.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection> ISql110TSqlColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class TableValuedFunction : ISql110TableValuedFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlTableValuedFunction"/>.
+	/// </summary>
+	public partial class TSqlTableValuedFunction : ISql110TSqlTableValuedFunction
 	{		
-		Boolean? ISql110TableValuedFunction.AnsiNullsOn 
+		Boolean? ISql110TSqlTableValuedFunction.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql110TableValuedFunction.CalledOnNullInput 
+		Boolean ISql110TSqlTableValuedFunction.CalledOnNullInput 
 		{
 			get { return this.CalledOnNullInput;}
 		}
-		String ISql110TableValuedFunction.ClassName 
+		String ISql110TSqlTableValuedFunction.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		DataAccessKind? ISql110TableValuedFunction.DataAccess 
+		DataAccessKind? ISql110TSqlTableValuedFunction.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		Boolean? ISql110TableValuedFunction.Deterministic 
+		Boolean? ISql110TSqlTableValuedFunction.Deterministic 
 		{
 			get { return this.Deterministic;}
 		}
-		Boolean ISql110TableValuedFunction.ExecuteAsCaller 
+		Boolean ISql110TSqlTableValuedFunction.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql110TableValuedFunction.ExecuteAsOwner 
+		Boolean ISql110TSqlTableValuedFunction.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql110TableValuedFunction.ExecuteAsSelf 
+		Boolean ISql110TSqlTableValuedFunction.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql110TableValuedFunction.FillRowMethodName 
+		String ISql110TSqlTableValuedFunction.FillRowMethodName 
 		{
 			get { return this.FillRowMethodName;}
 		}
-		Boolean ISql110TableValuedFunction.IsReplicated 
+		Boolean ISql110TSqlTableValuedFunction.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql110TableValuedFunction.MethodName 
+		String ISql110TSqlTableValuedFunction.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql110TableValuedFunction.Precise 
+		Boolean? ISql110TSqlTableValuedFunction.Precise 
 		{
 			get { return this.Precise;}
 		}
-		Boolean? ISql110TableValuedFunction.QuotedIdentifierOn 
+		Boolean? ISql110TSqlTableValuedFunction.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql110TableValuedFunction.ReturnsNullOnNullInput 
+		Boolean ISql110TSqlTableValuedFunction.ReturnsNullOnNullInput 
 		{
 			get { return this.ReturnsNullOnNullInput;}
 		}
-		String ISql110TableValuedFunction.ReturnTableVariableName 
+		String ISql110TSqlTableValuedFunction.ReturnTableVariableName 
 		{
 			get { return this.ReturnTableVariableName;}
 		}
-		SystemDataAccessKind? ISql110TableValuedFunction.SystemDataAccess 
+		SystemDataAccessKind? ISql110TSqlTableValuedFunction.SystemDataAccess 
 		{
 			get { return this.SystemDataAccess;}
 		}
-		Boolean ISql110TableValuedFunction.WithEncryption 
+		Boolean ISql110TSqlTableValuedFunction.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql110TableValuedFunction.WithSchemaBinding 
+		Boolean ISql110TSqlTableValuedFunction.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Assembly> ISql110TableValuedFunction.Assembly 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlTableValuedFunction.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110TableValuedFunction.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlTableValuedFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -11613,35 +11008,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Login> ISql110TableValuedFunction.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110TableValuedFunction.OrderColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableValuedFunction.OrderColumns 
 		{
 			get 
 			{
-				return this.OrderColumns;
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Parameter> ISql110TableValuedFunction.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter> ISql110TSqlTableValuedFunction.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TableValuedFunction.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
@@ -11649,106 +11044,109 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110TableValuedFunction.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlTableValuedFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110User> ISql110TableValuedFunction.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlTableValuedFunction.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
 			}
 		}
 	}
-	public partial class ScalarFunction : ISql110ScalarFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlScalarFunction"/>.
+	/// </summary>
+	public partial class TSqlScalarFunction : ISql110TSqlScalarFunction
 	{		
-		Boolean? ISql110ScalarFunction.AnsiNullsOn 
+		Boolean? ISql110TSqlScalarFunction.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql110ScalarFunction.CalledOnNullInput 
+		Boolean ISql110TSqlScalarFunction.CalledOnNullInput 
 		{
 			get { return this.CalledOnNullInput;}
 		}
-		String ISql110ScalarFunction.ClassName 
+		String ISql110TSqlScalarFunction.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		DataAccessKind? ISql110ScalarFunction.DataAccess 
+		DataAccessKind? ISql110TSqlScalarFunction.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		Boolean? ISql110ScalarFunction.Deterministic 
+		Boolean? ISql110TSqlScalarFunction.Deterministic 
 		{
 			get { return this.Deterministic;}
 		}
-		Boolean ISql110ScalarFunction.ExecuteAsCaller 
+		Boolean ISql110TSqlScalarFunction.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql110ScalarFunction.ExecuteAsOwner 
+		Boolean ISql110TSqlScalarFunction.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql110ScalarFunction.ExecuteAsSelf 
+		Boolean ISql110TSqlScalarFunction.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql110ScalarFunction.FillRowMethodName 
+		String ISql110TSqlScalarFunction.FillRowMethodName 
 		{
 			get { return this.FillRowMethodName;}
 		}
-		Boolean ISql110ScalarFunction.IsReplicated 
+		Boolean ISql110TSqlScalarFunction.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql110ScalarFunction.MethodName 
+		String ISql110TSqlScalarFunction.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql110ScalarFunction.Precise 
+		Boolean? ISql110TSqlScalarFunction.Precise 
 		{
 			get { return this.Precise;}
 		}
-		Boolean? ISql110ScalarFunction.QuotedIdentifierOn 
+		Boolean? ISql110TSqlScalarFunction.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql110ScalarFunction.ReturnsNullOnNullInput 
+		Boolean ISql110TSqlScalarFunction.ReturnsNullOnNullInput 
 		{
 			get { return this.ReturnsNullOnNullInput;}
 		}
-		SystemDataAccessKind? ISql110ScalarFunction.SystemDataAccess 
+		SystemDataAccessKind? ISql110TSqlScalarFunction.SystemDataAccess 
 		{
 			get { return this.SystemDataAccess;}
 		}
-		Boolean ISql110ScalarFunction.WithEncryption 
+		Boolean ISql110TSqlScalarFunction.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql110ScalarFunction.WithSchemaBinding 
+		Boolean ISql110TSqlScalarFunction.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Assembly> ISql110ScalarFunction.Assembly 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlScalarFunction.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110ScalarFunction.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlScalarFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -11756,26 +11154,26 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Login> ISql110ScalarFunction.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlScalarFunction.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Parameter> ISql110ScalarFunction.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter> ISql110TSqlScalarFunction.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110ScalarFunction.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
@@ -11783,71 +11181,74 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110ScalarFunction.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlScalarFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110User> ISql110ScalarFunction.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlScalarFunction.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
 			}
 		}
 	}
-	public partial class Aggregate : ISql110Aggregate
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlAggregate"/>.
+	/// </summary>
+	public partial class TSqlAggregate : ISql110TSqlAggregate
 	{		
-		String ISql110Aggregate.ClassName 
+		String ISql110TSqlAggregate.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Format ISql110Aggregate.Format 
+		Format ISql110TSqlAggregate.Format 
 		{
 			get { return this.Format;}
 		}
-		Boolean? ISql110Aggregate.InvariantToDuplicates 
+		Boolean? ISql110TSqlAggregate.InvariantToDuplicates 
 		{
 			get { return this.InvariantToDuplicates;}
 		}
-		Boolean? ISql110Aggregate.InvariantToNulls 
+		Boolean? ISql110TSqlAggregate.InvariantToNulls 
 		{
 			get { return this.InvariantToNulls;}
 		}
-		Int32? ISql110Aggregate.MaxByteSize 
+		Int32? ISql110TSqlAggregate.MaxByteSize 
 		{
 			get { return this.MaxByteSize;}
 		}
-		Boolean? ISql110Aggregate.NullIfEmpty 
+		Boolean? ISql110TSqlAggregate.NullIfEmpty 
 		{
 			get { return this.NullIfEmpty;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Assembly> ISql110Aggregate.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlAggregate.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Parameter> ISql110Aggregate.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter> ISql110TSqlAggregate.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110Aggregate.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlAggregate.ReturnType 
 		{
 			get 
 			{
@@ -11855,88 +11256,94 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110Aggregate.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlAggregate.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class ApplicationRole : ISql110ApplicationRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlApplicationRole"/>.
+	/// </summary>
+	public partial class TSqlApplicationRole : ISql110TSqlApplicationRole
 	{		
-		String ISql110ApplicationRole.Password 
+		String ISql110TSqlApplicationRole.Password 
 		{
 			get { return this.Password;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110ApplicationRole.DefaultSchema 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlApplicationRole.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema;
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class Index : ISql110Index
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlIndex"/>.
+	/// </summary>
+	public partial class TSqlIndex : ISql110TSqlIndex
 	{		
-		Boolean ISql110Index.AllowPageLocks 
+		Boolean ISql110TSqlIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql110Index.AllowRowLocks 
+		Boolean ISql110TSqlIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Int32? ISql110Index.BucketCount 
+		Int32? ISql110TSqlIndex.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql110Index.Clustered 
+		Boolean ISql110TSqlIndex.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql110Index.Disabled 
+		Boolean ISql110TSqlIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean? ISql110Index.FileStreamNull 
+		Boolean? ISql110TSqlIndex.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Int32? ISql110Index.FillFactor 
+		Int32? ISql110TSqlIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		String ISql110Index.FilterPredicate 
+		String ISql110TSqlIndex.FilterPredicate 
 		{
 			get { return this.FilterPredicate;}
 		}
-		Boolean ISql110Index.Hash 
+		Boolean ISql110TSqlIndex.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql110Index.IgnoreDuplicateKey 
+		Boolean ISql110TSqlIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql110Index.RecomputeStatistics 
+		Boolean ISql110TSqlIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql110Index.Unique 
+		Boolean ISql110TSqlIndex.Unique 
 		{
 			get { return this.Unique;}
 		}
-		Boolean ISql110Index.WithPadIndex 
+		Boolean ISql110TSqlIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110Index.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlIndex.BodyDependencies 
 		{
 			get 
 			{
@@ -11944,62 +11351,62 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110Index.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataCompressionOption> ISql110Index.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption> ISql110TSqlIndex.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110Index.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110Index.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlIndex.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110Index.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlIndex.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110Index.IncludedColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlIndex.IncludedColumns 
 		{
 			get 
 			{
-				return this.IncludedColumns;
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql110Index.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql110TSqlIndex.IndexedObject 
 		{
 			get 
 			{
@@ -12007,46 +11414,49 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110Index.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110Index.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Assembly : ISql110Assembly
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlAssembly"/>.
+	/// </summary>
+	public partial class TSqlAssembly : ISql110TSqlAssembly
 	{		
-		AssemblyPermissionSet ISql110Assembly.PermissionSet 
+		AssemblyPermissionSet ISql110TSqlAssembly.PermissionSet 
 		{
 			get { return this.PermissionSet;}
 		}
-		Boolean ISql110Assembly.Visible 
+		Boolean ISql110TSqlAssembly.Visible 
 		{
 			get { return this.Visible;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110AssemblySource> ISql110Assembly.AssemblySources 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblySource> ISql110TSqlAssembly.AssemblySources 
 		{
 			get 
 			{
-				return this.AssemblySources;
+				return this.AssemblySources.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblySource>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110Assembly.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlAssembly.Authorizer 
 		{
 			get 
 			{
@@ -12054,64 +11464,70 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Assembly> ISql110Assembly.ReferencedAssemblies 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlAssembly.ReferencedAssemblies 
 		{
 			get 
 			{
-				return this.ReferencedAssemblies;
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
 			}
 		}
 	}
-	public partial class AssemblySource : ISql110AssemblySource
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlAssemblySource"/>.
+	/// </summary>
+	public partial class TSqlAssemblySource : ISql110TSqlAssemblySource
 	{		
-		String ISql110AssemblySource.Source 
+		String ISql110TSqlAssemblySource.Source 
 		{
 			get { return this.Source;}
 		}
 	}
-	public partial class AsymmetricKey : ISql110AsymmetricKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlAsymmetricKey"/>.
+	/// </summary>
+	public partial class TSqlAsymmetricKey : ISql110TSqlAsymmetricKey
 	{		
-		AsymmetricKeyAlgorithm ISql110AsymmetricKey.Algorithm 
+		AsymmetricKeyAlgorithm ISql110TSqlAsymmetricKey.Algorithm 
 		{
 			get { return this.Algorithm;}
 		}
-		SymmetricKeyCreationDisposition ISql110AsymmetricKey.CreationDisposition 
+		SymmetricKeyCreationDisposition ISql110TSqlAsymmetricKey.CreationDisposition 
 		{
 			get { return this.CreationDisposition;}
 		}
-		Boolean ISql110AsymmetricKey.EncryptedWithPassword 
+		Boolean ISql110TSqlAsymmetricKey.EncryptedWithPassword 
 		{
 			get { return this.EncryptedWithPassword;}
 		}
-		String ISql110AsymmetricKey.ExecutableFile 
+		String ISql110TSqlAsymmetricKey.ExecutableFile 
 		{
 			get { return this.ExecutableFile;}
 		}
-		String ISql110AsymmetricKey.File 
+		String ISql110TSqlAsymmetricKey.File 
 		{
 			get { return this.File;}
 		}
-		String ISql110AsymmetricKey.Password 
+		String ISql110TSqlAsymmetricKey.Password 
 		{
 			get { return this.Password;}
 		}
-		String ISql110AsymmetricKey.ProviderKeyName 
+		String ISql110TSqlAsymmetricKey.ProviderKeyName 
 		{
 			get { return this.ProviderKeyName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Assembly> ISql110AsymmetricKey.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlAsymmetricKey.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110AsymmetricKey.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlAsymmetricKey.Authorizer 
 		{
 			get 
 			{
@@ -12119,8 +11535,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110AsymmetricKey.Provider 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlAsymmetricKey.Provider 
 		{
 			get 
 			{
@@ -12128,34 +11544,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class AuditAction : ISql110AuditAction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlAuditAction"/>.
+	/// </summary>
+	public partial class TSqlAuditAction : ISql110TSqlAuditAction
 	{		
-		DatabaseAuditAction ISql110AuditAction.Action 
+		DatabaseAuditAction ISql110TSqlAuditAction.Action 
 		{
 			get { return this.Action;}
 		}
 	}
-	public partial class AuditActionGroup : ISql110AuditActionGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlAuditActionGroup"/>.
+	/// </summary>
+	public partial class TSqlAuditActionGroup : ISql110TSqlAuditActionGroup
 	{		
-		AuditActionGroupType ISql110AuditActionGroup.ActionGroup 
+		AuditActionGroupType ISql110TSqlAuditActionGroup.ActionGroup 
 		{
 			get { return this.ActionGroup;}
 		}
 	}
-	public partial class AuditActionSpecification : ISql110AuditActionSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlAuditActionSpecification"/>.
+	/// </summary>
+	public partial class TSqlAuditActionSpecification : ISql110TSqlAuditActionSpecification
 	{		
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110AuditAction> ISql110AuditActionSpecification.AuditActions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAuditAction> ISql110TSqlAuditActionSpecification.AuditActions 
 		{
 			get 
 			{
-				return this.AuditActions;
+				return this.AuditActions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAuditAction>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql110AuditActionSpecification.Principals 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql110TSqlAuditActionSpecification.Principals 
 		{
 			get 
 			{
@@ -12163,8 +11588,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql110AuditActionSpecification.SecuredObject 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql110TSqlAuditActionSpecification.SecuredObject 
 		{
 			get 
 			{
@@ -12172,19 +11597,22 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class BrokerPriority : ISql110BrokerPriority
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlBrokerPriority"/>.
+	/// </summary>
+	public partial class TSqlBrokerPriority : ISql110TSqlBrokerPriority
 	{		
-		Int32 ISql110BrokerPriority.PriorityLevel 
+		Int32 ISql110TSqlBrokerPriority.PriorityLevel 
 		{
 			get { return this.PriorityLevel;}
 		}
-		String ISql110BrokerPriority.RemoteServiceName 
+		String ISql110TSqlBrokerPriority.RemoteServiceName 
 		{
 			get { return this.RemoteServiceName;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110BrokerPriority.ContractName 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlBrokerPriority.ContractName 
 		{
 			get 
 			{
@@ -12192,8 +11620,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110BrokerPriority.LocalServiceName 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlBrokerPriority.LocalServiceName 
 		{
 			get 
 			{
@@ -12201,47 +11629,53 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class BuiltInServerRole : ISql110BuiltInServerRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlBuiltInServerRole"/>.
+	/// </summary>
+	public partial class TSqlBuiltInServerRole : ISql110TSqlBuiltInServerRole
 	{		
 	}
-	public partial class DataType : ISql110DataType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlDataType"/>.
+	/// </summary>
+	public partial class TSqlDataType : ISql110TSqlDataType
 	{		
-		SqlDataType ISql110DataType.SqlDataType 
+		SqlDataType ISql110TSqlDataType.SqlDataType 
 		{
 			get { return this.SqlDataType;}
 		}
-		Boolean ISql110DataType.UddtIsMax 
+		Boolean ISql110TSqlDataType.UddtIsMax 
 		{
 			get { return this.UddtIsMax;}
 		}
-		Int32 ISql110DataType.UddtLength 
+		Int32 ISql110TSqlDataType.UddtLength 
 		{
 			get { return this.UddtLength;}
 		}
-		Boolean ISql110DataType.UddtNullable 
+		Boolean ISql110TSqlDataType.UddtNullable 
 		{
 			get { return this.UddtNullable;}
 		}
-		Int32 ISql110DataType.UddtPrecision 
+		Int32 ISql110TSqlDataType.UddtPrecision 
 		{
 			get { return this.UddtPrecision;}
 		}
-		Int32 ISql110DataType.UddtScale 
+		Int32 ISql110TSqlDataType.UddtScale 
 		{
 			get { return this.UddtScale;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110DataType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlDataType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<System.Type> ISql110DataType.Type 
+		// Peer relationship		
+		IEnumerable<System.Type> ISql110TSqlDataType.Type 
 		{
 			get 
 			{
@@ -12249,55 +11683,58 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Certificate : ISql110Certificate
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlCertificate"/>.
+	/// </summary>
+	public partial class TSqlCertificate : ISql110TSqlCertificate
 	{		
-		Boolean ISql110Certificate.ActiveForBeginDialog 
+		Boolean ISql110TSqlCertificate.ActiveForBeginDialog 
 		{
 			get { return this.ActiveForBeginDialog;}
 		}
-		Boolean ISql110Certificate.EncryptedWithPassword 
+		Boolean ISql110TSqlCertificate.EncryptedWithPassword 
 		{
 			get { return this.EncryptedWithPassword;}
 		}
-		String ISql110Certificate.EncryptionPassword 
+		String ISql110TSqlCertificate.EncryptionPassword 
 		{
 			get { return this.EncryptionPassword;}
 		}
-		String ISql110Certificate.ExistingKeysFilePath 
+		String ISql110TSqlCertificate.ExistingKeysFilePath 
 		{
 			get { return this.ExistingKeysFilePath;}
 		}
-		String ISql110Certificate.ExpiryDate 
+		String ISql110TSqlCertificate.ExpiryDate 
 		{
 			get { return this.ExpiryDate;}
 		}
-		Boolean ISql110Certificate.IsExistingKeyFileExecutable 
+		Boolean ISql110TSqlCertificate.IsExistingKeyFileExecutable 
 		{
 			get { return this.IsExistingKeyFileExecutable;}
 		}
-		String ISql110Certificate.PrivateKeyDecryptionPassword 
+		String ISql110TSqlCertificate.PrivateKeyDecryptionPassword 
 		{
 			get { return this.PrivateKeyDecryptionPassword;}
 		}
-		String ISql110Certificate.PrivateKeyEncryptionPassword 
+		String ISql110TSqlCertificate.PrivateKeyEncryptionPassword 
 		{
 			get { return this.PrivateKeyEncryptionPassword;}
 		}
-		String ISql110Certificate.PrivateKeyFilePath 
+		String ISql110TSqlCertificate.PrivateKeyFilePath 
 		{
 			get { return this.PrivateKeyFilePath;}
 		}
-		String ISql110Certificate.StartDate 
+		String ISql110TSqlCertificate.StartDate 
 		{
 			get { return this.StartDate;}
 		}
-		String ISql110Certificate.Subject 
+		String ISql110TSqlCertificate.Subject 
 		{
 			get { return this.Subject;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110Certificate.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlCertificate.Authorizer 
 		{
 			get 
 			{
@@ -12305,32 +11742,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Assembly> ISql110Certificate.ExistingKeysAssembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlCertificate.ExistingKeysAssembly 
 		{
 			get 
 			{
-				return this.ExistingKeysAssembly;
+				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
 			}
 		}
 	}
-	public partial class CheckConstraint : ISql110CheckConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlCheckConstraint"/>.
+	/// </summary>
+	public partial class TSqlCheckConstraint : ISql110TSqlCheckConstraint
 	{		
-		Boolean ISql110CheckConstraint.Disabled 
+		Boolean ISql110TSqlCheckConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISql110CheckConstraint.Expression 
+		String ISql110TSqlCheckConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
-		Boolean ISql110CheckConstraint.NotForReplication 
+		Boolean ISql110TSqlCheckConstraint.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110CheckConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -12338,33 +11778,36 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110ExtendedProperty> ISql110CheckConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlCheckConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
 			}
 		}
 	}
-	public partial class ClrTypeMethod : ISql110ClrTypeMethod
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlClrTypeMethod"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethod : ISql110TSqlClrTypeMethod
 	{		
-		String ISql110ClrTypeMethod.Name 
+		String ISql110TSqlClrTypeMethod.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Parameter> ISql110ClrTypeMethod.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter> ISql110TSqlClrTypeMethod.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110ClrTypeMethod.ReturnType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlClrTypeMethod.ReturnType 
 		{
 			get 
 			{
@@ -12372,35 +11815,41 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ClrTypeMethodParameter : ISql110ClrTypeMethodParameter
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlClrTypeMethodParameter"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethodParameter : ISql110TSqlClrTypeMethodParameter
 	{		
-		Boolean ISql110ClrTypeMethodParameter.IsOutput 
+		Boolean ISql110TSqlClrTypeMethodParameter.IsOutput 
 		{
 			get { return this.IsOutput;}
 		}
-		String ISql110ClrTypeMethodParameter.Name 
+		String ISql110TSqlClrTypeMethodParameter.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataType> ISql110ClrTypeMethodParameter.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 	}
-	public partial class ClrTypeProperty : ISql110ClrTypeProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlClrTypeProperty"/>.
+	/// </summary>
+	public partial class TSqlClrTypeProperty : ISql110TSqlClrTypeProperty
 	{		
-		String ISql110ClrTypeProperty.Name 
+		String ISql110TSqlClrTypeProperty.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110ClrTypeProperty.ClrType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
@@ -12408,46 +11857,49 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ColumnStoreIndex : ISql110ColumnStoreIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlColumnStoreIndex"/>.
+	/// </summary>
+	public partial class TSqlColumnStoreIndex : ISql110TSqlColumnStoreIndex
 	{		
-		Boolean ISql110ColumnStoreIndex.Clustered 
+		Boolean ISql110TSqlColumnStoreIndex.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql110ColumnStoreIndex.Disabled 
+		Boolean ISql110TSqlColumnStoreIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110ColumnStoreIndex.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlColumnStoreIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataCompressionOption> ISql110ColumnStoreIndex.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption> ISql110TSqlColumnStoreIndex.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110ColumnStoreIndex.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlColumnStoreIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql110ColumnStoreIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql110TSqlColumnStoreIndex.IndexedObject 
 		{
 			get 
 			{
@@ -12455,29 +11907,32 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110ColumnStoreIndex.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlColumnStoreIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110ColumnStoreIndex.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlColumnStoreIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Contract : ISql110Contract
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlContract"/>.
+	/// </summary>
+	public partial class TSqlContract : ISql110TSqlContract
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110Contract.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlContract.Authorizer 
 		{
 			get 
 			{
@@ -12485,134 +11940,146 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110MessageType> ISql110Contract.Messages 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlMessageType> ISql110TSqlContract.Messages 
 		{
 			get 
 			{
-				return this.Messages;
+				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlMessageType>();
 			}
 		}
 	}
-	public partial class Credential : ISql110Credential
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlCredential"/>.
+	/// </summary>
+	public partial class TSqlCredential : ISql110TSqlCredential
 	{		
-		String ISql110Credential.Identity 
+		String ISql110TSqlCredential.Identity 
 		{
 			get { return this.Identity;}
 		}
-		String ISql110Credential.Secret 
+		String ISql110TSqlCredential.Secret 
 		{
 			get { return this.Secret;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110CryptographicProvider> ISql110Credential.CryptographicProvider 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCryptographicProvider> ISql110TSqlCredential.CryptographicProvider 
 		{
 			get 
 			{
-				return this.CryptographicProvider;
+				return this.CryptographicProvider.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCryptographicProvider>();
 			}
 		}
 	}
-	public partial class CryptographicProvider : ISql110CryptographicProvider
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlCryptographicProvider"/>.
+	/// </summary>
+	public partial class TSqlCryptographicProvider : ISql110TSqlCryptographicProvider
 	{		
-		String ISql110CryptographicProvider.DllPath 
+		String ISql110TSqlCryptographicProvider.DllPath 
 		{
 			get { return this.DllPath;}
 		}
-		Boolean ISql110CryptographicProvider.Enabled 
+		Boolean ISql110TSqlCryptographicProvider.Enabled 
 		{
 			get { return this.Enabled;}
 		}
 	}
-	public partial class DatabaseAuditSpecification : ISql110DatabaseAuditSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlDatabaseAuditSpecification"/>.
+	/// </summary>
+	public partial class TSqlDatabaseAuditSpecification : ISql110TSqlDatabaseAuditSpecification
 	{		
-		Boolean ISql110DatabaseAuditSpecification.WithState 
+		Boolean ISql110TSqlDatabaseAuditSpecification.WithState 
 		{
 			get { return this.WithState;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110AuditActionGroup> ISql110DatabaseAuditSpecification.AuditActionGroups 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAuditActionGroup> ISql110TSqlDatabaseAuditSpecification.AuditActionGroups 
 		{
 			get 
 			{
-				return this.AuditActionGroups;
+				return this.AuditActionGroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAuditActionGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110AuditAction> ISql110DatabaseAuditSpecification.AuditActions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAuditAction> ISql110TSqlDatabaseAuditSpecification.AuditActions 
 		{
 			get 
 			{
-				return this.AuditActions;
+				return this.AuditActions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAuditAction>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110ServerAudit> ISql110DatabaseAuditSpecification.ServerAudit 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAudit> ISql110TSqlDatabaseAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit;
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAudit>();
 			}
 		}
 	}
-	public partial class DatabaseDdlTrigger : ISql110DatabaseDdlTrigger
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlDatabaseDdlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDatabaseDdlTrigger : ISql110TSqlDatabaseDdlTrigger
 	{		
-		Boolean? ISql110DatabaseDdlTrigger.AnsiNullsOn 
+		Boolean? ISql110TSqlDatabaseDdlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql110DatabaseDdlTrigger.ClassName 
+		String ISql110TSqlDatabaseDdlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql110DatabaseDdlTrigger.Disabled 
+		Boolean ISql110TSqlDatabaseDdlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql110DatabaseDdlTrigger.ExecuteAsCaller 
+		Boolean ISql110TSqlDatabaseDdlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql110DatabaseDdlTrigger.ExecuteAsOwner 
+		Boolean ISql110TSqlDatabaseDdlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql110DatabaseDdlTrigger.ExecuteAsSelf 
+		Boolean ISql110TSqlDatabaseDdlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql110DatabaseDdlTrigger.MethodName 
+		String ISql110TSqlDatabaseDdlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql110DatabaseDdlTrigger.QuotedIdentifierOn 
+		Boolean? ISql110TSqlDatabaseDdlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql110DatabaseDdlTrigger.TriggerType 
+		TriggerType ISql110TSqlDatabaseDdlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		Boolean ISql110DatabaseDdlTrigger.WithEncryption 
+		Boolean ISql110TSqlDatabaseDdlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Assembly> ISql110DatabaseDdlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlDatabaseDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110DatabaseDdlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlDatabaseDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -12620,17 +12087,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110EventGroup> ISql110DatabaseDdlTrigger.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventGroup> ISql110TSqlDatabaseDdlTrigger.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql110DatabaseDdlTrigger.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql110TSqlDatabaseDdlTrigger.EventType 
 		{
 			get 
 			{
@@ -12638,75 +12105,81 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Login> ISql110DatabaseDdlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlDatabaseDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110User> ISql110DatabaseDdlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlDatabaseDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
 			}
 		}
 	}
-	public partial class DatabaseEncryptionKey : ISql110DatabaseEncryptionKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlDatabaseEncryptionKey"/>.
+	/// </summary>
+	public partial class TSqlDatabaseEncryptionKey : ISql110TSqlDatabaseEncryptionKey
 	{		
-		SymmetricKeyAlgorithm ISql110DatabaseEncryptionKey.Algorithm 
+		SymmetricKeyAlgorithm ISql110TSqlDatabaseEncryptionKey.Algorithm 
 		{
 			get { return this.Algorithm;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110AsymmetricKey> ISql110DatabaseEncryptionKey.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey> ISql110TSqlDatabaseEncryptionKey.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Certificate> ISql110DatabaseEncryptionKey.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlDatabaseEncryptionKey.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
 			}
 		}
 	}
-	public partial class DatabaseEventNotification : ISql110DatabaseEventNotification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlDatabaseEventNotification"/>.
+	/// </summary>
+	public partial class TSqlDatabaseEventNotification : ISql110TSqlDatabaseEventNotification
 	{		
-		String ISql110DatabaseEventNotification.BrokerInstanceSpecifier 
+		String ISql110TSqlDatabaseEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql110DatabaseEventNotification.BrokerService 
+		String ISql110TSqlDatabaseEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql110DatabaseEventNotification.WithFanIn 
+		Boolean ISql110TSqlDatabaseEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110EventGroup> ISql110DatabaseEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventGroup> ISql110TSqlDatabaseEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql110DatabaseEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql110TSqlDatabaseEventNotification.EventType 
 		{
 			get 
 			{
@@ -12714,287 +12187,299 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class DatabaseMirroringLanguageSpecifier : ISql110DatabaseMirroringLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlDatabaseMirroringLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlDatabaseMirroringLanguageSpecifier : ISql110TSqlDatabaseMirroringLanguageSpecifier
 	{		
-		ServiceBrokerEncryptionAlgorithm ISql110DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1 
+		ServiceBrokerEncryptionAlgorithm ISql110TSqlDatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1 
 		{
 			get { return this.EncryptionAlgorithmPart1;}
 		}
-		ServiceBrokerEncryptionAlgorithm ISql110DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2 
+		ServiceBrokerEncryptionAlgorithm ISql110TSqlDatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2 
 		{
 			get { return this.EncryptionAlgorithmPart2;}
 		}
-		EncryptionMode ISql110DatabaseMirroringLanguageSpecifier.EncryptionMode 
+		EncryptionMode ISql110TSqlDatabaseMirroringLanguageSpecifier.EncryptionMode 
 		{
 			get { return this.EncryptionMode;}
 		}
-		DatabaseMirroringRole ISql110DatabaseMirroringLanguageSpecifier.RoleType 
+		DatabaseMirroringRole ISql110TSqlDatabaseMirroringLanguageSpecifier.RoleType 
 		{
 			get { return this.RoleType;}
 		}
-		Boolean ISql110DatabaseMirroringLanguageSpecifier.UseCertificateFirst 
+		Boolean ISql110TSqlDatabaseMirroringLanguageSpecifier.UseCertificateFirst 
 		{
 			get { return this.UseCertificateFirst;}
 		}
-		AuthenticationModes ISql110DatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode 
+		AuthenticationModes ISql110TSqlDatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode 
 		{
 			get { return this.WindowsAuthenticationMode;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Certificate> ISql110DatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate;
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
 			}
 		}
 	}
-	public partial class DatabaseOptions : ISql110DatabaseOptions
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlDatabaseOptions"/>.
+	/// </summary>
+	public partial class TSqlDatabaseOptions : ISql110TSqlDatabaseOptions
 	{		
-		Boolean ISql110DatabaseOptions.AllowSnapshotIsolation 
+		Boolean ISql110TSqlDatabaseOptions.AllowSnapshotIsolation 
 		{
 			get { return this.AllowSnapshotIsolation;}
 		}
-		Boolean ISql110DatabaseOptions.AnsiNullDefaultOn 
+		Boolean ISql110TSqlDatabaseOptions.AnsiNullDefaultOn 
 		{
 			get { return this.AnsiNullDefaultOn;}
 		}
-		Boolean ISql110DatabaseOptions.AnsiNullsOn 
+		Boolean ISql110TSqlDatabaseOptions.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql110DatabaseOptions.AnsiPaddingOn 
+		Boolean ISql110TSqlDatabaseOptions.AnsiPaddingOn 
 		{
 			get { return this.AnsiPaddingOn;}
 		}
-		Boolean ISql110DatabaseOptions.AnsiWarningsOn 
+		Boolean ISql110TSqlDatabaseOptions.AnsiWarningsOn 
 		{
 			get { return this.AnsiWarningsOn;}
 		}
-		Boolean ISql110DatabaseOptions.ArithAbortOn 
+		Boolean ISql110TSqlDatabaseOptions.ArithAbortOn 
 		{
 			get { return this.ArithAbortOn;}
 		}
-		Boolean ISql110DatabaseOptions.AutoClose 
+		Boolean ISql110TSqlDatabaseOptions.AutoClose 
 		{
 			get { return this.AutoClose;}
 		}
-		Boolean ISql110DatabaseOptions.AutoCreateStatistics 
+		Boolean ISql110TSqlDatabaseOptions.AutoCreateStatistics 
 		{
 			get { return this.AutoCreateStatistics;}
 		}
-		Boolean ISql110DatabaseOptions.AutoShrink 
+		Boolean ISql110TSqlDatabaseOptions.AutoShrink 
 		{
 			get { return this.AutoShrink;}
 		}
-		Boolean ISql110DatabaseOptions.AutoUpdateStatistics 
+		Boolean ISql110TSqlDatabaseOptions.AutoUpdateStatistics 
 		{
 			get { return this.AutoUpdateStatistics;}
 		}
-		Boolean ISql110DatabaseOptions.AutoUpdateStatisticsAsync 
+		Boolean ISql110TSqlDatabaseOptions.AutoUpdateStatisticsAsync 
 		{
 			get { return this.AutoUpdateStatisticsAsync;}
 		}
-		Boolean ISql110DatabaseOptions.ChangeTrackingAutoCleanup 
+		Boolean ISql110TSqlDatabaseOptions.ChangeTrackingAutoCleanup 
 		{
 			get { return this.ChangeTrackingAutoCleanup;}
 		}
-		Boolean ISql110DatabaseOptions.ChangeTrackingEnabled 
+		Boolean ISql110TSqlDatabaseOptions.ChangeTrackingEnabled 
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
-		Int32 ISql110DatabaseOptions.ChangeTrackingRetentionPeriod 
+		Int32 ISql110TSqlDatabaseOptions.ChangeTrackingRetentionPeriod 
 		{
 			get { return this.ChangeTrackingRetentionPeriod;}
 		}
-		TimeUnit ISql110DatabaseOptions.ChangeTrackingRetentionUnit 
+		TimeUnit ISql110TSqlDatabaseOptions.ChangeTrackingRetentionUnit 
 		{
 			get { return this.ChangeTrackingRetentionUnit;}
 		}
-		String ISql110DatabaseOptions.Collation 
+		String ISql110TSqlDatabaseOptions.Collation 
 		{
 			get { return this.Collation;}
 		}
-		Int32 ISql110DatabaseOptions.CompatibilityLevel 
+		Int32 ISql110TSqlDatabaseOptions.CompatibilityLevel 
 		{
 			get { return this.CompatibilityLevel;}
 		}
-		Boolean ISql110DatabaseOptions.ConcatNullYieldsNull 
+		Boolean ISql110TSqlDatabaseOptions.ConcatNullYieldsNull 
 		{
 			get { return this.ConcatNullYieldsNull;}
 		}
-		Containment ISql110DatabaseOptions.Containment 
+		Containment ISql110TSqlDatabaseOptions.Containment 
 		{
 			get { return this.Containment;}
 		}
-		Boolean ISql110DatabaseOptions.CursorCloseOnCommit 
+		Boolean ISql110TSqlDatabaseOptions.CursorCloseOnCommit 
 		{
 			get { return this.CursorCloseOnCommit;}
 		}
-		Boolean ISql110DatabaseOptions.CursorDefaultGlobalScope 
+		Boolean ISql110TSqlDatabaseOptions.CursorDefaultGlobalScope 
 		{
 			get { return this.CursorDefaultGlobalScope;}
 		}
-		Boolean ISql110DatabaseOptions.DatabaseStateOffline 
+		Boolean ISql110TSqlDatabaseOptions.DatabaseStateOffline 
 		{
 			get { return this.DatabaseStateOffline;}
 		}
-		Boolean ISql110DatabaseOptions.DateCorrelationOptimizationOn 
+		Boolean ISql110TSqlDatabaseOptions.DateCorrelationOptimizationOn 
 		{
 			get { return this.DateCorrelationOptimizationOn;}
 		}
-		Boolean ISql110DatabaseOptions.DBChainingOn 
+		Boolean ISql110TSqlDatabaseOptions.DBChainingOn 
 		{
 			get { return this.DBChainingOn;}
 		}
-		String ISql110DatabaseOptions.DefaultFullTextLanguage 
+		String ISql110TSqlDatabaseOptions.DefaultFullTextLanguage 
 		{
 			get { return this.DefaultFullTextLanguage;}
 		}
-		String ISql110DatabaseOptions.DefaultLanguage 
+		String ISql110TSqlDatabaseOptions.DefaultLanguage 
 		{
 			get { return this.DefaultLanguage;}
 		}
-		String ISql110DatabaseOptions.FileStreamDirectoryName 
+		String ISql110TSqlDatabaseOptions.FileStreamDirectoryName 
 		{
 			get { return this.FileStreamDirectoryName;}
 		}
-		Boolean ISql110DatabaseOptions.FullTextEnabled 
+		Boolean ISql110TSqlDatabaseOptions.FullTextEnabled 
 		{
 			get { return this.FullTextEnabled;}
 		}
-		Boolean ISql110DatabaseOptions.HonorBrokerPriority 
+		Boolean ISql110TSqlDatabaseOptions.HonorBrokerPriority 
 		{
 			get { return this.HonorBrokerPriority;}
 		}
-		Boolean ISql110DatabaseOptions.MemoryOptimizedElevateToSnapshot 
+		Boolean ISql110TSqlDatabaseOptions.MemoryOptimizedElevateToSnapshot 
 		{
 			get { return this.MemoryOptimizedElevateToSnapshot;}
 		}
-		Boolean ISql110DatabaseOptions.NestedTriggersOn 
+		Boolean ISql110TSqlDatabaseOptions.NestedTriggersOn 
 		{
 			get { return this.NestedTriggersOn;}
 		}
-		NonTransactedFileStreamAccess ISql110DatabaseOptions.NonTransactedFileStreamAccess 
+		NonTransactedFileStreamAccess ISql110TSqlDatabaseOptions.NonTransactedFileStreamAccess 
 		{
 			get { return this.NonTransactedFileStreamAccess;}
 		}
-		Boolean ISql110DatabaseOptions.NumericRoundAbortOn 
+		Boolean ISql110TSqlDatabaseOptions.NumericRoundAbortOn 
 		{
 			get { return this.NumericRoundAbortOn;}
 		}
-		PageVerifyMode ISql110DatabaseOptions.PageVerifyMode 
+		PageVerifyMode ISql110TSqlDatabaseOptions.PageVerifyMode 
 		{
 			get { return this.PageVerifyMode;}
 		}
-		ParameterizationOption ISql110DatabaseOptions.ParameterizationOption 
+		ParameterizationOption ISql110TSqlDatabaseOptions.ParameterizationOption 
 		{
 			get { return this.ParameterizationOption;}
 		}
-		Boolean ISql110DatabaseOptions.QuotedIdentifierOn 
+		Boolean ISql110TSqlDatabaseOptions.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql110DatabaseOptions.ReadOnly 
+		Boolean ISql110TSqlDatabaseOptions.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
-		RecoveryMode ISql110DatabaseOptions.RecoveryMode 
+		RecoveryMode ISql110TSqlDatabaseOptions.RecoveryMode 
 		{
 			get { return this.RecoveryMode;}
 		}
-		Boolean ISql110DatabaseOptions.RecursiveTriggersOn 
+		Boolean ISql110TSqlDatabaseOptions.RecursiveTriggersOn 
 		{
 			get { return this.RecursiveTriggersOn;}
 		}
-		ServiceBrokerOption ISql110DatabaseOptions.ServiceBrokerOption 
+		ServiceBrokerOption ISql110TSqlDatabaseOptions.ServiceBrokerOption 
 		{
 			get { return this.ServiceBrokerOption;}
 		}
-		Boolean ISql110DatabaseOptions.SupplementalLoggingOn 
+		Boolean ISql110TSqlDatabaseOptions.SupplementalLoggingOn 
 		{
 			get { return this.SupplementalLoggingOn;}
 		}
-		Int32 ISql110DatabaseOptions.TargetRecoveryTimePeriod 
+		Int32 ISql110TSqlDatabaseOptions.TargetRecoveryTimePeriod 
 		{
 			get { return this.TargetRecoveryTimePeriod;}
 		}
-		TimeUnit ISql110DatabaseOptions.TargetRecoveryTimeUnit 
+		TimeUnit ISql110TSqlDatabaseOptions.TargetRecoveryTimeUnit 
 		{
 			get { return this.TargetRecoveryTimeUnit;}
 		}
-		Boolean ISql110DatabaseOptions.TornPageProtectionOn 
+		Boolean ISql110TSqlDatabaseOptions.TornPageProtectionOn 
 		{
 			get { return this.TornPageProtectionOn;}
 		}
-		Boolean ISql110DatabaseOptions.TransactionIsolationReadCommittedSnapshot 
+		Boolean ISql110TSqlDatabaseOptions.TransactionIsolationReadCommittedSnapshot 
 		{
 			get { return this.TransactionIsolationReadCommittedSnapshot;}
 		}
-		Boolean ISql110DatabaseOptions.TransformNoiseWords 
+		Boolean ISql110TSqlDatabaseOptions.TransformNoiseWords 
 		{
 			get { return this.TransformNoiseWords;}
 		}
-		Boolean ISql110DatabaseOptions.Trustworthy 
+		Boolean ISql110TSqlDatabaseOptions.Trustworthy 
 		{
 			get { return this.Trustworthy;}
 		}
-		Int16 ISql110DatabaseOptions.TwoDigitYearCutoff 
+		Int16 ISql110TSqlDatabaseOptions.TwoDigitYearCutoff 
 		{
 			get { return this.TwoDigitYearCutoff;}
 		}
-		UserAccessOption ISql110DatabaseOptions.UserAccessOption 
+		UserAccessOption ISql110TSqlDatabaseOptions.UserAccessOption 
 		{
 			get { return this.UserAccessOption;}
 		}
-		Boolean ISql110DatabaseOptions.VardecimalStorageFormatOn 
+		Boolean ISql110TSqlDatabaseOptions.VardecimalStorageFormatOn 
 		{
 			get { return this.VardecimalStorageFormatOn;}
 		}
-		Boolean ISql110DatabaseOptions.WithEncryption 
+		Boolean ISql110TSqlDatabaseOptions.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110DatabaseOptions.DefaultFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlDatabaseOptions.DefaultFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFilegroup;
+				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110DatabaseOptions.DefaultFileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlDatabaseOptions.DefaultFileStreamFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFileStreamFilegroup;
+				return this.DefaultFileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class DataCompressionOption : ISql110DataCompressionOption
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlDataCompressionOption"/>.
+	/// </summary>
+	public partial class TSqlDataCompressionOption : ISql110TSqlDataCompressionOption
 	{		
-		CompressionLevel ISql110DataCompressionOption.CompressionLevel 
+		CompressionLevel ISql110TSqlDataCompressionOption.CompressionLevel 
 		{
 			get { return this.CompressionLevel;}
 		}
-		Int32 ISql110DataCompressionOption.PartitionNumber 
+		Int32 ISql110TSqlDataCompressionOption.PartitionNumber 
 		{
 			get { return this.PartitionNumber;}
 		}
 	}
-	public partial class Default : ISql110Default
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlDefault"/>.
+	/// </summary>
+	public partial class TSqlDefault : ISql110TSqlDefault
 	{		
-		String ISql110Default.Expression 
+		String ISql110TSqlDefault.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110Default.BoundObjects 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlDefault.BoundObjects 
 		{
 			get 
 			{
@@ -13002,32 +12487,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110Default.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlDefault.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class DefaultConstraint : ISql110DefaultConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlDefaultConstraint"/>.
+	/// </summary>
+	public partial class TSqlDefaultConstraint : ISql110TSqlDefaultConstraint
 	{		
-		Boolean ISql110DefaultConstraint.Disabled 
+		Boolean ISql110TSqlDefaultConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISql110DefaultConstraint.Expression 
+		String ISql110TSqlDefaultConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
-		Boolean ISql110DefaultConstraint.WithValues 
+		Boolean ISql110TSqlDefaultConstraint.WithValues 
 		{
 			get { return this.WithValues;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110DefaultConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -13035,110 +12523,113 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110ExtendedProperty> ISql110DefaultConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlDefaultConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110DefaultConstraint.TargetColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn;
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 	}
-	public partial class DmlTrigger : ISql110DmlTrigger
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlDmlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDmlTrigger : ISql110TSqlDmlTrigger
 	{		
-		Boolean? ISql110DmlTrigger.AnsiNullsOn 
+		Boolean? ISql110TSqlDmlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql110DmlTrigger.ClassName 
+		String ISql110TSqlDmlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		OrderRestriction ISql110DmlTrigger.DeleteOrderRestriction 
+		OrderRestriction ISql110TSqlDmlTrigger.DeleteOrderRestriction 
 		{
 			get { return this.DeleteOrderRestriction;}
 		}
-		Boolean ISql110DmlTrigger.Disabled 
+		Boolean ISql110TSqlDmlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql110DmlTrigger.ExecuteAsCaller 
+		Boolean ISql110TSqlDmlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql110DmlTrigger.ExecuteAsOwner 
+		Boolean ISql110TSqlDmlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql110DmlTrigger.ExecuteAsSelf 
+		Boolean ISql110TSqlDmlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		OrderRestriction ISql110DmlTrigger.InsertOrderRestriction 
+		OrderRestriction ISql110TSqlDmlTrigger.InsertOrderRestriction 
 		{
 			get { return this.InsertOrderRestriction;}
 		}
-		Boolean ISql110DmlTrigger.IsDeleteTrigger 
+		Boolean ISql110TSqlDmlTrigger.IsDeleteTrigger 
 		{
 			get { return this.IsDeleteTrigger;}
 		}
-		Boolean ISql110DmlTrigger.IsInsertTrigger 
+		Boolean ISql110TSqlDmlTrigger.IsInsertTrigger 
 		{
 			get { return this.IsInsertTrigger;}
 		}
-		Boolean ISql110DmlTrigger.IsUpdateTrigger 
+		Boolean ISql110TSqlDmlTrigger.IsUpdateTrigger 
 		{
 			get { return this.IsUpdateTrigger;}
 		}
-		String ISql110DmlTrigger.MethodName 
+		String ISql110TSqlDmlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean ISql110DmlTrigger.NotForReplication 
+		Boolean ISql110TSqlDmlTrigger.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
-		Boolean? ISql110DmlTrigger.QuotedIdentifierOn 
+		Boolean? ISql110TSqlDmlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql110DmlTrigger.TriggerType 
+		TriggerType ISql110TSqlDmlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		OrderRestriction ISql110DmlTrigger.UpdateOrderRestriction 
+		OrderRestriction ISql110TSqlDmlTrigger.UpdateOrderRestriction 
 		{
 			get { return this.UpdateOrderRestriction;}
 		}
-		Boolean ISql110DmlTrigger.WithAppend 
+		Boolean ISql110TSqlDmlTrigger.WithAppend 
 		{
 			get { return this.WithAppend;}
 		}
-		Boolean ISql110DmlTrigger.WithEncryption 
+		Boolean ISql110TSqlDmlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Assembly> ISql110DmlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlDmlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110DmlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlDmlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -13146,17 +12637,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Login> ISql110DmlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlDmlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql110DmlTrigger.TriggerObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql110TSqlDmlTrigger.TriggerObject 
 		{
 			get 
 			{
@@ -13164,32 +12655,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110User> ISql110DmlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlDmlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
 			}
 		}
 	}
-	public partial class Endpoint : ISql110Endpoint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlEndpoint"/>.
+	/// </summary>
+	public partial class TSqlEndpoint : ISql110TSqlEndpoint
 	{		
-		Payload ISql110Endpoint.Payload 
+		Payload ISql110TSqlEndpoint.Payload 
 		{
 			get { return this.Payload;}
 		}
-		Protocol ISql110Endpoint.Protocol 
+		Protocol ISql110TSqlEndpoint.Protocol 
 		{
 			get { return this.Protocol;}
 		}
-		State ISql110Endpoint.State 
+		State ISql110TSqlEndpoint.State 
 		{
 			get { return this.State;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110Endpoint.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlEndpoint.Authorizer 
 		{
 			get 
 			{
@@ -13197,8 +12691,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier> ISql110Endpoint.PayloadSpecifier 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier> ISql110TSqlEndpoint.PayloadSpecifier 
 		{
 			get 
 			{
@@ -13206,8 +12700,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier > ISql110Endpoint.ProtocolSpecifier 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier > ISql110TSqlEndpoint.ProtocolSpecifier 
 		{
 			get 
 			{
@@ -13215,77 +12709,86 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ErrorMessage : ISql110ErrorMessage
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlErrorMessage"/>.
+	/// </summary>
+	public partial class TSqlErrorMessage : ISql110TSqlErrorMessage
 	{		
-		String ISql110ErrorMessage.Language 
+		String ISql110TSqlErrorMessage.Language 
 		{
 			get { return this.Language;}
 		}
-		Int32 ISql110ErrorMessage.MessageNumber 
+		Int32 ISql110TSqlErrorMessage.MessageNumber 
 		{
 			get { return this.MessageNumber;}
 		}
-		String ISql110ErrorMessage.MessageText 
+		String ISql110TSqlErrorMessage.MessageText 
 		{
 			get { return this.MessageText;}
 		}
-		Int32 ISql110ErrorMessage.Severity 
+		Int32 ISql110TSqlErrorMessage.Severity 
 		{
 			get { return this.Severity;}
 		}
-		Boolean ISql110ErrorMessage.WithLog 
+		Boolean ISql110TSqlErrorMessage.WithLog 
 		{
 			get { return this.WithLog;}
 		}
 	}
-	public partial class EventGroup : ISql110EventGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlEventGroup"/>.
+	/// </summary>
+	public partial class TSqlEventGroup : ISql110TSqlEventGroup
 	{		
-		EventGroupType ISql110EventGroup.Group 
+		EventGroupType ISql110TSqlEventGroup.Group 
 		{
 			get { return this.Group;}
 		}
 	}
-	public partial class EventSession : ISql110EventSession
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlEventSession"/>.
+	/// </summary>
+	public partial class TSqlEventSession : ISql110TSqlEventSession
 	{		
-		EventRetentionMode ISql110EventSession.EventRetentionMode 
+		EventRetentionMode ISql110TSqlEventSession.EventRetentionMode 
 		{
 			get { return this.EventRetentionMode;}
 		}
-		Int32 ISql110EventSession.MaxDispatchLatency 
+		Int32 ISql110TSqlEventSession.MaxDispatchLatency 
 		{
 			get { return this.MaxDispatchLatency;}
 		}
-		Int32 ISql110EventSession.MaxEventSize 
+		Int32 ISql110TSqlEventSession.MaxEventSize 
 		{
 			get { return this.MaxEventSize;}
 		}
-		MemoryUnit ISql110EventSession.MaxEventSizeUnit 
+		MemoryUnit ISql110TSqlEventSession.MaxEventSizeUnit 
 		{
 			get { return this.MaxEventSizeUnit;}
 		}
-		Int32 ISql110EventSession.MaxMemory 
+		Int32 ISql110TSqlEventSession.MaxMemory 
 		{
 			get { return this.MaxMemory;}
 		}
-		MemoryUnit ISql110EventSession.MaxMemoryUnit 
+		MemoryUnit ISql110TSqlEventSession.MaxMemoryUnit 
 		{
 			get { return this.MaxMemoryUnit;}
 		}
-		MemoryPartitionMode ISql110EventSession.MemoryPartitionMode 
+		MemoryPartitionMode ISql110TSqlEventSession.MemoryPartitionMode 
 		{
 			get { return this.MemoryPartitionMode;}
 		}
-		Boolean ISql110EventSession.StartupState 
+		Boolean ISql110TSqlEventSession.StartupState 
 		{
 			get { return this.StartupState;}
 		}
-		Boolean ISql110EventSession.TrackCausality 
+		Boolean ISql110TSqlEventSession.TrackCausality 
 		{
 			get { return this.TrackCausality;}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql110EventSession.EventDefinitions 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql110TSqlEventSession.EventDefinitions 
 		{
 			get 
 			{
@@ -13293,8 +12796,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql110EventSession.EventTargets 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql110TSqlEventSession.EventTargets 
 		{
 			get 
 			{
@@ -13302,51 +12805,57 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class EventSessionAction : ISql110EventSessionAction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlEventSessionAction"/>.
+	/// </summary>
+	public partial class TSqlEventSessionAction : ISql110TSqlEventSessionAction
 	{		
-		String ISql110EventSessionAction.ActionName 
+		String ISql110TSqlEventSessionAction.ActionName 
 		{
 			get { return this.ActionName;}
 		}
-		String ISql110EventSessionAction.EventModuleGuid 
+		String ISql110TSqlEventSessionAction.EventModuleGuid 
 		{
 			get { return this.EventModuleGuid;}
 		}
-		String ISql110EventSessionAction.EventPackageName 
+		String ISql110TSqlEventSessionAction.EventPackageName 
 		{
 			get { return this.EventPackageName;}
 		}
 	}
-	public partial class EventSessionDefinitions : ISql110EventSessionDefinitions
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlEventSessionDefinitions"/>.
+	/// </summary>
+	public partial class TSqlEventSessionDefinitions : ISql110TSqlEventSessionDefinitions
 	{		
-		String ISql110EventSessionDefinitions.EventModuleGuid 
+		String ISql110TSqlEventSessionDefinitions.EventModuleGuid 
 		{
 			get { return this.EventModuleGuid;}
 		}
-		String ISql110EventSessionDefinitions.EventName 
+		String ISql110TSqlEventSessionDefinitions.EventName 
 		{
 			get { return this.EventName;}
 		}
-		String ISql110EventSessionDefinitions.EventPackageName 
+		String ISql110TSqlEventSessionDefinitions.EventPackageName 
 		{
 			get { return this.EventPackageName;}
 		}
-		String ISql110EventSessionDefinitions.WhereExpression 
+		String ISql110TSqlEventSessionDefinitions.WhereExpression 
 		{
 			get { return this.WhereExpression;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110EventSessionAction> ISql110EventSessionDefinitions.Actions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventSessionAction> ISql110TSqlEventSessionDefinitions.Actions 
 		{
 			get 
 			{
-				return this.Actions;
+				return this.Actions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventSessionAction>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql110EventSessionDefinitions.AttributeSettings 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql110TSqlEventSessionDefinitions.AttributeSettings 
 		{
 			get 
 			{
@@ -13354,34 +12863,40 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class EventSessionSetting : ISql110EventSessionSetting
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlEventSessionSetting"/>.
+	/// </summary>
+	public partial class TSqlEventSessionSetting : ISql110TSqlEventSessionSetting
 	{		
-		String ISql110EventSessionSetting.SettingName 
+		String ISql110TSqlEventSessionSetting.SettingName 
 		{
 			get { return this.SettingName;}
 		}
-		String ISql110EventSessionSetting.SettingValue 
+		String ISql110TSqlEventSessionSetting.SettingValue 
 		{
 			get { return this.SettingValue;}
 		}
 	}
-	public partial class EventSessionTarget : ISql110EventSessionTarget
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlEventSessionTarget"/>.
+	/// </summary>
+	public partial class TSqlEventSessionTarget : ISql110TSqlEventSessionTarget
 	{		
-		String ISql110EventSessionTarget.EventModuleGuid 
+		String ISql110TSqlEventSessionTarget.EventModuleGuid 
 		{
 			get { return this.EventModuleGuid;}
 		}
-		String ISql110EventSessionTarget.EventPackageName 
+		String ISql110TSqlEventSessionTarget.EventPackageName 
 		{
 			get { return this.EventPackageName;}
 		}
-		String ISql110EventSessionTarget.TargetName 
+		String ISql110TSqlEventSessionTarget.TargetName 
 		{
 			get { return this.TargetName;}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql110EventSessionTarget.ParameterSettings 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql110TSqlEventSessionTarget.ParameterSettings 
 		{
 			get 
 			{
@@ -13389,81 +12904,90 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class EventTypeSpecifier : ISql110EventTypeSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlEventTypeSpecifier"/>.
+	/// </summary>
+	public partial class TSqlEventTypeSpecifier : ISql110TSqlEventTypeSpecifier
 	{		
-		EventType ISql110EventTypeSpecifier.EventType 
+		EventType ISql110TSqlEventTypeSpecifier.EventType 
 		{
 			get { return this.EventType;}
 		}
-		OrderRestriction ISql110EventTypeSpecifier.Order 
+		OrderRestriction ISql110TSqlEventTypeSpecifier.Order 
 		{
 			get { return this.Order;}
 		}
 	}
-	public partial class ExtendedProcedure : ISql110ExtendedProcedure
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlExtendedProcedure"/>.
+	/// </summary>
+	public partial class TSqlExtendedProcedure : ISql110TSqlExtendedProcedure
 	{		
-		Boolean ISql110ExtendedProcedure.ExeccuteAsCaller 
+		Boolean ISql110TSqlExtendedProcedure.ExeccuteAsCaller 
 		{
 			get { return this.ExeccuteAsCaller;}
 		}
-		Boolean ISql110ExtendedProcedure.ExecuteAsOwner 
+		Boolean ISql110TSqlExtendedProcedure.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql110ExtendedProcedure.ExecuteAsSelf 
+		Boolean ISql110TSqlExtendedProcedure.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql110ExtendedProcedure.WithEncryption 
+		Boolean ISql110TSqlExtendedProcedure.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Login> ISql110ExtendedProcedure.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlExtendedProcedure.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Parameter> ISql110ExtendedProcedure.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter> ISql110TSqlExtendedProcedure.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110ExtendedProcedure.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlExtendedProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110User> ISql110ExtendedProcedure.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlExtendedProcedure.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
 			}
 		}
 	}
-	public partial class ExtendedProperty : ISql110ExtendedProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlExtendedProperty"/>.
+	/// </summary>
+	public partial class TSqlExtendedProperty : ISql110TSqlExtendedProperty
 	{		
-		String ISql110ExtendedProperty.Value 
+		String ISql110TSqlExtendedProperty.Value 
 		{
 			get { return this.Value;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> ISql110ExtendedProperty.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> ISql110TSqlExtendedProperty.Host 
 		{
 			get 
 			{
@@ -13471,141 +12995,153 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SqlFile : ISql110SqlFile
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSqlFile"/>.
+	/// </summary>
+	public partial class TSqlSqlFile : ISql110TSqlSqlFile
 	{		
-		Int32? ISql110SqlFile.FileGrowth 
+		Int32? ISql110TSqlSqlFile.FileGrowth 
 		{
 			get { return this.FileGrowth;}
 		}
-		MemoryUnit ISql110SqlFile.FileGrowthUnit 
+		MemoryUnit ISql110TSqlSqlFile.FileGrowthUnit 
 		{
 			get { return this.FileGrowthUnit;}
 		}
-		String ISql110SqlFile.FileName 
+		String ISql110TSqlSqlFile.FileName 
 		{
 			get { return this.FileName;}
 		}
-		Boolean ISql110SqlFile.IsLogFile 
+		Boolean ISql110TSqlSqlFile.IsLogFile 
 		{
 			get { return this.IsLogFile;}
 		}
-		Int32? ISql110SqlFile.MaxSize 
+		Int32? ISql110TSqlSqlFile.MaxSize 
 		{
 			get { return this.MaxSize;}
 		}
-		MemoryUnit ISql110SqlFile.MaxSizeUnit 
+		MemoryUnit ISql110TSqlSqlFile.MaxSizeUnit 
 		{
 			get { return this.MaxSizeUnit;}
 		}
-		Boolean ISql110SqlFile.Offline 
+		Boolean ISql110TSqlSqlFile.Offline 
 		{
 			get { return this.Offline;}
 		}
-		Int32? ISql110SqlFile.Size 
+		Int32? ISql110TSqlSqlFile.Size 
 		{
 			get { return this.Size;}
 		}
-		MemoryUnit ISql110SqlFile.SizeUnit 
+		MemoryUnit ISql110TSqlSqlFile.SizeUnit 
 		{
 			get { return this.SizeUnit;}
 		}
-		Boolean ISql110SqlFile.Unlimited 
+		Boolean ISql110TSqlSqlFile.Unlimited 
 		{
 			get { return this.Unlimited;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110SqlFile.Filegroup 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlSqlFile.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class Filegroup : ISql110Filegroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlFilegroup"/>.
+	/// </summary>
+	public partial class TSqlFilegroup : ISql110TSqlFilegroup
 	{		
-		Boolean ISql110Filegroup.ContainsFileStream 
+		Boolean ISql110TSqlFilegroup.ContainsFileStream 
 		{
 			get { return this.ContainsFileStream;}
 		}
-		Boolean ISql110Filegroup.ReadOnly 
+		Boolean ISql110TSqlFilegroup.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
 	}
-	public partial class ForeignKeyConstraint : ISql110ForeignKeyConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlForeignKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlForeignKeyConstraint : ISql110TSqlForeignKeyConstraint
 	{		
-		ForeignKeyAction ISql110ForeignKeyConstraint.DeleteAction 
+		ForeignKeyAction ISql110TSqlForeignKeyConstraint.DeleteAction 
 		{
 			get { return this.DeleteAction;}
 		}
-		Boolean ISql110ForeignKeyConstraint.Disabled 
+		Boolean ISql110TSqlForeignKeyConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql110ForeignKeyConstraint.NotForReplication 
+		Boolean ISql110TSqlForeignKeyConstraint.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
-		ForeignKeyAction ISql110ForeignKeyConstraint.UpdateAction 
+		ForeignKeyAction ISql110TSqlForeignKeyConstraint.UpdateAction 
 		{
 			get { return this.UpdateAction;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110ForeignKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlForeignKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110ForeignKeyConstraint.ForeignColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlForeignKeyConstraint.ForeignColumns 
 		{
 			get 
 			{
-				return this.ForeignColumns;
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Table> ISql110ForeignKeyConstraint.ForeignTable 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlForeignKeyConstraint.ForeignTable 
 		{
 			get 
 			{
-				return this.ForeignTable;
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110ExtendedProperty> ISql110ForeignKeyConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlForeignKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
 			}
 		}
 	}
-	public partial class FullTextCatalog : ISql110FullTextCatalog
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlFullTextCatalog"/>.
+	/// </summary>
+	public partial class TSqlFullTextCatalog : ISql110TSqlFullTextCatalog
 	{		
-		Boolean? ISql110FullTextCatalog.AccentSensitivity 
+		Boolean? ISql110TSqlFullTextCatalog.AccentSensitivity 
 		{
 			get { return this.AccentSensitivity;}
 		}
-		Boolean ISql110FullTextCatalog.IsDefault 
+		Boolean ISql110TSqlFullTextCatalog.IsDefault 
 		{
 			get { return this.IsDefault;}
 		}
-		String ISql110FullTextCatalog.Path 
+		String ISql110TSqlFullTextCatalog.Path 
 		{
 			get { return this.Path;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110FullTextCatalog.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlFullTextCatalog.Authorizer 
 		{
 			get 
 			{
@@ -13613,40 +13149,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110FullTextCatalog.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlFullTextCatalog.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class FullTextIndex : ISql110FullTextIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlFullTextIndex"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndex : ISql110TSqlFullTextIndex
 	{		
-		ChangeTrackingOption ISql110FullTextIndex.ChangeTracking 
+		ChangeTrackingOption ISql110TSqlFullTextIndex.ChangeTracking 
 		{
 			get { return this.ChangeTracking;}
 		}
-		Boolean ISql110FullTextIndex.Disabled 
+		Boolean ISql110TSqlFullTextIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql110FullTextIndex.Replicated 
+		Boolean ISql110TSqlFullTextIndex.Replicated 
 		{
 			get { return this.Replicated;}
 		}
-		Boolean ISql110FullTextIndex.StopListOff 
+		Boolean ISql110TSqlFullTextIndex.StopListOff 
 		{
 			get { return this.StopListOff;}
 		}
-		Boolean ISql110FullTextIndex.UseSystemStopList 
+		Boolean ISql110TSqlFullTextIndex.UseSystemStopList 
 		{
 			get { return this.UseSystemStopList;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110FullTextIndex.Catalog 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlFullTextIndex.Catalog 
 		{
 			get 
 			{
@@ -13654,26 +13193,26 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110FullTextIndex.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlFullTextIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110FullTextIndex.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlFullTextIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql110FullTextIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql110TSqlFullTextIndex.IndexedObject 
 		{
 			get 
 			{
@@ -13681,17 +13220,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110SearchPropertyList> ISql110FullTextIndex.SearchPropertyList 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyList> ISql110TSqlFullTextIndex.SearchPropertyList 
 		{
 			get 
 			{
-				return this.SearchPropertyList;
+				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyList>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110FullTextIndex.StopList 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlFullTextIndex.StopList 
 		{
 			get 
 			{
@@ -13699,8 +13238,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110FullTextIndex.UniqueIndexName 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlFullTextIndex.UniqueIndexName 
 		{
 			get 
 			{
@@ -13708,40 +13247,46 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class FullTextIndexColumnSpecifier : ISql110FullTextIndexColumnSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlFullTextIndexColumnSpecifier"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndexColumnSpecifier : ISql110TSqlFullTextIndexColumnSpecifier
 	{		
-		Int32? ISql110FullTextIndexColumnSpecifier.LanguageId 
+		Int32? ISql110TSqlFullTextIndexColumnSpecifier.LanguageId 
 		{
 			get { return this.LanguageId;}
 		}
-		Boolean ISql110FullTextIndexColumnSpecifier.PartOfStatisticalSemantics 
+		Boolean ISql110TSqlFullTextIndexColumnSpecifier.PartOfStatisticalSemantics 
 		{
 			get { return this.PartOfStatisticalSemantics;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110FullTextIndexColumnSpecifier.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlFullTextIndexColumnSpecifier.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110FullTextIndexColumnSpecifier.TypeColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlFullTextIndexColumnSpecifier.TypeColumn 
 		{
 			get 
 			{
-				return this.TypeColumn;
+				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 	}
-	public partial class FullTextStopList : ISql110FullTextStopList
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlFullTextStopList"/>.
+	/// </summary>
+	public partial class TSqlFullTextStopList : ISql110TSqlFullTextStopList
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110FullTextStopList.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlFullTextStopList.Authorizer 
 		{
 			get 
 			{
@@ -13749,255 +13294,273 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class HttpProtocolSpecifier : ISql110HttpProtocolSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlHttpProtocolSpecifier"/>.
+	/// </summary>
+	public partial class TSqlHttpProtocolSpecifier : ISql110TSqlHttpProtocolSpecifier
 	{		
-		AuthenticationModes ISql110HttpProtocolSpecifier.AuthenticationMode 
+		AuthenticationModes ISql110TSqlHttpProtocolSpecifier.AuthenticationMode 
 		{
 			get { return this.AuthenticationMode;}
 		}
-		String ISql110HttpProtocolSpecifier.AuthenticationRealm 
+		String ISql110TSqlHttpProtocolSpecifier.AuthenticationRealm 
 		{
 			get { return this.AuthenticationRealm;}
 		}
-		Int32? ISql110HttpProtocolSpecifier.ClearPort 
+		Int32? ISql110TSqlHttpProtocolSpecifier.ClearPort 
 		{
 			get { return this.ClearPort;}
 		}
-		Boolean ISql110HttpProtocolSpecifier.CompressionEnabled 
+		Boolean ISql110TSqlHttpProtocolSpecifier.CompressionEnabled 
 		{
 			get { return this.CompressionEnabled;}
 		}
-		String ISql110HttpProtocolSpecifier.DefaultLogonDomain 
+		String ISql110TSqlHttpProtocolSpecifier.DefaultLogonDomain 
 		{
 			get { return this.DefaultLogonDomain;}
 		}
-		Boolean ISql110HttpProtocolSpecifier.ListeningOnAllNoneReservedSites 
+		Boolean ISql110TSqlHttpProtocolSpecifier.ListeningOnAllNoneReservedSites 
 		{
 			get { return this.ListeningOnAllNoneReservedSites;}
 		}
-		Boolean ISql110HttpProtocolSpecifier.ListeningOnAllSites 
+		Boolean ISql110TSqlHttpProtocolSpecifier.ListeningOnAllSites 
 		{
 			get { return this.ListeningOnAllSites;}
 		}
-		String ISql110HttpProtocolSpecifier.Path 
+		String ISql110TSqlHttpProtocolSpecifier.Path 
 		{
 			get { return this.Path;}
 		}
-		HttpPorts ISql110HttpProtocolSpecifier.Ports 
+		HttpPorts ISql110TSqlHttpProtocolSpecifier.Ports 
 		{
 			get { return this.Ports;}
 		}
-		Int32? ISql110HttpProtocolSpecifier.SslPort 
+		Int32? ISql110TSqlHttpProtocolSpecifier.SslPort 
 		{
 			get { return this.SslPort;}
 		}
-		String ISql110HttpProtocolSpecifier.Website 
+		String ISql110TSqlHttpProtocolSpecifier.Website 
 		{
 			get { return this.Website;}
 		}
 	}
-	public partial class LinkedServer : ISql110LinkedServer
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlLinkedServer"/>.
+	/// </summary>
+	public partial class TSqlLinkedServer : ISql110TSqlLinkedServer
 	{		
-		String ISql110LinkedServer.Catalog 
+		String ISql110TSqlLinkedServer.Catalog 
 		{
 			get { return this.Catalog;}
 		}
-		Boolean ISql110LinkedServer.CollationCompatible 
+		Boolean ISql110TSqlLinkedServer.CollationCompatible 
 		{
 			get { return this.CollationCompatible;}
 		}
-		String ISql110LinkedServer.CollationName 
+		String ISql110TSqlLinkedServer.CollationName 
 		{
 			get { return this.CollationName;}
 		}
-		Int32 ISql110LinkedServer.ConnectTimeout 
+		Int32 ISql110TSqlLinkedServer.ConnectTimeout 
 		{
 			get { return this.ConnectTimeout;}
 		}
-		Boolean ISql110LinkedServer.DataAccess 
+		Boolean ISql110TSqlLinkedServer.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		String ISql110LinkedServer.DataSource 
+		String ISql110TSqlLinkedServer.DataSource 
 		{
 			get { return this.DataSource;}
 		}
-		Boolean ISql110LinkedServer.IsDistributor 
+		Boolean ISql110TSqlLinkedServer.IsDistributor 
 		{
 			get { return this.IsDistributor;}
 		}
-		Boolean ISql110LinkedServer.IsPublisher 
+		Boolean ISql110TSqlLinkedServer.IsPublisher 
 		{
 			get { return this.IsPublisher;}
 		}
-		Boolean ISql110LinkedServer.IsSubscriber 
+		Boolean ISql110TSqlLinkedServer.IsSubscriber 
 		{
 			get { return this.IsSubscriber;}
 		}
-		Boolean ISql110LinkedServer.LazySchemaValidationEnabled 
+		Boolean ISql110TSqlLinkedServer.LazySchemaValidationEnabled 
 		{
 			get { return this.LazySchemaValidationEnabled;}
 		}
-		String ISql110LinkedServer.Location 
+		String ISql110TSqlLinkedServer.Location 
 		{
 			get { return this.Location;}
 		}
-		String ISql110LinkedServer.ProductName 
+		String ISql110TSqlLinkedServer.ProductName 
 		{
 			get { return this.ProductName;}
 		}
-		String ISql110LinkedServer.ProviderName 
+		String ISql110TSqlLinkedServer.ProviderName 
 		{
 			get { return this.ProviderName;}
 		}
-		String ISql110LinkedServer.ProviderString 
+		String ISql110TSqlLinkedServer.ProviderString 
 		{
 			get { return this.ProviderString;}
 		}
-		Int32 ISql110LinkedServer.QueryTimeout 
+		Int32 ISql110TSqlLinkedServer.QueryTimeout 
 		{
 			get { return this.QueryTimeout;}
 		}
-		Boolean ISql110LinkedServer.RemoteProcTransactionPromotionEnabled 
+		Boolean ISql110TSqlLinkedServer.RemoteProcTransactionPromotionEnabled 
 		{
 			get { return this.RemoteProcTransactionPromotionEnabled;}
 		}
-		Boolean ISql110LinkedServer.RpcEnabled 
+		Boolean ISql110TSqlLinkedServer.RpcEnabled 
 		{
 			get { return this.RpcEnabled;}
 		}
-		Boolean ISql110LinkedServer.RpcOutEnabled 
+		Boolean ISql110TSqlLinkedServer.RpcOutEnabled 
 		{
 			get { return this.RpcOutEnabled;}
 		}
-		Boolean ISql110LinkedServer.UseRemoteCollation 
+		Boolean ISql110TSqlLinkedServer.UseRemoteCollation 
 		{
 			get { return this.UseRemoteCollation;}
 		}
 	}
-	public partial class LinkedServerLogin : ISql110LinkedServerLogin
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlLinkedServerLogin"/>.
+	/// </summary>
+	public partial class TSqlLinkedServerLogin : ISql110TSqlLinkedServerLogin
 	{		
-		String ISql110LinkedServerLogin.LinkedServerLoginName 
+		String ISql110TSqlLinkedServerLogin.LinkedServerLoginName 
 		{
 			get { return this.LinkedServerLoginName;}
 		}
-		String ISql110LinkedServerLogin.LinkedServerPassword 
+		String ISql110TSqlLinkedServerLogin.LinkedServerPassword 
 		{
 			get { return this.LinkedServerPassword;}
 		}
-		Boolean ISql110LinkedServerLogin.UseSelf 
+		Boolean ISql110TSqlLinkedServerLogin.UseSelf 
 		{
 			get { return this.UseSelf;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110LinkedServer> ISql110LinkedServerLogin.LinkedServer 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLinkedServer> ISql110TSqlLinkedServerLogin.LinkedServer 
 		{
 			get 
 			{
-				return this.LinkedServer;
+				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLinkedServer>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Login> ISql110LinkedServerLogin.LocalLogin 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlLinkedServerLogin.LocalLogin 
 		{
 			get 
 			{
-				return this.LocalLogin;
+				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
 			}
 		}
 	}
-	public partial class Login : ISql110Login
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlLogin"/>.
+	/// </summary>
+	public partial class TSqlLogin : ISql110TSqlLogin
 	{		
-		Boolean ISql110Login.CheckExpiration 
+		Boolean ISql110TSqlLogin.CheckExpiration 
 		{
 			get { return this.CheckExpiration;}
 		}
-		Boolean ISql110Login.CheckPolicy 
+		Boolean ISql110TSqlLogin.CheckPolicy 
 		{
 			get { return this.CheckPolicy;}
 		}
-		String ISql110Login.DefaultDatabase 
+		String ISql110TSqlLogin.DefaultDatabase 
 		{
 			get { return this.DefaultDatabase;}
 		}
-		String ISql110Login.DefaultLanguage 
+		String ISql110TSqlLogin.DefaultLanguage 
 		{
 			get { return this.DefaultLanguage;}
 		}
-		Boolean ISql110Login.Disabled 
+		Boolean ISql110TSqlLogin.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		LoginEncryptionOption ISql110Login.EncryptionOption 
+		LoginEncryptionOption ISql110TSqlLogin.EncryptionOption 
 		{
 			get { return this.EncryptionOption;}
 		}
-		Boolean ISql110Login.MappedToWindowsLogin 
+		Boolean ISql110TSqlLogin.MappedToWindowsLogin 
 		{
 			get { return this.MappedToWindowsLogin;}
 		}
-		String ISql110Login.Password 
+		String ISql110TSqlLogin.Password 
 		{
 			get { return this.Password;}
 		}
-		Boolean ISql110Login.PasswordHashed 
+		Boolean ISql110TSqlLogin.PasswordHashed 
 		{
 			get { return this.PasswordHashed;}
 		}
-		Boolean ISql110Login.PasswordMustChange 
+		Boolean ISql110TSqlLogin.PasswordMustChange 
 		{
 			get { return this.PasswordMustChange;}
 		}
-		String ISql110Login.Sid 
+		String ISql110TSqlLogin.Sid 
 		{
 			get { return this.Sid;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110AsymmetricKey> ISql110Login.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey> ISql110TSqlLogin.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Certificate> ISql110Login.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlLogin.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Credential> ISql110Login.Credential 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCredential> ISql110TSqlLogin.Credential 
 		{
 			get 
 			{
-				return this.Credential;
+				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCredential>();
 			}
 		}
 	}
-	public partial class MasterKey : ISql110MasterKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlMasterKey"/>.
+	/// </summary>
+	public partial class TSqlMasterKey : ISql110TSqlMasterKey
 	{		
-		String ISql110MasterKey.Password 
+		String ISql110TSqlMasterKey.Password 
 		{
 			get { return this.Password;}
 		}
 	}
-	public partial class MessageType : ISql110MessageType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlMessageType"/>.
+	/// </summary>
+	public partial class TSqlMessageType : ISql110TSqlMessageType
 	{		
-		ValidationMethod ISql110MessageType.ValidationMethod 
+		ValidationMethod ISql110TSqlMessageType.ValidationMethod 
 		{
 			get { return this.ValidationMethod;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110MessageType.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlMessageType.Authorizer 
 		{
 			get 
 			{
@@ -14005,33 +13568,36 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110XmlSchemaCollection> ISql110MessageType.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection> ISql110TSqlMessageType.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class PartitionFunction : ISql110PartitionFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlPartitionFunction"/>.
+	/// </summary>
+	public partial class TSqlPartitionFunction : ISql110TSqlPartitionFunction
 	{		
-		PartitionRange ISql110PartitionFunction.Range 
+		PartitionRange ISql110TSqlPartitionFunction.Range 
 		{
 			get { return this.Range;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionValue> ISql110PartitionFunction.BoundaryValues 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionValue> ISql110TSqlPartitionFunction.BoundaryValues 
 		{
 			get 
 			{
-				return this.BoundaryValues;
+				return this.BoundaryValues.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionValue>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110PartitionFunction.ParameterType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
@@ -14039,40 +13605,46 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class PartitionScheme : ISql110PartitionScheme
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlPartitionScheme"/>.
+	/// </summary>
+	public partial class TSqlPartitionScheme : ISql110TSqlPartitionScheme
 	{		
-		Boolean ISql110PartitionScheme.AllToOneFilegroup 
+		Boolean ISql110TSqlPartitionScheme.AllToOneFilegroup 
 		{
 			get { return this.AllToOneFilegroup;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110PartitionScheme.Filegroups 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlPartitionScheme.Filegroups 
 		{
 			get 
 			{
-				return this.Filegroups;
+				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionFunction> ISql110PartitionScheme.PartitionFunction 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionFunction> ISql110TSqlPartitionScheme.PartitionFunction 
 		{
 			get 
 			{
-				return this.PartitionFunction;
+				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionFunction>();
 			}
 		}
 	}
-	public partial class PartitionValue : ISql110PartitionValue
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlPartitionValue"/>.
+	/// </summary>
+	public partial class TSqlPartitionValue : ISql110TSqlPartitionValue
 	{		
-		String ISql110PartitionValue.Expression 
+		String ISql110TSqlPartitionValue.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110PartitionValue.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlPartitionValue.ExpressionDependencies 
 		{
 			get 
 			{
@@ -14080,36 +13652,39 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Permission : ISql110Permission
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlPermission"/>.
+	/// </summary>
+	public partial class TSqlPermission : ISql110TSqlPermission
 	{		
-		PermissionAction ISql110Permission.PermissionAction 
+		PermissionAction ISql110TSqlPermission.PermissionAction 
 		{
 			get { return this.PermissionAction;}
 		}
-		PermissionType ISql110Permission.PermissionType 
+		PermissionType ISql110TSqlPermission.PermissionType 
 		{
 			get { return this.PermissionType;}
 		}
-		Boolean ISql110Permission.WithAllPrivileges 
+		Boolean ISql110TSqlPermission.WithAllPrivileges 
 		{
 			get { return this.WithAllPrivileges;}
 		}
-		Boolean ISql110Permission.WithGrantOption 
+		Boolean ISql110TSqlPermission.WithGrantOption 
 		{
 			get { return this.WithGrantOption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110Permission.ExcludedColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlPermission.ExcludedColumns 
 		{
 			get 
 			{
-				return this.ExcludedColumns;
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql110Permission.Grantee 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql110TSqlPermission.Grantee 
 		{
 			get 
 			{
@@ -14117,8 +13692,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql110Permission.Grantor 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql110TSqlPermission.Grantor 
 		{
 			get 
 			{
@@ -14126,17 +13701,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110Permission.RevokedGrantOptionColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlPermission.RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return this.RevokedGrantOptionColumns;
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql110Permission.SecuredObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql110TSqlPermission.SecuredObject 
 		{
 			get 
 			{
@@ -14144,183 +13719,189 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class PrimaryKeyConstraint : ISql110PrimaryKeyConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlPrimaryKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlPrimaryKeyConstraint : ISql110TSqlPrimaryKeyConstraint
 	{		
-		Boolean ISql110PrimaryKeyConstraint.AllowPageLocks 
+		Boolean ISql110TSqlPrimaryKeyConstraint.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql110PrimaryKeyConstraint.AllowRowLocks 
+		Boolean ISql110TSqlPrimaryKeyConstraint.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Int32? ISql110PrimaryKeyConstraint.BucketCount 
+		Int32? ISql110TSqlPrimaryKeyConstraint.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql110PrimaryKeyConstraint.Clustered 
+		Boolean ISql110TSqlPrimaryKeyConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql110PrimaryKeyConstraint.Disabled 
+		Boolean ISql110TSqlPrimaryKeyConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean? ISql110PrimaryKeyConstraint.FileStreamNull 
+		Boolean? ISql110TSqlPrimaryKeyConstraint.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Int32? ISql110PrimaryKeyConstraint.FillFactor 
+		Int32? ISql110TSqlPrimaryKeyConstraint.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql110PrimaryKeyConstraint.Hash 
+		Boolean ISql110TSqlPrimaryKeyConstraint.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql110PrimaryKeyConstraint.IgnoreDuplicateKey 
+		Boolean ISql110TSqlPrimaryKeyConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql110PrimaryKeyConstraint.RecomputeStatistics 
+		Boolean ISql110TSqlPrimaryKeyConstraint.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql110PrimaryKeyConstraint.WithPadIndex 
+		Boolean ISql110TSqlPrimaryKeyConstraint.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110PrimaryKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlPrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataCompressionOption> ISql110PrimaryKeyConstraint.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption> ISql110TSqlPrimaryKeyConstraint.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110PrimaryKeyConstraint.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlPrimaryKeyConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110PrimaryKeyConstraint.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlPrimaryKeyConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110PrimaryKeyConstraint.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlPrimaryKeyConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110ExtendedProperty> ISql110PrimaryKeyConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlPrimaryKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110PrimaryKeyConstraint.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlPrimaryKeyConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110PrimaryKeyConstraint.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlPrimaryKeyConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Procedure : ISql110Procedure
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlProcedure"/>.
+	/// </summary>
+	public partial class TSqlProcedure : ISql110TSqlProcedure
 	{		
-		Boolean? ISql110Procedure.AnsiNullsOn 
+		Boolean? ISql110TSqlProcedure.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql110Procedure.ClassName 
+		String ISql110TSqlProcedure.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql110Procedure.ExecuteAsCaller 
+		Boolean ISql110TSqlProcedure.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql110Procedure.ExecuteAsOwner 
+		Boolean ISql110TSqlProcedure.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql110Procedure.ExecuteAsSelf 
+		Boolean ISql110TSqlProcedure.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql110Procedure.ForReplication 
+		Boolean ISql110TSqlProcedure.ForReplication 
 		{
 			get { return this.ForReplication;}
 		}
-		Boolean ISql110Procedure.IsReplicated 
+		Boolean ISql110TSqlProcedure.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql110Procedure.MethodName 
+		String ISql110TSqlProcedure.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql110Procedure.QuotedIdentifierOn 
+		Boolean? ISql110TSqlProcedure.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql110Procedure.WithEncryption 
+		Boolean ISql110TSqlProcedure.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql110Procedure.WithRecompile 
+		Boolean ISql110TSqlProcedure.WithRecompile 
 		{
 			get { return this.WithRecompile;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Assembly> ISql110Procedure.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlProcedure.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110Procedure.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlProcedure.BodyDependencies 
 		{
 			get 
 			{
@@ -14328,184 +13909,190 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Login> ISql110Procedure.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlProcedure.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Parameter> ISql110Procedure.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter> ISql110TSqlProcedure.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Procedure> ISql110Procedure.ParentProcedure 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedure> ISql110TSqlProcedure.ParentProcedure 
 		{
 			get 
 			{
-				return this.ParentProcedure;
+				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedure>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110Procedure.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110User> ISql110Procedure.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlProcedure.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
 			}
 		}
 	}
-	public partial class Queue : ISql110Queue
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlQueue"/>.
+	/// </summary>
+	public partial class TSqlQueue : ISql110TSqlQueue
 	{		
-		Boolean ISql110Queue.ActivationExecuteAsCaller 
+		Boolean ISql110TSqlQueue.ActivationExecuteAsCaller 
 		{
 			get { return this.ActivationExecuteAsCaller;}
 		}
-		Boolean ISql110Queue.ActivationExecuteAsOwner 
+		Boolean ISql110TSqlQueue.ActivationExecuteAsOwner 
 		{
 			get { return this.ActivationExecuteAsOwner;}
 		}
-		Boolean ISql110Queue.ActivationExecuteAsSelf 
+		Boolean ISql110TSqlQueue.ActivationExecuteAsSelf 
 		{
 			get { return this.ActivationExecuteAsSelf;}
 		}
-		Int32? ISql110Queue.ActivationMaxQueueReaders 
+		Int32? ISql110TSqlQueue.ActivationMaxQueueReaders 
 		{
 			get { return this.ActivationMaxQueueReaders;}
 		}
-		Boolean? ISql110Queue.ActivationStatusOn 
+		Boolean? ISql110TSqlQueue.ActivationStatusOn 
 		{
 			get { return this.ActivationStatusOn;}
 		}
-		Boolean ISql110Queue.PoisonMessageHandlingStatusOn 
+		Boolean ISql110TSqlQueue.PoisonMessageHandlingStatusOn 
 		{
 			get { return this.PoisonMessageHandlingStatusOn;}
 		}
-		Boolean ISql110Queue.RetentionOn 
+		Boolean ISql110TSqlQueue.RetentionOn 
 		{
 			get { return this.RetentionOn;}
 		}
-		Boolean ISql110Queue.StatusOn 
+		Boolean ISql110TSqlQueue.StatusOn 
 		{
 			get { return this.StatusOn;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Procedure> ISql110Queue.ActivationProcedure 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedure> ISql110TSqlQueue.ActivationProcedure 
 		{
 			get 
 			{
-				return this.ActivationProcedure;
+				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedure>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110Queue.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlQueue.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110Queue.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlQueue.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Login> ISql110Queue.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlQueue.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110Queue.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlQueue.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110Queue.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlQueue.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110Queue.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlQueue.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110User> ISql110Queue.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlQueue.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
 			}
 		}
 	}
-	public partial class QueueEventNotification : ISql110QueueEventNotification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlQueueEventNotification"/>.
+	/// </summary>
+	public partial class TSqlQueueEventNotification : ISql110TSqlQueueEventNotification
 	{		
-		String ISql110QueueEventNotification.BrokerInstanceSpecifier 
+		String ISql110TSqlQueueEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql110QueueEventNotification.BrokerService 
+		String ISql110TSqlQueueEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql110QueueEventNotification.WithFanIn 
+		Boolean ISql110TSqlQueueEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110EventGroup> ISql110QueueEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventGroup> ISql110TSqlQueueEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql110QueueEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql110TSqlQueueEventNotification.EventType 
 		{
 			get 
 			{
@@ -14513,28 +14100,31 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Queue> ISql110QueueEventNotification.Queue 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueue> ISql110TSqlQueueEventNotification.Queue 
 		{
 			get 
 			{
-				return this.Queue;
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueue>();
 			}
 		}
 	}
-	public partial class RemoteServiceBinding : ISql110RemoteServiceBinding
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlRemoteServiceBinding"/>.
+	/// </summary>
+	public partial class TSqlRemoteServiceBinding : ISql110TSqlRemoteServiceBinding
 	{		
-		Boolean ISql110RemoteServiceBinding.Anonymous 
+		Boolean ISql110TSqlRemoteServiceBinding.Anonymous 
 		{
 			get { return this.Anonymous;}
 		}
-		String ISql110RemoteServiceBinding.Service 
+		String ISql110TSqlRemoteServiceBinding.Service 
 		{
 			get { return this.Service;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110RemoteServiceBinding.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlRemoteServiceBinding.Authorizer 
 		{
 			get 
 			{
@@ -14542,24 +14132,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110User> ISql110RemoteServiceBinding.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlRemoteServiceBinding.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
 			}
 		}
 	}
-	public partial class ResourceGovernor : ISql110ResourceGovernor
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlResourceGovernor"/>.
+	/// </summary>
+	public partial class TSqlResourceGovernor : ISql110TSqlResourceGovernor
 	{		
-		Boolean? ISql110ResourceGovernor.Enabled 
+		Boolean? ISql110TSqlResourceGovernor.Enabled 
 		{
 			get { return this.Enabled;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110ResourceGovernor.ClassifierFunction 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlResourceGovernor.ClassifierFunction 
 		{
 			get 
 			{
@@ -14567,34 +14160,40 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ResourcePool : ISql110ResourcePool
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlResourcePool"/>.
+	/// </summary>
+	public partial class TSqlResourcePool : ISql110TSqlResourcePool
 	{		
-		Int32 ISql110ResourcePool.CapCpuPercent 
+		Int32 ISql110TSqlResourcePool.CapCpuPercent 
 		{
 			get { return this.CapCpuPercent;}
 		}
-		Int32 ISql110ResourcePool.MaxCpuPercent 
+		Int32 ISql110TSqlResourcePool.MaxCpuPercent 
 		{
 			get { return this.MaxCpuPercent;}
 		}
-		Int32 ISql110ResourcePool.MaxMemoryPercent 
+		Int32 ISql110TSqlResourcePool.MaxMemoryPercent 
 		{
 			get { return this.MaxMemoryPercent;}
 		}
-		Int32 ISql110ResourcePool.MinCpuPercent 
+		Int32 ISql110TSqlResourcePool.MinCpuPercent 
 		{
 			get { return this.MinCpuPercent;}
 		}
-		Int32 ISql110ResourcePool.MinMemoryPercent 
+		Int32 ISql110TSqlResourcePool.MinMemoryPercent 
 		{
 			get { return this.MinMemoryPercent;}
 		}
 	}
-	public partial class Role : ISql110Role
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlRole"/>.
+	/// </summary>
+	public partial class TSqlRole : ISql110TSqlRole
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110Role.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlRole.Authorizer 
 		{
 			get 
 			{
@@ -14602,11 +14201,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class RoleMembership : ISql110RoleMembership
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlRoleMembership : ISql110TSqlRoleMembership
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql110RoleMembership.Member 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql110TSqlRoleMembership.Member 
 		{
 			get 
 			{
@@ -14614,40 +14216,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Role> ISql110RoleMembership.Role 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRole> ISql110TSqlRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role;
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRole>();
 			}
 		}
 	}
-	public partial class Route : ISql110Route
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlRoute"/>.
+	/// </summary>
+	public partial class TSqlRoute : ISql110TSqlRoute
 	{		
-		String ISql110Route.Address 
+		String ISql110TSqlRoute.Address 
 		{
 			get { return this.Address;}
 		}
-		String ISql110Route.BrokerInstance 
+		String ISql110TSqlRoute.BrokerInstance 
 		{
 			get { return this.BrokerInstance;}
 		}
-		Int32? ISql110Route.Lifetime 
+		Int32? ISql110TSqlRoute.Lifetime 
 		{
 			get { return this.Lifetime;}
 		}
-		String ISql110Route.MirrorAddress 
+		String ISql110TSqlRoute.MirrorAddress 
 		{
 			get { return this.MirrorAddress;}
 		}
-		String ISql110Route.ServiceName 
+		String ISql110TSqlRoute.ServiceName 
 		{
 			get { return this.ServiceName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110Route.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlRoute.Authorizer 
 		{
 			get 
 			{
@@ -14655,15 +14260,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Rule : ISql110Rule
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlRule"/>.
+	/// </summary>
+	public partial class TSqlRule : ISql110TSqlRule
 	{		
-		String ISql110Rule.Expression 
+		String ISql110TSqlRule.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110Rule.BoundObjects 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlRule.BoundObjects 
 		{
 			get 
 			{
@@ -14671,20 +14279,23 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110Rule.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlRule.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class Schema : ISql110Schema
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSchema"/>.
+	/// </summary>
+	public partial class TSqlSchema : ISql110TSqlSchema
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110Schema.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlSchema.Authorizer 
 		{
 			get 
 			{
@@ -14692,35 +14303,41 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SearchProperty : ISql110SearchProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSearchProperty"/>.
+	/// </summary>
+	public partial class TSqlSearchProperty : ISql110TSqlSearchProperty
 	{		
-		String ISql110SearchProperty.Description 
+		String ISql110TSqlSearchProperty.Description 
 		{
 			get { return this.Description;}
 		}
-		Int32 ISql110SearchProperty.Identifier 
+		Int32 ISql110TSqlSearchProperty.Identifier 
 		{
 			get { return this.Identifier;}
 		}
-		String ISql110SearchProperty.PropertySetGuid 
+		String ISql110TSqlSearchProperty.PropertySetGuid 
 		{
 			get { return this.PropertySetGuid;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110SearchPropertyList> ISql110SearchProperty.SearchPropertyList 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyList> ISql110TSqlSearchProperty.SearchPropertyList 
 		{
 			get 
 			{
-				return this.SearchPropertyList;
+				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyList>();
 			}
 		}
 	}
-	public partial class SearchPropertyList : ISql110SearchPropertyList
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSearchPropertyList"/>.
+	/// </summary>
+	public partial class TSqlSearchPropertyList : ISql110TSqlSearchPropertyList
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110SearchPropertyList.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlSearchPropertyList.Authorizer 
 		{
 			get 
 			{
@@ -14728,205 +14345,217 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Sequence : ISql110Sequence
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSequence"/>.
+	/// </summary>
+	public partial class TSqlSequence : ISql110TSqlSequence
 	{		
-		Int32? ISql110Sequence.CacheSize 
+		Int32? ISql110TSqlSequence.CacheSize 
 		{
 			get { return this.CacheSize;}
 		}
-		String ISql110Sequence.IncrementValue 
+		String ISql110TSqlSequence.IncrementValue 
 		{
 			get { return this.IncrementValue;}
 		}
-		Boolean ISql110Sequence.IsCached 
+		Boolean ISql110TSqlSequence.IsCached 
 		{
 			get { return this.IsCached;}
 		}
-		Boolean ISql110Sequence.IsCycling 
+		Boolean ISql110TSqlSequence.IsCycling 
 		{
 			get { return this.IsCycling;}
 		}
-		String ISql110Sequence.MaxValue 
+		String ISql110TSqlSequence.MaxValue 
 		{
 			get { return this.MaxValue;}
 		}
-		String ISql110Sequence.MinValue 
+		String ISql110TSqlSequence.MinValue 
 		{
 			get { return this.MinValue;}
 		}
-		Boolean ISql110Sequence.NoMaxValue 
+		Boolean ISql110TSqlSequence.NoMaxValue 
 		{
 			get { return this.NoMaxValue;}
 		}
-		Boolean ISql110Sequence.NoMinValue 
+		Boolean ISql110TSqlSequence.NoMinValue 
 		{
 			get { return this.NoMinValue;}
 		}
-		String ISql110Sequence.StartValue 
+		String ISql110TSqlSequence.StartValue 
 		{
 			get { return this.StartValue;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataType> ISql110Sequence.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlSequence.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110Sequence.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlSequence.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class ServerAudit : ISql110ServerAudit
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlServerAudit"/>.
+	/// </summary>
+	public partial class TSqlServerAudit : ISql110TSqlServerAudit
 	{		
-		String ISql110ServerAudit.AuditGuid 
+		String ISql110TSqlServerAudit.AuditGuid 
 		{
 			get { return this.AuditGuid;}
 		}
-		AuditTarget ISql110ServerAudit.AuditTarget 
+		AuditTarget ISql110TSqlServerAudit.AuditTarget 
 		{
 			get { return this.AuditTarget;}
 		}
-		Boolean ISql110ServerAudit.Disabled 
+		Boolean ISql110TSqlServerAudit.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISql110ServerAudit.FilePath 
+		String ISql110TSqlServerAudit.FilePath 
 		{
 			get { return this.FilePath;}
 		}
-		Int32? ISql110ServerAudit.MaxFiles 
+		Int32? ISql110TSqlServerAudit.MaxFiles 
 		{
 			get { return this.MaxFiles;}
 		}
-		Int32? ISql110ServerAudit.MaxRolloverFiles 
+		Int32? ISql110TSqlServerAudit.MaxRolloverFiles 
 		{
 			get { return this.MaxRolloverFiles;}
 		}
-		Int32? ISql110ServerAudit.MaxSize 
+		Int32? ISql110TSqlServerAudit.MaxSize 
 		{
 			get { return this.MaxSize;}
 		}
-		MemoryUnit ISql110ServerAudit.MaxSizeUnit 
+		MemoryUnit ISql110TSqlServerAudit.MaxSizeUnit 
 		{
 			get { return this.MaxSizeUnit;}
 		}
-		FailureAction ISql110ServerAudit.OnFailure 
+		FailureAction ISql110TSqlServerAudit.OnFailure 
 		{
 			get { return this.OnFailure;}
 		}
-		String ISql110ServerAudit.PredicateExpression 
+		String ISql110TSqlServerAudit.PredicateExpression 
 		{
 			get { return this.PredicateExpression;}
 		}
-		Int32 ISql110ServerAudit.QueueDelay 
+		Int32 ISql110TSqlServerAudit.QueueDelay 
 		{
 			get { return this.QueueDelay;}
 		}
-		Boolean ISql110ServerAudit.ReserveDiskSpace 
+		Boolean ISql110TSqlServerAudit.ReserveDiskSpace 
 		{
 			get { return this.ReserveDiskSpace;}
 		}
-		Boolean ISql110ServerAudit.UnlimitedFileSize 
+		Boolean ISql110TSqlServerAudit.UnlimitedFileSize 
 		{
 			get { return this.UnlimitedFileSize;}
 		}
-		Boolean ISql110ServerAudit.UnlimitedMaxRolloverFiles 
+		Boolean ISql110TSqlServerAudit.UnlimitedMaxRolloverFiles 
 		{
 			get { return this.UnlimitedMaxRolloverFiles;}
 		}
 	}
-	public partial class ServerAuditSpecification : ISql110ServerAuditSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlServerAuditSpecification"/>.
+	/// </summary>
+	public partial class TSqlServerAuditSpecification : ISql110TSqlServerAuditSpecification
 	{		
-		Boolean ISql110ServerAuditSpecification.StateOn 
+		Boolean ISql110TSqlServerAuditSpecification.StateOn 
 		{
 			get { return this.StateOn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110AuditActionGroup> ISql110ServerAuditSpecification.AuditActionGroups 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAuditActionGroup> ISql110TSqlServerAuditSpecification.AuditActionGroups 
 		{
 			get 
 			{
-				return this.AuditActionGroups;
+				return this.AuditActionGroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAuditActionGroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110ServerAudit> ISql110ServerAuditSpecification.ServerAudit 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAudit> ISql110TSqlServerAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit;
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAudit>();
 			}
 		}
 	}
-	public partial class ServerDdlTrigger : ISql110ServerDdlTrigger
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlServerDdlTrigger"/>.
+	/// </summary>
+	public partial class TSqlServerDdlTrigger : ISql110TSqlServerDdlTrigger
 	{		
-		Boolean? ISql110ServerDdlTrigger.AnsiNullsOn 
+		Boolean? ISql110TSqlServerDdlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql110ServerDdlTrigger.ClassName 
+		String ISql110TSqlServerDdlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql110ServerDdlTrigger.Disabled 
+		Boolean ISql110TSqlServerDdlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql110ServerDdlTrigger.ExecuteAsCaller 
+		Boolean ISql110TSqlServerDdlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql110ServerDdlTrigger.ExecuteAsOwner 
+		Boolean ISql110TSqlServerDdlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql110ServerDdlTrigger.ExecuteAsSelf 
+		Boolean ISql110TSqlServerDdlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql110ServerDdlTrigger.IsLogon 
+		Boolean ISql110TSqlServerDdlTrigger.IsLogon 
 		{
 			get { return this.IsLogon;}
 		}
-		String ISql110ServerDdlTrigger.MethodName 
+		String ISql110TSqlServerDdlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql110ServerDdlTrigger.QuotedIdentifierOn 
+		Boolean? ISql110TSqlServerDdlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql110ServerDdlTrigger.TriggerType 
+		TriggerType ISql110TSqlServerDdlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		Boolean ISql110ServerDdlTrigger.WithEncryption 
+		Boolean ISql110TSqlServerDdlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Assembly> ISql110ServerDdlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlServerDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110ServerDdlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlServerDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -14934,17 +14563,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110EventGroup> ISql110ServerDdlTrigger.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventGroup> ISql110TSqlServerDdlTrigger.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql110ServerDdlTrigger.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql110TSqlServerDdlTrigger.EventType 
 		{
 			get 
 			{
@@ -14952,50 +14581,53 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Login> ISql110ServerDdlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlServerDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110User> ISql110ServerDdlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlServerDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
 			}
 		}
 	}
-	public partial class ServerEventNotification : ISql110ServerEventNotification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlServerEventNotification"/>.
+	/// </summary>
+	public partial class TSqlServerEventNotification : ISql110TSqlServerEventNotification
 	{		
-		String ISql110ServerEventNotification.BrokerInstanceSpecifier 
+		String ISql110TSqlServerEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql110ServerEventNotification.BrokerService 
+		String ISql110TSqlServerEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql110ServerEventNotification.WithFanIn 
+		Boolean ISql110TSqlServerEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110EventGroup> ISql110ServerEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventGroup> ISql110TSqlServerEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql110ServerEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql110TSqlServerEventNotification.EventType 
 		{
 			get 
 			{
@@ -15003,14 +14635,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ServerOptions : ISql110ServerOptions
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlServerOptions"/>.
+	/// </summary>
+	public partial class TSqlServerOptions : ISql110TSqlServerOptions
 	{		
 	}
-	public partial class ServerRoleMembership : ISql110ServerRoleMembership
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlServerRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlServerRoleMembership : ISql110TSqlServerRoleMembership
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> ISql110ServerRoleMembership.Member 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> ISql110TSqlServerRoleMembership.Member 
 		{
 			get 
 			{
@@ -15018,24 +14656,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Role> ISql110ServerRoleMembership.Role 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRole> ISql110TSqlServerRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role;
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRole>();
 			}
 		}
 	}
-	public partial class Service : ISql110Service
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlService"/>.
+	/// </summary>
+	public partial class TSqlService : ISql110TSqlService
 	{		
-		Boolean ISql110Service.UseDefaultContract 
+		Boolean ISql110TSqlService.UseDefaultContract 
 		{
 			get { return this.UseDefaultContract;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110Service.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlService.Authorizer 
 		{
 			get 
 			{
@@ -15043,73 +14684,79 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Contract> ISql110Service.Contracts 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlContract> ISql110TSqlService.Contracts 
 		{
 			get 
 			{
-				return this.Contracts;
+				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlContract>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Queue> ISql110Service.Queue 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueue> ISql110TSqlService.Queue 
 		{
 			get 
 			{
-				return this.Queue;
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueue>();
 			}
 		}
 	}
-	public partial class ServiceBrokerLanguageSpecifier : ISql110ServiceBrokerLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlServiceBrokerLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlServiceBrokerLanguageSpecifier : ISql110TSqlServiceBrokerLanguageSpecifier
 	{		
-		ServiceBrokerEncryptionAlgorithm ISql110ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1 
+		ServiceBrokerEncryptionAlgorithm ISql110TSqlServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1 
 		{
 			get { return this.EncryptionAlgorithmPart1;}
 		}
-		ServiceBrokerEncryptionAlgorithm ISql110ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2 
+		ServiceBrokerEncryptionAlgorithm ISql110TSqlServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2 
 		{
 			get { return this.EncryptionAlgorithmPart2;}
 		}
-		EncryptionMode ISql110ServiceBrokerLanguageSpecifier.EncryptionMode 
+		EncryptionMode ISql110TSqlServiceBrokerLanguageSpecifier.EncryptionMode 
 		{
 			get { return this.EncryptionMode;}
 		}
-		Boolean ISql110ServiceBrokerLanguageSpecifier.MessageForwardingEnabled 
+		Boolean ISql110TSqlServiceBrokerLanguageSpecifier.MessageForwardingEnabled 
 		{
 			get { return this.MessageForwardingEnabled;}
 		}
-		Int32 ISql110ServiceBrokerLanguageSpecifier.MessageForwardSize 
+		Int32 ISql110TSqlServiceBrokerLanguageSpecifier.MessageForwardSize 
 		{
 			get { return this.MessageForwardSize;}
 		}
-		Boolean ISql110ServiceBrokerLanguageSpecifier.UseCertificateFirst 
+		Boolean ISql110TSqlServiceBrokerLanguageSpecifier.UseCertificateFirst 
 		{
 			get { return this.UseCertificateFirst;}
 		}
-		AuthenticationModes ISql110ServiceBrokerLanguageSpecifier.WindowsAuthenticationMode 
+		AuthenticationModes ISql110TSqlServiceBrokerLanguageSpecifier.WindowsAuthenticationMode 
 		{
 			get { return this.WindowsAuthenticationMode;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Certificate> ISql110ServiceBrokerLanguageSpecifier.AuthenticationCertificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate;
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
 			}
 		}
 	}
-	public partial class Signature : ISql110Signature
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSignature"/>.
+	/// </summary>
+	public partial class TSqlSignature : ISql110TSqlSignature
 	{		
-		Boolean ISql110Signature.IsCounterSignature 
+		Boolean ISql110TSqlSignature.IsCounterSignature 
 		{
 			get { return this.IsCounterSignature;}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql110Signature.EncryptionMechanism 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql110TSqlSignature.EncryptionMechanism 
 		{
 			get 
 			{
@@ -15117,8 +14764,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql110Signature.SignedObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql110TSqlSignature.SignedObject 
 		{
 			get 
 			{
@@ -15126,124 +14773,133 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SignatureEncryptionMechanism : ISql110SignatureEncryptionMechanism
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSignatureEncryptionMechanism"/>.
+	/// </summary>
+	public partial class TSqlSignatureEncryptionMechanism : ISql110TSqlSignatureEncryptionMechanism
 	{		
-		String ISql110SignatureEncryptionMechanism.Password 
+		String ISql110TSqlSignatureEncryptionMechanism.Password 
 		{
 			get { return this.Password;}
 		}
-		String ISql110SignatureEncryptionMechanism.SignedBlob 
+		String ISql110TSqlSignatureEncryptionMechanism.SignedBlob 
 		{
 			get { return this.SignedBlob;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110AsymmetricKey> ISql110SignatureEncryptionMechanism.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey> ISql110TSqlSignatureEncryptionMechanism.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Certificate> ISql110SignatureEncryptionMechanism.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlSignatureEncryptionMechanism.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
 			}
 		}
 	}
-	public partial class SoapLanguageSpecifier : ISql110SoapLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSoapLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlSoapLanguageSpecifier : ISql110TSqlSoapLanguageSpecifier
 	{		
-		Boolean ISql110SoapLanguageSpecifier.BatchesEnabled 
+		Boolean ISql110TSqlSoapLanguageSpecifier.BatchesEnabled 
 		{
 			get { return this.BatchesEnabled;}
 		}
-		CharacterSet ISql110SoapLanguageSpecifier.CharacterSet 
+		CharacterSet ISql110TSqlSoapLanguageSpecifier.CharacterSet 
 		{
 			get { return this.CharacterSet;}
 		}
-		String ISql110SoapLanguageSpecifier.DatabaseName 
+		String ISql110TSqlSoapLanguageSpecifier.DatabaseName 
 		{
 			get { return this.DatabaseName;}
 		}
-		Int32 ISql110SoapLanguageSpecifier.HeaderLimit 
+		Int32 ISql110TSqlSoapLanguageSpecifier.HeaderLimit 
 		{
 			get { return this.HeaderLimit;}
 		}
-		Boolean ISql110SoapLanguageSpecifier.IsDefaultDatabase 
+		Boolean ISql110TSqlSoapLanguageSpecifier.IsDefaultDatabase 
 		{
 			get { return this.IsDefaultDatabase;}
 		}
-		Boolean ISql110SoapLanguageSpecifier.IsDefaultNamespace 
+		Boolean ISql110TSqlSoapLanguageSpecifier.IsDefaultNamespace 
 		{
 			get { return this.IsDefaultNamespace;}
 		}
-		Boolean ISql110SoapLanguageSpecifier.IsDefaultWsdlSpName 
+		Boolean ISql110TSqlSoapLanguageSpecifier.IsDefaultWsdlSpName 
 		{
 			get { return this.IsDefaultWsdlSpName;}
 		}
-		SoapLoginType ISql110SoapLanguageSpecifier.LoginType 
+		SoapLoginType ISql110TSqlSoapLanguageSpecifier.LoginType 
 		{
 			get { return this.LoginType;}
 		}
-		String ISql110SoapLanguageSpecifier.Namespace 
+		String ISql110TSqlSoapLanguageSpecifier.Namespace 
 		{
 			get { return this.Namespace;}
 		}
-		SoapSchema ISql110SoapLanguageSpecifier.SchemaType 
+		SoapSchema ISql110TSqlSoapLanguageSpecifier.SchemaType 
 		{
 			get { return this.SchemaType;}
 		}
-		Boolean ISql110SoapLanguageSpecifier.SessionsEnabled 
+		Boolean ISql110TSqlSoapLanguageSpecifier.SessionsEnabled 
 		{
 			get { return this.SessionsEnabled;}
 		}
-		Int32 ISql110SoapLanguageSpecifier.SessionTimeout 
+		Int32 ISql110TSqlSoapLanguageSpecifier.SessionTimeout 
 		{
 			get { return this.SessionTimeout;}
 		}
-		Boolean ISql110SoapLanguageSpecifier.SessionTimeoutNever 
+		Boolean ISql110TSqlSoapLanguageSpecifier.SessionTimeoutNever 
 		{
 			get { return this.SessionTimeoutNever;}
 		}
-		String ISql110SoapLanguageSpecifier.WsdlSpName 
+		String ISql110TSqlSoapLanguageSpecifier.WsdlSpName 
 		{
 			get { return this.WsdlSpName;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110SoapMethodSpecification> ISql110SoapLanguageSpecifier.WebMethods 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSoapMethodSpecification> ISql110TSqlSoapLanguageSpecifier.WebMethods 
 		{
 			get 
 			{
-				return this.WebMethods;
+				return this.WebMethods.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSoapMethodSpecification>();
 			}
 		}
 	}
-	public partial class SoapMethodSpecification : ISql110SoapMethodSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSoapMethodSpecification"/>.
+	/// </summary>
+	public partial class TSqlSoapMethodSpecification : ISql110TSqlSoapMethodSpecification
 	{		
-		SoapFormat ISql110SoapMethodSpecification.Format 
+		SoapFormat ISql110TSqlSoapMethodSpecification.Format 
 		{
 			get { return this.Format;}
 		}
-		SoapSchema ISql110SoapMethodSpecification.SchemaType 
+		SoapSchema ISql110TSqlSoapMethodSpecification.SchemaType 
 		{
 			get { return this.SchemaType;}
 		}
-		String ISql110SoapMethodSpecification.WebMethodAlias 
+		String ISql110TSqlSoapMethodSpecification.WebMethodAlias 
 		{
 			get { return this.WebMethodAlias;}
 		}
-		String ISql110SoapMethodSpecification.WebMethodNamespace 
+		String ISql110TSqlSoapMethodSpecification.WebMethodNamespace 
 		{
 			get { return this.WebMethodNamespace;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110SoapMethodSpecification.RelatedMethod 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlSoapMethodSpecification.RelatedMethod 
 		{
 			get 
 			{
@@ -15251,101 +14907,104 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SpatialIndex : ISql110SpatialIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSpatialIndex"/>.
+	/// </summary>
+	public partial class TSqlSpatialIndex : ISql110TSqlSpatialIndex
 	{		
-		Boolean ISql110SpatialIndex.AllowPageLocks 
+		Boolean ISql110TSqlSpatialIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql110SpatialIndex.AllowRowLocks 
+		Boolean ISql110TSqlSpatialIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Int32? ISql110SpatialIndex.CellsPerObject 
+		Int32? ISql110TSqlSpatialIndex.CellsPerObject 
 		{
 			get { return this.CellsPerObject;}
 		}
-		CompressionLevel ISql110SpatialIndex.DataCompression 
+		CompressionLevel ISql110TSqlSpatialIndex.DataCompression 
 		{
 			get { return this.DataCompression;}
 		}
-		Boolean ISql110SpatialIndex.Disabled 
+		Boolean ISql110TSqlSpatialIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32 ISql110SpatialIndex.FillFactor 
+		Int32 ISql110TSqlSpatialIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Degree ISql110SpatialIndex.GridLevel1Density 
+		Degree ISql110TSqlSpatialIndex.GridLevel1Density 
 		{
 			get { return this.GridLevel1Density;}
 		}
-		Degree ISql110SpatialIndex.GridLevel2Density 
+		Degree ISql110TSqlSpatialIndex.GridLevel2Density 
 		{
 			get { return this.GridLevel2Density;}
 		}
-		Degree ISql110SpatialIndex.GridLevel3Density 
+		Degree ISql110TSqlSpatialIndex.GridLevel3Density 
 		{
 			get { return this.GridLevel3Density;}
 		}
-		Degree ISql110SpatialIndex.GridLevel4Density 
+		Degree ISql110TSqlSpatialIndex.GridLevel4Density 
 		{
 			get { return this.GridLevel4Density;}
 		}
-		Boolean ISql110SpatialIndex.IgnoreDuplicateKey 
+		Boolean ISql110TSqlSpatialIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql110SpatialIndex.RecomputeStatistics 
+		Boolean ISql110TSqlSpatialIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Tessellation ISql110SpatialIndex.Tessellation 
+		Tessellation ISql110TSqlSpatialIndex.Tessellation 
 		{
 			get { return this.Tessellation;}
 		}
-		Boolean ISql110SpatialIndex.WithPadIndex 
+		Boolean ISql110TSqlSpatialIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
-		Double? ISql110SpatialIndex.XMax 
+		Double? ISql110TSqlSpatialIndex.XMax 
 		{
 			get { return this.XMax;}
 		}
-		Double? ISql110SpatialIndex.XMin 
+		Double? ISql110TSqlSpatialIndex.XMin 
 		{
 			get { return this.XMin;}
 		}
-		Double? ISql110SpatialIndex.YMax 
+		Double? ISql110TSqlSpatialIndex.YMax 
 		{
 			get { return this.YMax;}
 		}
-		Double? ISql110SpatialIndex.YMin 
+		Double? ISql110TSqlSpatialIndex.YMin 
 		{
 			get { return this.YMin;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110SpatialIndex.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlSpatialIndex.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110SpatialIndex.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlSpatialIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql110SpatialIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql110TSqlSpatialIndex.IndexedObject 
 		{
 			get 
 			{
@@ -15353,58 +15012,61 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110SpatialIndex.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlSpatialIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110SpatialIndex.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlSpatialIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Statistics : ISql110Statistics
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlStatistics"/>.
+	/// </summary>
+	public partial class TSqlStatistics : ISql110TSqlStatistics
 	{		
-		String ISql110Statistics.FilterPredicate 
+		String ISql110TSqlStatistics.FilterPredicate 
 		{
 			get { return this.FilterPredicate;}
 		}
-		Boolean ISql110Statistics.NoRecompute 
+		Boolean ISql110TSqlStatistics.NoRecompute 
 		{
 			get { return this.NoRecompute;}
 		}
-		Int32 ISql110Statistics.SampleSize 
+		Int32 ISql110TSqlStatistics.SampleSize 
 		{
 			get { return this.SampleSize;}
 		}
-		SamplingStyle ISql110Statistics.SamplingStyle 
+		SamplingStyle ISql110TSqlStatistics.SamplingStyle 
 		{
 			get { return this.SamplingStyle;}
 		}
-		String ISql110Statistics.StatsStream 
+		String ISql110TSqlStatistics.StatsStream 
 		{
 			get { return this.StatsStream;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110Statistics.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlStatistics.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110Statistics.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlStatistics.ExpressionDependencies 
 		{
 			get 
 			{
@@ -15412,8 +15074,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql110Statistics.OnObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql110TSqlStatistics.OnObject 
 		{
 			get 
 			{
@@ -15421,97 +15083,103 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Parameter : ISql110Parameter
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlParameter"/>.
+	/// </summary>
+	public partial class TSqlParameter : ISql110TSqlParameter
 	{		
-		String ISql110Parameter.DefaultExpression 
+		String ISql110TSqlParameter.DefaultExpression 
 		{
 			get { return this.DefaultExpression;}
 		}
-		Boolean ISql110Parameter.IsMax 
+		Boolean ISql110TSqlParameter.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql110Parameter.IsOutput 
+		Boolean ISql110TSqlParameter.IsOutput 
 		{
 			get { return this.IsOutput;}
 		}
-		Int32 ISql110Parameter.Length 
+		Int32 ISql110TSqlParameter.Length 
 		{
 			get { return this.Length;}
 		}
-		Int32 ISql110Parameter.Precision 
+		Int32 ISql110TSqlParameter.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Boolean ISql110Parameter.ReadOnly 
+		Boolean ISql110TSqlParameter.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
-		Int32 ISql110Parameter.Scale 
+		Int32 ISql110TSqlParameter.Scale 
 		{
 			get { return this.Scale;}
 		}
-		Boolean ISql110Parameter.Varying 
+		Boolean ISql110TSqlParameter.Varying 
 		{
 			get { return this.Varying;}
 		}
-		XmlStyle ISql110Parameter.XmlStyle 
+		XmlStyle ISql110TSqlParameter.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataType> ISql110Parameter.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110XmlSchemaCollection> ISql110Parameter.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection> ISql110TSqlParameter.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class SymmetricKey : ISql110SymmetricKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSymmetricKey"/>.
+	/// </summary>
+	public partial class TSqlSymmetricKey : ISql110TSqlSymmetricKey
 	{		
-		SymmetricKeyAlgorithm ISql110SymmetricKey.Algorithm 
+		SymmetricKeyAlgorithm ISql110TSqlSymmetricKey.Algorithm 
 		{
 			get { return this.Algorithm;}
 		}
-		SymmetricKeyCreationDisposition ISql110SymmetricKey.CreationDisposition 
+		SymmetricKeyCreationDisposition ISql110TSqlSymmetricKey.CreationDisposition 
 		{
 			get { return this.CreationDisposition;}
 		}
-		String ISql110SymmetricKey.IdentityValue 
+		String ISql110TSqlSymmetricKey.IdentityValue 
 		{
 			get { return this.IdentityValue;}
 		}
-		String ISql110SymmetricKey.KeySource 
+		String ISql110TSqlSymmetricKey.KeySource 
 		{
 			get { return this.KeySource;}
 		}
-		String ISql110SymmetricKey.ProviderKeyName 
+		String ISql110TSqlSymmetricKey.ProviderKeyName 
 		{
 			get { return this.ProviderKeyName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110AsymmetricKey> ISql110SymmetricKey.AsymmetricKeys 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey> ISql110TSqlSymmetricKey.AsymmetricKeys 
 		{
 			get 
 			{
-				return this.AsymmetricKeys;
+				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110SymmetricKey.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlSymmetricKey.Authorizer 
 		{
 			get 
 			{
@@ -15519,17 +15187,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Certificate> ISql110SymmetricKey.Certificates 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlSymmetricKey.Certificates 
 		{
 			get 
 			{
-				return this.Certificates;
+				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql110SymmetricKey.Passwords 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql110TSqlSymmetricKey.Passwords 
 		{
 			get 
 			{
@@ -15537,8 +15205,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110SymmetricKey.Provider 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlSymmetricKey.Provider 
 		{
 			get 
 			{
@@ -15546,31 +15214,37 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110SymmetricKey> ISql110SymmetricKey.SymmetricKeys 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSymmetricKey> ISql110TSqlSymmetricKey.SymmetricKeys 
 		{
 			get 
 			{
-				return this.SymmetricKeys;
+				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSymmetricKey>();
 			}
 		}
 	}
-	public partial class SymmetricKeyPassword : ISql110SymmetricKeyPassword
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSymmetricKeyPassword"/>.
+	/// </summary>
+	public partial class TSqlSymmetricKeyPassword : ISql110TSqlSymmetricKeyPassword
 	{		
-		String ISql110SymmetricKeyPassword.Password 
+		String ISql110TSqlSymmetricKeyPassword.Password 
 		{
 			get { return this.Password;}
 		}
 	}
-	public partial class Synonym : ISql110Synonym
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSynonym"/>.
+	/// </summary>
+	public partial class TSqlSynonym : ISql110TSqlSynonym
 	{		
-		String ISql110Synonym.ForObjectName 
+		String ISql110TSqlSynonym.ForObjectName 
 		{
 			get { return this.ForObjectName;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110Synonym.ForObject 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlSynonym.ForObject 
 		{
 			get 
 			{
@@ -15578,268 +15252,277 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110Synonym.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlSynonym.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class Table : ISql110Table
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlTable"/>.
+	/// </summary>
+	public partial class TSqlTable : ISql110TSqlTable
 	{		
-		Boolean? ISql110Table.AnsiNullsOn 
+		Boolean? ISql110TSqlTable.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql110Table.ChangeDataCaptureEnabled 
+		Boolean ISql110TSqlTable.ChangeDataCaptureEnabled 
 		{
 			get { return this.ChangeDataCaptureEnabled;}
 		}
-		Boolean ISql110Table.ChangeTrackingEnabled 
+		Boolean ISql110TSqlTable.ChangeTrackingEnabled 
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
-		Boolean? ISql110Table.FileStreamNull 
+		Boolean? ISql110TSqlTable.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Boolean ISql110Table.IsReplicated 
+		Boolean ISql110TSqlTable.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		Boolean ISql110Table.LargeValueTypesOutOfRow 
+		Boolean ISql110TSqlTable.LargeValueTypesOutOfRow 
 		{
 			get { return this.LargeValueTypesOutOfRow;}
 		}
-		LockEscalationMethod ISql110Table.LockEscalation 
+		LockEscalationMethod ISql110TSqlTable.LockEscalation 
 		{
 			get { return this.LockEscalation;}
 		}
-		Boolean? ISql110Table.QuotedIdentifierOn 
+		Boolean? ISql110TSqlTable.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql110Table.TableLockOnBulkLoad 
+		Boolean ISql110TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
 		}
-		Int32 ISql110Table.TextInRowSize 
+		Int32 ISql110TSqlTable.TextInRowSize 
 		{
 			get { return this.TextInRowSize;}
 		}
-		Boolean ISql110Table.TrackColumnsUpdated 
+		Boolean ISql110TSqlTable.TrackColumnsUpdated 
 		{
 			get { return this.TrackColumnsUpdated;}
 		}
-		Boolean ISql110Table.VardecimalStorageFormatEnabled 
+		Boolean ISql110TSqlTable.VardecimalStorageFormatEnabled 
 		{
 			get { return this.VardecimalStorageFormatEnabled;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110Table.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTable.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataCompressionOption> ISql110Table.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption> ISql110TSqlTable.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110Table.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110Table.FilegroupForTextImage 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlTable.FilegroupForTextImage 
 		{
 			get 
 			{
-				return this.FilegroupForTextImage;
+				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110Table.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlTable.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110Table.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlTable.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110Table.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110Table.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110Table.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlTable.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class FileTable : ISql110FileTable
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlFileTable"/>.
+	/// </summary>
+	public partial class TSqlFileTable : ISql110TSqlFileTable
 	{		
-		Boolean? ISql110FileTable.AnsiNullsOn 
+		Boolean? ISql110TSqlFileTable.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean? ISql110FileTable.FileStreamNull 
+		Boolean? ISql110TSqlFileTable.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		String ISql110FileTable.FileTableCollateFilename 
+		String ISql110TSqlFileTable.FileTableCollateFilename 
 		{
 			get { return this.FileTableCollateFilename;}
 		}
-		String ISql110FileTable.FileTableDirectory 
+		String ISql110TSqlFileTable.FileTableDirectory 
 		{
 			get { return this.FileTableDirectory;}
 		}
-		Boolean ISql110FileTable.FileTableNamespaceEnabled 
+		Boolean ISql110TSqlFileTable.FileTableNamespaceEnabled 
 		{
 			get { return this.FileTableNamespaceEnabled;}
 		}
-		LockEscalationMethod ISql110FileTable.LockEscalation 
+		LockEscalationMethod ISql110TSqlFileTable.LockEscalation 
 		{
 			get { return this.LockEscalation;}
 		}
-		Boolean? ISql110FileTable.QuotedIdentifierOn 
+		Boolean? ISql110TSqlFileTable.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql110FileTable.TableLockOnBulkLoad 
+		Boolean ISql110TSqlFileTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110FileTable.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlFileTable.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataCompressionOption> ISql110FileTable.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption> ISql110TSqlFileTable.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110FileTable.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlFileTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110FileTable.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlFileTable.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110FileTable.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlFileTable.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110FileTable.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlFileTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110FileTable.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlFileTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110FileTable.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlFileTable.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class TableType : ISql110TableType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlTableType"/>.
+	/// </summary>
+	public partial class TSqlTableType : ISql110TSqlTableType
 	{		
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110TableType.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableType.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> ISql110TableType.Constraints 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> ISql110TSqlTableType.Constraints 
 		{
 			get 
 			{
@@ -15847,24 +15530,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110TableType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlTableType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class TableTypeCheckConstraint : ISql110TableTypeCheckConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlTableTypeCheckConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeCheckConstraint : ISql110TSqlTableTypeCheckConstraint
 	{		
-		String ISql110TableTypeCheckConstraint.Expression 
+		String ISql110TSqlTableTypeCheckConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110TableTypeCheckConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlTableTypeCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -15872,76 +15558,79 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class TableTypeColumn : ISql110TableTypeColumn
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlTableTypeColumn"/>.
+	/// </summary>
+	public partial class TSqlTableTypeColumn : ISql110TSqlTableTypeColumn
 	{		
-		String ISql110TableTypeColumn.Collation 
+		String ISql110TSqlTableTypeColumn.Collation 
 		{
 			get { return this.Collation;}
 		}
-		String ISql110TableTypeColumn.Expression 
+		String ISql110TSqlTableTypeColumn.Expression 
 		{
 			get { return this.Expression;}
 		}
-		String ISql110TableTypeColumn.IdentityIncrement 
+		String ISql110TSqlTableTypeColumn.IdentityIncrement 
 		{
 			get { return this.IdentityIncrement;}
 		}
-		String ISql110TableTypeColumn.IdentitySeed 
+		String ISql110TSqlTableTypeColumn.IdentitySeed 
 		{
 			get { return this.IdentitySeed;}
 		}
-		Boolean ISql110TableTypeColumn.IsIdentity 
+		Boolean ISql110TSqlTableTypeColumn.IsIdentity 
 		{
 			get { return this.IsIdentity;}
 		}
-		Boolean ISql110TableTypeColumn.IsMax 
+		Boolean ISql110TSqlTableTypeColumn.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql110TableTypeColumn.IsRowGuidCol 
+		Boolean ISql110TSqlTableTypeColumn.IsRowGuidCol 
 		{
 			get { return this.IsRowGuidCol;}
 		}
-		Int32 ISql110TableTypeColumn.Length 
+		Int32 ISql110TSqlTableTypeColumn.Length 
 		{
 			get { return this.Length;}
 		}
-		Boolean ISql110TableTypeColumn.Nullable 
+		Boolean ISql110TSqlTableTypeColumn.Nullable 
 		{
 			get { return this.Nullable;}
 		}
-		Boolean ISql110TableTypeColumn.Persisted 
+		Boolean ISql110TSqlTableTypeColumn.Persisted 
 		{
 			get { return this.Persisted;}
 		}
-		Boolean? ISql110TableTypeColumn.PersistedNullable 
+		Boolean? ISql110TSqlTableTypeColumn.PersistedNullable 
 		{
 			get { return this.PersistedNullable;}
 		}
-		Int32 ISql110TableTypeColumn.Precision 
+		Int32 ISql110TSqlTableTypeColumn.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISql110TableTypeColumn.Scale 
+		Int32 ISql110TSqlTableTypeColumn.Scale 
 		{
 			get { return this.Scale;}
 		}
-		XmlStyle ISql110TableTypeColumn.XmlStyle 
+		XmlStyle ISql110TSqlTableTypeColumn.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataType> ISql110TableTypeColumn.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110TableTypeColumn.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlTableTypeColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -15949,24 +15638,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110XmlSchemaCollection> ISql110TableTypeColumn.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection> ISql110TSqlTableTypeColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class TableTypeDefaultConstraint : ISql110TableTypeDefaultConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlTableTypeDefaultConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeDefaultConstraint : ISql110TSqlTableTypeDefaultConstraint
 	{		
-		String ISql110TableTypeDefaultConstraint.Expression 
+		String ISql110TSqlTableTypeDefaultConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110TableTypeDefaultConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlTableTypeDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -15974,281 +15666,275 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110TableTypeDefaultConstraint.TargetColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableTypeDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn;
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 	}
-	public partial class TableTypeIndex : ISql110TableTypeIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlTableTypePrimaryKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypePrimaryKeyConstraint : ISql110TSqlTableTypePrimaryKeyConstraint
 	{		
-		Int32? ISql110TableTypeIndex.BucketCount 
+		Int32? ISql110TSqlTableTypePrimaryKeyConstraint.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql110TableTypeIndex.Hash 
-		{
-			get { return this.Hash;}
-		}
-		Boolean ISql110TableTypeIndex.IsDisabled 
-		{
-			get { return this.IsDisabled;}
-		}
-
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110TableTypeIndex.Columns 
-		{
-			get 
-			{
-				return this.Columns;
-			}
-		}
-	}
-	public partial class TableTypePrimaryKeyConstraint : ISql110TableTypePrimaryKeyConstraint
-	{		
-		Int32? ISql110TableTypePrimaryKeyConstraint.BucketCount 
-		{
-			get { return this.BucketCount;}
-		}
-		Boolean ISql110TableTypePrimaryKeyConstraint.Clustered 
+		Boolean ISql110TSqlTableTypePrimaryKeyConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql110TableTypePrimaryKeyConstraint.Hash 
+		Boolean ISql110TSqlTableTypePrimaryKeyConstraint.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql110TableTypePrimaryKeyConstraint.IgnoreDuplicateKey 
+		Boolean ISql110TSqlTableTypePrimaryKeyConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110TableTypePrimaryKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableTypePrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 	}
-	public partial class TableTypeUniqueConstraint : ISql110TableTypeUniqueConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlTableTypeUniqueConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeUniqueConstraint : ISql110TSqlTableTypeUniqueConstraint
 	{		
-		Boolean ISql110TableTypeUniqueConstraint.Clustered 
+		Boolean ISql110TSqlTableTypeUniqueConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql110TableTypeUniqueConstraint.IgnoreDuplicateKey 
+		Boolean ISql110TSqlTableTypeUniqueConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110TableTypeUniqueConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableTypeUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 	}
-	public partial class TcpProtocolSpecifier : ISql110TcpProtocolSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlTcpProtocolSpecifier"/>.
+	/// </summary>
+	public partial class TSqlTcpProtocolSpecifier : ISql110TSqlTcpProtocolSpecifier
 	{		
-		String ISql110TcpProtocolSpecifier.ListenerIPv4 
+		String ISql110TSqlTcpProtocolSpecifier.ListenerIPv4 
 		{
 			get { return this.ListenerIPv4;}
 		}
-		String ISql110TcpProtocolSpecifier.ListenerIPv6 
+		String ISql110TSqlTcpProtocolSpecifier.ListenerIPv6 
 		{
 			get { return this.ListenerIPv6;}
 		}
-		Int32 ISql110TcpProtocolSpecifier.ListenerPort 
+		Int32 ISql110TSqlTcpProtocolSpecifier.ListenerPort 
 		{
 			get { return this.ListenerPort;}
 		}
-		Boolean ISql110TcpProtocolSpecifier.ListeningOnAllIPs 
+		Boolean ISql110TSqlTcpProtocolSpecifier.ListeningOnAllIPs 
 		{
 			get { return this.ListeningOnAllIPs;}
 		}
 	}
-	public partial class UniqueConstraint : ISql110UniqueConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlUniqueConstraint"/>.
+	/// </summary>
+	public partial class TSqlUniqueConstraint : ISql110TSqlUniqueConstraint
 	{		
-		Boolean ISql110UniqueConstraint.AllowPageLocks 
+		Boolean ISql110TSqlUniqueConstraint.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql110UniqueConstraint.AllowRowLocks 
+		Boolean ISql110TSqlUniqueConstraint.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Boolean ISql110UniqueConstraint.Clustered 
+		Boolean ISql110TSqlUniqueConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql110UniqueConstraint.Disabled 
+		Boolean ISql110TSqlUniqueConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean? ISql110UniqueConstraint.FileStreamNull 
+		Boolean? ISql110TSqlUniqueConstraint.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Int32? ISql110UniqueConstraint.FillFactor 
+		Int32? ISql110TSqlUniqueConstraint.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql110UniqueConstraint.IgnoreDuplicateKey 
+		Boolean ISql110TSqlUniqueConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql110UniqueConstraint.RecomputeStatistics 
+		Boolean ISql110TSqlUniqueConstraint.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql110UniqueConstraint.WithPadIndex 
+		Boolean ISql110TSqlUniqueConstraint.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110UniqueConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataCompressionOption> ISql110UniqueConstraint.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption> ISql110TSqlUniqueConstraint.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110UniqueConstraint.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlUniqueConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Filegroup> ISql110UniqueConstraint.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlUniqueConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110UniqueConstraint.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlUniqueConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110ExtendedProperty> ISql110UniqueConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlUniqueConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110UniqueConstraint.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlUniqueConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110PartitionScheme> ISql110UniqueConstraint.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlUniqueConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class User : ISql110User
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlUser"/>.
+	/// </summary>
+	public partial class TSqlUser : ISql110TSqlUser
 	{		
-		AuthenticationType ISql110User.AuthenticationType 
+		AuthenticationType ISql110TSqlUser.AuthenticationType 
 		{
 			get { return this.AuthenticationType;}
 		}
-		String ISql110User.DefaultLanguage 
+		String ISql110TSqlUser.DefaultLanguage 
 		{
 			get { return this.DefaultLanguage;}
 		}
-		String ISql110User.Password 
+		String ISql110TSqlUser.Password 
 		{
 			get { return this.Password;}
 		}
-		String ISql110User.Sid 
+		String ISql110TSqlUser.Sid 
 		{
 			get { return this.Sid;}
 		}
-		Boolean ISql110User.WithoutLogin 
+		Boolean ISql110TSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110AsymmetricKey> ISql110User.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey> ISql110TSqlUser.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Certificate> ISql110User.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlUser.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110User.DefaultSchema 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlUser.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema;
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Login> ISql110User.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlUser.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
 			}
 		}
 	}
-	public partial class UserDefinedServerRole : ISql110UserDefinedServerRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlUserDefinedServerRole"/>.
+	/// </summary>
+	public partial class TSqlUserDefinedServerRole : ISql110TSqlUserDefinedServerRole
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110UserDefinedServerRole.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql110TSqlUserDefinedServerRole.Authorizer 
 		{
 			get 
 			{
@@ -16256,44 +15942,47 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class UserDefinedType : ISql110UserDefinedType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlUserDefinedType"/>.
+	/// </summary>
+	public partial class TSqlUserDefinedType : ISql110TSqlUserDefinedType
 	{		
-		Boolean? ISql110UserDefinedType.ByteOrdered 
+		Boolean? ISql110TSqlUserDefinedType.ByteOrdered 
 		{
 			get { return this.ByteOrdered;}
 		}
-		String ISql110UserDefinedType.ClassName 
+		String ISql110TSqlUserDefinedType.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean? ISql110UserDefinedType.FixedLength 
+		Boolean? ISql110TSqlUserDefinedType.FixedLength 
 		{
 			get { return this.FixedLength;}
 		}
-		Format ISql110UserDefinedType.Format 
+		Format ISql110TSqlUserDefinedType.Format 
 		{
 			get { return this.Format;}
 		}
-		Int32? ISql110UserDefinedType.MaxByteSize 
+		Int32? ISql110TSqlUserDefinedType.MaxByteSize 
 		{
 			get { return this.MaxByteSize;}
 		}
-		String ISql110UserDefinedType.ValidationMethodName 
+		String ISql110TSqlUserDefinedType.ValidationMethodName 
 		{
 			get { return this.ValidationMethodName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Assembly> ISql110UserDefinedType.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlUserDefinedType.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql110UserDefinedType.Methods 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql110TSqlUserDefinedType.Methods 
 		{
 			get 
 			{
@@ -16301,8 +15990,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql110UserDefinedType.Properties 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql110TSqlUserDefinedType.Properties 
 		{
 			get 
 			{
@@ -16310,52 +15999,55 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110UserDefinedType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlUserDefinedType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class View : ISql110View
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlView"/>.
+	/// </summary>
+	public partial class TSqlView : ISql110TSqlView
 	{		
-		Boolean? ISql110View.AnsiNullsOn 
+		Boolean? ISql110TSqlView.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean? ISql110View.QuotedIdentifierOn 
+		Boolean? ISql110TSqlView.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql110View.Replicated 
+		Boolean ISql110TSqlView.Replicated 
 		{
 			get { return this.Replicated;}
 		}
-		String ISql110View.SelectStatement 
+		String ISql110TSqlView.SelectStatement 
 		{
 			get { return this.SelectStatement;}
 		}
-		Boolean ISql110View.WithCheckOption 
+		Boolean ISql110TSqlView.WithCheckOption 
 		{
 			get { return this.WithCheckOption;}
 		}
-		Boolean ISql110View.WithEncryption 
+		Boolean ISql110TSqlView.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql110View.WithSchemaBinding 
+		Boolean ISql110TSqlView.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
-		Boolean ISql110View.WithViewMetadata 
+		Boolean ISql110TSqlView.WithViewMetadata 
 		{
 			get { return this.WithViewMetadata;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql110View.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql110TSqlView.BodyDependencies 
 		{
 			get 
 			{
@@ -16363,110 +16055,116 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110View.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlView.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110View.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlView.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class WorkloadGroup : ISql110WorkloadGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlWorkloadGroup"/>.
+	/// </summary>
+	public partial class TSqlWorkloadGroup : ISql110TSqlWorkloadGroup
 	{		
-		Int32 ISql110WorkloadGroup.GroupMaxRequests 
+		Int32 ISql110TSqlWorkloadGroup.GroupMaxRequests 
 		{
 			get { return this.GroupMaxRequests;}
 		}
-		Degree ISql110WorkloadGroup.Importance 
+		Degree ISql110TSqlWorkloadGroup.Importance 
 		{
 			get { return this.Importance;}
 		}
-		Int32 ISql110WorkloadGroup.MaxDop 
+		Int32 ISql110TSqlWorkloadGroup.MaxDop 
 		{
 			get { return this.MaxDop;}
 		}
-		Int32 ISql110WorkloadGroup.RequestMaxCpuTimeSec 
+		Int32 ISql110TSqlWorkloadGroup.RequestMaxCpuTimeSec 
 		{
 			get { return this.RequestMaxCpuTimeSec;}
 		}
-		Int32 ISql110WorkloadGroup.RequestMaxMemoryGrantPercent 
+		Int32 ISql110TSqlWorkloadGroup.RequestMaxMemoryGrantPercent 
 		{
 			get { return this.RequestMaxMemoryGrantPercent;}
 		}
-		Int32 ISql110WorkloadGroup.RequestMemoryGrantTimeoutSec 
+		Int32 ISql110TSqlWorkloadGroup.RequestMemoryGrantTimeoutSec 
 		{
 			get { return this.RequestMemoryGrantTimeoutSec;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110ResourcePool> ISql110WorkloadGroup.ResourcePool 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlResourcePool> ISql110TSqlWorkloadGroup.ResourcePool 
 		{
 			get 
 			{
-				return this.ResourcePool;
+				return this.ResourcePool.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlResourcePool>();
 			}
 		}
 	}
-	public partial class XmlIndex : ISql110XmlIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlXmlIndex"/>.
+	/// </summary>
+	public partial class TSqlXmlIndex : ISql110TSqlXmlIndex
 	{		
-		Boolean ISql110XmlIndex.AllowPageLocks 
+		Boolean ISql110TSqlXmlIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql110XmlIndex.AllowRowLocks 
+		Boolean ISql110TSqlXmlIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Boolean ISql110XmlIndex.Disabled 
+		Boolean ISql110TSqlXmlIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32? ISql110XmlIndex.FillFactor 
+		Int32? ISql110TSqlXmlIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql110XmlIndex.IgnoreDuplicateKey 
+		Boolean ISql110TSqlXmlIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql110XmlIndex.IsPrimary 
+		Boolean ISql110TSqlXmlIndex.IsPrimary 
 		{
 			get { return this.IsPrimary;}
 		}
-		Boolean ISql110XmlIndex.RecomputeStatistics 
+		Boolean ISql110TSqlXmlIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		SecondaryXmlIndexType ISql110XmlIndex.SecondaryXmlIndexType 
+		SecondaryXmlIndexType ISql110TSqlXmlIndex.SecondaryXmlIndexType 
 		{
 			get { return this.SecondaryXmlIndexType;}
 		}
-		Boolean ISql110XmlIndex.WithPadIndex 
+		Boolean ISql110TSqlXmlIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110XmlIndex.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql110XmlIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql110TSqlXmlIndex.IndexedObject 
 		{
 			get 
 			{
@@ -16474,61 +16172,64 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110XmlIndex> ISql110XmlIndex.PrimaryXmlIndex 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlIndex> ISql110TSqlXmlIndex.PrimaryXmlIndex 
 		{
 			get 
 			{
-				return this.PrimaryXmlIndex;
+				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlIndex>();
 			}
 		}
 	}
-	public partial class SelectiveXmlIndex : ISql110SelectiveXmlIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlSelectiveXmlIndex"/>.
+	/// </summary>
+	public partial class TSqlSelectiveXmlIndex : ISql110TSqlSelectiveXmlIndex
 	{		
-		Boolean ISql110SelectiveXmlIndex.AllowPageLocks 
+		Boolean ISql110TSqlSelectiveXmlIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql110SelectiveXmlIndex.AllowRowLocks 
+		Boolean ISql110TSqlSelectiveXmlIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Boolean ISql110SelectiveXmlIndex.Disabled 
+		Boolean ISql110TSqlSelectiveXmlIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32? ISql110SelectiveXmlIndex.FillFactor 
+		Int32? ISql110TSqlSelectiveXmlIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql110SelectiveXmlIndex.IgnoreDuplicateKey 
+		Boolean ISql110TSqlSelectiveXmlIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql110SelectiveXmlIndex.IsPrimary 
+		Boolean ISql110TSqlSelectiveXmlIndex.IsPrimary 
 		{
 			get { return this.IsPrimary;}
 		}
-		Boolean ISql110SelectiveXmlIndex.RecomputeStatistics 
+		Boolean ISql110TSqlSelectiveXmlIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql110SelectiveXmlIndex.WithPadIndex 
+		Boolean ISql110TSqlSelectiveXmlIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Column> ISql110SelectiveXmlIndex.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlSelectiveXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql110SelectiveXmlIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql110TSqlSelectiveXmlIndex.IndexedObject 
 		{
 			get 
 			{
@@ -16536,8 +16237,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> ISql110SelectiveXmlIndex.PrimaryPromotedPath 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> ISql110TSqlSelectiveXmlIndex.PrimaryPromotedPath 
 		{
 			get 
 			{
@@ -16545,17 +16246,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110SelectiveXmlIndex> ISql110SelectiveXmlIndex.PrimarySelectiveXmlIndex 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSelectiveXmlIndex> ISql110TSqlSelectiveXmlIndex.PrimarySelectiveXmlIndex 
 		{
 			get 
 			{
-				return this.PrimarySelectiveXmlIndex;
+				return this.PrimarySelectiveXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSelectiveXmlIndex>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> ISql110SelectiveXmlIndex.PromotedPaths 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> ISql110TSqlSelectiveXmlIndex.PromotedPaths 
 		{
 			get 
 			{
@@ -16563,179 +16264,194 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110XmlNamespace> ISql110SelectiveXmlIndex.XmlNamespaces 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlNamespace> ISql110TSqlSelectiveXmlIndex.XmlNamespaces 
 		{
 			get 
 			{
-				return this.XmlNamespaces;
+				return this.XmlNamespaces.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlNamespace>();
 			}
 		}
 	}
-	public partial class XmlNamespace : ISql110XmlNamespace
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlXmlNamespace"/>.
+	/// </summary>
+	public partial class TSqlXmlNamespace : ISql110TSqlXmlNamespace
 	{		
-		String ISql110XmlNamespace.NamespaceUri 
+		String ISql110TSqlXmlNamespace.NamespaceUri 
 		{
 			get { return this.NamespaceUri;}
 		}
-		String ISql110XmlNamespace.Prefix 
+		String ISql110TSqlXmlNamespace.Prefix 
 		{
 			get { return this.Prefix;}
 		}
 	}
-	public partial class PromotedNodePathForXQueryType : ISql110PromotedNodePathForXQueryType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlPromotedNodePathForXQueryType"/>.
+	/// </summary>
+	public partial class TSqlPromotedNodePathForXQueryType : ISql110TSqlPromotedNodePathForXQueryType
 	{		
-		Boolean ISql110PromotedNodePathForXQueryType.IsSingleton 
+		Boolean ISql110TSqlPromotedNodePathForXQueryType.IsSingleton 
 		{
 			get { return this.IsSingleton;}
 		}
-		Int32? ISql110PromotedNodePathForXQueryType.MaxLength 
+		Int32? ISql110TSqlPromotedNodePathForXQueryType.MaxLength 
 		{
 			get { return this.MaxLength;}
 		}
-		String ISql110PromotedNodePathForXQueryType.NodePath 
+		String ISql110TSqlPromotedNodePathForXQueryType.NodePath 
 		{
 			get { return this.NodePath;}
 		}
-		String ISql110PromotedNodePathForXQueryType.Type 
+		String ISql110TSqlPromotedNodePathForXQueryType.Type 
 		{
 			get { return this.Type;}
 		}
 	}
-	public partial class PromotedNodePathForSqlType : ISql110PromotedNodePathForSqlType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlPromotedNodePathForSqlType"/>.
+	/// </summary>
+	public partial class TSqlPromotedNodePathForSqlType : ISql110TSqlPromotedNodePathForSqlType
 	{		
-		Boolean ISql110PromotedNodePathForSqlType.IsMax 
+		Boolean ISql110TSqlPromotedNodePathForSqlType.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql110PromotedNodePathForSqlType.IsSingleton 
+		Boolean ISql110TSqlPromotedNodePathForSqlType.IsSingleton 
 		{
 			get { return this.IsSingleton;}
 		}
-		Int32 ISql110PromotedNodePathForSqlType.Length 
+		Int32 ISql110TSqlPromotedNodePathForSqlType.Length 
 		{
 			get { return this.Length;}
 		}
-		String ISql110PromotedNodePathForSqlType.NodePath 
+		String ISql110TSqlPromotedNodePathForSqlType.NodePath 
 		{
 			get { return this.NodePath;}
 		}
-		Int32 ISql110PromotedNodePathForSqlType.Precision 
+		Int32 ISql110TSqlPromotedNodePathForSqlType.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISql110PromotedNodePathForSqlType.Scale 
+		Int32 ISql110TSqlPromotedNodePathForSqlType.Scale 
 		{
 			get { return this.Scale;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110DataType> ISql110PromotedNodePathForSqlType.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlPromotedNodePathForSqlType.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 	}
-	public partial class XmlSchemaCollection : ISql110XmlSchemaCollection
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlXmlSchemaCollection"/>.
+	/// </summary>
+	public partial class TSqlXmlSchemaCollection : ISql110TSqlXmlSchemaCollection
 	{		
-		String ISql110XmlSchemaCollection.Expression 
+		String ISql110TSqlXmlSchemaCollection.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110Schema> ISql110XmlSchemaCollection.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlXmlSchemaCollection.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
 			}
 		}
 	}
-	public partial class Column : ISql120Column
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlColumn"/>.
+	/// </summary>
+	public partial class TSqlColumn : ISql120TSqlColumn
 	{		
-		String ISql120Column.Collation 
+		String ISql120TSqlColumn.Collation 
 		{
 			get { return this.Collation;}
 		}
-		String ISql120Column.Expression 
+		String ISql120TSqlColumn.Expression 
 		{
 			get { return this.Expression;}
 		}
-		String ISql120Column.IdentityIncrement 
+		String ISql120TSqlColumn.IdentityIncrement 
 		{
 			get { return this.IdentityIncrement;}
 		}
-		String ISql120Column.IdentitySeed 
+		String ISql120TSqlColumn.IdentitySeed 
 		{
 			get { return this.IdentitySeed;}
 		}
-		Boolean ISql120Column.IsFileStream 
+		Boolean ISql120TSqlColumn.IsFileStream 
 		{
 			get { return this.IsFileStream;}
 		}
-		Boolean ISql120Column.IsIdentity 
+		Boolean ISql120TSqlColumn.IsIdentity 
 		{
 			get { return this.IsIdentity;}
 		}
-		Boolean ISql120Column.IsIdentityNotForReplication 
+		Boolean ISql120TSqlColumn.IsIdentityNotForReplication 
 		{
 			get { return this.IsIdentityNotForReplication;}
 		}
-		Boolean ISql120Column.IsMax 
+		Boolean ISql120TSqlColumn.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql120Column.IsRowGuidCol 
+		Boolean ISql120TSqlColumn.IsRowGuidCol 
 		{
 			get { return this.IsRowGuidCol;}
 		}
-		Int32 ISql120Column.Length 
+		Int32 ISql120TSqlColumn.Length 
 		{
 			get { return this.Length;}
 		}
-		Boolean ISql120Column.Nullable 
+		Boolean ISql120TSqlColumn.Nullable 
 		{
 			get { return this.Nullable;}
 		}
-		Boolean ISql120Column.Persisted 
+		Boolean ISql120TSqlColumn.Persisted 
 		{
 			get { return this.Persisted;}
 		}
-		Boolean? ISql120Column.PersistedNullable 
+		Boolean? ISql120TSqlColumn.PersistedNullable 
 		{
 			get { return this.PersistedNullable;}
 		}
-		Int32 ISql120Column.Precision 
+		Int32 ISql120TSqlColumn.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISql120Column.Scale 
+		Int32 ISql120TSqlColumn.Scale 
 		{
 			get { return this.Scale;}
 		}
-		Boolean ISql120Column.Sparse 
+		Boolean ISql120TSqlColumn.Sparse 
 		{
 			get { return this.Sparse;}
 		}
-		XmlStyle ISql120Column.XmlStyle 
+		XmlStyle ISql120TSqlColumn.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataType> ISql120Column.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120Column.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -16743,101 +16459,104 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120XmlSchemaCollection> ISql120Column.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection> ISql120TSqlColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class TableValuedFunction : ISql120TableValuedFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlTableValuedFunction"/>.
+	/// </summary>
+	public partial class TSqlTableValuedFunction : ISql120TSqlTableValuedFunction
 	{		
-		Boolean? ISql120TableValuedFunction.AnsiNullsOn 
+		Boolean? ISql120TSqlTableValuedFunction.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql120TableValuedFunction.CalledOnNullInput 
+		Boolean ISql120TSqlTableValuedFunction.CalledOnNullInput 
 		{
 			get { return this.CalledOnNullInput;}
 		}
-		String ISql120TableValuedFunction.ClassName 
+		String ISql120TSqlTableValuedFunction.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		DataAccessKind? ISql120TableValuedFunction.DataAccess 
+		DataAccessKind? ISql120TSqlTableValuedFunction.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		Boolean? ISql120TableValuedFunction.Deterministic 
+		Boolean? ISql120TSqlTableValuedFunction.Deterministic 
 		{
 			get { return this.Deterministic;}
 		}
-		Boolean ISql120TableValuedFunction.ExecuteAsCaller 
+		Boolean ISql120TSqlTableValuedFunction.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql120TableValuedFunction.ExecuteAsOwner 
+		Boolean ISql120TSqlTableValuedFunction.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql120TableValuedFunction.ExecuteAsSelf 
+		Boolean ISql120TSqlTableValuedFunction.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql120TableValuedFunction.FillRowMethodName 
+		String ISql120TSqlTableValuedFunction.FillRowMethodName 
 		{
 			get { return this.FillRowMethodName;}
 		}
-		Boolean ISql120TableValuedFunction.IsReplicated 
+		Boolean ISql120TSqlTableValuedFunction.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql120TableValuedFunction.MethodName 
+		String ISql120TSqlTableValuedFunction.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql120TableValuedFunction.Precise 
+		Boolean? ISql120TSqlTableValuedFunction.Precise 
 		{
 			get { return this.Precise;}
 		}
-		Boolean? ISql120TableValuedFunction.QuotedIdentifierOn 
+		Boolean? ISql120TSqlTableValuedFunction.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql120TableValuedFunction.ReturnsNullOnNullInput 
+		Boolean ISql120TSqlTableValuedFunction.ReturnsNullOnNullInput 
 		{
 			get { return this.ReturnsNullOnNullInput;}
 		}
-		String ISql120TableValuedFunction.ReturnTableVariableName 
+		String ISql120TSqlTableValuedFunction.ReturnTableVariableName 
 		{
 			get { return this.ReturnTableVariableName;}
 		}
-		SystemDataAccessKind? ISql120TableValuedFunction.SystemDataAccess 
+		SystemDataAccessKind? ISql120TSqlTableValuedFunction.SystemDataAccess 
 		{
 			get { return this.SystemDataAccess;}
 		}
-		Boolean ISql120TableValuedFunction.WithEncryption 
+		Boolean ISql120TSqlTableValuedFunction.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql120TableValuedFunction.WithSchemaBinding 
+		Boolean ISql120TSqlTableValuedFunction.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Assembly> ISql120TableValuedFunction.Assembly 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlTableValuedFunction.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120TableValuedFunction.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlTableValuedFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -16845,35 +16564,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Login> ISql120TableValuedFunction.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120TableValuedFunction.OrderColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableValuedFunction.OrderColumns 
 		{
 			get 
 			{
-				return this.OrderColumns;
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Parameter> ISql120TableValuedFunction.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter> ISql120TSqlTableValuedFunction.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TableValuedFunction.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
@@ -16881,106 +16600,109 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120TableValuedFunction.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlTableValuedFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120User> ISql120TableValuedFunction.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlTableValuedFunction.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
 			}
 		}
 	}
-	public partial class ScalarFunction : ISql120ScalarFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlScalarFunction"/>.
+	/// </summary>
+	public partial class TSqlScalarFunction : ISql120TSqlScalarFunction
 	{		
-		Boolean? ISql120ScalarFunction.AnsiNullsOn 
+		Boolean? ISql120TSqlScalarFunction.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql120ScalarFunction.CalledOnNullInput 
+		Boolean ISql120TSqlScalarFunction.CalledOnNullInput 
 		{
 			get { return this.CalledOnNullInput;}
 		}
-		String ISql120ScalarFunction.ClassName 
+		String ISql120TSqlScalarFunction.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		DataAccessKind? ISql120ScalarFunction.DataAccess 
+		DataAccessKind? ISql120TSqlScalarFunction.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		Boolean? ISql120ScalarFunction.Deterministic 
+		Boolean? ISql120TSqlScalarFunction.Deterministic 
 		{
 			get { return this.Deterministic;}
 		}
-		Boolean ISql120ScalarFunction.ExecuteAsCaller 
+		Boolean ISql120TSqlScalarFunction.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql120ScalarFunction.ExecuteAsOwner 
+		Boolean ISql120TSqlScalarFunction.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql120ScalarFunction.ExecuteAsSelf 
+		Boolean ISql120TSqlScalarFunction.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql120ScalarFunction.FillRowMethodName 
+		String ISql120TSqlScalarFunction.FillRowMethodName 
 		{
 			get { return this.FillRowMethodName;}
 		}
-		Boolean ISql120ScalarFunction.IsReplicated 
+		Boolean ISql120TSqlScalarFunction.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql120ScalarFunction.MethodName 
+		String ISql120TSqlScalarFunction.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql120ScalarFunction.Precise 
+		Boolean? ISql120TSqlScalarFunction.Precise 
 		{
 			get { return this.Precise;}
 		}
-		Boolean? ISql120ScalarFunction.QuotedIdentifierOn 
+		Boolean? ISql120TSqlScalarFunction.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql120ScalarFunction.ReturnsNullOnNullInput 
+		Boolean ISql120TSqlScalarFunction.ReturnsNullOnNullInput 
 		{
 			get { return this.ReturnsNullOnNullInput;}
 		}
-		SystemDataAccessKind? ISql120ScalarFunction.SystemDataAccess 
+		SystemDataAccessKind? ISql120TSqlScalarFunction.SystemDataAccess 
 		{
 			get { return this.SystemDataAccess;}
 		}
-		Boolean ISql120ScalarFunction.WithEncryption 
+		Boolean ISql120TSqlScalarFunction.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql120ScalarFunction.WithSchemaBinding 
+		Boolean ISql120TSqlScalarFunction.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Assembly> ISql120ScalarFunction.Assembly 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlScalarFunction.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120ScalarFunction.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlScalarFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -16988,26 +16710,26 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Login> ISql120ScalarFunction.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlScalarFunction.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Parameter> ISql120ScalarFunction.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter> ISql120TSqlScalarFunction.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120ScalarFunction.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
@@ -17015,71 +16737,74 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120ScalarFunction.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlScalarFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120User> ISql120ScalarFunction.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlScalarFunction.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
 			}
 		}
 	}
-	public partial class Aggregate : ISql120Aggregate
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlAggregate"/>.
+	/// </summary>
+	public partial class TSqlAggregate : ISql120TSqlAggregate
 	{		
-		String ISql120Aggregate.ClassName 
+		String ISql120TSqlAggregate.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Format ISql120Aggregate.Format 
+		Format ISql120TSqlAggregate.Format 
 		{
 			get { return this.Format;}
 		}
-		Boolean? ISql120Aggregate.InvariantToDuplicates 
+		Boolean? ISql120TSqlAggregate.InvariantToDuplicates 
 		{
 			get { return this.InvariantToDuplicates;}
 		}
-		Boolean? ISql120Aggregate.InvariantToNulls 
+		Boolean? ISql120TSqlAggregate.InvariantToNulls 
 		{
 			get { return this.InvariantToNulls;}
 		}
-		Int32? ISql120Aggregate.MaxByteSize 
+		Int32? ISql120TSqlAggregate.MaxByteSize 
 		{
 			get { return this.MaxByteSize;}
 		}
-		Boolean? ISql120Aggregate.NullIfEmpty 
+		Boolean? ISql120TSqlAggregate.NullIfEmpty 
 		{
 			get { return this.NullIfEmpty;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Assembly> ISql120Aggregate.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlAggregate.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Parameter> ISql120Aggregate.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter> ISql120TSqlAggregate.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120Aggregate.ReturnType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlAggregate.ReturnType 
 		{
 			get 
 			{
@@ -17087,92 +16812,98 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120Aggregate.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlAggregate.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}
-	public partial class ApplicationRole : ISql120ApplicationRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlApplicationRole"/>.
+	/// </summary>
+	public partial class TSqlApplicationRole : ISql120TSqlApplicationRole
 	{		
-		String ISql120ApplicationRole.Password 
+		String ISql120TSqlApplicationRole.Password 
 		{
 			get { return this.Password;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120ApplicationRole.DefaultSchema 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlApplicationRole.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema;
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}
-	public partial class Index : ISql120Index
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlIndex"/>.
+	/// </summary>
+	public partial class TSqlIndex : ISql120TSqlIndex
 	{		
-		Boolean ISql120Index.AllowPageLocks 
+		Boolean ISql120TSqlIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql120Index.AllowRowLocks 
+		Boolean ISql120TSqlIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Int32? ISql120Index.BucketCount 
+		Int32? ISql120TSqlIndex.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql120Index.Clustered 
+		Boolean ISql120TSqlIndex.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql120Index.Disabled 
+		Boolean ISql120TSqlIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean? ISql120Index.FileStreamNull 
+		Boolean? ISql120TSqlIndex.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Int32? ISql120Index.FillFactor 
+		Int32? ISql120TSqlIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		String ISql120Index.FilterPredicate 
+		String ISql120TSqlIndex.FilterPredicate 
 		{
 			get { return this.FilterPredicate;}
 		}
-		Boolean ISql120Index.Hash 
+		Boolean ISql120TSqlIndex.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql120Index.IgnoreDuplicateKey 
+		Boolean ISql120TSqlIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql120Index.IncrementalStatistics 
+		Boolean ISql120TSqlIndex.IncrementalStatistics 
 		{
 			get { return this.IncrementalStatistics;}
 		}
-		Boolean ISql120Index.RecomputeStatistics 
+		Boolean ISql120TSqlIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql120Index.Unique 
+		Boolean ISql120TSqlIndex.Unique 
 		{
 			get { return this.Unique;}
 		}
-		Boolean ISql120Index.WithPadIndex 
+		Boolean ISql120TSqlIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120Index.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlIndex.BodyDependencies 
 		{
 			get 
 			{
@@ -17180,62 +16911,62 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120Index.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataCompressionOption> ISql120Index.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption> ISql120TSqlIndex.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120Index.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120Index.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlIndex.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120Index.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlIndex.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120Index.IncludedColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlIndex.IncludedColumns 
 		{
 			get 
 			{
-				return this.IncludedColumns;
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql120Index.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql120TSqlIndex.IndexedObject 
 		{
 			get 
 			{
@@ -17243,46 +16974,49 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120Index.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120Index.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Assembly : ISql120Assembly
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlAssembly"/>.
+	/// </summary>
+	public partial class TSqlAssembly : ISql120TSqlAssembly
 	{		
-		AssemblyPermissionSet ISql120Assembly.PermissionSet 
+		AssemblyPermissionSet ISql120TSqlAssembly.PermissionSet 
 		{
 			get { return this.PermissionSet;}
 		}
-		Boolean ISql120Assembly.Visible 
+		Boolean ISql120TSqlAssembly.Visible 
 		{
 			get { return this.Visible;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120AssemblySource> ISql120Assembly.AssemblySources 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblySource> ISql120TSqlAssembly.AssemblySources 
 		{
 			get 
 			{
-				return this.AssemblySources;
+				return this.AssemblySources.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblySource>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120Assembly.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlAssembly.Authorizer 
 		{
 			get 
 			{
@@ -17290,64 +17024,70 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Assembly> ISql120Assembly.ReferencedAssemblies 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlAssembly.ReferencedAssemblies 
 		{
 			get 
 			{
-				return this.ReferencedAssemblies;
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
 			}
 		}
 	}
-	public partial class AssemblySource : ISql120AssemblySource
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlAssemblySource"/>.
+	/// </summary>
+	public partial class TSqlAssemblySource : ISql120TSqlAssemblySource
 	{		
-		String ISql120AssemblySource.Source 
+		String ISql120TSqlAssemblySource.Source 
 		{
 			get { return this.Source;}
 		}
 	}
-	public partial class AsymmetricKey : ISql120AsymmetricKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlAsymmetricKey"/>.
+	/// </summary>
+	public partial class TSqlAsymmetricKey : ISql120TSqlAsymmetricKey
 	{		
-		AsymmetricKeyAlgorithm ISql120AsymmetricKey.Algorithm 
+		AsymmetricKeyAlgorithm ISql120TSqlAsymmetricKey.Algorithm 
 		{
 			get { return this.Algorithm;}
 		}
-		SymmetricKeyCreationDisposition ISql120AsymmetricKey.CreationDisposition 
+		SymmetricKeyCreationDisposition ISql120TSqlAsymmetricKey.CreationDisposition 
 		{
 			get { return this.CreationDisposition;}
 		}
-		Boolean ISql120AsymmetricKey.EncryptedWithPassword 
+		Boolean ISql120TSqlAsymmetricKey.EncryptedWithPassword 
 		{
 			get { return this.EncryptedWithPassword;}
 		}
-		String ISql120AsymmetricKey.ExecutableFile 
+		String ISql120TSqlAsymmetricKey.ExecutableFile 
 		{
 			get { return this.ExecutableFile;}
 		}
-		String ISql120AsymmetricKey.File 
+		String ISql120TSqlAsymmetricKey.File 
 		{
 			get { return this.File;}
 		}
-		String ISql120AsymmetricKey.Password 
+		String ISql120TSqlAsymmetricKey.Password 
 		{
 			get { return this.Password;}
 		}
-		String ISql120AsymmetricKey.ProviderKeyName 
+		String ISql120TSqlAsymmetricKey.ProviderKeyName 
 		{
 			get { return this.ProviderKeyName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Assembly> ISql120AsymmetricKey.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlAsymmetricKey.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120AsymmetricKey.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlAsymmetricKey.Authorizer 
 		{
 			get 
 			{
@@ -17355,8 +17095,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120AsymmetricKey.Provider 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlAsymmetricKey.Provider 
 		{
 			get 
 			{
@@ -17364,34 +17104,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class AuditAction : ISql120AuditAction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlAuditAction"/>.
+	/// </summary>
+	public partial class TSqlAuditAction : ISql120TSqlAuditAction
 	{		
-		DatabaseAuditAction ISql120AuditAction.Action 
+		DatabaseAuditAction ISql120TSqlAuditAction.Action 
 		{
 			get { return this.Action;}
 		}
 	}
-	public partial class AuditActionGroup : ISql120AuditActionGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlAuditActionGroup"/>.
+	/// </summary>
+	public partial class TSqlAuditActionGroup : ISql120TSqlAuditActionGroup
 	{		
-		AuditActionGroupType ISql120AuditActionGroup.ActionGroup 
+		AuditActionGroupType ISql120TSqlAuditActionGroup.ActionGroup 
 		{
 			get { return this.ActionGroup;}
 		}
 	}
-	public partial class AuditActionSpecification : ISql120AuditActionSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlAuditActionSpecification"/>.
+	/// </summary>
+	public partial class TSqlAuditActionSpecification : ISql120TSqlAuditActionSpecification
 	{		
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120AuditAction> ISql120AuditActionSpecification.AuditActions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAuditAction> ISql120TSqlAuditActionSpecification.AuditActions 
 		{
 			get 
 			{
-				return this.AuditActions;
+				return this.AuditActions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAuditAction>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql120AuditActionSpecification.Principals 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql120TSqlAuditActionSpecification.Principals 
 		{
 			get 
 			{
@@ -17399,8 +17148,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql120AuditActionSpecification.SecuredObject 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql120TSqlAuditActionSpecification.SecuredObject 
 		{
 			get 
 			{
@@ -17408,19 +17157,22 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class BrokerPriority : ISql120BrokerPriority
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlBrokerPriority"/>.
+	/// </summary>
+	public partial class TSqlBrokerPriority : ISql120TSqlBrokerPriority
 	{		
-		Int32 ISql120BrokerPriority.PriorityLevel 
+		Int32 ISql120TSqlBrokerPriority.PriorityLevel 
 		{
 			get { return this.PriorityLevel;}
 		}
-		String ISql120BrokerPriority.RemoteServiceName 
+		String ISql120TSqlBrokerPriority.RemoteServiceName 
 		{
 			get { return this.RemoteServiceName;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120BrokerPriority.ContractName 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlBrokerPriority.ContractName 
 		{
 			get 
 			{
@@ -17428,8 +17180,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120BrokerPriority.LocalServiceName 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlBrokerPriority.LocalServiceName 
 		{
 			get 
 			{
@@ -17437,47 +17189,53 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class BuiltInServerRole : ISql120BuiltInServerRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlBuiltInServerRole"/>.
+	/// </summary>
+	public partial class TSqlBuiltInServerRole : ISql120TSqlBuiltInServerRole
 	{		
 	}
-	public partial class DataType : ISql120DataType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlDataType"/>.
+	/// </summary>
+	public partial class TSqlDataType : ISql120TSqlDataType
 	{		
-		SqlDataType ISql120DataType.SqlDataType 
+		SqlDataType ISql120TSqlDataType.SqlDataType 
 		{
 			get { return this.SqlDataType;}
 		}
-		Boolean ISql120DataType.UddtIsMax 
+		Boolean ISql120TSqlDataType.UddtIsMax 
 		{
 			get { return this.UddtIsMax;}
 		}
-		Int32 ISql120DataType.UddtLength 
+		Int32 ISql120TSqlDataType.UddtLength 
 		{
 			get { return this.UddtLength;}
 		}
-		Boolean ISql120DataType.UddtNullable 
+		Boolean ISql120TSqlDataType.UddtNullable 
 		{
 			get { return this.UddtNullable;}
 		}
-		Int32 ISql120DataType.UddtPrecision 
+		Int32 ISql120TSqlDataType.UddtPrecision 
 		{
 			get { return this.UddtPrecision;}
 		}
-		Int32 ISql120DataType.UddtScale 
+		Int32 ISql120TSqlDataType.UddtScale 
 		{
 			get { return this.UddtScale;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120DataType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlDataType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<System.Type> ISql120DataType.Type 
+		// Peer relationship		
+		IEnumerable<System.Type> ISql120TSqlDataType.Type 
 		{
 			get 
 			{
@@ -17485,55 +17243,58 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Certificate : ISql120Certificate
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlCertificate"/>.
+	/// </summary>
+	public partial class TSqlCertificate : ISql120TSqlCertificate
 	{		
-		Boolean ISql120Certificate.ActiveForBeginDialog 
+		Boolean ISql120TSqlCertificate.ActiveForBeginDialog 
 		{
 			get { return this.ActiveForBeginDialog;}
 		}
-		Boolean ISql120Certificate.EncryptedWithPassword 
+		Boolean ISql120TSqlCertificate.EncryptedWithPassword 
 		{
 			get { return this.EncryptedWithPassword;}
 		}
-		String ISql120Certificate.EncryptionPassword 
+		String ISql120TSqlCertificate.EncryptionPassword 
 		{
 			get { return this.EncryptionPassword;}
 		}
-		String ISql120Certificate.ExistingKeysFilePath 
+		String ISql120TSqlCertificate.ExistingKeysFilePath 
 		{
 			get { return this.ExistingKeysFilePath;}
 		}
-		String ISql120Certificate.ExpiryDate 
+		String ISql120TSqlCertificate.ExpiryDate 
 		{
 			get { return this.ExpiryDate;}
 		}
-		Boolean ISql120Certificate.IsExistingKeyFileExecutable 
+		Boolean ISql120TSqlCertificate.IsExistingKeyFileExecutable 
 		{
 			get { return this.IsExistingKeyFileExecutable;}
 		}
-		String ISql120Certificate.PrivateKeyDecryptionPassword 
+		String ISql120TSqlCertificate.PrivateKeyDecryptionPassword 
 		{
 			get { return this.PrivateKeyDecryptionPassword;}
 		}
-		String ISql120Certificate.PrivateKeyEncryptionPassword 
+		String ISql120TSqlCertificate.PrivateKeyEncryptionPassword 
 		{
 			get { return this.PrivateKeyEncryptionPassword;}
 		}
-		String ISql120Certificate.PrivateKeyFilePath 
+		String ISql120TSqlCertificate.PrivateKeyFilePath 
 		{
 			get { return this.PrivateKeyFilePath;}
 		}
-		String ISql120Certificate.StartDate 
+		String ISql120TSqlCertificate.StartDate 
 		{
 			get { return this.StartDate;}
 		}
-		String ISql120Certificate.Subject 
+		String ISql120TSqlCertificate.Subject 
 		{
 			get { return this.Subject;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120Certificate.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlCertificate.Authorizer 
 		{
 			get 
 			{
@@ -17541,32 +17302,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Assembly> ISql120Certificate.ExistingKeysAssembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlCertificate.ExistingKeysAssembly 
 		{
 			get 
 			{
-				return this.ExistingKeysAssembly;
+				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
 			}
 		}
 	}
-	public partial class CheckConstraint : ISql120CheckConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlCheckConstraint"/>.
+	/// </summary>
+	public partial class TSqlCheckConstraint : ISql120TSqlCheckConstraint
 	{		
-		Boolean ISql120CheckConstraint.Disabled 
+		Boolean ISql120TSqlCheckConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISql120CheckConstraint.Expression 
+		String ISql120TSqlCheckConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
-		Boolean ISql120CheckConstraint.NotForReplication 
+		Boolean ISql120TSqlCheckConstraint.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120CheckConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -17574,33 +17338,36 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120ExtendedProperty> ISql120CheckConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlCheckConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
 			}
 		}
 	}
-	public partial class ClrTypeMethod : ISql120ClrTypeMethod
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlClrTypeMethod"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethod : ISql120TSqlClrTypeMethod
 	{		
-		String ISql120ClrTypeMethod.Name 
+		String ISql120TSqlClrTypeMethod.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Parameter> ISql120ClrTypeMethod.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter> ISql120TSqlClrTypeMethod.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120ClrTypeMethod.ReturnType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlClrTypeMethod.ReturnType 
 		{
 			get 
 			{
@@ -17608,35 +17375,41 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ClrTypeMethodParameter : ISql120ClrTypeMethodParameter
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlClrTypeMethodParameter"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethodParameter : ISql120TSqlClrTypeMethodParameter
 	{		
-		Boolean ISql120ClrTypeMethodParameter.IsOutput 
+		Boolean ISql120TSqlClrTypeMethodParameter.IsOutput 
 		{
 			get { return this.IsOutput;}
 		}
-		String ISql120ClrTypeMethodParameter.Name 
+		String ISql120TSqlClrTypeMethodParameter.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataType> ISql120ClrTypeMethodParameter.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 	}
-	public partial class ClrTypeProperty : ISql120ClrTypeProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlClrTypeProperty"/>.
+	/// </summary>
+	public partial class TSqlClrTypeProperty : ISql120TSqlClrTypeProperty
 	{		
-		String ISql120ClrTypeProperty.Name 
+		String ISql120TSqlClrTypeProperty.Name 
 		{
 			get { return this.Name;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120ClrTypeProperty.ClrType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
@@ -17644,46 +17417,49 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ColumnStoreIndex : ISql120ColumnStoreIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlColumnStoreIndex"/>.
+	/// </summary>
+	public partial class TSqlColumnStoreIndex : ISql120TSqlColumnStoreIndex
 	{		
-		Boolean ISql120ColumnStoreIndex.Clustered 
+		Boolean ISql120TSqlColumnStoreIndex.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql120ColumnStoreIndex.Disabled 
+		Boolean ISql120TSqlColumnStoreIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120ColumnStoreIndex.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlColumnStoreIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataCompressionOption> ISql120ColumnStoreIndex.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption> ISql120TSqlColumnStoreIndex.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120ColumnStoreIndex.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlColumnStoreIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql120ColumnStoreIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql120TSqlColumnStoreIndex.IndexedObject 
 		{
 			get 
 			{
@@ -17691,29 +17467,32 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120ColumnStoreIndex.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlColumnStoreIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120ColumnStoreIndex.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlColumnStoreIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Contract : ISql120Contract
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlContract"/>.
+	/// </summary>
+	public partial class TSqlContract : ISql120TSqlContract
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120Contract.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlContract.Authorizer 
 		{
 			get 
 			{
@@ -17721,134 +17500,146 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120MessageType> ISql120Contract.Messages 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlMessageType> ISql120TSqlContract.Messages 
 		{
 			get 
 			{
-				return this.Messages;
+				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlMessageType>();
 			}
 		}
 	}
-	public partial class Credential : ISql120Credential
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlCredential"/>.
+	/// </summary>
+	public partial class TSqlCredential : ISql120TSqlCredential
 	{		
-		String ISql120Credential.Identity 
+		String ISql120TSqlCredential.Identity 
 		{
 			get { return this.Identity;}
 		}
-		String ISql120Credential.Secret 
+		String ISql120TSqlCredential.Secret 
 		{
 			get { return this.Secret;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120CryptographicProvider> ISql120Credential.CryptographicProvider 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCryptographicProvider> ISql120TSqlCredential.CryptographicProvider 
 		{
 			get 
 			{
-				return this.CryptographicProvider;
+				return this.CryptographicProvider.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCryptographicProvider>();
 			}
 		}
 	}
-	public partial class CryptographicProvider : ISql120CryptographicProvider
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlCryptographicProvider"/>.
+	/// </summary>
+	public partial class TSqlCryptographicProvider : ISql120TSqlCryptographicProvider
 	{		
-		String ISql120CryptographicProvider.DllPath 
+		String ISql120TSqlCryptographicProvider.DllPath 
 		{
 			get { return this.DllPath;}
 		}
-		Boolean ISql120CryptographicProvider.Enabled 
+		Boolean ISql120TSqlCryptographicProvider.Enabled 
 		{
 			get { return this.Enabled;}
 		}
 	}
-	public partial class DatabaseAuditSpecification : ISql120DatabaseAuditSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlDatabaseAuditSpecification"/>.
+	/// </summary>
+	public partial class TSqlDatabaseAuditSpecification : ISql120TSqlDatabaseAuditSpecification
 	{		
-		Boolean ISql120DatabaseAuditSpecification.WithState 
+		Boolean ISql120TSqlDatabaseAuditSpecification.WithState 
 		{
 			get { return this.WithState;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120AuditActionGroup> ISql120DatabaseAuditSpecification.AuditActionGroups 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAuditActionGroup> ISql120TSqlDatabaseAuditSpecification.AuditActionGroups 
 		{
 			get 
 			{
-				return this.AuditActionGroups;
+				return this.AuditActionGroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAuditActionGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120AuditAction> ISql120DatabaseAuditSpecification.AuditActions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAuditAction> ISql120TSqlDatabaseAuditSpecification.AuditActions 
 		{
 			get 
 			{
-				return this.AuditActions;
+				return this.AuditActions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAuditAction>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120ServerAudit> ISql120DatabaseAuditSpecification.ServerAudit 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAudit> ISql120TSqlDatabaseAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit;
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAudit>();
 			}
 		}
 	}
-	public partial class DatabaseDdlTrigger : ISql120DatabaseDdlTrigger
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlDatabaseDdlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDatabaseDdlTrigger : ISql120TSqlDatabaseDdlTrigger
 	{		
-		Boolean? ISql120DatabaseDdlTrigger.AnsiNullsOn 
+		Boolean? ISql120TSqlDatabaseDdlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql120DatabaseDdlTrigger.ClassName 
+		String ISql120TSqlDatabaseDdlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql120DatabaseDdlTrigger.Disabled 
+		Boolean ISql120TSqlDatabaseDdlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql120DatabaseDdlTrigger.ExecuteAsCaller 
+		Boolean ISql120TSqlDatabaseDdlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql120DatabaseDdlTrigger.ExecuteAsOwner 
+		Boolean ISql120TSqlDatabaseDdlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql120DatabaseDdlTrigger.ExecuteAsSelf 
+		Boolean ISql120TSqlDatabaseDdlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		String ISql120DatabaseDdlTrigger.MethodName 
+		String ISql120TSqlDatabaseDdlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql120DatabaseDdlTrigger.QuotedIdentifierOn 
+		Boolean? ISql120TSqlDatabaseDdlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql120DatabaseDdlTrigger.TriggerType 
+		TriggerType ISql120TSqlDatabaseDdlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		Boolean ISql120DatabaseDdlTrigger.WithEncryption 
+		Boolean ISql120TSqlDatabaseDdlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Assembly> ISql120DatabaseDdlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlDatabaseDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120DatabaseDdlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlDatabaseDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -17856,17 +17647,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120EventGroup> ISql120DatabaseDdlTrigger.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventGroup> ISql120TSqlDatabaseDdlTrigger.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql120DatabaseDdlTrigger.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql120TSqlDatabaseDdlTrigger.EventType 
 		{
 			get 
 			{
@@ -17874,75 +17665,81 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Login> ISql120DatabaseDdlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlDatabaseDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120User> ISql120DatabaseDdlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlDatabaseDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
 			}
 		}
 	}
-	public partial class DatabaseEncryptionKey : ISql120DatabaseEncryptionKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlDatabaseEncryptionKey"/>.
+	/// </summary>
+	public partial class TSqlDatabaseEncryptionKey : ISql120TSqlDatabaseEncryptionKey
 	{		
-		SymmetricKeyAlgorithm ISql120DatabaseEncryptionKey.Algorithm 
+		SymmetricKeyAlgorithm ISql120TSqlDatabaseEncryptionKey.Algorithm 
 		{
 			get { return this.Algorithm;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120AsymmetricKey> ISql120DatabaseEncryptionKey.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey> ISql120TSqlDatabaseEncryptionKey.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Certificate> ISql120DatabaseEncryptionKey.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlDatabaseEncryptionKey.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
 			}
 		}
 	}
-	public partial class DatabaseEventNotification : ISql120DatabaseEventNotification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlDatabaseEventNotification"/>.
+	/// </summary>
+	public partial class TSqlDatabaseEventNotification : ISql120TSqlDatabaseEventNotification
 	{		
-		String ISql120DatabaseEventNotification.BrokerInstanceSpecifier 
+		String ISql120TSqlDatabaseEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql120DatabaseEventNotification.BrokerService 
+		String ISql120TSqlDatabaseEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql120DatabaseEventNotification.WithFanIn 
+		Boolean ISql120TSqlDatabaseEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120EventGroup> ISql120DatabaseEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventGroup> ISql120TSqlDatabaseEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql120DatabaseEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql120TSqlDatabaseEventNotification.EventType 
 		{
 			get 
 			{
@@ -17950,295 +17747,307 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class DatabaseMirroringLanguageSpecifier : ISql120DatabaseMirroringLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlDatabaseMirroringLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlDatabaseMirroringLanguageSpecifier : ISql120TSqlDatabaseMirroringLanguageSpecifier
 	{		
-		ServiceBrokerEncryptionAlgorithm ISql120DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1 
+		ServiceBrokerEncryptionAlgorithm ISql120TSqlDatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart1 
 		{
 			get { return this.EncryptionAlgorithmPart1;}
 		}
-		ServiceBrokerEncryptionAlgorithm ISql120DatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2 
+		ServiceBrokerEncryptionAlgorithm ISql120TSqlDatabaseMirroringLanguageSpecifier.EncryptionAlgorithmPart2 
 		{
 			get { return this.EncryptionAlgorithmPart2;}
 		}
-		EncryptionMode ISql120DatabaseMirroringLanguageSpecifier.EncryptionMode 
+		EncryptionMode ISql120TSqlDatabaseMirroringLanguageSpecifier.EncryptionMode 
 		{
 			get { return this.EncryptionMode;}
 		}
-		DatabaseMirroringRole ISql120DatabaseMirroringLanguageSpecifier.RoleType 
+		DatabaseMirroringRole ISql120TSqlDatabaseMirroringLanguageSpecifier.RoleType 
 		{
 			get { return this.RoleType;}
 		}
-		Boolean ISql120DatabaseMirroringLanguageSpecifier.UseCertificateFirst 
+		Boolean ISql120TSqlDatabaseMirroringLanguageSpecifier.UseCertificateFirst 
 		{
 			get { return this.UseCertificateFirst;}
 		}
-		AuthenticationModes ISql120DatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode 
+		AuthenticationModes ISql120TSqlDatabaseMirroringLanguageSpecifier.WindowsAuthenticationMode 
 		{
 			get { return this.WindowsAuthenticationMode;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Certificate> ISql120DatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate;
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
 			}
 		}
 	}
-	public partial class DatabaseOptions : ISql120DatabaseOptions
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlDatabaseOptions"/>.
+	/// </summary>
+	public partial class TSqlDatabaseOptions : ISql120TSqlDatabaseOptions
 	{		
-		Boolean ISql120DatabaseOptions.AllowSnapshotIsolation 
+		Boolean ISql120TSqlDatabaseOptions.AllowSnapshotIsolation 
 		{
 			get { return this.AllowSnapshotIsolation;}
 		}
-		Boolean ISql120DatabaseOptions.AnsiNullDefaultOn 
+		Boolean ISql120TSqlDatabaseOptions.AnsiNullDefaultOn 
 		{
 			get { return this.AnsiNullDefaultOn;}
 		}
-		Boolean ISql120DatabaseOptions.AnsiNullsOn 
+		Boolean ISql120TSqlDatabaseOptions.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql120DatabaseOptions.AnsiPaddingOn 
+		Boolean ISql120TSqlDatabaseOptions.AnsiPaddingOn 
 		{
 			get { return this.AnsiPaddingOn;}
 		}
-		Boolean ISql120DatabaseOptions.AnsiWarningsOn 
+		Boolean ISql120TSqlDatabaseOptions.AnsiWarningsOn 
 		{
 			get { return this.AnsiWarningsOn;}
 		}
-		Boolean ISql120DatabaseOptions.ArithAbortOn 
+		Boolean ISql120TSqlDatabaseOptions.ArithAbortOn 
 		{
 			get { return this.ArithAbortOn;}
 		}
-		Boolean ISql120DatabaseOptions.AutoClose 
+		Boolean ISql120TSqlDatabaseOptions.AutoClose 
 		{
 			get { return this.AutoClose;}
 		}
-		Boolean ISql120DatabaseOptions.AutoCreateStatistics 
+		Boolean ISql120TSqlDatabaseOptions.AutoCreateStatistics 
 		{
 			get { return this.AutoCreateStatistics;}
 		}
-		Boolean ISql120DatabaseOptions.AutoCreateStatisticsIncremental 
+		Boolean ISql120TSqlDatabaseOptions.AutoCreateStatisticsIncremental 
 		{
 			get { return this.AutoCreateStatisticsIncremental;}
 		}
-		Boolean ISql120DatabaseOptions.AutoShrink 
+		Boolean ISql120TSqlDatabaseOptions.AutoShrink 
 		{
 			get { return this.AutoShrink;}
 		}
-		Boolean ISql120DatabaseOptions.AutoUpdateStatistics 
+		Boolean ISql120TSqlDatabaseOptions.AutoUpdateStatistics 
 		{
 			get { return this.AutoUpdateStatistics;}
 		}
-		Boolean ISql120DatabaseOptions.AutoUpdateStatisticsAsync 
+		Boolean ISql120TSqlDatabaseOptions.AutoUpdateStatisticsAsync 
 		{
 			get { return this.AutoUpdateStatisticsAsync;}
 		}
-		Boolean ISql120DatabaseOptions.ChangeTrackingAutoCleanup 
+		Boolean ISql120TSqlDatabaseOptions.ChangeTrackingAutoCleanup 
 		{
 			get { return this.ChangeTrackingAutoCleanup;}
 		}
-		Boolean ISql120DatabaseOptions.ChangeTrackingEnabled 
+		Boolean ISql120TSqlDatabaseOptions.ChangeTrackingEnabled 
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
-		Int32 ISql120DatabaseOptions.ChangeTrackingRetentionPeriod 
+		Int32 ISql120TSqlDatabaseOptions.ChangeTrackingRetentionPeriod 
 		{
 			get { return this.ChangeTrackingRetentionPeriod;}
 		}
-		TimeUnit ISql120DatabaseOptions.ChangeTrackingRetentionUnit 
+		TimeUnit ISql120TSqlDatabaseOptions.ChangeTrackingRetentionUnit 
 		{
 			get { return this.ChangeTrackingRetentionUnit;}
 		}
-		String ISql120DatabaseOptions.Collation 
+		String ISql120TSqlDatabaseOptions.Collation 
 		{
 			get { return this.Collation;}
 		}
-		Int32 ISql120DatabaseOptions.CompatibilityLevel 
+		Int32 ISql120TSqlDatabaseOptions.CompatibilityLevel 
 		{
 			get { return this.CompatibilityLevel;}
 		}
-		Boolean ISql120DatabaseOptions.ConcatNullYieldsNull 
+		Boolean ISql120TSqlDatabaseOptions.ConcatNullYieldsNull 
 		{
 			get { return this.ConcatNullYieldsNull;}
 		}
-		Containment ISql120DatabaseOptions.Containment 
+		Containment ISql120TSqlDatabaseOptions.Containment 
 		{
 			get { return this.Containment;}
 		}
-		Boolean ISql120DatabaseOptions.CursorCloseOnCommit 
+		Boolean ISql120TSqlDatabaseOptions.CursorCloseOnCommit 
 		{
 			get { return this.CursorCloseOnCommit;}
 		}
-		Boolean ISql120DatabaseOptions.CursorDefaultGlobalScope 
+		Boolean ISql120TSqlDatabaseOptions.CursorDefaultGlobalScope 
 		{
 			get { return this.CursorDefaultGlobalScope;}
 		}
-		Boolean ISql120DatabaseOptions.DatabaseStateOffline 
+		Boolean ISql120TSqlDatabaseOptions.DatabaseStateOffline 
 		{
 			get { return this.DatabaseStateOffline;}
 		}
-		Boolean ISql120DatabaseOptions.DateCorrelationOptimizationOn 
+		Boolean ISql120TSqlDatabaseOptions.DateCorrelationOptimizationOn 
 		{
 			get { return this.DateCorrelationOptimizationOn;}
 		}
-		Boolean ISql120DatabaseOptions.DBChainingOn 
+		Boolean ISql120TSqlDatabaseOptions.DBChainingOn 
 		{
 			get { return this.DBChainingOn;}
 		}
-		String ISql120DatabaseOptions.DefaultFullTextLanguage 
+		String ISql120TSqlDatabaseOptions.DefaultFullTextLanguage 
 		{
 			get { return this.DefaultFullTextLanguage;}
 		}
-		String ISql120DatabaseOptions.DefaultLanguage 
+		String ISql120TSqlDatabaseOptions.DefaultLanguage 
 		{
 			get { return this.DefaultLanguage;}
 		}
-		DelayedDurabilityMode ISql120DatabaseOptions.DelayedDurabilityMode 
+		DelayedDurabilityMode ISql120TSqlDatabaseOptions.DelayedDurabilityMode 
 		{
 			get { return this.DelayedDurabilityMode;}
 		}
-		String ISql120DatabaseOptions.FileStreamDirectoryName 
+		String ISql120TSqlDatabaseOptions.FileStreamDirectoryName 
 		{
 			get { return this.FileStreamDirectoryName;}
 		}
-		Boolean ISql120DatabaseOptions.FullTextEnabled 
+		Boolean ISql120TSqlDatabaseOptions.FullTextEnabled 
 		{
 			get { return this.FullTextEnabled;}
 		}
-		Boolean ISql120DatabaseOptions.HonorBrokerPriority 
+		Boolean ISql120TSqlDatabaseOptions.HonorBrokerPriority 
 		{
 			get { return this.HonorBrokerPriority;}
 		}
-		Boolean ISql120DatabaseOptions.MemoryOptimizedElevateToSnapshot 
+		Boolean ISql120TSqlDatabaseOptions.MemoryOptimizedElevateToSnapshot 
 		{
 			get { return this.MemoryOptimizedElevateToSnapshot;}
 		}
-		Boolean ISql120DatabaseOptions.NestedTriggersOn 
+		Boolean ISql120TSqlDatabaseOptions.NestedTriggersOn 
 		{
 			get { return this.NestedTriggersOn;}
 		}
-		NonTransactedFileStreamAccess ISql120DatabaseOptions.NonTransactedFileStreamAccess 
+		NonTransactedFileStreamAccess ISql120TSqlDatabaseOptions.NonTransactedFileStreamAccess 
 		{
 			get { return this.NonTransactedFileStreamAccess;}
 		}
-		Boolean ISql120DatabaseOptions.NumericRoundAbortOn 
+		Boolean ISql120TSqlDatabaseOptions.NumericRoundAbortOn 
 		{
 			get { return this.NumericRoundAbortOn;}
 		}
-		PageVerifyMode ISql120DatabaseOptions.PageVerifyMode 
+		PageVerifyMode ISql120TSqlDatabaseOptions.PageVerifyMode 
 		{
 			get { return this.PageVerifyMode;}
 		}
-		ParameterizationOption ISql120DatabaseOptions.ParameterizationOption 
+		ParameterizationOption ISql120TSqlDatabaseOptions.ParameterizationOption 
 		{
 			get { return this.ParameterizationOption;}
 		}
-		Boolean ISql120DatabaseOptions.QuotedIdentifierOn 
+		Boolean ISql120TSqlDatabaseOptions.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql120DatabaseOptions.ReadOnly 
+		Boolean ISql120TSqlDatabaseOptions.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
-		RecoveryMode ISql120DatabaseOptions.RecoveryMode 
+		RecoveryMode ISql120TSqlDatabaseOptions.RecoveryMode 
 		{
 			get { return this.RecoveryMode;}
 		}
-		Boolean ISql120DatabaseOptions.RecursiveTriggersOn 
+		Boolean ISql120TSqlDatabaseOptions.RecursiveTriggersOn 
 		{
 			get { return this.RecursiveTriggersOn;}
 		}
-		ServiceBrokerOption ISql120DatabaseOptions.ServiceBrokerOption 
+		ServiceBrokerOption ISql120TSqlDatabaseOptions.ServiceBrokerOption 
 		{
 			get { return this.ServiceBrokerOption;}
 		}
-		Boolean ISql120DatabaseOptions.SupplementalLoggingOn 
+		Boolean ISql120TSqlDatabaseOptions.SupplementalLoggingOn 
 		{
 			get { return this.SupplementalLoggingOn;}
 		}
-		Int32 ISql120DatabaseOptions.TargetRecoveryTimePeriod 
+		Int32 ISql120TSqlDatabaseOptions.TargetRecoveryTimePeriod 
 		{
 			get { return this.TargetRecoveryTimePeriod;}
 		}
-		TimeUnit ISql120DatabaseOptions.TargetRecoveryTimeUnit 
+		TimeUnit ISql120TSqlDatabaseOptions.TargetRecoveryTimeUnit 
 		{
 			get { return this.TargetRecoveryTimeUnit;}
 		}
-		Boolean ISql120DatabaseOptions.TornPageProtectionOn 
+		Boolean ISql120TSqlDatabaseOptions.TornPageProtectionOn 
 		{
 			get { return this.TornPageProtectionOn;}
 		}
-		Boolean ISql120DatabaseOptions.TransactionIsolationReadCommittedSnapshot 
+		Boolean ISql120TSqlDatabaseOptions.TransactionIsolationReadCommittedSnapshot 
 		{
 			get { return this.TransactionIsolationReadCommittedSnapshot;}
 		}
-		Boolean ISql120DatabaseOptions.TransformNoiseWords 
+		Boolean ISql120TSqlDatabaseOptions.TransformNoiseWords 
 		{
 			get { return this.TransformNoiseWords;}
 		}
-		Boolean ISql120DatabaseOptions.Trustworthy 
+		Boolean ISql120TSqlDatabaseOptions.Trustworthy 
 		{
 			get { return this.Trustworthy;}
 		}
-		Int16 ISql120DatabaseOptions.TwoDigitYearCutoff 
+		Int16 ISql120TSqlDatabaseOptions.TwoDigitYearCutoff 
 		{
 			get { return this.TwoDigitYearCutoff;}
 		}
-		UserAccessOption ISql120DatabaseOptions.UserAccessOption 
+		UserAccessOption ISql120TSqlDatabaseOptions.UserAccessOption 
 		{
 			get { return this.UserAccessOption;}
 		}
-		Boolean ISql120DatabaseOptions.VardecimalStorageFormatOn 
+		Boolean ISql120TSqlDatabaseOptions.VardecimalStorageFormatOn 
 		{
 			get { return this.VardecimalStorageFormatOn;}
 		}
-		Boolean ISql120DatabaseOptions.WithEncryption 
+		Boolean ISql120TSqlDatabaseOptions.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120DatabaseOptions.DefaultFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlDatabaseOptions.DefaultFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFilegroup;
+				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120DatabaseOptions.DefaultFileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlDatabaseOptions.DefaultFileStreamFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFileStreamFilegroup;
+				return this.DefaultFileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class DataCompressionOption : ISql120DataCompressionOption
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlDataCompressionOption"/>.
+	/// </summary>
+	public partial class TSqlDataCompressionOption : ISql120TSqlDataCompressionOption
 	{		
-		CompressionLevel ISql120DataCompressionOption.CompressionLevel 
+		CompressionLevel ISql120TSqlDataCompressionOption.CompressionLevel 
 		{
 			get { return this.CompressionLevel;}
 		}
-		Int32 ISql120DataCompressionOption.PartitionNumber 
+		Int32 ISql120TSqlDataCompressionOption.PartitionNumber 
 		{
 			get { return this.PartitionNumber;}
 		}
 	}
-	public partial class Default : ISql120Default
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlDefault"/>.
+	/// </summary>
+	public partial class TSqlDefault : ISql120TSqlDefault
 	{		
-		String ISql120Default.Expression 
+		String ISql120TSqlDefault.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120Default.BoundObjects 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlDefault.BoundObjects 
 		{
 			get 
 			{
@@ -18246,32 +18055,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120Default.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlDefault.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}
-	public partial class DefaultConstraint : ISql120DefaultConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlDefaultConstraint"/>.
+	/// </summary>
+	public partial class TSqlDefaultConstraint : ISql120TSqlDefaultConstraint
 	{		
-		Boolean ISql120DefaultConstraint.Disabled 
+		Boolean ISql120TSqlDefaultConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISql120DefaultConstraint.Expression 
+		String ISql120TSqlDefaultConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
-		Boolean ISql120DefaultConstraint.WithValues 
+		Boolean ISql120TSqlDefaultConstraint.WithValues 
 		{
 			get { return this.WithValues;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120DefaultConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -18279,110 +18091,113 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120ExtendedProperty> ISql120DefaultConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlDefaultConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120DefaultConstraint.TargetColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn;
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 	}
-	public partial class DmlTrigger : ISql120DmlTrigger
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlDmlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDmlTrigger : ISql120TSqlDmlTrigger
 	{		
-		Boolean? ISql120DmlTrigger.AnsiNullsOn 
+		Boolean? ISql120TSqlDmlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql120DmlTrigger.ClassName 
+		String ISql120TSqlDmlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		OrderRestriction ISql120DmlTrigger.DeleteOrderRestriction 
+		OrderRestriction ISql120TSqlDmlTrigger.DeleteOrderRestriction 
 		{
 			get { return this.DeleteOrderRestriction;}
 		}
-		Boolean ISql120DmlTrigger.Disabled 
+		Boolean ISql120TSqlDmlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql120DmlTrigger.ExecuteAsCaller 
+		Boolean ISql120TSqlDmlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql120DmlTrigger.ExecuteAsOwner 
+		Boolean ISql120TSqlDmlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql120DmlTrigger.ExecuteAsSelf 
+		Boolean ISql120TSqlDmlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		OrderRestriction ISql120DmlTrigger.InsertOrderRestriction 
+		OrderRestriction ISql120TSqlDmlTrigger.InsertOrderRestriction 
 		{
 			get { return this.InsertOrderRestriction;}
 		}
-		Boolean ISql120DmlTrigger.IsDeleteTrigger 
+		Boolean ISql120TSqlDmlTrigger.IsDeleteTrigger 
 		{
 			get { return this.IsDeleteTrigger;}
 		}
-		Boolean ISql120DmlTrigger.IsInsertTrigger 
+		Boolean ISql120TSqlDmlTrigger.IsInsertTrigger 
 		{
 			get { return this.IsInsertTrigger;}
 		}
-		Boolean ISql120DmlTrigger.IsUpdateTrigger 
+		Boolean ISql120TSqlDmlTrigger.IsUpdateTrigger 
 		{
 			get { return this.IsUpdateTrigger;}
 		}
-		String ISql120DmlTrigger.MethodName 
+		String ISql120TSqlDmlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean ISql120DmlTrigger.NotForReplication 
+		Boolean ISql120TSqlDmlTrigger.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
-		Boolean? ISql120DmlTrigger.QuotedIdentifierOn 
+		Boolean? ISql120TSqlDmlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql120DmlTrigger.TriggerType 
+		TriggerType ISql120TSqlDmlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		OrderRestriction ISql120DmlTrigger.UpdateOrderRestriction 
+		OrderRestriction ISql120TSqlDmlTrigger.UpdateOrderRestriction 
 		{
 			get { return this.UpdateOrderRestriction;}
 		}
-		Boolean ISql120DmlTrigger.WithAppend 
+		Boolean ISql120TSqlDmlTrigger.WithAppend 
 		{
 			get { return this.WithAppend;}
 		}
-		Boolean ISql120DmlTrigger.WithEncryption 
+		Boolean ISql120TSqlDmlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Assembly> ISql120DmlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlDmlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120DmlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlDmlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -18390,17 +18205,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Login> ISql120DmlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlDmlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql120DmlTrigger.TriggerObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql120TSqlDmlTrigger.TriggerObject 
 		{
 			get 
 			{
@@ -18408,32 +18223,35 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120User> ISql120DmlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlDmlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
 			}
 		}
 	}
-	public partial class Endpoint : ISql120Endpoint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlEndpoint"/>.
+	/// </summary>
+	public partial class TSqlEndpoint : ISql120TSqlEndpoint
 	{		
-		Payload ISql120Endpoint.Payload 
+		Payload ISql120TSqlEndpoint.Payload 
 		{
 			get { return this.Payload;}
 		}
-		Protocol ISql120Endpoint.Protocol 
+		Protocol ISql120TSqlEndpoint.Protocol 
 		{
 			get { return this.Protocol;}
 		}
-		State ISql120Endpoint.State 
+		State ISql120TSqlEndpoint.State 
 		{
 			get { return this.State;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120Endpoint.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlEndpoint.Authorizer 
 		{
 			get 
 			{
@@ -18441,8 +18259,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier> ISql120Endpoint.PayloadSpecifier 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier> ISql120TSqlEndpoint.PayloadSpecifier 
 		{
 			get 
 			{
@@ -18450,8 +18268,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier > ISql120Endpoint.ProtocolSpecifier 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier > ISql120TSqlEndpoint.ProtocolSpecifier 
 		{
 			get 
 			{
@@ -18459,77 +18277,86 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ErrorMessage : ISql120ErrorMessage
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlErrorMessage"/>.
+	/// </summary>
+	public partial class TSqlErrorMessage : ISql120TSqlErrorMessage
 	{		
-		String ISql120ErrorMessage.Language 
+		String ISql120TSqlErrorMessage.Language 
 		{
 			get { return this.Language;}
 		}
-		Int32 ISql120ErrorMessage.MessageNumber 
+		Int32 ISql120TSqlErrorMessage.MessageNumber 
 		{
 			get { return this.MessageNumber;}
 		}
-		String ISql120ErrorMessage.MessageText 
+		String ISql120TSqlErrorMessage.MessageText 
 		{
 			get { return this.MessageText;}
 		}
-		Int32 ISql120ErrorMessage.Severity 
+		Int32 ISql120TSqlErrorMessage.Severity 
 		{
 			get { return this.Severity;}
 		}
-		Boolean ISql120ErrorMessage.WithLog 
+		Boolean ISql120TSqlErrorMessage.WithLog 
 		{
 			get { return this.WithLog;}
 		}
 	}
-	public partial class EventGroup : ISql120EventGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlEventGroup"/>.
+	/// </summary>
+	public partial class TSqlEventGroup : ISql120TSqlEventGroup
 	{		
-		EventGroupType ISql120EventGroup.Group 
+		EventGroupType ISql120TSqlEventGroup.Group 
 		{
 			get { return this.Group;}
 		}
 	}
-	public partial class EventSession : ISql120EventSession
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlEventSession"/>.
+	/// </summary>
+	public partial class TSqlEventSession : ISql120TSqlEventSession
 	{		
-		EventRetentionMode ISql120EventSession.EventRetentionMode 
+		EventRetentionMode ISql120TSqlEventSession.EventRetentionMode 
 		{
 			get { return this.EventRetentionMode;}
 		}
-		Int32 ISql120EventSession.MaxDispatchLatency 
+		Int32 ISql120TSqlEventSession.MaxDispatchLatency 
 		{
 			get { return this.MaxDispatchLatency;}
 		}
-		Int32 ISql120EventSession.MaxEventSize 
+		Int32 ISql120TSqlEventSession.MaxEventSize 
 		{
 			get { return this.MaxEventSize;}
 		}
-		MemoryUnit ISql120EventSession.MaxEventSizeUnit 
+		MemoryUnit ISql120TSqlEventSession.MaxEventSizeUnit 
 		{
 			get { return this.MaxEventSizeUnit;}
 		}
-		Int32 ISql120EventSession.MaxMemory 
+		Int32 ISql120TSqlEventSession.MaxMemory 
 		{
 			get { return this.MaxMemory;}
 		}
-		MemoryUnit ISql120EventSession.MaxMemoryUnit 
+		MemoryUnit ISql120TSqlEventSession.MaxMemoryUnit 
 		{
 			get { return this.MaxMemoryUnit;}
 		}
-		MemoryPartitionMode ISql120EventSession.MemoryPartitionMode 
+		MemoryPartitionMode ISql120TSqlEventSession.MemoryPartitionMode 
 		{
 			get { return this.MemoryPartitionMode;}
 		}
-		Boolean ISql120EventSession.StartupState 
+		Boolean ISql120TSqlEventSession.StartupState 
 		{
 			get { return this.StartupState;}
 		}
-		Boolean ISql120EventSession.TrackCausality 
+		Boolean ISql120TSqlEventSession.TrackCausality 
 		{
 			get { return this.TrackCausality;}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql120EventSession.EventDefinitions 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql120TSqlEventSession.EventDefinitions 
 		{
 			get 
 			{
@@ -18537,8 +18364,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql120EventSession.EventTargets 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql120TSqlEventSession.EventTargets 
 		{
 			get 
 			{
@@ -18546,51 +18373,57 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class EventSessionAction : ISql120EventSessionAction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlEventSessionAction"/>.
+	/// </summary>
+	public partial class TSqlEventSessionAction : ISql120TSqlEventSessionAction
 	{		
-		String ISql120EventSessionAction.ActionName 
+		String ISql120TSqlEventSessionAction.ActionName 
 		{
 			get { return this.ActionName;}
 		}
-		String ISql120EventSessionAction.EventModuleGuid 
+		String ISql120TSqlEventSessionAction.EventModuleGuid 
 		{
 			get { return this.EventModuleGuid;}
 		}
-		String ISql120EventSessionAction.EventPackageName 
+		String ISql120TSqlEventSessionAction.EventPackageName 
 		{
 			get { return this.EventPackageName;}
 		}
 	}
-	public partial class EventSessionDefinitions : ISql120EventSessionDefinitions
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlEventSessionDefinitions"/>.
+	/// </summary>
+	public partial class TSqlEventSessionDefinitions : ISql120TSqlEventSessionDefinitions
 	{		
-		String ISql120EventSessionDefinitions.EventModuleGuid 
+		String ISql120TSqlEventSessionDefinitions.EventModuleGuid 
 		{
 			get { return this.EventModuleGuid;}
 		}
-		String ISql120EventSessionDefinitions.EventName 
+		String ISql120TSqlEventSessionDefinitions.EventName 
 		{
 			get { return this.EventName;}
 		}
-		String ISql120EventSessionDefinitions.EventPackageName 
+		String ISql120TSqlEventSessionDefinitions.EventPackageName 
 		{
 			get { return this.EventPackageName;}
 		}
-		String ISql120EventSessionDefinitions.WhereExpression 
+		String ISql120TSqlEventSessionDefinitions.WhereExpression 
 		{
 			get { return this.WhereExpression;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120EventSessionAction> ISql120EventSessionDefinitions.Actions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventSessionAction> ISql120TSqlEventSessionDefinitions.Actions 
 		{
 			get 
 			{
-				return this.Actions;
+				return this.Actions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventSessionAction>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql120EventSessionDefinitions.AttributeSettings 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql120TSqlEventSessionDefinitions.AttributeSettings 
 		{
 			get 
 			{
@@ -18598,34 +18431,40 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class EventSessionSetting : ISql120EventSessionSetting
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlEventSessionSetting"/>.
+	/// </summary>
+	public partial class TSqlEventSessionSetting : ISql120TSqlEventSessionSetting
 	{		
-		String ISql120EventSessionSetting.SettingName 
+		String ISql120TSqlEventSessionSetting.SettingName 
 		{
 			get { return this.SettingName;}
 		}
-		String ISql120EventSessionSetting.SettingValue 
+		String ISql120TSqlEventSessionSetting.SettingValue 
 		{
 			get { return this.SettingValue;}
 		}
 	}
-	public partial class EventSessionTarget : ISql120EventSessionTarget
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlEventSessionTarget"/>.
+	/// </summary>
+	public partial class TSqlEventSessionTarget : ISql120TSqlEventSessionTarget
 	{		
-		String ISql120EventSessionTarget.EventModuleGuid 
+		String ISql120TSqlEventSessionTarget.EventModuleGuid 
 		{
 			get { return this.EventModuleGuid;}
 		}
-		String ISql120EventSessionTarget.EventPackageName 
+		String ISql120TSqlEventSessionTarget.EventPackageName 
 		{
 			get { return this.EventPackageName;}
 		}
-		String ISql120EventSessionTarget.TargetName 
+		String ISql120TSqlEventSessionTarget.TargetName 
 		{
 			get { return this.TargetName;}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql120EventSessionTarget.ParameterSettings 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql120TSqlEventSessionTarget.ParameterSettings 
 		{
 			get 
 			{
@@ -18633,81 +18472,90 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class EventTypeSpecifier : ISql120EventTypeSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlEventTypeSpecifier"/>.
+	/// </summary>
+	public partial class TSqlEventTypeSpecifier : ISql120TSqlEventTypeSpecifier
 	{		
-		EventType ISql120EventTypeSpecifier.EventType 
+		EventType ISql120TSqlEventTypeSpecifier.EventType 
 		{
 			get { return this.EventType;}
 		}
-		OrderRestriction ISql120EventTypeSpecifier.Order 
+		OrderRestriction ISql120TSqlEventTypeSpecifier.Order 
 		{
 			get { return this.Order;}
 		}
 	}
-	public partial class ExtendedProcedure : ISql120ExtendedProcedure
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlExtendedProcedure"/>.
+	/// </summary>
+	public partial class TSqlExtendedProcedure : ISql120TSqlExtendedProcedure
 	{		
-		Boolean ISql120ExtendedProcedure.ExeccuteAsCaller 
+		Boolean ISql120TSqlExtendedProcedure.ExeccuteAsCaller 
 		{
 			get { return this.ExeccuteAsCaller;}
 		}
-		Boolean ISql120ExtendedProcedure.ExecuteAsOwner 
+		Boolean ISql120TSqlExtendedProcedure.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql120ExtendedProcedure.ExecuteAsSelf 
+		Boolean ISql120TSqlExtendedProcedure.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql120ExtendedProcedure.WithEncryption 
+		Boolean ISql120TSqlExtendedProcedure.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Login> ISql120ExtendedProcedure.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlExtendedProcedure.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Parameter> ISql120ExtendedProcedure.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter> ISql120TSqlExtendedProcedure.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120ExtendedProcedure.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlExtendedProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120User> ISql120ExtendedProcedure.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlExtendedProcedure.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
 			}
 		}
 	}
-	public partial class ExtendedProperty : ISql120ExtendedProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlExtendedProperty"/>.
+	/// </summary>
+	public partial class TSqlExtendedProperty : ISql120TSqlExtendedProperty
 	{		
-		String ISql120ExtendedProperty.Value 
+		String ISql120TSqlExtendedProperty.Value 
 		{
 			get { return this.Value;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> ISql120ExtendedProperty.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> ISql120TSqlExtendedProperty.Host 
 		{
 			get 
 			{
@@ -18715,145 +18563,157 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SqlFile : ISql120SqlFile
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSqlFile"/>.
+	/// </summary>
+	public partial class TSqlSqlFile : ISql120TSqlSqlFile
 	{		
-		Int32? ISql120SqlFile.FileGrowth 
+		Int32? ISql120TSqlSqlFile.FileGrowth 
 		{
 			get { return this.FileGrowth;}
 		}
-		MemoryUnit ISql120SqlFile.FileGrowthUnit 
+		MemoryUnit ISql120TSqlSqlFile.FileGrowthUnit 
 		{
 			get { return this.FileGrowthUnit;}
 		}
-		String ISql120SqlFile.FileName 
+		String ISql120TSqlSqlFile.FileName 
 		{
 			get { return this.FileName;}
 		}
-		Boolean ISql120SqlFile.IsLogFile 
+		Boolean ISql120TSqlSqlFile.IsLogFile 
 		{
 			get { return this.IsLogFile;}
 		}
-		Int32? ISql120SqlFile.MaxSize 
+		Int32? ISql120TSqlSqlFile.MaxSize 
 		{
 			get { return this.MaxSize;}
 		}
-		MemoryUnit ISql120SqlFile.MaxSizeUnit 
+		MemoryUnit ISql120TSqlSqlFile.MaxSizeUnit 
 		{
 			get { return this.MaxSizeUnit;}
 		}
-		Boolean ISql120SqlFile.Offline 
+		Boolean ISql120TSqlSqlFile.Offline 
 		{
 			get { return this.Offline;}
 		}
-		Int32? ISql120SqlFile.Size 
+		Int32? ISql120TSqlSqlFile.Size 
 		{
 			get { return this.Size;}
 		}
-		MemoryUnit ISql120SqlFile.SizeUnit 
+		MemoryUnit ISql120TSqlSqlFile.SizeUnit 
 		{
 			get { return this.SizeUnit;}
 		}
-		Boolean ISql120SqlFile.Unlimited 
+		Boolean ISql120TSqlSqlFile.Unlimited 
 		{
 			get { return this.Unlimited;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120SqlFile.Filegroup 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlSqlFile.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class Filegroup : ISql120Filegroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlFilegroup"/>.
+	/// </summary>
+	public partial class TSqlFilegroup : ISql120TSqlFilegroup
 	{		
-		Boolean ISql120Filegroup.ContainsFileStream 
+		Boolean ISql120TSqlFilegroup.ContainsFileStream 
 		{
 			get { return this.ContainsFileStream;}
 		}
-		Boolean ISql120Filegroup.ContainsMemoryOptimizedData 
+		Boolean ISql120TSqlFilegroup.ContainsMemoryOptimizedData 
 		{
 			get { return this.ContainsMemoryOptimizedData;}
 		}
-		Boolean ISql120Filegroup.ReadOnly 
+		Boolean ISql120TSqlFilegroup.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
 	}
-	public partial class ForeignKeyConstraint : ISql120ForeignKeyConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlForeignKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlForeignKeyConstraint : ISql120TSqlForeignKeyConstraint
 	{		
-		ForeignKeyAction ISql120ForeignKeyConstraint.DeleteAction 
+		ForeignKeyAction ISql120TSqlForeignKeyConstraint.DeleteAction 
 		{
 			get { return this.DeleteAction;}
 		}
-		Boolean ISql120ForeignKeyConstraint.Disabled 
+		Boolean ISql120TSqlForeignKeyConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql120ForeignKeyConstraint.NotForReplication 
+		Boolean ISql120TSqlForeignKeyConstraint.NotForReplication 
 		{
 			get { return this.NotForReplication;}
 		}
-		ForeignKeyAction ISql120ForeignKeyConstraint.UpdateAction 
+		ForeignKeyAction ISql120TSqlForeignKeyConstraint.UpdateAction 
 		{
 			get { return this.UpdateAction;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120ForeignKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlForeignKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120ForeignKeyConstraint.ForeignColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlForeignKeyConstraint.ForeignColumns 
 		{
 			get 
 			{
-				return this.ForeignColumns;
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Table> ISql120ForeignKeyConstraint.ForeignTable 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlForeignKeyConstraint.ForeignTable 
 		{
 			get 
 			{
-				return this.ForeignTable;
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120ExtendedProperty> ISql120ForeignKeyConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlForeignKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
 			}
 		}
 	}
-	public partial class FullTextCatalog : ISql120FullTextCatalog
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlFullTextCatalog"/>.
+	/// </summary>
+	public partial class TSqlFullTextCatalog : ISql120TSqlFullTextCatalog
 	{		
-		Boolean? ISql120FullTextCatalog.AccentSensitivity 
+		Boolean? ISql120TSqlFullTextCatalog.AccentSensitivity 
 		{
 			get { return this.AccentSensitivity;}
 		}
-		Boolean ISql120FullTextCatalog.IsDefault 
+		Boolean ISql120TSqlFullTextCatalog.IsDefault 
 		{
 			get { return this.IsDefault;}
 		}
-		String ISql120FullTextCatalog.Path 
+		String ISql120TSqlFullTextCatalog.Path 
 		{
 			get { return this.Path;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120FullTextCatalog.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlFullTextCatalog.Authorizer 
 		{
 			get 
 			{
@@ -18861,40 +18721,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120FullTextCatalog.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlFullTextCatalog.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 	}
-	public partial class FullTextIndex : ISql120FullTextIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlFullTextIndex"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndex : ISql120TSqlFullTextIndex
 	{		
-		ChangeTrackingOption ISql120FullTextIndex.ChangeTracking 
+		ChangeTrackingOption ISql120TSqlFullTextIndex.ChangeTracking 
 		{
 			get { return this.ChangeTracking;}
 		}
-		Boolean ISql120FullTextIndex.Disabled 
+		Boolean ISql120TSqlFullTextIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql120FullTextIndex.Replicated 
+		Boolean ISql120TSqlFullTextIndex.Replicated 
 		{
 			get { return this.Replicated;}
 		}
-		Boolean ISql120FullTextIndex.StopListOff 
+		Boolean ISql120TSqlFullTextIndex.StopListOff 
 		{
 			get { return this.StopListOff;}
 		}
-		Boolean ISql120FullTextIndex.UseSystemStopList 
+		Boolean ISql120TSqlFullTextIndex.UseSystemStopList 
 		{
 			get { return this.UseSystemStopList;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120FullTextIndex.Catalog 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlFullTextIndex.Catalog 
 		{
 			get 
 			{
@@ -18902,26 +18765,26 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120FullTextIndex.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlFullTextIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120FullTextIndex.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlFullTextIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql120FullTextIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql120TSqlFullTextIndex.IndexedObject 
 		{
 			get 
 			{
@@ -18929,17 +18792,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120SearchPropertyList> ISql120FullTextIndex.SearchPropertyList 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyList> ISql120TSqlFullTextIndex.SearchPropertyList 
 		{
 			get 
 			{
-				return this.SearchPropertyList;
+				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyList>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120FullTextIndex.StopList 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlFullTextIndex.StopList 
 		{
 			get 
 			{
@@ -18947,8 +18810,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120FullTextIndex.UniqueIndexName 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlFullTextIndex.UniqueIndexName 
 		{
 			get 
 			{
@@ -18956,40 +18819,46 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class FullTextIndexColumnSpecifier : ISql120FullTextIndexColumnSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlFullTextIndexColumnSpecifier"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndexColumnSpecifier : ISql120TSqlFullTextIndexColumnSpecifier
 	{		
-		Int32? ISql120FullTextIndexColumnSpecifier.LanguageId 
+		Int32? ISql120TSqlFullTextIndexColumnSpecifier.LanguageId 
 		{
 			get { return this.LanguageId;}
 		}
-		Boolean ISql120FullTextIndexColumnSpecifier.PartOfStatisticalSemantics 
+		Boolean ISql120TSqlFullTextIndexColumnSpecifier.PartOfStatisticalSemantics 
 		{
 			get { return this.PartOfStatisticalSemantics;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120FullTextIndexColumnSpecifier.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlFullTextIndexColumnSpecifier.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120FullTextIndexColumnSpecifier.TypeColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlFullTextIndexColumnSpecifier.TypeColumn 
 		{
 			get 
 			{
-				return this.TypeColumn;
+				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 	}
-	public partial class FullTextStopList : ISql120FullTextStopList
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlFullTextStopList"/>.
+	/// </summary>
+	public partial class TSqlFullTextStopList : ISql120TSqlFullTextStopList
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120FullTextStopList.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlFullTextStopList.Authorizer 
 		{
 			get 
 			{
@@ -18997,255 +18866,273 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class HttpProtocolSpecifier : ISql120HttpProtocolSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlHttpProtocolSpecifier"/>.
+	/// </summary>
+	public partial class TSqlHttpProtocolSpecifier : ISql120TSqlHttpProtocolSpecifier
 	{		
-		AuthenticationModes ISql120HttpProtocolSpecifier.AuthenticationMode 
+		AuthenticationModes ISql120TSqlHttpProtocolSpecifier.AuthenticationMode 
 		{
 			get { return this.AuthenticationMode;}
 		}
-		String ISql120HttpProtocolSpecifier.AuthenticationRealm 
+		String ISql120TSqlHttpProtocolSpecifier.AuthenticationRealm 
 		{
 			get { return this.AuthenticationRealm;}
 		}
-		Int32? ISql120HttpProtocolSpecifier.ClearPort 
+		Int32? ISql120TSqlHttpProtocolSpecifier.ClearPort 
 		{
 			get { return this.ClearPort;}
 		}
-		Boolean ISql120HttpProtocolSpecifier.CompressionEnabled 
+		Boolean ISql120TSqlHttpProtocolSpecifier.CompressionEnabled 
 		{
 			get { return this.CompressionEnabled;}
 		}
-		String ISql120HttpProtocolSpecifier.DefaultLogonDomain 
+		String ISql120TSqlHttpProtocolSpecifier.DefaultLogonDomain 
 		{
 			get { return this.DefaultLogonDomain;}
 		}
-		Boolean ISql120HttpProtocolSpecifier.ListeningOnAllNoneReservedSites 
+		Boolean ISql120TSqlHttpProtocolSpecifier.ListeningOnAllNoneReservedSites 
 		{
 			get { return this.ListeningOnAllNoneReservedSites;}
 		}
-		Boolean ISql120HttpProtocolSpecifier.ListeningOnAllSites 
+		Boolean ISql120TSqlHttpProtocolSpecifier.ListeningOnAllSites 
 		{
 			get { return this.ListeningOnAllSites;}
 		}
-		String ISql120HttpProtocolSpecifier.Path 
+		String ISql120TSqlHttpProtocolSpecifier.Path 
 		{
 			get { return this.Path;}
 		}
-		HttpPorts ISql120HttpProtocolSpecifier.Ports 
+		HttpPorts ISql120TSqlHttpProtocolSpecifier.Ports 
 		{
 			get { return this.Ports;}
 		}
-		Int32? ISql120HttpProtocolSpecifier.SslPort 
+		Int32? ISql120TSqlHttpProtocolSpecifier.SslPort 
 		{
 			get { return this.SslPort;}
 		}
-		String ISql120HttpProtocolSpecifier.Website 
+		String ISql120TSqlHttpProtocolSpecifier.Website 
 		{
 			get { return this.Website;}
 		}
 	}
-	public partial class LinkedServer : ISql120LinkedServer
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlLinkedServer"/>.
+	/// </summary>
+	public partial class TSqlLinkedServer : ISql120TSqlLinkedServer
 	{		
-		String ISql120LinkedServer.Catalog 
+		String ISql120TSqlLinkedServer.Catalog 
 		{
 			get { return this.Catalog;}
 		}
-		Boolean ISql120LinkedServer.CollationCompatible 
+		Boolean ISql120TSqlLinkedServer.CollationCompatible 
 		{
 			get { return this.CollationCompatible;}
 		}
-		String ISql120LinkedServer.CollationName 
+		String ISql120TSqlLinkedServer.CollationName 
 		{
 			get { return this.CollationName;}
 		}
-		Int32 ISql120LinkedServer.ConnectTimeout 
+		Int32 ISql120TSqlLinkedServer.ConnectTimeout 
 		{
 			get { return this.ConnectTimeout;}
 		}
-		Boolean ISql120LinkedServer.DataAccess 
+		Boolean ISql120TSqlLinkedServer.DataAccess 
 		{
 			get { return this.DataAccess;}
 		}
-		String ISql120LinkedServer.DataSource 
+		String ISql120TSqlLinkedServer.DataSource 
 		{
 			get { return this.DataSource;}
 		}
-		Boolean ISql120LinkedServer.IsDistributor 
+		Boolean ISql120TSqlLinkedServer.IsDistributor 
 		{
 			get { return this.IsDistributor;}
 		}
-		Boolean ISql120LinkedServer.IsPublisher 
+		Boolean ISql120TSqlLinkedServer.IsPublisher 
 		{
 			get { return this.IsPublisher;}
 		}
-		Boolean ISql120LinkedServer.IsSubscriber 
+		Boolean ISql120TSqlLinkedServer.IsSubscriber 
 		{
 			get { return this.IsSubscriber;}
 		}
-		Boolean ISql120LinkedServer.LazySchemaValidationEnabled 
+		Boolean ISql120TSqlLinkedServer.LazySchemaValidationEnabled 
 		{
 			get { return this.LazySchemaValidationEnabled;}
 		}
-		String ISql120LinkedServer.Location 
+		String ISql120TSqlLinkedServer.Location 
 		{
 			get { return this.Location;}
 		}
-		String ISql120LinkedServer.ProductName 
+		String ISql120TSqlLinkedServer.ProductName 
 		{
 			get { return this.ProductName;}
 		}
-		String ISql120LinkedServer.ProviderName 
+		String ISql120TSqlLinkedServer.ProviderName 
 		{
 			get { return this.ProviderName;}
 		}
-		String ISql120LinkedServer.ProviderString 
+		String ISql120TSqlLinkedServer.ProviderString 
 		{
 			get { return this.ProviderString;}
 		}
-		Int32 ISql120LinkedServer.QueryTimeout 
+		Int32 ISql120TSqlLinkedServer.QueryTimeout 
 		{
 			get { return this.QueryTimeout;}
 		}
-		Boolean ISql120LinkedServer.RemoteProcTransactionPromotionEnabled 
+		Boolean ISql120TSqlLinkedServer.RemoteProcTransactionPromotionEnabled 
 		{
 			get { return this.RemoteProcTransactionPromotionEnabled;}
 		}
-		Boolean ISql120LinkedServer.RpcEnabled 
+		Boolean ISql120TSqlLinkedServer.RpcEnabled 
 		{
 			get { return this.RpcEnabled;}
 		}
-		Boolean ISql120LinkedServer.RpcOutEnabled 
+		Boolean ISql120TSqlLinkedServer.RpcOutEnabled 
 		{
 			get { return this.RpcOutEnabled;}
 		}
-		Boolean ISql120LinkedServer.UseRemoteCollation 
+		Boolean ISql120TSqlLinkedServer.UseRemoteCollation 
 		{
 			get { return this.UseRemoteCollation;}
 		}
 	}
-	public partial class LinkedServerLogin : ISql120LinkedServerLogin
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlLinkedServerLogin"/>.
+	/// </summary>
+	public partial class TSqlLinkedServerLogin : ISql120TSqlLinkedServerLogin
 	{		
-		String ISql120LinkedServerLogin.LinkedServerLoginName 
+		String ISql120TSqlLinkedServerLogin.LinkedServerLoginName 
 		{
 			get { return this.LinkedServerLoginName;}
 		}
-		String ISql120LinkedServerLogin.LinkedServerPassword 
+		String ISql120TSqlLinkedServerLogin.LinkedServerPassword 
 		{
 			get { return this.LinkedServerPassword;}
 		}
-		Boolean ISql120LinkedServerLogin.UseSelf 
+		Boolean ISql120TSqlLinkedServerLogin.UseSelf 
 		{
 			get { return this.UseSelf;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120LinkedServer> ISql120LinkedServerLogin.LinkedServer 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLinkedServer> ISql120TSqlLinkedServerLogin.LinkedServer 
 		{
 			get 
 			{
-				return this.LinkedServer;
+				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLinkedServer>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Login> ISql120LinkedServerLogin.LocalLogin 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlLinkedServerLogin.LocalLogin 
 		{
 			get 
 			{
-				return this.LocalLogin;
+				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
 			}
 		}
 	}
-	public partial class Login : ISql120Login
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlLogin"/>.
+	/// </summary>
+	public partial class TSqlLogin : ISql120TSqlLogin
 	{		
-		Boolean ISql120Login.CheckExpiration 
+		Boolean ISql120TSqlLogin.CheckExpiration 
 		{
 			get { return this.CheckExpiration;}
 		}
-		Boolean ISql120Login.CheckPolicy 
+		Boolean ISql120TSqlLogin.CheckPolicy 
 		{
 			get { return this.CheckPolicy;}
 		}
-		String ISql120Login.DefaultDatabase 
+		String ISql120TSqlLogin.DefaultDatabase 
 		{
 			get { return this.DefaultDatabase;}
 		}
-		String ISql120Login.DefaultLanguage 
+		String ISql120TSqlLogin.DefaultLanguage 
 		{
 			get { return this.DefaultLanguage;}
 		}
-		Boolean ISql120Login.Disabled 
+		Boolean ISql120TSqlLogin.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		LoginEncryptionOption ISql120Login.EncryptionOption 
+		LoginEncryptionOption ISql120TSqlLogin.EncryptionOption 
 		{
 			get { return this.EncryptionOption;}
 		}
-		Boolean ISql120Login.MappedToWindowsLogin 
+		Boolean ISql120TSqlLogin.MappedToWindowsLogin 
 		{
 			get { return this.MappedToWindowsLogin;}
 		}
-		String ISql120Login.Password 
+		String ISql120TSqlLogin.Password 
 		{
 			get { return this.Password;}
 		}
-		Boolean ISql120Login.PasswordHashed 
+		Boolean ISql120TSqlLogin.PasswordHashed 
 		{
 			get { return this.PasswordHashed;}
 		}
-		Boolean ISql120Login.PasswordMustChange 
+		Boolean ISql120TSqlLogin.PasswordMustChange 
 		{
 			get { return this.PasswordMustChange;}
 		}
-		String ISql120Login.Sid 
+		String ISql120TSqlLogin.Sid 
 		{
 			get { return this.Sid;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120AsymmetricKey> ISql120Login.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey> ISql120TSqlLogin.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Certificate> ISql120Login.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlLogin.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Credential> ISql120Login.Credential 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCredential> ISql120TSqlLogin.Credential 
 		{
 			get 
 			{
-				return this.Credential;
+				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCredential>();
 			}
 		}
 	}
-	public partial class MasterKey : ISql120MasterKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlMasterKey"/>.
+	/// </summary>
+	public partial class TSqlMasterKey : ISql120TSqlMasterKey
 	{		
-		String ISql120MasterKey.Password 
+		String ISql120TSqlMasterKey.Password 
 		{
 			get { return this.Password;}
 		}
 	}
-	public partial class MessageType : ISql120MessageType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlMessageType"/>.
+	/// </summary>
+	public partial class TSqlMessageType : ISql120TSqlMessageType
 	{		
-		ValidationMethod ISql120MessageType.ValidationMethod 
+		ValidationMethod ISql120TSqlMessageType.ValidationMethod 
 		{
 			get { return this.ValidationMethod;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120MessageType.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlMessageType.Authorizer 
 		{
 			get 
 			{
@@ -19253,33 +19140,36 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120XmlSchemaCollection> ISql120MessageType.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection> ISql120TSqlMessageType.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class PartitionFunction : ISql120PartitionFunction
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlPartitionFunction"/>.
+	/// </summary>
+	public partial class TSqlPartitionFunction : ISql120TSqlPartitionFunction
 	{		
-		PartitionRange ISql120PartitionFunction.Range 
+		PartitionRange ISql120TSqlPartitionFunction.Range 
 		{
 			get { return this.Range;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionValue> ISql120PartitionFunction.BoundaryValues 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionValue> ISql120TSqlPartitionFunction.BoundaryValues 
 		{
 			get 
 			{
-				return this.BoundaryValues;
+				return this.BoundaryValues.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionValue>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120PartitionFunction.ParameterType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
@@ -19287,40 +19177,46 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class PartitionScheme : ISql120PartitionScheme
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlPartitionScheme"/>.
+	/// </summary>
+	public partial class TSqlPartitionScheme : ISql120TSqlPartitionScheme
 	{		
-		Boolean ISql120PartitionScheme.AllToOneFilegroup 
+		Boolean ISql120TSqlPartitionScheme.AllToOneFilegroup 
 		{
 			get { return this.AllToOneFilegroup;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120PartitionScheme.Filegroups 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlPartitionScheme.Filegroups 
 		{
 			get 
 			{
-				return this.Filegroups;
+				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionFunction> ISql120PartitionScheme.PartitionFunction 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionFunction> ISql120TSqlPartitionScheme.PartitionFunction 
 		{
 			get 
 			{
-				return this.PartitionFunction;
+				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionFunction>();
 			}
 		}
 	}
-	public partial class PartitionValue : ISql120PartitionValue
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlPartitionValue"/>.
+	/// </summary>
+	public partial class TSqlPartitionValue : ISql120TSqlPartitionValue
 	{		
-		String ISql120PartitionValue.Expression 
+		String ISql120TSqlPartitionValue.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120PartitionValue.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlPartitionValue.ExpressionDependencies 
 		{
 			get 
 			{
@@ -19328,36 +19224,39 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Permission : ISql120Permission
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlPermission"/>.
+	/// </summary>
+	public partial class TSqlPermission : ISql120TSqlPermission
 	{		
-		PermissionAction ISql120Permission.PermissionAction 
+		PermissionAction ISql120TSqlPermission.PermissionAction 
 		{
 			get { return this.PermissionAction;}
 		}
-		PermissionType ISql120Permission.PermissionType 
+		PermissionType ISql120TSqlPermission.PermissionType 
 		{
 			get { return this.PermissionType;}
 		}
-		Boolean ISql120Permission.WithAllPrivileges 
+		Boolean ISql120TSqlPermission.WithAllPrivileges 
 		{
 			get { return this.WithAllPrivileges;}
 		}
-		Boolean ISql120Permission.WithGrantOption 
+		Boolean ISql120TSqlPermission.WithGrantOption 
 		{
 			get { return this.WithGrantOption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120Permission.ExcludedColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlPermission.ExcludedColumns 
 		{
 			get 
 			{
-				return this.ExcludedColumns;
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql120Permission.Grantee 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql120TSqlPermission.Grantee 
 		{
 			get 
 			{
@@ -19365,8 +19264,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql120Permission.Grantor 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql120TSqlPermission.Grantor 
 		{
 			get 
 			{
@@ -19374,17 +19273,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120Permission.RevokedGrantOptionColumns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlPermission.RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return this.RevokedGrantOptionColumns;
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql120Permission.SecuredObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISql120TSqlPermission.SecuredObject 
 		{
 			get 
 			{
@@ -19392,191 +19291,197 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class PrimaryKeyConstraint : ISql120PrimaryKeyConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlPrimaryKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlPrimaryKeyConstraint : ISql120TSqlPrimaryKeyConstraint
 	{		
-		Boolean ISql120PrimaryKeyConstraint.AllowPageLocks 
+		Boolean ISql120TSqlPrimaryKeyConstraint.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql120PrimaryKeyConstraint.AllowRowLocks 
+		Boolean ISql120TSqlPrimaryKeyConstraint.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Int32? ISql120PrimaryKeyConstraint.BucketCount 
+		Int32? ISql120TSqlPrimaryKeyConstraint.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql120PrimaryKeyConstraint.Clustered 
+		Boolean ISql120TSqlPrimaryKeyConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql120PrimaryKeyConstraint.Disabled 
+		Boolean ISql120TSqlPrimaryKeyConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean? ISql120PrimaryKeyConstraint.FileStreamNull 
+		Boolean? ISql120TSqlPrimaryKeyConstraint.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Int32? ISql120PrimaryKeyConstraint.FillFactor 
+		Int32? ISql120TSqlPrimaryKeyConstraint.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql120PrimaryKeyConstraint.Hash 
+		Boolean ISql120TSqlPrimaryKeyConstraint.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql120PrimaryKeyConstraint.IgnoreDuplicateKey 
+		Boolean ISql120TSqlPrimaryKeyConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql120PrimaryKeyConstraint.RecomputeStatistics 
+		Boolean ISql120TSqlPrimaryKeyConstraint.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql120PrimaryKeyConstraint.WithPadIndex 
+		Boolean ISql120TSqlPrimaryKeyConstraint.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120PrimaryKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlPrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataCompressionOption> ISql120PrimaryKeyConstraint.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption> ISql120TSqlPrimaryKeyConstraint.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120PrimaryKeyConstraint.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlPrimaryKeyConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120PrimaryKeyConstraint.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlPrimaryKeyConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120PrimaryKeyConstraint.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlPrimaryKeyConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120ExtendedProperty> ISql120PrimaryKeyConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlPrimaryKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120PrimaryKeyConstraint.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlPrimaryKeyConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120PrimaryKeyConstraint.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlPrimaryKeyConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Procedure : ISql120Procedure
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlProcedure"/>.
+	/// </summary>
+	public partial class TSqlProcedure : ISql120TSqlProcedure
 	{		
-		Boolean? ISql120Procedure.AnsiNullsOn 
+		Boolean? ISql120TSqlProcedure.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql120Procedure.ClassName 
+		String ISql120TSqlProcedure.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql120Procedure.ExecuteAsCaller 
+		Boolean ISql120TSqlProcedure.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql120Procedure.ExecuteAsOwner 
+		Boolean ISql120TSqlProcedure.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql120Procedure.ExecuteAsSelf 
+		Boolean ISql120TSqlProcedure.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql120Procedure.ForReplication 
+		Boolean ISql120TSqlProcedure.ForReplication 
 		{
 			get { return this.ForReplication;}
 		}
-		Boolean ISql120Procedure.IsReplicated 
+		Boolean ISql120TSqlProcedure.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		String ISql120Procedure.MethodName 
+		String ISql120TSqlProcedure.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql120Procedure.QuotedIdentifierOn 
+		Boolean? ISql120TSqlProcedure.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql120Procedure.WithEncryption 
+		Boolean ISql120TSqlProcedure.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql120Procedure.WithNativeCompilation 
+		Boolean ISql120TSqlProcedure.WithNativeCompilation 
 		{
 			get { return this.WithNativeCompilation;}
 		}
-		Boolean ISql120Procedure.WithRecompile 
+		Boolean ISql120TSqlProcedure.WithRecompile 
 		{
 			get { return this.WithRecompile;}
 		}
-		Boolean ISql120Procedure.WithSchemaBinding 
+		Boolean ISql120TSqlProcedure.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Assembly> ISql120Procedure.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlProcedure.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120Procedure.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlProcedure.BodyDependencies 
 		{
 			get 
 			{
@@ -19584,184 +19489,190 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Login> ISql120Procedure.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlProcedure.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Parameter> ISql120Procedure.Parameters 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter> ISql120TSqlProcedure.Parameters 
 		{
 			get 
 			{
-				return this.Parameters;
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlParameter>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Procedure> ISql120Procedure.ParentProcedure 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedure> ISql120TSqlProcedure.ParentProcedure 
 		{
 			get 
 			{
-				return this.ParentProcedure;
+				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedure>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120Procedure.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120User> ISql120Procedure.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlProcedure.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
 			}
 		}
 	}
-	public partial class Queue : ISql120Queue
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlQueue"/>.
+	/// </summary>
+	public partial class TSqlQueue : ISql120TSqlQueue
 	{		
-		Boolean ISql120Queue.ActivationExecuteAsCaller 
+		Boolean ISql120TSqlQueue.ActivationExecuteAsCaller 
 		{
 			get { return this.ActivationExecuteAsCaller;}
 		}
-		Boolean ISql120Queue.ActivationExecuteAsOwner 
+		Boolean ISql120TSqlQueue.ActivationExecuteAsOwner 
 		{
 			get { return this.ActivationExecuteAsOwner;}
 		}
-		Boolean ISql120Queue.ActivationExecuteAsSelf 
+		Boolean ISql120TSqlQueue.ActivationExecuteAsSelf 
 		{
 			get { return this.ActivationExecuteAsSelf;}
 		}
-		Int32? ISql120Queue.ActivationMaxQueueReaders 
+		Int32? ISql120TSqlQueue.ActivationMaxQueueReaders 
 		{
 			get { return this.ActivationMaxQueueReaders;}
 		}
-		Boolean? ISql120Queue.ActivationStatusOn 
+		Boolean? ISql120TSqlQueue.ActivationStatusOn 
 		{
 			get { return this.ActivationStatusOn;}
 		}
-		Boolean ISql120Queue.PoisonMessageHandlingStatusOn 
+		Boolean ISql120TSqlQueue.PoisonMessageHandlingStatusOn 
 		{
 			get { return this.PoisonMessageHandlingStatusOn;}
 		}
-		Boolean ISql120Queue.RetentionOn 
+		Boolean ISql120TSqlQueue.RetentionOn 
 		{
 			get { return this.RetentionOn;}
 		}
-		Boolean ISql120Queue.StatusOn 
+		Boolean ISql120TSqlQueue.StatusOn 
 		{
 			get { return this.StatusOn;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Procedure> ISql120Queue.ActivationProcedure 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedure> ISql120TSqlQueue.ActivationProcedure 
 		{
 			get 
 			{
-				return this.ActivationProcedure;
+				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedure>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120Queue.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlQueue.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120Queue.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlQueue.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Login> ISql120Queue.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlQueue.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120Queue.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlQueue.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120Queue.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlQueue.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120Queue.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlQueue.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120User> ISql120Queue.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlQueue.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
 			}
 		}
 	}
-	public partial class QueueEventNotification : ISql120QueueEventNotification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlQueueEventNotification"/>.
+	/// </summary>
+	public partial class TSqlQueueEventNotification : ISql120TSqlQueueEventNotification
 	{		
-		String ISql120QueueEventNotification.BrokerInstanceSpecifier 
+		String ISql120TSqlQueueEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql120QueueEventNotification.BrokerService 
+		String ISql120TSqlQueueEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql120QueueEventNotification.WithFanIn 
+		Boolean ISql120TSqlQueueEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120EventGroup> ISql120QueueEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventGroup> ISql120TSqlQueueEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql120QueueEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql120TSqlQueueEventNotification.EventType 
 		{
 			get 
 			{
@@ -19769,28 +19680,31 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Queue> ISql120QueueEventNotification.Queue 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueue> ISql120TSqlQueueEventNotification.Queue 
 		{
 			get 
 			{
-				return this.Queue;
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueue>();
 			}
 		}
 	}
-	public partial class RemoteServiceBinding : ISql120RemoteServiceBinding
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlRemoteServiceBinding"/>.
+	/// </summary>
+	public partial class TSqlRemoteServiceBinding : ISql120TSqlRemoteServiceBinding
 	{		
-		Boolean ISql120RemoteServiceBinding.Anonymous 
+		Boolean ISql120TSqlRemoteServiceBinding.Anonymous 
 		{
 			get { return this.Anonymous;}
 		}
-		String ISql120RemoteServiceBinding.Service 
+		String ISql120TSqlRemoteServiceBinding.Service 
 		{
 			get { return this.Service;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120RemoteServiceBinding.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlRemoteServiceBinding.Authorizer 
 		{
 			get 
 			{
@@ -19798,24 +19712,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120User> ISql120RemoteServiceBinding.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlRemoteServiceBinding.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
 			}
 		}
 	}
-	public partial class ResourceGovernor : ISql120ResourceGovernor
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlResourceGovernor"/>.
+	/// </summary>
+	public partial class TSqlResourceGovernor : ISql120TSqlResourceGovernor
 	{		
-		Boolean? ISql120ResourceGovernor.Enabled 
+		Boolean? ISql120TSqlResourceGovernor.Enabled 
 		{
 			get { return this.Enabled;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120ResourceGovernor.ClassifierFunction 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlResourceGovernor.ClassifierFunction 
 		{
 			get 
 			{
@@ -19823,42 +19740,48 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ResourcePool : ISql120ResourcePool
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlResourcePool"/>.
+	/// </summary>
+	public partial class TSqlResourcePool : ISql120TSqlResourcePool
 	{		
-		Int32 ISql120ResourcePool.CapCpuPercent 
+		Int32 ISql120TSqlResourcePool.CapCpuPercent 
 		{
 			get { return this.CapCpuPercent;}
 		}
-		Int32 ISql120ResourcePool.MaxCpuPercent 
+		Int32 ISql120TSqlResourcePool.MaxCpuPercent 
 		{
 			get { return this.MaxCpuPercent;}
 		}
-		Int32 ISql120ResourcePool.MaxIopsPerVolume 
+		Int32 ISql120TSqlResourcePool.MaxIopsPerVolume 
 		{
 			get { return this.MaxIopsPerVolume;}
 		}
-		Int32 ISql120ResourcePool.MaxMemoryPercent 
+		Int32 ISql120TSqlResourcePool.MaxMemoryPercent 
 		{
 			get { return this.MaxMemoryPercent;}
 		}
-		Int32 ISql120ResourcePool.MinCpuPercent 
+		Int32 ISql120TSqlResourcePool.MinCpuPercent 
 		{
 			get { return this.MinCpuPercent;}
 		}
-		Int32 ISql120ResourcePool.MinIopsPerVolume 
+		Int32 ISql120TSqlResourcePool.MinIopsPerVolume 
 		{
 			get { return this.MinIopsPerVolume;}
 		}
-		Int32 ISql120ResourcePool.MinMemoryPercent 
+		Int32 ISql120TSqlResourcePool.MinMemoryPercent 
 		{
 			get { return this.MinMemoryPercent;}
 		}
 	}
-	public partial class Role : ISql120Role
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlRole"/>.
+	/// </summary>
+	public partial class TSqlRole : ISql120TSqlRole
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120Role.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlRole.Authorizer 
 		{
 			get 
 			{
@@ -19866,11 +19789,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class RoleMembership : ISql120RoleMembership
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlRoleMembership : ISql120TSqlRoleMembership
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql120RoleMembership.Member 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISql120TSqlRoleMembership.Member 
 		{
 			get 
 			{
@@ -19878,40 +19804,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Role> ISql120RoleMembership.Role 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRole> ISql120TSqlRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role;
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRole>();
 			}
 		}
 	}
-	public partial class Route : ISql120Route
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlRoute"/>.
+	/// </summary>
+	public partial class TSqlRoute : ISql120TSqlRoute
 	{		
-		String ISql120Route.Address 
+		String ISql120TSqlRoute.Address 
 		{
 			get { return this.Address;}
 		}
-		String ISql120Route.BrokerInstance 
+		String ISql120TSqlRoute.BrokerInstance 
 		{
 			get { return this.BrokerInstance;}
 		}
-		Int32? ISql120Route.Lifetime 
+		Int32? ISql120TSqlRoute.Lifetime 
 		{
 			get { return this.Lifetime;}
 		}
-		String ISql120Route.MirrorAddress 
+		String ISql120TSqlRoute.MirrorAddress 
 		{
 			get { return this.MirrorAddress;}
 		}
-		String ISql120Route.ServiceName 
+		String ISql120TSqlRoute.ServiceName 
 		{
 			get { return this.ServiceName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120Route.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlRoute.Authorizer 
 		{
 			get 
 			{
@@ -19919,15 +19848,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Rule : ISql120Rule
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlRule"/>.
+	/// </summary>
+	public partial class TSqlRule : ISql120TSqlRule
 	{		
-		String ISql120Rule.Expression 
+		String ISql120TSqlRule.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120Rule.BoundObjects 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlRule.BoundObjects 
 		{
 			get 
 			{
@@ -19935,20 +19867,23 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120Rule.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlRule.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}
-	public partial class Schema : ISql120Schema
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSchema"/>.
+	/// </summary>
+	public partial class TSqlSchema : ISql120TSqlSchema
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120Schema.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlSchema.Authorizer 
 		{
 			get 
 			{
@@ -19956,35 +19891,41 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SearchProperty : ISql120SearchProperty
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSearchProperty"/>.
+	/// </summary>
+	public partial class TSqlSearchProperty : ISql120TSqlSearchProperty
 	{		
-		String ISql120SearchProperty.Description 
+		String ISql120TSqlSearchProperty.Description 
 		{
 			get { return this.Description;}
 		}
-		Int32 ISql120SearchProperty.Identifier 
+		Int32 ISql120TSqlSearchProperty.Identifier 
 		{
 			get { return this.Identifier;}
 		}
-		String ISql120SearchProperty.PropertySetGuid 
+		String ISql120TSqlSearchProperty.PropertySetGuid 
 		{
 			get { return this.PropertySetGuid;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120SearchPropertyList> ISql120SearchProperty.SearchPropertyList 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyList> ISql120TSqlSearchProperty.SearchPropertyList 
 		{
 			get 
 			{
-				return this.SearchPropertyList;
+				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyList>();
 			}
 		}
 	}
-	public partial class SearchPropertyList : ISql120SearchPropertyList
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSearchPropertyList"/>.
+	/// </summary>
+	public partial class TSqlSearchPropertyList : ISql120TSqlSearchPropertyList
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120SearchPropertyList.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlSearchPropertyList.Authorizer 
 		{
 			get 
 			{
@@ -19992,205 +19933,217 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Sequence : ISql120Sequence
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSequence"/>.
+	/// </summary>
+	public partial class TSqlSequence : ISql120TSqlSequence
 	{		
-		Int32? ISql120Sequence.CacheSize 
+		Int32? ISql120TSqlSequence.CacheSize 
 		{
 			get { return this.CacheSize;}
 		}
-		String ISql120Sequence.IncrementValue 
+		String ISql120TSqlSequence.IncrementValue 
 		{
 			get { return this.IncrementValue;}
 		}
-		Boolean ISql120Sequence.IsCached 
+		Boolean ISql120TSqlSequence.IsCached 
 		{
 			get { return this.IsCached;}
 		}
-		Boolean ISql120Sequence.IsCycling 
+		Boolean ISql120TSqlSequence.IsCycling 
 		{
 			get { return this.IsCycling;}
 		}
-		String ISql120Sequence.MaxValue 
+		String ISql120TSqlSequence.MaxValue 
 		{
 			get { return this.MaxValue;}
 		}
-		String ISql120Sequence.MinValue 
+		String ISql120TSqlSequence.MinValue 
 		{
 			get { return this.MinValue;}
 		}
-		Boolean ISql120Sequence.NoMaxValue 
+		Boolean ISql120TSqlSequence.NoMaxValue 
 		{
 			get { return this.NoMaxValue;}
 		}
-		Boolean ISql120Sequence.NoMinValue 
+		Boolean ISql120TSqlSequence.NoMinValue 
 		{
 			get { return this.NoMinValue;}
 		}
-		String ISql120Sequence.StartValue 
+		String ISql120TSqlSequence.StartValue 
 		{
 			get { return this.StartValue;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataType> ISql120Sequence.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlSequence.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120Sequence.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlSequence.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}
-	public partial class ServerAudit : ISql120ServerAudit
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlServerAudit"/>.
+	/// </summary>
+	public partial class TSqlServerAudit : ISql120TSqlServerAudit
 	{		
-		String ISql120ServerAudit.AuditGuid 
+		String ISql120TSqlServerAudit.AuditGuid 
 		{
 			get { return this.AuditGuid;}
 		}
-		AuditTarget ISql120ServerAudit.AuditTarget 
+		AuditTarget ISql120TSqlServerAudit.AuditTarget 
 		{
 			get { return this.AuditTarget;}
 		}
-		Boolean ISql120ServerAudit.Disabled 
+		Boolean ISql120TSqlServerAudit.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		String ISql120ServerAudit.FilePath 
+		String ISql120TSqlServerAudit.FilePath 
 		{
 			get { return this.FilePath;}
 		}
-		Int32? ISql120ServerAudit.MaxFiles 
+		Int32? ISql120TSqlServerAudit.MaxFiles 
 		{
 			get { return this.MaxFiles;}
 		}
-		Int32? ISql120ServerAudit.MaxRolloverFiles 
+		Int32? ISql120TSqlServerAudit.MaxRolloverFiles 
 		{
 			get { return this.MaxRolloverFiles;}
 		}
-		Int32? ISql120ServerAudit.MaxSize 
+		Int32? ISql120TSqlServerAudit.MaxSize 
 		{
 			get { return this.MaxSize;}
 		}
-		MemoryUnit ISql120ServerAudit.MaxSizeUnit 
+		MemoryUnit ISql120TSqlServerAudit.MaxSizeUnit 
 		{
 			get { return this.MaxSizeUnit;}
 		}
-		FailureAction ISql120ServerAudit.OnFailure 
+		FailureAction ISql120TSqlServerAudit.OnFailure 
 		{
 			get { return this.OnFailure;}
 		}
-		String ISql120ServerAudit.PredicateExpression 
+		String ISql120TSqlServerAudit.PredicateExpression 
 		{
 			get { return this.PredicateExpression;}
 		}
-		Int32 ISql120ServerAudit.QueueDelay 
+		Int32 ISql120TSqlServerAudit.QueueDelay 
 		{
 			get { return this.QueueDelay;}
 		}
-		Boolean ISql120ServerAudit.ReserveDiskSpace 
+		Boolean ISql120TSqlServerAudit.ReserveDiskSpace 
 		{
 			get { return this.ReserveDiskSpace;}
 		}
-		Boolean ISql120ServerAudit.UnlimitedFileSize 
+		Boolean ISql120TSqlServerAudit.UnlimitedFileSize 
 		{
 			get { return this.UnlimitedFileSize;}
 		}
-		Boolean ISql120ServerAudit.UnlimitedMaxRolloverFiles 
+		Boolean ISql120TSqlServerAudit.UnlimitedMaxRolloverFiles 
 		{
 			get { return this.UnlimitedMaxRolloverFiles;}
 		}
 	}
-	public partial class ServerAuditSpecification : ISql120ServerAuditSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlServerAuditSpecification"/>.
+	/// </summary>
+	public partial class TSqlServerAuditSpecification : ISql120TSqlServerAuditSpecification
 	{		
-		Boolean ISql120ServerAuditSpecification.StateOn 
+		Boolean ISql120TSqlServerAuditSpecification.StateOn 
 		{
 			get { return this.StateOn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120AuditActionGroup> ISql120ServerAuditSpecification.AuditActionGroups 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAuditActionGroup> ISql120TSqlServerAuditSpecification.AuditActionGroups 
 		{
 			get 
 			{
-				return this.AuditActionGroups;
+				return this.AuditActionGroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAuditActionGroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120ServerAudit> ISql120ServerAuditSpecification.ServerAudit 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAudit> ISql120TSqlServerAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit;
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAudit>();
 			}
 		}
 	}
-	public partial class ServerDdlTrigger : ISql120ServerDdlTrigger
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlServerDdlTrigger"/>.
+	/// </summary>
+	public partial class TSqlServerDdlTrigger : ISql120TSqlServerDdlTrigger
 	{		
-		Boolean? ISql120ServerDdlTrigger.AnsiNullsOn 
+		Boolean? ISql120TSqlServerDdlTrigger.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		String ISql120ServerDdlTrigger.ClassName 
+		String ISql120TSqlServerDdlTrigger.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean ISql120ServerDdlTrigger.Disabled 
+		Boolean ISql120TSqlServerDdlTrigger.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean ISql120ServerDdlTrigger.ExecuteAsCaller 
+		Boolean ISql120TSqlServerDdlTrigger.ExecuteAsCaller 
 		{
 			get { return this.ExecuteAsCaller;}
 		}
-		Boolean ISql120ServerDdlTrigger.ExecuteAsOwner 
+		Boolean ISql120TSqlServerDdlTrigger.ExecuteAsOwner 
 		{
 			get { return this.ExecuteAsOwner;}
 		}
-		Boolean ISql120ServerDdlTrigger.ExecuteAsSelf 
+		Boolean ISql120TSqlServerDdlTrigger.ExecuteAsSelf 
 		{
 			get { return this.ExecuteAsSelf;}
 		}
-		Boolean ISql120ServerDdlTrigger.IsLogon 
+		Boolean ISql120TSqlServerDdlTrigger.IsLogon 
 		{
 			get { return this.IsLogon;}
 		}
-		String ISql120ServerDdlTrigger.MethodName 
+		String ISql120TSqlServerDdlTrigger.MethodName 
 		{
 			get { return this.MethodName;}
 		}
-		Boolean? ISql120ServerDdlTrigger.QuotedIdentifierOn 
+		Boolean? ISql120TSqlServerDdlTrigger.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		TriggerType ISql120ServerDdlTrigger.TriggerType 
+		TriggerType ISql120TSqlServerDdlTrigger.TriggerType 
 		{
 			get { return this.TriggerType;}
 		}
-		Boolean ISql120ServerDdlTrigger.WithEncryption 
+		Boolean ISql120TSqlServerDdlTrigger.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Assembly> ISql120ServerDdlTrigger.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlServerDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120ServerDdlTrigger.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlServerDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -20198,17 +20151,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120EventGroup> ISql120ServerDdlTrigger.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventGroup> ISql120TSqlServerDdlTrigger.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql120ServerDdlTrigger.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql120TSqlServerDdlTrigger.EventType 
 		{
 			get 
 			{
@@ -20216,50 +20169,53 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Login> ISql120ServerDdlTrigger.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlServerDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120User> ISql120ServerDdlTrigger.User 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlServerDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User;
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
 			}
 		}
 	}
-	public partial class ServerEventNotification : ISql120ServerEventNotification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlServerEventNotification"/>.
+	/// </summary>
+	public partial class TSqlServerEventNotification : ISql120TSqlServerEventNotification
 	{		
-		String ISql120ServerEventNotification.BrokerInstanceSpecifier 
+		String ISql120TSqlServerEventNotification.BrokerInstanceSpecifier 
 		{
 			get { return this.BrokerInstanceSpecifier;}
 		}
-		String ISql120ServerEventNotification.BrokerService 
+		String ISql120TSqlServerEventNotification.BrokerService 
 		{
 			get { return this.BrokerService;}
 		}
-		Boolean ISql120ServerEventNotification.WithFanIn 
+		Boolean ISql120TSqlServerEventNotification.WithFanIn 
 		{
 			get { return this.WithFanIn;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120EventGroup> ISql120ServerEventNotification.EventGroup 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventGroup> ISql120TSqlServerEventNotification.EventGroup 
 		{
 			get 
 			{
-				return this.EventGroup;
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlEventGroup>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql120ServerEventNotification.EventType 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISql120TSqlServerEventNotification.EventType 
 		{
 			get 
 			{
@@ -20267,14 +20223,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class ServerOptions : ISql120ServerOptions
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlServerOptions"/>.
+	/// </summary>
+	public partial class TSqlServerOptions : ISql120TSqlServerOptions
 	{		
 	}
-	public partial class ServerRoleMembership : ISql120ServerRoleMembership
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlServerRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlServerRoleMembership : ISql120TSqlServerRoleMembership
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> ISql120ServerRoleMembership.Member 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> ISql120TSqlServerRoleMembership.Member 
 		{
 			get 
 			{
@@ -20282,24 +20244,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Role> ISql120ServerRoleMembership.Role 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRole> ISql120TSqlServerRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role;
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRole>();
 			}
 		}
 	}
-	public partial class Service : ISql120Service
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlService"/>.
+	/// </summary>
+	public partial class TSqlService : ISql120TSqlService
 	{		
-		Boolean ISql120Service.UseDefaultContract 
+		Boolean ISql120TSqlService.UseDefaultContract 
 		{
 			get { return this.UseDefaultContract;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120Service.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlService.Authorizer 
 		{
 			get 
 			{
@@ -20307,73 +20272,79 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Contract> ISql120Service.Contracts 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlContract> ISql120TSqlService.Contracts 
 		{
 			get 
 			{
-				return this.Contracts;
+				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlContract>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Queue> ISql120Service.Queue 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueue> ISql120TSqlService.Queue 
 		{
 			get 
 			{
-				return this.Queue;
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueue>();
 			}
 		}
 	}
-	public partial class ServiceBrokerLanguageSpecifier : ISql120ServiceBrokerLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlServiceBrokerLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlServiceBrokerLanguageSpecifier : ISql120TSqlServiceBrokerLanguageSpecifier
 	{		
-		ServiceBrokerEncryptionAlgorithm ISql120ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1 
+		ServiceBrokerEncryptionAlgorithm ISql120TSqlServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart1 
 		{
 			get { return this.EncryptionAlgorithmPart1;}
 		}
-		ServiceBrokerEncryptionAlgorithm ISql120ServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2 
+		ServiceBrokerEncryptionAlgorithm ISql120TSqlServiceBrokerLanguageSpecifier.EncryptionAlgorithmPart2 
 		{
 			get { return this.EncryptionAlgorithmPart2;}
 		}
-		EncryptionMode ISql120ServiceBrokerLanguageSpecifier.EncryptionMode 
+		EncryptionMode ISql120TSqlServiceBrokerLanguageSpecifier.EncryptionMode 
 		{
 			get { return this.EncryptionMode;}
 		}
-		Boolean ISql120ServiceBrokerLanguageSpecifier.MessageForwardingEnabled 
+		Boolean ISql120TSqlServiceBrokerLanguageSpecifier.MessageForwardingEnabled 
 		{
 			get { return this.MessageForwardingEnabled;}
 		}
-		Int32 ISql120ServiceBrokerLanguageSpecifier.MessageForwardSize 
+		Int32 ISql120TSqlServiceBrokerLanguageSpecifier.MessageForwardSize 
 		{
 			get { return this.MessageForwardSize;}
 		}
-		Boolean ISql120ServiceBrokerLanguageSpecifier.UseCertificateFirst 
+		Boolean ISql120TSqlServiceBrokerLanguageSpecifier.UseCertificateFirst 
 		{
 			get { return this.UseCertificateFirst;}
 		}
-		AuthenticationModes ISql120ServiceBrokerLanguageSpecifier.WindowsAuthenticationMode 
+		AuthenticationModes ISql120TSqlServiceBrokerLanguageSpecifier.WindowsAuthenticationMode 
 		{
 			get { return this.WindowsAuthenticationMode;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Certificate> ISql120ServiceBrokerLanguageSpecifier.AuthenticationCertificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate;
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
 			}
 		}
 	}
-	public partial class Signature : ISql120Signature
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSignature"/>.
+	/// </summary>
+	public partial class TSqlSignature : ISql120TSqlSignature
 	{		
-		Boolean ISql120Signature.IsCounterSignature 
+		Boolean ISql120TSqlSignature.IsCounterSignature 
 		{
 			get { return this.IsCounterSignature;}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql120Signature.EncryptionMechanism 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql120TSqlSignature.EncryptionMechanism 
 		{
 			get 
 			{
@@ -20381,8 +20352,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql120Signature.SignedObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql120TSqlSignature.SignedObject 
 		{
 			get 
 			{
@@ -20390,124 +20361,133 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SignatureEncryptionMechanism : ISql120SignatureEncryptionMechanism
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSignatureEncryptionMechanism"/>.
+	/// </summary>
+	public partial class TSqlSignatureEncryptionMechanism : ISql120TSqlSignatureEncryptionMechanism
 	{		
-		String ISql120SignatureEncryptionMechanism.Password 
+		String ISql120TSqlSignatureEncryptionMechanism.Password 
 		{
 			get { return this.Password;}
 		}
-		String ISql120SignatureEncryptionMechanism.SignedBlob 
+		String ISql120TSqlSignatureEncryptionMechanism.SignedBlob 
 		{
 			get { return this.SignedBlob;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120AsymmetricKey> ISql120SignatureEncryptionMechanism.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey> ISql120TSqlSignatureEncryptionMechanism.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Certificate> ISql120SignatureEncryptionMechanism.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlSignatureEncryptionMechanism.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
 			}
 		}
 	}
-	public partial class SoapLanguageSpecifier : ISql120SoapLanguageSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSoapLanguageSpecifier"/>.
+	/// </summary>
+	public partial class TSqlSoapLanguageSpecifier : ISql120TSqlSoapLanguageSpecifier
 	{		
-		Boolean ISql120SoapLanguageSpecifier.BatchesEnabled 
+		Boolean ISql120TSqlSoapLanguageSpecifier.BatchesEnabled 
 		{
 			get { return this.BatchesEnabled;}
 		}
-		CharacterSet ISql120SoapLanguageSpecifier.CharacterSet 
+		CharacterSet ISql120TSqlSoapLanguageSpecifier.CharacterSet 
 		{
 			get { return this.CharacterSet;}
 		}
-		String ISql120SoapLanguageSpecifier.DatabaseName 
+		String ISql120TSqlSoapLanguageSpecifier.DatabaseName 
 		{
 			get { return this.DatabaseName;}
 		}
-		Int32 ISql120SoapLanguageSpecifier.HeaderLimit 
+		Int32 ISql120TSqlSoapLanguageSpecifier.HeaderLimit 
 		{
 			get { return this.HeaderLimit;}
 		}
-		Boolean ISql120SoapLanguageSpecifier.IsDefaultDatabase 
+		Boolean ISql120TSqlSoapLanguageSpecifier.IsDefaultDatabase 
 		{
 			get { return this.IsDefaultDatabase;}
 		}
-		Boolean ISql120SoapLanguageSpecifier.IsDefaultNamespace 
+		Boolean ISql120TSqlSoapLanguageSpecifier.IsDefaultNamespace 
 		{
 			get { return this.IsDefaultNamespace;}
 		}
-		Boolean ISql120SoapLanguageSpecifier.IsDefaultWsdlSpName 
+		Boolean ISql120TSqlSoapLanguageSpecifier.IsDefaultWsdlSpName 
 		{
 			get { return this.IsDefaultWsdlSpName;}
 		}
-		SoapLoginType ISql120SoapLanguageSpecifier.LoginType 
+		SoapLoginType ISql120TSqlSoapLanguageSpecifier.LoginType 
 		{
 			get { return this.LoginType;}
 		}
-		String ISql120SoapLanguageSpecifier.Namespace 
+		String ISql120TSqlSoapLanguageSpecifier.Namespace 
 		{
 			get { return this.Namespace;}
 		}
-		SoapSchema ISql120SoapLanguageSpecifier.SchemaType 
+		SoapSchema ISql120TSqlSoapLanguageSpecifier.SchemaType 
 		{
 			get { return this.SchemaType;}
 		}
-		Boolean ISql120SoapLanguageSpecifier.SessionsEnabled 
+		Boolean ISql120TSqlSoapLanguageSpecifier.SessionsEnabled 
 		{
 			get { return this.SessionsEnabled;}
 		}
-		Int32 ISql120SoapLanguageSpecifier.SessionTimeout 
+		Int32 ISql120TSqlSoapLanguageSpecifier.SessionTimeout 
 		{
 			get { return this.SessionTimeout;}
 		}
-		Boolean ISql120SoapLanguageSpecifier.SessionTimeoutNever 
+		Boolean ISql120TSqlSoapLanguageSpecifier.SessionTimeoutNever 
 		{
 			get { return this.SessionTimeoutNever;}
 		}
-		String ISql120SoapLanguageSpecifier.WsdlSpName 
+		String ISql120TSqlSoapLanguageSpecifier.WsdlSpName 
 		{
 			get { return this.WsdlSpName;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120SoapMethodSpecification> ISql120SoapLanguageSpecifier.WebMethods 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSoapMethodSpecification> ISql120TSqlSoapLanguageSpecifier.WebMethods 
 		{
 			get 
 			{
-				return this.WebMethods;
+				return this.WebMethods.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSoapMethodSpecification>();
 			}
 		}
 	}
-	public partial class SoapMethodSpecification : ISql120SoapMethodSpecification
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSoapMethodSpecification"/>.
+	/// </summary>
+	public partial class TSqlSoapMethodSpecification : ISql120TSqlSoapMethodSpecification
 	{		
-		SoapFormat ISql120SoapMethodSpecification.Format 
+		SoapFormat ISql120TSqlSoapMethodSpecification.Format 
 		{
 			get { return this.Format;}
 		}
-		SoapSchema ISql120SoapMethodSpecification.SchemaType 
+		SoapSchema ISql120TSqlSoapMethodSpecification.SchemaType 
 		{
 			get { return this.SchemaType;}
 		}
-		String ISql120SoapMethodSpecification.WebMethodAlias 
+		String ISql120TSqlSoapMethodSpecification.WebMethodAlias 
 		{
 			get { return this.WebMethodAlias;}
 		}
-		String ISql120SoapMethodSpecification.WebMethodNamespace 
+		String ISql120TSqlSoapMethodSpecification.WebMethodNamespace 
 		{
 			get { return this.WebMethodNamespace;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120SoapMethodSpecification.RelatedMethod 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlSoapMethodSpecification.RelatedMethod 
 		{
 			get 
 			{
@@ -20515,101 +20495,104 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class SpatialIndex : ISql120SpatialIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSpatialIndex"/>.
+	/// </summary>
+	public partial class TSqlSpatialIndex : ISql120TSqlSpatialIndex
 	{		
-		Boolean ISql120SpatialIndex.AllowPageLocks 
+		Boolean ISql120TSqlSpatialIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql120SpatialIndex.AllowRowLocks 
+		Boolean ISql120TSqlSpatialIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Int32? ISql120SpatialIndex.CellsPerObject 
+		Int32? ISql120TSqlSpatialIndex.CellsPerObject 
 		{
 			get { return this.CellsPerObject;}
 		}
-		CompressionLevel ISql120SpatialIndex.DataCompression 
+		CompressionLevel ISql120TSqlSpatialIndex.DataCompression 
 		{
 			get { return this.DataCompression;}
 		}
-		Boolean ISql120SpatialIndex.Disabled 
+		Boolean ISql120TSqlSpatialIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32 ISql120SpatialIndex.FillFactor 
+		Int32 ISql120TSqlSpatialIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Degree ISql120SpatialIndex.GridLevel1Density 
+		Degree ISql120TSqlSpatialIndex.GridLevel1Density 
 		{
 			get { return this.GridLevel1Density;}
 		}
-		Degree ISql120SpatialIndex.GridLevel2Density 
+		Degree ISql120TSqlSpatialIndex.GridLevel2Density 
 		{
 			get { return this.GridLevel2Density;}
 		}
-		Degree ISql120SpatialIndex.GridLevel3Density 
+		Degree ISql120TSqlSpatialIndex.GridLevel3Density 
 		{
 			get { return this.GridLevel3Density;}
 		}
-		Degree ISql120SpatialIndex.GridLevel4Density 
+		Degree ISql120TSqlSpatialIndex.GridLevel4Density 
 		{
 			get { return this.GridLevel4Density;}
 		}
-		Boolean ISql120SpatialIndex.IgnoreDuplicateKey 
+		Boolean ISql120TSqlSpatialIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql120SpatialIndex.RecomputeStatistics 
+		Boolean ISql120TSqlSpatialIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Tessellation ISql120SpatialIndex.Tessellation 
+		Tessellation ISql120TSqlSpatialIndex.Tessellation 
 		{
 			get { return this.Tessellation;}
 		}
-		Boolean ISql120SpatialIndex.WithPadIndex 
+		Boolean ISql120TSqlSpatialIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
-		Double? ISql120SpatialIndex.XMax 
+		Double? ISql120TSqlSpatialIndex.XMax 
 		{
 			get { return this.XMax;}
 		}
-		Double? ISql120SpatialIndex.XMin 
+		Double? ISql120TSqlSpatialIndex.XMin 
 		{
 			get { return this.XMin;}
 		}
-		Double? ISql120SpatialIndex.YMax 
+		Double? ISql120TSqlSpatialIndex.YMax 
 		{
 			get { return this.YMax;}
 		}
-		Double? ISql120SpatialIndex.YMin 
+		Double? ISql120TSqlSpatialIndex.YMin 
 		{
 			get { return this.YMin;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120SpatialIndex.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlSpatialIndex.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120SpatialIndex.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlSpatialIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql120SpatialIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql120TSqlSpatialIndex.IndexedObject 
 		{
 			get 
 			{
@@ -20617,62 +20600,65 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120SpatialIndex.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlSpatialIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120SpatialIndex.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlSpatialIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class Statistics : ISql120Statistics
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlStatistics"/>.
+	/// </summary>
+	public partial class TSqlStatistics : ISql120TSqlStatistics
 	{		
-		String ISql120Statistics.FilterPredicate 
+		String ISql120TSqlStatistics.FilterPredicate 
 		{
 			get { return this.FilterPredicate;}
 		}
-		Boolean ISql120Statistics.Incremental 
+		Boolean ISql120TSqlStatistics.Incremental 
 		{
 			get { return this.Incremental;}
 		}
-		Boolean ISql120Statistics.NoRecompute 
+		Boolean ISql120TSqlStatistics.NoRecompute 
 		{
 			get { return this.NoRecompute;}
 		}
-		Int32 ISql120Statistics.SampleSize 
+		Int32 ISql120TSqlStatistics.SampleSize 
 		{
 			get { return this.SampleSize;}
 		}
-		SamplingStyle ISql120Statistics.SamplingStyle 
+		SamplingStyle ISql120TSqlStatistics.SamplingStyle 
 		{
 			get { return this.SamplingStyle;}
 		}
-		String ISql120Statistics.StatsStream 
+		String ISql120TSqlStatistics.StatsStream 
 		{
 			get { return this.StatsStream;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120Statistics.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlStatistics.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120Statistics.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlStatistics.ExpressionDependencies 
 		{
 			get 
 			{
@@ -20680,8 +20666,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<TSqlObject> ISql120Statistics.OnObject 
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISql120TSqlStatistics.OnObject 
 		{
 			get 
 			{
@@ -20689,97 +20675,103 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class Parameter : ISql120Parameter
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlParameter"/>.
+	/// </summary>
+	public partial class TSqlParameter : ISql120TSqlParameter
 	{		
-		String ISql120Parameter.DefaultExpression 
+		String ISql120TSqlParameter.DefaultExpression 
 		{
 			get { return this.DefaultExpression;}
 		}
-		Boolean ISql120Parameter.IsMax 
+		Boolean ISql120TSqlParameter.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql120Parameter.IsOutput 
+		Boolean ISql120TSqlParameter.IsOutput 
 		{
 			get { return this.IsOutput;}
 		}
-		Int32 ISql120Parameter.Length 
+		Int32 ISql120TSqlParameter.Length 
 		{
 			get { return this.Length;}
 		}
-		Int32 ISql120Parameter.Precision 
+		Int32 ISql120TSqlParameter.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Boolean ISql120Parameter.ReadOnly 
+		Boolean ISql120TSqlParameter.ReadOnly 
 		{
 			get { return this.ReadOnly;}
 		}
-		Int32 ISql120Parameter.Scale 
+		Int32 ISql120TSqlParameter.Scale 
 		{
 			get { return this.Scale;}
 		}
-		Boolean ISql120Parameter.Varying 
+		Boolean ISql120TSqlParameter.Varying 
 		{
 			get { return this.Varying;}
 		}
-		XmlStyle ISql120Parameter.XmlStyle 
+		XmlStyle ISql120TSqlParameter.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataType> ISql120Parameter.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120XmlSchemaCollection> ISql120Parameter.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection> ISql120TSqlParameter.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class SymmetricKey : ISql120SymmetricKey
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSymmetricKey"/>.
+	/// </summary>
+	public partial class TSqlSymmetricKey : ISql120TSqlSymmetricKey
 	{		
-		SymmetricKeyAlgorithm ISql120SymmetricKey.Algorithm 
+		SymmetricKeyAlgorithm ISql120TSqlSymmetricKey.Algorithm 
 		{
 			get { return this.Algorithm;}
 		}
-		SymmetricKeyCreationDisposition ISql120SymmetricKey.CreationDisposition 
+		SymmetricKeyCreationDisposition ISql120TSqlSymmetricKey.CreationDisposition 
 		{
 			get { return this.CreationDisposition;}
 		}
-		String ISql120SymmetricKey.IdentityValue 
+		String ISql120TSqlSymmetricKey.IdentityValue 
 		{
 			get { return this.IdentityValue;}
 		}
-		String ISql120SymmetricKey.KeySource 
+		String ISql120TSqlSymmetricKey.KeySource 
 		{
 			get { return this.KeySource;}
 		}
-		String ISql120SymmetricKey.ProviderKeyName 
+		String ISql120TSqlSymmetricKey.ProviderKeyName 
 		{
 			get { return this.ProviderKeyName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120AsymmetricKey> ISql120SymmetricKey.AsymmetricKeys 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey> ISql120TSqlSymmetricKey.AsymmetricKeys 
 		{
 			get 
 			{
-				return this.AsymmetricKeys;
+				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120SymmetricKey.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlSymmetricKey.Authorizer 
 		{
 			get 
 			{
@@ -20787,17 +20779,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Certificate> ISql120SymmetricKey.Certificates 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlSymmetricKey.Certificates 
 		{
 			get 
 			{
-				return this.Certificates;
+				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql120SymmetricKey.Passwords 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql120TSqlSymmetricKey.Passwords 
 		{
 			get 
 			{
@@ -20805,8 +20797,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120SymmetricKey.Provider 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlSymmetricKey.Provider 
 		{
 			get 
 			{
@@ -20814,31 +20806,37 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120SymmetricKey> ISql120SymmetricKey.SymmetricKeys 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSymmetricKey> ISql120TSqlSymmetricKey.SymmetricKeys 
 		{
 			get 
 			{
-				return this.SymmetricKeys;
+				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSymmetricKey>();
 			}
 		}
 	}
-	public partial class SymmetricKeyPassword : ISql120SymmetricKeyPassword
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSymmetricKeyPassword"/>.
+	/// </summary>
+	public partial class TSqlSymmetricKeyPassword : ISql120TSqlSymmetricKeyPassword
 	{		
-		String ISql120SymmetricKeyPassword.Password 
+		String ISql120TSqlSymmetricKeyPassword.Password 
 		{
 			get { return this.Password;}
 		}
 	}
-	public partial class Synonym : ISql120Synonym
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSynonym"/>.
+	/// </summary>
+	public partial class TSqlSynonym : ISql120TSqlSynonym
 	{		
-		String ISql120Synonym.ForObjectName 
+		String ISql120TSqlSynonym.ForObjectName 
 		{
 			get { return this.ForObjectName;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120Synonym.ForObject 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlSynonym.ForObject 
 		{
 			get 
 			{
@@ -20846,280 +20844,289 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120Synonym.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlSynonym.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}
-	public partial class Table : ISql120Table
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlTable"/>.
+	/// </summary>
+	public partial class TSqlTable : ISql120TSqlTable
 	{		
-		Boolean? ISql120Table.AnsiNullsOn 
+		Boolean? ISql120TSqlTable.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean ISql120Table.ChangeDataCaptureEnabled 
+		Boolean ISql120TSqlTable.ChangeDataCaptureEnabled 
 		{
 			get { return this.ChangeDataCaptureEnabled;}
 		}
-		Boolean ISql120Table.ChangeTrackingEnabled 
+		Boolean ISql120TSqlTable.ChangeTrackingEnabled 
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
-		Durability ISql120Table.Durability 
+		Durability ISql120TSqlTable.Durability 
 		{
 			get { return this.Durability;}
 		}
-		Boolean? ISql120Table.FileStreamNull 
+		Boolean? ISql120TSqlTable.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Boolean ISql120Table.IsReplicated 
+		Boolean ISql120TSqlTable.IsReplicated 
 		{
 			get { return this.IsReplicated;}
 		}
-		Boolean ISql120Table.LargeValueTypesOutOfRow 
+		Boolean ISql120TSqlTable.LargeValueTypesOutOfRow 
 		{
 			get { return this.LargeValueTypesOutOfRow;}
 		}
-		LockEscalationMethod ISql120Table.LockEscalation 
+		LockEscalationMethod ISql120TSqlTable.LockEscalation 
 		{
 			get { return this.LockEscalation;}
 		}
-		Boolean ISql120Table.MemoryOptimized 
+		Boolean ISql120TSqlTable.MemoryOptimized 
 		{
 			get { return this.MemoryOptimized;}
 		}
-		Boolean? ISql120Table.QuotedIdentifierOn 
+		Boolean? ISql120TSqlTable.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql120Table.TableLockOnBulkLoad 
+		Boolean ISql120TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
 		}
-		Int32 ISql120Table.TextInRowSize 
+		Int32 ISql120TSqlTable.TextInRowSize 
 		{
 			get { return this.TextInRowSize;}
 		}
-		Boolean ISql120Table.TrackColumnsUpdated 
+		Boolean ISql120TSqlTable.TrackColumnsUpdated 
 		{
 			get { return this.TrackColumnsUpdated;}
 		}
-		Boolean ISql120Table.VardecimalStorageFormatEnabled 
+		Boolean ISql120TSqlTable.VardecimalStorageFormatEnabled 
 		{
 			get { return this.VardecimalStorageFormatEnabled;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120Table.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTable.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataCompressionOption> ISql120Table.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption> ISql120TSqlTable.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120Table.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120Table.FilegroupForTextImage 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlTable.FilegroupForTextImage 
 		{
 			get 
 			{
-				return this.FilegroupForTextImage;
+				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120Table.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlTable.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120Table.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlTable.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120Table.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120Table.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120Table.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlTable.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}
-	public partial class FileTable : ISql120FileTable
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlFileTable"/>.
+	/// </summary>
+	public partial class TSqlFileTable : ISql120TSqlFileTable
 	{		
-		Boolean? ISql120FileTable.AnsiNullsOn 
+		Boolean? ISql120TSqlFileTable.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean? ISql120FileTable.FileStreamNull 
+		Boolean? ISql120TSqlFileTable.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		String ISql120FileTable.FileTableCollateFilename 
+		String ISql120TSqlFileTable.FileTableCollateFilename 
 		{
 			get { return this.FileTableCollateFilename;}
 		}
-		String ISql120FileTable.FileTableDirectory 
+		String ISql120TSqlFileTable.FileTableDirectory 
 		{
 			get { return this.FileTableDirectory;}
 		}
-		Boolean ISql120FileTable.FileTableNamespaceEnabled 
+		Boolean ISql120TSqlFileTable.FileTableNamespaceEnabled 
 		{
 			get { return this.FileTableNamespaceEnabled;}
 		}
-		LockEscalationMethod ISql120FileTable.LockEscalation 
+		LockEscalationMethod ISql120TSqlFileTable.LockEscalation 
 		{
 			get { return this.LockEscalation;}
 		}
-		Boolean? ISql120FileTable.QuotedIdentifierOn 
+		Boolean? ISql120TSqlFileTable.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql120FileTable.TableLockOnBulkLoad 
+		Boolean ISql120TSqlFileTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120FileTable.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlFileTable.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataCompressionOption> ISql120FileTable.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption> ISql120TSqlFileTable.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120FileTable.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlFileTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120FileTable.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlFileTable.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120FileTable.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlFileTable.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120FileTable.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlFileTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120FileTable.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlFileTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120FileTable.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlFileTable.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}
-	public partial class TableType : ISql120TableType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlTableType"/>.
+	/// </summary>
+	public partial class TSqlTableType : ISql120TSqlTableType
 	{		
-		Boolean ISql120TableType.MemoryOptimized 
+		Boolean ISql120TSqlTableType.MemoryOptimized 
 		{
 			get { return this.MemoryOptimized;}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120TableType.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableType.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> ISql120TableType.Constraints 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> ISql120TSqlTableType.Constraints 
 		{
 			get 
 			{
@@ -21127,8 +21134,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlIndex> ISql120TableType.Indexes 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlIndex> ISql120TSqlTableType.Indexes 
 		{
 			get 
 			{
@@ -21136,24 +21143,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120TableType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlTableType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}
-	public partial class TableTypeCheckConstraint : ISql120TableTypeCheckConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlTableTypeCheckConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeCheckConstraint : ISql120TSqlTableTypeCheckConstraint
 	{		
-		String ISql120TableTypeCheckConstraint.Expression 
+		String ISql120TSqlTableTypeCheckConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120TableTypeCheckConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlTableTypeCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -21161,76 +21171,79 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class TableTypeColumn : ISql120TableTypeColumn
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlTableTypeColumn"/>.
+	/// </summary>
+	public partial class TSqlTableTypeColumn : ISql120TSqlTableTypeColumn
 	{		
-		String ISql120TableTypeColumn.Collation 
+		String ISql120TSqlTableTypeColumn.Collation 
 		{
 			get { return this.Collation;}
 		}
-		String ISql120TableTypeColumn.Expression 
+		String ISql120TSqlTableTypeColumn.Expression 
 		{
 			get { return this.Expression;}
 		}
-		String ISql120TableTypeColumn.IdentityIncrement 
+		String ISql120TSqlTableTypeColumn.IdentityIncrement 
 		{
 			get { return this.IdentityIncrement;}
 		}
-		String ISql120TableTypeColumn.IdentitySeed 
+		String ISql120TSqlTableTypeColumn.IdentitySeed 
 		{
 			get { return this.IdentitySeed;}
 		}
-		Boolean ISql120TableTypeColumn.IsIdentity 
+		Boolean ISql120TSqlTableTypeColumn.IsIdentity 
 		{
 			get { return this.IsIdentity;}
 		}
-		Boolean ISql120TableTypeColumn.IsMax 
+		Boolean ISql120TSqlTableTypeColumn.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql120TableTypeColumn.IsRowGuidCol 
+		Boolean ISql120TSqlTableTypeColumn.IsRowGuidCol 
 		{
 			get { return this.IsRowGuidCol;}
 		}
-		Int32 ISql120TableTypeColumn.Length 
+		Int32 ISql120TSqlTableTypeColumn.Length 
 		{
 			get { return this.Length;}
 		}
-		Boolean ISql120TableTypeColumn.Nullable 
+		Boolean ISql120TSqlTableTypeColumn.Nullable 
 		{
 			get { return this.Nullable;}
 		}
-		Boolean ISql120TableTypeColumn.Persisted 
+		Boolean ISql120TSqlTableTypeColumn.Persisted 
 		{
 			get { return this.Persisted;}
 		}
-		Boolean? ISql120TableTypeColumn.PersistedNullable 
+		Boolean? ISql120TSqlTableTypeColumn.PersistedNullable 
 		{
 			get { return this.PersistedNullable;}
 		}
-		Int32 ISql120TableTypeColumn.Precision 
+		Int32 ISql120TSqlTableTypeColumn.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISql120TableTypeColumn.Scale 
+		Int32 ISql120TSqlTableTypeColumn.Scale 
 		{
 			get { return this.Scale;}
 		}
-		XmlStyle ISql120TableTypeColumn.XmlStyle 
+		XmlStyle ISql120TSqlTableTypeColumn.XmlStyle 
 		{
 			get { return this.XmlStyle;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataType> ISql120TableTypeColumn.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120TableTypeColumn.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlTableTypeColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -21238,24 +21251,27 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120XmlSchemaCollection> ISql120TableTypeColumn.XmlSchemaCollection 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection> ISql120TSqlTableTypeColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection;
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection>();
 			}
 		}
 	}
-	public partial class TableTypeDefaultConstraint : ISql120TableTypeDefaultConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlTableTypeDefaultConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeDefaultConstraint : ISql120TSqlTableTypeDefaultConstraint
 	{		
-		String ISql120TableTypeDefaultConstraint.Expression 
+		String ISql120TSqlTableTypeDefaultConstraint.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120TableTypeDefaultConstraint.ExpressionDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlTableTypeDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -21263,281 +21279,302 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120TableTypeDefaultConstraint.TargetColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableTypeDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn;
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 	}
-	public partial class TableTypeIndex : ISql120TableTypeIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlTableTypeIndex"/>.
+	/// </summary>
+	public partial class TSqlTableTypeIndex : ISql120TSqlTableTypeIndex
 	{		
-		Int32? ISql120TableTypeIndex.BucketCount 
+		Int32? ISql120TSqlTableTypeIndex.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql120TableTypeIndex.Hash 
+		Boolean ISql120TSqlTableTypeIndex.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql120TableTypeIndex.IsDisabled 
+		Boolean ISql120TSqlTableTypeIndex.IsDisabled 
 		{
 			get { return this.IsDisabled;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120TableTypeIndex.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableTypeIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 	}
-	public partial class TableTypePrimaryKeyConstraint : ISql120TableTypePrimaryKeyConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlTableTypePrimaryKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypePrimaryKeyConstraint : ISql120TSqlTableTypePrimaryKeyConstraint
 	{		
-		Int32? ISql120TableTypePrimaryKeyConstraint.BucketCount 
+		Int32? ISql120TSqlTableTypePrimaryKeyConstraint.BucketCount 
 		{
 			get { return this.BucketCount;}
 		}
-		Boolean ISql120TableTypePrimaryKeyConstraint.Clustered 
+		Boolean ISql120TSqlTableTypePrimaryKeyConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql120TableTypePrimaryKeyConstraint.Hash 
+		Boolean ISql120TSqlTableTypePrimaryKeyConstraint.Hash 
 		{
 			get { return this.Hash;}
 		}
-		Boolean ISql120TableTypePrimaryKeyConstraint.IgnoreDuplicateKey 
+		Boolean ISql120TSqlTableTypePrimaryKeyConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120TableTypePrimaryKeyConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableTypePrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 	}
-	public partial class TableTypeUniqueConstraint : ISql120TableTypeUniqueConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlTableTypeUniqueConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeUniqueConstraint : ISql120TSqlTableTypeUniqueConstraint
 	{		
-		Boolean ISql120TableTypeUniqueConstraint.Clustered 
+		Boolean ISql120TSqlTableTypeUniqueConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql120TableTypeUniqueConstraint.IgnoreDuplicateKey 
+		Boolean ISql120TSqlTableTypeUniqueConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120TableTypeUniqueConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableTypeUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 	}
-	public partial class TcpProtocolSpecifier : ISql120TcpProtocolSpecifier
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlTcpProtocolSpecifier"/>.
+	/// </summary>
+	public partial class TSqlTcpProtocolSpecifier : ISql120TSqlTcpProtocolSpecifier
 	{		
-		String ISql120TcpProtocolSpecifier.ListenerIPv4 
+		String ISql120TSqlTcpProtocolSpecifier.ListenerIPv4 
 		{
 			get { return this.ListenerIPv4;}
 		}
-		String ISql120TcpProtocolSpecifier.ListenerIPv6 
+		String ISql120TSqlTcpProtocolSpecifier.ListenerIPv6 
 		{
 			get { return this.ListenerIPv6;}
 		}
-		Int32 ISql120TcpProtocolSpecifier.ListenerPort 
+		Int32 ISql120TSqlTcpProtocolSpecifier.ListenerPort 
 		{
 			get { return this.ListenerPort;}
 		}
-		Boolean ISql120TcpProtocolSpecifier.ListeningOnAllIPs 
+		Boolean ISql120TSqlTcpProtocolSpecifier.ListeningOnAllIPs 
 		{
 			get { return this.ListeningOnAllIPs;}
 		}
 	}
-	public partial class UniqueConstraint : ISql120UniqueConstraint
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlUniqueConstraint"/>.
+	/// </summary>
+	public partial class TSqlUniqueConstraint : ISql120TSqlUniqueConstraint
 	{		
-		Boolean ISql120UniqueConstraint.AllowPageLocks 
+		Boolean ISql120TSqlUniqueConstraint.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql120UniqueConstraint.AllowRowLocks 
+		Boolean ISql120TSqlUniqueConstraint.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Boolean ISql120UniqueConstraint.Clustered 
+		Boolean ISql120TSqlUniqueConstraint.Clustered 
 		{
 			get { return this.Clustered;}
 		}
-		Boolean ISql120UniqueConstraint.Disabled 
+		Boolean ISql120TSqlUniqueConstraint.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Boolean? ISql120UniqueConstraint.FileStreamNull 
+		Boolean? ISql120TSqlUniqueConstraint.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
 		}
-		Int32? ISql120UniqueConstraint.FillFactor 
+		Int32? ISql120TSqlUniqueConstraint.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql120UniqueConstraint.IgnoreDuplicateKey 
+		Boolean ISql120TSqlUniqueConstraint.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql120UniqueConstraint.RecomputeStatistics 
+		Boolean ISql120TSqlUniqueConstraint.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql120UniqueConstraint.WithPadIndex 
+		Boolean ISql120TSqlUniqueConstraint.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120UniqueConstraint.Columns 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataCompressionOption> ISql120UniqueConstraint.DataCompressionOptions 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption> ISql120TSqlUniqueConstraint.DataCompressionOptions 
 		{
 			get 
 			{
-				return this.DataCompressionOptions;
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataCompressionOption>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120UniqueConstraint.Filegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlUniqueConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup;
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Filegroup> ISql120UniqueConstraint.FileStreamFilegroup 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlUniqueConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup;
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120UniqueConstraint.FileStreamPartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlUniqueConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme;
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120ExtendedProperty> ISql120UniqueConstraint.Host 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlUniqueConstraint.Host 
 		{
 			get 
 			{
-				return this.Host;
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120UniqueConstraint.PartitionColumn 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlUniqueConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn;
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120PartitionScheme> ISql120UniqueConstraint.PartitionScheme 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlUniqueConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme;
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
 			}
 		}
 	}
-	public partial class User : ISql120User
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlUser"/>.
+	/// </summary>
+	public partial class TSqlUser : ISql120TSqlUser
 	{		
-		AuthenticationType ISql120User.AuthenticationType 
+		AuthenticationType ISql120TSqlUser.AuthenticationType 
 		{
 			get { return this.AuthenticationType;}
 		}
-		String ISql120User.DefaultLanguage 
+		String ISql120TSqlUser.DefaultLanguage 
 		{
 			get { return this.DefaultLanguage;}
 		}
-		String ISql120User.Password 
+		String ISql120TSqlUser.Password 
 		{
 			get { return this.Password;}
 		}
-		String ISql120User.Sid 
+		String ISql120TSqlUser.Sid 
 		{
 			get { return this.Sid;}
 		}
-		Boolean ISql120User.WithoutLogin 
+		Boolean ISql120TSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120AsymmetricKey> ISql120User.AsymmetricKey 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey> ISql120TSqlUser.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey;
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Certificate> ISql120User.Certificate 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlUser.Certificate 
 		{
 			get 
 			{
-				return this.Certificate;
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120User.DefaultSchema 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlUser.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema;
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Login> ISql120User.Login 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlUser.Login 
 		{
 			get 
 			{
-				return this.Login;
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
 			}
 		}
 	}
-	public partial class UserDefinedServerRole : ISql120UserDefinedServerRole
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlUserDefinedServerRole"/>.
+	/// </summary>
+	public partial class TSqlUserDefinedServerRole : ISql120TSqlUserDefinedServerRole
 	{		
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120UserDefinedServerRole.Authorizer 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISql120TSqlUserDefinedServerRole.Authorizer 
 		{
 			get 
 			{
@@ -21545,44 +21582,47 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 	}
-	public partial class UserDefinedType : ISql120UserDefinedType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlUserDefinedType"/>.
+	/// </summary>
+	public partial class TSqlUserDefinedType : ISql120TSqlUserDefinedType
 	{		
-		Boolean? ISql120UserDefinedType.ByteOrdered 
+		Boolean? ISql120TSqlUserDefinedType.ByteOrdered 
 		{
 			get { return this.ByteOrdered;}
 		}
-		String ISql120UserDefinedType.ClassName 
+		String ISql120TSqlUserDefinedType.ClassName 
 		{
 			get { return this.ClassName;}
 		}
-		Boolean? ISql120UserDefinedType.FixedLength 
+		Boolean? ISql120TSqlUserDefinedType.FixedLength 
 		{
 			get { return this.FixedLength;}
 		}
-		Format ISql120UserDefinedType.Format 
+		Format ISql120TSqlUserDefinedType.Format 
 		{
 			get { return this.Format;}
 		}
-		Int32? ISql120UserDefinedType.MaxByteSize 
+		Int32? ISql120TSqlUserDefinedType.MaxByteSize 
 		{
 			get { return this.MaxByteSize;}
 		}
-		String ISql120UserDefinedType.ValidationMethodName 
+		String ISql120TSqlUserDefinedType.ValidationMethodName 
 		{
 			get { return this.ValidationMethodName;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Assembly> ISql120UserDefinedType.Assembly 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlUserDefinedType.Assembly 
 		{
 			get 
 			{
-				return this.Assembly;
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql120UserDefinedType.Methods 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql120TSqlUserDefinedType.Methods 
 		{
 			get 
 			{
@@ -21590,8 +21630,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<TSqlObject> ISql120UserDefinedType.Properties 
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISql120TSqlUserDefinedType.Properties 
 		{
 			get 
 			{
@@ -21599,52 +21639,55 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120UserDefinedType.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlUserDefinedType.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}
-	public partial class View : ISql120View
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlView"/>.
+	/// </summary>
+	public partial class TSqlView : ISql120TSqlView
 	{		
-		Boolean? ISql120View.AnsiNullsOn 
+		Boolean? ISql120TSqlView.AnsiNullsOn 
 		{
 			get { return this.AnsiNullsOn;}
 		}
-		Boolean? ISql120View.QuotedIdentifierOn 
+		Boolean? ISql120TSqlView.QuotedIdentifierOn 
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
-		Boolean ISql120View.Replicated 
+		Boolean ISql120TSqlView.Replicated 
 		{
 			get { return this.Replicated;}
 		}
-		String ISql120View.SelectStatement 
+		String ISql120TSqlView.SelectStatement 
 		{
 			get { return this.SelectStatement;}
 		}
-		Boolean ISql120View.WithCheckOption 
+		Boolean ISql120TSqlView.WithCheckOption 
 		{
 			get { return this.WithCheckOption;}
 		}
-		Boolean ISql120View.WithEncryption 
+		Boolean ISql120TSqlView.WithEncryption 
 		{
 			get { return this.WithEncryption;}
 		}
-		Boolean ISql120View.WithSchemaBinding 
+		Boolean ISql120TSqlView.WithSchemaBinding 
 		{
 			get { return this.WithSchemaBinding;}
 		}
-		Boolean ISql120View.WithViewMetadata 
+		Boolean ISql120TSqlView.WithViewMetadata 
 		{
 			get { return this.WithViewMetadata;}
 		}
 
-		//Peer
-		IEnumerable<TSqlObject> ISql120View.BodyDependencies 
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISql120TSqlView.BodyDependencies 
 		{
 			get 
 			{
@@ -21652,110 +21695,116 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120View.Columns 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlView.Columns 
 		{
 			get 
 			{
-				return this.Columns;
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120View.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlView.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}
-	public partial class WorkloadGroup : ISql120WorkloadGroup
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlWorkloadGroup"/>.
+	/// </summary>
+	public partial class TSqlWorkloadGroup : ISql120TSqlWorkloadGroup
 	{		
-		Int32 ISql120WorkloadGroup.GroupMaxRequests 
+		Int32 ISql120TSqlWorkloadGroup.GroupMaxRequests 
 		{
 			get { return this.GroupMaxRequests;}
 		}
-		Degree ISql120WorkloadGroup.Importance 
+		Degree ISql120TSqlWorkloadGroup.Importance 
 		{
 			get { return this.Importance;}
 		}
-		Int32 ISql120WorkloadGroup.MaxDop 
+		Int32 ISql120TSqlWorkloadGroup.MaxDop 
 		{
 			get { return this.MaxDop;}
 		}
-		Int32 ISql120WorkloadGroup.RequestMaxCpuTimeSec 
+		Int32 ISql120TSqlWorkloadGroup.RequestMaxCpuTimeSec 
 		{
 			get { return this.RequestMaxCpuTimeSec;}
 		}
-		Int32 ISql120WorkloadGroup.RequestMaxMemoryGrantPercent 
+		Int32 ISql120TSqlWorkloadGroup.RequestMaxMemoryGrantPercent 
 		{
 			get { return this.RequestMaxMemoryGrantPercent;}
 		}
-		Int32 ISql120WorkloadGroup.RequestMemoryGrantTimeoutSec 
+		Int32 ISql120TSqlWorkloadGroup.RequestMemoryGrantTimeoutSec 
 		{
 			get { return this.RequestMemoryGrantTimeoutSec;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120ResourcePool> ISql120WorkloadGroup.ResourcePool 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlResourcePool> ISql120TSqlWorkloadGroup.ResourcePool 
 		{
 			get 
 			{
-				return this.ResourcePool;
+				return this.ResourcePool.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlResourcePool>();
 			}
 		}
 	}
-	public partial class XmlIndex : ISql120XmlIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlXmlIndex"/>.
+	/// </summary>
+	public partial class TSqlXmlIndex : ISql120TSqlXmlIndex
 	{		
-		Boolean ISql120XmlIndex.AllowPageLocks 
+		Boolean ISql120TSqlXmlIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql120XmlIndex.AllowRowLocks 
+		Boolean ISql120TSqlXmlIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Boolean ISql120XmlIndex.Disabled 
+		Boolean ISql120TSqlXmlIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32? ISql120XmlIndex.FillFactor 
+		Int32? ISql120TSqlXmlIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql120XmlIndex.IgnoreDuplicateKey 
+		Boolean ISql120TSqlXmlIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql120XmlIndex.IsPrimary 
+		Boolean ISql120TSqlXmlIndex.IsPrimary 
 		{
 			get { return this.IsPrimary;}
 		}
-		Boolean ISql120XmlIndex.RecomputeStatistics 
+		Boolean ISql120TSqlXmlIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		SecondaryXmlIndexType ISql120XmlIndex.SecondaryXmlIndexType 
+		SecondaryXmlIndexType ISql120TSqlXmlIndex.SecondaryXmlIndexType 
 		{
 			get { return this.SecondaryXmlIndexType;}
 		}
-		Boolean ISql120XmlIndex.WithPadIndex 
+		Boolean ISql120TSqlXmlIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120XmlIndex.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql120XmlIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql120TSqlXmlIndex.IndexedObject 
 		{
 			get 
 			{
@@ -21763,61 +21812,64 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120XmlIndex> ISql120XmlIndex.PrimaryXmlIndex 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlIndex> ISql120TSqlXmlIndex.PrimaryXmlIndex 
 		{
 			get 
 			{
-				return this.PrimaryXmlIndex;
+				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlIndex>();
 			}
 		}
 	}
-	public partial class SelectiveXmlIndex : ISql120SelectiveXmlIndex
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlSelectiveXmlIndex"/>.
+	/// </summary>
+	public partial class TSqlSelectiveXmlIndex : ISql120TSqlSelectiveXmlIndex
 	{		
-		Boolean ISql120SelectiveXmlIndex.AllowPageLocks 
+		Boolean ISql120TSqlSelectiveXmlIndex.AllowPageLocks 
 		{
 			get { return this.AllowPageLocks;}
 		}
-		Boolean ISql120SelectiveXmlIndex.AllowRowLocks 
+		Boolean ISql120TSqlSelectiveXmlIndex.AllowRowLocks 
 		{
 			get { return this.AllowRowLocks;}
 		}
-		Boolean ISql120SelectiveXmlIndex.Disabled 
+		Boolean ISql120TSqlSelectiveXmlIndex.Disabled 
 		{
 			get { return this.Disabled;}
 		}
-		Int32? ISql120SelectiveXmlIndex.FillFactor 
+		Int32? ISql120TSqlSelectiveXmlIndex.FillFactor 
 		{
 			get { return this.FillFactor;}
 		}
-		Boolean ISql120SelectiveXmlIndex.IgnoreDuplicateKey 
+		Boolean ISql120TSqlSelectiveXmlIndex.IgnoreDuplicateKey 
 		{
 			get { return this.IgnoreDuplicateKey;}
 		}
-		Boolean ISql120SelectiveXmlIndex.IsPrimary 
+		Boolean ISql120TSqlSelectiveXmlIndex.IsPrimary 
 		{
 			get { return this.IsPrimary;}
 		}
-		Boolean ISql120SelectiveXmlIndex.RecomputeStatistics 
+		Boolean ISql120TSqlSelectiveXmlIndex.RecomputeStatistics 
 		{
 			get { return this.RecomputeStatistics;}
 		}
-		Boolean ISql120SelectiveXmlIndex.WithPadIndex 
+		Boolean ISql120TSqlSelectiveXmlIndex.WithPadIndex 
 		{
 			get { return this.WithPadIndex;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Column> ISql120SelectiveXmlIndex.Column 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlSelectiveXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column;
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlColumnSource> ISql120SelectiveXmlIndex.IndexedObject 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISql120TSqlSelectiveXmlIndex.IndexedObject 
 		{
 			get 
 			{
@@ -21825,8 +21877,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> ISql120SelectiveXmlIndex.PrimaryPromotedPath 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> ISql120TSqlSelectiveXmlIndex.PrimaryPromotedPath 
 		{
 			get 
 			{
@@ -21834,17 +21886,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120SelectiveXmlIndex> ISql120SelectiveXmlIndex.PrimarySelectiveXmlIndex 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSelectiveXmlIndex> ISql120TSqlSelectiveXmlIndex.PrimarySelectiveXmlIndex 
 		{
 			get 
 			{
-				return this.PrimarySelectiveXmlIndex;
+				return this.PrimarySelectiveXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSelectiveXmlIndex>();
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> ISql120SelectiveXmlIndex.PromotedPaths 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> ISql120TSqlSelectiveXmlIndex.PromotedPaths 
 		{
 			get 
 			{
@@ -21852,94 +21904,106 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120XmlNamespace> ISql120SelectiveXmlIndex.XmlNamespaces 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlNamespace> ISql120TSqlSelectiveXmlIndex.XmlNamespaces 
 		{
 			get 
 			{
-				return this.XmlNamespaces;
+				return this.XmlNamespaces.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlNamespace>();
 			}
 		}
 	}
-	public partial class XmlNamespace : ISql120XmlNamespace
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlXmlNamespace"/>.
+	/// </summary>
+	public partial class TSqlXmlNamespace : ISql120TSqlXmlNamespace
 	{		
-		String ISql120XmlNamespace.NamespaceUri 
+		String ISql120TSqlXmlNamespace.NamespaceUri 
 		{
 			get { return this.NamespaceUri;}
 		}
-		String ISql120XmlNamespace.Prefix 
+		String ISql120TSqlXmlNamespace.Prefix 
 		{
 			get { return this.Prefix;}
 		}
 	}
-	public partial class PromotedNodePathForXQueryType : ISql120PromotedNodePathForXQueryType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlPromotedNodePathForXQueryType"/>.
+	/// </summary>
+	public partial class TSqlPromotedNodePathForXQueryType : ISql120TSqlPromotedNodePathForXQueryType
 	{		
-		Boolean ISql120PromotedNodePathForXQueryType.IsSingleton 
+		Boolean ISql120TSqlPromotedNodePathForXQueryType.IsSingleton 
 		{
 			get { return this.IsSingleton;}
 		}
-		Int32? ISql120PromotedNodePathForXQueryType.MaxLength 
+		Int32? ISql120TSqlPromotedNodePathForXQueryType.MaxLength 
 		{
 			get { return this.MaxLength;}
 		}
-		String ISql120PromotedNodePathForXQueryType.NodePath 
+		String ISql120TSqlPromotedNodePathForXQueryType.NodePath 
 		{
 			get { return this.NodePath;}
 		}
-		String ISql120PromotedNodePathForXQueryType.Type 
+		String ISql120TSqlPromotedNodePathForXQueryType.Type 
 		{
 			get { return this.Type;}
 		}
 	}
-	public partial class PromotedNodePathForSqlType : ISql120PromotedNodePathForSqlType
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlPromotedNodePathForSqlType"/>.
+	/// </summary>
+	public partial class TSqlPromotedNodePathForSqlType : ISql120TSqlPromotedNodePathForSqlType
 	{		
-		Boolean ISql120PromotedNodePathForSqlType.IsMax 
+		Boolean ISql120TSqlPromotedNodePathForSqlType.IsMax 
 		{
 			get { return this.IsMax;}
 		}
-		Boolean ISql120PromotedNodePathForSqlType.IsSingleton 
+		Boolean ISql120TSqlPromotedNodePathForSqlType.IsSingleton 
 		{
 			get { return this.IsSingleton;}
 		}
-		Int32 ISql120PromotedNodePathForSqlType.Length 
+		Int32 ISql120TSqlPromotedNodePathForSqlType.Length 
 		{
 			get { return this.Length;}
 		}
-		String ISql120PromotedNodePathForSqlType.NodePath 
+		String ISql120TSqlPromotedNodePathForSqlType.NodePath 
 		{
 			get { return this.NodePath;}
 		}
-		Int32 ISql120PromotedNodePathForSqlType.Precision 
+		Int32 ISql120TSqlPromotedNodePathForSqlType.Precision 
 		{
 			get { return this.Precision;}
 		}
-		Int32 ISql120PromotedNodePathForSqlType.Scale 
+		Int32 ISql120TSqlPromotedNodePathForSqlType.Scale 
 		{
 			get { return this.Scale;}
 		}
 
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120DataType> ISql120PromotedNodePathForSqlType.DataType 
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlPromotedNodePathForSqlType.DataType 
 		{
 			get 
 			{
-				return this.DataType;
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 	}
-	public partial class XmlSchemaCollection : ISql120XmlSchemaCollection
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlXmlSchemaCollection"/>.
+	/// </summary>
+	public partial class TSqlXmlSchemaCollection : ISql120TSqlXmlSchemaCollection
 	{		
-		String ISql120XmlSchemaCollection.Expression 
+		String ISql120TSqlXmlSchemaCollection.Expression 
 		{
 			get { return this.Expression;}
 		}
 
-		//Hierarchical
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120Schema> ISql120XmlSchemaCollection.Schema 
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlXmlSchemaCollection.Schema 
 		{
 			get 
 			{
-				return this.Schema;
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
 			}
 		}
 	}

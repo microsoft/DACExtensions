@@ -1,4 +1,21 @@
-﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+﻿//------------------------------------------------------------------------------
+// <copyright company="Microsoft">
+//   Copyright 2014 Microsoft
+//
+//   Licensed under the Apache License, Version 2.0 (the "License");
+//   you may not use this file except in compliance with the License.
+//   You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+//   Unless required by applicable law or agreed to in writing, software
+//   distributed under the License is distributed on an "AS IS" BASIS,
+//   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//   See the License for the specific language governing permissions and
+//   limitations under the License.
+// </copyright>
+//------------------------------------------------------------------------------
+<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="System.Xml" #>
 <#@ import namespace="System.Linq" #>
@@ -10,7 +27,6 @@
 <#@ import namespace="Microsoft.SqlServer.Dac.Model"#>
 <#@ output extension=".cs" #>
 <#@ include file="Utils.tt" #>
-
 namespace <#=NamespaceName#>
 {
 	using System;
@@ -20,14 +36,14 @@ namespace <#=NamespaceName#>
 	using System.Collections.Generic;
 <#
     var overrides = LoadOverrides(this.Host.TemplateFile);
-	string typePrefix;
+	string interfacePrefix;
 
 foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVersion)))
 {
-	typePrefix = "I" + currentSQLVersion;
+	interfacePrefix = "I" + currentSQLVersion;
 	foreach(var type in  ModelSchema.SchemaInstance.AllTypes)
 	{
-		string className = typePrefix+ type.Name;
+		string className = interfacePrefix+ ClassNamePrefix +type.Name;
 #>
 	public interface <#= className #> : ISqlModelElement
 	{		
@@ -71,7 +87,7 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 			if(localoverride.Specialize)
 			{
 				// specialize the return type to match the sql version interface name
-				returnType = string.Format("{0}.{1}{2}", localoverride.ReturnTypeNamespace,typePrefix, localoverride.ReturnType);
+				returnType = string.Format("{0}.{1}{2}", localoverride.ReturnTypeNamespace,interfacePrefix, localoverride.ReturnType);
 			}
 			else
 			{

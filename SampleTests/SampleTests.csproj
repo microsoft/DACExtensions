@@ -74,8 +74,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDbLocationModifiers.cs" />
     <Compile Include="TestUtils.cs" />
+    <Compile Include="StronglyTypedUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DacFxStronglyTypedModel\DacFxStronglyTypedModel.csproj">
+      <Project>{832ecf86-c071-4628-a8b7-2529d8a7bdbc}</Project>
+      <Name>DacFxStronglyTypedModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Samples\Samples.csproj">
       <Project>{c1c2b521-22b6-4124-aaec-a5e1fcab0dfa}</Project>
       <Name>Samples</Name>
