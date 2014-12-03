@@ -103,7 +103,6 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 				}
 			}
 		}	
-		{
 		#>
 
 		// <#=relationship.Type#> relationship		
@@ -115,7 +114,6 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 			}
 		}
 <#		
-		}
 	} //end foreach relationship
 #>
 	}

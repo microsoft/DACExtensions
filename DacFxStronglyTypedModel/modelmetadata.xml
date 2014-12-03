@@ -191,7 +191,6 @@
     <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlUser" />
   </Element>
   <Element Name="ExtendedProperty">
-    <Implements Name="IExtendedPropertyHost"/>
     <Relationship Name="Host" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="IExtendedPropertyHost" />
   </Element>
   <Element Name="Filegroup">

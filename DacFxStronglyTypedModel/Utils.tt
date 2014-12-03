@@ -49,7 +49,6 @@ private static string GetPropertyTypeName(ModelPropertyClass property, out bool 
 	}
 
 	return typeName;
-
 }
 
 private class ModelEntry
