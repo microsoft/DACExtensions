@@ -28,7 +28,7 @@ public partial class TSqlModelElement
 	///<summary>
 	///  Returns a strongly typed wrapper for the TSqlObject instance.
 	///</summary>
-    public static ISqlModelElement AdaptInstance(TSqlObject obj)
+	public static ISqlModelElement AdaptInstance(TSqlObject obj)
     {
 		if(obj == null)
 		{
@@ -5204,7 +5204,7 @@ public partial class TSqlModelElement
 	///
 	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedproperty.aspx">ExtendedProperty</see>
 	///
-	public partial class TSqlExtendedProperty : TSqlModelElement,IExtendedPropertyHost	{
+	public partial class TSqlExtendedProperty : TSqlModelElement	{
 		private static ModelTypeClass typeClass = ExtendedProperty.TypeClass;
 
 		/// <summary>

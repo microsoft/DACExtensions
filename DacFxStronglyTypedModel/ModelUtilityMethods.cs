@@ -386,8 +386,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					break;
 				case "ISql90TSqlHttpProtocolSpecifier":
 				case "ISql100TSqlHttpProtocolSpecifier":
-				case "ISql110TSqlHttpProtocolSpecifier":
-				case "ISql120TSqlHttpProtocolSpecifier":
 				case "TSqlHttpProtocolSpecifier":				
 					yield return TSqlHttpProtocolSpecifier.TypeClass;
 					break;
@@ -669,15 +667,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					break;
 				case "ISql90TSqlSoapLanguageSpecifier":
 				case "ISql100TSqlSoapLanguageSpecifier":
-				case "ISql110TSqlSoapLanguageSpecifier":
-				case "ISql120TSqlSoapLanguageSpecifier":
 				case "TSqlSoapLanguageSpecifier":				
 					yield return TSqlSoapLanguageSpecifier.TypeClass;
 					break;
 				case "ISql90TSqlSoapMethodSpecification":
 				case "ISql100TSqlSoapMethodSpecification":
-				case "ISql110TSqlSoapMethodSpecification":
-				case "ISql120TSqlSoapMethodSpecification":
 				case "TSqlSoapMethodSpecification":				
 					yield return TSqlSoapMethodSpecification.TypeClass;
 					break;
@@ -864,7 +858,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "IExtendedPropertyHost":
 					yield return TSqlCheckConstraint.TypeClass;
 					yield return TSqlDefaultConstraint.TypeClass;
-					yield return TSqlExtendedProperty.TypeClass;
 					yield return TSqlForeignKeyConstraint.TypeClass;
 					yield return TSqlPrimaryKeyConstraint.TypeClass;
 					yield return TSqlUniqueConstraint.TypeClass;
@@ -1386,33 +1379,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				}
 				// no interfaces mapped.
 				return false;
-			case "ExtendedProperty":
-				if (typeof(TSqlExtendedProperty).IsAssignableFrom(type))
-				{
-					return true;
-				}
-				else if (typeof(ISql90TSqlExtendedProperty).IsAssignableFrom(type))
-				{
-					return true;
-				}
-				else if (typeof(ISql100TSqlExtendedProperty).IsAssignableFrom(type))
-				{
-					return true;
-				}
-				else if (typeof(ISql110TSqlExtendedProperty).IsAssignableFrom(type))
-				{
-					return true;
-				}
-				else if (typeof(ISql120TSqlExtendedProperty).IsAssignableFrom(type))
-				{
-					return true;
-				}
-				else if(typeof(IExtendedPropertyHost).IsAssignableFrom(type))
-				{
-					return true;
-				}
-				// no interfaces mapped.
-				return false;
 			case "ForeignKeyConstraint":
 				if (typeof(TSqlForeignKeyConstraint).IsAssignableFrom(type))
 				{
@@ -1504,14 +1470,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql100TSqlHttpProtocolSpecifier).IsAssignableFrom(type))
-				{
-					return true;
-				}
-				else if (typeof(ISql110TSqlHttpProtocolSpecifier).IsAssignableFrom(type))
-				{
-					return true;
-				}
-				else if (typeof(ISql120TSqlHttpProtocolSpecifier).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -1836,14 +1794,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql100TSqlSoapLanguageSpecifier).IsAssignableFrom(type))
-				{
-					return true;
-				}
-				else if (typeof(ISql110TSqlSoapLanguageSpecifier).IsAssignableFrom(type))
-				{
-					return true;
-				}
-				else if (typeof(ISql120TSqlSoapLanguageSpecifier).IsAssignableFrom(type))
 				{
 					return true;
 				}

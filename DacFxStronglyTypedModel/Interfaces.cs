@@ -10816,50 +10816,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql110TSqlHttpProtocolSpecifier : ISqlModelElement
 	{		
-		AuthenticationModes AuthenticationMode 
-		{
-			get;
-		}
-		String AuthenticationRealm 
-		{
-			get;
-		}
-		Int32? ClearPort 
-		{
-			get;
-		}
-		Boolean CompressionEnabled 
-		{
-			get;
-		}
-		String DefaultLogonDomain 
-		{
-			get;
-		}
-		Boolean ListeningOnAllNoneReservedSites 
-		{
-			get;
-		}
-		Boolean ListeningOnAllSites 
-		{
-			get;
-		}
-		String Path 
-		{
-			get;
-		}
-		HttpPorts Ports 
-		{
-			get;
-		}
-		Int32? SslPort 
-		{
-			get;
-		}
-		String Website 
-		{
-			get;
-		}
 	}
 	public interface ISql110TSqlLinkedServer : ISqlModelElement
 	{		
@@ -11914,91 +11870,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql110TSqlSoapLanguageSpecifier : ISqlModelElement
 	{		
-		Boolean BatchesEnabled 
-		{
-			get;
-		}
-		CharacterSet CharacterSet 
-		{
-			get;
-		}
-		String DatabaseName 
-		{
-			get;
-		}
-		Int32 HeaderLimit 
-		{
-			get;
-		}
-		Boolean IsDefaultDatabase 
-		{
-			get;
-		}
-		Boolean IsDefaultNamespace 
-		{
-			get;
-		}
-		Boolean IsDefaultWsdlSpName 
-		{
-			get;
-		}
-		SoapLoginType LoginType 
-		{
-			get;
-		}
-		String Namespace 
-		{
-			get;
-		}
-		SoapSchema SchemaType 
-		{
-			get;
-		}
-		Boolean SessionsEnabled 
-		{
-			get;
-		}
-		Int32 SessionTimeout 
-		{
-			get;
-		}
-		Boolean SessionTimeoutNever 
-		{
-			get;
-		}
-		String WsdlSpName 
-		{
-			get;
-		}
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSoapMethodSpecification> WebMethods 
-		{
-			get;
-		}
 	}
 	public interface ISql110TSqlSoapMethodSpecification : ISqlModelElement
 	{		
-		SoapFormat Format 
-		{
-			get;
-		}
-		SoapSchema SchemaType 
-		{
-			get;
-		}
-		String WebMethodAlias 
-		{
-			get;
-		}
-		String WebMethodNamespace 
-		{
-			get;
-		}
-		//Peer
-		IEnumerable<TSqlObject> RelatedMethod 
-		{
-			get;
-		}
 	}
 	public interface ISql110TSqlSpatialIndex : ISqlModelElement
 	{		
@@ -14956,50 +14830,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql120TSqlHttpProtocolSpecifier : ISqlModelElement
 	{		
-		AuthenticationModes AuthenticationMode 
-		{
-			get;
-		}
-		String AuthenticationRealm 
-		{
-			get;
-		}
-		Int32? ClearPort 
-		{
-			get;
-		}
-		Boolean CompressionEnabled 
-		{
-			get;
-		}
-		String DefaultLogonDomain 
-		{
-			get;
-		}
-		Boolean ListeningOnAllNoneReservedSites 
-		{
-			get;
-		}
-		Boolean ListeningOnAllSites 
-		{
-			get;
-		}
-		String Path 
-		{
-			get;
-		}
-		HttpPorts Ports 
-		{
-			get;
-		}
-		Int32? SslPort 
-		{
-			get;
-		}
-		String Website 
-		{
-			get;
-		}
 	}
 	public interface ISql120TSqlLinkedServer : ISqlModelElement
 	{		
@@ -16070,91 +15900,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql120TSqlSoapLanguageSpecifier : ISqlModelElement
 	{		
-		Boolean BatchesEnabled 
-		{
-			get;
-		}
-		CharacterSet CharacterSet 
-		{
-			get;
-		}
-		String DatabaseName 
-		{
-			get;
-		}
-		Int32 HeaderLimit 
-		{
-			get;
-		}
-		Boolean IsDefaultDatabase 
-		{
-			get;
-		}
-		Boolean IsDefaultNamespace 
-		{
-			get;
-		}
-		Boolean IsDefaultWsdlSpName 
-		{
-			get;
-		}
-		SoapLoginType LoginType 
-		{
-			get;
-		}
-		String Namespace 
-		{
-			get;
-		}
-		SoapSchema SchemaType 
-		{
-			get;
-		}
-		Boolean SessionsEnabled 
-		{
-			get;
-		}
-		Int32 SessionTimeout 
-		{
-			get;
-		}
-		Boolean SessionTimeoutNever 
-		{
-			get;
-		}
-		String WsdlSpName 
-		{
-			get;
-		}
-		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSoapMethodSpecification> WebMethods 
-		{
-			get;
-		}
 	}
 	public interface ISql120TSqlSoapMethodSpecification : ISqlModelElement
 	{		
-		SoapFormat Format 
-		{
-			get;
-		}
-		SoapSchema SchemaType 
-		{
-			get;
-		}
-		String WebMethodAlias 
-		{
-			get;
-		}
-		String WebMethodNamespace 
-		{
-			get;
-		}
-		//Peer
-		IEnumerable<TSqlObject> RelatedMethod 
-		{
-			get;
-		}
 	}
 	public interface ISql120TSqlSpatialIndex : ISqlModelElement
 	{		
