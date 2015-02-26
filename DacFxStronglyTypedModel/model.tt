@@ -57,20 +57,20 @@ public partial class TSqlModelElement
 		{
 			throw new ArgumentNullException("obj");
 		}	
+		
+		switch(obj.ObjectType.Name)
+		{
 <#
-	//create adapter method for public model
+	// Create adapter method for public model
 	foreach(var type in  ModelSchema.SchemaInstance.AllTypes)
 	{
 #>
-		else if(obj.ObjectType == <#=ClassNamePrefix + type.Name#>.TypeClass)
-        {
+		case "<#=type.Name#>":     
             return new <#=ClassNamePrefix + type.Name#>(obj);
-        }
 <#
 	}
 	#>
-		else
-		{
+		default:
 			throw new ArgumentException("No type mapping exists for " + obj.ObjectType.Name);
 		}
 	}
