@@ -54,5 +54,23 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
                 }
             }           
         }
+
+        public IEnumerable<T> GetObjects<T>(ObjectIdentifier id, DacQueryScopes queryScope) where T : ISqlModelElement
+        {
+            // Map the System.Type to a set of ModelType classes that extend the type or implement the interface
+            foreach (ModelTypeClass modelType in UtilityMethods.GetModelElementTypes(typeof(T)))
+            {
+                foreach (var element in model.GetObjects(modelType,id, queryScope))
+                {
+                    // Adapt instance with strongly type wrapper.
+                    yield return (T)TSqlModelElement.AdaptInstance(element);
+                }
+            }
+        }
+
+        public T GetObject<T>(ObjectIdentifier id, DacQueryScopes queryScope) where T : ISqlModelElement
+        {
+            return GetObjects<T>(id, queryScope).FirstOrDefault();
+        }
     }
 }

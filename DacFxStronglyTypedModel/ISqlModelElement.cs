@@ -32,6 +32,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
     using System.Collections.Generic;
     public interface ISqlModelElement
     {
+        ObjectIdentifier Name { get; }
         TSqlObject Element { get; }
         TSqlScript GetAst();
         IEnumerable<TSqlObject> GetChildren();

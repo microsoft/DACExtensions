@@ -91,6 +91,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
+        public IEnumerable<TSqlUniqueConstraint> UniqueConstraints
+        {
+            get
+            {
+                foreach (var element in Element.GetReferencing(UniqueConstraint.Host))
+                {
+                    yield return (TSqlUniqueConstraint)TSqlModelElement.AdaptInstance(element);
+                }
+            }
+        }
+
         /// <summary>
         /// Returns all constraints for the table
         /// </summary>
@@ -103,6 +114,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
                     yield return constraint;
                 }
                 foreach (var constraint in PrimaryKeyConstraints)
+                {
+                    yield return constraint;
+                }
+                foreach(var constraint in UniqueConstraints)
                 {
                     yield return constraint;
                 }

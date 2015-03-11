@@ -53,6 +53,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             Element = obj; 
         }
 
+        public ObjectIdentifier Name
+        {
+            get 
+            {
+                return Element.Name;
+            }
+        }
+
         public TSqlObject Element
         {
             get;
