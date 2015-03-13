@@ -78,13 +78,16 @@
     <Relationship Name="Host" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlTable" />
   </Element>
   <Element Name="ClrTypeMethod">
+    <Property Name="Name" OverrideName="MethodName"/>
     <Relationship Name="Parameters" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlParameter" />
     <Relationship Name="ReturnType" SpecializeForVersion="false" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlTypeSpecifierBase" />
   </Element>
   <Element Name="ClrTypeMethodParameter">
+    <Property Name="Name" OverrideName="ParameterName"/>
     <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataType" />
   </Element>
   <Element Name="ClrTypeProperty">
+    <Property Name="Name" OverrideName="PropertyName"/>
     <Relationship Name="ClrType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlTypeSpecifierBase" />
   </Element>
   <Element Name="Column">
@@ -207,6 +210,7 @@
   <Element Name="FileTable">
     <Implements Name="ISqlColumnSource"/>
     <Implements Name="ISpecifiesIndex"/>
+    <Implements Name="ISpecifiesStorage"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlColumn" />
     <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataCompressionOption" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlFilegroup" />
@@ -250,6 +254,7 @@
   </Element>
   <Element Name="Index">
     <Implements Name="ISqlIndex"/>
+    <Implements Name="ISpecifiesStorage"/>
     <!--<Relationship Name="BodyDependencies" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlBodyDependencies" />-->
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlColumn" />
     <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataCompressionOption" />
@@ -303,6 +308,7 @@
   </Element>
   <Element Name="PrimaryKeyConstraint">
     <Implements Name="IExtendedPropertyHost"/>
+    <Implements Name="ISpecifiesStorage"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlColumn" />
     <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataCompressionOption" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlFilegroup" />
@@ -487,6 +493,7 @@
   <Element Name="Table">
     <Implements Name="ISqlColumnSource"/>
     <Implements Name="ISpecifiesIndex"/>
+    <Implements Name="ISpecifiesStorage"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlColumn" />
     <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataCompressionOption" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlFilegroup" />
@@ -548,6 +555,7 @@
   </Element>
   <Element Name="UniqueConstraint">
     <Implements Name="IExtendedPropertyHost"/>
+    <Implements Name="ISpecifiesStorage"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlColumn" />
     <Relationship Name="DataCompressionOptions" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataCompressionOption" />
     <Relationship Name="Filegroup" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlFilegroup" />

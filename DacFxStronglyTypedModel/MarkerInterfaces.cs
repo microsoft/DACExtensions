@@ -40,7 +40,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
     public interface ISqlSecurable { }
 
-    public interface ISpecifiesIndex
+    public interface ISpecifiesIndex 
     {
         IEnumerable<ISqlIndex> Indexes { get; }
     }
@@ -84,5 +84,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
     // TODO: Collect all Authorizers
     #endregion
 
+    public interface ISpecifiesStorage
+    {
+        IEnumerable<TSqlDataCompressionOption> DataCompressionOptions { get; }
+
+    }
 }
 

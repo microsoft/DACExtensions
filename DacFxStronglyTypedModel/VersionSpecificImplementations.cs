@@ -26,7 +26,7 @@
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //<copyright company="Microsoft">
-//    	 Copyright 2014 Microsoft
+//
 //    The MIT License (MIT)
 //    
 //    Copyright (c) 2015 Microsoft
@@ -885,9 +885,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlClrTypeMethod : ISql90TSqlClrTypeMethod
 	{		
-		String ISql90TSqlClrTypeMethod.Name 
+		String ISql90TSqlClrTypeMethod.MethodName 
 		{
-			get { return this.Name;}
+			get { return this.MethodName;}
 		}
 
 		// Composing relationship		
@@ -917,9 +917,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.IsOutput;}
 		}
-		String ISql90TSqlClrTypeMethodParameter.Name 
+		String ISql90TSqlClrTypeMethodParameter.ParameterName 
 		{
-			get { return this.Name;}
+			get { return this.ParameterName;}
 		}
 
 		// Peer relationship		
@@ -936,9 +936,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlClrTypeProperty : ISql90TSqlClrTypeProperty
 	{		
-		String ISql90TSqlClrTypeProperty.Name 
+		String ISql90TSqlClrTypeProperty.PropertyName 
 		{
-			get { return this.Name;}
+			get { return this.PropertyName;}
 		}
 
 		// Peer relationship		
@@ -4896,9 +4896,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlClrTypeMethod : ISql100TSqlClrTypeMethod
 	{		
-		String ISql100TSqlClrTypeMethod.Name 
+		String ISql100TSqlClrTypeMethod.MethodName 
 		{
-			get { return this.Name;}
+			get { return this.MethodName;}
 		}
 
 		// Composing relationship		
@@ -4928,9 +4928,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.IsOutput;}
 		}
-		String ISql100TSqlClrTypeMethodParameter.Name 
+		String ISql100TSqlClrTypeMethodParameter.ParameterName 
 		{
-			get { return this.Name;}
+			get { return this.ParameterName;}
 		}
 
 		// Peer relationship		
@@ -4947,9 +4947,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlClrTypeProperty : ISql100TSqlClrTypeProperty
 	{		
-		String ISql100TSqlClrTypeProperty.Name 
+		String ISql100TSqlClrTypeProperty.PropertyName 
 		{
-			get { return this.Name;}
+			get { return this.PropertyName;}
 		}
 
 		// Peer relationship		
@@ -9451,9 +9451,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlClrTypeMethod : ISqlAzureTSqlClrTypeMethod
 	{		
-		String ISqlAzureTSqlClrTypeMethod.Name 
+		String ISqlAzureTSqlClrTypeMethod.MethodName 
 		{
-			get { return this.Name;}
+			get { return this.MethodName;}
 		}
 
 		// Composing relationship		
@@ -9483,9 +9483,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.IsOutput;}
 		}
-		String ISqlAzureTSqlClrTypeMethodParameter.Name 
+		String ISqlAzureTSqlClrTypeMethodParameter.ParameterName 
 		{
-			get { return this.Name;}
+			get { return this.ParameterName;}
 		}
 
 		// Peer relationship		
@@ -9502,9 +9502,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlClrTypeProperty : ISqlAzureTSqlClrTypeProperty
 	{		
-		String ISqlAzureTSqlClrTypeProperty.Name 
+		String ISqlAzureTSqlClrTypeProperty.PropertyName 
 		{
-			get { return this.Name;}
+			get { return this.PropertyName;}
 		}
 
 		// Peer relationship		
@@ -11827,9 +11827,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlClrTypeMethod : ISql110TSqlClrTypeMethod
 	{		
-		String ISql110TSqlClrTypeMethod.Name 
+		String ISql110TSqlClrTypeMethod.MethodName 
 		{
-			get { return this.Name;}
+			get { return this.MethodName;}
 		}
 
 		// Composing relationship		
@@ -11859,9 +11859,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.IsOutput;}
 		}
-		String ISql110TSqlClrTypeMethodParameter.Name 
+		String ISql110TSqlClrTypeMethodParameter.ParameterName 
 		{
-			get { return this.Name;}
+			get { return this.ParameterName;}
 		}
 
 		// Peer relationship		
@@ -11878,9 +11878,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlClrTypeProperty : ISql110TSqlClrTypeProperty
 	{		
-		String ISql110TSqlClrTypeProperty.Name 
+		String ISql110TSqlClrTypeProperty.PropertyName 
 		{
-			get { return this.Name;}
+			get { return this.PropertyName;}
 		}
 
 		// Peer relationship		
@@ -17235,9 +17235,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlClrTypeMethod : ISql120TSqlClrTypeMethod
 	{		
-		String ISql120TSqlClrTypeMethod.Name 
+		String ISql120TSqlClrTypeMethod.MethodName 
 		{
-			get { return this.Name;}
+			get { return this.MethodName;}
 		}
 
 		// Composing relationship		
@@ -17267,9 +17267,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.IsOutput;}
 		}
-		String ISql120TSqlClrTypeMethodParameter.Name 
+		String ISql120TSqlClrTypeMethodParameter.ParameterName 
 		{
-			get { return this.Name;}
+			get { return this.ParameterName;}
 		}
 
 		// Peer relationship		
@@ -17286,9 +17286,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlClrTypeProperty : ISql120TSqlClrTypeProperty
 	{		
-		String ISql120TSqlClrTypeProperty.Name 
+		String ISql120TSqlClrTypeProperty.PropertyName 
 		{
-			get { return this.Name;}
+			get { return this.PropertyName;}
 		}
 
 		// Peer relationship		

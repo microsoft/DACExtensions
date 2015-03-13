@@ -53,6 +53,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             Element = obj; 
         }
 
+
+
         public ObjectIdentifier Name
         {
             get 

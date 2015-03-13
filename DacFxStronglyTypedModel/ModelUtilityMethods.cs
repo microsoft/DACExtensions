@@ -907,6 +907,13 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					yield return TSqlTableValuedFunction.TypeClass;
 					yield return TSqlView.TypeClass;
 					break;
+				case "ISpecifiesStorage":
+					yield return TSqlFileTable.TypeClass;
+					yield return TSqlIndex.TypeClass;
+					yield return TSqlPrimaryKeyConstraint.TypeClass;
+					yield return TSqlTable.TypeClass;
+					yield return TSqlUniqueConstraint.TypeClass;
+					break;
 				case "ISqlColumnSource":
 					yield return TSqlFileTable.TypeClass;
 					yield return TSqlQueue.TypeClass;
@@ -1104,6 +1111,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if(typeof(ISqlIndex).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if(typeof(ISpecifiesStorage).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -1570,6 +1581,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if(typeof(ISpecifiesStorage).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				// no interfaces mapped.
 				return false;
 			case "Queue":
@@ -1925,6 +1940,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if(typeof(ISpecifiesStorage).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				// no interfaces mapped.
 				return false;
 			case "FileTable":
@@ -1945,6 +1964,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if(typeof(ISpecifiesIndex).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if(typeof(ISpecifiesStorage).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -2153,6 +2176,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if(typeof(IExtendedPropertyHost).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if(typeof(ISpecifiesStorage).IsAssignableFrom(type))
 				{
 					return true;
 				}

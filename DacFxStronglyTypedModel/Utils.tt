@@ -86,16 +86,31 @@ private static string GetPropertyTypeName(ModelPropertyClass property, out bool 
 	return typeName;
 }
 
+
+private static string GetPropertyName(ModelPropertyClass property, ModelEntry modelEntry)
+{
+	PropertyOverride overrideProperty;
+
+	if(modelEntry != null && modelEntry.PropertyOverrides.TryGetValue(property.Name, out overrideProperty))
+    {
+		return overrideProperty.NameOverride;
+    }
+
+	return property.Name;
+}
+
 private class ModelEntry
 {
 	public ModelEntry()
     {
 		Interfaces = new List<string>();
 		RelationshipOverrides = new Dictionary<string,RelationshipOverride>();
+		PropertyOverrides = new Dictionary<string, PropertyOverride>();
     }
 
 	public List<string> Interfaces {get;set;}
 	public Dictionary<string, RelationshipOverride> RelationshipOverrides {get;set;}
+	public Dictionary<string, PropertyOverride> PropertyOverrides {get;set;}
 }
 
 public class RelationshipOverride
@@ -106,6 +121,13 @@ public class RelationshipOverride
 	public bool Specialize {get;set;}
 
 }
+
+public class PropertyOverride
+{
+	public string Name {get;set;}
+	public string NameOverride {get;set;}
+}
+
 private static Dictionary<string, ModelEntry> LoadOverrides(string teampleFile)
 {
 	XmlDocument configurationData = new XmlDocument();
@@ -147,6 +169,15 @@ private static Dictionary<string, ModelEntry> LoadOverrides(string teampleFile)
 						ReturnTypeNamespace=relationship.Attributes["ReturnTypeNamespace"].Value, 
 						Specialize=bool.Parse(relationship.Attributes["Specialize"].Value)
 					});
+            }
+			else if(relationship.LocalName == "Property")
+            {
+				string name = relationship.Attributes["Name"].Value;
+				modelEntry.PropertyOverrides.Add(name, new PropertyOverride()
+                {
+					Name = name,
+					NameOverride=relationship.Attributes["OverrideName"].Value
+                });
             }
         }
     }

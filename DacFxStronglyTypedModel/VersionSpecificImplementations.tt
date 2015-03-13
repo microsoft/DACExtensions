@@ -56,6 +56,11 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 			continue;
         }
 		string interfaceName = typePrefix + ClassNamePrefix + type.Name;
+		ModelEntry modelEntry;		
+		if(!overrides.TryGetValue(type.Name, out modelEntry))
+		{	
+			modelEntry = null;
+		}
 		#>
 	/// <summary>
 	/// Explicit implementation of <see cref="<#=interfaceName#>"/>.
@@ -71,19 +76,14 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 			}
 			bool useGenericGetter;
 			string typeName = GetPropertyTypeName(property, out useGenericGetter);
+			string propertyName = GetPropertyName(property, modelEntry);	
 		#>
-		<#= typeName #> <#=interfaceName#>.<#= property.Name #> 
+		<#= typeName #> <#=interfaceName#>.<#= propertyName #> 
 		{
-			get { return this.<#=property.Name#>;}
+			get { return this.<#=propertyName#>;}
 		}
 <#
-		}// end property loop
-		
-	ModelEntry modelEntry;		
-	if(!overrides.TryGetValue(type.Name, out modelEntry))
-	{	
-		modelEntry = null;
-	}
+		}// end property loop	
 
 	// begin releationship loop
 	foreach (var relationship in type.Relationships.OrderBy( r => r.Name))

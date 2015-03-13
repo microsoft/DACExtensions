@@ -695,7 +695,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql90TSqlClrTypeMethod : ISqlModelElement
 	{		
-		String Name 
+		String MethodName 
 		{
 			get;
 		}
@@ -716,7 +716,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
-		String Name 
+		String ParameterName 
 		{
 			get;
 		}
@@ -728,7 +728,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql90TSqlClrTypeProperty : ISqlModelElement
 	{		
-		String Name 
+		String PropertyName 
 		{
 			get;
 		}
@@ -3915,7 +3915,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql100TSqlClrTypeMethod : ISqlModelElement
 	{		
-		String Name 
+		String MethodName 
 		{
 			get;
 		}
@@ -3936,7 +3936,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
-		String Name 
+		String ParameterName 
 		{
 			get;
 		}
@@ -3948,7 +3948,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql100TSqlClrTypeProperty : ISqlModelElement
 	{		
-		String Name 
+		String PropertyName 
 		{
 			get;
 		}
@@ -7504,7 +7504,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISqlAzureTSqlClrTypeMethod : ISqlModelElement
 	{		
-		String Name 
+		String MethodName 
 		{
 			get;
 		}
@@ -7525,7 +7525,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
-		String Name 
+		String ParameterName 
 		{
 			get;
 		}
@@ -7537,7 +7537,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISqlAzureTSqlClrTypeProperty : ISqlModelElement
 	{		
-		String Name 
+		String PropertyName 
 		{
 			get;
 		}
@@ -9725,7 +9725,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql110TSqlClrTypeMethod : ISqlModelElement
 	{		
-		String Name 
+		String MethodName 
 		{
 			get;
 		}
@@ -9746,7 +9746,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
-		String Name 
+		String ParameterName 
 		{
 			get;
 		}
@@ -9758,7 +9758,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql110TSqlClrTypeProperty : ISqlModelElement
 	{		
-		String Name 
+		String PropertyName 
 		{
 			get;
 		}
@@ -13727,7 +13727,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql120TSqlClrTypeMethod : ISqlModelElement
 	{		
-		String Name 
+		String MethodName 
 		{
 			get;
 		}
@@ -13748,7 +13748,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
-		String Name 
+		String ParameterName 
 		{
 			get;
 		}
@@ -13760,7 +13760,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql120TSqlClrTypeProperty : ISqlModelElement
 	{		
-		String Name 
+		String PropertyName 
 		{
 			get;
 		}

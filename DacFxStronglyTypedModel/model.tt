@@ -121,13 +121,14 @@ public partial class TSqlModelElement
         {	
 			bool useGenericGetter;
 			string typeName = GetPropertyTypeName(property, out useGenericGetter);
+			string propertyName = GetPropertyName(property, modelEntry);
 #>
 
 		///
 		/// Property wrapper for <see cref="M:<#=type.Name#>.<#=property.Name#>"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.<#=type.Name.ToLowerInvariant()#>.<#=property.Name.ToLowerInvariant()#>.aspx"><#=type.Name#>.<#=property.Name#></see>
 		///
-		public <#= typeName #> <#= property.Name #> 
+		public <#= typeName #> <#= propertyName #> 
 		{
 <#if (useGenericGetter) { #>
 			get { return Element.GetProperty<<#= typeName #>>(<#=type.Name#>.<#=property.Name#>);}

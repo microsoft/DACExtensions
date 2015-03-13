@@ -1293,7 +1293,7 @@ public partial class TSqlModelElement
 	///
 	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.aspx">Index</see>
 	///
-	public partial class TSqlIndex : TSqlModelElement,ISqlIndex	{
+	public partial class TSqlIndex : TSqlModelElement,ISqlIndex,ISpecifiesStorage	{
 		private static ModelTypeClass typeClass = Index.TypeClass;
 
 		/// <summary>
@@ -2380,7 +2380,7 @@ public partial class TSqlModelElement
 		/// Property wrapper for <see cref="M:ClrTypeMethod.Name"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethod.name.aspx">ClrTypeMethod.Name</see>
 		///
-		public String Name 
+		public String MethodName 
 		{
 			get { return Element.GetProperty<String>(ClrTypeMethod.Name);}
 		}
@@ -2446,7 +2446,7 @@ public partial class TSqlModelElement
 		/// Property wrapper for <see cref="M:ClrTypeMethodParameter.Name"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethodparameter.name.aspx">ClrTypeMethodParameter.Name</see>
 		///
-		public String Name 
+		public String ParameterName 
 		{
 			get { return Element.GetProperty<String>(ClrTypeMethodParameter.Name);}
 		}
@@ -2490,7 +2490,7 @@ public partial class TSqlModelElement
 		/// Property wrapper for <see cref="M:ClrTypeProperty.Name"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypeproperty.name.aspx">ClrTypeProperty.Name</see>
 		///
-		public String Name 
+		public String PropertyName 
 		{
 			get { return Element.GetProperty<String>(ClrTypeProperty.Name);}
 		}
@@ -6633,7 +6633,7 @@ public partial class TSqlModelElement
 	///
 	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.aspx">PrimaryKeyConstraint</see>
 	///
-	public partial class TSqlPrimaryKeyConstraint : TSqlModelElement,IExtendedPropertyHost	{
+	public partial class TSqlPrimaryKeyConstraint : TSqlModelElement,IExtendedPropertyHost,ISpecifiesStorage	{
 		private static ModelTypeClass typeClass = PrimaryKeyConstraint.TypeClass;
 
 		/// <summary>
@@ -9929,7 +9929,7 @@ public partial class TSqlModelElement
 	///
 	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.aspx">Table</see>
 	///
-	public partial class TSqlTable : TSqlModelElement,ISqlColumnSource,ISpecifiesIndex	{
+	public partial class TSqlTable : TSqlModelElement,ISqlColumnSource,ISpecifiesIndex,ISpecifiesStorage	{
 		private static ModelTypeClass typeClass = Table.TypeClass;
 
 		/// <summary>
@@ -10199,7 +10199,7 @@ public partial class TSqlModelElement
 	///
 	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.aspx">FileTable</see>
 	///
-	public partial class TSqlFileTable : TSqlModelElement,ISqlColumnSource,ISpecifiesIndex	{
+	public partial class TSqlFileTable : TSqlModelElement,ISqlColumnSource,ISpecifiesIndex,ISpecifiesStorage	{
 		private static ModelTypeClass typeClass = FileTable.TypeClass;
 
 		/// <summary>
@@ -11029,7 +11029,7 @@ public partial class TSqlModelElement
 	///
 	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.aspx">UniqueConstraint</see>
 	///
-	public partial class TSqlUniqueConstraint : TSqlModelElement,IExtendedPropertyHost	{
+	public partial class TSqlUniqueConstraint : TSqlModelElement,IExtendedPropertyHost,ISpecifiesStorage	{
 		private static ModelTypeClass typeClass = UniqueConstraint.TypeClass;
 
 		/// <summary>

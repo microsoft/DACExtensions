@@ -53,6 +53,12 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 	foreach(var type in  ModelSchema.SchemaInstance.AllTypes)
 	{
 		string className = interfacePrefix+ ClassNamePrefix +type.Name;
+		ModelEntry modelEntry;
+		if(!overrides.TryGetValue(type.Name, out modelEntry))
+		{	
+			modelEntry = null;
+		}
+	
 #>
 	public interface <#= className #> : ISqlModelElement
 	{		
@@ -64,20 +70,16 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 				continue;
 			}
 			bool useGenericGetter;
-			string typeName = GetPropertyTypeName(property, out useGenericGetter);			
+			string typeName = GetPropertyTypeName(property, out useGenericGetter);		
+			string propertyName = GetPropertyName(property, modelEntry);
 #>
-		<#= typeName #> <#= property.Name #> 
+		<#= typeName #> <#= propertyName #> 
 		{
 			get;
 		}
 <#
 		}// end property loop
 		
-	ModelEntry modelEntry;
-	if(!overrides.TryGetValue(type.Name, out modelEntry))
-	{	
-		modelEntry = null;
-	}
 	
 	// begin releationship loop
 	foreach (var relationship in type.Relationships.OrderBy( r => r.Name))
