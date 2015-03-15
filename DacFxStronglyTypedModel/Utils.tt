@@ -115,10 +115,16 @@ private class ModelEntry
 
 public class RelationshipOverride
 {
+	public RelationshipOverride()
+    {
+		AdaptInstance = true;
+    }
+
 	public string RelationshipName {get;set;}
 	public string ReturnType {get;set;}
 	public string ReturnTypeNamespace {get;set;}
 	public bool Specialize {get;set;}
+	public bool AdaptInstance {get;set;}
 
 }
 
@@ -161,13 +167,20 @@ private static Dictionary<string, ModelEntry> LoadOverrides(string teampleFile)
 			else if(relationship.LocalName == "Relationship")
             {
 				string name = relationship.Attributes["Name"].Value;
-				
+				bool adaptInstance = true;
+				var adaptInstanceAttribute = relationship.Attributes["AdaptInstance"];
+				if(adaptInstanceAttribute != null)
+                {
+					adaptInstance = bool.Parse(adaptInstanceAttribute.Value);
+                }
+
 				modelEntry.RelationshipOverrides.Add(name, new RelationshipOverride() 
 					{ 
 						RelationshipName= name, //todo: allow overriding name
 						ReturnType = relationship.Attributes["ReturnType"].Value, 
 						ReturnTypeNamespace=relationship.Attributes["ReturnTypeNamespace"].Value, 
-						Specialize=bool.Parse(relationship.Attributes["Specialize"].Value)
+						Specialize=bool.Parse(relationship.Attributes["Specialize"].Value),
+						AdaptInstance= adaptInstance,
 					});
             }
 			else if(relationship.LocalName == "Property")

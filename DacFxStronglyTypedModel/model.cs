@@ -801,14 +801,14 @@ public partial class TSqlModelElement
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.returntype.aspx">TableValuedFunction.ReturnType</see>
 		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableValuedFunction.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(TableValuedFunction.ReturnType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -1077,14 +1077,14 @@ public partial class TSqlModelElement
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.returntype.aspx">ScalarFunction.ReturnType</see>
 		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(ScalarFunction.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(ScalarFunction.ReturnType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -1219,14 +1219,14 @@ public partial class TSqlModelElement
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.returntype.aspx">Aggregate.ReturnType</see>
 		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Aggregate.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(Aggregate.ReturnType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -1540,7 +1540,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Index.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
+				return Element.GetReferenced(Index.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -1630,7 +1630,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Assembly.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Assembly.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -1790,7 +1790,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(AsymmetricKey.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(AsymmetricKey.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -1912,7 +1912,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(AuditActionSpecification.Principals).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal>();
+				return Element.GetReferenced(AuditActionSpecification.Principals).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -1924,7 +1924,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(AuditActionSpecification.SecuredObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable>();
+				return Element.GetReferenced(AuditActionSpecification.SecuredObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -2118,7 +2118,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(DataType.Type).Cast<System.Type>();
+				return Element.GetReferenced(DataType.Type).Select(o => (System.Type)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -2262,7 +2262,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Certificate.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Certificate.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -2399,14 +2399,14 @@ public partial class TSqlModelElement
 		}
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethod.returntype.aspx">ClrTypeMethod.ReturnType</see>
 		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(ClrTypeMethod.ReturnType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(ClrTypeMethod.ReturnType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -2497,14 +2497,14 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypeproperty.clrtype.aspx">ClrTypeProperty.ClrType</see>
 		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ClrType 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ClrType 
 		{
 			get 
 			{
-				return Element.GetReferenced(ClrTypeProperty.ClrType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(ClrTypeProperty.ClrType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -2594,7 +2594,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(ColumnStoreIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
+				return Element.GetReferenced(ColumnStoreIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -2652,7 +2652,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Contract.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Contract.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -4336,7 +4336,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Endpoint.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Endpoint.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -4348,7 +4348,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Endpoint.PayloadSpecifier).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier>();
+				return Element.GetReferenced(Endpoint.PayloadSpecifier).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -4360,7 +4360,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Endpoint.ProtocolSpecifier).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier >();
+				return Element.GetReferenced(Endpoint.ProtocolSpecifier).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier )TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -5040,7 +5040,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(ExtendedProperty.Host).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost>();
+				return Element.GetReferenced(ExtendedProperty.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -5400,7 +5400,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextCatalog.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(FullTextCatalog.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -5532,7 +5532,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
+				return Element.GetReferenced(FullTextIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -5668,7 +5668,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextStopList.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(FullTextStopList.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -6332,7 +6332,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(MessageType.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(MessageType.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -6393,14 +6393,14 @@ public partial class TSqlModelElement
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionfunction.parametertype.aspx">PartitionFunction.ParameterType</see>
 		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ParameterType 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ParameterType 
 		{
 			get 
 			{
-				return Element.GetReferenced(PartitionFunction.ParameterType).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase>();
+				return Element.GetReferenced(PartitionFunction.ParameterType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -6586,7 +6586,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Permission.Grantee).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal >();
+				return Element.GetReferenced(Permission.Grantee).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal )TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -6598,7 +6598,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Permission.Grantor).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal >();
+				return Element.GetReferenced(Permission.Grantor).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal )TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -6622,7 +6622,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Permission.SecuredObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable>();
+				return Element.GetReferenced(Permission.SecuredObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -7426,7 +7426,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(RemoteServiceBinding.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(RemoteServiceBinding.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -7608,7 +7608,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Role.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Role.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -7642,7 +7642,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(RoleMembership.Member).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal>();
+				return Element.GetReferenced(RoleMembership.Member).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -7738,7 +7738,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Route.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Route.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -7828,7 +7828,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Schema.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Schema.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -7926,7 +7926,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(SearchPropertyList.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(SearchPropertyList.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -8616,7 +8616,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(ServerRoleMembership.Member).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal>();
+				return Element.GetReferenced(ServerRoleMembership.Member).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -8672,7 +8672,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(Service.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(Service.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -9408,7 +9408,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(SpatialIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
+				return Element.GetReferenced(SpatialIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -9782,7 +9782,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(SymmetricKey.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(SymmetricKey.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -10442,7 +10442,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(TableType.Constraints).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint>();
+				return Element.GetReferenced(TableType.Constraints).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -10454,7 +10454,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(TableType.Indexes).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlIndex>();
+				return Element.GetReferenced(TableType.Indexes).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -11380,7 +11380,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(UserDefinedServerRole.Authorizer).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer>();
+				return Element.GetReferenced(UserDefinedServerRole.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -11878,7 +11878,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(XmlIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
+				return Element.GetReferenced(XmlIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -12016,7 +12016,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(SelectiveXmlIndex.IndexedObject).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex>();
+				return Element.GetReferenced(SelectiveXmlIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -12028,7 +12028,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(SelectiveXmlIndex.PrimaryPromotedPath).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath>();
+				return Element.GetReferenced(SelectiveXmlIndex.PrimaryPromotedPath).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -12052,7 +12052,7 @@ public partial class TSqlModelElement
 		{
 			get 
 			{
-				return Element.GetReferenced(SelectiveXmlIndex.PromotedPaths).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath>();
+				return Element.GetReferenced(SelectiveXmlIndex.PromotedPaths).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 

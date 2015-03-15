@@ -31,60 +31,48 @@ using System.Text;
 
 namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 {
-   
-    public interface ISqlSecurityPrincipal { }
+
+    public interface ISqlSecurityPrincipal : ISqlModelElement { }
 
     public interface IServerSecurityPrincipal : ISqlSecurityPrincipal { }
 
     public interface ISqlDatabaseSecurityPrincipal : ISqlSecurityPrincipal, ISqlObjectAuthorizer{ }
 
-    public interface ISqlSecurable { }
+    public interface ISqlSecurable : ISqlModelElement { }
 
-    public interface ISpecifiesIndex 
+    public interface ISpecifiesIndex : ISqlModelElement
     {
         IEnumerable<ISqlIndex> Indexes { get; }
     }
 
-    public interface ISpecifiesDmlTrigger
+    public interface ISpecifiesDmlTrigger : ISqlModelElement
     {
         IEnumerable<TSqlDmlTrigger> Triggers { get; }
     }
 
-    public interface ISqlColumnSource 
+    public interface ISqlColumnSource : ISqlModelElement 
     {
         IEnumerable<TSqlColumn> Columns { get; }        
     }
-    public interface ISqlPromotedNodePath{ }
-    public interface ISqlIndex { }
-    public interface ITableTypeConstraint { }
-    public interface IProtocolSpecifier { }
-    public interface IEndpointLanguageSpecifier { }
+    public interface ISqlPromotedNodePath : ISqlModelElement { }
+    public interface ISqlIndex : ISqlModelElement { }
+    public interface ITableTypeConstraint : ISqlModelElement { }
+    public interface IProtocolSpecifier : ISqlModelElement { }
+    public interface IEndpointLanguageSpecifier : ISqlModelElement { }
 
-    #region ISqlTypeSpecifierBase
-    public interface ISqlTypeSpecifierBase
-    {
-    }
-    //XmlTypeSpecifier seems to be missing from model
-    public partial class XmlTypeSpecifier : ISqlTypeSpecifierBase
-    { }
-    //TypeSpecificier seems to be missing from model
-    public partial class TypeSpecificier : ISqlTypeSpecifierBase
-    {
-    }
-    #endregion
 
     #region IExtendedProprtyHost
-    public interface IExtendedPropertyHost { }
+    public interface IExtendedPropertyHost : ISqlModelElement { }
 
     //TODO: Collect all extended property hosts. Some added but lots missing
     #endregion
 
     #region ISqlObjectAuthorizer
-    public interface ISqlObjectAuthorizer { }
+    public interface ISqlObjectAuthorizer : ISqlModelElement { }
     // TODO: Collect all Authorizers
     #endregion
 
-    public interface ISpecifiesStorage
+    public interface ISpecifiesStorage : ISqlModelElement
     {
         IEnumerable<TSqlDataCompressionOption> DataCompressionOptions { get; }
 

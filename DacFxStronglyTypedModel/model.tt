@@ -154,7 +154,7 @@ public partial class TSqlModelElement
 			RelationshipOverride localoverride;		
 			if(modelEntry.RelationshipOverrides.TryGetValue(relationship.Name, out localoverride))
 			{
-				if(localoverride.Specialize)
+				if(localoverride.AdaptInstance)
 				{
 					castExpression = string.Format(".Select(o => ({0}.{1})TSqlModelElement.AdaptInstance(o))", localoverride.ReturnTypeNamespace, localoverride.ReturnType);
 				}

@@ -236,7 +236,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -342,7 +342,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -394,7 +394,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -705,7 +705,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -733,7 +733,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ClrType 
 		{
 			get;
 		}
@@ -1791,7 +1791,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ParameterType 
 		{
 			get;
 		}
@@ -3374,7 +3374,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -3480,7 +3480,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -3532,7 +3532,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -3925,7 +3925,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -3953,7 +3953,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ClrType 
 		{
 			get;
 		}
@@ -5234,7 +5234,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ParameterType 
 		{
 			get;
 		}
@@ -7207,7 +7207,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -7285,7 +7285,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -7514,7 +7514,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -7542,7 +7542,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ClrType 
 		{
 			get;
 		}
@@ -9184,7 +9184,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -9290,7 +9290,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -9342,7 +9342,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -9735,7 +9735,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -9763,7 +9763,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ClrType 
 		{
 			get;
 		}
@@ -11054,7 +11054,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ParameterType 
 		{
 			get;
 		}
@@ -13182,7 +13182,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -13288,7 +13288,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -13340,7 +13340,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -13737,7 +13737,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ReturnType 
 		{
 			get;
 		}
@@ -13765,7 +13765,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ClrType 
 		{
 			get;
 		}
@@ -15068,7 +15068,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ParameterType 
 		{
 			get;
 		}

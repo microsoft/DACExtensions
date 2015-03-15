@@ -275,11 +275,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlTableValuedFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
 			}
 		}
 
@@ -412,11 +412,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlScalarFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
 			}
 		}
 
@@ -487,11 +487,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlAggregate.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlAggregate.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
 			}
 		}
 
@@ -900,11 +900,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlClrTypeMethod.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlClrTypeMethod.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
 			}
 		}
 	}
@@ -942,11 +942,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlClrTypeProperty.ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
-				return this.ClrType;
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
 			}
 		}
 	}
@@ -2226,11 +2226,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql90TSqlPartitionFunction.ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
-				return this.ParameterType;
+				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
 			}
 		}
 	}
@@ -4140,11 +4140,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlTableValuedFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
 			}
 		}
 
@@ -4277,11 +4277,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlScalarFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
 			}
 		}
 
@@ -4352,11 +4352,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlAggregate.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlAggregate.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
 			}
 		}
 
@@ -4911,11 +4911,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlClrTypeMethod.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlClrTypeMethod.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
 			}
 		}
 	}
@@ -4953,11 +4953,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlClrTypeProperty.ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
-				return this.ClrType;
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
 			}
 		}
 	}
@@ -6580,11 +6580,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql100TSqlPartitionFunction.ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
-				return this.ParameterType;
+				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
 			}
 		}
 	}
@@ -9109,11 +9109,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureTSqlTableValuedFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
 			}
 		}
 
@@ -9218,11 +9218,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureTSqlScalarFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
 			}
 		}
 
@@ -9466,11 +9466,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureTSqlClrTypeMethod.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlClrTypeMethod.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
 			}
 		}
 	}
@@ -9508,11 +9508,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISqlAzureTSqlClrTypeProperty.ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
-				return this.ClrType;
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
 			}
 		}
 	}
@@ -11071,11 +11071,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlTableValuedFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 
@@ -11208,11 +11208,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlScalarFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 
@@ -11283,11 +11283,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlAggregate.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlAggregate.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 
@@ -11842,11 +11842,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlClrTypeMethod.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlClrTypeMethod.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 	}
@@ -11884,11 +11884,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlClrTypeProperty.ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
-				return this.ClrType;
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 	}
@@ -13582,11 +13582,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql110TSqlPartitionFunction.ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
-				return this.ParameterType;
+				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
 			}
 		}
 	}
@@ -16475,11 +16475,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlTableValuedFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 
@@ -16612,11 +16612,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlScalarFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 
@@ -16687,11 +16687,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlAggregate.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlAggregate.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 
@@ -17250,11 +17250,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlClrTypeMethod.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlClrTypeMethod.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType;
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 	}
@@ -17292,11 +17292,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlClrTypeProperty.ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
-				return this.ClrType;
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 	}
@@ -19002,11 +19002,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlTypeSpecifierBase> ISql120TSqlPartitionFunction.ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
-				return this.ParameterType;
+				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
 			}
 		}
 	}
