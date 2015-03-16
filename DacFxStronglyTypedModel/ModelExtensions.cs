@@ -208,4 +208,52 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
         }
     }
+
+    public partial class TSqlTableType
+    {
+        public IEnumerable<TSqlTableTypePrimaryKeyConstraint> PrimaryKeyConstraints
+        {
+            get
+            {
+
+                foreach (var element in Constraints.OfType<TSqlTableTypePrimaryKeyConstraint>())
+                {
+                    yield return element;
+                }
+            }
+        }
+
+        public IEnumerable<TSqlTableTypeDefaultConstraint> DefaultConstraints
+        {
+            get
+            {
+                foreach (var element in Constraints.OfType<TSqlTableTypeDefaultConstraint>())
+                {
+                    yield return element;
+                }
+            }
+        }
+
+        public IEnumerable<TSqlTableTypeCheckConstraint> CheckConstraints
+        {
+            get
+            {
+                foreach (var element in Constraints.OfType<TSqlTableTypeCheckConstraint>())
+                {
+                    yield return element;
+                }
+            }
+        }
+
+        public IEnumerable<TSqlTableTypeUniqueConstraint> UniqueConstraints
+        {
+            get
+            {
+                foreach (var element in this.Constraints.OfType<TSqlTableTypeUniqueConstraint>())
+                {
+                    yield return element;
+                }
+            }
+        }
+    }
 }

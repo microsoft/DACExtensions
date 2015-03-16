@@ -10423,14 +10423,14 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeColumn"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.columns.aspx">TableType.Columns</see>
 		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableType.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableType.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeColumn)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -10447,14 +10447,14 @@ public partial class TSqlModelElement
 		}
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlIndex"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.indexes.aspx">TableType.Indexes</see>
 		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlIndex> Indexes 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex> Indexes 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableType.Indexes).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableType.Indexes).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 

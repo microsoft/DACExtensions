@@ -28,7 +28,86 @@ namespace Public.Dac.Sample.Tests
                 "TSqlTable should implement TSqlTable");
 
         }
+        [TestMethod]
+        public void TestIndexIncludedColumns()
+        {
+            TSqlModel model = new TSqlModel(SqlServerVersion.Sql120, new TSqlModelOptions() { });
+            model.AddObjects(@"CREATE TABLE [dbo].[Table1]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    col1 int not null,
+	[c] AS (Id + ' ')
+);
+GO
+CREATE INDEX ix_1 on Table1 (c) INCLUDE ( col1)
+");
+            TSqlTypedModel typedModel = new TSqlTypedModel(model);
 
+            var index = typedModel.GetObject<TSqlIndex>(new ObjectIdentifier("dbo", "Table1", "ix_1"), DacQueryScopes.UserDefined);
+
+            Assert.IsNotNull(index,"Index should not be null");
+            Assert.AreEqual(1, index.IncludedColumns.Count(), "Incorrect number of included columns");
+        }
+
+        [TestMethod]
+        public void TestTSqlDataType()
+        {
+            TSqlModel model = new TSqlModel(SqlServerVersion.Sql120, new TSqlModelOptions() { });
+              model.AddObjects(@"
+CREATE PARTITION FUNCTION [pf1]
+	(
+		int
+	)
+	AS RANGE LEFT
+	FOR VALUES (1,100,1000)
+");
+              model.AddObjects(@"
+");
+
+              TSqlTypedModel typedModel = new TSqlTypedModel(model);
+
+              TSqlPartitionFunction function = typedModel.GetObject<TSqlPartitionFunction>(
+                  new ObjectIdentifier("pf1"), DacQueryScopes.UserDefined);
+                
+                foreach(var parameterType in function.ParameterType)
+                {
+                    Assert.AreEqual(SqlDataType.Int, parameterType.SqlDataType, "DataType on partition function is not correct");                 
+                }
+
+
+        }
+
+        [TestMethod]
+        public void TestTableType()
+        {
+            TSqlModel model = new TSqlModel(SqlServerVersion.Sql120, new TSqlModelOptions() { });
+            model.AddObjects(@"CREATE TYPE [dbo].[UserDefinedTableType1] AS TABLE
+(
+	Id INT PRIMARY KEY, 
+	Name VARCHAR(128) CHECK( Id <> ' '),
+	MI char(1) DEFAULT (' '),
+	UniqueValue int UNIQUE,
+    ComputedColumn AS ( Name + ' ' + MI + ' ' + UniqueValue),
+	INDEX IX_1 (Name)
+)");
+
+            TSqlTypedModel typedModel = new TSqlTypedModel(model);
+          
+            var tableType1 = typedModel.GetObject<TSqlTableType>(
+                new ObjectIdentifier("dbo","UserDefinedTableType1"), DacQueryScopes.UserDefined);
+            Assert.IsNotNull(tableType1, "table type should not be null");
+            Assert.AreEqual(4, tableType1.Constraints.Count(),"Incorrect number of constraints");
+            Assert.AreEqual(1, tableType1.DefaultConstraints.Count(), "Incorrect number of Default constraints");
+            Assert.AreEqual(1, tableType1.CheckConstraints.Count(), "Incorrect number of Check constraints");
+            Assert.AreEqual(1, tableType1.PrimaryKeyConstraints.Count(), "Incorrect number of Primary Key constraints");
+            Assert.AreEqual(1, tableType1.UniqueConstraints.Count(), "Incorrect number of Unique Key constraints");
+            Assert.AreEqual(1, tableType1.Indexes.Count(), "Incorrect number of indexes");
+            Assert.AreEqual(5, tableType1.Columns.Count(), "Incorrect number of columns");
+            TSqlTableTypeColumn computedColumn = tableType1.Columns
+                .SingleOrDefault(c => c.Name.Parts[2] == "ComputedColumn");
+            Assert.IsNotNull(computedColumn, "computed column ComputedColumn missing");
+            Assert.AreEqual(2, computedColumn.ExpressionDependencies, "incorrect number of dependencies");
+        }
         [TestMethod]
         public void BasicInstantiation()
         {

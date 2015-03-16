@@ -6523,7 +6523,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	public interface ISql100TSqlTableType : ISqlModelElement
 	{		
 		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableTypeColumn> Columns 
 		{
 			get;
 		}
@@ -8628,7 +8628,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	public interface ISqlAzureTSqlTableType : ISqlModelElement
 	{		
 		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableTypeColumn> Columns 
 		{
 			get;
 		}
@@ -12347,7 +12347,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	public interface ISql110TSqlTableType : ISqlModelElement
 	{		
 		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableTypeColumn> Columns 
 		{
 			get;
 		}
@@ -16393,7 +16393,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableTypeColumn> Columns 
 		{
 			get;
 		}
@@ -16403,7 +16403,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Composing
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlIndex> Indexes 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex> Indexes 
 		{
 			get;
 		}

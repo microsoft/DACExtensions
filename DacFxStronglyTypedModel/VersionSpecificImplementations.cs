@@ -8268,11 +8268,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	{		
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableType.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableTypeColumn> ISql100TSqlTableType.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableTypeColumn>();
 			}
 		}
 
@@ -10443,11 +10443,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	{		
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableType.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableTypeColumn> ISqlAzureTSqlTableType.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableTypeColumn>();
 			}
 		}
 
@@ -15396,11 +15396,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	{		
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableType.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableTypeColumn> ISql110TSqlTableType.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableTypeColumn>();
 			}
 		}
 
@@ -20848,11 +20848,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableType.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableTypeColumn> ISql120TSqlTableType.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableTypeColumn>();
 			}
 		}
 
@@ -20866,7 +20866,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlIndex> ISql120TSqlTableType.Indexes 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex> ISql120TSqlTableType.Indexes 
 		{
 			get 
 			{
