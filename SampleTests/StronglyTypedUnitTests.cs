@@ -73,8 +73,12 @@ CREATE PARTITION FUNCTION [pf1]
                 {
                     Assert.AreEqual(SqlDataType.Int, parameterType.SqlDataType, "DataType on partition function is not correct");                 
                 }
+                var boundaryValues = function.BoundaryValues.ToList();
 
-
+                Assert.AreEqual(3, boundaryValues.Count, "Incorrect number of boundary values");
+                Assert.AreEqual("1", boundaryValues[0].Expression ,"incorrect boundary value");
+                Assert.AreEqual("100", boundaryValues[1].Expression, "incorrect boundary value");
+                Assert.AreEqual("1000", boundaryValues[2].Expression, "incorrect boundary value");
         }
 
         [TestMethod]
