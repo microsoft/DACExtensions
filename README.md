@@ -6,7 +6,7 @@ DACExtensions contains API extensions and samples using the [DacFx API](https://
 These extensions and samples include an improved object model, deployment contributors and static code analysis rules that can be used with Visual Studio or directly with the DacFx public API.
 
 ##Background Information
-SQL Server Data Tools is built into Visual Studio 2013. For other versions of visual studio you can download SSDT from the [Data Developer Center](https://msdn.microsoft.com/en-us/data/hh297027)
+SQL Server Data Tools is built into Visual Studio 2013. For other versions of visual studio you can download SQL Server Data Tools from the [Data Developer Center](https://msdn.microsoft.com/en-us/data/hh297027)
 
 SQL Server Data Tools provides an integrated environment for database developers to carry out all of their database design work for any SQL Server Platform. 
 
