@@ -61,7 +61,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 public partial class TSqlModelElement
 {
 	///<summary>
-	///  Returns a strongly typed wrapper for the TSqlObject instance.
+	///  Returns a strongly-typed wrapper for the TSqlObject instance.
 	///</summary>
 	public static ISqlModelElement AdaptInstance(TSqlObject obj)
     {
@@ -321,7 +321,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Column.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlColumn to adapt instances of <see cref="T:Column"/>
+		///	Create a strongly-typed class TSqlColumn to adapt instances of <see cref="T:Column"/>
 		/// </summary>
 		public TSqlColumn(TSqlObject obj)  : base(obj, Column.TypeClass)
 		{
@@ -549,7 +549,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = TableValuedFunction.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlTableValuedFunction to adapt instances of <see cref="T:TableValuedFunction"/>
+		///	Create a strongly-typed class TSqlTableValuedFunction to adapt instances of <see cref="T:TableValuedFunction"/>
 		/// </summary>
 		public TSqlTableValuedFunction(TSqlObject obj)  : base(obj, TableValuedFunction.TypeClass)
 		{
@@ -847,7 +847,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ScalarFunction.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlScalarFunction to adapt instances of <see cref="T:ScalarFunction"/>
+		///	Create a strongly-typed class TSqlScalarFunction to adapt instances of <see cref="T:ScalarFunction"/>
 		/// </summary>
 		public TSqlScalarFunction(TSqlObject obj)  : base(obj, ScalarFunction.TypeClass)
 		{
@@ -1123,7 +1123,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Aggregate.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlAggregate to adapt instances of <see cref="T:Aggregate"/>
+		///	Create a strongly-typed class TSqlAggregate to adapt instances of <see cref="T:Aggregate"/>
 		/// </summary>
 		public TSqlAggregate(TSqlObject obj)  : base(obj, Aggregate.TypeClass)
 		{
@@ -1253,7 +1253,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ApplicationRole.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlApplicationRole to adapt instances of <see cref="T:ApplicationRole"/>
+		///	Create a strongly-typed class TSqlApplicationRole to adapt instances of <see cref="T:ApplicationRole"/>
 		/// </summary>
 		public TSqlApplicationRole(TSqlObject obj)  : base(obj, ApplicationRole.TypeClass)
 		{
@@ -1297,7 +1297,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Index.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlIndex to adapt instances of <see cref="T:Index"/>
+		///	Create a strongly-typed class TSqlIndex to adapt instances of <see cref="T:Index"/>
 		/// </summary>
 		public TSqlIndex(TSqlObject obj)  : base(obj, Index.TypeClass)
 		{
@@ -1579,7 +1579,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Assembly.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlAssembly to adapt instances of <see cref="T:Assembly"/>
+		///	Create a strongly-typed class TSqlAssembly to adapt instances of <see cref="T:Assembly"/>
 		/// </summary>
 		public TSqlAssembly(TSqlObject obj)  : base(obj, Assembly.TypeClass)
 		{
@@ -1657,7 +1657,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = AssemblySource.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlAssemblySource to adapt instances of <see cref="T:AssemblySource"/>
+		///	Create a strongly-typed class TSqlAssemblySource to adapt instances of <see cref="T:AssemblySource"/>
 		/// </summary>
 		public TSqlAssemblySource(TSqlObject obj)  : base(obj, AssemblySource.TypeClass)
 		{
@@ -1689,7 +1689,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = AsymmetricKey.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlAsymmetricKey to adapt instances of <see cref="T:AsymmetricKey"/>
+		///	Create a strongly-typed class TSqlAsymmetricKey to adapt instances of <see cref="T:AsymmetricKey"/>
 		/// </summary>
 		public TSqlAsymmetricKey(TSqlObject obj)  : base(obj, AsymmetricKey.TypeClass)
 		{
@@ -1817,7 +1817,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = AuditAction.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlAuditAction to adapt instances of <see cref="T:AuditAction"/>
+		///	Create a strongly-typed class TSqlAuditAction to adapt instances of <see cref="T:AuditAction"/>
 		/// </summary>
 		public TSqlAuditAction(TSqlObject obj)  : base(obj, AuditAction.TypeClass)
 		{
@@ -1849,7 +1849,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = AuditActionGroup.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlAuditActionGroup to adapt instances of <see cref="T:AuditActionGroup"/>
+		///	Create a strongly-typed class TSqlAuditActionGroup to adapt instances of <see cref="T:AuditActionGroup"/>
 		/// </summary>
 		public TSqlAuditActionGroup(TSqlObject obj)  : base(obj, AuditActionGroup.TypeClass)
 		{
@@ -1881,7 +1881,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = AuditActionSpecification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlAuditActionSpecification to adapt instances of <see cref="T:AuditActionSpecification"/>
+		///	Create a strongly-typed class TSqlAuditActionSpecification to adapt instances of <see cref="T:AuditActionSpecification"/>
 		/// </summary>
 		public TSqlAuditActionSpecification(TSqlObject obj)  : base(obj, AuditActionSpecification.TypeClass)
 		{
@@ -1939,7 +1939,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = BrokerPriority.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlBrokerPriority to adapt instances of <see cref="T:BrokerPriority"/>
+		///	Create a strongly-typed class TSqlBrokerPriority to adapt instances of <see cref="T:BrokerPriority"/>
 		/// </summary>
 		public TSqlBrokerPriority(TSqlObject obj)  : base(obj, BrokerPriority.TypeClass)
 		{
@@ -2005,7 +2005,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = BuiltInServerRole.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlBuiltInServerRole to adapt instances of <see cref="T:BuiltInServerRole"/>
+		///	Create a strongly-typed class TSqlBuiltInServerRole to adapt instances of <see cref="T:BuiltInServerRole"/>
 		/// </summary>
 		public TSqlBuiltInServerRole(TSqlObject obj)  : base(obj, BuiltInServerRole.TypeClass)
 		{
@@ -2027,7 +2027,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = DataType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlDataType to adapt instances of <see cref="T:DataType"/>
+		///	Create a strongly-typed class TSqlDataType to adapt instances of <see cref="T:DataType"/>
 		/// </summary>
 		public TSqlDataType(TSqlObject obj)  : base(obj, DataType.TypeClass)
 		{
@@ -2133,7 +2133,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Certificate.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlCertificate to adapt instances of <see cref="T:Certificate"/>
+		///	Create a strongly-typed class TSqlCertificate to adapt instances of <see cref="T:Certificate"/>
 		/// </summary>
 		public TSqlCertificate(TSqlObject obj)  : base(obj, Certificate.TypeClass)
 		{
@@ -2289,7 +2289,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = CheckConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlCheckConstraint to adapt instances of <see cref="T:CheckConstraint"/>
+		///	Create a strongly-typed class TSqlCheckConstraint to adapt instances of <see cref="T:CheckConstraint"/>
 		/// </summary>
 		public TSqlCheckConstraint(TSqlObject obj)  : base(obj, CheckConstraint.TypeClass)
 		{
@@ -2365,7 +2365,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ClrTypeMethod.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlClrTypeMethod to adapt instances of <see cref="T:ClrTypeMethod"/>
+		///	Create a strongly-typed class TSqlClrTypeMethod to adapt instances of <see cref="T:ClrTypeMethod"/>
 		/// </summary>
 		public TSqlClrTypeMethod(TSqlObject obj)  : base(obj, ClrTypeMethod.TypeClass)
 		{
@@ -2421,7 +2421,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ClrTypeMethodParameter.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlClrTypeMethodParameter to adapt instances of <see cref="T:ClrTypeMethodParameter"/>
+		///	Create a strongly-typed class TSqlClrTypeMethodParameter to adapt instances of <see cref="T:ClrTypeMethodParameter"/>
 		/// </summary>
 		public TSqlClrTypeMethodParameter(TSqlObject obj)  : base(obj, ClrTypeMethodParameter.TypeClass)
 		{
@@ -2475,7 +2475,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ClrTypeProperty.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlClrTypeProperty to adapt instances of <see cref="T:ClrTypeProperty"/>
+		///	Create a strongly-typed class TSqlClrTypeProperty to adapt instances of <see cref="T:ClrTypeProperty"/>
 		/// </summary>
 		public TSqlClrTypeProperty(TSqlObject obj)  : base(obj, ClrTypeProperty.TypeClass)
 		{
@@ -2519,7 +2519,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ColumnStoreIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlColumnStoreIndex to adapt instances of <see cref="T:ColumnStoreIndex"/>
+		///	Create a strongly-typed class TSqlColumnStoreIndex to adapt instances of <see cref="T:ColumnStoreIndex"/>
 		/// </summary>
 		public TSqlColumnStoreIndex(TSqlObject obj)  : base(obj, ColumnStoreIndex.TypeClass)
 		{
@@ -2633,7 +2633,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Contract.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlContract to adapt instances of <see cref="T:Contract"/>
+		///	Create a strongly-typed class TSqlContract to adapt instances of <see cref="T:Contract"/>
 		/// </summary>
 		public TSqlContract(TSqlObject obj)  : base(obj, Contract.TypeClass)
 		{
@@ -2679,7 +2679,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Credential.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlCredential to adapt instances of <see cref="T:Credential"/>
+		///	Create a strongly-typed class TSqlCredential to adapt instances of <see cref="T:Credential"/>
 		/// </summary>
 		public TSqlCredential(TSqlObject obj)  : base(obj, Credential.TypeClass)
 		{
@@ -2733,7 +2733,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = CryptographicProvider.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlCryptographicProvider to adapt instances of <see cref="T:CryptographicProvider"/>
+		///	Create a strongly-typed class TSqlCryptographicProvider to adapt instances of <see cref="T:CryptographicProvider"/>
 		/// </summary>
 		public TSqlCryptographicProvider(TSqlObject obj)  : base(obj, CryptographicProvider.TypeClass)
 		{
@@ -2775,7 +2775,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = DatabaseAuditSpecification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlDatabaseAuditSpecification to adapt instances of <see cref="T:DatabaseAuditSpecification"/>
+		///	Create a strongly-typed class TSqlDatabaseAuditSpecification to adapt instances of <see cref="T:DatabaseAuditSpecification"/>
 		/// </summary>
 		public TSqlDatabaseAuditSpecification(TSqlObject obj)  : base(obj, DatabaseAuditSpecification.TypeClass)
 		{
@@ -2843,7 +2843,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = DatabaseDdlTrigger.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlDatabaseDdlTrigger to adapt instances of <see cref="T:DatabaseDdlTrigger"/>
+		///	Create a strongly-typed class TSqlDatabaseDdlTrigger to adapt instances of <see cref="T:DatabaseDdlTrigger"/>
 		/// </summary>
 		public TSqlDatabaseDdlTrigger(TSqlObject obj)  : base(obj, DatabaseDdlTrigger.TypeClass)
 		{
@@ -3037,7 +3037,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = DatabaseEncryptionKey.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlDatabaseEncryptionKey to adapt instances of <see cref="T:DatabaseEncryptionKey"/>
+		///	Create a strongly-typed class TSqlDatabaseEncryptionKey to adapt instances of <see cref="T:DatabaseEncryptionKey"/>
 		/// </summary>
 		public TSqlDatabaseEncryptionKey(TSqlObject obj)  : base(obj, DatabaseEncryptionKey.TypeClass)
 		{
@@ -3093,7 +3093,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = DatabaseEventNotification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlDatabaseEventNotification to adapt instances of <see cref="T:DatabaseEventNotification"/>
+		///	Create a strongly-typed class TSqlDatabaseEventNotification to adapt instances of <see cref="T:DatabaseEventNotification"/>
 		/// </summary>
 		public TSqlDatabaseEventNotification(TSqlObject obj)  : base(obj, DatabaseEventNotification.TypeClass)
 		{
@@ -3169,7 +3169,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = DatabaseMirroringLanguageSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlDatabaseMirroringLanguageSpecifier to adapt instances of <see cref="T:DatabaseMirroringLanguageSpecifier"/>
+		///	Create a strongly-typed class TSqlDatabaseMirroringLanguageSpecifier to adapt instances of <see cref="T:DatabaseMirroringLanguageSpecifier"/>
 		/// </summary>
 		public TSqlDatabaseMirroringLanguageSpecifier(TSqlObject obj)  : base(obj, DatabaseMirroringLanguageSpecifier.TypeClass)
 		{
@@ -3263,7 +3263,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = DatabaseOptions.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlDatabaseOptions to adapt instances of <see cref="T:DatabaseOptions"/>
+		///	Create a strongly-typed class TSqlDatabaseOptions to adapt instances of <see cref="T:DatabaseOptions"/>
 		/// </summary>
 		public TSqlDatabaseOptions(TSqlObject obj)  : base(obj, DatabaseOptions.TypeClass)
 		{
@@ -3839,7 +3839,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = DataCompressionOption.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlDataCompressionOption to adapt instances of <see cref="T:DataCompressionOption"/>
+		///	Create a strongly-typed class TSqlDataCompressionOption to adapt instances of <see cref="T:DataCompressionOption"/>
 		/// </summary>
 		public TSqlDataCompressionOption(TSqlObject obj)  : base(obj, DataCompressionOption.TypeClass)
 		{
@@ -3881,7 +3881,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Default.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlDefault to adapt instances of <see cref="T:Default"/>
+		///	Create a strongly-typed class TSqlDefault to adapt instances of <see cref="T:Default"/>
 		/// </summary>
 		public TSqlDefault(TSqlObject obj)  : base(obj, Default.TypeClass)
 		{
@@ -3937,7 +3937,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = DefaultConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlDefaultConstraint to adapt instances of <see cref="T:DefaultConstraint"/>
+		///	Create a strongly-typed class TSqlDefaultConstraint to adapt instances of <see cref="T:DefaultConstraint"/>
 		/// </summary>
 		public TSqlDefaultConstraint(TSqlObject obj)  : base(obj, DefaultConstraint.TypeClass)
 		{
@@ -4025,7 +4025,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = DmlTrigger.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlDmlTrigger to adapt instances of <see cref="T:DmlTrigger"/>
+		///	Create a strongly-typed class TSqlDmlTrigger to adapt instances of <see cref="T:DmlTrigger"/>
 		/// </summary>
 		public TSqlDmlTrigger(TSqlObject obj)  : base(obj, DmlTrigger.TypeClass)
 		{
@@ -4287,7 +4287,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Endpoint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlEndpoint to adapt instances of <see cref="T:Endpoint"/>
+		///	Create a strongly-typed class TSqlEndpoint to adapt instances of <see cref="T:Endpoint"/>
 		/// </summary>
 		public TSqlEndpoint(TSqlObject obj)  : base(obj, Endpoint.TypeClass)
 		{
@@ -4375,7 +4375,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ErrorMessage.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlErrorMessage to adapt instances of <see cref="T:ErrorMessage"/>
+		///	Create a strongly-typed class TSqlErrorMessage to adapt instances of <see cref="T:ErrorMessage"/>
 		/// </summary>
 		public TSqlErrorMessage(TSqlObject obj)  : base(obj, ErrorMessage.TypeClass)
 		{
@@ -4447,7 +4447,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = EventGroup.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlEventGroup to adapt instances of <see cref="T:EventGroup"/>
+		///	Create a strongly-typed class TSqlEventGroup to adapt instances of <see cref="T:EventGroup"/>
 		/// </summary>
 		public TSqlEventGroup(TSqlObject obj)  : base(obj, EventGroup.TypeClass)
 		{
@@ -4479,7 +4479,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = EventSession.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlEventSession to adapt instances of <see cref="T:EventSession"/>
+		///	Create a strongly-typed class TSqlEventSession to adapt instances of <see cref="T:EventSession"/>
 		/// </summary>
 		public TSqlEventSession(TSqlObject obj)  : base(obj, EventSession.TypeClass)
 		{
@@ -4615,7 +4615,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = EventSessionAction.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlEventSessionAction to adapt instances of <see cref="T:EventSessionAction"/>
+		///	Create a strongly-typed class TSqlEventSessionAction to adapt instances of <see cref="T:EventSessionAction"/>
 		/// </summary>
 		public TSqlEventSessionAction(TSqlObject obj)  : base(obj, EventSessionAction.TypeClass)
 		{
@@ -4667,7 +4667,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = EventSessionDefinitions.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlEventSessionDefinitions to adapt instances of <see cref="T:EventSessionDefinitions"/>
+		///	Create a strongly-typed class TSqlEventSessionDefinitions to adapt instances of <see cref="T:EventSessionDefinitions"/>
 		/// </summary>
 		public TSqlEventSessionDefinitions(TSqlObject obj)  : base(obj, EventSessionDefinitions.TypeClass)
 		{
@@ -4753,7 +4753,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = EventSessionSetting.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlEventSessionSetting to adapt instances of <see cref="T:EventSessionSetting"/>
+		///	Create a strongly-typed class TSqlEventSessionSetting to adapt instances of <see cref="T:EventSessionSetting"/>
 		/// </summary>
 		public TSqlEventSessionSetting(TSqlObject obj)  : base(obj, EventSessionSetting.TypeClass)
 		{
@@ -4795,7 +4795,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = EventSessionTarget.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlEventSessionTarget to adapt instances of <see cref="T:EventSessionTarget"/>
+		///	Create a strongly-typed class TSqlEventSessionTarget to adapt instances of <see cref="T:EventSessionTarget"/>
 		/// </summary>
 		public TSqlEventSessionTarget(TSqlObject obj)  : base(obj, EventSessionTarget.TypeClass)
 		{
@@ -4859,7 +4859,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = EventTypeSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlEventTypeSpecifier to adapt instances of <see cref="T:EventTypeSpecifier"/>
+		///	Create a strongly-typed class TSqlEventTypeSpecifier to adapt instances of <see cref="T:EventTypeSpecifier"/>
 		/// </summary>
 		public TSqlEventTypeSpecifier(TSqlObject obj)  : base(obj, EventTypeSpecifier.TypeClass)
 		{
@@ -4901,7 +4901,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ExtendedProcedure.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlExtendedProcedure to adapt instances of <see cref="T:ExtendedProcedure"/>
+		///	Create a strongly-typed class TSqlExtendedProcedure to adapt instances of <see cref="T:ExtendedProcedure"/>
 		/// </summary>
 		public TSqlExtendedProcedure(TSqlObject obj)  : base(obj, ExtendedProcedure.TypeClass)
 		{
@@ -5011,7 +5011,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ExtendedProperty.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlExtendedProperty to adapt instances of <see cref="T:ExtendedProperty"/>
+		///	Create a strongly-typed class TSqlExtendedProperty to adapt instances of <see cref="T:ExtendedProperty"/>
 		/// </summary>
 		public TSqlExtendedProperty(TSqlObject obj)  : base(obj, ExtendedProperty.TypeClass)
 		{
@@ -5055,7 +5055,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = SqlFile.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSqlFile to adapt instances of <see cref="T:SqlFile"/>
+		///	Create a strongly-typed class TSqlSqlFile to adapt instances of <see cref="T:SqlFile"/>
 		/// </summary>
 		public TSqlSqlFile(TSqlObject obj)  : base(obj, SqlFile.TypeClass)
 		{
@@ -5189,7 +5189,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Filegroup.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlFilegroup to adapt instances of <see cref="T:Filegroup"/>
+		///	Create a strongly-typed class TSqlFilegroup to adapt instances of <see cref="T:Filegroup"/>
 		/// </summary>
 		public TSqlFilegroup(TSqlObject obj)  : base(obj, Filegroup.TypeClass)
 		{
@@ -5241,7 +5241,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ForeignKeyConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlForeignKeyConstraint to adapt instances of <see cref="T:ForeignKeyConstraint"/>
+		///	Create a strongly-typed class TSqlForeignKeyConstraint to adapt instances of <see cref="T:ForeignKeyConstraint"/>
 		/// </summary>
 		public TSqlForeignKeyConstraint(TSqlObject obj)  : base(obj, ForeignKeyConstraint.TypeClass)
 		{
@@ -5351,7 +5351,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = FullTextCatalog.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlFullTextCatalog to adapt instances of <see cref="T:FullTextCatalog"/>
+		///	Create a strongly-typed class TSqlFullTextCatalog to adapt instances of <see cref="T:FullTextCatalog"/>
 		/// </summary>
 		public TSqlFullTextCatalog(TSqlObject obj)  : base(obj, FullTextCatalog.TypeClass)
 		{
@@ -5427,7 +5427,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = FullTextIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlFullTextIndex to adapt instances of <see cref="T:FullTextIndex"/>
+		///	Create a strongly-typed class TSqlFullTextIndex to adapt instances of <see cref="T:FullTextIndex"/>
 		/// </summary>
 		public TSqlFullTextIndex(TSqlObject obj)  : base(obj, FullTextIndex.TypeClass)
 		{
@@ -5583,7 +5583,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = FullTextIndexColumnSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlFullTextIndexColumnSpecifier to adapt instances of <see cref="T:FullTextIndexColumnSpecifier"/>
+		///	Create a strongly-typed class TSqlFullTextIndexColumnSpecifier to adapt instances of <see cref="T:FullTextIndexColumnSpecifier"/>
 		/// </summary>
 		public TSqlFullTextIndexColumnSpecifier(TSqlObject obj)  : base(obj, FullTextIndexColumnSpecifier.TypeClass)
 		{
@@ -5649,7 +5649,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = FullTextStopList.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlFullTextStopList to adapt instances of <see cref="T:FullTextStopList"/>
+		///	Create a strongly-typed class TSqlFullTextStopList to adapt instances of <see cref="T:FullTextStopList"/>
 		/// </summary>
 		public TSqlFullTextStopList(TSqlObject obj)  : base(obj, FullTextStopList.TypeClass)
 		{
@@ -5683,7 +5683,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = HttpProtocolSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlHttpProtocolSpecifier to adapt instances of <see cref="T:HttpProtocolSpecifier"/>
+		///	Create a strongly-typed class TSqlHttpProtocolSpecifier to adapt instances of <see cref="T:HttpProtocolSpecifier"/>
 		/// </summary>
 		public TSqlHttpProtocolSpecifier(TSqlObject obj)  : base(obj, HttpProtocolSpecifier.TypeClass)
 		{
@@ -5815,7 +5815,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = LinkedServer.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlLinkedServer to adapt instances of <see cref="T:LinkedServer"/>
+		///	Create a strongly-typed class TSqlLinkedServer to adapt instances of <see cref="T:LinkedServer"/>
 		/// </summary>
 		public TSqlLinkedServer(TSqlObject obj)  : base(obj, LinkedServer.TypeClass)
 		{
@@ -6027,7 +6027,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = LinkedServerLogin.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlLinkedServerLogin to adapt instances of <see cref="T:LinkedServerLogin"/>
+		///	Create a strongly-typed class TSqlLinkedServerLogin to adapt instances of <see cref="T:LinkedServerLogin"/>
 		/// </summary>
 		public TSqlLinkedServerLogin(TSqlObject obj)  : base(obj, LinkedServerLogin.TypeClass)
 		{
@@ -6103,7 +6103,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Login.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlLogin to adapt instances of <see cref="T:Login"/>
+		///	Create a strongly-typed class TSqlLogin to adapt instances of <see cref="T:Login"/>
 		/// </summary>
 		public TSqlLogin(TSqlObject obj)  : base(obj, Login.TypeClass)
 		{
@@ -6271,7 +6271,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = MasterKey.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlMasterKey to adapt instances of <see cref="T:MasterKey"/>
+		///	Create a strongly-typed class TSqlMasterKey to adapt instances of <see cref="T:MasterKey"/>
 		/// </summary>
 		public TSqlMasterKey(TSqlObject obj)  : base(obj, MasterKey.TypeClass)
 		{
@@ -6303,7 +6303,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = MessageType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlMessageType to adapt instances of <see cref="T:MessageType"/>
+		///	Create a strongly-typed class TSqlMessageType to adapt instances of <see cref="T:MessageType"/>
 		/// </summary>
 		public TSqlMessageType(TSqlObject obj)  : base(obj, MessageType.TypeClass)
 		{
@@ -6359,7 +6359,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = PartitionFunction.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlPartitionFunction to adapt instances of <see cref="T:PartitionFunction"/>
+		///	Create a strongly-typed class TSqlPartitionFunction to adapt instances of <see cref="T:PartitionFunction"/>
 		/// </summary>
 		public TSqlPartitionFunction(TSqlObject obj)  : base(obj, PartitionFunction.TypeClass)
 		{
@@ -6415,7 +6415,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = PartitionScheme.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlPartitionScheme to adapt instances of <see cref="T:PartitionScheme"/>
+		///	Create a strongly-typed class TSqlPartitionScheme to adapt instances of <see cref="T:PartitionScheme"/>
 		/// </summary>
 		public TSqlPartitionScheme(TSqlObject obj)  : base(obj, PartitionScheme.TypeClass)
 		{
@@ -6471,7 +6471,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = PartitionValue.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlPartitionValue to adapt instances of <see cref="T:PartitionValue"/>
+		///	Create a strongly-typed class TSqlPartitionValue to adapt instances of <see cref="T:PartitionValue"/>
 		/// </summary>
 		public TSqlPartitionValue(TSqlObject obj)  : base(obj, PartitionValue.TypeClass)
 		{
@@ -6515,7 +6515,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Permission.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlPermission to adapt instances of <see cref="T:Permission"/>
+		///	Create a strongly-typed class TSqlPermission to adapt instances of <see cref="T:Permission"/>
 		/// </summary>
 		public TSqlPermission(TSqlObject obj)  : base(obj, Permission.TypeClass)
 		{
@@ -6637,7 +6637,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = PrimaryKeyConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlPrimaryKeyConstraint to adapt instances of <see cref="T:PrimaryKeyConstraint"/>
+		///	Create a strongly-typed class TSqlPrimaryKeyConstraint to adapt instances of <see cref="T:PrimaryKeyConstraint"/>
 		/// </summary>
 		public TSqlPrimaryKeyConstraint(TSqlObject obj)  : base(obj, PrimaryKeyConstraint.TypeClass)
 		{
@@ -6865,7 +6865,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Procedure.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlProcedure to adapt instances of <see cref="T:Procedure"/>
+		///	Create a strongly-typed class TSqlProcedure to adapt instances of <see cref="T:Procedure"/>
 		/// </summary>
 		public TSqlProcedure(TSqlObject obj)  : base(obj, Procedure.TypeClass)
 		{
@@ -7101,7 +7101,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Queue.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlQueue to adapt instances of <see cref="T:Queue"/>
+		///	Create a strongly-typed class TSqlQueue to adapt instances of <see cref="T:Queue"/>
 		/// </summary>
 		public TSqlQueue(TSqlObject obj)  : base(obj, Queue.TypeClass)
 		{
@@ -7299,7 +7299,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = QueueEventNotification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlQueueEventNotification to adapt instances of <see cref="T:QueueEventNotification"/>
+		///	Create a strongly-typed class TSqlQueueEventNotification to adapt instances of <see cref="T:QueueEventNotification"/>
 		/// </summary>
 		public TSqlQueueEventNotification(TSqlObject obj)  : base(obj, QueueEventNotification.TypeClass)
 		{
@@ -7387,7 +7387,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = RemoteServiceBinding.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlRemoteServiceBinding to adapt instances of <see cref="T:RemoteServiceBinding"/>
+		///	Create a strongly-typed class TSqlRemoteServiceBinding to adapt instances of <see cref="T:RemoteServiceBinding"/>
 		/// </summary>
 		public TSqlRemoteServiceBinding(TSqlObject obj)  : base(obj, RemoteServiceBinding.TypeClass)
 		{
@@ -7453,7 +7453,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ResourceGovernor.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlResourceGovernor to adapt instances of <see cref="T:ResourceGovernor"/>
+		///	Create a strongly-typed class TSqlResourceGovernor to adapt instances of <see cref="T:ResourceGovernor"/>
 		/// </summary>
 		public TSqlResourceGovernor(TSqlObject obj)  : base(obj, ResourceGovernor.TypeClass)
 		{
@@ -7497,7 +7497,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ResourcePool.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlResourcePool to adapt instances of <see cref="T:ResourcePool"/>
+		///	Create a strongly-typed class TSqlResourcePool to adapt instances of <see cref="T:ResourcePool"/>
 		/// </summary>
 		public TSqlResourcePool(TSqlObject obj)  : base(obj, ResourcePool.TypeClass)
 		{
@@ -7589,7 +7589,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Role.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlRole to adapt instances of <see cref="T:Role"/>
+		///	Create a strongly-typed class TSqlRole to adapt instances of <see cref="T:Role"/>
 		/// </summary>
 		public TSqlRole(TSqlObject obj)  : base(obj, Role.TypeClass)
 		{
@@ -7623,7 +7623,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = RoleMembership.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlRoleMembership to adapt instances of <see cref="T:RoleMembership"/>
+		///	Create a strongly-typed class TSqlRoleMembership to adapt instances of <see cref="T:RoleMembership"/>
 		/// </summary>
 		public TSqlRoleMembership(TSqlObject obj)  : base(obj, RoleMembership.TypeClass)
 		{
@@ -7669,7 +7669,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Route.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlRoute to adapt instances of <see cref="T:Route"/>
+		///	Create a strongly-typed class TSqlRoute to adapt instances of <see cref="T:Route"/>
 		/// </summary>
 		public TSqlRoute(TSqlObject obj)  : base(obj, Route.TypeClass)
 		{
@@ -7753,7 +7753,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Rule.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlRule to adapt instances of <see cref="T:Rule"/>
+		///	Create a strongly-typed class TSqlRule to adapt instances of <see cref="T:Rule"/>
 		/// </summary>
 		public TSqlRule(TSqlObject obj)  : base(obj, Rule.TypeClass)
 		{
@@ -7809,7 +7809,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Schema.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSchema to adapt instances of <see cref="T:Schema"/>
+		///	Create a strongly-typed class TSqlSchema to adapt instances of <see cref="T:Schema"/>
 		/// </summary>
 		public TSqlSchema(TSqlObject obj)  : base(obj, Schema.TypeClass)
 		{
@@ -7843,7 +7843,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = SearchProperty.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSearchProperty to adapt instances of <see cref="T:SearchProperty"/>
+		///	Create a strongly-typed class TSqlSearchProperty to adapt instances of <see cref="T:SearchProperty"/>
 		/// </summary>
 		public TSqlSearchProperty(TSqlObject obj)  : base(obj, SearchProperty.TypeClass)
 		{
@@ -7907,7 +7907,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = SearchPropertyList.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSearchPropertyList to adapt instances of <see cref="T:SearchPropertyList"/>
+		///	Create a strongly-typed class TSqlSearchPropertyList to adapt instances of <see cref="T:SearchPropertyList"/>
 		/// </summary>
 		public TSqlSearchPropertyList(TSqlObject obj)  : base(obj, SearchPropertyList.TypeClass)
 		{
@@ -7941,7 +7941,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Sequence.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSequence to adapt instances of <see cref="T:Sequence"/>
+		///	Create a strongly-typed class TSqlSequence to adapt instances of <see cref="T:Sequence"/>
 		/// </summary>
 		public TSqlSequence(TSqlObject obj)  : base(obj, Sequence.TypeClass)
 		{
@@ -8077,7 +8077,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ServerAudit.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlServerAudit to adapt instances of <see cref="T:ServerAudit"/>
+		///	Create a strongly-typed class TSqlServerAudit to adapt instances of <see cref="T:ServerAudit"/>
 		/// </summary>
 		public TSqlServerAudit(TSqlObject obj)  : base(obj, ServerAudit.TypeClass)
 		{
@@ -8239,7 +8239,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ServerAuditSpecification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlServerAuditSpecification to adapt instances of <see cref="T:ServerAuditSpecification"/>
+		///	Create a strongly-typed class TSqlServerAuditSpecification to adapt instances of <see cref="T:ServerAuditSpecification"/>
 		/// </summary>
 		public TSqlServerAuditSpecification(TSqlObject obj)  : base(obj, ServerAuditSpecification.TypeClass)
 		{
@@ -8295,7 +8295,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ServerDdlTrigger.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlServerDdlTrigger to adapt instances of <see cref="T:ServerDdlTrigger"/>
+		///	Create a strongly-typed class TSqlServerDdlTrigger to adapt instances of <see cref="T:ServerDdlTrigger"/>
 		/// </summary>
 		public TSqlServerDdlTrigger(TSqlObject obj)  : base(obj, ServerDdlTrigger.TypeClass)
 		{
@@ -8499,7 +8499,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ServerEventNotification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlServerEventNotification to adapt instances of <see cref="T:ServerEventNotification"/>
+		///	Create a strongly-typed class TSqlServerEventNotification to adapt instances of <see cref="T:ServerEventNotification"/>
 		/// </summary>
 		public TSqlServerEventNotification(TSqlObject obj)  : base(obj, ServerEventNotification.TypeClass)
 		{
@@ -8575,7 +8575,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ServerOptions.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlServerOptions to adapt instances of <see cref="T:ServerOptions"/>
+		///	Create a strongly-typed class TSqlServerOptions to adapt instances of <see cref="T:ServerOptions"/>
 		/// </summary>
 		public TSqlServerOptions(TSqlObject obj)  : base(obj, ServerOptions.TypeClass)
 		{
@@ -8597,7 +8597,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ServerRoleMembership.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlServerRoleMembership to adapt instances of <see cref="T:ServerRoleMembership"/>
+		///	Create a strongly-typed class TSqlServerRoleMembership to adapt instances of <see cref="T:ServerRoleMembership"/>
 		/// </summary>
 		public TSqlServerRoleMembership(TSqlObject obj)  : base(obj, ServerRoleMembership.TypeClass)
 		{
@@ -8643,7 +8643,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Service.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlService to adapt instances of <see cref="T:Service"/>
+		///	Create a strongly-typed class TSqlService to adapt instances of <see cref="T:Service"/>
 		/// </summary>
 		public TSqlService(TSqlObject obj)  : base(obj, Service.TypeClass)
 		{
@@ -8711,7 +8711,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = ServiceBrokerLanguageSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlServiceBrokerLanguageSpecifier to adapt instances of <see cref="T:ServiceBrokerLanguageSpecifier"/>
+		///	Create a strongly-typed class TSqlServiceBrokerLanguageSpecifier to adapt instances of <see cref="T:ServiceBrokerLanguageSpecifier"/>
 		/// </summary>
 		public TSqlServiceBrokerLanguageSpecifier(TSqlObject obj)  : base(obj, ServiceBrokerLanguageSpecifier.TypeClass)
 		{
@@ -8815,7 +8815,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Signature.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSignature to adapt instances of <see cref="T:Signature"/>
+		///	Create a strongly-typed class TSqlSignature to adapt instances of <see cref="T:Signature"/>
 		/// </summary>
 		public TSqlSignature(TSqlObject obj)  : base(obj, Signature.TypeClass)
 		{
@@ -8871,7 +8871,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = SignatureEncryptionMechanism.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSignatureEncryptionMechanism to adapt instances of <see cref="T:SignatureEncryptionMechanism"/>
+		///	Create a strongly-typed class TSqlSignatureEncryptionMechanism to adapt instances of <see cref="T:SignatureEncryptionMechanism"/>
 		/// </summary>
 		public TSqlSignatureEncryptionMechanism(TSqlObject obj)  : base(obj, SignatureEncryptionMechanism.TypeClass)
 		{
@@ -8937,7 +8937,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = SoapLanguageSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSoapLanguageSpecifier to adapt instances of <see cref="T:SoapLanguageSpecifier"/>
+		///	Create a strongly-typed class TSqlSoapLanguageSpecifier to adapt instances of <see cref="T:SoapLanguageSpecifier"/>
 		/// </summary>
 		public TSqlSoapLanguageSpecifier(TSqlObject obj)  : base(obj, SoapLanguageSpecifier.TypeClass)
 		{
@@ -9111,7 +9111,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = SoapMethodSpecification.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSoapMethodSpecification to adapt instances of <see cref="T:SoapMethodSpecification"/>
+		///	Create a strongly-typed class TSqlSoapMethodSpecification to adapt instances of <see cref="T:SoapMethodSpecification"/>
 		/// </summary>
 		public TSqlSoapMethodSpecification(TSqlObject obj)  : base(obj, SoapMethodSpecification.TypeClass)
 		{
@@ -9185,7 +9185,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = SpatialIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSpatialIndex to adapt instances of <see cref="T:SpatialIndex"/>
+		///	Create a strongly-typed class TSqlSpatialIndex to adapt instances of <see cref="T:SpatialIndex"/>
 		/// </summary>
 		public TSqlSpatialIndex(TSqlObject obj)  : base(obj, SpatialIndex.TypeClass)
 		{
@@ -9447,7 +9447,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Statistics.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlStatistics to adapt instances of <see cref="T:Statistics"/>
+		///	Create a strongly-typed class TSqlStatistics to adapt instances of <see cref="T:Statistics"/>
 		/// </summary>
 		public TSqlStatistics(TSqlObject obj)  : base(obj, Statistics.TypeClass)
 		{
@@ -9565,7 +9565,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Parameter.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlParameter to adapt instances of <see cref="T:Parameter"/>
+		///	Create a strongly-typed class TSqlParameter to adapt instances of <see cref="T:Parameter"/>
 		/// </summary>
 		public TSqlParameter(TSqlObject obj)  : base(obj, Parameter.TypeClass)
 		{
@@ -9701,7 +9701,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = SymmetricKey.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSymmetricKey to adapt instances of <see cref="T:SymmetricKey"/>
+		///	Create a strongly-typed class TSqlSymmetricKey to adapt instances of <see cref="T:SymmetricKey"/>
 		/// </summary>
 		public TSqlSymmetricKey(TSqlObject obj)  : base(obj, SymmetricKey.TypeClass)
 		{
@@ -9845,7 +9845,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = SymmetricKeyPassword.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSymmetricKeyPassword to adapt instances of <see cref="T:SymmetricKeyPassword"/>
+		///	Create a strongly-typed class TSqlSymmetricKeyPassword to adapt instances of <see cref="T:SymmetricKeyPassword"/>
 		/// </summary>
 		public TSqlSymmetricKeyPassword(TSqlObject obj)  : base(obj, SymmetricKeyPassword.TypeClass)
 		{
@@ -9877,7 +9877,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Synonym.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSynonym to adapt instances of <see cref="T:Synonym"/>
+		///	Create a strongly-typed class TSqlSynonym to adapt instances of <see cref="T:Synonym"/>
 		/// </summary>
 		public TSqlSynonym(TSqlObject obj)  : base(obj, Synonym.TypeClass)
 		{
@@ -9933,7 +9933,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = Table.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlTable to adapt instances of <see cref="T:Table"/>
+		///	Create a strongly-typed class TSqlTable to adapt instances of <see cref="T:Table"/>
 		/// </summary>
 		public TSqlTable(TSqlObject obj)  : base(obj, Table.TypeClass)
 		{
@@ -10203,7 +10203,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = FileTable.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlFileTable to adapt instances of <see cref="T:FileTable"/>
+		///	Create a strongly-typed class TSqlFileTable to adapt instances of <see cref="T:FileTable"/>
 		/// </summary>
 		public TSqlFileTable(TSqlObject obj)  : base(obj, FileTable.TypeClass)
 		{
@@ -10401,7 +10401,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = TableType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlTableType to adapt instances of <see cref="T:TableType"/>
+		///	Create a strongly-typed class TSqlTableType to adapt instances of <see cref="T:TableType"/>
 		/// </summary>
 		public TSqlTableType(TSqlObject obj)  : base(obj, TableType.TypeClass)
 		{
@@ -10481,7 +10481,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = TableTypeCheckConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlTableTypeCheckConstraint to adapt instances of <see cref="T:TableTypeCheckConstraint"/>
+		///	Create a strongly-typed class TSqlTableTypeCheckConstraint to adapt instances of <see cref="T:TableTypeCheckConstraint"/>
 		/// </summary>
 		public TSqlTableTypeCheckConstraint(TSqlObject obj)  : base(obj, TableTypeCheckConstraint.TypeClass)
 		{
@@ -10525,7 +10525,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = TableTypeColumn.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlTableTypeColumn to adapt instances of <see cref="T:TableTypeColumn"/>
+		///	Create a strongly-typed class TSqlTableTypeColumn to adapt instances of <see cref="T:TableTypeColumn"/>
 		/// </summary>
 		public TSqlTableTypeColumn(TSqlObject obj)  : base(obj, TableTypeColumn.TypeClass)
 		{
@@ -10723,7 +10723,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = TableTypeDefaultConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlTableTypeDefaultConstraint to adapt instances of <see cref="T:TableTypeDefaultConstraint"/>
+		///	Create a strongly-typed class TSqlTableTypeDefaultConstraint to adapt instances of <see cref="T:TableTypeDefaultConstraint"/>
 		/// </summary>
 		public TSqlTableTypeDefaultConstraint(TSqlObject obj)  : base(obj, TableTypeDefaultConstraint.TypeClass)
 		{
@@ -10779,7 +10779,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = TableTypeIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlTableTypeIndex to adapt instances of <see cref="T:TableTypeIndex"/>
+		///	Create a strongly-typed class TSqlTableTypeIndex to adapt instances of <see cref="T:TableTypeIndex"/>
 		/// </summary>
 		public TSqlTableTypeIndex(TSqlObject obj)  : base(obj, TableTypeIndex.TypeClass)
 		{
@@ -10843,7 +10843,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = TableTypePrimaryKeyConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlTableTypePrimaryKeyConstraint to adapt instances of <see cref="T:TableTypePrimaryKeyConstraint"/>
+		///	Create a strongly-typed class TSqlTableTypePrimaryKeyConstraint to adapt instances of <see cref="T:TableTypePrimaryKeyConstraint"/>
 		/// </summary>
 		public TSqlTableTypePrimaryKeyConstraint(TSqlObject obj)  : base(obj, TableTypePrimaryKeyConstraint.TypeClass)
 		{
@@ -10917,7 +10917,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = TableTypeUniqueConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlTableTypeUniqueConstraint to adapt instances of <see cref="T:TableTypeUniqueConstraint"/>
+		///	Create a strongly-typed class TSqlTableTypeUniqueConstraint to adapt instances of <see cref="T:TableTypeUniqueConstraint"/>
 		/// </summary>
 		public TSqlTableTypeUniqueConstraint(TSqlObject obj)  : base(obj, TableTypeUniqueConstraint.TypeClass)
 		{
@@ -10971,7 +10971,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = TcpProtocolSpecifier.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlTcpProtocolSpecifier to adapt instances of <see cref="T:TcpProtocolSpecifier"/>
+		///	Create a strongly-typed class TSqlTcpProtocolSpecifier to adapt instances of <see cref="T:TcpProtocolSpecifier"/>
 		/// </summary>
 		public TSqlTcpProtocolSpecifier(TSqlObject obj)  : base(obj, TcpProtocolSpecifier.TypeClass)
 		{
@@ -11033,7 +11033,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = UniqueConstraint.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlUniqueConstraint to adapt instances of <see cref="T:UniqueConstraint"/>
+		///	Create a strongly-typed class TSqlUniqueConstraint to adapt instances of <see cref="T:UniqueConstraint"/>
 		/// </summary>
 		public TSqlUniqueConstraint(TSqlObject obj)  : base(obj, UniqueConstraint.TypeClass)
 		{
@@ -11241,7 +11241,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = User.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlUser to adapt instances of <see cref="T:User"/>
+		///	Create a strongly-typed class TSqlUser to adapt instances of <see cref="T:User"/>
 		/// </summary>
 		public TSqlUser(TSqlObject obj)  : base(obj, User.TypeClass)
 		{
@@ -11361,7 +11361,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = UserDefinedServerRole.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlUserDefinedServerRole to adapt instances of <see cref="T:UserDefinedServerRole"/>
+		///	Create a strongly-typed class TSqlUserDefinedServerRole to adapt instances of <see cref="T:UserDefinedServerRole"/>
 		/// </summary>
 		public TSqlUserDefinedServerRole(TSqlObject obj)  : base(obj, UserDefinedServerRole.TypeClass)
 		{
@@ -11395,7 +11395,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = UserDefinedType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlUserDefinedType to adapt instances of <see cref="T:UserDefinedType"/>
+		///	Create a strongly-typed class TSqlUserDefinedType to adapt instances of <see cref="T:UserDefinedType"/>
 		/// </summary>
 		public TSqlUserDefinedType(TSqlObject obj)  : base(obj, UserDefinedType.TypeClass)
 		{
@@ -11525,7 +11525,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = View.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlView to adapt instances of <see cref="T:View"/>
+		///	Create a strongly-typed class TSqlView to adapt instances of <see cref="T:View"/>
 		/// </summary>
 		public TSqlView(TSqlObject obj)  : base(obj, View.TypeClass)
 		{
@@ -11663,7 +11663,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = WorkloadGroup.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlWorkloadGroup to adapt instances of <see cref="T:WorkloadGroup"/>
+		///	Create a strongly-typed class TSqlWorkloadGroup to adapt instances of <see cref="T:WorkloadGroup"/>
 		/// </summary>
 		public TSqlWorkloadGroup(TSqlObject obj)  : base(obj, WorkloadGroup.TypeClass)
 		{
@@ -11757,7 +11757,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = XmlIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlXmlIndex to adapt instances of <see cref="T:XmlIndex"/>
+		///	Create a strongly-typed class TSqlXmlIndex to adapt instances of <see cref="T:XmlIndex"/>
 		/// </summary>
 		public TSqlXmlIndex(TSqlObject obj)  : base(obj, XmlIndex.TypeClass)
 		{
@@ -11905,7 +11905,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = SelectiveXmlIndex.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlSelectiveXmlIndex to adapt instances of <see cref="T:SelectiveXmlIndex"/>
+		///	Create a strongly-typed class TSqlSelectiveXmlIndex to adapt instances of <see cref="T:SelectiveXmlIndex"/>
 		/// </summary>
 		public TSqlSelectiveXmlIndex(TSqlObject obj)  : base(obj, SelectiveXmlIndex.TypeClass)
 		{
@@ -12079,7 +12079,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = XmlNamespace.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlXmlNamespace to adapt instances of <see cref="T:XmlNamespace"/>
+		///	Create a strongly-typed class TSqlXmlNamespace to adapt instances of <see cref="T:XmlNamespace"/>
 		/// </summary>
 		public TSqlXmlNamespace(TSqlObject obj)  : base(obj, XmlNamespace.TypeClass)
 		{
@@ -12121,7 +12121,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = PromotedNodePathForXQueryType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlPromotedNodePathForXQueryType to adapt instances of <see cref="T:PromotedNodePathForXQueryType"/>
+		///	Create a strongly-typed class TSqlPromotedNodePathForXQueryType to adapt instances of <see cref="T:PromotedNodePathForXQueryType"/>
 		/// </summary>
 		public TSqlPromotedNodePathForXQueryType(TSqlObject obj)  : base(obj, PromotedNodePathForXQueryType.TypeClass)
 		{
@@ -12183,7 +12183,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = PromotedNodePathForSqlType.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlPromotedNodePathForSqlType to adapt instances of <see cref="T:PromotedNodePathForSqlType"/>
+		///	Create a strongly-typed class TSqlPromotedNodePathForSqlType to adapt instances of <see cref="T:PromotedNodePathForSqlType"/>
 		/// </summary>
 		public TSqlPromotedNodePathForSqlType(TSqlObject obj)  : base(obj, PromotedNodePathForSqlType.TypeClass)
 		{
@@ -12277,7 +12277,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = XmlSchemaCollection.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class TSqlXmlSchemaCollection to adapt instances of <see cref="T:XmlSchemaCollection"/>
+		///	Create a strongly-typed class TSqlXmlSchemaCollection to adapt instances of <see cref="T:XmlSchemaCollection"/>
 		/// </summary>
 		public TSqlXmlSchemaCollection(TSqlObject obj)  : base(obj, XmlSchemaCollection.TypeClass)
 		{

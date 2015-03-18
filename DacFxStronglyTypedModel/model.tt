@@ -49,7 +49,7 @@ namespace <#=NamespaceName#>
 public partial class TSqlModelElement
 {
 	///<summary>
-	///  Returns a strongly typed wrapper for the TSqlObject instance.
+	///  Returns a strongly-typed wrapper for the TSqlObject instance.
 	///</summary>
 	public static ISqlModelElement AdaptInstance(TSqlObject obj)
     {
@@ -76,7 +76,7 @@ public partial class TSqlModelElement
 	}
 }
 <#
-    // Iterate over all types in the public model and create strongly typed adapter class.
+    // Iterate over all types in the public model and create strongly-typed adapter class.
 	foreach(var type in  ModelSchema.SchemaInstance.AllTypes)
 	{
 		ModelEntry modelEntry;
@@ -106,7 +106,7 @@ public partial class TSqlModelElement
 		private static ModelTypeClass typeClass = <#=type.Name#>.TypeClass;
 
 		/// <summary>
-		///	Create a strongly typed class <#= className #> to adapt instances of <see cref="T:<#=type.Name#>"/>
+		///	Create a strongly-typed class <#= className #> to adapt instances of <see cref="T:<#=type.Name#>"/>
 		/// </summary>
 		public <#= className  #>(TSqlObject obj)  : base(obj, <#=type.Name#>.TypeClass)
 		{
