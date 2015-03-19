@@ -45,9 +45,9 @@ namespace <#=NamespaceName#>
 <#
 var overrides = LoadOverrides(this.Host.TemplateFile);
 string typePrefix;
-foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVersion)))
+foreach(SqlServerVersion currentSQLVersion in GetSqlServerVersionValues())
 {
-	typePrefix = "I" + currentSQLVersion;
+	typePrefix = GetInterfacePrefix(currentSQLVersion);
 	foreach(var type in  ModelSchema.SchemaInstance.AllTypes)
 	{
 		if(!SupportsVersion(type.SupportedPlatforms, currentSQLVersion))
@@ -85,7 +85,7 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 <#
 		}// end property loop	
 
-	// begin releationship loop
+	// begin relationship loop
 	foreach (var relationship in type.Relationships.OrderBy( r => r.Name))
 	{
 	   if (!SupportsVersion(relationship.SupportedPlatforms, currentSQLVersion))

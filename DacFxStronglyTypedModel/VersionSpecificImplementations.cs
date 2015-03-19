@@ -3659,6 +3659,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlUser : ISql90TSqlUser
 	{		
+		AuthenticationType ISql90TSqlUser.AuthenticationType 
+		{
+			get { return this.AuthenticationType;}
+		}
 		Boolean ISql90TSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
@@ -8625,6 +8629,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlUser : ISql100TSqlUser
 	{		
+		AuthenticationType ISql100TSqlUser.AuthenticationType 
+		{
+			get { return this.AuthenticationType;}
+		}
 		Boolean ISql100TSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
@@ -10700,6 +10708,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlUser : ISqlAzureTSqlUser
 	{		
+		AuthenticationType ISqlAzureTSqlUser.AuthenticationType 
+		{
+			get { return this.AuthenticationType;}
+		}
 		Boolean ISqlAzureTSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
@@ -21735,6 +21747,3073 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlColumn"/>.
+	/// </summary>
+	public partial class TSqlColumn : ISqlAzureV12TSqlColumn
+	{		
+		String ISqlAzureV12TSqlColumn.Collation 
+		{
+			get { return this.Collation;}
+		}
+		String ISqlAzureV12TSqlColumn.Expression 
+		{
+			get { return this.Expression;}
+		}
+		String ISqlAzureV12TSqlColumn.IdentityIncrement 
+		{
+			get { return this.IdentityIncrement;}
+		}
+		String ISqlAzureV12TSqlColumn.IdentitySeed 
+		{
+			get { return this.IdentitySeed;}
+		}
+		Boolean ISqlAzureV12TSqlColumn.IsIdentity 
+		{
+			get { return this.IsIdentity;}
+		}
+		Boolean ISqlAzureV12TSqlColumn.IsIdentityNotForReplication 
+		{
+			get { return this.IsIdentityNotForReplication;}
+		}
+		Boolean ISqlAzureV12TSqlColumn.IsMax 
+		{
+			get { return this.IsMax;}
+		}
+		Boolean ISqlAzureV12TSqlColumn.IsRowGuidCol 
+		{
+			get { return this.IsRowGuidCol;}
+		}
+		Int32 ISqlAzureV12TSqlColumn.Length 
+		{
+			get { return this.Length;}
+		}
+		Boolean ISqlAzureV12TSqlColumn.Nullable 
+		{
+			get { return this.Nullable;}
+		}
+		Boolean ISqlAzureV12TSqlColumn.Persisted 
+		{
+			get { return this.Persisted;}
+		}
+		Boolean? ISqlAzureV12TSqlColumn.PersistedNullable 
+		{
+			get { return this.PersistedNullable;}
+		}
+		Int32 ISqlAzureV12TSqlColumn.Precision 
+		{
+			get { return this.Precision;}
+		}
+		Int32 ISqlAzureV12TSqlColumn.Scale 
+		{
+			get { return this.Scale;}
+		}
+		Boolean ISqlAzureV12TSqlColumn.Sparse 
+		{
+			get { return this.Sparse;}
+		}
+		XmlStyle ISqlAzureV12TSqlColumn.XmlStyle 
+		{
+			get { return this.XmlStyle;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlColumn.DataType 
+		{
+			get 
+			{
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlColumn.ExpressionDependencies 
+		{
+			get 
+			{
+				return this.ExpressionDependencies;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection> ISqlAzureV12TSqlColumn.XmlSchemaCollection 
+		{
+			get 
+			{
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlTableValuedFunction"/>.
+	/// </summary>
+	public partial class TSqlTableValuedFunction : ISqlAzureV12TSqlTableValuedFunction
+	{		
+		Boolean? ISqlAzureV12TSqlTableValuedFunction.AnsiNullsOn 
+		{
+			get { return this.AnsiNullsOn;}
+		}
+		Boolean ISqlAzureV12TSqlTableValuedFunction.CalledOnNullInput 
+		{
+			get { return this.CalledOnNullInput;}
+		}
+		String ISqlAzureV12TSqlTableValuedFunction.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+		DataAccessKind? ISqlAzureV12TSqlTableValuedFunction.DataAccess 
+		{
+			get { return this.DataAccess;}
+		}
+		Boolean? ISqlAzureV12TSqlTableValuedFunction.Deterministic 
+		{
+			get { return this.Deterministic;}
+		}
+		Boolean ISqlAzureV12TSqlTableValuedFunction.ExecuteAsCaller 
+		{
+			get { return this.ExecuteAsCaller;}
+		}
+		Boolean ISqlAzureV12TSqlTableValuedFunction.ExecuteAsOwner 
+		{
+			get { return this.ExecuteAsOwner;}
+		}
+		Boolean ISqlAzureV12TSqlTableValuedFunction.ExecuteAsSelf 
+		{
+			get { return this.ExecuteAsSelf;}
+		}
+		String ISqlAzureV12TSqlTableValuedFunction.FillRowMethodName 
+		{
+			get { return this.FillRowMethodName;}
+		}
+		String ISqlAzureV12TSqlTableValuedFunction.MethodName 
+		{
+			get { return this.MethodName;}
+		}
+		Boolean? ISqlAzureV12TSqlTableValuedFunction.Precise 
+		{
+			get { return this.Precise;}
+		}
+		Boolean? ISqlAzureV12TSqlTableValuedFunction.QuotedIdentifierOn 
+		{
+			get { return this.QuotedIdentifierOn;}
+		}
+		Boolean ISqlAzureV12TSqlTableValuedFunction.ReturnsNullOnNullInput 
+		{
+			get { return this.ReturnsNullOnNullInput;}
+		}
+		String ISqlAzureV12TSqlTableValuedFunction.ReturnTableVariableName 
+		{
+			get { return this.ReturnTableVariableName;}
+		}
+		SystemDataAccessKind? ISqlAzureV12TSqlTableValuedFunction.SystemDataAccess 
+		{
+			get { return this.SystemDataAccess;}
+		}
+		Boolean ISqlAzureV12TSqlTableValuedFunction.WithEncryption 
+		{
+			get { return this.WithEncryption;}
+		}
+		Boolean ISqlAzureV12TSqlTableValuedFunction.WithSchemaBinding 
+		{
+			get { return this.WithSchemaBinding;}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlTableValuedFunction.Assembly 
+		{
+			get 
+			{
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlTableValuedFunction.BodyDependencies 
+		{
+			get 
+			{
+				return this.BodyDependencies;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlTableValuedFunction.Login 
+		{
+			get 
+			{
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableValuedFunction.OrderColumns 
+		{
+			get 
+			{
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter> ISqlAzureV12TSqlTableValuedFunction.Parameters 
+		{
+			get 
+			{
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlTableValuedFunction.ReturnType 
+		{
+			get 
+			{
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlTableValuedFunction.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> ISqlAzureV12TSqlTableValuedFunction.User 
+		{
+			get 
+			{
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlScalarFunction"/>.
+	/// </summary>
+	public partial class TSqlScalarFunction : ISqlAzureV12TSqlScalarFunction
+	{		
+		Boolean? ISqlAzureV12TSqlScalarFunction.AnsiNullsOn 
+		{
+			get { return this.AnsiNullsOn;}
+		}
+		Boolean ISqlAzureV12TSqlScalarFunction.CalledOnNullInput 
+		{
+			get { return this.CalledOnNullInput;}
+		}
+		String ISqlAzureV12TSqlScalarFunction.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+		DataAccessKind? ISqlAzureV12TSqlScalarFunction.DataAccess 
+		{
+			get { return this.DataAccess;}
+		}
+		Boolean? ISqlAzureV12TSqlScalarFunction.Deterministic 
+		{
+			get { return this.Deterministic;}
+		}
+		Boolean ISqlAzureV12TSqlScalarFunction.ExecuteAsCaller 
+		{
+			get { return this.ExecuteAsCaller;}
+		}
+		Boolean ISqlAzureV12TSqlScalarFunction.ExecuteAsOwner 
+		{
+			get { return this.ExecuteAsOwner;}
+		}
+		Boolean ISqlAzureV12TSqlScalarFunction.ExecuteAsSelf 
+		{
+			get { return this.ExecuteAsSelf;}
+		}
+		String ISqlAzureV12TSqlScalarFunction.FillRowMethodName 
+		{
+			get { return this.FillRowMethodName;}
+		}
+		String ISqlAzureV12TSqlScalarFunction.MethodName 
+		{
+			get { return this.MethodName;}
+		}
+		Boolean? ISqlAzureV12TSqlScalarFunction.Precise 
+		{
+			get { return this.Precise;}
+		}
+		Boolean? ISqlAzureV12TSqlScalarFunction.QuotedIdentifierOn 
+		{
+			get { return this.QuotedIdentifierOn;}
+		}
+		Boolean ISqlAzureV12TSqlScalarFunction.ReturnsNullOnNullInput 
+		{
+			get { return this.ReturnsNullOnNullInput;}
+		}
+		SystemDataAccessKind? ISqlAzureV12TSqlScalarFunction.SystemDataAccess 
+		{
+			get { return this.SystemDataAccess;}
+		}
+		Boolean ISqlAzureV12TSqlScalarFunction.WithEncryption 
+		{
+			get { return this.WithEncryption;}
+		}
+		Boolean ISqlAzureV12TSqlScalarFunction.WithSchemaBinding 
+		{
+			get { return this.WithSchemaBinding;}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlScalarFunction.Assembly 
+		{
+			get 
+			{
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlScalarFunction.BodyDependencies 
+		{
+			get 
+			{
+				return this.BodyDependencies;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlScalarFunction.Login 
+		{
+			get 
+			{
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter> ISqlAzureV12TSqlScalarFunction.Parameters 
+		{
+			get 
+			{
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlScalarFunction.ReturnType 
+		{
+			get 
+			{
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlScalarFunction.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> ISqlAzureV12TSqlScalarFunction.User 
+		{
+			get 
+			{
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlAggregate"/>.
+	/// </summary>
+	public partial class TSqlAggregate : ISqlAzureV12TSqlAggregate
+	{		
+		String ISqlAzureV12TSqlAggregate.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+		Format ISqlAzureV12TSqlAggregate.Format 
+		{
+			get { return this.Format;}
+		}
+		Boolean? ISqlAzureV12TSqlAggregate.InvariantToDuplicates 
+		{
+			get { return this.InvariantToDuplicates;}
+		}
+		Boolean? ISqlAzureV12TSqlAggregate.InvariantToNulls 
+		{
+			get { return this.InvariantToNulls;}
+		}
+		Int32? ISqlAzureV12TSqlAggregate.MaxByteSize 
+		{
+			get { return this.MaxByteSize;}
+		}
+		Boolean? ISqlAzureV12TSqlAggregate.NullIfEmpty 
+		{
+			get { return this.NullIfEmpty;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlAggregate.Assembly 
+		{
+			get 
+			{
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter> ISqlAzureV12TSqlAggregate.Parameters 
+		{
+			get 
+			{
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlAggregate.ReturnType 
+		{
+			get 
+			{
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlAggregate.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlApplicationRole"/>.
+	/// </summary>
+	public partial class TSqlApplicationRole : ISqlAzureV12TSqlApplicationRole
+	{		
+		String ISqlAzureV12TSqlApplicationRole.Password 
+		{
+			get { return this.Password;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlApplicationRole.DefaultSchema 
+		{
+			get 
+			{
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlIndex"/>.
+	/// </summary>
+	public partial class TSqlIndex : ISqlAzureV12TSqlIndex
+	{		
+		Boolean ISqlAzureV12TSqlIndex.AllowPageLocks 
+		{
+			get { return this.AllowPageLocks;}
+		}
+		Boolean ISqlAzureV12TSqlIndex.AllowRowLocks 
+		{
+			get { return this.AllowRowLocks;}
+		}
+		Int32? ISqlAzureV12TSqlIndex.BucketCount 
+		{
+			get { return this.BucketCount;}
+		}
+		Boolean ISqlAzureV12TSqlIndex.Clustered 
+		{
+			get { return this.Clustered;}
+		}
+		Boolean ISqlAzureV12TSqlIndex.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		Int32? ISqlAzureV12TSqlIndex.FillFactor 
+		{
+			get { return this.FillFactor;}
+		}
+		String ISqlAzureV12TSqlIndex.FilterPredicate 
+		{
+			get { return this.FilterPredicate;}
+		}
+		Boolean ISqlAzureV12TSqlIndex.Hash 
+		{
+			get { return this.Hash;}
+		}
+		Boolean ISqlAzureV12TSqlIndex.IgnoreDuplicateKey 
+		{
+			get { return this.IgnoreDuplicateKey;}
+		}
+		Boolean ISqlAzureV12TSqlIndex.IncrementalStatistics 
+		{
+			get { return this.IncrementalStatistics;}
+		}
+		Boolean ISqlAzureV12TSqlIndex.RecomputeStatistics 
+		{
+			get { return this.RecomputeStatistics;}
+		}
+		Boolean ISqlAzureV12TSqlIndex.Unique 
+		{
+			get { return this.Unique;}
+		}
+		Boolean ISqlAzureV12TSqlIndex.WithPadIndex 
+		{
+			get { return this.WithPadIndex;}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlIndex.BodyDependencies 
+		{
+			get 
+			{
+				return this.BodyDependencies;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlIndex.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption> ISqlAzureV12TSqlIndex.DataCompressionOptions 
+		{
+			get 
+			{
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlIndex.Filegroup 
+		{
+			get 
+			{
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlIndex.IncludedColumns 
+		{
+			get 
+			{
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISqlAzureV12TSqlIndex.IndexedObject 
+		{
+			get 
+			{
+				return this.IndexedObject;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlIndex.PartitionColumn 
+		{
+			get 
+			{
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlIndex.PartitionScheme 
+		{
+			get 
+			{
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlAssembly"/>.
+	/// </summary>
+	public partial class TSqlAssembly : ISqlAzureV12TSqlAssembly
+	{		
+		AssemblyPermissionSet ISqlAzureV12TSqlAssembly.PermissionSet 
+		{
+			get { return this.PermissionSet;}
+		}
+		Boolean ISqlAzureV12TSqlAssembly.Visible 
+		{
+			get { return this.Visible;}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblySource> ISqlAzureV12TSqlAssembly.AssemblySources 
+		{
+			get 
+			{
+				return this.AssemblySources.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblySource>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureV12TSqlAssembly.Authorizer 
+		{
+			get 
+			{
+				return this.Authorizer;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlAssembly.ReferencedAssemblies 
+		{
+			get 
+			{
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlAssemblySource"/>.
+	/// </summary>
+	public partial class TSqlAssemblySource : ISqlAzureV12TSqlAssemblySource
+	{		
+		String ISqlAzureV12TSqlAssemblySource.Source 
+		{
+			get { return this.Source;}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlBuiltInServerRole"/>.
+	/// </summary>
+	public partial class TSqlBuiltInServerRole : ISqlAzureV12TSqlBuiltInServerRole
+	{		
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlDataType"/>.
+	/// </summary>
+	public partial class TSqlDataType : ISqlAzureV12TSqlDataType
+	{		
+		SqlDataType ISqlAzureV12TSqlDataType.SqlDataType 
+		{
+			get { return this.SqlDataType;}
+		}
+		Boolean ISqlAzureV12TSqlDataType.UddtIsMax 
+		{
+			get { return this.UddtIsMax;}
+		}
+		Int32 ISqlAzureV12TSqlDataType.UddtLength 
+		{
+			get { return this.UddtLength;}
+		}
+		Boolean ISqlAzureV12TSqlDataType.UddtNullable 
+		{
+			get { return this.UddtNullable;}
+		}
+		Int32 ISqlAzureV12TSqlDataType.UddtPrecision 
+		{
+			get { return this.UddtPrecision;}
+		}
+		Int32 ISqlAzureV12TSqlDataType.UddtScale 
+		{
+			get { return this.UddtScale;}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlDataType.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<System.Type> ISqlAzureV12TSqlDataType.Type 
+		{
+			get 
+			{
+				return this.Type;
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlCheckConstraint"/>.
+	/// </summary>
+	public partial class TSqlCheckConstraint : ISqlAzureV12TSqlCheckConstraint
+	{		
+		Boolean ISqlAzureV12TSqlCheckConstraint.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		String ISqlAzureV12TSqlCheckConstraint.Expression 
+		{
+			get { return this.Expression;}
+		}
+		Boolean ISqlAzureV12TSqlCheckConstraint.NotForReplication 
+		{
+			get { return this.NotForReplication;}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlCheckConstraint.ExpressionDependencies 
+		{
+			get 
+			{
+				return this.ExpressionDependencies;
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlCheckConstraint.Host 
+		{
+			get 
+			{
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlClrTypeMethod"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethod : ISqlAzureV12TSqlClrTypeMethod
+	{		
+		String ISqlAzureV12TSqlClrTypeMethod.MethodName 
+		{
+			get { return this.MethodName;}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter> ISqlAzureV12TSqlClrTypeMethod.Parameters 
+		{
+			get 
+			{
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlClrTypeMethod.ReturnType 
+		{
+			get 
+			{
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlClrTypeMethodParameter"/>.
+	/// </summary>
+	public partial class TSqlClrTypeMethodParameter : ISqlAzureV12TSqlClrTypeMethodParameter
+	{		
+		Boolean ISqlAzureV12TSqlClrTypeMethodParameter.IsOutput 
+		{
+			get { return this.IsOutput;}
+		}
+		String ISqlAzureV12TSqlClrTypeMethodParameter.ParameterName 
+		{
+			get { return this.ParameterName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlClrTypeMethodParameter.DataType 
+		{
+			get 
+			{
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlClrTypeProperty"/>.
+	/// </summary>
+	public partial class TSqlClrTypeProperty : ISqlAzureV12TSqlClrTypeProperty
+	{		
+		String ISqlAzureV12TSqlClrTypeProperty.PropertyName 
+		{
+			get { return this.PropertyName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlClrTypeProperty.ClrType 
+		{
+			get 
+			{
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlColumnStoreIndex"/>.
+	/// </summary>
+	public partial class TSqlColumnStoreIndex : ISqlAzureV12TSqlColumnStoreIndex
+	{		
+		Boolean ISqlAzureV12TSqlColumnStoreIndex.Clustered 
+		{
+			get { return this.Clustered;}
+		}
+		Boolean ISqlAzureV12TSqlColumnStoreIndex.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlColumnStoreIndex.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption> ISqlAzureV12TSqlColumnStoreIndex.DataCompressionOptions 
+		{
+			get 
+			{
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlColumnStoreIndex.Filegroup 
+		{
+			get 
+			{
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISqlAzureV12TSqlColumnStoreIndex.IndexedObject 
+		{
+			get 
+			{
+				return this.IndexedObject;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlColumnStoreIndex.PartitionColumn 
+		{
+			get 
+			{
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlColumnStoreIndex.PartitionScheme 
+		{
+			get 
+			{
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlDatabaseDdlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDatabaseDdlTrigger : ISqlAzureV12TSqlDatabaseDdlTrigger
+	{		
+		Boolean? ISqlAzureV12TSqlDatabaseDdlTrigger.AnsiNullsOn 
+		{
+			get { return this.AnsiNullsOn;}
+		}
+		String ISqlAzureV12TSqlDatabaseDdlTrigger.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseDdlTrigger.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseDdlTrigger.ExecuteAsCaller 
+		{
+			get { return this.ExecuteAsCaller;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseDdlTrigger.ExecuteAsOwner 
+		{
+			get { return this.ExecuteAsOwner;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseDdlTrigger.ExecuteAsSelf 
+		{
+			get { return this.ExecuteAsSelf;}
+		}
+		String ISqlAzureV12TSqlDatabaseDdlTrigger.MethodName 
+		{
+			get { return this.MethodName;}
+		}
+		Boolean? ISqlAzureV12TSqlDatabaseDdlTrigger.QuotedIdentifierOn 
+		{
+			get { return this.QuotedIdentifierOn;}
+		}
+		TriggerType ISqlAzureV12TSqlDatabaseDdlTrigger.TriggerType 
+		{
+			get { return this.TriggerType;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseDdlTrigger.WithEncryption 
+		{
+			get { return this.WithEncryption;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlDatabaseDdlTrigger.Assembly 
+		{
+			get 
+			{
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlDatabaseDdlTrigger.BodyDependencies 
+		{
+			get 
+			{
+				return this.BodyDependencies;
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlEventGroup> ISqlAzureV12TSqlDatabaseDdlTrigger.EventGroup 
+		{
+			get 
+			{
+				return this.EventGroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlEventGroup>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> ISqlAzureV12TSqlDatabaseDdlTrigger.EventType 
+		{
+			get 
+			{
+				return this.EventType;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlDatabaseDdlTrigger.Login 
+		{
+			get 
+			{
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> ISqlAzureV12TSqlDatabaseDdlTrigger.User 
+		{
+			get 
+			{
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlDatabaseOptions"/>.
+	/// </summary>
+	public partial class TSqlDatabaseOptions : ISqlAzureV12TSqlDatabaseOptions
+	{		
+		Boolean ISqlAzureV12TSqlDatabaseOptions.AllowSnapshotIsolation 
+		{
+			get { return this.AllowSnapshotIsolation;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.AnsiNullDefaultOn 
+		{
+			get { return this.AnsiNullDefaultOn;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.AnsiNullsOn 
+		{
+			get { return this.AnsiNullsOn;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.AnsiPaddingOn 
+		{
+			get { return this.AnsiPaddingOn;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.AnsiWarningsOn 
+		{
+			get { return this.AnsiWarningsOn;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.ArithAbortOn 
+		{
+			get { return this.ArithAbortOn;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.AutoCreateStatistics 
+		{
+			get { return this.AutoCreateStatistics;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.AutoCreateStatisticsIncremental 
+		{
+			get { return this.AutoCreateStatisticsIncremental;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.AutoShrink 
+		{
+			get { return this.AutoShrink;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.AutoUpdateStatistics 
+		{
+			get { return this.AutoUpdateStatistics;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.AutoUpdateStatisticsAsync 
+		{
+			get { return this.AutoUpdateStatisticsAsync;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.ChangeTrackingAutoCleanup 
+		{
+			get { return this.ChangeTrackingAutoCleanup;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.ChangeTrackingEnabled 
+		{
+			get { return this.ChangeTrackingEnabled;}
+		}
+		Int32 ISqlAzureV12TSqlDatabaseOptions.ChangeTrackingRetentionPeriod 
+		{
+			get { return this.ChangeTrackingRetentionPeriod;}
+		}
+		TimeUnit ISqlAzureV12TSqlDatabaseOptions.ChangeTrackingRetentionUnit 
+		{
+			get { return this.ChangeTrackingRetentionUnit;}
+		}
+		String ISqlAzureV12TSqlDatabaseOptions.Collation 
+		{
+			get { return this.Collation;}
+		}
+		Int32 ISqlAzureV12TSqlDatabaseOptions.CompatibilityLevel 
+		{
+			get { return this.CompatibilityLevel;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.ConcatNullYieldsNull 
+		{
+			get { return this.ConcatNullYieldsNull;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.CursorCloseOnCommit 
+		{
+			get { return this.CursorCloseOnCommit;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.DateCorrelationOptimizationOn 
+		{
+			get { return this.DateCorrelationOptimizationOn;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.NumericRoundAbortOn 
+		{
+			get { return this.NumericRoundAbortOn;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.QuotedIdentifierOn 
+		{
+			get { return this.QuotedIdentifierOn;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.ReadOnly 
+		{
+			get { return this.ReadOnly;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.RecursiveTriggersOn 
+		{
+			get { return this.RecursiveTriggersOn;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.VardecimalStorageFormatOn 
+		{
+			get { return this.VardecimalStorageFormatOn;}
+		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.WithEncryption 
+		{
+			get { return this.WithEncryption;}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlDataCompressionOption"/>.
+	/// </summary>
+	public partial class TSqlDataCompressionOption : ISqlAzureV12TSqlDataCompressionOption
+	{		
+		CompressionLevel ISqlAzureV12TSqlDataCompressionOption.CompressionLevel 
+		{
+			get { return this.CompressionLevel;}
+		}
+		Int32 ISqlAzureV12TSqlDataCompressionOption.PartitionNumber 
+		{
+			get { return this.PartitionNumber;}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlDefault"/>.
+	/// </summary>
+	public partial class TSqlDefault : ISqlAzureV12TSqlDefault
+	{		
+		String ISqlAzureV12TSqlDefault.Expression 
+		{
+			get { return this.Expression;}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlDefault.BoundObjects 
+		{
+			get 
+			{
+				return this.BoundObjects;
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlDefault.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlDefaultConstraint"/>.
+	/// </summary>
+	public partial class TSqlDefaultConstraint : ISqlAzureV12TSqlDefaultConstraint
+	{		
+		Boolean ISqlAzureV12TSqlDefaultConstraint.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		String ISqlAzureV12TSqlDefaultConstraint.Expression 
+		{
+			get { return this.Expression;}
+		}
+		Boolean ISqlAzureV12TSqlDefaultConstraint.WithValues 
+		{
+			get { return this.WithValues;}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlDefaultConstraint.ExpressionDependencies 
+		{
+			get 
+			{
+				return this.ExpressionDependencies;
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlDefaultConstraint.Host 
+		{
+			get 
+			{
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlDefaultConstraint.TargetColumn 
+		{
+			get 
+			{
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlDmlTrigger"/>.
+	/// </summary>
+	public partial class TSqlDmlTrigger : ISqlAzureV12TSqlDmlTrigger
+	{		
+		Boolean? ISqlAzureV12TSqlDmlTrigger.AnsiNullsOn 
+		{
+			get { return this.AnsiNullsOn;}
+		}
+		String ISqlAzureV12TSqlDmlTrigger.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+		OrderRestriction ISqlAzureV12TSqlDmlTrigger.DeleteOrderRestriction 
+		{
+			get { return this.DeleteOrderRestriction;}
+		}
+		Boolean ISqlAzureV12TSqlDmlTrigger.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		Boolean ISqlAzureV12TSqlDmlTrigger.ExecuteAsCaller 
+		{
+			get { return this.ExecuteAsCaller;}
+		}
+		Boolean ISqlAzureV12TSqlDmlTrigger.ExecuteAsOwner 
+		{
+			get { return this.ExecuteAsOwner;}
+		}
+		Boolean ISqlAzureV12TSqlDmlTrigger.ExecuteAsSelf 
+		{
+			get { return this.ExecuteAsSelf;}
+		}
+		OrderRestriction ISqlAzureV12TSqlDmlTrigger.InsertOrderRestriction 
+		{
+			get { return this.InsertOrderRestriction;}
+		}
+		Boolean ISqlAzureV12TSqlDmlTrigger.IsDeleteTrigger 
+		{
+			get { return this.IsDeleteTrigger;}
+		}
+		Boolean ISqlAzureV12TSqlDmlTrigger.IsInsertTrigger 
+		{
+			get { return this.IsInsertTrigger;}
+		}
+		Boolean ISqlAzureV12TSqlDmlTrigger.IsUpdateTrigger 
+		{
+			get { return this.IsUpdateTrigger;}
+		}
+		String ISqlAzureV12TSqlDmlTrigger.MethodName 
+		{
+			get { return this.MethodName;}
+		}
+		Boolean ISqlAzureV12TSqlDmlTrigger.NotForReplication 
+		{
+			get { return this.NotForReplication;}
+		}
+		Boolean? ISqlAzureV12TSqlDmlTrigger.QuotedIdentifierOn 
+		{
+			get { return this.QuotedIdentifierOn;}
+		}
+		TriggerType ISqlAzureV12TSqlDmlTrigger.TriggerType 
+		{
+			get { return this.TriggerType;}
+		}
+		OrderRestriction ISqlAzureV12TSqlDmlTrigger.UpdateOrderRestriction 
+		{
+			get { return this.UpdateOrderRestriction;}
+		}
+		Boolean ISqlAzureV12TSqlDmlTrigger.WithAppend 
+		{
+			get { return this.WithAppend;}
+		}
+		Boolean ISqlAzureV12TSqlDmlTrigger.WithEncryption 
+		{
+			get { return this.WithEncryption;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlDmlTrigger.Assembly 
+		{
+			get 
+			{
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlDmlTrigger.BodyDependencies 
+		{
+			get 
+			{
+				return this.BodyDependencies;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlDmlTrigger.Login 
+		{
+			get 
+			{
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlDmlTrigger.TriggerObject 
+		{
+			get 
+			{
+				return this.TriggerObject;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> ISqlAzureV12TSqlDmlTrigger.User 
+		{
+			get 
+			{
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlEventGroup"/>.
+	/// </summary>
+	public partial class TSqlEventGroup : ISqlAzureV12TSqlEventGroup
+	{		
+		EventGroupType ISqlAzureV12TSqlEventGroup.Group 
+		{
+			get { return this.Group;}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlEventTypeSpecifier"/>.
+	/// </summary>
+	public partial class TSqlEventTypeSpecifier : ISqlAzureV12TSqlEventTypeSpecifier
+	{		
+		EventType ISqlAzureV12TSqlEventTypeSpecifier.EventType 
+		{
+			get { return this.EventType;}
+		}
+		OrderRestriction ISqlAzureV12TSqlEventTypeSpecifier.Order 
+		{
+			get { return this.Order;}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlExtendedProperty"/>.
+	/// </summary>
+	public partial class TSqlExtendedProperty : ISqlAzureV12TSqlExtendedProperty
+	{		
+		String ISqlAzureV12TSqlExtendedProperty.Value 
+		{
+			get { return this.Value;}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> ISqlAzureV12TSqlExtendedProperty.Host 
+		{
+			get 
+			{
+				return this.Host;
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlForeignKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlForeignKeyConstraint : ISqlAzureV12TSqlForeignKeyConstraint
+	{		
+		ForeignKeyAction ISqlAzureV12TSqlForeignKeyConstraint.DeleteAction 
+		{
+			get { return this.DeleteAction;}
+		}
+		Boolean ISqlAzureV12TSqlForeignKeyConstraint.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		Boolean ISqlAzureV12TSqlForeignKeyConstraint.NotForReplication 
+		{
+			get { return this.NotForReplication;}
+		}
+		ForeignKeyAction ISqlAzureV12TSqlForeignKeyConstraint.UpdateAction 
+		{
+			get { return this.UpdateAction;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlForeignKeyConstraint.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlForeignKeyConstraint.ForeignColumns 
+		{
+			get 
+			{
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlForeignKeyConstraint.ForeignTable 
+		{
+			get 
+			{
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlForeignKeyConstraint.Host 
+		{
+			get 
+			{
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlFullTextIndexColumnSpecifier"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndexColumnSpecifier : ISqlAzureV12TSqlFullTextIndexColumnSpecifier
+	{		
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlLogin"/>.
+	/// </summary>
+	public partial class TSqlLogin : ISqlAzureV12TSqlLogin
+	{		
+		Boolean ISqlAzureV12TSqlLogin.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		String ISqlAzureV12TSqlLogin.Password 
+		{
+			get { return this.Password;}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlPartitionFunction"/>.
+	/// </summary>
+	public partial class TSqlPartitionFunction : ISqlAzureV12TSqlPartitionFunction
+	{		
+		PartitionRange ISqlAzureV12TSqlPartitionFunction.Range 
+		{
+			get { return this.Range;}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionValue> ISqlAzureV12TSqlPartitionFunction.BoundaryValues 
+		{
+			get 
+			{
+				return this.BoundaryValues.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionValue>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlPartitionFunction.ParameterType 
+		{
+			get 
+			{
+				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlPartitionScheme"/>.
+	/// </summary>
+	public partial class TSqlPartitionScheme : ISqlAzureV12TSqlPartitionScheme
+	{		
+		Boolean ISqlAzureV12TSqlPartitionScheme.AllToOneFilegroup 
+		{
+			get { return this.AllToOneFilegroup;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlPartitionScheme.Filegroups 
+		{
+			get 
+			{
+				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionFunction> ISqlAzureV12TSqlPartitionScheme.PartitionFunction 
+		{
+			get 
+			{
+				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionFunction>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlPartitionValue"/>.
+	/// </summary>
+	public partial class TSqlPartitionValue : ISqlAzureV12TSqlPartitionValue
+	{		
+		String ISqlAzureV12TSqlPartitionValue.Expression 
+		{
+			get { return this.Expression;}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlPartitionValue.ExpressionDependencies 
+		{
+			get 
+			{
+				return this.ExpressionDependencies;
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlPermission"/>.
+	/// </summary>
+	public partial class TSqlPermission : ISqlAzureV12TSqlPermission
+	{		
+		PermissionAction ISqlAzureV12TSqlPermission.PermissionAction 
+		{
+			get { return this.PermissionAction;}
+		}
+		PermissionType ISqlAzureV12TSqlPermission.PermissionType 
+		{
+			get { return this.PermissionType;}
+		}
+		Boolean ISqlAzureV12TSqlPermission.WithAllPrivileges 
+		{
+			get { return this.WithAllPrivileges;}
+		}
+		Boolean ISqlAzureV12TSqlPermission.WithGrantOption 
+		{
+			get { return this.WithGrantOption;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlPermission.ExcludedColumns 
+		{
+			get 
+			{
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISqlAzureV12TSqlPermission.Grantee 
+		{
+			get 
+			{
+				return this.Grantee;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISqlAzureV12TSqlPermission.Grantor 
+		{
+			get 
+			{
+				return this.Grantor;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlPermission.RevokedGrantOptionColumns 
+		{
+			get 
+			{
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> ISqlAzureV12TSqlPermission.SecuredObject 
+		{
+			get 
+			{
+				return this.SecuredObject;
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlPrimaryKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlPrimaryKeyConstraint : ISqlAzureV12TSqlPrimaryKeyConstraint
+	{		
+		Boolean ISqlAzureV12TSqlPrimaryKeyConstraint.AllowPageLocks 
+		{
+			get { return this.AllowPageLocks;}
+		}
+		Boolean ISqlAzureV12TSqlPrimaryKeyConstraint.AllowRowLocks 
+		{
+			get { return this.AllowRowLocks;}
+		}
+		Int32? ISqlAzureV12TSqlPrimaryKeyConstraint.BucketCount 
+		{
+			get { return this.BucketCount;}
+		}
+		Boolean ISqlAzureV12TSqlPrimaryKeyConstraint.Clustered 
+		{
+			get { return this.Clustered;}
+		}
+		Boolean ISqlAzureV12TSqlPrimaryKeyConstraint.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		Int32? ISqlAzureV12TSqlPrimaryKeyConstraint.FillFactor 
+		{
+			get { return this.FillFactor;}
+		}
+		Boolean ISqlAzureV12TSqlPrimaryKeyConstraint.Hash 
+		{
+			get { return this.Hash;}
+		}
+		Boolean ISqlAzureV12TSqlPrimaryKeyConstraint.IgnoreDuplicateKey 
+		{
+			get { return this.IgnoreDuplicateKey;}
+		}
+		Boolean ISqlAzureV12TSqlPrimaryKeyConstraint.RecomputeStatistics 
+		{
+			get { return this.RecomputeStatistics;}
+		}
+		Boolean ISqlAzureV12TSqlPrimaryKeyConstraint.WithPadIndex 
+		{
+			get { return this.WithPadIndex;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlPrimaryKeyConstraint.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption> ISqlAzureV12TSqlPrimaryKeyConstraint.DataCompressionOptions 
+		{
+			get 
+			{
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlPrimaryKeyConstraint.Filegroup 
+		{
+			get 
+			{
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlPrimaryKeyConstraint.Host 
+		{
+			get 
+			{
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlPrimaryKeyConstraint.PartitionColumn 
+		{
+			get 
+			{
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlPrimaryKeyConstraint.PartitionScheme 
+		{
+			get 
+			{
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlProcedure"/>.
+	/// </summary>
+	public partial class TSqlProcedure : ISqlAzureV12TSqlProcedure
+	{		
+		Boolean? ISqlAzureV12TSqlProcedure.AnsiNullsOn 
+		{
+			get { return this.AnsiNullsOn;}
+		}
+		String ISqlAzureV12TSqlProcedure.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+		Boolean ISqlAzureV12TSqlProcedure.ExecuteAsCaller 
+		{
+			get { return this.ExecuteAsCaller;}
+		}
+		Boolean ISqlAzureV12TSqlProcedure.ExecuteAsOwner 
+		{
+			get { return this.ExecuteAsOwner;}
+		}
+		Boolean ISqlAzureV12TSqlProcedure.ExecuteAsSelf 
+		{
+			get { return this.ExecuteAsSelf;}
+		}
+		String ISqlAzureV12TSqlProcedure.MethodName 
+		{
+			get { return this.MethodName;}
+		}
+		Boolean? ISqlAzureV12TSqlProcedure.QuotedIdentifierOn 
+		{
+			get { return this.QuotedIdentifierOn;}
+		}
+		Boolean ISqlAzureV12TSqlProcedure.WithEncryption 
+		{
+			get { return this.WithEncryption;}
+		}
+		Boolean ISqlAzureV12TSqlProcedure.WithRecompile 
+		{
+			get { return this.WithRecompile;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlProcedure.Assembly 
+		{
+			get 
+			{
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlProcedure.BodyDependencies 
+		{
+			get 
+			{
+				return this.BodyDependencies;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlProcedure.Login 
+		{
+			get 
+			{
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter> ISqlAzureV12TSqlProcedure.Parameters 
+		{
+			get 
+			{
+				return this.Parameters.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlProcedure> ISqlAzureV12TSqlProcedure.ParentProcedure 
+		{
+			get 
+			{
+				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlProcedure>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlProcedure.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> ISqlAzureV12TSqlProcedure.User 
+		{
+			get 
+			{
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlRole"/>.
+	/// </summary>
+	public partial class TSqlRole : ISqlAzureV12TSqlRole
+	{		
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureV12TSqlRole.Authorizer 
+		{
+			get 
+			{
+				return this.Authorizer;
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlRoleMembership : ISqlAzureV12TSqlRoleMembership
+	{		
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> ISqlAzureV12TSqlRoleMembership.Member 
+		{
+			get 
+			{
+				return this.Member;
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRole> ISqlAzureV12TSqlRoleMembership.Role 
+		{
+			get 
+			{
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRole>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlRule"/>.
+	/// </summary>
+	public partial class TSqlRule : ISqlAzureV12TSqlRule
+	{		
+		String ISqlAzureV12TSqlRule.Expression 
+		{
+			get { return this.Expression;}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlRule.BoundObjects 
+		{
+			get 
+			{
+				return this.BoundObjects;
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlRule.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlSchema"/>.
+	/// </summary>
+	public partial class TSqlSchema : ISqlAzureV12TSqlSchema
+	{		
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureV12TSqlSchema.Authorizer 
+		{
+			get 
+			{
+				return this.Authorizer;
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlSequence"/>.
+	/// </summary>
+	public partial class TSqlSequence : ISqlAzureV12TSqlSequence
+	{		
+		Int32? ISqlAzureV12TSqlSequence.CacheSize 
+		{
+			get { return this.CacheSize;}
+		}
+		String ISqlAzureV12TSqlSequence.IncrementValue 
+		{
+			get { return this.IncrementValue;}
+		}
+		Boolean ISqlAzureV12TSqlSequence.IsCached 
+		{
+			get { return this.IsCached;}
+		}
+		Boolean ISqlAzureV12TSqlSequence.IsCycling 
+		{
+			get { return this.IsCycling;}
+		}
+		String ISqlAzureV12TSqlSequence.MaxValue 
+		{
+			get { return this.MaxValue;}
+		}
+		String ISqlAzureV12TSqlSequence.MinValue 
+		{
+			get { return this.MinValue;}
+		}
+		Boolean ISqlAzureV12TSqlSequence.NoMaxValue 
+		{
+			get { return this.NoMaxValue;}
+		}
+		Boolean ISqlAzureV12TSqlSequence.NoMinValue 
+		{
+			get { return this.NoMinValue;}
+		}
+		String ISqlAzureV12TSqlSequence.StartValue 
+		{
+			get { return this.StartValue;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlSequence.DataType 
+		{
+			get 
+			{
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlSequence.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlServerOptions"/>.
+	/// </summary>
+	public partial class TSqlServerOptions : ISqlAzureV12TSqlServerOptions
+	{		
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlServerRoleMembership"/>.
+	/// </summary>
+	public partial class TSqlServerRoleMembership : ISqlAzureV12TSqlServerRoleMembership
+	{		
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> ISqlAzureV12TSqlServerRoleMembership.Member 
+		{
+			get 
+			{
+				return this.Member;
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRole> ISqlAzureV12TSqlServerRoleMembership.Role 
+		{
+			get 
+			{
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRole>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlSpatialIndex"/>.
+	/// </summary>
+	public partial class TSqlSpatialIndex : ISqlAzureV12TSqlSpatialIndex
+	{		
+		Boolean ISqlAzureV12TSqlSpatialIndex.AllowPageLocks 
+		{
+			get { return this.AllowPageLocks;}
+		}
+		Boolean ISqlAzureV12TSqlSpatialIndex.AllowRowLocks 
+		{
+			get { return this.AllowRowLocks;}
+		}
+		Int32? ISqlAzureV12TSqlSpatialIndex.CellsPerObject 
+		{
+			get { return this.CellsPerObject;}
+		}
+		CompressionLevel ISqlAzureV12TSqlSpatialIndex.DataCompression 
+		{
+			get { return this.DataCompression;}
+		}
+		Boolean ISqlAzureV12TSqlSpatialIndex.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		Int32 ISqlAzureV12TSqlSpatialIndex.FillFactor 
+		{
+			get { return this.FillFactor;}
+		}
+		Degree ISqlAzureV12TSqlSpatialIndex.GridLevel1Density 
+		{
+			get { return this.GridLevel1Density;}
+		}
+		Degree ISqlAzureV12TSqlSpatialIndex.GridLevel2Density 
+		{
+			get { return this.GridLevel2Density;}
+		}
+		Degree ISqlAzureV12TSqlSpatialIndex.GridLevel3Density 
+		{
+			get { return this.GridLevel3Density;}
+		}
+		Degree ISqlAzureV12TSqlSpatialIndex.GridLevel4Density 
+		{
+			get { return this.GridLevel4Density;}
+		}
+		Boolean ISqlAzureV12TSqlSpatialIndex.IgnoreDuplicateKey 
+		{
+			get { return this.IgnoreDuplicateKey;}
+		}
+		Boolean ISqlAzureV12TSqlSpatialIndex.RecomputeStatistics 
+		{
+			get { return this.RecomputeStatistics;}
+		}
+		Tessellation ISqlAzureV12TSqlSpatialIndex.Tessellation 
+		{
+			get { return this.Tessellation;}
+		}
+		Boolean ISqlAzureV12TSqlSpatialIndex.WithPadIndex 
+		{
+			get { return this.WithPadIndex;}
+		}
+		Double? ISqlAzureV12TSqlSpatialIndex.XMax 
+		{
+			get { return this.XMax;}
+		}
+		Double? ISqlAzureV12TSqlSpatialIndex.XMin 
+		{
+			get { return this.XMin;}
+		}
+		Double? ISqlAzureV12TSqlSpatialIndex.YMax 
+		{
+			get { return this.YMax;}
+		}
+		Double? ISqlAzureV12TSqlSpatialIndex.YMin 
+		{
+			get { return this.YMin;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlSpatialIndex.Column 
+		{
+			get 
+			{
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlSpatialIndex.Filegroup 
+		{
+			get 
+			{
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISqlAzureV12TSqlSpatialIndex.IndexedObject 
+		{
+			get 
+			{
+				return this.IndexedObject;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlSpatialIndex.PartitionColumn 
+		{
+			get 
+			{
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlSpatialIndex.PartitionScheme 
+		{
+			get 
+			{
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlStatistics"/>.
+	/// </summary>
+	public partial class TSqlStatistics : ISqlAzureV12TSqlStatistics
+	{		
+		String ISqlAzureV12TSqlStatistics.FilterPredicate 
+		{
+			get { return this.FilterPredicate;}
+		}
+		Boolean ISqlAzureV12TSqlStatistics.Incremental 
+		{
+			get { return this.Incremental;}
+		}
+		Boolean ISqlAzureV12TSqlStatistics.NoRecompute 
+		{
+			get { return this.NoRecompute;}
+		}
+		Int32 ISqlAzureV12TSqlStatistics.SampleSize 
+		{
+			get { return this.SampleSize;}
+		}
+		SamplingStyle ISqlAzureV12TSqlStatistics.SamplingStyle 
+		{
+			get { return this.SamplingStyle;}
+		}
+		String ISqlAzureV12TSqlStatistics.StatsStream 
+		{
+			get { return this.StatsStream;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlStatistics.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlStatistics.ExpressionDependencies 
+		{
+			get 
+			{
+				return this.ExpressionDependencies;
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlStatistics.OnObject 
+		{
+			get 
+			{
+				return this.OnObject;
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlParameter"/>.
+	/// </summary>
+	public partial class TSqlParameter : ISqlAzureV12TSqlParameter
+	{		
+		String ISqlAzureV12TSqlParameter.DefaultExpression 
+		{
+			get { return this.DefaultExpression;}
+		}
+		Boolean ISqlAzureV12TSqlParameter.IsMax 
+		{
+			get { return this.IsMax;}
+		}
+		Boolean ISqlAzureV12TSqlParameter.IsOutput 
+		{
+			get { return this.IsOutput;}
+		}
+		Int32 ISqlAzureV12TSqlParameter.Length 
+		{
+			get { return this.Length;}
+		}
+		Int32 ISqlAzureV12TSqlParameter.Precision 
+		{
+			get { return this.Precision;}
+		}
+		Boolean ISqlAzureV12TSqlParameter.ReadOnly 
+		{
+			get { return this.ReadOnly;}
+		}
+		Int32 ISqlAzureV12TSqlParameter.Scale 
+		{
+			get { return this.Scale;}
+		}
+		Boolean ISqlAzureV12TSqlParameter.Varying 
+		{
+			get { return this.Varying;}
+		}
+		XmlStyle ISqlAzureV12TSqlParameter.XmlStyle 
+		{
+			get { return this.XmlStyle;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlParameter.DataType 
+		{
+			get 
+			{
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection> ISqlAzureV12TSqlParameter.XmlSchemaCollection 
+		{
+			get 
+			{
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlSynonym"/>.
+	/// </summary>
+	public partial class TSqlSynonym : ISqlAzureV12TSqlSynonym
+	{		
+		String ISqlAzureV12TSqlSynonym.ForObjectName 
+		{
+			get { return this.ForObjectName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlSynonym.ForObject 
+		{
+			get 
+			{
+				return this.ForObject;
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlSynonym.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlTable"/>.
+	/// </summary>
+	public partial class TSqlTable : ISqlAzureV12TSqlTable
+	{		
+		Boolean? ISqlAzureV12TSqlTable.AnsiNullsOn 
+		{
+			get { return this.AnsiNullsOn;}
+		}
+		Boolean ISqlAzureV12TSqlTable.ChangeTrackingEnabled 
+		{
+			get { return this.ChangeTrackingEnabled;}
+		}
+		Boolean ISqlAzureV12TSqlTable.LargeValueTypesOutOfRow 
+		{
+			get { return this.LargeValueTypesOutOfRow;}
+		}
+		LockEscalationMethod ISqlAzureV12TSqlTable.LockEscalation 
+		{
+			get { return this.LockEscalation;}
+		}
+		Boolean? ISqlAzureV12TSqlTable.QuotedIdentifierOn 
+		{
+			get { return this.QuotedIdentifierOn;}
+		}
+		Boolean ISqlAzureV12TSqlTable.TableLockOnBulkLoad 
+		{
+			get { return this.TableLockOnBulkLoad;}
+		}
+		Int32 ISqlAzureV12TSqlTable.TextInRowSize 
+		{
+			get { return this.TextInRowSize;}
+		}
+		Boolean ISqlAzureV12TSqlTable.TrackColumnsUpdated 
+		{
+			get { return this.TrackColumnsUpdated;}
+		}
+		Boolean ISqlAzureV12TSqlTable.VardecimalStorageFormatEnabled 
+		{
+			get { return this.VardecimalStorageFormatEnabled;}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTable.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption> ISqlAzureV12TSqlTable.DataCompressionOptions 
+		{
+			get 
+			{
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlTable.Filegroup 
+		{
+			get 
+			{
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTable.PartitionColumn 
+		{
+			get 
+			{
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlTable.PartitionScheme 
+		{
+			get 
+			{
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlTable.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlTableType"/>.
+	/// </summary>
+	public partial class TSqlTableType : ISqlAzureV12TSqlTableType
+	{		
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableTypeColumn> ISqlAzureV12TSqlTableType.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableTypeColumn>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> ISqlAzureV12TSqlTableType.Constraints 
+		{
+			get 
+			{
+				return this.Constraints;
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex> ISqlAzureV12TSqlTableType.Indexes 
+		{
+			get 
+			{
+				return this.Indexes;
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlTableType.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlTableTypeCheckConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeCheckConstraint : ISqlAzureV12TSqlTableTypeCheckConstraint
+	{		
+		String ISqlAzureV12TSqlTableTypeCheckConstraint.Expression 
+		{
+			get { return this.Expression;}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlTableTypeCheckConstraint.ExpressionDependencies 
+		{
+			get 
+			{
+				return this.ExpressionDependencies;
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlTableTypeColumn"/>.
+	/// </summary>
+	public partial class TSqlTableTypeColumn : ISqlAzureV12TSqlTableTypeColumn
+	{		
+		String ISqlAzureV12TSqlTableTypeColumn.Collation 
+		{
+			get { return this.Collation;}
+		}
+		String ISqlAzureV12TSqlTableTypeColumn.Expression 
+		{
+			get { return this.Expression;}
+		}
+		String ISqlAzureV12TSqlTableTypeColumn.IdentityIncrement 
+		{
+			get { return this.IdentityIncrement;}
+		}
+		String ISqlAzureV12TSqlTableTypeColumn.IdentitySeed 
+		{
+			get { return this.IdentitySeed;}
+		}
+		Boolean ISqlAzureV12TSqlTableTypeColumn.IsIdentity 
+		{
+			get { return this.IsIdentity;}
+		}
+		Boolean ISqlAzureV12TSqlTableTypeColumn.IsMax 
+		{
+			get { return this.IsMax;}
+		}
+		Boolean ISqlAzureV12TSqlTableTypeColumn.IsRowGuidCol 
+		{
+			get { return this.IsRowGuidCol;}
+		}
+		Int32 ISqlAzureV12TSqlTableTypeColumn.Length 
+		{
+			get { return this.Length;}
+		}
+		Boolean ISqlAzureV12TSqlTableTypeColumn.Nullable 
+		{
+			get { return this.Nullable;}
+		}
+		Boolean ISqlAzureV12TSqlTableTypeColumn.Persisted 
+		{
+			get { return this.Persisted;}
+		}
+		Boolean? ISqlAzureV12TSqlTableTypeColumn.PersistedNullable 
+		{
+			get { return this.PersistedNullable;}
+		}
+		Int32 ISqlAzureV12TSqlTableTypeColumn.Precision 
+		{
+			get { return this.Precision;}
+		}
+		Int32 ISqlAzureV12TSqlTableTypeColumn.Scale 
+		{
+			get { return this.Scale;}
+		}
+		XmlStyle ISqlAzureV12TSqlTableTypeColumn.XmlStyle 
+		{
+			get { return this.XmlStyle;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlTableTypeColumn.DataType 
+		{
+			get 
+			{
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlTableTypeColumn.ExpressionDependencies 
+		{
+			get 
+			{
+				return this.ExpressionDependencies;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection> ISqlAzureV12TSqlTableTypeColumn.XmlSchemaCollection 
+		{
+			get 
+			{
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlTableTypeDefaultConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeDefaultConstraint : ISqlAzureV12TSqlTableTypeDefaultConstraint
+	{		
+		String ISqlAzureV12TSqlTableTypeDefaultConstraint.Expression 
+		{
+			get { return this.Expression;}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlTableTypeDefaultConstraint.ExpressionDependencies 
+		{
+			get 
+			{
+				return this.ExpressionDependencies;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableTypeDefaultConstraint.TargetColumn 
+		{
+			get 
+			{
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlTableTypeIndex"/>.
+	/// </summary>
+	public partial class TSqlTableTypeIndex : ISqlAzureV12TSqlTableTypeIndex
+	{		
+		Int32? ISqlAzureV12TSqlTableTypeIndex.BucketCount 
+		{
+			get { return this.BucketCount;}
+		}
+		Boolean ISqlAzureV12TSqlTableTypeIndex.Hash 
+		{
+			get { return this.Hash;}
+		}
+		Boolean ISqlAzureV12TSqlTableTypeIndex.IsDisabled 
+		{
+			get { return this.IsDisabled;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableTypeIndex.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlTableTypePrimaryKeyConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypePrimaryKeyConstraint : ISqlAzureV12TSqlTableTypePrimaryKeyConstraint
+	{		
+		Int32? ISqlAzureV12TSqlTableTypePrimaryKeyConstraint.BucketCount 
+		{
+			get { return this.BucketCount;}
+		}
+		Boolean ISqlAzureV12TSqlTableTypePrimaryKeyConstraint.Clustered 
+		{
+			get { return this.Clustered;}
+		}
+		Boolean ISqlAzureV12TSqlTableTypePrimaryKeyConstraint.Hash 
+		{
+			get { return this.Hash;}
+		}
+		Boolean ISqlAzureV12TSqlTableTypePrimaryKeyConstraint.IgnoreDuplicateKey 
+		{
+			get { return this.IgnoreDuplicateKey;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableTypePrimaryKeyConstraint.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlTableTypeUniqueConstraint"/>.
+	/// </summary>
+	public partial class TSqlTableTypeUniqueConstraint : ISqlAzureV12TSqlTableTypeUniqueConstraint
+	{		
+		Boolean ISqlAzureV12TSqlTableTypeUniqueConstraint.Clustered 
+		{
+			get { return this.Clustered;}
+		}
+		Boolean ISqlAzureV12TSqlTableTypeUniqueConstraint.IgnoreDuplicateKey 
+		{
+			get { return this.IgnoreDuplicateKey;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableTypeUniqueConstraint.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlUniqueConstraint"/>.
+	/// </summary>
+	public partial class TSqlUniqueConstraint : ISqlAzureV12TSqlUniqueConstraint
+	{		
+		Boolean ISqlAzureV12TSqlUniqueConstraint.AllowPageLocks 
+		{
+			get { return this.AllowPageLocks;}
+		}
+		Boolean ISqlAzureV12TSqlUniqueConstraint.AllowRowLocks 
+		{
+			get { return this.AllowRowLocks;}
+		}
+		Boolean ISqlAzureV12TSqlUniqueConstraint.Clustered 
+		{
+			get { return this.Clustered;}
+		}
+		Boolean ISqlAzureV12TSqlUniqueConstraint.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		Int32? ISqlAzureV12TSqlUniqueConstraint.FillFactor 
+		{
+			get { return this.FillFactor;}
+		}
+		Boolean ISqlAzureV12TSqlUniqueConstraint.IgnoreDuplicateKey 
+		{
+			get { return this.IgnoreDuplicateKey;}
+		}
+		Boolean ISqlAzureV12TSqlUniqueConstraint.RecomputeStatistics 
+		{
+			get { return this.RecomputeStatistics;}
+		}
+		Boolean ISqlAzureV12TSqlUniqueConstraint.WithPadIndex 
+		{
+			get { return this.WithPadIndex;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlUniqueConstraint.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption> ISqlAzureV12TSqlUniqueConstraint.DataCompressionOptions 
+		{
+			get 
+			{
+				return this.DataCompressionOptions.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlUniqueConstraint.Filegroup 
+		{
+			get 
+			{
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlUniqueConstraint.Host 
+		{
+			get 
+			{
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlUniqueConstraint.PartitionColumn 
+		{
+			get 
+			{
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlUniqueConstraint.PartitionScheme 
+		{
+			get 
+			{
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlUser"/>.
+	/// </summary>
+	public partial class TSqlUser : ISqlAzureV12TSqlUser
+	{		
+		AuthenticationType ISqlAzureV12TSqlUser.AuthenticationType 
+		{
+			get { return this.AuthenticationType;}
+		}
+		String ISqlAzureV12TSqlUser.Password 
+		{
+			get { return this.Password;}
+		}
+		String ISqlAzureV12TSqlUser.Sid 
+		{
+			get { return this.Sid;}
+		}
+		Boolean ISqlAzureV12TSqlUser.WithoutLogin 
+		{
+			get { return this.WithoutLogin;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlUser.DefaultSchema 
+		{
+			get 
+			{
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlUser.Login 
+		{
+			get 
+			{
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlUserDefinedType"/>.
+	/// </summary>
+	public partial class TSqlUserDefinedType : ISqlAzureV12TSqlUserDefinedType
+	{		
+		Boolean? ISqlAzureV12TSqlUserDefinedType.ByteOrdered 
+		{
+			get { return this.ByteOrdered;}
+		}
+		String ISqlAzureV12TSqlUserDefinedType.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+		Boolean? ISqlAzureV12TSqlUserDefinedType.FixedLength 
+		{
+			get { return this.FixedLength;}
+		}
+		Format ISqlAzureV12TSqlUserDefinedType.Format 
+		{
+			get { return this.Format;}
+		}
+		Int32? ISqlAzureV12TSqlUserDefinedType.MaxByteSize 
+		{
+			get { return this.MaxByteSize;}
+		}
+		String ISqlAzureV12TSqlUserDefinedType.ValidationMethodName 
+		{
+			get { return this.ValidationMethodName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlUserDefinedType.Assembly 
+		{
+			get 
+			{
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlUserDefinedType.Methods 
+		{
+			get 
+			{
+				return this.Methods;
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlUserDefinedType.Properties 
+		{
+			get 
+			{
+				return this.Properties;
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlUserDefinedType.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlView"/>.
+	/// </summary>
+	public partial class TSqlView : ISqlAzureV12TSqlView
+	{		
+		Boolean? ISqlAzureV12TSqlView.AnsiNullsOn 
+		{
+			get { return this.AnsiNullsOn;}
+		}
+		Boolean? ISqlAzureV12TSqlView.QuotedIdentifierOn 
+		{
+			get { return this.QuotedIdentifierOn;}
+		}
+		String ISqlAzureV12TSqlView.SelectStatement 
+		{
+			get { return this.SelectStatement;}
+		}
+		Boolean ISqlAzureV12TSqlView.WithCheckOption 
+		{
+			get { return this.WithCheckOption;}
+		}
+		Boolean ISqlAzureV12TSqlView.WithEncryption 
+		{
+			get { return this.WithEncryption;}
+		}
+		Boolean ISqlAzureV12TSqlView.WithSchemaBinding 
+		{
+			get { return this.WithSchemaBinding;}
+		}
+		Boolean ISqlAzureV12TSqlView.WithViewMetadata 
+		{
+			get { return this.WithViewMetadata;}
+		}
+
+		// Peer relationship		
+		IEnumerable<TSqlObject> ISqlAzureV12TSqlView.BodyDependencies 
+		{
+			get 
+			{
+				return this.BodyDependencies;
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlView.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlView.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlXmlIndex"/>.
+	/// </summary>
+	public partial class TSqlXmlIndex : ISqlAzureV12TSqlXmlIndex
+	{		
+		Boolean ISqlAzureV12TSqlXmlIndex.AllowPageLocks 
+		{
+			get { return this.AllowPageLocks;}
+		}
+		Boolean ISqlAzureV12TSqlXmlIndex.AllowRowLocks 
+		{
+			get { return this.AllowRowLocks;}
+		}
+		Boolean ISqlAzureV12TSqlXmlIndex.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		Int32? ISqlAzureV12TSqlXmlIndex.FillFactor 
+		{
+			get { return this.FillFactor;}
+		}
+		Boolean ISqlAzureV12TSqlXmlIndex.IgnoreDuplicateKey 
+		{
+			get { return this.IgnoreDuplicateKey;}
+		}
+		Boolean ISqlAzureV12TSqlXmlIndex.IsPrimary 
+		{
+			get { return this.IsPrimary;}
+		}
+		Boolean ISqlAzureV12TSqlXmlIndex.RecomputeStatistics 
+		{
+			get { return this.RecomputeStatistics;}
+		}
+		SecondaryXmlIndexType ISqlAzureV12TSqlXmlIndex.SecondaryXmlIndexType 
+		{
+			get { return this.SecondaryXmlIndexType;}
+		}
+		Boolean ISqlAzureV12TSqlXmlIndex.WithPadIndex 
+		{
+			get { return this.WithPadIndex;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlXmlIndex.Column 
+		{
+			get 
+			{
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISqlAzureV12TSqlXmlIndex.IndexedObject 
+		{
+			get 
+			{
+				return this.IndexedObject;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlIndex> ISqlAzureV12TSqlXmlIndex.PrimaryXmlIndex 
+		{
+			get 
+			{
+				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlIndex>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlSelectiveXmlIndex"/>.
+	/// </summary>
+	public partial class TSqlSelectiveXmlIndex : ISqlAzureV12TSqlSelectiveXmlIndex
+	{		
+		Boolean ISqlAzureV12TSqlSelectiveXmlIndex.AllowPageLocks 
+		{
+			get { return this.AllowPageLocks;}
+		}
+		Boolean ISqlAzureV12TSqlSelectiveXmlIndex.AllowRowLocks 
+		{
+			get { return this.AllowRowLocks;}
+		}
+		Boolean ISqlAzureV12TSqlSelectiveXmlIndex.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		Int32? ISqlAzureV12TSqlSelectiveXmlIndex.FillFactor 
+		{
+			get { return this.FillFactor;}
+		}
+		Boolean ISqlAzureV12TSqlSelectiveXmlIndex.IgnoreDuplicateKey 
+		{
+			get { return this.IgnoreDuplicateKey;}
+		}
+		Boolean ISqlAzureV12TSqlSelectiveXmlIndex.IsPrimary 
+		{
+			get { return this.IsPrimary;}
+		}
+		Boolean ISqlAzureV12TSqlSelectiveXmlIndex.RecomputeStatistics 
+		{
+			get { return this.RecomputeStatistics;}
+		}
+		Boolean ISqlAzureV12TSqlSelectiveXmlIndex.WithPadIndex 
+		{
+			get { return this.WithPadIndex;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlSelectiveXmlIndex.Column 
+		{
+			get 
+			{
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISqlAzureV12TSqlSelectiveXmlIndex.IndexedObject 
+		{
+			get 
+			{
+				return this.IndexedObject;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> ISqlAzureV12TSqlSelectiveXmlIndex.PrimaryPromotedPath 
+		{
+			get 
+			{
+				return this.PrimaryPromotedPath;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSelectiveXmlIndex> ISqlAzureV12TSqlSelectiveXmlIndex.PrimarySelectiveXmlIndex 
+		{
+			get 
+			{
+				return this.PrimarySelectiveXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSelectiveXmlIndex>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> ISqlAzureV12TSqlSelectiveXmlIndex.PromotedPaths 
+		{
+			get 
+			{
+				return this.PromotedPaths;
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlNamespace> ISqlAzureV12TSqlSelectiveXmlIndex.XmlNamespaces 
+		{
+			get 
+			{
+				return this.XmlNamespaces.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlNamespace>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlXmlNamespace"/>.
+	/// </summary>
+	public partial class TSqlXmlNamespace : ISqlAzureV12TSqlXmlNamespace
+	{		
+		String ISqlAzureV12TSqlXmlNamespace.NamespaceUri 
+		{
+			get { return this.NamespaceUri;}
+		}
+		String ISqlAzureV12TSqlXmlNamespace.Prefix 
+		{
+			get { return this.Prefix;}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlPromotedNodePathForXQueryType"/>.
+	/// </summary>
+	public partial class TSqlPromotedNodePathForXQueryType : ISqlAzureV12TSqlPromotedNodePathForXQueryType
+	{		
+		Boolean ISqlAzureV12TSqlPromotedNodePathForXQueryType.IsSingleton 
+		{
+			get { return this.IsSingleton;}
+		}
+		Int32? ISqlAzureV12TSqlPromotedNodePathForXQueryType.MaxLength 
+		{
+			get { return this.MaxLength;}
+		}
+		String ISqlAzureV12TSqlPromotedNodePathForXQueryType.NodePath 
+		{
+			get { return this.NodePath;}
+		}
+		String ISqlAzureV12TSqlPromotedNodePathForXQueryType.Type 
+		{
+			get { return this.Type;}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlPromotedNodePathForSqlType"/>.
+	/// </summary>
+	public partial class TSqlPromotedNodePathForSqlType : ISqlAzureV12TSqlPromotedNodePathForSqlType
+	{		
+		Boolean ISqlAzureV12TSqlPromotedNodePathForSqlType.IsMax 
+		{
+			get { return this.IsMax;}
+		}
+		Boolean ISqlAzureV12TSqlPromotedNodePathForSqlType.IsSingleton 
+		{
+			get { return this.IsSingleton;}
+		}
+		Int32 ISqlAzureV12TSqlPromotedNodePathForSqlType.Length 
+		{
+			get { return this.Length;}
+		}
+		String ISqlAzureV12TSqlPromotedNodePathForSqlType.NodePath 
+		{
+			get { return this.NodePath;}
+		}
+		Int32 ISqlAzureV12TSqlPromotedNodePathForSqlType.Precision 
+		{
+			get { return this.Precision;}
+		}
+		Int32 ISqlAzureV12TSqlPromotedNodePathForSqlType.Scale 
+		{
+			get { return this.Scale;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlPromotedNodePathForSqlType.DataType 
+		{
+			get 
+			{
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlXmlSchemaCollection"/>.
+	/// </summary>
+	public partial class TSqlXmlSchemaCollection : ISqlAzureV12TSqlXmlSchemaCollection
+	{		
+		String ISqlAzureV12TSqlXmlSchemaCollection.Expression 
+		{
+			get { return this.Expression;}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlXmlSchemaCollection.Schema 
+		{
+			get 
+			{
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
 			}
 		}
 	}

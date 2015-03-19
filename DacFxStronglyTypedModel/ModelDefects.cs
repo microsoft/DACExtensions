@@ -42,7 +42,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 //Microsoft.SqlServer.Dac.Model.TableValuedFunction
-                throw new NotImplementedException("Columns in not implmeneted on TablueValuedFunctions");
+                throw new NotImplementedException("Columns is not implemented on TablueValuedFunctions");
             }
         }
     }   

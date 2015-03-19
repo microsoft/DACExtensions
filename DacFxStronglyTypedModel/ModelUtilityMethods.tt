@@ -85,9 +85,9 @@ namespace <#=NamespaceName#>
 				
 				// Iterate over all the SQLPlatforms and build cases statements
 				// for each SqlServerVersion but filter out any unsupported ModelElementTypes				
-				foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVersion)))
+				foreach(SqlServerVersion currentSQLVersion in GetSqlServerVersionValues())
                 {	
-					string typePrefix = "I" + currentSQLVersion;			
+					string typePrefix = GetInterfacePrefix(currentSQLVersion);			
 					if (!SupportsVersion(type.SupportedPlatforms, currentSQLVersion))
 					{
 						// skip ModelTypeClass as it does not support the SQL Version
@@ -135,8 +135,8 @@ namespace <#=NamespaceName#>
         /// Determines if instances of <see cref="TSqlModelElement"/> for the <paramref name="typeClass"/> model 
         /// element class will derive from or implement the interface type <paramref name="type"/>.
         /// </summary>
-        /// <param name="typeClass">Model element type class to interigate.</param>
-        /// <param name="type">Candiate <see cref="System.Type"/> for comparison</param>
+        /// <param name="typeClass">Model element type class to interrogate.</param>
+        /// <param name="type">Candidate <see cref="System.Type"/> for comparison</param>
         /// <returns>True if <see cref="TSqlModelElement"/> implement or extend the type <paramref name="type"/>.</returns>		
 		public static bool ImplementsType(ModelTypeClass typeClass, Type type)
 		{
@@ -169,9 +169,9 @@ namespace <#=NamespaceName#>
 
 			// Iterate over all the SQLPlatforms and build cases statements
 			// for each SqlServerVersion but filter out any unsupported ModelElementTypes				
-			foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVersion)))
+			foreach(SqlServerVersion currentSQLVersion in GetSqlServerVersionValues())
             {	
-				string typePrefix = "I" + currentSQLVersion;			
+				string typePrefix = GetInterfacePrefix(currentSQLVersion);			
 				if (!SupportsVersion(type.SupportedPlatforms, currentSQLVersion))
 				{
 					// skip ModelTypeClass as it does not support the SQL Version

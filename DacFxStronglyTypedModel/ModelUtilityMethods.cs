@@ -81,6 +81,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlAggregate":
 				case "ISql110TSqlAggregate":
 				case "ISql120TSqlAggregate":
+				case "ISqlAzureV12TSqlAggregate":
 				case "TSqlAggregate":				
 					yield return TSqlAggregate.TypeClass;
 					break;
@@ -88,6 +89,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlApplicationRole":
 				case "ISql110TSqlApplicationRole":
 				case "ISql120TSqlApplicationRole":
+				case "ISqlAzureV12TSqlApplicationRole":
 				case "TSqlApplicationRole":				
 					yield return TSqlApplicationRole.TypeClass;
 					break;
@@ -96,6 +98,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlAssembly":
 				case "ISql110TSqlAssembly":
 				case "ISql120TSqlAssembly":
+				case "ISqlAzureV12TSqlAssembly":
 				case "TSqlAssembly":				
 					yield return TSqlAssembly.TypeClass;
 					break;
@@ -104,6 +107,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlAssemblySource":
 				case "ISql110TSqlAssemblySource":
 				case "ISql120TSqlAssemblySource":
+				case "ISqlAzureV12TSqlAssemblySource":
 				case "TSqlAssemblySource":				
 					yield return TSqlAssemblySource.TypeClass;
 					break;
@@ -143,6 +147,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlBuiltInServerRole":
 				case "ISql110TSqlBuiltInServerRole":
 				case "ISql120TSqlBuiltInServerRole":
+				case "ISqlAzureV12TSqlBuiltInServerRole":
 				case "TSqlBuiltInServerRole":				
 					yield return TSqlBuiltInServerRole.TypeClass;
 					break;
@@ -158,6 +163,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlCheckConstraint":
 				case "ISql110TSqlCheckConstraint":
 				case "ISql120TSqlCheckConstraint":
+				case "ISqlAzureV12TSqlCheckConstraint":
 				case "TSqlCheckConstraint":				
 					yield return TSqlCheckConstraint.TypeClass;
 					break;
@@ -166,6 +172,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlClrTypeMethod":
 				case "ISql110TSqlClrTypeMethod":
 				case "ISql120TSqlClrTypeMethod":
+				case "ISqlAzureV12TSqlClrTypeMethod":
 				case "TSqlClrTypeMethod":				
 					yield return TSqlClrTypeMethod.TypeClass;
 					break;
@@ -174,6 +181,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlClrTypeMethodParameter":
 				case "ISql110TSqlClrTypeMethodParameter":
 				case "ISql120TSqlClrTypeMethodParameter":
+				case "ISqlAzureV12TSqlClrTypeMethodParameter":
 				case "TSqlClrTypeMethodParameter":				
 					yield return TSqlClrTypeMethodParameter.TypeClass;
 					break;
@@ -182,6 +190,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlClrTypeProperty":
 				case "ISql110TSqlClrTypeProperty":
 				case "ISql120TSqlClrTypeProperty":
+				case "ISqlAzureV12TSqlClrTypeProperty":
 				case "TSqlClrTypeProperty":				
 					yield return TSqlClrTypeProperty.TypeClass;
 					break;
@@ -190,11 +199,13 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlColumn":
 				case "ISql110TSqlColumn":
 				case "ISql120TSqlColumn":
+				case "ISqlAzureV12TSqlColumn":
 				case "TSqlColumn":				
 					yield return TSqlColumn.TypeClass;
 					break;
 				case "ISql110TSqlColumnStoreIndex":
 				case "ISql120TSqlColumnStoreIndex":
+				case "ISqlAzureV12TSqlColumnStoreIndex":
 				case "TSqlColumnStoreIndex":				
 					yield return TSqlColumnStoreIndex.TypeClass;
 					break;
@@ -229,6 +240,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlDatabaseDdlTrigger":
 				case "ISql110TSqlDatabaseDdlTrigger":
 				case "ISql120TSqlDatabaseDdlTrigger":
+				case "ISqlAzureV12TSqlDatabaseDdlTrigger":
 				case "TSqlDatabaseDdlTrigger":				
 					yield return TSqlDatabaseDdlTrigger.TypeClass;
 					break;
@@ -257,12 +269,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlDatabaseOptions":
 				case "ISql110TSqlDatabaseOptions":
 				case "ISql120TSqlDatabaseOptions":
+				case "ISqlAzureV12TSqlDatabaseOptions":
 				case "TSqlDatabaseOptions":				
 					yield return TSqlDatabaseOptions.TypeClass;
 					break;
 				case "ISql100TSqlDataCompressionOption":
 				case "ISql110TSqlDataCompressionOption":
 				case "ISql120TSqlDataCompressionOption":
+				case "ISqlAzureV12TSqlDataCompressionOption":
 				case "TSqlDataCompressionOption":				
 					yield return TSqlDataCompressionOption.TypeClass;
 					break;
@@ -271,6 +285,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlDataType":
 				case "ISql110TSqlDataType":
 				case "ISql120TSqlDataType":
+				case "ISqlAzureV12TSqlDataType":
 				case "TSqlDataType":				
 					yield return TSqlDataType.TypeClass;
 					break;
@@ -278,6 +293,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlDefault":
 				case "ISql110TSqlDefault":
 				case "ISql120TSqlDefault":
+				case "ISqlAzureV12TSqlDefault":
 				case "TSqlDefault":				
 					yield return TSqlDefault.TypeClass;
 					break;
@@ -286,6 +302,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlDefaultConstraint":
 				case "ISql110TSqlDefaultConstraint":
 				case "ISql120TSqlDefaultConstraint":
+				case "ISqlAzureV12TSqlDefaultConstraint":
 				case "TSqlDefaultConstraint":				
 					yield return TSqlDefaultConstraint.TypeClass;
 					break;
@@ -294,6 +311,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlDmlTrigger":
 				case "ISql110TSqlDmlTrigger":
 				case "ISql120TSqlDmlTrigger":
+				case "ISqlAzureV12TSqlDmlTrigger":
 				case "TSqlDmlTrigger":				
 					yield return TSqlDmlTrigger.TypeClass;
 					break;
@@ -316,6 +334,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlEventGroup":
 				case "ISql110TSqlEventGroup":
 				case "ISql120TSqlEventGroup":
+				case "ISqlAzureV12TSqlEventGroup":
 				case "TSqlEventGroup":				
 					yield return TSqlEventGroup.TypeClass;
 					break;
@@ -354,6 +373,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlEventTypeSpecifier":
 				case "ISql110TSqlEventTypeSpecifier":
 				case "ISql120TSqlEventTypeSpecifier":
+				case "ISqlAzureV12TSqlEventTypeSpecifier":
 				case "TSqlEventTypeSpecifier":				
 					yield return TSqlEventTypeSpecifier.TypeClass;
 					break;
@@ -368,6 +388,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlExtendedProperty":
 				case "ISql110TSqlExtendedProperty":
 				case "ISql120TSqlExtendedProperty":
+				case "ISqlAzureV12TSqlExtendedProperty":
 				case "TSqlExtendedProperty":				
 					yield return TSqlExtendedProperty.TypeClass;
 					break;
@@ -388,6 +409,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlForeignKeyConstraint":
 				case "ISql110TSqlForeignKeyConstraint":
 				case "ISql120TSqlForeignKeyConstraint":
+				case "ISqlAzureV12TSqlForeignKeyConstraint":
 				case "TSqlForeignKeyConstraint":				
 					yield return TSqlForeignKeyConstraint.TypeClass;
 					break;
@@ -410,6 +432,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlFullTextIndexColumnSpecifier":
 				case "ISql110TSqlFullTextIndexColumnSpecifier":
 				case "ISql120TSqlFullTextIndexColumnSpecifier":
+				case "ISqlAzureV12TSqlFullTextIndexColumnSpecifier":
 				case "TSqlFullTextIndexColumnSpecifier":				
 					yield return TSqlFullTextIndexColumnSpecifier.TypeClass;
 					break;
@@ -429,6 +452,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlIndex":
 				case "ISql110TSqlIndex":
 				case "ISql120TSqlIndex":
+				case "ISqlAzureV12TSqlIndex":
 				case "TSqlIndex":				
 					yield return TSqlIndex.TypeClass;
 					break;
@@ -451,6 +475,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlLogin":
 				case "ISql110TSqlLogin":
 				case "ISql120TSqlLogin":
+				case "ISqlAzureV12TSqlLogin":
 				case "TSqlLogin":				
 					yield return TSqlLogin.TypeClass;
 					break;
@@ -473,6 +498,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlParameter":
 				case "ISql110TSqlParameter":
 				case "ISql120TSqlParameter":
+				case "ISqlAzureV12TSqlParameter":
 				case "TSqlParameter":				
 					yield return TSqlParameter.TypeClass;
 					break;
@@ -480,6 +506,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlPartitionFunction":
 				case "ISql110TSqlPartitionFunction":
 				case "ISql120TSqlPartitionFunction":
+				case "ISqlAzureV12TSqlPartitionFunction":
 				case "TSqlPartitionFunction":				
 					yield return TSqlPartitionFunction.TypeClass;
 					break;
@@ -487,6 +514,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlPartitionScheme":
 				case "ISql110TSqlPartitionScheme":
 				case "ISql120TSqlPartitionScheme":
+				case "ISqlAzureV12TSqlPartitionScheme":
 				case "TSqlPartitionScheme":				
 					yield return TSqlPartitionScheme.TypeClass;
 					break;
@@ -494,6 +522,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlPartitionValue":
 				case "ISql110TSqlPartitionValue":
 				case "ISql120TSqlPartitionValue":
+				case "ISqlAzureV12TSqlPartitionValue":
 				case "TSqlPartitionValue":				
 					yield return TSqlPartitionValue.TypeClass;
 					break;
@@ -502,6 +531,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlPermission":
 				case "ISql110TSqlPermission":
 				case "ISql120TSqlPermission":
+				case "ISqlAzureV12TSqlPermission":
 				case "TSqlPermission":				
 					yield return TSqlPermission.TypeClass;
 					break;
@@ -510,6 +540,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlPrimaryKeyConstraint":
 				case "ISql110TSqlPrimaryKeyConstraint":
 				case "ISql120TSqlPrimaryKeyConstraint":
+				case "ISqlAzureV12TSqlPrimaryKeyConstraint":
 				case "TSqlPrimaryKeyConstraint":				
 					yield return TSqlPrimaryKeyConstraint.TypeClass;
 					break;
@@ -518,16 +549,19 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlProcedure":
 				case "ISql110TSqlProcedure":
 				case "ISql120TSqlProcedure":
+				case "ISqlAzureV12TSqlProcedure":
 				case "TSqlProcedure":				
 					yield return TSqlProcedure.TypeClass;
 					break;
 				case "ISql110TSqlPromotedNodePathForSqlType":
 				case "ISql120TSqlPromotedNodePathForSqlType":
+				case "ISqlAzureV12TSqlPromotedNodePathForSqlType":
 				case "TSqlPromotedNodePathForSqlType":				
 					yield return TSqlPromotedNodePathForSqlType.TypeClass;
 					break;
 				case "ISql110TSqlPromotedNodePathForXQueryType":
 				case "ISql120TSqlPromotedNodePathForXQueryType":
+				case "ISqlAzureV12TSqlPromotedNodePathForXQueryType":
 				case "TSqlPromotedNodePathForXQueryType":				
 					yield return TSqlPromotedNodePathForXQueryType.TypeClass;
 					break;
@@ -569,6 +603,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlRole":
 				case "ISql110TSqlRole":
 				case "ISql120TSqlRole":
+				case "ISqlAzureV12TSqlRole":
 				case "TSqlRole":				
 					yield return TSqlRole.TypeClass;
 					break;
@@ -577,6 +612,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlRoleMembership":
 				case "ISql110TSqlRoleMembership":
 				case "ISql120TSqlRoleMembership":
+				case "ISqlAzureV12TSqlRoleMembership":
 				case "TSqlRoleMembership":				
 					yield return TSqlRoleMembership.TypeClass;
 					break;
@@ -591,6 +627,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlRule":
 				case "ISql110TSqlRule":
 				case "ISql120TSqlRule":
+				case "ISqlAzureV12TSqlRule":
 				case "TSqlRule":				
 					yield return TSqlRule.TypeClass;
 					break;
@@ -599,6 +636,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlScalarFunction":
 				case "ISql110TSqlScalarFunction":
 				case "ISql120TSqlScalarFunction":
+				case "ISqlAzureV12TSqlScalarFunction":
 				case "TSqlScalarFunction":				
 					yield return TSqlScalarFunction.TypeClass;
 					break;
@@ -607,6 +645,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlSchema":
 				case "ISql110TSqlSchema":
 				case "ISql120TSqlSchema":
+				case "ISqlAzureV12TSqlSchema":
 				case "TSqlSchema":				
 					yield return TSqlSchema.TypeClass;
 					break;
@@ -622,11 +661,13 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					break;
 				case "ISql110TSqlSelectiveXmlIndex":
 				case "ISql120TSqlSelectiveXmlIndex":
+				case "ISqlAzureV12TSqlSelectiveXmlIndex":
 				case "TSqlSelectiveXmlIndex":				
 					yield return TSqlSelectiveXmlIndex.TypeClass;
 					break;
 				case "ISql110TSqlSequence":
 				case "ISql120TSqlSequence":
+				case "ISqlAzureV12TSqlSequence":
 				case "TSqlSequence":				
 					yield return TSqlSequence.TypeClass;
 					break;
@@ -661,6 +702,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlServerOptions":
 				case "ISql110TSqlServerOptions":
 				case "ISql120TSqlServerOptions":
+				case "ISqlAzureV12TSqlServerOptions":
 				case "TSqlServerOptions":				
 					yield return TSqlServerOptions.TypeClass;
 					break;
@@ -669,6 +711,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlServerRoleMembership":
 				case "ISql110TSqlServerRoleMembership":
 				case "ISql120TSqlServerRoleMembership":
+				case "ISqlAzureV12TSqlServerRoleMembership":
 				case "TSqlServerRoleMembership":				
 					yield return TSqlServerRoleMembership.TypeClass;
 					break;
@@ -714,6 +757,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlSpatialIndex":
 				case "ISql110TSqlSpatialIndex":
 				case "ISql120TSqlSpatialIndex":
+				case "ISqlAzureV12TSqlSpatialIndex":
 				case "TSqlSpatialIndex":				
 					yield return TSqlSpatialIndex.TypeClass;
 					break;
@@ -729,6 +773,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlStatistics":
 				case "ISql110TSqlStatistics":
 				case "ISql120TSqlStatistics":
+				case "ISqlAzureV12TSqlStatistics":
 				case "TSqlStatistics":				
 					yield return TSqlStatistics.TypeClass;
 					break;
@@ -751,6 +796,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlSynonym":
 				case "ISql110TSqlSynonym":
 				case "ISql120TSqlSynonym":
+				case "ISqlAzureV12TSqlSynonym":
 				case "TSqlSynonym":				
 					yield return TSqlSynonym.TypeClass;
 					break;
@@ -759,6 +805,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlTable":
 				case "ISql110TSqlTable":
 				case "ISql120TSqlTable":
+				case "ISqlAzureV12TSqlTable":
 				case "TSqlTable":				
 					yield return TSqlTable.TypeClass;
 					break;
@@ -766,6 +813,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlTableType":
 				case "ISql110TSqlTableType":
 				case "ISql120TSqlTableType":
+				case "ISqlAzureV12TSqlTableType":
 				case "TSqlTableType":				
 					yield return TSqlTableType.TypeClass;
 					break;
@@ -773,6 +821,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlTableTypeCheckConstraint":
 				case "ISql110TSqlTableTypeCheckConstraint":
 				case "ISql120TSqlTableTypeCheckConstraint":
+				case "ISqlAzureV12TSqlTableTypeCheckConstraint":
 				case "TSqlTableTypeCheckConstraint":				
 					yield return TSqlTableTypeCheckConstraint.TypeClass;
 					break;
@@ -780,6 +829,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlTableTypeColumn":
 				case "ISql110TSqlTableTypeColumn":
 				case "ISql120TSqlTableTypeColumn":
+				case "ISqlAzureV12TSqlTableTypeColumn":
 				case "TSqlTableTypeColumn":				
 					yield return TSqlTableTypeColumn.TypeClass;
 					break;
@@ -787,10 +837,12 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlTableTypeDefaultConstraint":
 				case "ISql110TSqlTableTypeDefaultConstraint":
 				case "ISql120TSqlTableTypeDefaultConstraint":
+				case "ISqlAzureV12TSqlTableTypeDefaultConstraint":
 				case "TSqlTableTypeDefaultConstraint":				
 					yield return TSqlTableTypeDefaultConstraint.TypeClass;
 					break;
 				case "ISql120TSqlTableTypeIndex":
+				case "ISqlAzureV12TSqlTableTypeIndex":
 				case "TSqlTableTypeIndex":				
 					yield return TSqlTableTypeIndex.TypeClass;
 					break;
@@ -798,6 +850,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlTableTypePrimaryKeyConstraint":
 				case "ISql110TSqlTableTypePrimaryKeyConstraint":
 				case "ISql120TSqlTableTypePrimaryKeyConstraint":
+				case "ISqlAzureV12TSqlTableTypePrimaryKeyConstraint":
 				case "TSqlTableTypePrimaryKeyConstraint":				
 					yield return TSqlTableTypePrimaryKeyConstraint.TypeClass;
 					break;
@@ -805,6 +858,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlTableTypeUniqueConstraint":
 				case "ISql110TSqlTableTypeUniqueConstraint":
 				case "ISql120TSqlTableTypeUniqueConstraint":
+				case "ISqlAzureV12TSqlTableTypeUniqueConstraint":
 				case "TSqlTableTypeUniqueConstraint":				
 					yield return TSqlTableTypeUniqueConstraint.TypeClass;
 					break;
@@ -813,6 +867,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlTableValuedFunction":
 				case "ISql110TSqlTableValuedFunction":
 				case "ISql120TSqlTableValuedFunction":
+				case "ISqlAzureV12TSqlTableValuedFunction":
 				case "TSqlTableValuedFunction":				
 					yield return TSqlTableValuedFunction.TypeClass;
 					break;
@@ -828,6 +883,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlUniqueConstraint":
 				case "ISql110TSqlUniqueConstraint":
 				case "ISql120TSqlUniqueConstraint":
+				case "ISqlAzureV12TSqlUniqueConstraint":
 				case "TSqlUniqueConstraint":				
 					yield return TSqlUniqueConstraint.TypeClass;
 					break;
@@ -836,6 +892,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlUser":
 				case "ISql110TSqlUser":
 				case "ISql120TSqlUser":
+				case "ISqlAzureV12TSqlUser":
 				case "TSqlUser":				
 					yield return TSqlUser.TypeClass;
 					break;
@@ -849,6 +906,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlUserDefinedType":
 				case "ISql110TSqlUserDefinedType":
 				case "ISql120TSqlUserDefinedType":
+				case "ISqlAzureV12TSqlUserDefinedType":
 				case "TSqlUserDefinedType":				
 					yield return TSqlUserDefinedType.TypeClass;
 					break;
@@ -857,6 +915,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureTSqlView":
 				case "ISql110TSqlView":
 				case "ISql120TSqlView":
+				case "ISqlAzureV12TSqlView":
 				case "TSqlView":				
 					yield return TSqlView.TypeClass;
 					break;
@@ -870,11 +929,13 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlXmlIndex":
 				case "ISql110TSqlXmlIndex":
 				case "ISql120TSqlXmlIndex":
+				case "ISqlAzureV12TSqlXmlIndex":
 				case "TSqlXmlIndex":				
 					yield return TSqlXmlIndex.TypeClass;
 					break;
 				case "ISql110TSqlXmlNamespace":
 				case "ISql120TSqlXmlNamespace":
+				case "ISqlAzureV12TSqlXmlNamespace":
 				case "TSqlXmlNamespace":				
 					yield return TSqlXmlNamespace.TypeClass;
 					break;
@@ -882,6 +943,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlXmlSchemaCollection":
 				case "ISql110TSqlXmlSchemaCollection":
 				case "ISql120TSqlXmlSchemaCollection":
+				case "ISqlAzureV12TSqlXmlSchemaCollection":
 				case "TSqlXmlSchemaCollection":				
 					yield return TSqlXmlSchemaCollection.TypeClass;
 					break;
@@ -976,8 +1038,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         /// Determines if instances of <see cref="TSqlModelElement"/> for the <paramref name="typeClass"/> model 
         /// element class will derive from or implement the interface type <paramref name="type"/>.
         /// </summary>
-        /// <param name="typeClass">Model element type class to interigate.</param>
-        /// <param name="type">Candiate <see cref="System.Type"/> for comparison</param>
+        /// <param name="typeClass">Model element type class to interrogate.</param>
+        /// <param name="type">Candidate <see cref="System.Type"/> for comparison</param>
         /// <returns>True if <see cref="TSqlModelElement"/> implement or extend the type <paramref name="type"/>.</returns>		
 		public static bool ImplementsType(ModelTypeClass typeClass, Type type)
 		{
@@ -1017,6 +1079,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlColumn).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlSecurable).IsAssignableFrom(type))
 				{
 					return true;
@@ -1045,6 +1111,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlTableValuedFunction).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlTableValuedFunction).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -1079,6 +1149,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlApplicationRole).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlDatabaseSecurityPrincipal).IsAssignableFrom(type))
 				{
 					return true;
@@ -1107,6 +1181,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlIndex).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlIndex).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -1142,6 +1220,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlAssembly).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlAssembly).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -1230,6 +1312,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlCheckConstraint).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(IExtendedPropertyHost).IsAssignableFrom(type))
 				{
 					return true;
@@ -1246,6 +1332,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlColumnStoreIndex).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlColumnStoreIndex).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -1334,6 +1424,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlDatabaseOptions).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlSecurable).IsAssignableFrom(type))
 				{
 					return true;
@@ -1358,6 +1452,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlDefault).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlDefault).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -1389,6 +1487,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlDefaultConstraint).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlDefaultConstraint).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -1447,6 +1549,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlForeignKeyConstraint).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlForeignKeyConstraint).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -1577,6 +1683,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlPrimaryKeyConstraint).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(IExtendedPropertyHost).IsAssignableFrom(type))
 				{
 					return true;
@@ -1666,6 +1776,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlRole).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlDatabaseSecurityPrincipal).IsAssignableFrom(type))
 				{
 					return true;
@@ -1724,6 +1838,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlSchema).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlSecurable).IsAssignableFrom(type))
 				{
 					return true;
@@ -1771,6 +1889,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlServerOptions).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlServerOptions).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -1874,6 +1996,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlSpatialIndex).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlIndex).IsAssignableFrom(type))
 				{
 					return true;
@@ -1929,6 +2055,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlTable).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlTable).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -1994,6 +2124,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlTableType).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlSecurable).IsAssignableFrom(type))
 				{
 					return true;
@@ -2018,6 +2152,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlTableTypeCheckConstraint).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlTableTypeCheckConstraint).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -2048,6 +2186,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlTableTypeDefaultConstraint).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ITableTypeConstraint).IsAssignableFrom(type))
 				{
 					return true;
@@ -2060,6 +2202,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlTableTypeIndex).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlTableTypeIndex).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -2090,6 +2236,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlTableTypePrimaryKeyConstraint).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ITableTypeConstraint).IsAssignableFrom(type))
 				{
 					return true;
@@ -2114,6 +2264,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlTableTypeUniqueConstraint).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlTableTypeUniqueConstraint).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -2175,6 +2329,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlUniqueConstraint).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(IExtendedPropertyHost).IsAssignableFrom(type))
 				{
 					return true;
@@ -2210,6 +2368,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlUser).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlDatabaseSecurityPrincipal).IsAssignableFrom(type))
 				{
 					return true;
@@ -2238,6 +2400,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlUserDefinedType).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlUserDefinedType).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -2272,6 +2438,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlView).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlColumnSource).IsAssignableFrom(type))
 				{
 					return true;
@@ -2303,6 +2473,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlXmlIndex).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlIndex).IsAssignableFrom(type))
 				{
 					return true;
@@ -2319,6 +2493,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlSelectiveXmlIndex).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlSelectiveXmlIndex).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -2341,6 +2519,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlPromotedNodePathForXQueryType).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlPromotedNodePath).IsAssignableFrom(type))
 				{
 					return true;
@@ -2357,6 +2539,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlPromotedNodePathForSqlType).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlPromotedNodePathForSqlType).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -2384,6 +2570,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlXmlSchemaCollection).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlXmlSchemaCollection).IsAssignableFrom(type))
 				{
 					return true;
 				}

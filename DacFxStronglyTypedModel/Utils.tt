@@ -62,6 +62,9 @@
 private static string NamespaceName = "Microsoft.SqlServer.Dac.Extensions.Prototype";
 private static string ClassNamePrefix = "TSql";
 
+// SqlServerVersion is missing the  AzureV12 enum value in the latest release.
+private const SqlServerVersion AzureV12 = (SqlServerVersion)0x00000020;
+
 private static string GetPropertyTypeName(ModelPropertyClass property, out bool useGenericGetter )
 {
 	useGenericGetter = true;
@@ -134,10 +137,10 @@ public class PropertyOverride
 	public string NameOverride {get;set;}
 }
 
-private static Dictionary<string, ModelEntry> LoadOverrides(string teampleFile)
+private static Dictionary<string, ModelEntry> LoadOverrides(string templateFile)
 {
 	XmlDocument configurationData = new XmlDocument();
-    configurationData.Load( System.IO.Path.GetDirectoryName(teampleFile) +"\\modelmetadata.xml");
+    configurationData.Load( System.IO.Path.GetDirectoryName(templateFile) +"\\modelmetadata.xml");
     XmlNode root = configurationData.SelectSingleNode("Model");
 	Dictionary<string, ModelEntry> overrides = new Dictionary<string, ModelEntry>();
     foreach (XmlNode element in root.ChildNodes)
@@ -197,9 +200,38 @@ private static Dictionary<string, ModelEntry> LoadOverrides(string teampleFile)
     return overrides;
 }
 
+private IEnumerable<SqlServerVersion> GetSqlServerVersionValues()
+{
+	bool foundAzureV12 = false;
+	//defect: SqlAzureV12 not included in the SqlServerVersion enum
+	foreach(SqlServerVersion val in Enum.GetValues(typeof(SqlServerVersion)))
+    {
+		if(val == AzureV12)
+        {
+			foundAzureV12 = true;
+        }
+		yield return val;
+    }
+	// add AzureV12 if not in the enum
+	if(!foundAzureV12)
+    {
+		yield return AzureV12;
+    }
+}
+
+private string GetInterfacePrefix(SqlServerVersion version)
+{
+	switch(version)
+    {
+		case AzureV12:
+			return "ISqlAzureV12";
+		default:
+			return "I" + version;
+     }
+}
 private bool SupportsVersion(TSqlPlatforms platform, SqlServerVersion version)
         { 
-            switch( version)
+            switch(version)
             {
                 case SqlServerVersion.Sql90:
 					return (platform & TSqlPlatforms.Sql90) == TSqlPlatforms.Sql90;
@@ -208,10 +240,13 @@ private bool SupportsVersion(TSqlPlatforms platform, SqlServerVersion version)
                 case SqlServerVersion.Sql110:
                      return (platform & TSqlPlatforms.Sql110) == TSqlPlatforms.Sql110;
                 case SqlServerVersion.Sql120:
-                    return (platform & (TSqlPlatforms)0x00000010) == (TSqlPlatforms)0x00000010;                
+                    return (platform & TSqlPlatforms.Sql120) == TSqlPlatforms.Sql120;                
                 case SqlServerVersion.SqlAzure:
                      return (platform & TSqlPlatforms.SqlAzure) == TSqlPlatforms.SqlAzure;
-                default:
+                //case SqlServerVersion.SqlAzureV12:
+				case AzureV12:
+                     return (platform & TSqlPlatforms.SqlAzureV12) == TSqlPlatforms.SqlAzureV12;
+				default:
                     return false;
             }   
         }

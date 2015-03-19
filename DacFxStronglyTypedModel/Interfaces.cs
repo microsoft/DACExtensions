@@ -2961,6 +2961,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql90TSqlUser : ISqlModelElement
 	{		
+		AuthenticationType AuthenticationType 
+		{
+			get;
+		}
 		Boolean WithoutLogin 
 		{
 			get;
@@ -6801,6 +6805,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISql100TSqlUser : ISqlModelElement
 	{		
+		AuthenticationType AuthenticationType 
+		{
+			get;
+		}
 		Boolean WithoutLogin 
 		{
 			get;
@@ -8836,6 +8844,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	}
 	public interface ISqlAzureTSqlUser : ISqlModelElement
 	{		
+		AuthenticationType AuthenticationType 
+		{
+			get;
+		}
 		Boolean WithoutLogin 
 		{
 			get;
@@ -17043,6 +17055,2697 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Hierarchical
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> Schema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlColumn : ISqlModelElement
+	{		
+		String Collation 
+		{
+			get;
+		}
+		String Expression 
+		{
+			get;
+		}
+		String IdentityIncrement 
+		{
+			get;
+		}
+		String IdentitySeed 
+		{
+			get;
+		}
+		Boolean IsIdentity 
+		{
+			get;
+		}
+		Boolean IsIdentityNotForReplication 
+		{
+			get;
+		}
+		Boolean IsMax 
+		{
+			get;
+		}
+		Boolean IsRowGuidCol 
+		{
+			get;
+		}
+		Int32 Length 
+		{
+			get;
+		}
+		Boolean Nullable 
+		{
+			get;
+		}
+		Boolean Persisted 
+		{
+			get;
+		}
+		Boolean? PersistedNullable 
+		{
+			get;
+		}
+		Int32 Precision 
+		{
+			get;
+		}
+		Int32 Scale 
+		{
+			get;
+		}
+		Boolean Sparse 
+		{
+			get;
+		}
+		XmlStyle XmlStyle 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> DataType 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> ExpressionDependencies 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection> XmlSchemaCollection 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlTableValuedFunction : ISqlModelElement
+	{		
+		Boolean? AnsiNullsOn 
+		{
+			get;
+		}
+		Boolean CalledOnNullInput 
+		{
+			get;
+		}
+		String ClassName 
+		{
+			get;
+		}
+		DataAccessKind? DataAccess 
+		{
+			get;
+		}
+		Boolean? Deterministic 
+		{
+			get;
+		}
+		Boolean ExecuteAsCaller 
+		{
+			get;
+		}
+		Boolean ExecuteAsOwner 
+		{
+			get;
+		}
+		Boolean ExecuteAsSelf 
+		{
+			get;
+		}
+		String FillRowMethodName 
+		{
+			get;
+		}
+		String MethodName 
+		{
+			get;
+		}
+		Boolean? Precise 
+		{
+			get;
+		}
+		Boolean? QuotedIdentifierOn 
+		{
+			get;
+		}
+		Boolean ReturnsNullOnNullInput 
+		{
+			get;
+		}
+		String ReturnTableVariableName 
+		{
+			get;
+		}
+		SystemDataAccessKind? SystemDataAccess 
+		{
+			get;
+		}
+		Boolean WithEncryption 
+		{
+			get;
+		}
+		Boolean WithSchemaBinding 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> Assembly 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> BodyDependencies 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> Login 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> OrderColumns 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter> Parameters 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ReturnType 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> User 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlScalarFunction : ISqlModelElement
+	{		
+		Boolean? AnsiNullsOn 
+		{
+			get;
+		}
+		Boolean CalledOnNullInput 
+		{
+			get;
+		}
+		String ClassName 
+		{
+			get;
+		}
+		DataAccessKind? DataAccess 
+		{
+			get;
+		}
+		Boolean? Deterministic 
+		{
+			get;
+		}
+		Boolean ExecuteAsCaller 
+		{
+			get;
+		}
+		Boolean ExecuteAsOwner 
+		{
+			get;
+		}
+		Boolean ExecuteAsSelf 
+		{
+			get;
+		}
+		String FillRowMethodName 
+		{
+			get;
+		}
+		String MethodName 
+		{
+			get;
+		}
+		Boolean? Precise 
+		{
+			get;
+		}
+		Boolean? QuotedIdentifierOn 
+		{
+			get;
+		}
+		Boolean ReturnsNullOnNullInput 
+		{
+			get;
+		}
+		SystemDataAccessKind? SystemDataAccess 
+		{
+			get;
+		}
+		Boolean WithEncryption 
+		{
+			get;
+		}
+		Boolean WithSchemaBinding 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> Assembly 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> BodyDependencies 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> Login 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter> Parameters 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ReturnType 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> User 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlAggregate : ISqlModelElement
+	{		
+		String ClassName 
+		{
+			get;
+		}
+		Format Format 
+		{
+			get;
+		}
+		Boolean? InvariantToDuplicates 
+		{
+			get;
+		}
+		Boolean? InvariantToNulls 
+		{
+			get;
+		}
+		Int32? MaxByteSize 
+		{
+			get;
+		}
+		Boolean? NullIfEmpty 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> Assembly 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter> Parameters 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ReturnType 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlApplicationRole : ISqlModelElement
+	{		
+		String Password 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> DefaultSchema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlIndex : ISqlModelElement
+	{		
+		Boolean AllowPageLocks 
+		{
+			get;
+		}
+		Boolean AllowRowLocks 
+		{
+			get;
+		}
+		Int32? BucketCount 
+		{
+			get;
+		}
+		Boolean Clustered 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		Int32? FillFactor 
+		{
+			get;
+		}
+		String FilterPredicate 
+		{
+			get;
+		}
+		Boolean Hash 
+		{
+			get;
+		}
+		Boolean IgnoreDuplicateKey 
+		{
+			get;
+		}
+		Boolean IncrementalStatistics 
+		{
+			get;
+		}
+		Boolean RecomputeStatistics 
+		{
+			get;
+		}
+		Boolean Unique 
+		{
+			get;
+		}
+		Boolean WithPadIndex 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> BodyDependencies 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption> DataCompressionOptions 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> Filegroup 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> IncludedColumns 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> PartitionColumn 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> PartitionScheme 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlAssembly : ISqlModelElement
+	{		
+		AssemblyPermissionSet PermissionSet 
+		{
+			get;
+		}
+		Boolean Visible 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblySource> AssemblySources 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ReferencedAssemblies 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlAssemblySource : ISqlModelElement
+	{		
+		String Source 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlAsymmetricKey : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlAuditAction : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlAuditActionGroup : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlAuditActionSpecification : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlBrokerPriority : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlBuiltInServerRole : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlDataType : ISqlModelElement
+	{		
+		SqlDataType SqlDataType 
+		{
+			get;
+		}
+		Boolean UddtIsMax 
+		{
+			get;
+		}
+		Int32 UddtLength 
+		{
+			get;
+		}
+		Boolean UddtNullable 
+		{
+			get;
+		}
+		Int32 UddtPrecision 
+		{
+			get;
+		}
+		Int32 UddtScale 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<System.Type> Type 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlCertificate : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlCheckConstraint : ISqlModelElement
+	{		
+		Boolean Disabled 
+		{
+			get;
+		}
+		String Expression 
+		{
+			get;
+		}
+		Boolean NotForReplication 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> ExpressionDependencies 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> Host 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlClrTypeMethod : ISqlModelElement
+	{		
+		String MethodName 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter> Parameters 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ReturnType 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlClrTypeMethodParameter : ISqlModelElement
+	{		
+		Boolean IsOutput 
+		{
+			get;
+		}
+		String ParameterName 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> DataType 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlClrTypeProperty : ISqlModelElement
+	{		
+		String PropertyName 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ClrType 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlColumnStoreIndex : ISqlModelElement
+	{		
+		Boolean Clustered 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption> DataCompressionOptions 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> Filegroup 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> PartitionColumn 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> PartitionScheme 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlContract : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlCredential : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlCryptographicProvider : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlDatabaseAuditSpecification : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlDatabaseDdlTrigger : ISqlModelElement
+	{		
+		Boolean? AnsiNullsOn 
+		{
+			get;
+		}
+		String ClassName 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		Boolean ExecuteAsCaller 
+		{
+			get;
+		}
+		Boolean ExecuteAsOwner 
+		{
+			get;
+		}
+		Boolean ExecuteAsSelf 
+		{
+			get;
+		}
+		String MethodName 
+		{
+			get;
+		}
+		Boolean? QuotedIdentifierOn 
+		{
+			get;
+		}
+		TriggerType TriggerType 
+		{
+			get;
+		}
+		Boolean WithEncryption 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> Assembly 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> BodyDependencies 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlEventGroup> EventGroup 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> Login 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> User 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlDatabaseEncryptionKey : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlDatabaseEventNotification : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlDatabaseMirroringLanguageSpecifier : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlDatabaseOptions : ISqlModelElement
+	{		
+		Boolean AllowSnapshotIsolation 
+		{
+			get;
+		}
+		Boolean AnsiNullDefaultOn 
+		{
+			get;
+		}
+		Boolean AnsiNullsOn 
+		{
+			get;
+		}
+		Boolean AnsiPaddingOn 
+		{
+			get;
+		}
+		Boolean AnsiWarningsOn 
+		{
+			get;
+		}
+		Boolean ArithAbortOn 
+		{
+			get;
+		}
+		Boolean AutoCreateStatistics 
+		{
+			get;
+		}
+		Boolean AutoCreateStatisticsIncremental 
+		{
+			get;
+		}
+		Boolean AutoShrink 
+		{
+			get;
+		}
+		Boolean AutoUpdateStatistics 
+		{
+			get;
+		}
+		Boolean AutoUpdateStatisticsAsync 
+		{
+			get;
+		}
+		Boolean ChangeTrackingAutoCleanup 
+		{
+			get;
+		}
+		Boolean ChangeTrackingEnabled 
+		{
+			get;
+		}
+		Int32 ChangeTrackingRetentionPeriod 
+		{
+			get;
+		}
+		TimeUnit ChangeTrackingRetentionUnit 
+		{
+			get;
+		}
+		String Collation 
+		{
+			get;
+		}
+		Int32 CompatibilityLevel 
+		{
+			get;
+		}
+		Boolean ConcatNullYieldsNull 
+		{
+			get;
+		}
+		Boolean CursorCloseOnCommit 
+		{
+			get;
+		}
+		Boolean DateCorrelationOptimizationOn 
+		{
+			get;
+		}
+		Boolean NumericRoundAbortOn 
+		{
+			get;
+		}
+		Boolean QuotedIdentifierOn 
+		{
+			get;
+		}
+		Boolean ReadOnly 
+		{
+			get;
+		}
+		Boolean RecursiveTriggersOn 
+		{
+			get;
+		}
+		Boolean VardecimalStorageFormatOn 
+		{
+			get;
+		}
+		Boolean WithEncryption 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlDataCompressionOption : ISqlModelElement
+	{		
+		CompressionLevel CompressionLevel 
+		{
+			get;
+		}
+		Int32 PartitionNumber 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlDefault : ISqlModelElement
+	{		
+		String Expression 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> BoundObjects 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlDefaultConstraint : ISqlModelElement
+	{		
+		Boolean Disabled 
+		{
+			get;
+		}
+		String Expression 
+		{
+			get;
+		}
+		Boolean WithValues 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> ExpressionDependencies 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> Host 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> TargetColumn 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlDmlTrigger : ISqlModelElement
+	{		
+		Boolean? AnsiNullsOn 
+		{
+			get;
+		}
+		String ClassName 
+		{
+			get;
+		}
+		OrderRestriction DeleteOrderRestriction 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		Boolean ExecuteAsCaller 
+		{
+			get;
+		}
+		Boolean ExecuteAsOwner 
+		{
+			get;
+		}
+		Boolean ExecuteAsSelf 
+		{
+			get;
+		}
+		OrderRestriction InsertOrderRestriction 
+		{
+			get;
+		}
+		Boolean IsDeleteTrigger 
+		{
+			get;
+		}
+		Boolean IsInsertTrigger 
+		{
+			get;
+		}
+		Boolean IsUpdateTrigger 
+		{
+			get;
+		}
+		String MethodName 
+		{
+			get;
+		}
+		Boolean NotForReplication 
+		{
+			get;
+		}
+		Boolean? QuotedIdentifierOn 
+		{
+			get;
+		}
+		TriggerType TriggerType 
+		{
+			get;
+		}
+		OrderRestriction UpdateOrderRestriction 
+		{
+			get;
+		}
+		Boolean WithAppend 
+		{
+			get;
+		}
+		Boolean WithEncryption 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> Assembly 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> BodyDependencies 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> Login 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<TSqlObject> TriggerObject 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> User 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlEndpoint : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlErrorMessage : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlEventGroup : ISqlModelElement
+	{		
+		EventGroupType Group 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlEventSession : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlEventSessionAction : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlEventSessionDefinitions : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlEventSessionSetting : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlEventSessionTarget : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlEventTypeSpecifier : ISqlModelElement
+	{		
+		EventType EventType 
+		{
+			get;
+		}
+		OrderRestriction Order 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlExtendedProcedure : ISqlModelElement
+	{		
+		Boolean ExeccuteAsCaller 
+		{
+			get;
+		}
+		Boolean ExecuteAsOwner 
+		{
+			get;
+		}
+		Boolean ExecuteAsSelf 
+		{
+			get;
+		}
+		Boolean WithEncryption 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> Login 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter> Parameters 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> User 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlExtendedProperty : ISqlModelElement
+	{		
+		String Value 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> Host 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlSqlFile : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlFilegroup : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlForeignKeyConstraint : ISqlModelElement
+	{		
+		ForeignKeyAction DeleteAction 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		Boolean NotForReplication 
+		{
+			get;
+		}
+		ForeignKeyAction UpdateAction 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ForeignColumns 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ForeignTable 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> Host 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlFullTextCatalog : ISqlModelElement
+	{		
+		Boolean? AccentSensitivity 
+		{
+			get;
+		}
+		Boolean IsDefault 
+		{
+			get;
+		}
+		String Path 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> Filegroup 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlFullTextIndex : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlFullTextIndexColumnSpecifier : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlFullTextStopList : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlHttpProtocolSpecifier : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlLinkedServer : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlLinkedServerLogin : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlLogin : ISqlModelElement
+	{		
+		Boolean Disabled 
+		{
+			get;
+		}
+		String Password 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlMasterKey : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlMessageType : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlPartitionFunction : ISqlModelElement
+	{		
+		PartitionRange Range 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionValue> BoundaryValues 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ParameterType 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlPartitionScheme : ISqlModelElement
+	{		
+		Boolean AllToOneFilegroup 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> Filegroups 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionFunction> PartitionFunction 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlPartitionValue : ISqlModelElement
+	{		
+		String Expression 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> ExpressionDependencies 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlPermission : ISqlModelElement
+	{		
+		PermissionAction PermissionAction 
+		{
+			get;
+		}
+		PermissionType PermissionType 
+		{
+			get;
+		}
+		Boolean WithAllPrivileges 
+		{
+			get;
+		}
+		Boolean WithGrantOption 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ExcludedColumns 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > Grantee 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > Grantor 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> RevokedGrantOptionColumns 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> SecuredObject 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlPrimaryKeyConstraint : ISqlModelElement
+	{		
+		Boolean AllowPageLocks 
+		{
+			get;
+		}
+		Boolean AllowRowLocks 
+		{
+			get;
+		}
+		Int32? BucketCount 
+		{
+			get;
+		}
+		Boolean Clustered 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		Int32? FillFactor 
+		{
+			get;
+		}
+		Boolean Hash 
+		{
+			get;
+		}
+		Boolean IgnoreDuplicateKey 
+		{
+			get;
+		}
+		Boolean RecomputeStatistics 
+		{
+			get;
+		}
+		Boolean WithPadIndex 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption> DataCompressionOptions 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> Filegroup 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> Host 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> PartitionColumn 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> PartitionScheme 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlProcedure : ISqlModelElement
+	{		
+		Boolean? AnsiNullsOn 
+		{
+			get;
+		}
+		String ClassName 
+		{
+			get;
+		}
+		Boolean ExecuteAsCaller 
+		{
+			get;
+		}
+		Boolean ExecuteAsOwner 
+		{
+			get;
+		}
+		Boolean ExecuteAsSelf 
+		{
+			get;
+		}
+		String MethodName 
+		{
+			get;
+		}
+		Boolean? QuotedIdentifierOn 
+		{
+			get;
+		}
+		Boolean WithEncryption 
+		{
+			get;
+		}
+		Boolean WithRecompile 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> Assembly 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> BodyDependencies 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> Login 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlParameter> Parameters 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlProcedure> ParentProcedure 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> User 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlQueue : ISqlModelElement
+	{		
+		Boolean ActivationExecuteAsCaller 
+		{
+			get;
+		}
+		Boolean ActivationExecuteAsOwner 
+		{
+			get;
+		}
+		Boolean ActivationExecuteAsSelf 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> Filegroup 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> Login 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> PartitionColumn 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> PartitionScheme 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> User 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlQueueEventNotification : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlRemoteServiceBinding : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlResourceGovernor : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlResourcePool : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlRole : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlRoleMembership : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> Member 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRole> Role 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlRoute : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlRule : ISqlModelElement
+	{		
+		String Expression 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> BoundObjects 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlSchema : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlSearchProperty : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlSearchPropertyList : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlSequence : ISqlModelElement
+	{		
+		Int32? CacheSize 
+		{
+			get;
+		}
+		String IncrementValue 
+		{
+			get;
+		}
+		Boolean IsCached 
+		{
+			get;
+		}
+		Boolean IsCycling 
+		{
+			get;
+		}
+		String MaxValue 
+		{
+			get;
+		}
+		String MinValue 
+		{
+			get;
+		}
+		Boolean NoMaxValue 
+		{
+			get;
+		}
+		Boolean NoMinValue 
+		{
+			get;
+		}
+		String StartValue 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> DataType 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlServerAudit : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlServerAuditSpecification : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlServerDdlTrigger : ISqlModelElement
+	{		
+		Boolean? AnsiNullsOn 
+		{
+			get;
+		}
+		String ClassName 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		Boolean ExecuteAsCaller 
+		{
+			get;
+		}
+		Boolean ExecuteAsOwner 
+		{
+			get;
+		}
+		Boolean ExecuteAsSelf 
+		{
+			get;
+		}
+		String MethodName 
+		{
+			get;
+		}
+		Boolean? QuotedIdentifierOn 
+		{
+			get;
+		}
+		TriggerType TriggerType 
+		{
+			get;
+		}
+		Boolean WithEncryption 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> Assembly 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> BodyDependencies 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlEventGroup> EventGroup 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> Login 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> User 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlServerEventNotification : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlServerOptions : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlServerRoleMembership : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> Member 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRole> Role 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlService : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlServiceBrokerLanguageSpecifier : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlSignature : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlSignatureEncryptionMechanism : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlSoapLanguageSpecifier : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlSoapMethodSpecification : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlSpatialIndex : ISqlModelElement
+	{		
+		Boolean AllowPageLocks 
+		{
+			get;
+		}
+		Boolean AllowRowLocks 
+		{
+			get;
+		}
+		Int32? CellsPerObject 
+		{
+			get;
+		}
+		CompressionLevel DataCompression 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		Int32 FillFactor 
+		{
+			get;
+		}
+		Degree GridLevel1Density 
+		{
+			get;
+		}
+		Degree GridLevel2Density 
+		{
+			get;
+		}
+		Degree GridLevel3Density 
+		{
+			get;
+		}
+		Degree GridLevel4Density 
+		{
+			get;
+		}
+		Boolean IgnoreDuplicateKey 
+		{
+			get;
+		}
+		Boolean RecomputeStatistics 
+		{
+			get;
+		}
+		Tessellation Tessellation 
+		{
+			get;
+		}
+		Boolean WithPadIndex 
+		{
+			get;
+		}
+		Double? XMax 
+		{
+			get;
+		}
+		Double? XMin 
+		{
+			get;
+		}
+		Double? YMax 
+		{
+			get;
+		}
+		Double? YMin 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Column 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> Filegroup 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> PartitionColumn 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> PartitionScheme 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlStatistics : ISqlModelElement
+	{		
+		String FilterPredicate 
+		{
+			get;
+		}
+		Boolean Incremental 
+		{
+			get;
+		}
+		Boolean NoRecompute 
+		{
+			get;
+		}
+		Int32 SampleSize 
+		{
+			get;
+		}
+		SamplingStyle SamplingStyle 
+		{
+			get;
+		}
+		String StatsStream 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> ExpressionDependencies 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<TSqlObject> OnObject 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlParameter : ISqlModelElement
+	{		
+		String DefaultExpression 
+		{
+			get;
+		}
+		Boolean IsMax 
+		{
+			get;
+		}
+		Boolean IsOutput 
+		{
+			get;
+		}
+		Int32 Length 
+		{
+			get;
+		}
+		Int32 Precision 
+		{
+			get;
+		}
+		Boolean ReadOnly 
+		{
+			get;
+		}
+		Int32 Scale 
+		{
+			get;
+		}
+		Boolean Varying 
+		{
+			get;
+		}
+		XmlStyle XmlStyle 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> DataType 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection> XmlSchemaCollection 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlSymmetricKey : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlSymmetricKeyPassword : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlSynonym : ISqlModelElement
+	{		
+		String ForObjectName 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> ForObject 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlTable : ISqlModelElement
+	{		
+		Boolean? AnsiNullsOn 
+		{
+			get;
+		}
+		Boolean ChangeTrackingEnabled 
+		{
+			get;
+		}
+		Boolean LargeValueTypesOutOfRow 
+		{
+			get;
+		}
+		LockEscalationMethod LockEscalation 
+		{
+			get;
+		}
+		Boolean? QuotedIdentifierOn 
+		{
+			get;
+		}
+		Boolean TableLockOnBulkLoad 
+		{
+			get;
+		}
+		Int32 TextInRowSize 
+		{
+			get;
+		}
+		Boolean TrackColumnsUpdated 
+		{
+			get;
+		}
+		Boolean VardecimalStorageFormatEnabled 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption> DataCompressionOptions 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> Filegroup 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> PartitionColumn 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> PartitionScheme 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlFileTable : ISqlModelElement
+	{		
+		Boolean? AnsiNullsOn 
+		{
+			get;
+		}
+		LockEscalationMethod LockEscalation 
+		{
+			get;
+		}
+		Boolean? QuotedIdentifierOn 
+		{
+			get;
+		}
+		Boolean TableLockOnBulkLoad 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption> DataCompressionOptions 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> Filegroup 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> PartitionColumn 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> PartitionScheme 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlTableType : ISqlModelElement
+	{		
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableTypeColumn> Columns 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> Constraints 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex> Indexes 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlTableTypeCheckConstraint : ISqlModelElement
+	{		
+		String Expression 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> ExpressionDependencies 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlTableTypeColumn : ISqlModelElement
+	{		
+		String Collation 
+		{
+			get;
+		}
+		String Expression 
+		{
+			get;
+		}
+		String IdentityIncrement 
+		{
+			get;
+		}
+		String IdentitySeed 
+		{
+			get;
+		}
+		Boolean IsIdentity 
+		{
+			get;
+		}
+		Boolean IsMax 
+		{
+			get;
+		}
+		Boolean IsRowGuidCol 
+		{
+			get;
+		}
+		Int32 Length 
+		{
+			get;
+		}
+		Boolean Nullable 
+		{
+			get;
+		}
+		Boolean Persisted 
+		{
+			get;
+		}
+		Boolean? PersistedNullable 
+		{
+			get;
+		}
+		Int32 Precision 
+		{
+			get;
+		}
+		Int32 Scale 
+		{
+			get;
+		}
+		XmlStyle XmlStyle 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> DataType 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> ExpressionDependencies 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection> XmlSchemaCollection 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlTableTypeDefaultConstraint : ISqlModelElement
+	{		
+		String Expression 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> ExpressionDependencies 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> TargetColumn 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlTableTypeIndex : ISqlModelElement
+	{		
+		Int32? BucketCount 
+		{
+			get;
+		}
+		Boolean Hash 
+		{
+			get;
+		}
+		Boolean IsDisabled 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlTableTypePrimaryKeyConstraint : ISqlModelElement
+	{		
+		Int32? BucketCount 
+		{
+			get;
+		}
+		Boolean Clustered 
+		{
+			get;
+		}
+		Boolean Hash 
+		{
+			get;
+		}
+		Boolean IgnoreDuplicateKey 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlTableTypeUniqueConstraint : ISqlModelElement
+	{		
+		Boolean Clustered 
+		{
+			get;
+		}
+		Boolean IgnoreDuplicateKey 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlTcpProtocolSpecifier : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlUniqueConstraint : ISqlModelElement
+	{		
+		Boolean AllowPageLocks 
+		{
+			get;
+		}
+		Boolean AllowRowLocks 
+		{
+			get;
+		}
+		Boolean Clustered 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		Int32? FillFactor 
+		{
+			get;
+		}
+		Boolean IgnoreDuplicateKey 
+		{
+			get;
+		}
+		Boolean RecomputeStatistics 
+		{
+			get;
+		}
+		Boolean WithPadIndex 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataCompressionOption> DataCompressionOptions 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> Filegroup 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> Host 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> PartitionColumn 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> PartitionScheme 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlUser : ISqlModelElement
+	{		
+		AuthenticationType AuthenticationType 
+		{
+			get;
+		}
+		String Password 
+		{
+			get;
+		}
+		String Sid 
+		{
+			get;
+		}
+		Boolean WithoutLogin 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> DefaultSchema 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> Login 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlUserDefinedServerRole : ISqlModelElement
+	{		
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlUserDefinedType : ISqlModelElement
+	{		
+		Boolean? ByteOrdered 
+		{
+			get;
+		}
+		String ClassName 
+		{
+			get;
+		}
+		Boolean? FixedLength 
+		{
+			get;
+		}
+		Format Format 
+		{
+			get;
+		}
+		Int32? MaxByteSize 
+		{
+			get;
+		}
+		String ValidationMethodName 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> Assembly 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<TSqlObject> Methods 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<TSqlObject> Properties 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlView : ISqlModelElement
+	{		
+		Boolean? AnsiNullsOn 
+		{
+			get;
+		}
+		Boolean? QuotedIdentifierOn 
+		{
+			get;
+		}
+		String SelectStatement 
+		{
+			get;
+		}
+		Boolean WithCheckOption 
+		{
+			get;
+		}
+		Boolean WithEncryption 
+		{
+			get;
+		}
+		Boolean WithSchemaBinding 
+		{
+			get;
+		}
+		Boolean WithViewMetadata 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<TSqlObject> BodyDependencies 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlWorkloadGroup : ISqlModelElement
+	{		
+	}
+	public interface ISqlAzureV12TSqlXmlIndex : ISqlModelElement
+	{		
+		Boolean AllowPageLocks 
+		{
+			get;
+		}
+		Boolean AllowRowLocks 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		Int32? FillFactor 
+		{
+			get;
+		}
+		Boolean IgnoreDuplicateKey 
+		{
+			get;
+		}
+		Boolean IsPrimary 
+		{
+			get;
+		}
+		Boolean RecomputeStatistics 
+		{
+			get;
+		}
+		SecondaryXmlIndexType SecondaryXmlIndexType 
+		{
+			get;
+		}
+		Boolean WithPadIndex 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Column 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlIndex> PrimaryXmlIndex 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlSelectiveXmlIndex : ISqlModelElement
+	{		
+		Boolean AllowPageLocks 
+		{
+			get;
+		}
+		Boolean AllowRowLocks 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		Int32? FillFactor 
+		{
+			get;
+		}
+		Boolean IgnoreDuplicateKey 
+		{
+			get;
+		}
+		Boolean IsPrimary 
+		{
+			get;
+		}
+		Boolean RecomputeStatistics 
+		{
+			get;
+		}
+		Boolean WithPadIndex 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Column 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> PrimaryPromotedPath 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSelectiveXmlIndex> PrimarySelectiveXmlIndex 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> PromotedPaths 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlNamespace> XmlNamespaces 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlXmlNamespace : ISqlModelElement
+	{		
+		String NamespaceUri 
+		{
+			get;
+		}
+		String Prefix 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlPromotedNodePathForXQueryType : ISqlModelElement
+	{		
+		Boolean IsSingleton 
+		{
+			get;
+		}
+		Int32? MaxLength 
+		{
+			get;
+		}
+		String NodePath 
+		{
+			get;
+		}
+		String Type 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlPromotedNodePathForSqlType : ISqlModelElement
+	{		
+		Boolean IsMax 
+		{
+			get;
+		}
+		Boolean IsSingleton 
+		{
+			get;
+		}
+		Int32 Length 
+		{
+			get;
+		}
+		String NodePath 
+		{
+			get;
+		}
+		Int32 Precision 
+		{
+			get;
+		}
+		Int32 Scale 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> DataType 
+		{
+			get;
+		}
+	}
+	public interface ISqlAzureV12TSqlXmlSchemaCollection : ISqlModelElement
+	{		
+		String Expression 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> Schema 
 		{
 			get;
 		}

@@ -80,10 +80,8 @@ public partial class TSqlModelElement
 	foreach(var type in  ModelSchema.SchemaInstance.AllTypes)
 	{
 		ModelEntry modelEntry;
-		if(!overrides.TryGetValue(type.Name, out modelEntry))
-		{	
-			modelEntry = null;
-		}
+		overrides.TryGetValue(type.Name, out modelEntry);
+
 		string className = ClassNamePrefix + type.Name;
 #>
 
@@ -139,7 +137,7 @@ public partial class TSqlModelElement
 
 <#
 		}// end property loop
-	// begin releationship loop
+	// begin relationship loop
 	foreach (var relationship in type.Relationships.OrderBy( r => r.Name))
 	{
 		RelationshipOverride returnType = new RelationshipOverride()

@@ -115,7 +115,7 @@ CREATE PARTITION FUNCTION [pf1]
                 TSqlTableTypeColumn computedColumn = tableType1.Columns
                     .SingleOrDefault(c => c.Name.Parts[2] == "ComputedColumn");
                 Assert.IsNotNull(computedColumn, "computed column ComputedColumn missing");
-                Assert.AreEqual(2, computedColumn.ExpressionDependencies, "incorrect number of dependencies");
+                Assert.AreEqual(3, computedColumn.ExpressionDependencies.Count(), "incorrect number of dependencies");
             }
         }
         [TestMethod]

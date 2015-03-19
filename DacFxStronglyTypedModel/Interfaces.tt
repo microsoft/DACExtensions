@@ -47,18 +47,15 @@ namespace <#=NamespaceName#>
     var overrides = LoadOverrides(this.Host.TemplateFile);
 	string interfacePrefix;
 
-foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVersion)))
+foreach(SqlServerVersion currentSQLVersion in GetSqlServerVersionValues())
 {
-	interfacePrefix = "I" + currentSQLVersion;
+	interfacePrefix = GetInterfacePrefix(currentSQLVersion);
 	foreach(var type in  ModelSchema.SchemaInstance.AllTypes)
 	{
 		string className = interfacePrefix+ ClassNamePrefix +type.Name;
 		ModelEntry modelEntry;
-		if(!overrides.TryGetValue(type.Name, out modelEntry))
-		{	
-			modelEntry = null;
-		}
-	
+		overrides.TryGetValue(type.Name, out modelEntry);
+		
 #>
 	public interface <#= className #> : ISqlModelElement
 	{		
@@ -81,7 +78,7 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 		}// end property loop
 		
 	
-	// begin releationship loop
+	// begin relationship loop
 	foreach (var relationship in type.Relationships.OrderBy( r => r.Name))
 	{
 	   if (!SupportsVersion(relationship.SupportedPlatforms, currentSQLVersion))
@@ -102,7 +99,7 @@ foreach(SqlServerVersion currentSQLVersion in Enum.GetValues(typeof(SqlServerVer
 			}
 			else
 			{
-				// return type is not specialzied for each sql version interface.
+				// return type is not specialized for each sql version interface.
 				returnType = string.Format("{0}.{1}", localoverride.ReturnTypeNamespace, localoverride.ReturnType);
 			}
 		}
