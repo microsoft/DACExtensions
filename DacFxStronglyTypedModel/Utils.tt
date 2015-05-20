@@ -1,4 +1,4 @@
-﻿//------------------------------------------------------------------------------
+﻿<#//------------------------------------------------------------------------------
 //<copyright company="Microsoft">
 //
 //    The MIT License (MIT)
@@ -23,7 +23,7 @@
 //    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //    SOFTWARE.
 //</copyright>
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------#>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="System.Xml" #>
 <#@ assembly name="$(DacFxExternals)\Microsoft.SqlServer.Dac.Extensions.dll" #>
@@ -32,61 +32,36 @@
 <#@ import namespace="System.Xml" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Microsoft.SqlServer.Dac.Model"#>
+<#@ import namespace="System.Text.RegularExpressions"#>
 <#+
-//------------------------------------------------------------------------------
-//<copyright company="Microsoft">
-//
-//    The MIT License (MIT)
-//    
-//    Copyright (c) 2015 Microsoft
-//    
-//    Permission is hereby granted, free of charge, to any person obtaining a copy
-//    of this software and associated documentation files (the "Software"), to deal
-//    in the Software without restriction, including without limitation the rights
-//    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//    copies of the Software, and to permit persons to whom the Software is
-//    furnished to do so, subject to the following conditions:
-//    
-//    The above copyright notice and this permission notice shall be included in all
-//    copies or substantial portions of the Software.
-//    
-//    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//    SOFTWARE.
-//</copyright>
-//------------------------------------------------------------------------------
 private static string NamespaceName = "Microsoft.SqlServer.Dac.Extensions.Prototype";
 private static string ClassNamePrefix = "TSql";
-
+public static string DefaultReturnType = "TSqlModelElementReference";
 // SqlServerVersion is missing the  AzureV12 enum value in the latest release.
 private const SqlServerVersion AzureV12 = (SqlServerVersion)0x00000020;
 
-private static string GetPropertyTypeName(ModelPropertyClass property, out bool useGenericGetter )
+private static string GetPropertyTypeName(Type dataType, out bool useGenericGetter)
 {
-	useGenericGetter = true;
-	string typeName;
-	if(property.DataType.IsGenericType)
-	{
-		Type[] genericTypes = property.DataType.GetGenericArguments();
-		typeName = genericTypes[0].Name + "?";
-	}
-	else if( property.DataType.Name == "SqlScriptProperty")
-	{
-		// SqlScriptProperty is an internal type. The property getter should
-		// return a string
-		typeName = "String";
-		useGenericGetter = false;
-	}
-	else
-	{
-		typeName  = property.DataType.Name;
-	}
+    useGenericGetter = true;
+    string typeName;
+    if (dataType.IsGenericType)
+    {
+        Type[] genericTypes = dataType.GetGenericArguments();
+        typeName = genericTypes[0].Name + "?";
+    }
+    else if (dataType.Name == "SqlScriptProperty")
+    {
+        // SqlScriptProperty is an internal type. The property getter should
+        // return a string
+        typeName = "String";
+        useGenericGetter = false;
+    }
+    else
+    {
+        typeName = dataType.Name;
+    }
 
-	return typeName;
+    return typeName;
 }
 
 
@@ -125,9 +100,12 @@ public class RelationshipOverride
 
 	public string RelationshipName {get;set;}
 	public string ReturnType {get;set;}
-	public string ReturnTypeNamespace {get;set;}
-	public bool Specialize {get;set;}
-	public bool AdaptInstance {get;set;}
+    public string InternalReturnType {get; set;}
+    public string InternalReturnTypeNamespace {get; set;}
+	public string ReturnTypeNamespace {get; set;}
+    public string UnresolvedReturnType{get; set;}
+	public bool Specialize {get; set;}
+	public bool AdaptInstance {get; set;}
 
 }
 
@@ -139,6 +117,8 @@ public class PropertyOverride
 
 private static Dictionary<string, ModelEntry> LoadOverrides(string templateFile)
 {
+    Regex r = new Regex("TSql([a-zA-Z]+?)(?:Reference)?$");    
+
 	XmlDocument configurationData = new XmlDocument();
     configurationData.Load( System.IO.Path.GetDirectoryName(templateFile) +"\\modelmetadata.xml");
     XmlNode root = configurationData.SelectSingleNode("Model");
@@ -170,18 +150,35 @@ private static Dictionary<string, ModelEntry> LoadOverrides(string templateFile)
 			else if(relationship.LocalName == "Relationship")
             {
 				string name = relationship.Attributes["Name"].Value;
+                string returnTypeValue = relationship.Attributes["ReturnType"].Value;
+                string internalReturnType = null;
 				bool adaptInstance = true;
 				var adaptInstanceAttribute = relationship.Attributes["AdaptInstance"];
 				if(adaptInstanceAttribute != null)
                 {
 					adaptInstance = bool.Parse(adaptInstanceAttribute.Value);
                 }
+                
+                Match m = r.Match(returnTypeValue);
+                if (m.Success)
+                {
+                    internalReturnType = m.Groups[1].Value;
+                }
+                string unresolvedReturnType = null;
+                var unresolvedReturnTypeNode =  relationship.Attributes["UnresolvedReturnType"];
+                if(unresolvedReturnTypeNode != null)
+                {
+                    unresolvedReturnType = unresolvedReturnTypeNode.Value;
+                }
 
 				modelEntry.RelationshipOverrides.Add(name, new RelationshipOverride() 
 					{ 
 						RelationshipName= name, //todo: allow overriding name
-						ReturnType = relationship.Attributes["ReturnType"].Value, 
+						ReturnType = returnTypeValue, 
+                        InternalReturnType = internalReturnType,
+                        InternalReturnTypeNamespace= "Microsoft.SqlServer.Dac.Model",
 						ReturnTypeNamespace=relationship.Attributes["ReturnTypeNamespace"].Value, 
+                        UnresolvedReturnType = unresolvedReturnType,
 						Specialize=bool.Parse(relationship.Attributes["Specialize"].Value),
 						AdaptInstance= adaptInstance,
 					});

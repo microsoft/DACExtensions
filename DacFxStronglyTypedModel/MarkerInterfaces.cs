@@ -38,11 +38,37 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
     public interface ISqlDatabaseSecurityPrincipal : ISqlSecurityPrincipal, ISqlObjectAuthorizer{ }
 
+    public sealed class UnresolvedISqlDatabaseSecurityPrincipalElement : TSqlModelElementReference, ISqlDatabaseSecurityPrincipal
+    {
+        public UnresolvedISqlDatabaseSecurityPrincipalElement(Model.ModelRelationshipInstance relationshipReference) : base(relationshipReference)
+        {
+
+        }
+    }
     public interface ISqlSecurable : ISqlModelElement { }
+
+    public sealed class UnresolvedISqlSecurableElement : TSqlModelElementReference, ISqlSecurable
+    {
+        public UnresolvedISqlSecurableElement(Model.ModelRelationshipInstance relationshipReference):base(relationshipReference)
+        { }
+    }
 
     public interface ISpecifiesIndex : ISqlModelElement
     {
         IEnumerable<ISqlIndex> Indexes { get; }
+    }
+
+    public sealed class UnresolvedISpecifiesIndexElement: TSqlModelElementReference, ISpecifiesIndex
+    {
+        public UnresolvedISpecifiesIndexElement(Model.ModelRelationshipInstance instance)
+            : base(instance)
+        {
+        }
+
+        public IEnumerable<ISqlIndex> Indexes
+        {
+            get { throw new UnresolvedElementException(ModelMessages.UnresolvedObject); }
+        }
     }
 
     public interface ISpecifiesDmlTrigger : ISqlModelElement
@@ -55,6 +81,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         IEnumerable<TSqlColumn> Columns { get; }        
     }
     public interface ISqlPromotedNodePath : ISqlModelElement { }
+
+    public sealed class UnresolvedISqlPromotedNodePathElement : TSqlModelElementReference, ISqlPromotedNodePath
+    {
+        public UnresolvedISqlPromotedNodePathElement(Model.ModelRelationshipInstance relationshipReference)
+            : base(relationshipReference)
+        { }
+    }
+
     public interface ISqlIndex : ISqlModelElement { }
     public interface ITableTypeConstraint : ISqlModelElement { }
     public interface IProtocolSpecifier : ISqlModelElement { }
@@ -69,6 +103,15 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
     #region ISqlObjectAuthorizer
     public interface ISqlObjectAuthorizer : ISqlModelElement { }
+
+    public sealed class UnresolvedISqlObjectAuthorizerElement : TSqlModelElementReference, ISqlObjectAuthorizer
+    {
+        public UnresolvedISqlObjectAuthorizerElement(Model.ModelRelationshipInstance relationshipReference) : base(relationshipReference)
+        {
+
+        }
+    }
+
     // TODO: Collect all Authorizers
     #endregion
 

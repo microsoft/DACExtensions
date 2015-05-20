@@ -160,6 +160,7 @@ ALTER TABLE [dbo].[Table1]
                 {
                     TSqlColumn col = genericColumns[i];
                     ISql90TSqlColumn sql90Col = sql90Columns[i];
+                    Assert.AreEqual(ColumnType.Column, col.ColumnType, "Invalid metadata ColumnType");
                     Assert.AreEqual(col.Collation, sql90Col.Collation, "Collation is not the same");
                     Assert.AreEqual(col.Expression, sql90Col.Expression, "Expression is not equal");
                 }
@@ -174,7 +175,152 @@ ALTER TABLE [dbo].[Table1]
                 Assert.AreEqual(1, ((TSqlTable)sql90Table).PrimaryKeyConstraints.Count(), "Incorrect number of Primary Key Constraints");
             }
         }
-        
+
+        [TestMethod]
+        public void TestFullTextIndex()
+        {
+            using (var model = new TSqlTypedModel(SqlServerVersion.Sql120, new TSqlModelOptions() { }))
+            {
+
+                string createIndex = @"CREATE UNIQUE INDEX ui_ukJobCand ON HumanResources.JobCandidate(JobCandidateID)";
+                string createCatalog = "CREATE FULLTEXT CATALOG ft AS DEFAULT";
+                string createFTIIndex = @"
+    CREATE FULLTEXT INDEX ON HumanResources.JobCandidate(Resume) 
+       KEY INDEX ui_ukJobCand 
+       WITH STOPLIST = SYSTEM";
+                model.AddObjects(createIndex);
+                model.AddObjects(createCatalog);
+                model.AddObjects(createFTIIndex);
+
+
+                var indexes = model.GetObjects<TSqlFullTextIndex>(DacQueryScopes.UserDefined).ToList();
+                Assert.AreEqual(1, indexes.Count, "Incorrect number of full Text Indexes");
+                TSqlFullTextIndex ftIndex = indexes[0];
+                var ftColumns = ftIndex.Columns.ToList();
+                Assert.AreEqual(1, ftColumns.Count, "Incorrect number of columns");
+            }
+        }
+        [TestMethod]
+        public void TestFullTextIndexWithTypeColumn()
+        {
+            using (var model = new TSqlTypedModel(SqlServerVersion.Sql120, new TSqlModelOptions() { }))
+            {
+
+                string createIndex = @"CREATE FULLTEXT INDEX ON Production.Document
+  ( 
+  Title
+      Language 1033, 
+  DocumentSummary
+      Language 1033, 
+  Document 
+      TYPE COLUMN FileExtension
+      Language 1033 
+  )
+  KEY INDEX PK_Document_DocumentID
+          WITH STOPLIST = SYSTEM, SEARCH PROPERTY LIST = DocumentPropertyList, CHANGE_TRACKING OFF, NO POPULATION";
+                model.AddObjects(createIndex);
+
+                var tc = Column.TypeClass;
+                var indexes = model.GetObjects<TSqlFullTextIndex>(DacQueryScopes.UserDefined).ToList();
+                Assert.AreEqual(1, indexes.Count, "Incorrect number of full Text Indexes");
+                TSqlFullTextIndex ftIndex = indexes[0];
+                var ftColumns = ftIndex.Columns.ToList();
+                Assert.AreEqual(1, ftColumns.Count, "Incorrect number of columns");
+            }
+        }
+
+        private static string GetPropertyTypeName(Type dataType, out bool useGenericGetter)
+        {
+            useGenericGetter = true;
+            string typeName;
+            if (dataType.IsGenericType)
+            {
+                Type[] genericTypes = dataType.GetGenericArguments();
+                typeName = genericTypes[0].Name + "?";
+            }
+            else if (dataType.Name == "SqlScriptProperty")
+            {
+                // SqlScriptProperty is an internal type. The property getter should
+                // return a string
+                typeName = "String";
+                useGenericGetter = false;
+            }
+            else
+            {
+                typeName = dataType.Name;
+            }
+
+            return typeName;
+        }
+
+        [TestMethod]
+        public void TestIndexColumnMetadata()
+        {
+
+            
+            
+            using (TSqlTypedModel model = new TSqlTypedModel(SqlServerVersion.Sql120, new TSqlModelOptions() { }))
+            {
+                string createTable = @"
+CREATE TABLE [dbo].[Table1]
+(
+	[Id] INT NOT NULL,
+    [two] AS (ID +1),
+    columnSet1 int sparse,
+    columnSet2 int sparse,
+    cs xml column_set for all_sparse_columns
+)
+"; 
+
+                model.AddObjects(createTable);
+                model.AddObjects("CREATE INDEX IX ON Table1 (Id ASC, two DESC)");
+
+                TSqlIndex index = model.GetObject<TSqlIndex>(new ObjectIdentifier("dbo", "Table1", "IX"), DacQueryScopes.UserDefined);
+                var columns = index.Columns.ToList();
+                Assert.AreEqual(2, columns.Count, "Incorrect number of index columns");
+                Assert.AreEqual(true, columns[0].Ascending, "Incorrect Ascending value");
+                Assert.AreEqual(false, columns[1].Ascending, "Incorrect Ascending value");
+            }
+        }
+        [TestMethod]
+        public void TestTableColumnMetadataProperties()
+        {
+
+            using (TSqlTypedModel model = new TSqlTypedModel(SqlServerVersion.Sql120, new TSqlModelOptions() { }))
+            {
+                string createTable = @"
+CREATE TABLE [dbo].[Table1]
+(
+	[Id] INT NOT NULL,
+    [two] AS (ID +1),
+    columnSet1 int sparse,
+    columnSet2 int sparse,
+    cs xml column_set for all_sparse_columns
+)
+";               
+                model.AddObjects(createTable);
+
+                List<TSqlTable> tables = model.GetObjects<TSqlTable>(DacQueryScopes.Default).ToList();
+                Assert.AreEqual(1, tables.Count(), "Incorrect number of tables");
+                List<TSqlColumn> columns = tables[0].Columns.ToList();
+
+                TSqlColumn col = columns[0];
+                Assert.AreEqual(ColumnType.Column, col.ColumnType, "Incorrect ColumnType Metadata for column "  + col.Name.Parts[2]);
+                col = columns[1];
+                Assert.AreEqual(ColumnType.ComputedColumn, col.ColumnType, "Incorrect ColumnType Metadata for column " + col.Name.Parts[2]);
+                col = columns[2];
+                Assert.AreEqual(ColumnType.Column, col.ColumnType, "Incorrect ColumnType Metadata for column " + col.Name.Parts[2]);
+                col = columns[3];
+                Assert.AreEqual(ColumnType.Column, col.ColumnType, "Incorrect ColumnType Metadata for column " + col.Name.Parts[2]);
+                col = columns[4];
+                Assert.AreEqual(ColumnType.ColumnSet, col.ColumnType, "Incorrect ColumnType Metadata for column " + col.Name.Parts[2]);
+            }
+          
+        }
+        /*
+         ;
+
+         */
         //public void CompareAPI()
         //{
         //    TSqlModel model = new TSqlModel(SqlServerVersion.Sql120, new TSqlModelOptions(){});

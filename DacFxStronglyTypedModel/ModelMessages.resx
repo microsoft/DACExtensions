@@ -120,4 +120,7 @@
   <data name="InvalidObjecType" xml:space="preserve">
     <value>Model Type Class {0} does not match the TSqlObject ObjectType {1}</value>
   </data>
+  <data name="UnresolvedObject" xml:space="preserve">
+    <value>Underlying object {0} is unresolved.</value>
+  </data>
 </root>
