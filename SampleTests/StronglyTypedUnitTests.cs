@@ -87,6 +87,32 @@ CREATE PARTITION FUNCTION [pf1]
         }
 
         [TestMethod]
+        public void TestSignatures()
+        {
+            using (TSqlTypedModel model = new TSqlTypedModel(SqlServerVersion.Sql120, new TSqlModelOptions() { }))
+            {
+                model.AddObjects(@"CREATE CERTIFICATE cert_signature_demo 
+    ENCRYPTION BY PASSWORD = 'pGFD4bb925DGvbd2439587y'
+    WITH SUBJECT = 'ADD SIGNATURE demo';");
+                model.AddObjects(@"CREATE PROC [sp_signature_demo]
+AS
+    PRINT 'This is the content of the procedure.' ;
+GO");
+                model.AddObjects(@"ADD SIGNATURE TO [sp_signature_demo] 
+    BY CERTIFICATE [cert_signature_demo] 
+    WITH PASSWORD = 'pGFD4bb925DGvbd2439587y' ;");
+
+                var signatures = model.GetObjects<TSqlSignature>( DacQueryScopes.UserDefined);
+                var signature = signatures.First();
+                TSqlSignatureEncryptionMechanism encryption = signature.EncryptionMechanism.FirstOrDefault() as TSqlSignatureEncryptionMechanism;
+                Assert.IsNotNull(encryption, " Encryption Mechanism is null or missing");
+                Assert.AreEqual(1, encryption.Certificate.Count(), "Missing Certificate on signature");
+                TSqlCertificateReference certifcate = encryption.Certificate.First() as TSqlCertificateReference;
+                Assert.AreEqual("ADD SIGNATURE demo", certifcate.Subject, "Incorrect Subject");   
+            }
+        }
+
+        [TestMethod]
         public void TestTableType()
         {
             using (TSqlTypedModel model = new TSqlTypedModel(SqlServerVersion.Sql120, new TSqlModelOptions() { }))
@@ -225,7 +251,7 @@ ALTER TABLE [dbo].[Table1]
                 Assert.AreEqual(1, indexes.Count, "Incorrect number of full Text Indexes");
                 TSqlFullTextIndex ftIndex = indexes[0];
                 var ftColumns = ftIndex.Columns.ToList();
-                Assert.AreEqual(1, ftColumns.Count, "Incorrect number of columns");
+                Assert.AreEqual(3, ftColumns.Count, "Incorrect number of columns");
             }
         }
 

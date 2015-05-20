@@ -7438,7 +7438,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(Endpoint.PayloadSpecifier).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier>();
+				return Element.GetReferenced(Endpoint.PayloadSpecifier).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -7450,7 +7450,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(Endpoint.ProtocolSpecifier).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier >();
+				return Element.GetReferenced(Endpoint.ProtocolSpecifier).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier )TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -7921,7 +7921,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(EventSession.EventDefinitions).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement>();
+				return Element.GetReferenced(EventSession.EventDefinitions).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -7933,7 +7933,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(EventSession.EventTargets).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement>();
+				return Element.GetReferenced(EventSession.EventTargets).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -8233,7 +8233,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(EventSessionDefinitions.AttributeSettings).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement>();
+				return Element.GetReferenced(EventSessionDefinitions.AttributeSettings).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -8501,7 +8501,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(EventSessionTarget.ParameterSettings).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement>();
+				return Element.GetReferenced(EventSessionTarget.ParameterSettings).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -16065,7 +16065,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(Signature.EncryptionMechanism).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement>();
+				return Element.GetReferenced(Signature.EncryptionMechanism).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -17594,7 +17594,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(SymmetricKey.Passwords).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement>();
+				return Element.GetReferenced(SymmetricKey.Passwords).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -18635,7 +18635,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(TableType.Constraints).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint>();
+				return Element.GetReferenced(TableType.Constraints).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -18647,7 +18647,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(TableType.Indexes).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex>();
+				return Element.GetReferenced(TableType.Indexes).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -20579,7 +20579,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(UserDefinedType.Methods).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement>();
+				return Element.GetReferenced(UserDefinedType.Methods).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -20591,7 +20591,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(UserDefinedType.Properties).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement>();
+				return Element.GetReferenced(UserDefinedType.Properties).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
@@ -21469,7 +21469,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get 
 			{
-				return Element.GetReferenced(SelectiveXmlIndex.PromotedPaths).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath>();
+				return Element.GetReferenced(SelectiveXmlIndex.PromotedPaths).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 

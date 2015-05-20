@@ -329,9 +329,8 @@ namespace <#=NamespaceName#>
                         }
                         else
                         {
-                            //unspecialized references should not be adapted and the return values are exposed directly.
-                            // This is generally use used for Enumerations or native .Net types.
-                            castExpression = string.Format(".Cast<{0}.{1}>()", 
+                            //Adapt the instance as the concrete return type is not known.
+                            castExpression = string.Format(".Select( o => ({0}.{1})TSqlModelElement.AdaptInstance(o))", 
                                 localoverride.ReturnTypeNamespace, 
                                 localoverride.ReturnType
                                 );
