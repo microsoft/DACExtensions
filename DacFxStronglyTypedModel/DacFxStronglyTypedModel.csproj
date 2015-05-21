@@ -71,7 +71,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelDefects.cs" />
     <Compile Include="ModelExtensions.cs" />
     <Compile Include="ModelUtilityMethods.cs">
       <AutoGen>True</AutoGen>

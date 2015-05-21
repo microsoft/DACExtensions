@@ -221,21 +221,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlTableValuedFunction.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+			}
+		}
+
 		// Peer relationship		
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> ISql90TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
 				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference>();
-			}
-		}
-
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlTableValuedFunction.OrderColumns 
-		{
-			get 
-			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
@@ -263,6 +263,15 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlClrTableOption> ISql90TSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlClrTableOption>();
 			}
 		}
 
@@ -410,6 +419,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			{
 				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference>();
 			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlClrTableOption"/>.
+	/// </summary>
+	public partial class TSqlClrTableOption : ISql90TSqlClrTableOption
+	{		
+		String ISql90TSqlClrTableOption.ClassName 
+		{
+			get { return this.ClassName;}
 		}
 	}
 	/// <summary>
@@ -3633,10 +3652,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlUser : ISql90TSqlUser
 	{		
-		AuthenticationType ISql90TSqlUser.AuthenticationType 
-		{
-			get { return this.AuthenticationType;}
-		}
 		Boolean ISql90TSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
@@ -4090,21 +4105,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableValuedFunction.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+			}
+		}
+
 		// Peer relationship		
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> ISql100TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
 				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference>();
-			}
-		}
-
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlTableValuedFunction.OrderColumns 
-		{
-			get 
-			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
@@ -4132,6 +4147,15 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlClrTableOption> ISql100TSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlClrTableOption>();
 			}
 		}
 
@@ -4278,6 +4302,25 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlClrTableOption"/>.
+	/// </summary>
+	public partial class TSqlClrTableOption : ISql100TSqlClrTableOption
+	{		
+		String ISql100TSqlClrTableOption.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlClrTableOption.OrderColumns 
+		{
+			get 
+			{
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 	}
@@ -8603,10 +8646,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlUser : ISql100TSqlUser
 	{		
-		AuthenticationType ISql100TSqlUser.AuthenticationType 
-		{
-			get { return this.AuthenticationType;}
-		}
 		Boolean ISql100TSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
@@ -9063,21 +9102,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableValuedFunction.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+			}
+		}
+
 		// Peer relationship		
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference> ISqlAzureTSqlTableValuedFunction.Login 
 		{
 			get 
 			{
 				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference>();
-			}
-		}
-
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlTableValuedFunction.OrderColumns 
-		{
-			get 
-			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 
@@ -9105,6 +9144,15 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlClrTableOption> ISqlAzureTSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlClrTableOption>();
 			}
 		}
 
@@ -10682,10 +10730,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlUser : ISqlAzureTSqlUser
 	{		
-		AuthenticationType ISqlAzureTSqlUser.AuthenticationType 
-		{
-			get { return this.AuthenticationType;}
-		}
 		Boolean ISqlAzureTSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
@@ -11029,21 +11073,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableValuedFunction.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+			}
+		}
+
 		// Peer relationship		
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> ISql110TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
 				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference>();
-			}
-		}
-
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlTableValuedFunction.OrderColumns 
-		{
-			get 
-			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
@@ -11071,6 +11115,15 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlClrTableOption> ISql110TSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlClrTableOption>();
 			}
 		}
 
@@ -11217,6 +11270,25 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlClrTableOption"/>.
+	/// </summary>
+	public partial class TSqlClrTableOption : ISql110TSqlClrTableOption
+	{		
+		String ISql110TSqlClrTableOption.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlClrTableOption.OrderColumns 
+		{
+			get 
+			{
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 	}
@@ -16433,21 +16505,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableValuedFunction.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+			}
+		}
+
 		// Peer relationship		
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> ISql120TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
 				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference>();
-			}
-		}
-
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlTableValuedFunction.OrderColumns 
-		{
-			get 
-			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
@@ -16475,6 +16547,15 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlClrTableOption> ISql120TSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlClrTableOption>();
 			}
 		}
 
@@ -16621,6 +16702,25 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlClrTableOption"/>.
+	/// </summary>
+	public partial class TSqlClrTableOption : ISql120TSqlClrTableOption
+	{		
+		String ISql120TSqlClrTableOption.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlClrTableOption.OrderColumns 
+		{
+			get 
+			{
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 	}
@@ -21913,21 +22013,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableValuedFunction.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+			}
+		}
+
 		// Peer relationship		
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference> ISqlAzureV12TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
 				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference>();
-			}
-		}
-
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlTableValuedFunction.OrderColumns 
-		{
-			get 
-			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
@@ -21955,6 +22055,15 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlClrTableOption> ISqlAzureV12TSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlClrTableOption>();
 			}
 		}
 
@@ -22097,6 +22206,25 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlClrTableOption"/>.
+	/// </summary>
+	public partial class TSqlClrTableOption : ISqlAzureV12TSqlClrTableOption
+	{		
+		String ISqlAzureV12TSqlClrTableOption.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlClrTableOption.OrderColumns 
+		{
+			get 
+			{
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 	}
@@ -22779,6 +22907,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.DateCorrelationOptimizationOn;}
 		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.FullTextEnabled 
+		{
+			get { return this.FullTextEnabled;}
+		}
 		Boolean ISqlAzureV12TSqlDatabaseOptions.NumericRoundAbortOn 
 		{
 			get { return this.NumericRoundAbortOn;}
@@ -23116,10 +23248,159 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 	}
 	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlFullTextCatalog"/>.
+	/// </summary>
+	public partial class TSqlFullTextCatalog : ISqlAzureV12TSqlFullTextCatalog
+	{		
+		Boolean? ISqlAzureV12TSqlFullTextCatalog.AccentSensitivity 
+		{
+			get { return this.AccentSensitivity;}
+		}
+		Boolean ISqlAzureV12TSqlFullTextCatalog.IsDefault 
+		{
+			get { return this.IsDefault;}
+		}
+		String ISqlAzureV12TSqlFullTextCatalog.Path 
+		{
+			get { return this.Path;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureV12TSqlFullTextCatalog.Authorizer 
+		{
+			get 
+			{
+				return this.Authorizer;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> ISqlAzureV12TSqlFullTextCatalog.Filegroup 
+		{
+			get 
+			{
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlFullTextIndex"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndex : ISqlAzureV12TSqlFullTextIndex
+	{		
+		ChangeTrackingOption ISqlAzureV12TSqlFullTextIndex.ChangeTracking 
+		{
+			get { return this.ChangeTracking;}
+		}
+		Boolean ISqlAzureV12TSqlFullTextIndex.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		Boolean ISqlAzureV12TSqlFullTextIndex.StopListOff 
+		{
+			get { return this.StopListOff;}
+		}
+		Boolean ISqlAzureV12TSqlFullTextIndex.UseSystemStopList 
+		{
+			get { return this.UseSystemStopList;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference> ISqlAzureV12TSqlFullTextIndex.Catalog 
+		{
+			get 
+			{
+				return this.Catalog;
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFullTextIndexColumnSpecifier> ISqlAzureV12TSqlFullTextIndex.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFullTextIndexColumnSpecifier>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> ISqlAzureV12TSqlFullTextIndex.Filegroup 
+		{
+			get 
+			{
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISqlAzureV12TSqlFullTextIndex.IndexedObject 
+		{
+			get 
+			{
+				return this.IndexedObject;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlFullTextIndex.StopList 
+		{
+			get 
+			{
+				return this.StopList;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlFullTextIndex.UniqueIndexName 
+		{
+			get 
+			{
+				return this.UniqueIndexName;
+			}
+		}
+	}
+	/// <summary>
 	/// Explicit implementation of <see cref="ISqlAzureV12TSqlFullTextIndexColumnSpecifier"/>.
 	/// </summary>
 	public partial class TSqlFullTextIndexColumnSpecifier : ISqlAzureV12TSqlFullTextIndexColumnSpecifier
 	{		
+		Int32? ISqlAzureV12TSqlFullTextIndexColumnSpecifier.LanguageId 
+		{
+			get { return this.LanguageId;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlFullTextIndexColumnSpecifier.Column 
+		{
+			get 
+			{
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlFullTextIndexColumnSpecifier.TypeColumn 
+		{
+			get 
+			{
+				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlFullTextStopList"/>.
+	/// </summary>
+	public partial class TSqlFullTextStopList : ISqlAzureV12TSqlFullTextStopList
+	{		
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureV12TSqlFullTextStopList.Authorizer 
+		{
+			get 
+			{
+				return this.Authorizer;
+			}
+		}
 	}
 	/// <summary>
 	/// Explicit implementation of <see cref="ISqlAzureV12TSqlLogin"/>.

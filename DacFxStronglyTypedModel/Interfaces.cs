@@ -200,13 +200,13 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> Login 
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> Columns 
 		{
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> Login 
 		{
 			get;
 		}
@@ -222,6 +222,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Hierarchical
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> Schema 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlClrTableOption> TableOption 
 		{
 			get;
 		}
@@ -336,6 +341,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Peer
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference> User 
+		{
+			get;
+		}
+	}
+    public interface ISql90TSqlClrTableOptionReference : ISql90TSqlClrTableOption
+	{
+    }
+	public interface ISql90TSqlClrTableOption : ISqlModelElement
+	{		
+		String ClassName 
 		{
 			get;
 		}
@@ -3256,10 +3271,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
     }
 	public interface ISql90TSqlUser : ISqlModelElement
 	{		
-		AuthenticationType AuthenticationType 
-		{
-			get;
-		}
 		Boolean WithoutLogin 
 		{
 			get;
@@ -3693,13 +3704,13 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> Login 
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> Columns 
 		{
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> Login 
 		{
 			get;
 		}
@@ -3715,6 +3726,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Hierarchical
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> Schema 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlClrTableOption> TableOption 
 		{
 			get;
 		}
@@ -3829,6 +3845,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Peer
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference> User 
+		{
+			get;
+		}
+	}
+    public interface ISql100TSqlClrTableOptionReference : ISql100TSqlClrTableOption
+	{
+    }
+	public interface ISql100TSqlClrTableOption : ISqlModelElement
+	{		
+		String ClassName 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> OrderColumns 
 		{
 			get;
 		}
@@ -7451,10 +7482,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
     }
 	public interface ISql100TSqlUser : ISqlModelElement
 	{		
-		AuthenticationType AuthenticationType 
-		{
-			get;
-		}
 		Boolean WithoutLogin 
 		{
 			get;
@@ -7881,13 +7908,13 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference> Login 
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> Columns 
 		{
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference> Login 
 		{
 			get;
 		}
@@ -7903,6 +7930,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Hierarchical
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference> Schema 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlClrTableOption> TableOption 
 		{
 			get;
 		}
@@ -7989,6 +8021,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Peer
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUserReference> User 
+		{
+			get;
+		}
+	}
+    public interface ISqlAzureTSqlClrTableOptionReference : ISqlAzureTSqlClrTableOption
+	{
+    }
+	public interface ISqlAzureTSqlClrTableOption : ISqlModelElement
+	{		
+		String ClassName 
 		{
 			get;
 		}
@@ -9841,10 +9883,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
     }
 	public interface ISqlAzureTSqlUser : ISqlModelElement
 	{		
-		AuthenticationType AuthenticationType 
-		{
-			get;
-		}
 		Boolean WithoutLogin 
 		{
 			get;
@@ -10213,13 +10251,13 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> Login 
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> Columns 
 		{
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> Login 
 		{
 			get;
 		}
@@ -10235,6 +10273,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Hierarchical
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> Schema 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlClrTableOption> TableOption 
 		{
 			get;
 		}
@@ -10349,6 +10392,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Peer
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference> User 
+		{
+			get;
+		}
+	}
+    public interface ISql110TSqlClrTableOptionReference : ISql110TSqlClrTableOption
+	{
+    }
+	public interface ISql110TSqlClrTableOption : ISqlModelElement
+	{		
+		String ClassName 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> OrderColumns 
 		{
 			get;
 		}
@@ -14562,13 +14620,13 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> Login 
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> Columns 
 		{
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> Login 
 		{
 			get;
 		}
@@ -14584,6 +14642,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Hierarchical
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> Schema 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlClrTableOption> TableOption 
 		{
 			get;
 		}
@@ -14698,6 +14761,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Peer
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference> User 
+		{
+			get;
+		}
+	}
+    public interface ISql120TSqlClrTableOptionReference : ISql120TSqlClrTableOption
+	{
+    }
+	public interface ISql120TSqlClrTableOption : ISqlModelElement
+	{		
+		String ClassName 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> OrderColumns 
 		{
 			get;
 		}
@@ -18956,13 +19034,13 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
-		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference> Login 
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> Columns 
 		{
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference> Login 
 		{
 			get;
 		}
@@ -18978,6 +19056,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Hierarchical
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> Schema 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlClrTableOption> TableOption 
 		{
 			get;
 		}
@@ -19088,6 +19171,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 		//Peer
 		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference> User 
+		{
+			get;
+		}
+	}
+    public interface ISqlAzureV12TSqlClrTableOptionReference : ISqlAzureV12TSqlClrTableOption
+	{
+    }
+	public interface ISqlAzureV12TSqlClrTableOption : ISqlModelElement
+	{		
+		String ClassName 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> OrderColumns 
 		{
 			get;
 		}
@@ -19720,6 +19818,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Boolean FullTextEnabled 
+		{
+			get;
+		}
 		Boolean NumericRoundAbortOn 
 		{
 			get;
@@ -20130,12 +20232,72 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
     }
 	public interface ISqlAzureV12TSqlFullTextIndex : ISqlModelElement
 	{		
+		ChangeTrackingOption ChangeTracking 
+		{
+			get;
+		}
+		Boolean Disabled 
+		{
+			get;
+		}
+		Boolean StopListOff 
+		{
+			get;
+		}
+		Boolean UseSystemStopList 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference> Catalog 
+		{
+			get;
+		}
+		//Composing
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFullTextIndexColumnSpecifier> Columns 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> Filegroup 
+		{
+			get;
+		}
+		//Hierarchical
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> StopList 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> UniqueIndexName 
+		{
+			get;
+		}
 	}
     public interface ISqlAzureV12TSqlFullTextIndexColumnSpecifierReference : ISqlAzureV12TSqlFullTextIndexColumnSpecifier
 	{
     }
 	public interface ISqlAzureV12TSqlFullTextIndexColumnSpecifier : ISqlModelElement
 	{		
+		Int32? LanguageId 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> Column 
+		{
+			get;
+		}
+		//Peer
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> TypeColumn 
+		{
+			get;
+		}
 	}
     public interface ISqlAzureV12TSqlFullTextStopListReference : ISqlAzureV12TSqlFullTextStopList
 	{

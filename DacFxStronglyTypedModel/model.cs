@@ -64,6 +64,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
                 return new TSqlTableValuedFunctionReference(obj, objectType);
 		    case "ScalarFunction":     
                 return new TSqlScalarFunctionReference(obj, objectType);
+		    case "ClrTableOption":     
+                return new TSqlClrTableOptionReference(obj, objectType);
 		    case "Aggregate":     
                 return new TSqlAggregateReference(obj, objectType);
 		    case "ApplicationRole":     
@@ -316,6 +318,8 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
                 return new TSqlTableValuedFunction(obj);
 		    case "ScalarFunction":     
                 return new TSqlScalarFunction(obj);
+		    case "ClrTableOption":     
+                return new TSqlClrTableOption(obj);
 		    case "Aggregate":     
                 return new TSqlAggregate(obj);
 		    case "ApplicationRole":     
@@ -1182,6 +1186,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.columns.aspx">TableValuedFunction.Columns</see>
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		{
+			get 
+			{
+				return Element.GetReferenced(TableValuedFunction.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn(o));
+			}
+		}
+
+		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.login.aspx">TableValuedFunction.Login</see>
 		/// Relationship Type:Peer
@@ -1190,18 +1206,6 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return Element.GetReferencedRelationshipInstances(TableValuedFunction.Login).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference(o, Microsoft.SqlServer.Dac.Model.Login.TypeClass));
-			}
-		}
-
-		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TableValuedFunctionOrderColumnsReference"/>
-		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.ordercolumns.aspx">TableValuedFunction.OrderColumns</see>
-		/// Relationship Type:Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TableValuedFunctionOrderColumnsReference> OrderColumns 
-		{
-			get 
-			{
-				return Element.GetReferencedRelationshipInstances(TableValuedFunction.OrderColumns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TableValuedFunctionOrderColumnsReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
@@ -1238,6 +1242,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return Element.GetReferencedRelationshipInstances(TableValuedFunction.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
+			}
+		}
+
+		///
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlClrTableOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.tableoption.aspx">TableValuedFunction.TableOption</see>
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlClrTableOption> TableOption 
+		{
+			get 
+			{
+				return Element.GetReferenced(TableValuedFunction.TableOption).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlClrTableOption(o));
 			}
 		}
 
@@ -1607,6 +1623,131 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get 
 			{
 				return Element.GetReferencedRelationshipInstances(ScalarFunction.User).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference(o, Microsoft.SqlServer.Dac.Model.User.TypeClass));
+			}
+		}
+
+}
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTableOption"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtableoption.aspx">ClrTableOption</see>
+	///
+	public partial class TSqlClrTableOptionReference : TSqlClrTableOption, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlClrTableOptionReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTableOption"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtableoption.aspx">ClrTableOption</see>
+	///
+	public partial class TSqlClrTableOption : TSqlModelElement	{
+		private static ModelTypeClass typeClass = ClrTableOption.TypeClass;
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlClrTableOption to adapt instances of <see cref="T:ClrTableOption"/>
+		/// </summary>
+		public TSqlClrTableOption(TSqlObject obj)  : base(obj, ClrTableOption.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlClrTableOption to adapt instances of <see cref="T:ClrTableOption"/>
+		/// </summary>
+		protected TSqlClrTableOption()
+		{
+		}
+
+		public static ModelTypeClass TypeClass 
+		{
+			get { return typeClass;}
+		}
+
+		///
+		/// Property wrapper for <see cref="M:ClrTableOption.ClassName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtableoption.classname.aspx">ClrTableOption.ClassName</see>
+		///
+		public String ClassName 
+		{
+			get { return Element.GetProperty<String>(ClrTableOption.ClassName);}
+		}
+
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ClrTableOptionOrderColumnsReference"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtableoption.ordercolumns.aspx">ClrTableOption.OrderColumns</see>
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ClrTableOptionOrderColumnsReference> OrderColumns 
+		{
+			get 
+			{
+				return Element.GetReferencedRelationshipInstances(ClrTableOption.OrderColumns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.ClrTableOptionOrderColumnsReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
@@ -22056,16 +22197,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
     // Derived Types with Metadata properties.
 
-    public partial class TableValuedFunctionOrderColumnsReference : Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference
+    public partial class ClrTableOptionOrderColumnsReference : Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference
     {
-        public  TableValuedFunctionOrderColumnsReference (ModelRelationshipInstance relationshipReference,  ModelTypeClass typeClass) : base(relationshipReference, typeClass) { }
+        public  ClrTableOptionOrderColumnsReference (ModelRelationshipInstance relationshipReference,  ModelTypeClass typeClass) : base(relationshipReference, typeClass) { }
 
         ///
-	    /// Metadata property wrapper for <see cref="M:TableValuedFunction.OrderColumns"/>		
+	    /// Metadata property wrapper for <see cref="M:ClrTableOption.OrderColumns"/>		
 	    ///
 	    public Boolean Ascending 
 	    {
-            get { return this.GetMetdataProperty<Boolean>(TableValuedFunction.OrderColumnsRelationship.Ascending);}
+            get { return this.GetMetdataProperty<Boolean>(ClrTableOption.OrderColumnsRelationship.Ascending);}
     	}
 
     }

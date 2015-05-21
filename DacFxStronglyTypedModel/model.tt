@@ -387,7 +387,7 @@ namespace <#=NamespaceName#>
             else
             {
             // Missing override
-             throw new Exception("Missing Override for relationship " + relationship.Name);
+             throw new Exception("Missing Override for relationship " + type.Name + "." + relationship.Name);
             }
 		}
 		

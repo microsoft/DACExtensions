@@ -538,9 +538,10 @@
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlColumnReference" />
   </Element>
   <Element Name="TableValuedFunction">
-    <!--TableValuedFunction should implment ISqlColumnSource, however there is no Columns property -->
     <Implements Name="ISqlColumnSource"/>
     <Implements Name="ISpecifiesIndex"/>
+    <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlColumn" />
+    <Relationship Name="TableOption" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlClrTableOption" />
     <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlAssembly" />
     <Relationship Name="BodyDependencies" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlModelElementReference" UnresolvedReturnType="TSqlModelElementReference" />
     <Relationship Name="Login" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlLoginReference" />
@@ -549,6 +550,9 @@
     <Relationship Name="ReturnType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataTypeReference" />
     <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlSchemaReference" />
     <Relationship Name="User" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlUserReference" />
+  </Element>
+  <Element Name="ClrTableOption">
+    <Relationship Name="OrderColumns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlColumnReference" />
   </Element>
   <Element Name="TcpProtocolSpecifier">
     <Implements Name="IProtocolSpecifier"/>

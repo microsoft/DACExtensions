@@ -141,6 +141,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "TSqlCheckConstraint":				
 					yield return TSqlCheckConstraint.TypeClass;
 					break;
+				case "ISql90TSqlClrTableOption":
+				case "ISql100TSqlClrTableOption":
+				case "ISql110TSqlClrTableOption":
+				case "ISql120TSqlClrTableOption":
+				case "ISqlAzureV12TSqlClrTableOption":
+				case "TSqlClrTableOption":				
+					yield return TSqlClrTableOption.TypeClass;
+					break;
 				case "ISql90TSqlClrTypeMethod":
 				case "ISql100TSqlClrTypeMethod":
 				case "ISqlAzureTSqlClrTypeMethod":
@@ -391,6 +399,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlFullTextCatalog":
 				case "ISql110TSqlFullTextCatalog":
 				case "ISql120TSqlFullTextCatalog":
+				case "ISqlAzureV12TSqlFullTextCatalog":
 				case "TSqlFullTextCatalog":				
 					yield return TSqlFullTextCatalog.TypeClass;
 					break;
@@ -398,6 +407,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlFullTextIndex":
 				case "ISql110TSqlFullTextIndex":
 				case "ISql120TSqlFullTextIndex":
+				case "ISqlAzureV12TSqlFullTextIndex":
 				case "TSqlFullTextIndex":				
 					yield return TSqlFullTextIndex.TypeClass;
 					break;
@@ -413,6 +423,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlFullTextStopList":
 				case "ISql110TSqlFullTextStopList":
 				case "ISql120TSqlFullTextStopList":
+				case "ISqlAzureV12TSqlFullTextStopList":
 				case "TSqlFullTextStopList":				
 					yield return TSqlFullTextStopList.TypeClass;
 					break;
@@ -1557,6 +1568,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlFullTextCatalog).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlSecurable).IsAssignableFrom(type))
 				{
 					return true;
@@ -1577,6 +1592,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlFullTextStopList).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlFullTextStopList).IsAssignableFrom(type))
 				{
 					return true;
 				}
