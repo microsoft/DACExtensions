@@ -34,9 +34,9 @@ namespace Public.Dac.Samples.Rules
     /// A TSqlConcreteFragmentVisitor allows us to examine an AST (abstract syntax tree) representation of a 
     /// TSql object such as a Function, Procedure or Trigger. The implementation uses a visitor pattern, which traverses
     /// the logical tree structure of the object. For any type in the tree, the default unless you override it is to
-    /// do nothing except examine its children. If you override one of the ExplicitVisit methods it'll just let you examine 
+    /// do nothing except examine its children. If you override one of the Visit methods it'll just let you examine 
     /// objects of the type passes in as a parameter, and the visitor class will still automatically examine any children
-    /// for that object. The Visit methods control whether children are also visited so if you want to stop that from
+    /// for that object. The ExplicitVisit methods control whether children are also visited so if you want to stop that from
     /// happening, you should override that method instead.
     /// 
     /// Using a visitor can sometimes be much simpler than querying the object model, especially in the case where the concept
