@@ -35,7 +35,8 @@ namespace Public.Dac.Samples.App
             Usage,
             RunEndToEnd,
             FilterModel,
-            RunCodeAnalysis
+            RunCodeAnalysis,
+            ValidateQuerySemantically
         }
 
         static void Main(string[] args)
@@ -61,6 +62,9 @@ Current actions:
                 case Behavior.RunCodeAnalysis:
                     RunCodeAnalysisExample.RunAnalysisExample();
                     break;
+                case Behavior.ValidateQuerySemantically:
+                    RunValidateQuerySemanticallyExample.Run();
+                    break;
                     // To test deployment plan-based filtering see the TestFiltering.TestFilterPlanWhenPublishing() unit test
             }
 
@@ -84,6 +88,10 @@ Current actions:
                 if (MatchesBehavior(args[0], Behavior.RunCodeAnalysis))
                 {
                     behavior = Behavior.RunCodeAnalysis;
+                }
+                if (MatchesBehavior(args[0], Behavior.ValidateQuerySemantically))
+                {
+                    behavior = Behavior.ValidateQuerySemantically;
                 }
             }
             return behavior;

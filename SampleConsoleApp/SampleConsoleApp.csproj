@@ -62,6 +62,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunCodeAnalysisExample.cs" />
+    <Compile Include="RunValidateQuerySemanticallyExample.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,6 +71,10 @@
     <ProjectReference Include="..\Samples\Samples.csproj">
       <Project>{c1c2b521-22b6-4124-aaec-a5e1fcab0dfa}</Project>
       <Name>Samples</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestUtils\TestUtils.csproj">
+      <Project>{edf01d79-66d0-496c-82d2-431831564817}</Project>
+      <Name>TestUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
