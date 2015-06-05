@@ -25,27 +25,22 @@
 //</copyright>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
 using Microsoft.SqlServer.Dac;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Public.Dac.Samples;
 using Public.Dac.Samples.Contributors;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.IO;
+using Public.Dac.Samples.TestUtilities;
 
 namespace Public.Dac.Sample.Tests
 {
     [TestClass]
     public class TestDbLocationModifiers
     {
-        private const string DataSourceName = "(localdb)\\MSSQLLocalDB";
-        private static string ServerConnectionString
-        {
-            get { return "Data Source=" + DataSourceName + ";Integrated Security=True"; }
-        }
-
         public TestContext TestContext { get; set; }
         
         private DisposableList _trash;
@@ -106,7 +101,7 @@ namespace Public.Dac.Sample.Tests
                 Deploy(dbName, options);
 
             // Then expect the database to be saved under that path
-                AssertDeploySucceeded(ServerConnectionString, dbName);
+                AssertDeploySucceeded(TestUtils.ServerConnectionString, dbName);
                 Assert.IsTrue(File.Exists(mdfFilePath));
                 Assert.IsTrue(File.Exists(ldfFilePath));
 
@@ -122,7 +117,7 @@ namespace Public.Dac.Sample.Tests
 
         private static void DropDbAndDeleteFiles(string dbName, string mdfFilePath, string ldfFilePath)
         {
-            TestUtils.DropDatabase(ServerConnectionString, dbName);
+            TestUtils.DropDatabase(TestUtils.ServerConnectionString, dbName);
             DeleteIfExists(mdfFilePath);
             DeleteIfExists(ldfFilePath);
         }
@@ -165,7 +160,7 @@ namespace Public.Dac.Sample.Tests
                 Deploy(dbName, options);
 
                 // Then expect the database to be saved under that path
-                AssertDeploySucceeded(ServerConnectionString, dbName);
+                AssertDeploySucceeded(TestUtils.ServerConnectionString, dbName);
                 Assert.IsTrue(File.Exists(mdfFilePath));
                 Assert.IsTrue(File.Exists(ldfFilePath));
 
@@ -175,7 +170,7 @@ namespace Public.Dac.Sample.Tests
             }
             finally
             {
-                TestUtils.DropDatabase(ServerConnectionString, dbName);
+                TestUtils.DropDatabase(TestUtils.ServerConnectionString, dbName);
                 DeleteIfExists(mdfFilePath);
                 DeleteIfExists(ldfFilePath);
             }
@@ -204,9 +199,7 @@ namespace Public.Dac.Sample.Tests
 
             using (DacPackage dacpac = DacPackage.Load(_dacpacPath, DacSchemaModelStorageType.Memory))
             {
-                string connectionString = "Data Source=" + DataSourceName + ";Integrated Security=True";
-
-                DacServices dacServices = new DacServices(connectionString);
+                DacServices dacServices = new DacServices(TestUtils.ServerConnectionString);
 
                 // Script then deploy, to support debugging of the generated plan
                 string script = dacServices.GenerateDeployScript(dacpac, dbName, options);

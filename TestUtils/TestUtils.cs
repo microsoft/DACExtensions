@@ -26,17 +26,24 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 
-namespace Public.Dac.Sample.Tests
+namespace Public.Dac.Samples.TestUtilities
 {
     /// <summary>
     /// Utility class for test code. Useful for supporting dropping of databases after tests have completed,
     /// verification a particular database exists, etc.
     /// </summary>
-    internal static class TestUtils
+    public static class TestUtils
     {
+        public const string DefaultDataSourceName = "(localdb)\\MSSQLLocalDB";
+
         public const string MasterDatabaseName = "master";
 
         const string _setLockTimeoutDefault = "SET LOCK_TIMEOUT {0}"; //value configurable
@@ -54,7 +61,57 @@ BEGIN
 END
 ";
 
-        const string _dropDatabaseIfExistAzure = @"DROP DATABASE [{0}];";
+        private const string _dropDatabaseIfExistAzure = @"DROP DATABASE [{0}];";
+
+        private static Regex _batch = new Regex(@"GO\s*$", RegexOptions.Multiline);
+        private static InstanceInfo _defaultInstanceInfo;
+
+        /// <summary>
+        /// Default connection string to LocalDB. Consider extending in the future to allow 
+        /// specification of multiple server versions and paths.
+        /// </summary>
+        public static string ServerConnectionString
+        {
+            get { return "Data Source=" + DefaultDataSourceName + ";Integrated Security=True"; }
+        }
+        
+        public static InstanceInfo DefaultInstanceInfo
+        {
+            get
+            {
+                if(_defaultInstanceInfo == null)
+                {
+                    _defaultInstanceInfo = new InstanceInfo(DefaultDataSourceName);
+                }
+                return _defaultInstanceInfo;
+            }
+        }
+
+        public static void DropDbAndDeleteFiles(string dbName, string mdfFilePath = null, string ldfFilePath = null)
+        {
+            DropDbAndDeleteFiles(TestUtils.ServerConnectionString, dbName, mdfFilePath, ldfFilePath);
+        }
+
+        public static void DropDbAndDeleteFiles(string serverName, string dbName, string mdfFilePath = null, string ldfFilePath = null)
+        {
+            DropDatabase(serverName, dbName);
+            DeleteIfExists(mdfFilePath);
+            DeleteIfExists(ldfFilePath);
+        }
+
+        public static void DeleteIfExists(string filePath)
+        {
+            if (!string.IsNullOrWhiteSpace(filePath)
+                && File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+        }
+
+        public static void DropDatabase(InstanceInfo instance, string databaseName, bool displayException = true)
+        {
+            DropDatabase(instance.BuildConnectionString(CommonConstants.MasterDatabaseName), databaseName, displayException);
+        }
 
         public static bool DropDatabase(
             string connString, 
@@ -122,8 +179,7 @@ END
 
             return rc;
         }
-
-
+        
         public static bool DoesDatabaseExist(SqlConnection connection, string databaseName)
         {
             string query = string.Format(CultureInfo.InvariantCulture, _queryDatabaseIfExist, databaseName);
@@ -132,6 +188,18 @@ END
 
             return (result == 1);
         }
+        
+        public static SqlTestDB CreateTestDatabase(InstanceInfo instance, string dbName)
+        {
+            // Cleanup the database if it already exists
+            TestUtils.DropDatabase(instance, dbName);
+
+            // Create the test database
+            string createDB = string.Format(CultureInfo.InvariantCulture, "create database [{0}]", dbName);          
+            ExecuteNonQuery(instance, "master", CommonConstants.DefaultCommandTimeout, createDB);            
+            SqlTestDB db = new SqlTestDB(instance, dbName, true);
+            return db;
+        }
 
         /// <summary>
         /// Executes the query, and returns the first column of the first row in the 
@@ -139,7 +207,6 @@ END
         /// </summary>
         public static object ExecuteScalar(SqlConnection connection, string sqlCommandText, int commandTimeOut = 30)
         {
-
             ArgumentValidation.CheckForEmptyString(sqlCommandText, "sqlCommandText");
 
             using (SqlCommand cmd = GetCommandObject(connection, sqlCommandText, commandTimeOut))
@@ -178,6 +245,76 @@ END
             return cmd;
         }
 
+        public static void ExecuteNonQuery(SqlTestDB db, int commandTimeout, params string[] scripts)
+        {
+            ExecuteNonQuery(db, (IList<string>)scripts, commandTimeout);
+        }
+
+        public static void ExecuteNonQuery(SqlTestDB db, params string[] scripts)
+        {
+            ExecuteNonQuery(db, (IList<string>)scripts);
+        }
+
+        public static void ExecuteNonQuery(SqlTestDB db, IList<string> scripts, int commandTimeout = CommonConstants.DefaultCommandTimeout)
+        {
+            ExecuteNonQuery(db.Instance, db.DatabaseName, scripts, commandTimeout);
+        }
+
+        public static void ExecuteNonQuery(InstanceInfo instance, string dbName, int commandTimeout, params string[] scripts)
+        {
+            ExecuteNonQuery(instance, dbName, (IList<string>)scripts, commandTimeout);
+        }
+
+        public static void ExecuteNonQuery(InstanceInfo instance, string dbName, params string[] scripts)
+        {
+            ExecuteNonQuery(instance, dbName, (IList<string>)scripts);
+        }
+
+        public static void ExecuteNonQuery(InstanceInfo instance, string dbName, IList<string> scripts, int commandTimeout = CommonConstants.DefaultCommandTimeout)
+        {
+            using (SqlConnection conn = new SqlConnection(instance.BuildConnectionString(dbName)))
+            {
+                conn.Open();
+                
+                foreach (string script in scripts)
+                {
+                    // Replace SqlCmd variables with actual values
+                    string exeScript = script.Replace("$(DatabaseName)", dbName);
+                    ExecuteNonQuery(conn, exeScript, commandTimeout);
+                }
+            }
+        }
+
+        public static void ExecuteNonQuery(SqlConnection conn, string sql, int commandTimeout = CommonConstants.DefaultCommandTimeout)
+        {
+
+            SqlCommand cmd = conn.CreateCommand();
+            try
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandTimeout = commandTimeout;
+
+                // Set seven-sets
+                cmd.CommandText = "SET ANSI_NULLS, ANSI_PADDING, ANSI_WARNINGS, ARITHABORT, CONCAT_NULL_YIELDS_NULL, QUOTED_IDENTIFIER ON;";
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "SET NUMERIC_ROUNDABORT OFF;";
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("Exception{0}{1}{0}While executing TSQL:{0}{2}",
+                    Environment.NewLine,
+                    ex,
+                    sql);
+                throw ex;
+            }
+        }
+
+
         /// <summary>
         /// Retrieves the default lock timeout in Milliseconds.  This value should
         /// be used to set the lock timeout on a connection.
@@ -191,9 +328,15 @@ END
 
             return timeoutMS;
         }
+        
+        public static IList<string> GetBatches(string script)
+        {
+            return _batch.Split(script).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+        }
+
     }
 
-    internal class ArgumentValidation
+    public class ArgumentValidation
     {
         public static void CheckForEmptyString(string arg, string argName)
         {

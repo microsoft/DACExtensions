@@ -25,16 +25,16 @@
 //</copyright>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Microsoft.SqlServer.Dac;
 using Microsoft.SqlServer.Dac.Deployment;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Public.Dac.Samples;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using Public.Dac.Samples.TestUtilities;
 
 namespace Public.Dac.Sample.Tests
 {
@@ -238,7 +238,7 @@ namespace Public.Dac.Sample.Tests
             string existingPackagePath = GetTestFilePath("original.dacpac");
             BuildPackage(model, existingPackagePath);
 
-            DacServices services = new DacServices("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;");
+            DacServices services = new DacServices(TestUtils.ServerConnectionString);
 
             // When publishing to production (filtering to exclude "dev" and "test" schemas)
             string productionDbName = "ProductionDB";

@@ -25,28 +25,23 @@
 //</copyright>
 //------------------------------------------------------------------------------
 
-using Microsoft.SqlServer.Dac;
-using Microsoft.SqlServer.Dac.Model;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Public.Dac.Samples;
-using Public.Dac.Samples.Contributors;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
+using Microsoft.SqlServer.Dac;
+using Microsoft.SqlServer.Dac.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Public.Dac.Samples;
+using Public.Dac.Samples.Contributors;
+using Public.Dac.Samples.TestUtilities;
 
 namespace Public.Dac.Sample.Tests
 {
     [TestClass]
     public class TestCreateIndexOperationalPropsModifier
     {
-        private const string DataSourceName = "(localdb)\\MSSQLLocalDB";
-        private static string ServerConnectionString
-        {
-            get { return "Data Source=" + DataSourceName + ";Integrated Security=True"; }
-        }
-
         public TestContext TestContext { get; set; }
         
         private DisposableList _trash;
@@ -71,7 +66,7 @@ namespace Public.Dac.Sample.Tests
         public void CleanupTest()
         {
             _trash.Dispose();
-            DeleteIfExists(_dacpacPath);
+            TestUtils.DeleteIfExists(_dacpacPath);
         }
 
         private string GetTestFilePath(string fileName)
@@ -155,7 +150,7 @@ namespace Public.Dac.Sample.Tests
             string dbName = TestContext.TestName;
 
             // Delete any existing artifacts from a previous run
-            DropDbAndDeleteFiles(dbName);
+            TestUtils.DropDbAndDeleteFiles(dbName);
 
             // NOTE: Cannot turn on deployment by default in the sample test since we target LocalDB and the "Online" option
             // being tested is only supported in enterprise editions. To fully validate that the output of this
@@ -173,16 +168,9 @@ namespace Public.Dac.Sample.Tests
             {
                 if (runDeployment)
                 {
-                    DropDbAndDeleteFiles(dbName);
+                    TestUtils.DropDbAndDeleteFiles(dbName);
                 }
             }
-        }
-        
-        private static void DropDbAndDeleteFiles(string dbName, string mdfFilePath = null, string ldfFilePath = null)
-        {
-            TestUtils.DropDatabase(ServerConnectionString, dbName);
-            DeleteIfExists(mdfFilePath);
-            DeleteIfExists(ldfFilePath);
         }
 
         private string GenerateScriptAndOptionallyDeploy(string dbName, DacDeployOptions options, bool runDeployment, int currentIteration)
@@ -194,9 +182,7 @@ namespace Public.Dac.Sample.Tests
 
             using (DacPackage dacpac = DacPackage.Load(_dacpacPath, DacSchemaModelStorageType.Memory))
             {
-                string connectionString = "Data Source=" + DataSourceName + ";Integrated Security=True";
-
-                DacServices dacServices = new DacServices(connectionString);
+                DacServices dacServices = new DacServices(TestUtils.ServerConnectionString);
 
                 // Script then deploy, to support debugging of the generated plan
                 string script = dacServices.GenerateDeployScript(dacpac, dbName, options);
@@ -207,7 +193,7 @@ namespace Public.Dac.Sample.Tests
                 if (runDeployment)
                 {
                     dacServices.Deploy(dacpac, dbName, true, options);
-                    AssertDeploySucceeded(ServerConnectionString, dbName);
+                    AssertDeploySucceeded(TestUtils.ServerConnectionString, dbName);
                 }
 
                 return script;
@@ -237,13 +223,5 @@ namespace Public.Dac.Sample.Tests
             }
         }
 
-        private static void DeleteIfExists(string filePath)
-        {
-            if (!string.IsNullOrWhiteSpace(filePath)
-                && File.Exists(filePath))
-            {
-                File.Delete(filePath);
-            }
-        }
     }
 }

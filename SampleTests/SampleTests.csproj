@@ -73,7 +73,6 @@
     <Compile Include="TestFiltering.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDbLocationModifiers.cs" />
-    <Compile Include="TestUtils.cs" />
     <Compile Include="StronglyTypedUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +83,10 @@
     <ProjectReference Include="..\Samples\Samples.csproj">
       <Project>{c1c2b521-22b6-4124-aaec-a5e1fcab0dfa}</Project>
       <Name>Samples</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestUtils\TestUtils.csproj">
+      <Project>{edf01d79-66d0-496c-82d2-431831564817}</Project>
+      <Name>TestUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
