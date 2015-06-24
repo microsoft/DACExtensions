@@ -24,32 +24,6 @@
 //    SOFTWARE.
 //</copyright>
 //------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//<copyright company="Microsoft">
-//
-//    The MIT License (MIT)
-//    
-//    Copyright (c) 2015 Microsoft
-//    
-//    Permission is hereby granted, free of charge, to any person obtaining a copy
-//    of this software and associated documentation files (the "Software"), to deal
-//    in the Software without restriction, including without limitation the rights
-//    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//    copies of the Software, and to permit persons to whom the Software is
-//    furnished to do so, subject to the following conditions:
-//    
-//    The above copyright notice and this permission notice shall be included in all
-//    copies or substantial portions of the Software.
-//    
-//    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//    SOFTWARE.
-//</copyright>
-//------------------------------------------------------------------------------
 
 namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 {
@@ -166,6 +140,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISqlAzureV12TSqlCheckConstraint":
 				case "TSqlCheckConstraint":				
 					yield return TSqlCheckConstraint.TypeClass;
+					break;
+				case "ISql90TSqlClrTableOption":
+				case "ISql100TSqlClrTableOption":
+				case "ISql110TSqlClrTableOption":
+				case "ISql120TSqlClrTableOption":
+				case "ISqlAzureV12TSqlClrTableOption":
+				case "TSqlClrTableOption":				
+					yield return TSqlClrTableOption.TypeClass;
 					break;
 				case "ISql90TSqlClrTypeMethod":
 				case "ISql100TSqlClrTypeMethod":
@@ -417,6 +399,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlFullTextCatalog":
 				case "ISql110TSqlFullTextCatalog":
 				case "ISql120TSqlFullTextCatalog":
+				case "ISqlAzureV12TSqlFullTextCatalog":
 				case "TSqlFullTextCatalog":				
 					yield return TSqlFullTextCatalog.TypeClass;
 					break;
@@ -424,6 +407,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlFullTextIndex":
 				case "ISql110TSqlFullTextIndex":
 				case "ISql120TSqlFullTextIndex":
+				case "ISqlAzureV12TSqlFullTextIndex":
 				case "TSqlFullTextIndex":				
 					yield return TSqlFullTextIndex.TypeClass;
 					break;
@@ -439,6 +423,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				case "ISql100TSqlFullTextStopList":
 				case "ISql110TSqlFullTextStopList":
 				case "ISql120TSqlFullTextStopList":
+				case "ISqlAzureV12TSqlFullTextStopList":
 				case "TSqlFullTextStopList":				
 					yield return TSqlFullTextStopList.TypeClass;
 					break;
@@ -1583,6 +1568,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if (typeof(ISqlAzureV12TSqlFullTextCatalog).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				else if(typeof(ISqlSecurable).IsAssignableFrom(type))
 				{
 					return true;
@@ -1603,6 +1592,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if (typeof(ISql120TSqlFullTextStopList).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlFullTextStopList).IsAssignableFrom(type))
 				{
 					return true;
 				}

@@ -24,293 +24,607 @@
 //    SOFTWARE.
 //</copyright>
 //------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//<copyright company="Microsoft">
-//
-//    The MIT License (MIT)
-//    
-//    Copyright (c) 2015 Microsoft
-//    
-//    Permission is hereby granted, free of charge, to any person obtaining a copy
-//    of this software and associated documentation files (the "Software"), to deal
-//    in the Software without restriction, including without limitation the rights
-//    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//    copies of the Software, and to permit persons to whom the Software is
-//    furnished to do so, subject to the following conditions:
-//    
-//    The above copyright notice and this permission notice shall be included in all
-//    copies or substantial portions of the Software.
-//    
-//    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//    SOFTWARE.
-//</copyright>
-//------------------------------------------------------------------------------
 
 namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 {
 	using System;
 	using System.Linq;
-	using Microsoft.SqlServer.Server;
-	using Microsoft.SqlServer.Dac.Model;
 	using System.Collections.Generic;
-public partial class TSqlModelElement
-{
-	///<summary>
-	///  Returns a strongly-typed wrapper for the TSqlObject instance.
-	///</summary>
-	public static ISqlModelElement AdaptInstance(TSqlObject obj)
+    using System.Globalization;
+    using Microsoft.SqlServer.Server;
+	using Microsoft.SqlServer.Dac.Model;
+    public partial class TSqlModelElement
     {
-		if(obj == null)
-		{
-			throw new ArgumentNullException("obj");
-		}	
+        ///<summary>
+	    ///  Returns a strongly-typed wrapper for the TSqlObject instance.
+	    ///</summary>
+	    public static ISqlModelElementReference AdaptInstance(ModelRelationshipInstance obj, Func<ModelRelationshipInstance,ISqlModelElementReference> createUnresolvedElement)
+        {
+            ModelTypeClass objectType = null;
 		
-		switch(obj.ObjectType.Name)
+            if(obj == null)
+		    {
+			    throw new ArgumentNullException("obj");
+		    }	
+
+            if (obj.Object != null)
+            {
+                objectType = obj.Object.ObjectType;
+            }
+            else
+            {
+                return createUnresolvedElement(obj);
+            }
+		
+		    switch(objectType.Name)
+		    {
+		    case "Column":     
+                return new TSqlColumnReference(obj, objectType);
+		    case "TableValuedFunction":     
+                return new TSqlTableValuedFunctionReference(obj, objectType);
+		    case "ScalarFunction":     
+                return new TSqlScalarFunctionReference(obj, objectType);
+		    case "ClrTableOption":     
+                return new TSqlClrTableOptionReference(obj, objectType);
+		    case "Aggregate":     
+                return new TSqlAggregateReference(obj, objectType);
+		    case "ApplicationRole":     
+                return new TSqlApplicationRoleReference(obj, objectType);
+		    case "Index":     
+                return new TSqlIndexReference(obj, objectType);
+		    case "Assembly":     
+                return new TSqlAssemblyReference(obj, objectType);
+		    case "AssemblySource":     
+                return new TSqlAssemblySourceReference(obj, objectType);
+		    case "AsymmetricKey":     
+                return new TSqlAsymmetricKeyReference(obj, objectType);
+		    case "AuditAction":     
+                return new TSqlAuditActionReference(obj, objectType);
+		    case "AuditActionGroup":     
+                return new TSqlAuditActionGroupReference(obj, objectType);
+		    case "AuditActionSpecification":     
+                return new TSqlAuditActionSpecificationReference(obj, objectType);
+		    case "BrokerPriority":     
+                return new TSqlBrokerPriorityReference(obj, objectType);
+		    case "BuiltInServerRole":     
+                return new TSqlBuiltInServerRoleReference(obj, objectType);
+		    case "DataType":     
+                return new TSqlDataTypeReference(obj, objectType);
+		    case "Certificate":     
+                return new TSqlCertificateReference(obj, objectType);
+		    case "CheckConstraint":     
+                return new TSqlCheckConstraintReference(obj, objectType);
+		    case "ClrTypeMethod":     
+                return new TSqlClrTypeMethodReference(obj, objectType);
+		    case "ClrTypeMethodParameter":     
+                return new TSqlClrTypeMethodParameterReference(obj, objectType);
+		    case "ClrTypeProperty":     
+                return new TSqlClrTypePropertyReference(obj, objectType);
+		    case "ColumnStoreIndex":     
+                return new TSqlColumnStoreIndexReference(obj, objectType);
+		    case "Contract":     
+                return new TSqlContractReference(obj, objectType);
+		    case "Credential":     
+                return new TSqlCredentialReference(obj, objectType);
+		    case "CryptographicProvider":     
+                return new TSqlCryptographicProviderReference(obj, objectType);
+		    case "DatabaseAuditSpecification":     
+                return new TSqlDatabaseAuditSpecificationReference(obj, objectType);
+		    case "DatabaseDdlTrigger":     
+                return new TSqlDatabaseDdlTriggerReference(obj, objectType);
+		    case "DatabaseEncryptionKey":     
+                return new TSqlDatabaseEncryptionKeyReference(obj, objectType);
+		    case "DatabaseEventNotification":     
+                return new TSqlDatabaseEventNotificationReference(obj, objectType);
+		    case "DatabaseMirroringLanguageSpecifier":     
+                return new TSqlDatabaseMirroringLanguageSpecifierReference(obj, objectType);
+		    case "DatabaseOptions":     
+                return new TSqlDatabaseOptionsReference(obj, objectType);
+		    case "DataCompressionOption":     
+                return new TSqlDataCompressionOptionReference(obj, objectType);
+		    case "Default":     
+                return new TSqlDefaultReference(obj, objectType);
+		    case "DefaultConstraint":     
+                return new TSqlDefaultConstraintReference(obj, objectType);
+		    case "DmlTrigger":     
+                return new TSqlDmlTriggerReference(obj, objectType);
+		    case "Endpoint":     
+                return new TSqlEndpointReference(obj, objectType);
+		    case "ErrorMessage":     
+                return new TSqlErrorMessageReference(obj, objectType);
+		    case "EventGroup":     
+                return new TSqlEventGroupReference(obj, objectType);
+		    case "EventSession":     
+                return new TSqlEventSessionReference(obj, objectType);
+		    case "EventSessionAction":     
+                return new TSqlEventSessionActionReference(obj, objectType);
+		    case "EventSessionDefinitions":     
+                return new TSqlEventSessionDefinitionsReference(obj, objectType);
+		    case "EventSessionSetting":     
+                return new TSqlEventSessionSettingReference(obj, objectType);
+		    case "EventSessionTarget":     
+                return new TSqlEventSessionTargetReference(obj, objectType);
+		    case "EventTypeSpecifier":     
+                return new TSqlEventTypeSpecifierReference(obj, objectType);
+		    case "ExtendedProcedure":     
+                return new TSqlExtendedProcedureReference(obj, objectType);
+		    case "ExtendedProperty":     
+                return new TSqlExtendedPropertyReference(obj, objectType);
+		    case "SqlFile":     
+                return new TSqlSqlFileReference(obj, objectType);
+		    case "Filegroup":     
+                return new TSqlFilegroupReference(obj, objectType);
+		    case "ForeignKeyConstraint":     
+                return new TSqlForeignKeyConstraintReference(obj, objectType);
+		    case "FullTextCatalog":     
+                return new TSqlFullTextCatalogReference(obj, objectType);
+		    case "FullTextIndex":     
+                return new TSqlFullTextIndexReference(obj, objectType);
+		    case "FullTextIndexColumnSpecifier":     
+                return new TSqlFullTextIndexColumnSpecifierReference(obj, objectType);
+		    case "FullTextStopList":     
+                return new TSqlFullTextStopListReference(obj, objectType);
+		    case "HttpProtocolSpecifier":     
+                return new TSqlHttpProtocolSpecifierReference(obj, objectType);
+		    case "LinkedServer":     
+                return new TSqlLinkedServerReference(obj, objectType);
+		    case "LinkedServerLogin":     
+                return new TSqlLinkedServerLoginReference(obj, objectType);
+		    case "Login":     
+                return new TSqlLoginReference(obj, objectType);
+		    case "MasterKey":     
+                return new TSqlMasterKeyReference(obj, objectType);
+		    case "MessageType":     
+                return new TSqlMessageTypeReference(obj, objectType);
+		    case "PartitionFunction":     
+                return new TSqlPartitionFunctionReference(obj, objectType);
+		    case "PartitionScheme":     
+                return new TSqlPartitionSchemeReference(obj, objectType);
+		    case "PartitionValue":     
+                return new TSqlPartitionValueReference(obj, objectType);
+		    case "Permission":     
+                return new TSqlPermissionReference(obj, objectType);
+		    case "PrimaryKeyConstraint":     
+                return new TSqlPrimaryKeyConstraintReference(obj, objectType);
+		    case "Procedure":     
+                return new TSqlProcedureReference(obj, objectType);
+		    case "Queue":     
+                return new TSqlQueueReference(obj, objectType);
+		    case "QueueEventNotification":     
+                return new TSqlQueueEventNotificationReference(obj, objectType);
+		    case "RemoteServiceBinding":     
+                return new TSqlRemoteServiceBindingReference(obj, objectType);
+		    case "ResourceGovernor":     
+                return new TSqlResourceGovernorReference(obj, objectType);
+		    case "ResourcePool":     
+                return new TSqlResourcePoolReference(obj, objectType);
+		    case "Role":     
+                return new TSqlRoleReference(obj, objectType);
+		    case "RoleMembership":     
+                return new TSqlRoleMembershipReference(obj, objectType);
+		    case "Route":     
+                return new TSqlRouteReference(obj, objectType);
+		    case "Rule":     
+                return new TSqlRuleReference(obj, objectType);
+		    case "Schema":     
+                return new TSqlSchemaReference(obj, objectType);
+		    case "SearchProperty":     
+                return new TSqlSearchPropertyReference(obj, objectType);
+		    case "SearchPropertyList":     
+                return new TSqlSearchPropertyListReference(obj, objectType);
+		    case "Sequence":     
+                return new TSqlSequenceReference(obj, objectType);
+		    case "ServerAudit":     
+                return new TSqlServerAuditReference(obj, objectType);
+		    case "ServerAuditSpecification":     
+                return new TSqlServerAuditSpecificationReference(obj, objectType);
+		    case "ServerDdlTrigger":     
+                return new TSqlServerDdlTriggerReference(obj, objectType);
+		    case "ServerEventNotification":     
+                return new TSqlServerEventNotificationReference(obj, objectType);
+		    case "ServerOptions":     
+                return new TSqlServerOptionsReference(obj, objectType);
+		    case "ServerRoleMembership":     
+                return new TSqlServerRoleMembershipReference(obj, objectType);
+		    case "Service":     
+                return new TSqlServiceReference(obj, objectType);
+		    case "ServiceBrokerLanguageSpecifier":     
+                return new TSqlServiceBrokerLanguageSpecifierReference(obj, objectType);
+		    case "Signature":     
+                return new TSqlSignatureReference(obj, objectType);
+		    case "SignatureEncryptionMechanism":     
+                return new TSqlSignatureEncryptionMechanismReference(obj, objectType);
+		    case "SoapLanguageSpecifier":     
+                return new TSqlSoapLanguageSpecifierReference(obj, objectType);
+		    case "SoapMethodSpecification":     
+                return new TSqlSoapMethodSpecificationReference(obj, objectType);
+		    case "SpatialIndex":     
+                return new TSqlSpatialIndexReference(obj, objectType);
+		    case "Statistics":     
+                return new TSqlStatisticsReference(obj, objectType);
+		    case "Parameter":     
+                return new TSqlParameterReference(obj, objectType);
+		    case "SymmetricKey":     
+                return new TSqlSymmetricKeyReference(obj, objectType);
+		    case "SymmetricKeyPassword":     
+                return new TSqlSymmetricKeyPasswordReference(obj, objectType);
+		    case "Synonym":     
+                return new TSqlSynonymReference(obj, objectType);
+		    case "Table":     
+                return new TSqlTableReference(obj, objectType);
+		    case "FileTable":     
+                return new TSqlFileTableReference(obj, objectType);
+		    case "TableType":     
+                return new TSqlTableTypeReference(obj, objectType);
+		    case "TableTypeCheckConstraint":     
+                return new TSqlTableTypeCheckConstraintReference(obj, objectType);
+		    case "TableTypeColumn":     
+                return new TSqlTableTypeColumnReference(obj, objectType);
+		    case "TableTypeDefaultConstraint":     
+                return new TSqlTableTypeDefaultConstraintReference(obj, objectType);
+		    case "TableTypeIndex":     
+                return new TSqlTableTypeIndexReference(obj, objectType);
+		    case "TableTypePrimaryKeyConstraint":     
+                return new TSqlTableTypePrimaryKeyConstraintReference(obj, objectType);
+		    case "TableTypeUniqueConstraint":     
+                return new TSqlTableTypeUniqueConstraintReference(obj, objectType);
+		    case "TcpProtocolSpecifier":     
+                return new TSqlTcpProtocolSpecifierReference(obj, objectType);
+		    case "UniqueConstraint":     
+                return new TSqlUniqueConstraintReference(obj, objectType);
+		    case "User":     
+                return new TSqlUserReference(obj, objectType);
+		    case "UserDefinedServerRole":     
+                return new TSqlUserDefinedServerRoleReference(obj, objectType);
+		    case "UserDefinedType":     
+                return new TSqlUserDefinedTypeReference(obj, objectType);
+		    case "View":     
+                return new TSqlViewReference(obj, objectType);
+		    case "WorkloadGroup":     
+                return new TSqlWorkloadGroupReference(obj, objectType);
+		    case "XmlIndex":     
+                return new TSqlXmlIndexReference(obj, objectType);
+		    case "SelectiveXmlIndex":     
+                return new TSqlSelectiveXmlIndexReference(obj, objectType);
+		    case "XmlNamespace":     
+                return new TSqlXmlNamespaceReference(obj, objectType);
+		    case "PromotedNodePathForXQueryType":     
+                return new TSqlPromotedNodePathForXQueryTypeReference(obj, objectType);
+		    case "PromotedNodePathForSqlType":     
+                return new TSqlPromotedNodePathForSqlTypeReference(obj, objectType);
+		    case "XmlSchemaCollection":     
+                return new TSqlXmlSchemaCollectionReference(obj, objectType);
+		    default:
+			    throw new ArgumentException("No type mapping exists for " + objectType.Name);
+		    }
+	    }
+
+
+	    ///<summary>
+	    ///  Returns a strongly-typed wrapper for the TSqlObject instance.
+	    ///</summary>
+	    public static ISqlModelElement AdaptInstance(TSqlObject obj)
+        {
+		    if(obj == null)
+		    {
+			    throw new ArgumentNullException("obj");
+		    }	
+		
+		    switch(obj.ObjectType.Name)
+		    {
+		    case "Column":     
+                return new TSqlColumn(obj);
+		    case "TableValuedFunction":     
+                return new TSqlTableValuedFunction(obj);
+		    case "ScalarFunction":     
+                return new TSqlScalarFunction(obj);
+		    case "ClrTableOption":     
+                return new TSqlClrTableOption(obj);
+		    case "Aggregate":     
+                return new TSqlAggregate(obj);
+		    case "ApplicationRole":     
+                return new TSqlApplicationRole(obj);
+		    case "Index":     
+                return new TSqlIndex(obj);
+		    case "Assembly":     
+                return new TSqlAssembly(obj);
+		    case "AssemblySource":     
+                return new TSqlAssemblySource(obj);
+		    case "AsymmetricKey":     
+                return new TSqlAsymmetricKey(obj);
+		    case "AuditAction":     
+                return new TSqlAuditAction(obj);
+		    case "AuditActionGroup":     
+                return new TSqlAuditActionGroup(obj);
+		    case "AuditActionSpecification":     
+                return new TSqlAuditActionSpecification(obj);
+		    case "BrokerPriority":     
+                return new TSqlBrokerPriority(obj);
+		    case "BuiltInServerRole":     
+                return new TSqlBuiltInServerRole(obj);
+		    case "DataType":     
+                return new TSqlDataType(obj);
+		    case "Certificate":     
+                return new TSqlCertificate(obj);
+		    case "CheckConstraint":     
+                return new TSqlCheckConstraint(obj);
+		    case "ClrTypeMethod":     
+                return new TSqlClrTypeMethod(obj);
+		    case "ClrTypeMethodParameter":     
+                return new TSqlClrTypeMethodParameter(obj);
+		    case "ClrTypeProperty":     
+                return new TSqlClrTypeProperty(obj);
+		    case "ColumnStoreIndex":     
+                return new TSqlColumnStoreIndex(obj);
+		    case "Contract":     
+                return new TSqlContract(obj);
+		    case "Credential":     
+                return new TSqlCredential(obj);
+		    case "CryptographicProvider":     
+                return new TSqlCryptographicProvider(obj);
+		    case "DatabaseAuditSpecification":     
+                return new TSqlDatabaseAuditSpecification(obj);
+		    case "DatabaseDdlTrigger":     
+                return new TSqlDatabaseDdlTrigger(obj);
+		    case "DatabaseEncryptionKey":     
+                return new TSqlDatabaseEncryptionKey(obj);
+		    case "DatabaseEventNotification":     
+                return new TSqlDatabaseEventNotification(obj);
+		    case "DatabaseMirroringLanguageSpecifier":     
+                return new TSqlDatabaseMirroringLanguageSpecifier(obj);
+		    case "DatabaseOptions":     
+                return new TSqlDatabaseOptions(obj);
+		    case "DataCompressionOption":     
+                return new TSqlDataCompressionOption(obj);
+		    case "Default":     
+                return new TSqlDefault(obj);
+		    case "DefaultConstraint":     
+                return new TSqlDefaultConstraint(obj);
+		    case "DmlTrigger":     
+                return new TSqlDmlTrigger(obj);
+		    case "Endpoint":     
+                return new TSqlEndpoint(obj);
+		    case "ErrorMessage":     
+                return new TSqlErrorMessage(obj);
+		    case "EventGroup":     
+                return new TSqlEventGroup(obj);
+		    case "EventSession":     
+                return new TSqlEventSession(obj);
+		    case "EventSessionAction":     
+                return new TSqlEventSessionAction(obj);
+		    case "EventSessionDefinitions":     
+                return new TSqlEventSessionDefinitions(obj);
+		    case "EventSessionSetting":     
+                return new TSqlEventSessionSetting(obj);
+		    case "EventSessionTarget":     
+                return new TSqlEventSessionTarget(obj);
+		    case "EventTypeSpecifier":     
+                return new TSqlEventTypeSpecifier(obj);
+		    case "ExtendedProcedure":     
+                return new TSqlExtendedProcedure(obj);
+		    case "ExtendedProperty":     
+                return new TSqlExtendedProperty(obj);
+		    case "SqlFile":     
+                return new TSqlSqlFile(obj);
+		    case "Filegroup":     
+                return new TSqlFilegroup(obj);
+		    case "ForeignKeyConstraint":     
+                return new TSqlForeignKeyConstraint(obj);
+		    case "FullTextCatalog":     
+                return new TSqlFullTextCatalog(obj);
+		    case "FullTextIndex":     
+                return new TSqlFullTextIndex(obj);
+		    case "FullTextIndexColumnSpecifier":     
+                return new TSqlFullTextIndexColumnSpecifier(obj);
+		    case "FullTextStopList":     
+                return new TSqlFullTextStopList(obj);
+		    case "HttpProtocolSpecifier":     
+                return new TSqlHttpProtocolSpecifier(obj);
+		    case "LinkedServer":     
+                return new TSqlLinkedServer(obj);
+		    case "LinkedServerLogin":     
+                return new TSqlLinkedServerLogin(obj);
+		    case "Login":     
+                return new TSqlLogin(obj);
+		    case "MasterKey":     
+                return new TSqlMasterKey(obj);
+		    case "MessageType":     
+                return new TSqlMessageType(obj);
+		    case "PartitionFunction":     
+                return new TSqlPartitionFunction(obj);
+		    case "PartitionScheme":     
+                return new TSqlPartitionScheme(obj);
+		    case "PartitionValue":     
+                return new TSqlPartitionValue(obj);
+		    case "Permission":     
+                return new TSqlPermission(obj);
+		    case "PrimaryKeyConstraint":     
+                return new TSqlPrimaryKeyConstraint(obj);
+		    case "Procedure":     
+                return new TSqlProcedure(obj);
+		    case "Queue":     
+                return new TSqlQueue(obj);
+		    case "QueueEventNotification":     
+                return new TSqlQueueEventNotification(obj);
+		    case "RemoteServiceBinding":     
+                return new TSqlRemoteServiceBinding(obj);
+		    case "ResourceGovernor":     
+                return new TSqlResourceGovernor(obj);
+		    case "ResourcePool":     
+                return new TSqlResourcePool(obj);
+		    case "Role":     
+                return new TSqlRole(obj);
+		    case "RoleMembership":     
+                return new TSqlRoleMembership(obj);
+		    case "Route":     
+                return new TSqlRoute(obj);
+		    case "Rule":     
+                return new TSqlRule(obj);
+		    case "Schema":     
+                return new TSqlSchema(obj);
+		    case "SearchProperty":     
+                return new TSqlSearchProperty(obj);
+		    case "SearchPropertyList":     
+                return new TSqlSearchPropertyList(obj);
+		    case "Sequence":     
+                return new TSqlSequence(obj);
+		    case "ServerAudit":     
+                return new TSqlServerAudit(obj);
+		    case "ServerAuditSpecification":     
+                return new TSqlServerAuditSpecification(obj);
+		    case "ServerDdlTrigger":     
+                return new TSqlServerDdlTrigger(obj);
+		    case "ServerEventNotification":     
+                return new TSqlServerEventNotification(obj);
+		    case "ServerOptions":     
+                return new TSqlServerOptions(obj);
+		    case "ServerRoleMembership":     
+                return new TSqlServerRoleMembership(obj);
+		    case "Service":     
+                return new TSqlService(obj);
+		    case "ServiceBrokerLanguageSpecifier":     
+                return new TSqlServiceBrokerLanguageSpecifier(obj);
+		    case "Signature":     
+                return new TSqlSignature(obj);
+		    case "SignatureEncryptionMechanism":     
+                return new TSqlSignatureEncryptionMechanism(obj);
+		    case "SoapLanguageSpecifier":     
+                return new TSqlSoapLanguageSpecifier(obj);
+		    case "SoapMethodSpecification":     
+                return new TSqlSoapMethodSpecification(obj);
+		    case "SpatialIndex":     
+                return new TSqlSpatialIndex(obj);
+		    case "Statistics":     
+                return new TSqlStatistics(obj);
+		    case "Parameter":     
+                return new TSqlParameter(obj);
+		    case "SymmetricKey":     
+                return new TSqlSymmetricKey(obj);
+		    case "SymmetricKeyPassword":     
+                return new TSqlSymmetricKeyPassword(obj);
+		    case "Synonym":     
+                return new TSqlSynonym(obj);
+		    case "Table":     
+                return new TSqlTable(obj);
+		    case "FileTable":     
+                return new TSqlFileTable(obj);
+		    case "TableType":     
+                return new TSqlTableType(obj);
+		    case "TableTypeCheckConstraint":     
+                return new TSqlTableTypeCheckConstraint(obj);
+		    case "TableTypeColumn":     
+                return new TSqlTableTypeColumn(obj);
+		    case "TableTypeDefaultConstraint":     
+                return new TSqlTableTypeDefaultConstraint(obj);
+		    case "TableTypeIndex":     
+                return new TSqlTableTypeIndex(obj);
+		    case "TableTypePrimaryKeyConstraint":     
+                return new TSqlTableTypePrimaryKeyConstraint(obj);
+		    case "TableTypeUniqueConstraint":     
+                return new TSqlTableTypeUniqueConstraint(obj);
+		    case "TcpProtocolSpecifier":     
+                return new TSqlTcpProtocolSpecifier(obj);
+		    case "UniqueConstraint":     
+                return new TSqlUniqueConstraint(obj);
+		    case "User":     
+                return new TSqlUser(obj);
+		    case "UserDefinedServerRole":     
+                return new TSqlUserDefinedServerRole(obj);
+		    case "UserDefinedType":     
+                return new TSqlUserDefinedType(obj);
+		    case "View":     
+                return new TSqlView(obj);
+		    case "WorkloadGroup":     
+                return new TSqlWorkloadGroup(obj);
+		    case "XmlIndex":     
+                return new TSqlXmlIndex(obj);
+		    case "SelectiveXmlIndex":     
+                return new TSqlSelectiveXmlIndex(obj);
+		    case "XmlNamespace":     
+                return new TSqlXmlNamespace(obj);
+		    case "PromotedNodePathForXQueryType":     
+                return new TSqlPromotedNodePathForXQueryType(obj);
+		    case "PromotedNodePathForSqlType":     
+                return new TSqlPromotedNodePathForSqlType(obj);
+		    case "XmlSchemaCollection":     
+                return new TSqlXmlSchemaCollection(obj);
+		    default:
+			    throw new ArgumentException("No type mapping exists for " + obj.ObjectType.Name);
+		    }
+	    }
+    }
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Column"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.aspx">Column</see>
+	///
+	public partial class TSqlColumnReference : TSqlColumn, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlColumnReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
 		{
-		case "Column":     
-            return new TSqlColumn(obj);
-		case "TableValuedFunction":     
-            return new TSqlTableValuedFunction(obj);
-		case "ScalarFunction":     
-            return new TSqlScalarFunction(obj);
-		case "Aggregate":     
-            return new TSqlAggregate(obj);
-		case "ApplicationRole":     
-            return new TSqlApplicationRole(obj);
-		case "Index":     
-            return new TSqlIndex(obj);
-		case "Assembly":     
-            return new TSqlAssembly(obj);
-		case "AssemblySource":     
-            return new TSqlAssemblySource(obj);
-		case "AsymmetricKey":     
-            return new TSqlAsymmetricKey(obj);
-		case "AuditAction":     
-            return new TSqlAuditAction(obj);
-		case "AuditActionGroup":     
-            return new TSqlAuditActionGroup(obj);
-		case "AuditActionSpecification":     
-            return new TSqlAuditActionSpecification(obj);
-		case "BrokerPriority":     
-            return new TSqlBrokerPriority(obj);
-		case "BuiltInServerRole":     
-            return new TSqlBuiltInServerRole(obj);
-		case "DataType":     
-            return new TSqlDataType(obj);
-		case "Certificate":     
-            return new TSqlCertificate(obj);
-		case "CheckConstraint":     
-            return new TSqlCheckConstraint(obj);
-		case "ClrTypeMethod":     
-            return new TSqlClrTypeMethod(obj);
-		case "ClrTypeMethodParameter":     
-            return new TSqlClrTypeMethodParameter(obj);
-		case "ClrTypeProperty":     
-            return new TSqlClrTypeProperty(obj);
-		case "ColumnStoreIndex":     
-            return new TSqlColumnStoreIndex(obj);
-		case "Contract":     
-            return new TSqlContract(obj);
-		case "Credential":     
-            return new TSqlCredential(obj);
-		case "CryptographicProvider":     
-            return new TSqlCryptographicProvider(obj);
-		case "DatabaseAuditSpecification":     
-            return new TSqlDatabaseAuditSpecification(obj);
-		case "DatabaseDdlTrigger":     
-            return new TSqlDatabaseDdlTrigger(obj);
-		case "DatabaseEncryptionKey":     
-            return new TSqlDatabaseEncryptionKey(obj);
-		case "DatabaseEventNotification":     
-            return new TSqlDatabaseEventNotification(obj);
-		case "DatabaseMirroringLanguageSpecifier":     
-            return new TSqlDatabaseMirroringLanguageSpecifier(obj);
-		case "DatabaseOptions":     
-            return new TSqlDatabaseOptions(obj);
-		case "DataCompressionOption":     
-            return new TSqlDataCompressionOption(obj);
-		case "Default":     
-            return new TSqlDefault(obj);
-		case "DefaultConstraint":     
-            return new TSqlDefaultConstraint(obj);
-		case "DmlTrigger":     
-            return new TSqlDmlTrigger(obj);
-		case "Endpoint":     
-            return new TSqlEndpoint(obj);
-		case "ErrorMessage":     
-            return new TSqlErrorMessage(obj);
-		case "EventGroup":     
-            return new TSqlEventGroup(obj);
-		case "EventSession":     
-            return new TSqlEventSession(obj);
-		case "EventSessionAction":     
-            return new TSqlEventSessionAction(obj);
-		case "EventSessionDefinitions":     
-            return new TSqlEventSessionDefinitions(obj);
-		case "EventSessionSetting":     
-            return new TSqlEventSessionSetting(obj);
-		case "EventSessionTarget":     
-            return new TSqlEventSessionTarget(obj);
-		case "EventTypeSpecifier":     
-            return new TSqlEventTypeSpecifier(obj);
-		case "ExtendedProcedure":     
-            return new TSqlExtendedProcedure(obj);
-		case "ExtendedProperty":     
-            return new TSqlExtendedProperty(obj);
-		case "SqlFile":     
-            return new TSqlSqlFile(obj);
-		case "Filegroup":     
-            return new TSqlFilegroup(obj);
-		case "ForeignKeyConstraint":     
-            return new TSqlForeignKeyConstraint(obj);
-		case "FullTextCatalog":     
-            return new TSqlFullTextCatalog(obj);
-		case "FullTextIndex":     
-            return new TSqlFullTextIndex(obj);
-		case "FullTextIndexColumnSpecifier":     
-            return new TSqlFullTextIndexColumnSpecifier(obj);
-		case "FullTextStopList":     
-            return new TSqlFullTextStopList(obj);
-		case "HttpProtocolSpecifier":     
-            return new TSqlHttpProtocolSpecifier(obj);
-		case "LinkedServer":     
-            return new TSqlLinkedServer(obj);
-		case "LinkedServerLogin":     
-            return new TSqlLinkedServerLogin(obj);
-		case "Login":     
-            return new TSqlLogin(obj);
-		case "MasterKey":     
-            return new TSqlMasterKey(obj);
-		case "MessageType":     
-            return new TSqlMessageType(obj);
-		case "PartitionFunction":     
-            return new TSqlPartitionFunction(obj);
-		case "PartitionScheme":     
-            return new TSqlPartitionScheme(obj);
-		case "PartitionValue":     
-            return new TSqlPartitionValue(obj);
-		case "Permission":     
-            return new TSqlPermission(obj);
-		case "PrimaryKeyConstraint":     
-            return new TSqlPrimaryKeyConstraint(obj);
-		case "Procedure":     
-            return new TSqlProcedure(obj);
-		case "Queue":     
-            return new TSqlQueue(obj);
-		case "QueueEventNotification":     
-            return new TSqlQueueEventNotification(obj);
-		case "RemoteServiceBinding":     
-            return new TSqlRemoteServiceBinding(obj);
-		case "ResourceGovernor":     
-            return new TSqlResourceGovernor(obj);
-		case "ResourcePool":     
-            return new TSqlResourcePool(obj);
-		case "Role":     
-            return new TSqlRole(obj);
-		case "RoleMembership":     
-            return new TSqlRoleMembership(obj);
-		case "Route":     
-            return new TSqlRoute(obj);
-		case "Rule":     
-            return new TSqlRule(obj);
-		case "Schema":     
-            return new TSqlSchema(obj);
-		case "SearchProperty":     
-            return new TSqlSearchProperty(obj);
-		case "SearchPropertyList":     
-            return new TSqlSearchPropertyList(obj);
-		case "Sequence":     
-            return new TSqlSequence(obj);
-		case "ServerAudit":     
-            return new TSqlServerAudit(obj);
-		case "ServerAuditSpecification":     
-            return new TSqlServerAuditSpecification(obj);
-		case "ServerDdlTrigger":     
-            return new TSqlServerDdlTrigger(obj);
-		case "ServerEventNotification":     
-            return new TSqlServerEventNotification(obj);
-		case "ServerOptions":     
-            return new TSqlServerOptions(obj);
-		case "ServerRoleMembership":     
-            return new TSqlServerRoleMembership(obj);
-		case "Service":     
-            return new TSqlService(obj);
-		case "ServiceBrokerLanguageSpecifier":     
-            return new TSqlServiceBrokerLanguageSpecifier(obj);
-		case "Signature":     
-            return new TSqlSignature(obj);
-		case "SignatureEncryptionMechanism":     
-            return new TSqlSignatureEncryptionMechanism(obj);
-		case "SoapLanguageSpecifier":     
-            return new TSqlSoapLanguageSpecifier(obj);
-		case "SoapMethodSpecification":     
-            return new TSqlSoapMethodSpecification(obj);
-		case "SpatialIndex":     
-            return new TSqlSpatialIndex(obj);
-		case "Statistics":     
-            return new TSqlStatistics(obj);
-		case "Parameter":     
-            return new TSqlParameter(obj);
-		case "SymmetricKey":     
-            return new TSqlSymmetricKey(obj);
-		case "SymmetricKeyPassword":     
-            return new TSqlSymmetricKeyPassword(obj);
-		case "Synonym":     
-            return new TSqlSynonym(obj);
-		case "Table":     
-            return new TSqlTable(obj);
-		case "FileTable":     
-            return new TSqlFileTable(obj);
-		case "TableType":     
-            return new TSqlTableType(obj);
-		case "TableTypeCheckConstraint":     
-            return new TSqlTableTypeCheckConstraint(obj);
-		case "TableTypeColumn":     
-            return new TSqlTableTypeColumn(obj);
-		case "TableTypeDefaultConstraint":     
-            return new TSqlTableTypeDefaultConstraint(obj);
-		case "TableTypeIndex":     
-            return new TSqlTableTypeIndex(obj);
-		case "TableTypePrimaryKeyConstraint":     
-            return new TSqlTableTypePrimaryKeyConstraint(obj);
-		case "TableTypeUniqueConstraint":     
-            return new TSqlTableTypeUniqueConstraint(obj);
-		case "TcpProtocolSpecifier":     
-            return new TSqlTcpProtocolSpecifier(obj);
-		case "UniqueConstraint":     
-            return new TSqlUniqueConstraint(obj);
-		case "User":     
-            return new TSqlUser(obj);
-		case "UserDefinedServerRole":     
-            return new TSqlUserDefinedServerRole(obj);
-		case "UserDefinedType":     
-            return new TSqlUserDefinedType(obj);
-		case "View":     
-            return new TSqlView(obj);
-		case "WorkloadGroup":     
-            return new TSqlWorkloadGroup(obj);
-		case "XmlIndex":     
-            return new TSqlXmlIndex(obj);
-		case "SelectiveXmlIndex":     
-            return new TSqlSelectiveXmlIndex(obj);
-		case "XmlNamespace":     
-            return new TSqlXmlNamespace(obj);
-		case "PromotedNodePathForXQueryType":     
-            return new TSqlPromotedNodePathForXQueryType(obj);
-		case "PromotedNodePathForSqlType":     
-            return new TSqlPromotedNodePathForSqlType(obj);
-		case "XmlSchemaCollection":     
-            return new TSqlXmlSchemaCollection(obj);
-		default:
-			throw new ArgumentException("No type mapping exists for " + obj.ObjectType.Name);
-		}
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
 	}
-}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Column"/>
@@ -324,6 +638,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlColumn to adapt instances of <see cref="T:Column"/>
 		/// </summary>
 		public TSqlColumn(TSqlObject obj)  : base(obj, Column.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlColumn to adapt instances of <see cref="T:Column"/>
+		/// </summary>
+		protected TSqlColumn()
 		{
 		}
 
@@ -503,42 +825,124 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// Metadata property wrapper for <see cref="M:Column.ColumnType"/>
+		///
+		public ColumnType ColumnType 
+		{
+			get { return Element.GetMetadata<ColumnType>(Column.ColumnType);}
+		}
+
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.datatype.aspx">Column.DataType</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Column.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Column.DataType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.expressiondependencies.aspx">Column.ExpressionDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Column.ExpressionDependencies);
+				return Element.GetReferencedRelationshipInstances(Column.ExpressionDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.xmlschemacollection.aspx">Column.XmlSchemaCollection</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection> XmlSchemaCollection 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference> XmlSchemaCollection 
 		{
 			get 
 			{
-				return Element.GetReferenced(Column.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Column.XmlSchemaCollection).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference(o, Microsoft.SqlServer.Dac.Model.XmlSchemaCollection.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableValuedFunction"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.aspx">TableValuedFunction</see>
+	///
+	public partial class TSqlTableValuedFunctionReference : TSqlTableValuedFunction, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlTableValuedFunctionReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableValuedFunction"/>
@@ -552,6 +956,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlTableValuedFunction to adapt instances of <see cref="T:TableValuedFunction"/>
 		/// </summary>
 		public TSqlTableValuedFunction(TSqlObject obj)  : base(obj, TableValuedFunction.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlTableValuedFunction to adapt instances of <see cref="T:TableValuedFunction"/>
+		/// </summary>
+		protected TSqlTableValuedFunction()
 		{
 		}
 
@@ -741,102 +1153,196 @@ public partial class TSqlModelElement
 
 
 		///
+		/// Metadata property wrapper for <see cref="M:TableValuedFunction.FunctionType"/>
+		///
+		public FunctionType FunctionType 
+		{
+			get { return Element.GetMetadata<FunctionType>(TableValuedFunction.FunctionType);}
+		}
+
+
+		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.assembly.aspx">TableValuedFunction.Assembly</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableValuedFunction.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableValuedFunction.Assembly).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.bodydependencies.aspx">TableValuedFunction.BodyDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableValuedFunction.BodyDependencies);
+				return Element.GetReferencedRelationshipInstances(TableValuedFunction.BodyDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.columns.aspx">TableValuedFunction.Columns</see>
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		{
+			get 
+			{
+				return Element.GetReferenced(TableValuedFunction.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn(o));
+			}
+		}
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.login.aspx">TableValuedFunction.Login</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableValuedFunction.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
-			}
-		}
-
-		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
-		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.ordercolumns.aspx">TableValuedFunction.OrderColumns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> OrderColumns 
-		{
-			get 
-			{
-				return Element.GetReferenced(TableValuedFunction.OrderColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(TableValuedFunction.Login).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference(o, Microsoft.SqlServer.Dac.Model.Login.TypeClass));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.parameters.aspx">TableValuedFunction.Parameters</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableValuedFunction.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableValuedFunction.Parameters).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.returntype.aspx">TableValuedFunction.ReturnType</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ReturnType 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableValuedFunction.ReturnType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(TableValuedFunction.ReturnType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.schema.aspx">TableValuedFunction.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableValuedFunction.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(TableValuedFunction.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
-		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.user.aspx">TableValuedFunction.User</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlClrTableOption"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.tableoption.aspx">TableValuedFunction.TableOption</see>
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlClrTableOption> TableOption 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableValuedFunction.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableValuedFunction.TableOption).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlClrTableOption(o));
+			}
+		}
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tablevaluedfunction.user.aspx">TableValuedFunction.User</see>
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference> User 
+		{
+			get 
+			{
+				return Element.GetReferencedRelationshipInstances(TableValuedFunction.User).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference(o, Microsoft.SqlServer.Dac.Model.User.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ScalarFunction"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.aspx">ScalarFunction</see>
+	///
+	public partial class TSqlScalarFunctionReference : TSqlScalarFunction, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlScalarFunctionReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ScalarFunction"/>
@@ -850,6 +1356,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlScalarFunction to adapt instances of <see cref="T:ScalarFunction"/>
 		/// </summary>
 		public TSqlScalarFunction(TSqlObject obj)  : base(obj, ScalarFunction.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlScalarFunction to adapt instances of <see cref="T:ScalarFunction"/>
+		/// </summary>
+		protected TSqlScalarFunction()
 		{
 		}
 
@@ -1031,88 +1545,286 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.assembly.aspx">ScalarFunction.Assembly</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(ScalarFunction.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ScalarFunction.Assembly).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.bodydependencies.aspx">ScalarFunction.BodyDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(ScalarFunction.BodyDependencies);
+				return Element.GetReferencedRelationshipInstances(ScalarFunction.BodyDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.login.aspx">ScalarFunction.Login</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(ScalarFunction.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ScalarFunction.Login).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference(o, Microsoft.SqlServer.Dac.Model.Login.TypeClass));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.parameters.aspx">ScalarFunction.Parameters</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(ScalarFunction.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ScalarFunction.Parameters).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.returntype.aspx">ScalarFunction.ReturnType</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ReturnType 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(ScalarFunction.ReturnType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ScalarFunction.ReturnType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.schema.aspx">ScalarFunction.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(ScalarFunction.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ScalarFunction.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.scalarfunction.user.aspx">ScalarFunction.User</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(ScalarFunction.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ScalarFunction.User).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference(o, Microsoft.SqlServer.Dac.Model.User.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTableOption"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtableoption.aspx">ClrTableOption</see>
+	///
+	public partial class TSqlClrTableOptionReference : TSqlClrTableOption, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlClrTableOptionReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
+	///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTableOption"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtableoption.aspx">ClrTableOption</see>
+	///
+	public partial class TSqlClrTableOption : TSqlModelElement	{
+		private static ModelTypeClass typeClass = ClrTableOption.TypeClass;
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlClrTableOption to adapt instances of <see cref="T:ClrTableOption"/>
+		/// </summary>
+		public TSqlClrTableOption(TSqlObject obj)  : base(obj, ClrTableOption.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlClrTableOption to adapt instances of <see cref="T:ClrTableOption"/>
+		/// </summary>
+		protected TSqlClrTableOption()
+		{
+		}
+
+		public static ModelTypeClass TypeClass 
+		{
+			get { return typeClass;}
+		}
+
+		///
+		/// Property wrapper for <see cref="M:ClrTableOption.ClassName"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtableoption.classname.aspx">ClrTableOption.ClassName</see>
+		///
+		public String ClassName 
+		{
+			get { return Element.GetProperty<String>(ClrTableOption.ClassName);}
+		}
+
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ClrTableOptionOrderColumnsReference"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtableoption.ordercolumns.aspx">ClrTableOption.OrderColumns</see>
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ClrTableOptionOrderColumnsReference> OrderColumns 
+		{
+			get 
+			{
+				return Element.GetReferencedRelationshipInstances(ClrTableOption.OrderColumns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.ClrTableOptionOrderColumnsReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
+			}
+		}
+
+}
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Aggregate"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.aspx">Aggregate</see>
+	///
+	public partial class TSqlAggregateReference : TSqlAggregate, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlAggregateReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Aggregate"/>
@@ -1126,6 +1838,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlAggregate to adapt instances of <see cref="T:Aggregate"/>
 		/// </summary>
 		public TSqlAggregate(TSqlObject obj)  : base(obj, Aggregate.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlAggregate to adapt instances of <see cref="T:Aggregate"/>
+		/// </summary>
+		protected TSqlAggregate()
 		{
 		}
 
@@ -1195,54 +1915,127 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.assembly.aspx">Aggregate.Assembly</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Aggregate.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Aggregate.Assembly).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference(o, Microsoft.SqlServer.Dac.Model.Assembly.TypeClass));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.parameters.aspx">Aggregate.Parameters</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(Aggregate.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Aggregate.Parameters).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.returntype.aspx">Aggregate.ReturnType</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ReturnType 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Aggregate.ReturnType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Aggregate.ReturnType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.aggregate.schema.aspx">Aggregate.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Aggregate.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Aggregate.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ApplicationRole"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.applicationrole.aspx">ApplicationRole</see>
+	///
+	public partial class TSqlApplicationRoleReference : TSqlApplicationRole, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlApplicationRoleReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ApplicationRole"/>
@@ -1256,6 +2049,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlApplicationRole to adapt instances of <see cref="T:ApplicationRole"/>
 		/// </summary>
 		public TSqlApplicationRole(TSqlObject obj)  : base(obj, ApplicationRole.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlApplicationRole to adapt instances of <see cref="T:ApplicationRole"/>
+		/// </summary>
+		protected TSqlApplicationRole()
 		{
 		}
 
@@ -1275,18 +2076,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.applicationrole.defaultschema.aspx">ApplicationRole.DefaultSchema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> DefaultSchema 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> DefaultSchema 
 		{
 			get 
 			{
-				return Element.GetReferenced(ApplicationRole.DefaultSchema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ApplicationRole.DefaultSchema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Index"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.aspx">Index</see>
+	///
+	public partial class TSqlIndexReference : TSqlIndex, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlIndexReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Index"/>
@@ -1300,6 +2174,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlIndex to adapt instances of <see cref="T:Index"/>
 		/// </summary>
 		public TSqlIndex(TSqlObject obj)  : base(obj, Index.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlIndex to adapt instances of <see cref="T:Index"/>
+		/// </summary>
+		protected TSqlIndex()
 		{
 		}
 
@@ -1449,126 +2331,199 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.bodydependencies.aspx">Index.BodyDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Index.BodyDependencies);
+				return Element.GetReferencedRelationshipInstances(Index.BodyDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.IndexColumnsReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.columns.aspx">Index.Columns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IndexColumnsReference> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Index.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Index.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.IndexColumnsReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.datacompressionoptions.aspx">Index.DataCompressionOptions</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Index.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Index.DataCompressionOptions).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.filegroup.aspx">Index.Filegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Index.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Index.Filegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.filestreamfilegroup.aspx">Index.FileStreamFilegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FileStreamFilegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> FileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Index.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Index.FileStreamFilegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.filestreampartitionscheme.aspx">Index.FileStreamPartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> FileStreamPartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Index.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Index.FileStreamPartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.includedcolumns.aspx">Index.IncludedColumns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> IncludedColumns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> IncludedColumns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Index.IncludedColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Index.IncludedColumns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
 		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.indexedobject.aspx">Index.IndexedObject</see>
-		///
+		/// Relationship Type:Hierarchical
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Index.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Index.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISpecifiesIndexElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.partitioncolumn.aspx">Index.PartitionColumn</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Index.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Index.PartitionColumn).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.index.partitionscheme.aspx">Index.PartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Index.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Index.PartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Assembly"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assembly.aspx">Assembly</see>
+	///
+	public partial class TSqlAssemblyReference : TSqlAssembly, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlAssemblyReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Assembly"/>
@@ -1582,6 +2537,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlAssembly to adapt instances of <see cref="T:Assembly"/>
 		/// </summary>
 		public TSqlAssembly(TSqlObject obj)  : base(obj, Assembly.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlAssembly to adapt instances of <see cref="T:Assembly"/>
+		/// </summary>
+		protected TSqlAssembly()
 		{
 		}
 
@@ -1613,40 +2576,113 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblySource"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assembly.assemblysources.aspx">Assembly.AssemblySources</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblySource> AssemblySources 
 		{
 			get 
 			{
-				return Element.GetReferenced(Assembly.AssemblySources).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblySource)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Assembly.AssemblySources).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblySource(o));
 			}
 		}
 
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assembly.authorizer.aspx">Assembly.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Assembly.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Assembly.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assembly.referencedassemblies.aspx">Assembly.ReferencedAssemblies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> ReferencedAssemblies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference> ReferencedAssemblies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Assembly.ReferencedAssemblies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Assembly.ReferencedAssemblies).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference(o, Microsoft.SqlServer.Dac.Model.Assembly.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AssemblySource"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.assemblysource.aspx">AssemblySource</see>
+	///
+	public partial class TSqlAssemblySourceReference : TSqlAssemblySource, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlAssemblySourceReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AssemblySource"/>
@@ -1660,6 +2696,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlAssemblySource to adapt instances of <see cref="T:AssemblySource"/>
 		/// </summary>
 		public TSqlAssemblySource(TSqlObject obj)  : base(obj, AssemblySource.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlAssemblySource to adapt instances of <see cref="T:AssemblySource"/>
+		/// </summary>
+		protected TSqlAssemblySource()
 		{
 		}
 
@@ -1680,6 +2724,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AsymmetricKey"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.aspx">AsymmetricKey</see>
+	///
+	public partial class TSqlAsymmetricKeyReference : TSqlAsymmetricKey, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlAsymmetricKeyReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AsymmetricKey"/>
 	///
@@ -1692,6 +2809,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlAsymmetricKey to adapt instances of <see cref="T:AsymmetricKey"/>
 		/// </summary>
 		public TSqlAsymmetricKey(TSqlObject obj)  : base(obj, AsymmetricKey.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlAsymmetricKey to adapt instances of <see cref="T:AsymmetricKey"/>
+		/// </summary>
+		protected TSqlAsymmetricKey()
 		{
 		}
 
@@ -1771,42 +2896,115 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.assembly.aspx">AsymmetricKey.Assembly</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(AsymmetricKey.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(AsymmetricKey.Assembly).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference(o, Microsoft.SqlServer.Dac.Model.Assembly.TypeClass));
 			}
 		}
 
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.authorizer.aspx">AsymmetricKey.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(AsymmetricKey.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(AsymmetricKey.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.asymmetrickey.provider.aspx">AsymmetricKey.Provider</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Provider 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> Provider 
 		{
 			get 
 			{
-				return Element.GetReferenced(AsymmetricKey.Provider);
+				return Element.GetReferencedRelationshipInstances(AsymmetricKey.Provider).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AuditAction"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditaction.aspx">AuditAction</see>
+	///
+	public partial class TSqlAuditActionReference : TSqlAuditAction, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlAuditActionReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AuditAction"/>
@@ -1820,6 +3018,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlAuditAction to adapt instances of <see cref="T:AuditAction"/>
 		/// </summary>
 		public TSqlAuditAction(TSqlObject obj)  : base(obj, AuditAction.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlAuditAction to adapt instances of <see cref="T:AuditAction"/>
+		/// </summary>
+		protected TSqlAuditAction()
 		{
 		}
 
@@ -1840,6 +3046,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AuditActionGroup"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditactiongroup.aspx">AuditActionGroup</see>
+	///
+	public partial class TSqlAuditActionGroupReference : TSqlAuditActionGroup, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlAuditActionGroupReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AuditActionGroup"/>
 	///
@@ -1852,6 +3131,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlAuditActionGroup to adapt instances of <see cref="T:AuditActionGroup"/>
 		/// </summary>
 		public TSqlAuditActionGroup(TSqlObject obj)  : base(obj, AuditActionGroup.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlAuditActionGroup to adapt instances of <see cref="T:AuditActionGroup"/>
+		/// </summary>
+		protected TSqlAuditActionGroup()
 		{
 		}
 
@@ -1872,6 +3159,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AuditActionSpecification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditactionspecification.aspx">AuditActionSpecification</see>
+	///
+	public partial class TSqlAuditActionSpecificationReference : TSqlAuditActionSpecification, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlAuditActionSpecificationReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:AuditActionSpecification"/>
 	///
@@ -1887,6 +3247,14 @@ public partial class TSqlModelElement
 		{
 		}
 
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlAuditActionSpecification to adapt instances of <see cref="T:AuditActionSpecification"/>
+		/// </summary>
+		protected TSqlAuditActionSpecification()
+		{
+		}
+
 		public static ModelTypeClass TypeClass 
 		{
 			get { return typeClass;}
@@ -1895,40 +3263,113 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditactionspecification.auditactions.aspx">AuditActionSpecification.AuditActions</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction> AuditActions 
 		{
 			get 
 			{
-				return Element.GetReferenced(AuditActionSpecification.AuditActions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(AuditActionSpecification.AuditActions).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction(o));
 			}
 		}
 
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditactionspecification.principals.aspx">AuditActionSpecification.Principals</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> Principals 
 		{
 			get 
 			{
-				return Element.GetReferenced(AuditActionSpecification.Principals).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(AuditActionSpecification.Principals).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlDatabaseSecurityPrincipalElement(ri)));
 			}
 		}
 
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.auditactionspecification.securedobject.aspx">AuditActionSpecification.SecuredObject</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> SecuredObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(AuditActionSpecification.SecuredObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(AuditActionSpecification.SecuredObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlSecurableElement(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:BrokerPriority"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.brokerpriority.aspx">BrokerPriority</see>
+	///
+	public partial class TSqlBrokerPriorityReference : TSqlBrokerPriority, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlBrokerPriorityReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:BrokerPriority"/>
@@ -1942,6 +3383,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlBrokerPriority to adapt instances of <see cref="T:BrokerPriority"/>
 		/// </summary>
 		public TSqlBrokerPriority(TSqlObject obj)  : base(obj, BrokerPriority.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlBrokerPriority to adapt instances of <see cref="T:BrokerPriority"/>
+		/// </summary>
+		protected TSqlBrokerPriority()
 		{
 		}
 
@@ -1971,30 +3420,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.brokerpriority.contractname.aspx">BrokerPriority.ContractName</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ContractName 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ContractName 
 		{
 			get 
 			{
-				return Element.GetReferenced(BrokerPriority.ContractName);
+				return Element.GetReferencedRelationshipInstances(BrokerPriority.ContractName).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.brokerpriority.localservicename.aspx">BrokerPriority.LocalServiceName</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> LocalServiceName 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> LocalServiceName 
 		{
 			get 
 			{
-				return Element.GetReferenced(BrokerPriority.LocalServiceName);
+				return Element.GetReferencedRelationshipInstances(BrokerPriority.LocalServiceName).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:BuiltInServerRole"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.builtinserverrole.aspx">BuiltInServerRole</see>
+	///
+	public partial class TSqlBuiltInServerRoleReference : TSqlBuiltInServerRole, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlBuiltInServerRoleReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:BuiltInServerRole"/>
@@ -2011,12 +3533,93 @@ public partial class TSqlModelElement
 		{
 		}
 
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlBuiltInServerRole to adapt instances of <see cref="T:BuiltInServerRole"/>
+		/// </summary>
+		protected TSqlBuiltInServerRole()
+		{
+		}
+
 		public static ModelTypeClass TypeClass 
 		{
 			get { return typeClass;}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DataType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.aspx">DataType</see>
+	///
+	public partial class TSqlDataTypeReference : TSqlDataType, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlDataTypeReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DataType"/>
@@ -2030,6 +3633,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlDataType to adapt instances of <see cref="T:DataType"/>
 		/// </summary>
 		public TSqlDataType(TSqlObject obj)  : base(obj, DataType.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlDataType to adapt instances of <see cref="T:DataType"/>
+		/// </summary>
+		protected TSqlDataType()
 		{
 		}
 
@@ -2099,30 +3710,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.schema.aspx">DataType.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(DataType.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DataType.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 		///
 		/// Peer relationship returning instances of <see cref=":T System.Type"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.type.aspx">DataType.Type</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<System.Type> Type 
 		{
 			get 
 			{
-				return Element.GetReferenced(DataType.Type).Select(o => (System.Type)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DataType.Type).Cast<System.Type>();
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Certificate"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.aspx">Certificate</see>
+	///
+	public partial class TSqlCertificateReference : TSqlCertificate, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlCertificateReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Certificate"/>
@@ -2136,6 +3820,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlCertificate to adapt instances of <see cref="T:Certificate"/>
 		/// </summary>
 		public TSqlCertificate(TSqlObject obj)  : base(obj, Certificate.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlCertificate to adapt instances of <see cref="T:Certificate"/>
+		/// </summary>
+		protected TSqlCertificate()
 		{
 		}
 
@@ -2257,28 +3949,101 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.authorizer.aspx">Certificate.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Certificate.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Certificate.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.certificate.existingkeysassembly.aspx">Certificate.ExistingKeysAssembly</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> ExistingKeysAssembly 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference> ExistingKeysAssembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Certificate.ExistingKeysAssembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Certificate.ExistingKeysAssembly).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference(o, Microsoft.SqlServer.Dac.Model.Assembly.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:CheckConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.checkconstraint.aspx">CheckConstraint</see>
+	///
+	public partial class TSqlCheckConstraintReference : TSqlCheckConstraint, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlCheckConstraintReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:CheckConstraint"/>
@@ -2292,6 +4057,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlCheckConstraint to adapt instances of <see cref="T:CheckConstraint"/>
 		/// </summary>
 		public TSqlCheckConstraint(TSqlObject obj)  : base(obj, CheckConstraint.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlCheckConstraint to adapt instances of <see cref="T:CheckConstraint"/>
+		/// </summary>
+		protected TSqlCheckConstraint()
 		{
 		}
 
@@ -2331,30 +4104,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.checkconstraint.expressiondependencies.aspx">CheckConstraint.ExpressionDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(CheckConstraint.ExpressionDependencies);
+				return Element.GetReferencedRelationshipInstances(CheckConstraint.ExpressionDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.checkconstraint.host.aspx">CheckConstraint.Host</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> Host 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(CheckConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(CheckConstraint.Host).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference(o, Microsoft.SqlServer.Dac.Model.Table.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTypeMethod"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethod.aspx">ClrTypeMethod</see>
+	///
+	public partial class TSqlClrTypeMethodReference : TSqlClrTypeMethod, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlClrTypeMethodReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTypeMethod"/>
@@ -2368,6 +4214,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlClrTypeMethod to adapt instances of <see cref="T:ClrTypeMethod"/>
 		/// </summary>
 		public TSqlClrTypeMethod(TSqlObject obj)  : base(obj, ClrTypeMethod.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlClrTypeMethod to adapt instances of <see cref="T:ClrTypeMethod"/>
+		/// </summary>
+		protected TSqlClrTypeMethod()
 		{
 		}
 
@@ -2389,28 +4243,101 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethod.parameters.aspx">ClrTypeMethod.Parameters</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(ClrTypeMethod.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ClrTypeMethod.Parameters).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethod.returntype.aspx">ClrTypeMethod.ReturnType</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ReturnType 
 		{
 			get 
 			{
-				return Element.GetReferenced(ClrTypeMethod.ReturnType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ClrTypeMethod.ReturnType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType(o));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTypeMethodParameter"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethodparameter.aspx">ClrTypeMethodParameter</see>
+	///
+	public partial class TSqlClrTypeMethodParameterReference : TSqlClrTypeMethodParameter, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlClrTypeMethodParameterReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTypeMethodParameter"/>
@@ -2424,6 +4351,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlClrTypeMethodParameter to adapt instances of <see cref="T:ClrTypeMethodParameter"/>
 		/// </summary>
 		public TSqlClrTypeMethodParameter(TSqlObject obj)  : base(obj, ClrTypeMethodParameter.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlClrTypeMethodParameter to adapt instances of <see cref="T:ClrTypeMethodParameter"/>
+		/// </summary>
+		protected TSqlClrTypeMethodParameter()
 		{
 		}
 
@@ -2453,18 +4388,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethodparameter.datatype.aspx">ClrTypeMethodParameter.DataType</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(ClrTypeMethodParameter.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ClrTypeMethodParameter.DataType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTypeProperty"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypeproperty.aspx">ClrTypeProperty</see>
+	///
+	public partial class TSqlClrTypePropertyReference : TSqlClrTypeProperty, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlClrTypePropertyReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ClrTypeProperty"/>
@@ -2478,6 +4486,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlClrTypeProperty to adapt instances of <see cref="T:ClrTypeProperty"/>
 		/// </summary>
 		public TSqlClrTypeProperty(TSqlObject obj)  : base(obj, ClrTypeProperty.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlClrTypeProperty to adapt instances of <see cref="T:ClrTypeProperty"/>
+		/// </summary>
+		protected TSqlClrTypeProperty()
 		{
 		}
 
@@ -2497,18 +4513,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypeproperty.clrtype.aspx">ClrTypeProperty.ClrType</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ClrType 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> ClrType 
 		{
 			get 
 			{
-				return Element.GetReferenced(ClrTypeProperty.ClrType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ClrTypeProperty.ClrType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ColumnStoreIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.aspx">ColumnStoreIndex</see>
+	///
+	public partial class TSqlColumnStoreIndexReference : TSqlColumnStoreIndex, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlColumnStoreIndexReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ColumnStoreIndex"/>
@@ -2522,6 +4611,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlColumnStoreIndex to adapt instances of <see cref="T:ColumnStoreIndex"/>
 		/// </summary>
 		public TSqlColumnStoreIndex(TSqlObject obj)  : base(obj, ColumnStoreIndex.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlColumnStoreIndex to adapt instances of <see cref="T:ColumnStoreIndex"/>
+		/// </summary>
+		protected TSqlColumnStoreIndex()
 		{
 		}
 
@@ -2551,78 +4648,151 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ColumnStoreIndexColumnsReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.columns.aspx">ColumnStoreIndex.Columns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ColumnStoreIndexColumnsReference> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(ColumnStoreIndex.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ColumnStoreIndex.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.ColumnStoreIndexColumnsReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.datacompressionoptions.aspx">ColumnStoreIndex.DataCompressionOptions</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(ColumnStoreIndex.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ColumnStoreIndex.DataCompressionOptions).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.filegroup.aspx">ColumnStoreIndex.Filegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(ColumnStoreIndex.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ColumnStoreIndex.Filegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
 		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.indexedobject.aspx">ColumnStoreIndex.IndexedObject</see>
-		///
+		/// Relationship Type:Hierarchical
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(ColumnStoreIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ColumnStoreIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISpecifiesIndexElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.partitioncolumn.aspx">ColumnStoreIndex.PartitionColumn</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(ColumnStoreIndex.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ColumnStoreIndex.PartitionColumn).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.partitionscheme.aspx">ColumnStoreIndex.PartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(ColumnStoreIndex.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ColumnStoreIndex.PartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Contract"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.contract.aspx">Contract</see>
+	///
+	public partial class TSqlContractReference : TSqlContract, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlContractReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Contract"/>
@@ -2639,6 +4809,14 @@ public partial class TSqlModelElement
 		{
 		}
 
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlContract to adapt instances of <see cref="T:Contract"/>
+		/// </summary>
+		protected TSqlContract()
+		{
+		}
+
 		public static ModelTypeClass TypeClass 
 		{
 			get { return typeClass;}
@@ -2647,28 +4825,101 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.contract.authorizer.aspx">Contract.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Contract.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Contract.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlMessageType"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ContractMessagesReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.contract.messages.aspx">Contract.Messages</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlMessageType> Messages 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ContractMessagesReference> Messages 
 		{
 			get 
 			{
-				return Element.GetReferenced(Contract.Messages).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlMessageType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Contract.Messages).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.ContractMessagesReference(o, Microsoft.SqlServer.Dac.Model.MessageType.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Credential"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.credential.aspx">Credential</see>
+	///
+	public partial class TSqlCredentialReference : TSqlCredential, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlCredentialReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Credential"/>
@@ -2682,6 +4933,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlCredential to adapt instances of <see cref="T:Credential"/>
 		/// </summary>
 		public TSqlCredential(TSqlObject obj)  : base(obj, Credential.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlCredential to adapt instances of <see cref="T:Credential"/>
+		/// </summary>
+		protected TSqlCredential()
 		{
 		}
 
@@ -2711,18 +4970,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCryptographicProvider"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCryptographicProviderReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.credential.cryptographicprovider.aspx">Credential.CryptographicProvider</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCryptographicProvider> CryptographicProvider 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCryptographicProviderReference> CryptographicProvider 
 		{
 			get 
 			{
-				return Element.GetReferenced(Credential.CryptographicProvider).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCryptographicProvider)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Credential.CryptographicProvider).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCryptographicProviderReference(o, Microsoft.SqlServer.Dac.Model.CryptographicProvider.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:CryptographicProvider"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.cryptographicprovider.aspx">CryptographicProvider</see>
+	///
+	public partial class TSqlCryptographicProviderReference : TSqlCryptographicProvider, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlCryptographicProviderReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:CryptographicProvider"/>
@@ -2736,6 +5068,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlCryptographicProvider to adapt instances of <see cref="T:CryptographicProvider"/>
 		/// </summary>
 		public TSqlCryptographicProvider(TSqlObject obj)  : base(obj, CryptographicProvider.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlCryptographicProvider to adapt instances of <see cref="T:CryptographicProvider"/>
+		/// </summary>
+		protected TSqlCryptographicProvider()
 		{
 		}
 
@@ -2766,6 +5106,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseAuditSpecification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseauditspecification.aspx">DatabaseAuditSpecification</see>
+	///
+	public partial class TSqlDatabaseAuditSpecificationReference : TSqlDatabaseAuditSpecification, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlDatabaseAuditSpecificationReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseAuditSpecification"/>
 	///
@@ -2778,6 +5191,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlDatabaseAuditSpecification to adapt instances of <see cref="T:DatabaseAuditSpecification"/>
 		/// </summary>
 		public TSqlDatabaseAuditSpecification(TSqlObject obj)  : base(obj, DatabaseAuditSpecification.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlDatabaseAuditSpecification to adapt instances of <see cref="T:DatabaseAuditSpecification"/>
+		/// </summary>
+		protected TSqlDatabaseAuditSpecification()
 		{
 		}
 
@@ -2799,40 +5220,113 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseauditspecification.auditactiongroups.aspx">DatabaseAuditSpecification.AuditActionGroups</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup> AuditActionGroups 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseAuditSpecification.AuditActionGroups).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseAuditSpecification.AuditActionGroups).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseauditspecification.auditactions.aspx">DatabaseAuditSpecification.AuditActions</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction> AuditActions 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseAuditSpecification.AuditActions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseAuditSpecification.AuditActions).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditAction(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAuditReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseauditspecification.serveraudit.aspx">DatabaseAuditSpecification.ServerAudit</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit> ServerAudit 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAuditReference> ServerAudit 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseAuditSpecification.ServerAudit).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DatabaseAuditSpecification.ServerAudit).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAuditReference(o, Microsoft.SqlServer.Dac.Model.ServerAudit.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseDdlTrigger"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.aspx">DatabaseDdlTrigger</see>
+	///
+	public partial class TSqlDatabaseDdlTriggerReference : TSqlDatabaseDdlTrigger, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlDatabaseDdlTriggerReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseDdlTrigger"/>
@@ -2846,6 +5340,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlDatabaseDdlTrigger to adapt instances of <see cref="T:DatabaseDdlTrigger"/>
 		/// </summary>
 		public TSqlDatabaseDdlTrigger(TSqlObject obj)  : base(obj, DatabaseDdlTrigger.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlDatabaseDdlTrigger to adapt instances of <see cref="T:DatabaseDdlTrigger"/>
+		/// </summary>
+		protected TSqlDatabaseDdlTrigger()
 		{
 		}
 
@@ -2955,45 +5457,45 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.assembly.aspx">DatabaseDdlTrigger.Assembly</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseDdlTrigger.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DatabaseDdlTrigger.Assembly).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference(o, Microsoft.SqlServer.Dac.Model.Assembly.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.bodydependencies.aspx">DatabaseDdlTrigger.BodyDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseDdlTrigger.BodyDependencies);
+				return Element.GetReferencedRelationshipInstances(DatabaseDdlTrigger.BodyDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.eventgroup.aspx">DatabaseDdlTrigger.EventGroup</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup> EventGroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseDdlTrigger.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseDdlTrigger.EventGroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.EventType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.eventtype.aspx">DatabaseDdlTrigger.EventType</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
 		{
 			get 
@@ -3003,30 +5505,103 @@ public partial class TSqlModelElement
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.login.aspx">DatabaseDdlTrigger.Login</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseDdlTrigger.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DatabaseDdlTrigger.Login).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference(o, Microsoft.SqlServer.Dac.Model.Login.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseddltrigger.user.aspx">DatabaseDdlTrigger.User</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseDdlTrigger.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DatabaseDdlTrigger.User).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference(o, Microsoft.SqlServer.Dac.Model.User.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseEncryptionKey"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseencryptionkey.aspx">DatabaseEncryptionKey</see>
+	///
+	public partial class TSqlDatabaseEncryptionKeyReference : TSqlDatabaseEncryptionKey, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlDatabaseEncryptionKeyReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseEncryptionKey"/>
@@ -3040,6 +5615,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlDatabaseEncryptionKey to adapt instances of <see cref="T:DatabaseEncryptionKey"/>
 		/// </summary>
 		public TSqlDatabaseEncryptionKey(TSqlObject obj)  : base(obj, DatabaseEncryptionKey.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlDatabaseEncryptionKey to adapt instances of <see cref="T:DatabaseEncryptionKey"/>
+		/// </summary>
+		protected TSqlDatabaseEncryptionKey()
 		{
 		}
 
@@ -3059,30 +5642,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseencryptionkey.asymmetrickey.aspx">DatabaseEncryptionKey.AsymmetricKey</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey> AsymmetricKey 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference> AsymmetricKey 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseEncryptionKey.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DatabaseEncryptionKey.AsymmetricKey).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference(o, Microsoft.SqlServer.Dac.Model.AsymmetricKey.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseencryptionkey.certificate.aspx">DatabaseEncryptionKey.Certificate</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> Certificate 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference> Certificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseEncryptionKey.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DatabaseEncryptionKey.Certificate).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference(o, Microsoft.SqlServer.Dac.Model.Certificate.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseEventNotification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseeventnotification.aspx">DatabaseEventNotification</see>
+	///
+	public partial class TSqlDatabaseEventNotificationReference : TSqlDatabaseEventNotification, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlDatabaseEventNotificationReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseEventNotification"/>
@@ -3096,6 +5752,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlDatabaseEventNotification to adapt instances of <see cref="T:DatabaseEventNotification"/>
 		/// </summary>
 		public TSqlDatabaseEventNotification(TSqlObject obj)  : base(obj, DatabaseEventNotification.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlDatabaseEventNotification to adapt instances of <see cref="T:DatabaseEventNotification"/>
+		/// </summary>
+		protected TSqlDatabaseEventNotification()
 		{
 		}
 
@@ -3137,19 +5801,19 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseeventnotification.eventgroup.aspx">DatabaseEventNotification.EventGroup</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup> EventGroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseEventNotification.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(DatabaseEventNotification.EventGroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.EventType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseeventnotification.eventtype.aspx">DatabaseEventNotification.EventType</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
 		{
 			get 
@@ -3159,6 +5823,79 @@ public partial class TSqlModelElement
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseMirroringLanguageSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databasemirroringlanguagespecifier.aspx">DatabaseMirroringLanguageSpecifier</see>
+	///
+	public partial class TSqlDatabaseMirroringLanguageSpecifierReference : TSqlDatabaseMirroringLanguageSpecifier, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlDatabaseMirroringLanguageSpecifierReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseMirroringLanguageSpecifier"/>
@@ -3172,6 +5909,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlDatabaseMirroringLanguageSpecifier to adapt instances of <see cref="T:DatabaseMirroringLanguageSpecifier"/>
 		/// </summary>
 		public TSqlDatabaseMirroringLanguageSpecifier(TSqlObject obj)  : base(obj, DatabaseMirroringLanguageSpecifier.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlDatabaseMirroringLanguageSpecifier to adapt instances of <see cref="T:DatabaseMirroringLanguageSpecifier"/>
+		/// </summary>
+		protected TSqlDatabaseMirroringLanguageSpecifier()
 		{
 		}
 
@@ -3241,18 +5986,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databasemirroringlanguagespecifier.authenticationcertificate.aspx">DatabaseMirroringLanguageSpecifier.AuthenticationCertificate</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> AuthenticationCertificate 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference> AuthenticationCertificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseMirroringLanguageSpecifier.AuthenticationCertificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DatabaseMirroringLanguageSpecifier.AuthenticationCertificate).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference(o, Microsoft.SqlServer.Dac.Model.Certificate.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseOptions"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.aspx">DatabaseOptions</see>
+	///
+	public partial class TSqlDatabaseOptionsReference : TSqlDatabaseOptions, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlDatabaseOptionsReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DatabaseOptions"/>
@@ -3266,6 +6084,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlDatabaseOptions to adapt instances of <see cref="T:DatabaseOptions"/>
 		/// </summary>
 		public TSqlDatabaseOptions(TSqlObject obj)  : base(obj, DatabaseOptions.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlDatabaseOptions to adapt instances of <see cref="T:DatabaseOptions"/>
+		/// </summary>
+		protected TSqlDatabaseOptions()
 		{
 		}
 
@@ -3805,30 +6631,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.defaultfilegroup.aspx">DatabaseOptions.DefaultFilegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> DefaultFilegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> DefaultFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseOptions.DefaultFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DatabaseOptions.DefaultFilegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.databaseoptions.defaultfilestreamfilegroup.aspx">DatabaseOptions.DefaultFileStreamFilegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> DefaultFileStreamFilegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> DefaultFileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(DatabaseOptions.DefaultFileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DatabaseOptions.DefaultFileStreamFilegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DataCompressionOption"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datacompressionoption.aspx">DataCompressionOption</see>
+	///
+	public partial class TSqlDataCompressionOptionReference : TSqlDataCompressionOption, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlDataCompressionOptionReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DataCompressionOption"/>
@@ -3842,6 +6741,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlDataCompressionOption to adapt instances of <see cref="T:DataCompressionOption"/>
 		/// </summary>
 		public TSqlDataCompressionOption(TSqlObject obj)  : base(obj, DataCompressionOption.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlDataCompressionOption to adapt instances of <see cref="T:DataCompressionOption"/>
+		/// </summary>
+		protected TSqlDataCompressionOption()
 		{
 		}
 
@@ -3872,6 +6779,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Default"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.default.aspx">Default</see>
+	///
+	public partial class TSqlDefaultReference : TSqlDefault, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlDefaultReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Default"/>
 	///
@@ -3884,6 +6864,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlDefault to adapt instances of <see cref="T:Default"/>
 		/// </summary>
 		public TSqlDefault(TSqlObject obj)  : base(obj, Default.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlDefault to adapt instances of <see cref="T:Default"/>
+		/// </summary>
+		protected TSqlDefault()
 		{
 		}
 
@@ -3903,30 +6891,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.default.boundobjects.aspx">Default.BoundObjects</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BoundObjects 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> BoundObjects 
 		{
 			get 
 			{
-				return Element.GetReferenced(Default.BoundObjects);
+				return Element.GetReferencedRelationshipInstances(Default.BoundObjects).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.default.schema.aspx">Default.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Default.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Default.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DefaultConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.defaultconstraint.aspx">DefaultConstraint</see>
+	///
+	public partial class TSqlDefaultConstraintReference : TSqlDefaultConstraint, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlDefaultConstraintReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DefaultConstraint"/>
@@ -3940,6 +7001,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlDefaultConstraint to adapt instances of <see cref="T:DefaultConstraint"/>
 		/// </summary>
 		public TSqlDefaultConstraint(TSqlObject obj)  : base(obj, DefaultConstraint.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlDefaultConstraint to adapt instances of <see cref="T:DefaultConstraint"/>
+		/// </summary>
+		protected TSqlDefaultConstraint()
 		{
 		}
 
@@ -3979,42 +7048,115 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.defaultconstraint.expressiondependencies.aspx">DefaultConstraint.ExpressionDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(DefaultConstraint.ExpressionDependencies);
+				return Element.GetReferencedRelationshipInstances(DefaultConstraint.ExpressionDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.defaultconstraint.host.aspx">DefaultConstraint.Host</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> Host 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(DefaultConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DefaultConstraint.Host).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference(o, Microsoft.SqlServer.Dac.Model.Table.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.defaultconstraint.targetcolumn.aspx">DefaultConstraint.TargetColumn</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> TargetColumn 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> TargetColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(DefaultConstraint.TargetColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DefaultConstraint.TargetColumn).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DmlTrigger"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.aspx">DmlTrigger</see>
+	///
+	public partial class TSqlDmlTriggerReference : TSqlDmlTrigger, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlDmlTriggerReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:DmlTrigger"/>
@@ -4028,6 +7170,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlDmlTrigger to adapt instances of <see cref="T:DmlTrigger"/>
 		/// </summary>
 		public TSqlDmlTrigger(TSqlObject obj)  : base(obj, DmlTrigger.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlDmlTrigger to adapt instances of <see cref="T:DmlTrigger"/>
+		/// </summary>
+		protected TSqlDmlTrigger()
 		{
 		}
 
@@ -4217,66 +7367,139 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.assembly.aspx">DmlTrigger.Assembly</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(DmlTrigger.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DmlTrigger.Assembly).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference(o, Microsoft.SqlServer.Dac.Model.Assembly.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.bodydependencies.aspx">DmlTrigger.BodyDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(DmlTrigger.BodyDependencies);
+				return Element.GetReferencedRelationshipInstances(DmlTrigger.BodyDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.login.aspx">DmlTrigger.Login</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(DmlTrigger.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DmlTrigger.Login).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference(o, Microsoft.SqlServer.Dac.Model.Login.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.triggerobject.aspx">DmlTrigger.TriggerObject</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> TriggerObject 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> TriggerObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(DmlTrigger.TriggerObject);
+				return Element.GetReferencedRelationshipInstances(DmlTrigger.TriggerObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.dmltrigger.user.aspx">DmlTrigger.User</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(DmlTrigger.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(DmlTrigger.User).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference(o, Microsoft.SqlServer.Dac.Model.User.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Endpoint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.endpoint.aspx">Endpoint</see>
+	///
+	public partial class TSqlEndpointReference : TSqlEndpoint, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlEndpointReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Endpoint"/>
@@ -4290,6 +7513,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlEndpoint to adapt instances of <see cref="T:Endpoint"/>
 		/// </summary>
 		public TSqlEndpoint(TSqlObject obj)  : base(obj, Endpoint.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlEndpoint to adapt instances of <see cref="T:Endpoint"/>
+		/// </summary>
+		protected TSqlEndpoint()
 		{
 		}
 
@@ -4331,40 +7562,113 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.endpoint.authorizer.aspx">Endpoint.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Endpoint.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Endpoint.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.endpoint.payloadspecifier.aspx">Endpoint.PayloadSpecifier</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier> PayloadSpecifier 
 		{
 			get 
 			{
-				return Element.GetReferenced(Endpoint.PayloadSpecifier).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Endpoint.PayloadSpecifier).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IEndpointLanguageSpecifier)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier "/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.endpoint.protocolspecifier.aspx">Endpoint.ProtocolSpecifier</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier > ProtocolSpecifier 
 		{
 			get 
 			{
-				return Element.GetReferenced(Endpoint.ProtocolSpecifier).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier )TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Endpoint.ProtocolSpecifier).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IProtocolSpecifier )TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ErrorMessage"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.errormessage.aspx">ErrorMessage</see>
+	///
+	public partial class TSqlErrorMessageReference : TSqlErrorMessage, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlErrorMessageReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ErrorMessage"/>
@@ -4378,6 +7682,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlErrorMessage to adapt instances of <see cref="T:ErrorMessage"/>
 		/// </summary>
 		public TSqlErrorMessage(TSqlObject obj)  : base(obj, ErrorMessage.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlErrorMessage to adapt instances of <see cref="T:ErrorMessage"/>
+		/// </summary>
+		protected TSqlErrorMessage()
 		{
 		}
 
@@ -4438,6 +7750,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventGroup"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventgroup.aspx">EventGroup</see>
+	///
+	public partial class TSqlEventGroupReference : TSqlEventGroup, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlEventGroupReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventGroup"/>
 	///
@@ -4450,6 +7835,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlEventGroup to adapt instances of <see cref="T:EventGroup"/>
 		/// </summary>
 		public TSqlEventGroup(TSqlObject obj)  : base(obj, EventGroup.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlEventGroup to adapt instances of <see cref="T:EventGroup"/>
+		/// </summary>
+		protected TSqlEventGroup()
 		{
 		}
 
@@ -4470,6 +7863,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSession"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.aspx">EventSession</see>
+	///
+	public partial class TSqlEventSessionReference : TSqlEventSession, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlEventSessionReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSession"/>
 	///
@@ -4482,6 +7948,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlEventSession to adapt instances of <see cref="T:EventSession"/>
 		/// </summary>
 		public TSqlEventSession(TSqlObject obj)  : base(obj, EventSession.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlEventSession to adapt instances of <see cref="T:EventSession"/>
+		/// </summary>
+		protected TSqlEventSession()
 		{
 		}
 
@@ -4581,30 +8055,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.eventdefinitions.aspx">EventSession.EventDefinitions</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> EventDefinitions 
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> EventDefinitions 
 		{
 			get 
 			{
-				return Element.GetReferenced(EventSession.EventDefinitions);
+				return Element.GetReferenced(EventSession.EventDefinitions).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsession.eventtargets.aspx">EventSession.EventTargets</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> EventTargets 
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> EventTargets 
 		{
 			get 
 			{
-				return Element.GetReferenced(EventSession.EventTargets);
+				return Element.GetReferenced(EventSession.EventTargets).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionAction"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessionaction.aspx">EventSessionAction</see>
+	///
+	public partial class TSqlEventSessionActionReference : TSqlEventSessionAction, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlEventSessionActionReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionAction"/>
@@ -4618,6 +8165,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlEventSessionAction to adapt instances of <see cref="T:EventSessionAction"/>
 		/// </summary>
 		public TSqlEventSessionAction(TSqlObject obj)  : base(obj, EventSessionAction.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlEventSessionAction to adapt instances of <see cref="T:EventSessionAction"/>
+		/// </summary>
+		protected TSqlEventSessionAction()
 		{
 		}
 
@@ -4658,6 +8213,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionDefinitions"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiondefinitions.aspx">EventSessionDefinitions</see>
+	///
+	public partial class TSqlEventSessionDefinitionsReference : TSqlEventSessionDefinitions, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlEventSessionDefinitionsReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionDefinitions"/>
 	///
@@ -4670,6 +8298,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlEventSessionDefinitions to adapt instances of <see cref="T:EventSessionDefinitions"/>
 		/// </summary>
 		public TSqlEventSessionDefinitions(TSqlObject obj)  : base(obj, EventSessionDefinitions.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlEventSessionDefinitions to adapt instances of <see cref="T:EventSessionDefinitions"/>
+		/// </summary>
+		protected TSqlEventSessionDefinitions()
 		{
 		}
 
@@ -4721,28 +8357,101 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventSessionAction"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiondefinitions.actions.aspx">EventSessionDefinitions.Actions</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventSessionAction> Actions 
 		{
 			get 
 			{
-				return Element.GetReferenced(EventSessionDefinitions.Actions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventSessionAction)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(EventSessionDefinitions.Actions).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventSessionAction(o));
 			}
 		}
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiondefinitions.attributesettings.aspx">EventSessionDefinitions.AttributeSettings</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> AttributeSettings 
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> AttributeSettings 
 		{
 			get 
 			{
-				return Element.GetReferenced(EventSessionDefinitions.AttributeSettings);
+				return Element.GetReferenced(EventSessionDefinitions.AttributeSettings).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionSetting"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessionsetting.aspx">EventSessionSetting</see>
+	///
+	public partial class TSqlEventSessionSettingReference : TSqlEventSessionSetting, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlEventSessionSettingReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionSetting"/>
@@ -4756,6 +8465,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlEventSessionSetting to adapt instances of <see cref="T:EventSessionSetting"/>
 		/// </summary>
 		public TSqlEventSessionSetting(TSqlObject obj)  : base(obj, EventSessionSetting.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlEventSessionSetting to adapt instances of <see cref="T:EventSessionSetting"/>
+		/// </summary>
+		protected TSqlEventSessionSetting()
 		{
 		}
 
@@ -4786,6 +8503,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionTarget"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiontarget.aspx">EventSessionTarget</see>
+	///
+	public partial class TSqlEventSessionTargetReference : TSqlEventSessionTarget, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlEventSessionTargetReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventSessionTarget"/>
 	///
@@ -4798,6 +8588,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlEventSessionTarget to adapt instances of <see cref="T:EventSessionTarget"/>
 		/// </summary>
 		public TSqlEventSessionTarget(TSqlObject obj)  : base(obj, EventSessionTarget.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlEventSessionTarget to adapt instances of <see cref="T:EventSessionTarget"/>
+		/// </summary>
+		protected TSqlEventSessionTarget()
 		{
 		}
 
@@ -4837,18 +8635,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventsessiontarget.parametersettings.aspx">EventSessionTarget.ParameterSettings</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ParameterSettings 
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ParameterSettings 
 		{
 			get 
 			{
-				return Element.GetReferenced(EventSessionTarget.ParameterSettings);
+				return Element.GetReferenced(EventSessionTarget.ParameterSettings).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventTypeSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.eventtypespecifier.aspx">EventTypeSpecifier</see>
+	///
+	public partial class TSqlEventTypeSpecifierReference : TSqlEventTypeSpecifier, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlEventTypeSpecifierReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:EventTypeSpecifier"/>
@@ -4862,6 +8733,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlEventTypeSpecifier to adapt instances of <see cref="T:EventTypeSpecifier"/>
 		/// </summary>
 		public TSqlEventTypeSpecifier(TSqlObject obj)  : base(obj, EventTypeSpecifier.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlEventTypeSpecifier to adapt instances of <see cref="T:EventTypeSpecifier"/>
+		/// </summary>
+		protected TSqlEventTypeSpecifier()
 		{
 		}
 
@@ -4892,6 +8771,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ExtendedProcedure"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.aspx">ExtendedProcedure</see>
+	///
+	public partial class TSqlExtendedProcedureReference : TSqlExtendedProcedure, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlExtendedProcedureReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ExtendedProcedure"/>
 	///
@@ -4904,6 +8856,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlExtendedProcedure to adapt instances of <see cref="T:ExtendedProcedure"/>
 		/// </summary>
 		public TSqlExtendedProcedure(TSqlObject obj)  : base(obj, ExtendedProcedure.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlExtendedProcedure to adapt instances of <see cref="T:ExtendedProcedure"/>
+		/// </summary>
+		protected TSqlExtendedProcedure()
 		{
 		}
 
@@ -4953,54 +8913,127 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.login.aspx">ExtendedProcedure.Login</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(ExtendedProcedure.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ExtendedProcedure.Login).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference(o, Microsoft.SqlServer.Dac.Model.Login.TypeClass));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.parameters.aspx">ExtendedProcedure.Parameters</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(ExtendedProcedure.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ExtendedProcedure.Parameters).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter(o));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.schema.aspx">ExtendedProcedure.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(ExtendedProcedure.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ExtendedProcedure.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedprocedure.user.aspx">ExtendedProcedure.User</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(ExtendedProcedure.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ExtendedProcedure.User).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference(o, Microsoft.SqlServer.Dac.Model.User.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ExtendedProperty"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedproperty.aspx">ExtendedProperty</see>
+	///
+	public partial class TSqlExtendedPropertyReference : TSqlExtendedProperty, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlExtendedPropertyReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ExtendedProperty"/>
@@ -5014,6 +9047,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlExtendedProperty to adapt instances of <see cref="T:ExtendedProperty"/>
 		/// </summary>
 		public TSqlExtendedProperty(TSqlObject obj)  : base(obj, ExtendedProperty.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlExtendedProperty to adapt instances of <see cref="T:ExtendedProperty"/>
+		/// </summary>
+		protected TSqlExtendedProperty()
 		{
 		}
 
@@ -5035,16 +9076,89 @@ public partial class TSqlModelElement
 		///
 		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.extendedproperty.host.aspx">ExtendedProperty.Host</see>
-		///
+		/// Relationship Type:Hierarchical
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(ExtendedProperty.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ExtendedProperty.Host).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IExtendedPropertyHost>();
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SqlFile"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.aspx">SqlFile</see>
+	///
+	public partial class TSqlSqlFileReference : TSqlSqlFile, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSqlFileReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SqlFile"/>
@@ -5058,6 +9172,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSqlFile to adapt instances of <see cref="T:SqlFile"/>
 		/// </summary>
 		public TSqlSqlFile(TSqlObject obj)  : base(obj, SqlFile.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSqlFile to adapt instances of <see cref="T:SqlFile"/>
+		/// </summary>
+		protected TSqlSqlFile()
 		{
 		}
 
@@ -5167,18 +9289,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sqlfile.filegroup.aspx">SqlFile.Filegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(SqlFile.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SqlFile.Filegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Filegroup"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filegroup.aspx">Filegroup</see>
+	///
+	public partial class TSqlFilegroupReference : TSqlFilegroup, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlFilegroupReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Filegroup"/>
@@ -5192,6 +9387,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlFilegroup to adapt instances of <see cref="T:Filegroup"/>
 		/// </summary>
 		public TSqlFilegroup(TSqlObject obj)  : base(obj, Filegroup.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlFilegroup to adapt instances of <see cref="T:Filegroup"/>
+		/// </summary>
+		protected TSqlFilegroup()
 		{
 		}
 
@@ -5232,6 +9435,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ForeignKeyConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.aspx">ForeignKeyConstraint</see>
+	///
+	public partial class TSqlForeignKeyConstraintReference : TSqlForeignKeyConstraint, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlForeignKeyConstraintReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ForeignKeyConstraint"/>
 	///
@@ -5244,6 +9520,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlForeignKeyConstraint to adapt instances of <see cref="T:ForeignKeyConstraint"/>
 		/// </summary>
 		public TSqlForeignKeyConstraint(TSqlObject obj)  : base(obj, ForeignKeyConstraint.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlForeignKeyConstraint to adapt instances of <see cref="T:ForeignKeyConstraint"/>
+		/// </summary>
+		protected TSqlForeignKeyConstraint()
 		{
 		}
 
@@ -5293,54 +9577,127 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.columns.aspx">ForeignKeyConstraint.Columns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(ForeignKeyConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ForeignKeyConstraint.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.foreigncolumns.aspx">ForeignKeyConstraint.ForeignColumns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> ForeignColumns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> ForeignColumns 
 		{
 			get 
 			{
-				return Element.GetReferenced(ForeignKeyConstraint.ForeignColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ForeignKeyConstraint.ForeignColumns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.foreigntable.aspx">ForeignKeyConstraint.ForeignTable</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> ForeignTable 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference> ForeignTable 
 		{
 			get 
 			{
-				return Element.GetReferenced(ForeignKeyConstraint.ForeignTable).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ForeignKeyConstraint.ForeignTable).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference(o, Microsoft.SqlServer.Dac.Model.Table.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.foreignkeyconstraint.host.aspx">ForeignKeyConstraint.Host</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> Host 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(ForeignKeyConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ForeignKeyConstraint.Host).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference(o, Microsoft.SqlServer.Dac.Model.Table.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextCatalog"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextcatalog.aspx">FullTextCatalog</see>
+	///
+	public partial class TSqlFullTextCatalogReference : TSqlFullTextCatalog, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlFullTextCatalogReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextCatalog"/>
@@ -5354,6 +9711,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlFullTextCatalog to adapt instances of <see cref="T:FullTextCatalog"/>
 		/// </summary>
 		public TSqlFullTextCatalog(TSqlObject obj)  : base(obj, FullTextCatalog.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlFullTextCatalog to adapt instances of <see cref="T:FullTextCatalog"/>
+		/// </summary>
+		protected TSqlFullTextCatalog()
 		{
 		}
 
@@ -5395,28 +9760,101 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextcatalog.authorizer.aspx">FullTextCatalog.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextCatalog.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FullTextCatalog.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextcatalog.filegroup.aspx">FullTextCatalog.Filegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextCatalog.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FullTextCatalog.Filegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.aspx">FullTextIndex</see>
+	///
+	public partial class TSqlFullTextIndexReference : TSqlFullTextIndex, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlFullTextIndexReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextIndex"/>
@@ -5430,6 +9868,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlFullTextIndex to adapt instances of <see cref="T:FullTextIndex"/>
 		/// </summary>
 		public TSqlFullTextIndex(TSqlObject obj)  : base(obj, FullTextIndex.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlFullTextIndex to adapt instances of <see cref="T:FullTextIndex"/>
+		/// </summary>
+		protected TSqlFullTextIndex()
 		{
 		}
 
@@ -5489,90 +9935,163 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.catalog.aspx">FullTextIndex.Catalog</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Catalog 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference> Catalog 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextIndex.Catalog);
+				return Element.GetReferencedRelationshipInstances(FullTextIndex.Catalog).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference>();
 			}
 		}
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFullTextIndexColumnSpecifier"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.columns.aspx">FullTextIndex.Columns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFullTextIndexColumnSpecifier> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextIndex.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FullTextIndex.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFullTextIndexColumnSpecifier(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.filegroup.aspx">FullTextIndex.Filegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextIndex.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FullTextIndex.Filegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
 		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.indexedobject.aspx">FullTextIndex.IndexedObject</see>
-		///
+		/// Relationship Type:Hierarchical
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FullTextIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISpecifiesIndexElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyListReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.searchpropertylist.aspx">FullTextIndex.SearchPropertyList</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList> SearchPropertyList 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyListReference> SearchPropertyList 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextIndex.SearchPropertyList).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FullTextIndex.SearchPropertyList).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyListReference(o, Microsoft.SqlServer.Dac.Model.SearchPropertyList.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.stoplist.aspx">FullTextIndex.StopList</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> StopList 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> StopList 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextIndex.StopList);
+				return Element.GetReferencedRelationshipInstances(FullTextIndex.StopList).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindex.uniqueindexname.aspx">FullTextIndex.UniqueIndexName</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> UniqueIndexName 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> UniqueIndexName 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextIndex.UniqueIndexName);
+				return Element.GetReferencedRelationshipInstances(FullTextIndex.UniqueIndexName).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextIndexColumnSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindexcolumnspecifier.aspx">FullTextIndexColumnSpecifier</see>
+	///
+	public partial class TSqlFullTextIndexColumnSpecifierReference : TSqlFullTextIndexColumnSpecifier, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlFullTextIndexColumnSpecifierReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextIndexColumnSpecifier"/>
@@ -5586,6 +10105,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlFullTextIndexColumnSpecifier to adapt instances of <see cref="T:FullTextIndexColumnSpecifier"/>
 		/// </summary>
 		public TSqlFullTextIndexColumnSpecifier(TSqlObject obj)  : base(obj, FullTextIndexColumnSpecifier.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlFullTextIndexColumnSpecifier to adapt instances of <see cref="T:FullTextIndexColumnSpecifier"/>
+		/// </summary>
+		protected TSqlFullTextIndexColumnSpecifier()
 		{
 		}
 
@@ -5615,30 +10142,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindexcolumnspecifier.column.aspx">FullTextIndexColumnSpecifier.Column</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Column 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> Column 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextIndexColumnSpecifier.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FullTextIndexColumnSpecifier.Column).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextindexcolumnspecifier.typecolumn.aspx">FullTextIndexColumnSpecifier.TypeColumn</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> TypeColumn 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> TypeColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextIndexColumnSpecifier.TypeColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FullTextIndexColumnSpecifier.TypeColumn).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextStopList"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextstoplist.aspx">FullTextStopList</see>
+	///
+	public partial class TSqlFullTextStopListReference : TSqlFullTextStopList, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlFullTextStopListReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FullTextStopList"/>
@@ -5655,6 +10255,14 @@ public partial class TSqlModelElement
 		{
 		}
 
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlFullTextStopList to adapt instances of <see cref="T:FullTextStopList"/>
+		/// </summary>
+		protected TSqlFullTextStopList()
+		{
+		}
+
 		public static ModelTypeClass TypeClass 
 		{
 			get { return typeClass;}
@@ -5663,16 +10271,89 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.fulltextstoplist.authorizer.aspx">FullTextStopList.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(FullTextStopList.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FullTextStopList.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:HttpProtocolSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.httpprotocolspecifier.aspx">HttpProtocolSpecifier</see>
+	///
+	public partial class TSqlHttpProtocolSpecifierReference : TSqlHttpProtocolSpecifier, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlHttpProtocolSpecifierReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:HttpProtocolSpecifier"/>
@@ -5686,6 +10367,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlHttpProtocolSpecifier to adapt instances of <see cref="T:HttpProtocolSpecifier"/>
 		/// </summary>
 		public TSqlHttpProtocolSpecifier(TSqlObject obj)  : base(obj, HttpProtocolSpecifier.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlHttpProtocolSpecifier to adapt instances of <see cref="T:HttpProtocolSpecifier"/>
+		/// </summary>
+		protected TSqlHttpProtocolSpecifier()
 		{
 		}
 
@@ -5806,6 +10495,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:LinkedServer"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserver.aspx">LinkedServer</see>
+	///
+	public partial class TSqlLinkedServerReference : TSqlLinkedServer, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlLinkedServerReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:LinkedServer"/>
 	///
@@ -5818,6 +10580,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlLinkedServer to adapt instances of <see cref="T:LinkedServer"/>
 		/// </summary>
 		public TSqlLinkedServer(TSqlObject obj)  : base(obj, LinkedServer.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlLinkedServer to adapt instances of <see cref="T:LinkedServer"/>
+		/// </summary>
+		protected TSqlLinkedServer()
 		{
 		}
 
@@ -6018,6 +10788,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:LinkedServerLogin"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserverlogin.aspx">LinkedServerLogin</see>
+	///
+	public partial class TSqlLinkedServerLoginReference : TSqlLinkedServerLogin, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlLinkedServerLoginReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:LinkedServerLogin"/>
 	///
@@ -6030,6 +10873,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlLinkedServerLogin to adapt instances of <see cref="T:LinkedServerLogin"/>
 		/// </summary>
 		public TSqlLinkedServerLogin(TSqlObject obj)  : base(obj, LinkedServerLogin.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlLinkedServerLogin to adapt instances of <see cref="T:LinkedServerLogin"/>
+		/// </summary>
+		protected TSqlLinkedServerLogin()
 		{
 		}
 
@@ -6069,30 +10920,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLinkedServer"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLinkedServerReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserverlogin.linkedserver.aspx">LinkedServerLogin.LinkedServer</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLinkedServer> LinkedServer 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLinkedServerReference> LinkedServer 
 		{
 			get 
 			{
-				return Element.GetReferenced(LinkedServerLogin.LinkedServer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLinkedServer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(LinkedServerLogin.LinkedServer).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLinkedServerReference(o, Microsoft.SqlServer.Dac.Model.LinkedServer.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.linkedserverlogin.locallogin.aspx">LinkedServerLogin.LocalLogin</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> LocalLogin 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference> LocalLogin 
 		{
 			get 
 			{
-				return Element.GetReferenced(LinkedServerLogin.LocalLogin).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(LinkedServerLogin.LocalLogin).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference(o, Microsoft.SqlServer.Dac.Model.Login.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Login"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.aspx">Login</see>
+	///
+	public partial class TSqlLoginReference : TSqlLogin, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlLoginReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Login"/>
@@ -6106,6 +11030,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlLogin to adapt instances of <see cref="T:Login"/>
 		/// </summary>
 		public TSqlLogin(TSqlObject obj)  : base(obj, Login.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlLogin to adapt instances of <see cref="T:Login"/>
+		/// </summary>
+		protected TSqlLogin()
 		{
 		}
 
@@ -6225,42 +11157,115 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.asymmetrickey.aspx">Login.AsymmetricKey</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey> AsymmetricKey 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference> AsymmetricKey 
 		{
 			get 
 			{
-				return Element.GetReferenced(Login.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Login.AsymmetricKey).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference(o, Microsoft.SqlServer.Dac.Model.AsymmetricKey.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.certificate.aspx">Login.Certificate</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> Certificate 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference> Certificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(Login.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Login.Certificate).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference(o, Microsoft.SqlServer.Dac.Model.Certificate.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCredential"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCredentialReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.login.credential.aspx">Login.Credential</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCredential> Credential 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCredentialReference> Credential 
 		{
 			get 
 			{
-				return Element.GetReferenced(Login.Credential).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCredential)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Login.Credential).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCredentialReference(o, Microsoft.SqlServer.Dac.Model.Credential.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:MasterKey"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.masterkey.aspx">MasterKey</see>
+	///
+	public partial class TSqlMasterKeyReference : TSqlMasterKey, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlMasterKeyReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:MasterKey"/>
@@ -6274,6 +11279,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlMasterKey to adapt instances of <see cref="T:MasterKey"/>
 		/// </summary>
 		public TSqlMasterKey(TSqlObject obj)  : base(obj, MasterKey.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlMasterKey to adapt instances of <see cref="T:MasterKey"/>
+		/// </summary>
+		protected TSqlMasterKey()
 		{
 		}
 
@@ -6294,6 +11307,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:MessageType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.messagetype.aspx">MessageType</see>
+	///
+	public partial class TSqlMessageTypeReference : TSqlMessageType, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlMessageTypeReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:MessageType"/>
 	///
@@ -6306,6 +11392,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlMessageType to adapt instances of <see cref="T:MessageType"/>
 		/// </summary>
 		public TSqlMessageType(TSqlObject obj)  : base(obj, MessageType.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlMessageType to adapt instances of <see cref="T:MessageType"/>
+		/// </summary>
+		protected TSqlMessageType()
 		{
 		}
 
@@ -6327,28 +11421,101 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.messagetype.authorizer.aspx">MessageType.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(MessageType.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(MessageType.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.messagetype.xmlschemacollection.aspx">MessageType.XmlSchemaCollection</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection> XmlSchemaCollection 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference> XmlSchemaCollection 
 		{
 			get 
 			{
-				return Element.GetReferenced(MessageType.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(MessageType.XmlSchemaCollection).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference(o, Microsoft.SqlServer.Dac.Model.XmlSchemaCollection.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PartitionFunction"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionfunction.aspx">PartitionFunction</see>
+	///
+	public partial class TSqlPartitionFunctionReference : TSqlPartitionFunction, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlPartitionFunctionReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PartitionFunction"/>
@@ -6362,6 +11529,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlPartitionFunction to adapt instances of <see cref="T:PartitionFunction"/>
 		/// </summary>
 		public TSqlPartitionFunction(TSqlObject obj)  : base(obj, PartitionFunction.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlPartitionFunction to adapt instances of <see cref="T:PartitionFunction"/>
+		/// </summary>
+		protected TSqlPartitionFunction()
 		{
 		}
 
@@ -6383,28 +11558,101 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionValue"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionfunction.boundaryvalues.aspx">PartitionFunction.BoundaryValues</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionValue> BoundaryValues 
 		{
 			get 
 			{
-				return Element.GetReferenced(PartitionFunction.BoundaryValues).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionValue)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PartitionFunction.BoundaryValues).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionValue(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionfunction.parametertype.aspx">PartitionFunction.ParameterType</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> ParameterType 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> ParameterType 
 		{
 			get 
 			{
-				return Element.GetReferenced(PartitionFunction.ParameterType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(PartitionFunction.ParameterType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PartitionScheme"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionscheme.aspx">PartitionScheme</see>
+	///
+	public partial class TSqlPartitionSchemeReference : TSqlPartitionScheme, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlPartitionSchemeReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PartitionScheme"/>
@@ -6418,6 +11666,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlPartitionScheme to adapt instances of <see cref="T:PartitionScheme"/>
 		/// </summary>
 		public TSqlPartitionScheme(TSqlObject obj)  : base(obj, PartitionScheme.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlPartitionScheme to adapt instances of <see cref="T:PartitionScheme"/>
+		/// </summary>
+		protected TSqlPartitionScheme()
 		{
 		}
 
@@ -6437,30 +11693,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionSchemeFilegroupsReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionscheme.filegroups.aspx">PartitionScheme.Filegroups</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroups 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionSchemeFilegroupsReference> Filegroups 
 		{
 			get 
 			{
-				return Element.GetReferenced(PartitionScheme.Filegroups).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(PartitionScheme.Filegroups).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.PartitionSchemeFilegroupsReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionFunction"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionFunctionReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionscheme.partitionfunction.aspx">PartitionScheme.PartitionFunction</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionFunction> PartitionFunction 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionFunctionReference> PartitionFunction 
 		{
 			get 
 			{
-				return Element.GetReferenced(PartitionScheme.PartitionFunction).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionFunction)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(PartitionScheme.PartitionFunction).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionFunctionReference(o, Microsoft.SqlServer.Dac.Model.PartitionFunction.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PartitionValue"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionvalue.aspx">PartitionValue</see>
+	///
+	public partial class TSqlPartitionValueReference : TSqlPartitionValue, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlPartitionValueReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PartitionValue"/>
@@ -6474,6 +11803,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlPartitionValue to adapt instances of <see cref="T:PartitionValue"/>
 		/// </summary>
 		public TSqlPartitionValue(TSqlObject obj)  : base(obj, PartitionValue.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlPartitionValue to adapt instances of <see cref="T:PartitionValue"/>
+		/// </summary>
+		protected TSqlPartitionValue()
 		{
 		}
 
@@ -6493,18 +11830,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.partitionvalue.expressiondependencies.aspx">PartitionValue.ExpressionDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(PartitionValue.ExpressionDependencies);
+				return Element.GetReferencedRelationshipInstances(PartitionValue.ExpressionDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Permission"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.aspx">Permission</see>
+	///
+	public partial class TSqlPermissionReference : TSqlPermission, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlPermissionReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Permission"/>
@@ -6518,6 +11928,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlPermission to adapt instances of <see cref="T:Permission"/>
 		/// </summary>
 		public TSqlPermission(TSqlObject obj)  : base(obj, Permission.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlPermission to adapt instances of <see cref="T:Permission"/>
+		/// </summary>
+		protected TSqlPermission()
 		{
 		}
 
@@ -6567,66 +11985,139 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.excludedcolumns.aspx">Permission.ExcludedColumns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> ExcludedColumns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> ExcludedColumns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Permission.ExcludedColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Permission.ExcludedColumns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal "/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.grantee.aspx">Permission.Grantee</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > Grantee 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> Grantee 
 		{
 			get 
 			{
-				return Element.GetReferenced(Permission.Grantee).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal )TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Permission.Grantee).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal>();
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal "/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.grantor.aspx">Permission.Grantor</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > Grantor 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> Grantor 
 		{
 			get 
 			{
-				return Element.GetReferenced(Permission.Grantor).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal )TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Permission.Grantor).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal>();
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.revokedgrantoptioncolumns.aspx">Permission.RevokedGrantOptionColumns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> RevokedGrantOptionColumns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Permission.RevokedGrantOptionColumns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Permission.RevokedGrantOptionColumns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
 		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.permission.securedobject.aspx">Permission.SecuredObject</see>
-		///
+		/// Relationship Type:Hierarchical
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable> SecuredObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Permission.SecuredObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Permission.SecuredObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurable)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlSecurableElement(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PrimaryKeyConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.aspx">PrimaryKeyConstraint</see>
+	///
+	public partial class TSqlPrimaryKeyConstraintReference : TSqlPrimaryKeyConstraint, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlPrimaryKeyConstraintReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PrimaryKeyConstraint"/>
@@ -6640,6 +12131,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlPrimaryKeyConstraint to adapt instances of <see cref="T:PrimaryKeyConstraint"/>
 		/// </summary>
 		public TSqlPrimaryKeyConstraint(TSqlObject obj)  : base(obj, PrimaryKeyConstraint.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlPrimaryKeyConstraint to adapt instances of <see cref="T:PrimaryKeyConstraint"/>
+		/// </summary>
+		protected TSqlPrimaryKeyConstraint()
 		{
 		}
 
@@ -6759,102 +12258,175 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.PrimaryKeyConstraintColumnsReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.columns.aspx">PrimaryKeyConstraint.Columns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.PrimaryKeyConstraintColumnsReference> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(PrimaryKeyConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(PrimaryKeyConstraint.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.PrimaryKeyConstraintColumnsReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.datacompressionoptions.aspx">PrimaryKeyConstraint.DataCompressionOptions</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(PrimaryKeyConstraint.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(PrimaryKeyConstraint.DataCompressionOptions).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.filegroup.aspx">PrimaryKeyConstraint.Filegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(PrimaryKeyConstraint.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(PrimaryKeyConstraint.Filegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.filestreamfilegroup.aspx">PrimaryKeyConstraint.FileStreamFilegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FileStreamFilegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> FileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(PrimaryKeyConstraint.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(PrimaryKeyConstraint.FileStreamFilegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.filestreampartitionscheme.aspx">PrimaryKeyConstraint.FileStreamPartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> FileStreamPartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(PrimaryKeyConstraint.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(PrimaryKeyConstraint.FileStreamPartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.host.aspx">PrimaryKeyConstraint.Host</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> Host 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(PrimaryKeyConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(PrimaryKeyConstraint.Host).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference(o, Microsoft.SqlServer.Dac.Model.Table.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.partitioncolumn.aspx">PrimaryKeyConstraint.PartitionColumn</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(PrimaryKeyConstraint.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(PrimaryKeyConstraint.PartitionColumn).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.primarykeyconstraint.partitionscheme.aspx">PrimaryKeyConstraint.PartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(PrimaryKeyConstraint.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(PrimaryKeyConstraint.PartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Procedure"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.aspx">Procedure</see>
+	///
+	public partial class TSqlProcedureReference : TSqlProcedure, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlProcedureReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Procedure"/>
@@ -6868,6 +12440,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlProcedure to adapt instances of <see cref="T:Procedure"/>
 		/// </summary>
 		public TSqlProcedure(TSqlObject obj)  : base(obj, Procedure.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlProcedure to adapt instances of <see cref="T:Procedure"/>
+		/// </summary>
+		protected TSqlProcedure()
 		{
 		}
 
@@ -7007,90 +12587,163 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.assembly.aspx">Procedure.Assembly</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(Procedure.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Procedure.Assembly).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference(o, Microsoft.SqlServer.Dac.Model.Assembly.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.bodydependencies.aspx">Procedure.BodyDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Procedure.BodyDependencies);
+				return Element.GetReferencedRelationshipInstances(Procedure.BodyDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.login.aspx">Procedure.Login</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(Procedure.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Procedure.Login).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference(o, Microsoft.SqlServer.Dac.Model.Login.TypeClass));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.parameters.aspx">Procedure.Parameters</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter> Parameters 
 		{
 			get 
 			{
-				return Element.GetReferenced(Procedure.Parameters).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Procedure.Parameters).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlParameter(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedureReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.parentprocedure.aspx">Procedure.ParentProcedure</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure> ParentProcedure 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedureReference> ParentProcedure 
 		{
 			get 
 			{
-				return Element.GetReferenced(Procedure.ParentProcedure).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Procedure.ParentProcedure).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedureReference(o, Microsoft.SqlServer.Dac.Model.Procedure.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.schema.aspx">Procedure.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Procedure.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Procedure.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.procedure.user.aspx">Procedure.User</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(Procedure.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Procedure.User).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference(o, Microsoft.SqlServer.Dac.Model.User.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Queue"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.aspx">Queue</see>
+	///
+	public partial class TSqlQueueReference : TSqlQueue, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlQueueReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Queue"/>
@@ -7104,6 +12757,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlQueue to adapt instances of <see cref="T:Queue"/>
 		/// </summary>
 		public TSqlQueue(TSqlObject obj)  : base(obj, Queue.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlQueue to adapt instances of <see cref="T:Queue"/>
+		/// </summary>
+		protected TSqlQueue()
 		{
 		}
 
@@ -7193,102 +12854,175 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedureReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.activationprocedure.aspx">Queue.ActivationProcedure</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure> ActivationProcedure 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedureReference> ActivationProcedure 
 		{
 			get 
 			{
-				return Element.GetReferenced(Queue.ActivationProcedure).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedure)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Queue.ActivationProcedure).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlProcedureReference(o, Microsoft.SqlServer.Dac.Model.Procedure.TypeClass));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.columns.aspx">Queue.Columns</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Queue.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Queue.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.filegroup.aspx">Queue.Filegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Queue.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Queue.Filegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.login.aspx">Queue.Login</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(Queue.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Queue.Login).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference(o, Microsoft.SqlServer.Dac.Model.Login.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.partitioncolumn.aspx">Queue.PartitionColumn</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Queue.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Queue.PartitionColumn).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.partitionscheme.aspx">Queue.PartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Queue.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Queue.PartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.schema.aspx">Queue.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Queue.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Queue.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queue.user.aspx">Queue.User</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(Queue.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Queue.User).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference(o, Microsoft.SqlServer.Dac.Model.User.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:QueueEventNotification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queueeventnotification.aspx">QueueEventNotification</see>
+	///
+	public partial class TSqlQueueEventNotificationReference : TSqlQueueEventNotification, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlQueueEventNotificationReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:QueueEventNotification"/>
@@ -7302,6 +13036,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlQueueEventNotification to adapt instances of <see cref="T:QueueEventNotification"/>
 		/// </summary>
 		public TSqlQueueEventNotification(TSqlObject obj)  : base(obj, QueueEventNotification.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlQueueEventNotification to adapt instances of <see cref="T:QueueEventNotification"/>
+		/// </summary>
+		protected TSqlQueueEventNotification()
 		{
 		}
 
@@ -7343,19 +13085,19 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queueeventnotification.eventgroup.aspx">QueueEventNotification.EventGroup</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup> EventGroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(QueueEventNotification.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(QueueEventNotification.EventGroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.EventType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queueeventnotification.eventtype.aspx">QueueEventNotification.EventType</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
 		{
 			get 
@@ -7365,18 +13107,91 @@ public partial class TSqlModelElement
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueueReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.queueeventnotification.queue.aspx">QueueEventNotification.Queue</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue> Queue 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueueReference> Queue 
 		{
 			get 
 			{
-				return Element.GetReferenced(QueueEventNotification.Queue).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(QueueEventNotification.Queue).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueueReference(o, Microsoft.SqlServer.Dac.Model.Queue.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:RemoteServiceBinding"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.remoteservicebinding.aspx">RemoteServiceBinding</see>
+	///
+	public partial class TSqlRemoteServiceBindingReference : TSqlRemoteServiceBinding, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlRemoteServiceBindingReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:RemoteServiceBinding"/>
@@ -7390,6 +13205,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlRemoteServiceBinding to adapt instances of <see cref="T:RemoteServiceBinding"/>
 		/// </summary>
 		public TSqlRemoteServiceBinding(TSqlObject obj)  : base(obj, RemoteServiceBinding.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlRemoteServiceBinding to adapt instances of <see cref="T:RemoteServiceBinding"/>
+		/// </summary>
+		protected TSqlRemoteServiceBinding()
 		{
 		}
 
@@ -7421,28 +13244,101 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.remoteservicebinding.authorizer.aspx">RemoteServiceBinding.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(RemoteServiceBinding.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(RemoteServiceBinding.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.remoteservicebinding.user.aspx">RemoteServiceBinding.User</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(RemoteServiceBinding.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(RemoteServiceBinding.User).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference(o, Microsoft.SqlServer.Dac.Model.User.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ResourceGovernor"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcegovernor.aspx">ResourceGovernor</see>
+	///
+	public partial class TSqlResourceGovernorReference : TSqlResourceGovernor, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlResourceGovernorReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ResourceGovernor"/>
@@ -7456,6 +13352,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlResourceGovernor to adapt instances of <see cref="T:ResourceGovernor"/>
 		/// </summary>
 		public TSqlResourceGovernor(TSqlObject obj)  : base(obj, ResourceGovernor.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlResourceGovernor to adapt instances of <see cref="T:ResourceGovernor"/>
+		/// </summary>
+		protected TSqlResourceGovernor()
 		{
 		}
 
@@ -7475,18 +13379,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcegovernor.classifierfunction.aspx">ResourceGovernor.ClassifierFunction</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ClassifierFunction 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ClassifierFunction 
 		{
 			get 
 			{
-				return Element.GetReferenced(ResourceGovernor.ClassifierFunction);
+				return Element.GetReferencedRelationshipInstances(ResourceGovernor.ClassifierFunction).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ResourcePool"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.resourcepool.aspx">ResourcePool</see>
+	///
+	public partial class TSqlResourcePoolReference : TSqlResourcePool, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlResourcePoolReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ResourcePool"/>
@@ -7500,6 +13477,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlResourcePool to adapt instances of <see cref="T:ResourcePool"/>
 		/// </summary>
 		public TSqlResourcePool(TSqlObject obj)  : base(obj, ResourcePool.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlResourcePool to adapt instances of <see cref="T:ResourcePool"/>
+		/// </summary>
+		protected TSqlResourcePool()
 		{
 		}
 
@@ -7580,6 +13565,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Role"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.role.aspx">Role</see>
+	///
+	public partial class TSqlRoleReference : TSqlRole, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlRoleReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Role"/>
 	///
@@ -7595,6 +13653,14 @@ public partial class TSqlModelElement
 		{
 		}
 
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlRole to adapt instances of <see cref="T:Role"/>
+		/// </summary>
+		protected TSqlRole()
+		{
+		}
+
 		public static ModelTypeClass TypeClass 
 		{
 			get { return typeClass;}
@@ -7603,16 +13669,89 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.role.authorizer.aspx">Role.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Role.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Role.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:RoleMembership"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rolemembership.aspx">RoleMembership</see>
+	///
+	public partial class TSqlRoleMembershipReference : TSqlRoleMembership, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlRoleMembershipReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:RoleMembership"/>
@@ -7629,6 +13768,14 @@ public partial class TSqlModelElement
 		{
 		}
 
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlRoleMembership to adapt instances of <see cref="T:RoleMembership"/>
+		/// </summary>
+		protected TSqlRoleMembership()
+		{
+		}
+
 		public static ModelTypeClass TypeClass 
 		{
 			get { return typeClass;}
@@ -7637,28 +13784,101 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rolemembership.member.aspx">RoleMembership.Member</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal> Member 
 		{
 			get 
 			{
-				return Element.GetReferenced(RoleMembership.Member).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(RoleMembership.Member).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDatabaseSecurityPrincipal)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlDatabaseSecurityPrincipalElement(ri)));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRoleReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rolemembership.role.aspx">RoleMembership.Role</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole> Role 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRoleReference> Role 
 		{
 			get 
 			{
-				return Element.GetReferenced(RoleMembership.Role).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(RoleMembership.Role).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRoleReference(o, Microsoft.SqlServer.Dac.Model.Role.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Route"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.route.aspx">Route</see>
+	///
+	public partial class TSqlRouteReference : TSqlRoute, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlRouteReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Route"/>
@@ -7672,6 +13892,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlRoute to adapt instances of <see cref="T:Route"/>
 		/// </summary>
 		public TSqlRoute(TSqlObject obj)  : base(obj, Route.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlRoute to adapt instances of <see cref="T:Route"/>
+		/// </summary>
+		protected TSqlRoute()
 		{
 		}
 
@@ -7733,16 +13961,89 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.route.authorizer.aspx">Route.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Route.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Route.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Rule"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rule.aspx">Rule</see>
+	///
+	public partial class TSqlRuleReference : TSqlRule, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlRuleReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Rule"/>
@@ -7756,6 +14057,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlRule to adapt instances of <see cref="T:Rule"/>
 		/// </summary>
 		public TSqlRule(TSqlObject obj)  : base(obj, Rule.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlRule to adapt instances of <see cref="T:Rule"/>
+		/// </summary>
+		protected TSqlRule()
 		{
 		}
 
@@ -7775,30 +14084,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rule.boundobjects.aspx">Rule.BoundObjects</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BoundObjects 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> BoundObjects 
 		{
 			get 
 			{
-				return Element.GetReferenced(Rule.BoundObjects);
+				return Element.GetReferencedRelationshipInstances(Rule.BoundObjects).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.rule.schema.aspx">Rule.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Rule.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Rule.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Schema"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.schema.aspx">Schema</see>
+	///
+	public partial class TSqlSchemaReference : TSqlSchema, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSchemaReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Schema"/>
@@ -7815,6 +14197,14 @@ public partial class TSqlModelElement
 		{
 		}
 
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSchema to adapt instances of <see cref="T:Schema"/>
+		/// </summary>
+		protected TSqlSchema()
+		{
+		}
+
 		public static ModelTypeClass TypeClass 
 		{
 			get { return typeClass;}
@@ -7823,16 +14213,89 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.schema.authorizer.aspx">Schema.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Schema.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Schema.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SearchProperty"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.searchproperty.aspx">SearchProperty</see>
+	///
+	public partial class TSqlSearchPropertyReference : TSqlSearchProperty, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSearchPropertyReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SearchProperty"/>
@@ -7846,6 +14309,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSearchProperty to adapt instances of <see cref="T:SearchProperty"/>
 		/// </summary>
 		public TSqlSearchProperty(TSqlObject obj)  : base(obj, SearchProperty.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSearchProperty to adapt instances of <see cref="T:SearchProperty"/>
+		/// </summary>
+		protected TSqlSearchProperty()
 		{
 		}
 
@@ -7885,18 +14356,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyListReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.searchproperty.searchpropertylist.aspx">SearchProperty.SearchPropertyList</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList> SearchPropertyList 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyListReference> SearchPropertyList 
 		{
 			get 
 			{
-				return Element.GetReferenced(SearchProperty.SearchPropertyList).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyList)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SearchProperty.SearchPropertyList).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSearchPropertyListReference(o, Microsoft.SqlServer.Dac.Model.SearchPropertyList.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SearchPropertyList"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.searchpropertylist.aspx">SearchPropertyList</see>
+	///
+	public partial class TSqlSearchPropertyListReference : TSqlSearchPropertyList, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSearchPropertyListReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SearchPropertyList"/>
@@ -7913,6 +14457,14 @@ public partial class TSqlModelElement
 		{
 		}
 
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSearchPropertyList to adapt instances of <see cref="T:SearchPropertyList"/>
+		/// </summary>
+		protected TSqlSearchPropertyList()
+		{
+		}
+
 		public static ModelTypeClass TypeClass 
 		{
 			get { return typeClass;}
@@ -7921,16 +14473,89 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.searchpropertylist.authorizer.aspx">SearchPropertyList.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(SearchPropertyList.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SearchPropertyList.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Sequence"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.aspx">Sequence</see>
+	///
+	public partial class TSqlSequenceReference : TSqlSequence, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSequenceReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Sequence"/>
@@ -7944,6 +14569,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSequence to adapt instances of <see cref="T:Sequence"/>
 		/// </summary>
 		public TSqlSequence(TSqlObject obj)  : base(obj, Sequence.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSequence to adapt instances of <see cref="T:Sequence"/>
+		/// </summary>
+		protected TSqlSequence()
 		{
 		}
 
@@ -8043,30 +14676,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.datatype.aspx">Sequence.DataType</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Sequence.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Sequence.DataType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.sequence.schema.aspx">Sequence.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Sequence.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Sequence.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerAudit"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveraudit.aspx">ServerAudit</see>
+	///
+	public partial class TSqlServerAuditReference : TSqlServerAudit, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlServerAuditReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerAudit"/>
@@ -8080,6 +14786,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlServerAudit to adapt instances of <see cref="T:ServerAudit"/>
 		/// </summary>
 		public TSqlServerAudit(TSqlObject obj)  : base(obj, ServerAudit.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlServerAudit to adapt instances of <see cref="T:ServerAudit"/>
+		/// </summary>
+		protected TSqlServerAudit()
 		{
 		}
 
@@ -8230,6 +14944,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerAuditSpecification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverauditspecification.aspx">ServerAuditSpecification</see>
+	///
+	public partial class TSqlServerAuditSpecificationReference : TSqlServerAuditSpecification, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlServerAuditSpecificationReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerAuditSpecification"/>
 	///
@@ -8242,6 +15029,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlServerAuditSpecification to adapt instances of <see cref="T:ServerAuditSpecification"/>
 		/// </summary>
 		public TSqlServerAuditSpecification(TSqlObject obj)  : base(obj, ServerAuditSpecification.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlServerAuditSpecification to adapt instances of <see cref="T:ServerAuditSpecification"/>
+		/// </summary>
+		protected TSqlServerAuditSpecification()
 		{
 		}
 
@@ -8263,28 +15058,101 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverauditspecification.auditactiongroups.aspx">ServerAuditSpecification.AuditActionGroups</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup> AuditActionGroups 
 		{
 			get 
 			{
-				return Element.GetReferenced(ServerAuditSpecification.AuditActionGroups).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServerAuditSpecification.AuditActionGroups).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAuditActionGroup(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAuditReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverauditspecification.serveraudit.aspx">ServerAuditSpecification.ServerAudit</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit> ServerAudit 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAuditReference> ServerAudit 
 		{
 			get 
 			{
-				return Element.GetReferenced(ServerAuditSpecification.ServerAudit).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAudit)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ServerAuditSpecification.ServerAudit).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlServerAuditReference(o, Microsoft.SqlServer.Dac.Model.ServerAudit.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerDdlTrigger"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.aspx">ServerDdlTrigger</see>
+	///
+	public partial class TSqlServerDdlTriggerReference : TSqlServerDdlTrigger, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlServerDdlTriggerReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerDdlTrigger"/>
@@ -8298,6 +15166,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlServerDdlTrigger to adapt instances of <see cref="T:ServerDdlTrigger"/>
 		/// </summary>
 		public TSqlServerDdlTrigger(TSqlObject obj)  : base(obj, ServerDdlTrigger.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlServerDdlTrigger to adapt instances of <see cref="T:ServerDdlTrigger"/>
+		/// </summary>
+		protected TSqlServerDdlTrigger()
 		{
 		}
 
@@ -8417,45 +15293,45 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.assembly.aspx">ServerDdlTrigger.Assembly</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(ServerDdlTrigger.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ServerDdlTrigger.Assembly).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference(o, Microsoft.SqlServer.Dac.Model.Assembly.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.bodydependencies.aspx">ServerDdlTrigger.BodyDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(ServerDdlTrigger.BodyDependencies);
+				return Element.GetReferencedRelationshipInstances(ServerDdlTrigger.BodyDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.eventgroup.aspx">ServerDdlTrigger.EventGroup</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup> EventGroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(ServerDdlTrigger.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServerDdlTrigger.EventGroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.EventType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.eventtype.aspx">ServerDdlTrigger.EventType</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
 		{
 			get 
@@ -8465,30 +15341,103 @@ public partial class TSqlModelElement
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.login.aspx">ServerDdlTrigger.Login</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(ServerDdlTrigger.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ServerDdlTrigger.Login).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference(o, Microsoft.SqlServer.Dac.Model.Login.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverddltrigger.user.aspx">ServerDdlTrigger.User</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser> User 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference> User 
 		{
 			get 
 			{
-				return Element.GetReferenced(ServerDdlTrigger.User).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUser)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ServerDdlTrigger.User).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlUserReference(o, Microsoft.SqlServer.Dac.Model.User.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerEventNotification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servereventnotification.aspx">ServerEventNotification</see>
+	///
+	public partial class TSqlServerEventNotificationReference : TSqlServerEventNotification, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlServerEventNotificationReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerEventNotification"/>
@@ -8502,6 +15451,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlServerEventNotification to adapt instances of <see cref="T:ServerEventNotification"/>
 		/// </summary>
 		public TSqlServerEventNotification(TSqlObject obj)  : base(obj, ServerEventNotification.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlServerEventNotification to adapt instances of <see cref="T:ServerEventNotification"/>
+		/// </summary>
+		protected TSqlServerEventNotification()
 		{
 		}
 
@@ -8543,19 +15500,19 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servereventnotification.eventgroup.aspx">ServerEventNotification.EventGroup</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup> EventGroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(ServerEventNotification.EventGroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(ServerEventNotification.EventGroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlEventGroup(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.EventType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servereventnotification.eventtype.aspx">ServerEventNotification.EventType</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Model.EventType> EventType 
 		{
 			get 
@@ -8565,6 +15522,79 @@ public partial class TSqlModelElement
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerOptions"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serveroptions.aspx">ServerOptions</see>
+	///
+	public partial class TSqlServerOptionsReference : TSqlServerOptions, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlServerOptionsReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerOptions"/>
@@ -8581,12 +15611,93 @@ public partial class TSqlModelElement
 		{
 		}
 
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlServerOptions to adapt instances of <see cref="T:ServerOptions"/>
+		/// </summary>
+		protected TSqlServerOptions()
+		{
+		}
+
 		public static ModelTypeClass TypeClass 
 		{
 			get { return typeClass;}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerRoleMembership"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverrolemembership.aspx">ServerRoleMembership</see>
+	///
+	public partial class TSqlServerRoleMembershipReference : TSqlServerRoleMembership, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlServerRoleMembershipReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServerRoleMembership"/>
@@ -8603,6 +15714,14 @@ public partial class TSqlModelElement
 		{
 		}
 
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlServerRoleMembership to adapt instances of <see cref="T:ServerRoleMembership"/>
+		/// </summary>
+		protected TSqlServerRoleMembership()
+		{
+		}
+
 		public static ModelTypeClass TypeClass 
 		{
 			get { return typeClass;}
@@ -8611,28 +15730,101 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverrolemembership.member.aspx">ServerRoleMembership.Member</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal> Member 
 		{
 			get 
 			{
-				return Element.GetReferenced(ServerRoleMembership.Member).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ServerRoleMembership.Member).Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.IServerSecurityPrincipal>();
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRoleReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.serverrolemembership.role.aspx">ServerRoleMembership.Role</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole> Role 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRoleReference> Role 
 		{
 			get 
 			{
-				return Element.GetReferenced(ServerRoleMembership.Role).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRole)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ServerRoleMembership.Role).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlRoleReference(o, Microsoft.SqlServer.Dac.Model.Role.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Service"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.service.aspx">Service</see>
+	///
+	public partial class TSqlServiceReference : TSqlService, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlServiceReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Service"/>
@@ -8646,6 +15838,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlService to adapt instances of <see cref="T:Service"/>
 		/// </summary>
 		public TSqlService(TSqlObject obj)  : base(obj, Service.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlService to adapt instances of <see cref="T:Service"/>
+		/// </summary>
+		protected TSqlService()
 		{
 		}
 
@@ -8667,40 +15867,113 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.service.authorizer.aspx">Service.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(Service.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Service.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlContract"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlContractReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.service.contracts.aspx">Service.Contracts</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlContract> Contracts 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlContractReference> Contracts 
 		{
 			get 
 			{
-				return Element.GetReferenced(Service.Contracts).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlContract)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Service.Contracts).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlContractReference(o, Microsoft.SqlServer.Dac.Model.Contract.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueueReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.service.queue.aspx">Service.Queue</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue> Queue 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueueReference> Queue 
 		{
 			get 
 			{
-				return Element.GetReferenced(Service.Queue).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueue)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Service.Queue).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlQueueReference(o, Microsoft.SqlServer.Dac.Model.Queue.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServiceBrokerLanguageSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servicebrokerlanguagespecifier.aspx">ServiceBrokerLanguageSpecifier</see>
+	///
+	public partial class TSqlServiceBrokerLanguageSpecifierReference : TSqlServiceBrokerLanguageSpecifier, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlServiceBrokerLanguageSpecifierReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:ServiceBrokerLanguageSpecifier"/>
@@ -8714,6 +15987,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlServiceBrokerLanguageSpecifier to adapt instances of <see cref="T:ServiceBrokerLanguageSpecifier"/>
 		/// </summary>
 		public TSqlServiceBrokerLanguageSpecifier(TSqlObject obj)  : base(obj, ServiceBrokerLanguageSpecifier.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlServiceBrokerLanguageSpecifier to adapt instances of <see cref="T:ServiceBrokerLanguageSpecifier"/>
+		/// </summary>
+		protected TSqlServiceBrokerLanguageSpecifier()
 		{
 		}
 
@@ -8793,18 +16074,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.servicebrokerlanguagespecifier.authenticationcertificate.aspx">ServiceBrokerLanguageSpecifier.AuthenticationCertificate</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> AuthenticationCertificate 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference> AuthenticationCertificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(ServiceBrokerLanguageSpecifier.AuthenticationCertificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(ServiceBrokerLanguageSpecifier.AuthenticationCertificate).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference(o, Microsoft.SqlServer.Dac.Model.Certificate.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Signature"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signature.aspx">Signature</see>
+	///
+	public partial class TSqlSignatureReference : TSqlSignature, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSignatureReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Signature"/>
@@ -8818,6 +16172,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSignature to adapt instances of <see cref="T:Signature"/>
 		/// </summary>
 		public TSqlSignature(TSqlObject obj)  : base(obj, Signature.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSignature to adapt instances of <see cref="T:Signature"/>
+		/// </summary>
+		protected TSqlSignature()
 		{
 		}
 
@@ -8837,30 +16199,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signature.encryptionmechanism.aspx">Signature.EncryptionMechanism</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> EncryptionMechanism 
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> EncryptionMechanism 
 		{
 			get 
 			{
-				return Element.GetReferenced(Signature.EncryptionMechanism);
+				return Element.GetReferenced(Signature.EncryptionMechanism).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signature.signedobject.aspx">Signature.SignedObject</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> SignedObject 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> SignedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Signature.SignedObject);
+				return Element.GetReferencedRelationshipInstances(Signature.SignedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SignatureEncryptionMechanism"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signatureencryptionmechanism.aspx">SignatureEncryptionMechanism</see>
+	///
+	public partial class TSqlSignatureEncryptionMechanismReference : TSqlSignatureEncryptionMechanism, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSignatureEncryptionMechanismReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SignatureEncryptionMechanism"/>
@@ -8874,6 +16309,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSignatureEncryptionMechanism to adapt instances of <see cref="T:SignatureEncryptionMechanism"/>
 		/// </summary>
 		public TSqlSignatureEncryptionMechanism(TSqlObject obj)  : base(obj, SignatureEncryptionMechanism.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSignatureEncryptionMechanism to adapt instances of <see cref="T:SignatureEncryptionMechanism"/>
+		/// </summary>
+		protected TSqlSignatureEncryptionMechanism()
 		{
 		}
 
@@ -8903,30 +16346,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signatureencryptionmechanism.asymmetrickey.aspx">SignatureEncryptionMechanism.AsymmetricKey</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey> AsymmetricKey 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference> AsymmetricKey 
 		{
 			get 
 			{
-				return Element.GetReferenced(SignatureEncryptionMechanism.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SignatureEncryptionMechanism.AsymmetricKey).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference(o, Microsoft.SqlServer.Dac.Model.AsymmetricKey.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.signatureencryptionmechanism.certificate.aspx">SignatureEncryptionMechanism.Certificate</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> Certificate 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference> Certificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(SignatureEncryptionMechanism.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SignatureEncryptionMechanism.Certificate).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference(o, Microsoft.SqlServer.Dac.Model.Certificate.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SoapLanguageSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.aspx">SoapLanguageSpecifier</see>
+	///
+	public partial class TSqlSoapLanguageSpecifierReference : TSqlSoapLanguageSpecifier, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSoapLanguageSpecifierReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SoapLanguageSpecifier"/>
@@ -8940,6 +16456,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSoapLanguageSpecifier to adapt instances of <see cref="T:SoapLanguageSpecifier"/>
 		/// </summary>
 		public TSqlSoapLanguageSpecifier(TSqlObject obj)  : base(obj, SoapLanguageSpecifier.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSoapLanguageSpecifier to adapt instances of <see cref="T:SoapLanguageSpecifier"/>
+		/// </summary>
+		protected TSqlSoapLanguageSpecifier()
 		{
 		}
 
@@ -9091,16 +16615,89 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSoapMethodSpecification"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soaplanguagespecifier.webmethods.aspx">SoapLanguageSpecifier.WebMethods</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSoapMethodSpecification> WebMethods 
 		{
 			get 
 			{
-				return Element.GetReferenced(SoapLanguageSpecifier.WebMethods).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSoapMethodSpecification)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SoapLanguageSpecifier.WebMethods).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSoapMethodSpecification(o));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SoapMethodSpecification"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soapmethodspecification.aspx">SoapMethodSpecification</see>
+	///
+	public partial class TSqlSoapMethodSpecificationReference : TSqlSoapMethodSpecification, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSoapMethodSpecificationReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SoapMethodSpecification"/>
@@ -9114,6 +16711,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSoapMethodSpecification to adapt instances of <see cref="T:SoapMethodSpecification"/>
 		/// </summary>
 		public TSqlSoapMethodSpecification(TSqlObject obj)  : base(obj, SoapMethodSpecification.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSoapMethodSpecification to adapt instances of <see cref="T:SoapMethodSpecification"/>
+		/// </summary>
+		protected TSqlSoapMethodSpecification()
 		{
 		}
 
@@ -9163,18 +16768,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.soapmethodspecification.relatedmethod.aspx">SoapMethodSpecification.RelatedMethod</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> RelatedMethod 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> RelatedMethod 
 		{
 			get 
 			{
-				return Element.GetReferenced(SoapMethodSpecification.RelatedMethod);
+				return Element.GetReferencedRelationshipInstances(SoapMethodSpecification.RelatedMethod).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SpatialIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.aspx">SpatialIndex</see>
+	///
+	public partial class TSqlSpatialIndexReference : TSqlSpatialIndex, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSpatialIndexReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SpatialIndex"/>
@@ -9188,6 +16866,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSpatialIndex to adapt instances of <see cref="T:SpatialIndex"/>
 		/// </summary>
 		public TSqlSpatialIndex(TSqlObject obj)  : base(obj, SpatialIndex.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSpatialIndex to adapt instances of <see cref="T:SpatialIndex"/>
+		/// </summary>
+		protected TSqlSpatialIndex()
 		{
 		}
 
@@ -9377,66 +17063,139 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.column.aspx">SpatialIndex.Column</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Column 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> Column 
 		{
 			get 
 			{
-				return Element.GetReferenced(SpatialIndex.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SpatialIndex.Column).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.filegroup.aspx">SpatialIndex.Filegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(SpatialIndex.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SpatialIndex.Filegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
 		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.indexedobject.aspx">SpatialIndex.IndexedObject</see>
-		///
+		/// Relationship Type:Hierarchical
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(SpatialIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SpatialIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISpecifiesIndexElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.partitioncolumn.aspx">SpatialIndex.PartitionColumn</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(SpatialIndex.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SpatialIndex.PartitionColumn).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.spatialindex.partitionscheme.aspx">SpatialIndex.PartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(SpatialIndex.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SpatialIndex.PartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Statistics"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.aspx">Statistics</see>
+	///
+	public partial class TSqlStatisticsReference : TSqlStatistics, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlStatisticsReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Statistics"/>
@@ -9450,6 +17209,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlStatistics to adapt instances of <see cref="T:Statistics"/>
 		/// </summary>
 		public TSqlStatistics(TSqlObject obj)  : base(obj, Statistics.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlStatistics to adapt instances of <see cref="T:Statistics"/>
+		/// </summary>
+		protected TSqlStatistics()
 		{
 		}
 
@@ -9519,42 +17286,115 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.columns.aspx">Statistics.Columns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Statistics.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Statistics.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.expressiondependencies.aspx">Statistics.ExpressionDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(Statistics.ExpressionDependencies);
+				return Element.GetReferencedRelationshipInstances(Statistics.ExpressionDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.statistics.onobject.aspx">Statistics.OnObject</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> OnObject 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> OnObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Statistics.OnObject);
+				return Element.GetReferencedRelationshipInstances(Statistics.OnObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Parameter"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.aspx">Parameter</see>
+	///
+	public partial class TSqlParameterReference : TSqlParameter, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlParameterReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Parameter"/>
@@ -9568,6 +17408,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlParameter to adapt instances of <see cref="T:Parameter"/>
 		/// </summary>
 		public TSqlParameter(TSqlObject obj)  : base(obj, Parameter.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlParameter to adapt instances of <see cref="T:Parameter"/>
+		/// </summary>
+		protected TSqlParameter()
 		{
 		}
 
@@ -9667,30 +17515,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.datatype.aspx">Parameter.DataType</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(Parameter.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Parameter.DataType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.xmlschemacollection.aspx">Parameter.XmlSchemaCollection</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection> XmlSchemaCollection 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference> XmlSchemaCollection 
 		{
 			get 
 			{
-				return Element.GetReferenced(Parameter.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Parameter.XmlSchemaCollection).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference(o, Microsoft.SqlServer.Dac.Model.XmlSchemaCollection.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SymmetricKey"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.aspx">SymmetricKey</see>
+	///
+	public partial class TSqlSymmetricKeyReference : TSqlSymmetricKey, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSymmetricKeyReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SymmetricKey"/>
@@ -9704,6 +17625,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSymmetricKey to adapt instances of <see cref="T:SymmetricKey"/>
 		/// </summary>
 		public TSqlSymmetricKey(TSqlObject obj)  : base(obj, SymmetricKey.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSymmetricKey to adapt instances of <see cref="T:SymmetricKey"/>
+		/// </summary>
+		protected TSqlSymmetricKey()
 		{
 		}
 
@@ -9763,78 +17692,151 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.asymmetrickeys.aspx">SymmetricKey.AsymmetricKeys</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey> AsymmetricKeys 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference> AsymmetricKeys 
 		{
 			get 
 			{
-				return Element.GetReferenced(SymmetricKey.AsymmetricKeys).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SymmetricKey.AsymmetricKeys).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference(o, Microsoft.SqlServer.Dac.Model.AsymmetricKey.TypeClass));
 			}
 		}
 
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.authorizer.aspx">SymmetricKey.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(SymmetricKey.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SymmetricKey.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.certificates.aspx">SymmetricKey.Certificates</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> Certificates 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference> Certificates 
 		{
 			get 
 			{
-				return Element.GetReferenced(SymmetricKey.Certificates).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SymmetricKey.Certificates).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference(o, Microsoft.SqlServer.Dac.Model.Certificate.TypeClass));
 			}
 		}
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.passwords.aspx">SymmetricKey.Passwords</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Passwords 
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> Passwords 
 		{
 			get 
 			{
-				return Element.GetReferenced(SymmetricKey.Passwords);
+				return Element.GetReferenced(SymmetricKey.Passwords).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.provider.aspx">SymmetricKey.Provider</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Provider 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> Provider 
 		{
 			get 
 			{
-				return Element.GetReferenced(SymmetricKey.Provider);
+				return Element.GetReferencedRelationshipInstances(SymmetricKey.Provider).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSymmetricKey"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSymmetricKeyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickey.symmetrickeys.aspx">SymmetricKey.SymmetricKeys</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSymmetricKey> SymmetricKeys 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSymmetricKeyReference> SymmetricKeys 
 		{
 			get 
 			{
-				return Element.GetReferenced(SymmetricKey.SymmetricKeys).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SymmetricKey.SymmetricKeys).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSymmetricKeyReference(o, Microsoft.SqlServer.Dac.Model.SymmetricKey.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SymmetricKeyPassword"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.symmetrickeypassword.aspx">SymmetricKeyPassword</see>
+	///
+	public partial class TSqlSymmetricKeyPasswordReference : TSqlSymmetricKeyPassword, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSymmetricKeyPasswordReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SymmetricKeyPassword"/>
@@ -9848,6 +17850,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSymmetricKeyPassword to adapt instances of <see cref="T:SymmetricKeyPassword"/>
 		/// </summary>
 		public TSqlSymmetricKeyPassword(TSqlObject obj)  : base(obj, SymmetricKeyPassword.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSymmetricKeyPassword to adapt instances of <see cref="T:SymmetricKeyPassword"/>
+		/// </summary>
+		protected TSqlSymmetricKeyPassword()
 		{
 		}
 
@@ -9868,6 +17878,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Synonym"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.synonym.aspx">Synonym</see>
+	///
+	public partial class TSqlSynonymReference : TSqlSynonym, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSynonymReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Synonym"/>
 	///
@@ -9880,6 +17963,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSynonym to adapt instances of <see cref="T:Synonym"/>
 		/// </summary>
 		public TSqlSynonym(TSqlObject obj)  : base(obj, Synonym.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSynonym to adapt instances of <see cref="T:Synonym"/>
+		/// </summary>
+		protected TSqlSynonym()
 		{
 		}
 
@@ -9899,30 +17990,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.synonym.forobject.aspx">Synonym.ForObject</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ForObject 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ForObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(Synonym.ForObject);
+				return Element.GetReferencedRelationshipInstances(Synonym.ForObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.synonym.schema.aspx">Synonym.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Synonym.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Synonym.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Table"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.aspx">Table</see>
+	///
+	public partial class TSqlTableReference : TSqlTable, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlTableReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:Table"/>
@@ -9936,6 +18100,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlTable to adapt instances of <see cref="T:Table"/>
 		/// </summary>
 		public TSqlTable(TSqlObject obj)  : base(obj, Table.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlTable to adapt instances of <see cref="T:Table"/>
+		/// </summary>
+		protected TSqlTable()
 		{
 		}
 
@@ -10087,112 +18259,185 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.columns.aspx">Table.Columns</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(Table.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Table.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.datacompressionoptions.aspx">Table.DataCompressionOptions</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(Table.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(Table.DataCompressionOptions).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.filegroup.aspx">Table.Filegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Table.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Table.Filegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.filegroupfortextimage.aspx">Table.FilegroupForTextImage</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FilegroupForTextImage 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> FilegroupForTextImage 
 		{
 			get 
 			{
-				return Element.GetReferenced(Table.FilegroupForTextImage).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Table.FilegroupForTextImage).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.filestreamfilegroup.aspx">Table.FileStreamFilegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FileStreamFilegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> FileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(Table.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Table.FileStreamFilegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.filestreampartitionscheme.aspx">Table.FileStreamPartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> FileStreamPartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Table.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Table.FileStreamPartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.partitioncolumn.aspx">Table.PartitionColumn</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(Table.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Table.PartitionColumn).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.partitionscheme.aspx">Table.PartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(Table.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Table.PartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.schema.aspx">Table.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(Table.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(Table.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FileTable"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.aspx">FileTable</see>
+	///
+	public partial class TSqlFileTableReference : TSqlFileTable, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlFileTableReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:FileTable"/>
@@ -10206,6 +18451,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlFileTable to adapt instances of <see cref="T:FileTable"/>
 		/// </summary>
 		public TSqlFileTable(TSqlObject obj)  : base(obj, FileTable.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlFileTable to adapt instances of <see cref="T:FileTable"/>
+		/// </summary>
+		protected TSqlFileTable()
 		{
 		}
 
@@ -10297,100 +18550,173 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.columns.aspx">FileTable.Columns</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(FileTable.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FileTable.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.datacompressionoptions.aspx">FileTable.DataCompressionOptions</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(FileTable.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(FileTable.DataCompressionOptions).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.filegroup.aspx">FileTable.Filegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(FileTable.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FileTable.Filegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.filestreamfilegroup.aspx">FileTable.FileStreamFilegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FileStreamFilegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> FileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(FileTable.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FileTable.FileStreamFilegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.filestreampartitionscheme.aspx">FileTable.FileStreamPartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> FileStreamPartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(FileTable.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FileTable.FileStreamPartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.partitioncolumn.aspx">FileTable.PartitionColumn</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(FileTable.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FileTable.PartitionColumn).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.partitionscheme.aspx">FileTable.PartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(FileTable.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FileTable.PartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.filetable.schema.aspx">FileTable.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(FileTable.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(FileTable.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.aspx">TableType</see>
+	///
+	public partial class TSqlTableTypeReference : TSqlTableType, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlTableTypeReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableType"/>
@@ -10404,6 +18730,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlTableType to adapt instances of <see cref="T:TableType"/>
 		/// </summary>
 		public TSqlTableType(TSqlObject obj)  : base(obj, TableType.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlTableType to adapt instances of <see cref="T:TableType"/>
+		/// </summary>
+		protected TSqlTableType()
 		{
 		}
 
@@ -10425,52 +18759,125 @@ public partial class TSqlModelElement
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeColumn"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.columns.aspx">TableType.Columns</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableType.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableType.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeColumn(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.constraints.aspx">TableType.Constraints</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint> Constraints 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableType.Constraints).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableType.Constraints).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ITableTypeConstraint)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.indexes.aspx">TableType.Indexes</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex> Indexes 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableType.Indexes).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(TableType.Indexes).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableTypeIndex)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.schema.aspx">TableType.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableType.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(TableType.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeCheckConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecheckconstraint.aspx">TableTypeCheckConstraint</see>
+	///
+	public partial class TSqlTableTypeCheckConstraintReference : TSqlTableTypeCheckConstraint, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlTableTypeCheckConstraintReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeCheckConstraint"/>
@@ -10484,6 +18891,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlTableTypeCheckConstraint to adapt instances of <see cref="T:TableTypeCheckConstraint"/>
 		/// </summary>
 		public TSqlTableTypeCheckConstraint(TSqlObject obj)  : base(obj, TableTypeCheckConstraint.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlTableTypeCheckConstraint to adapt instances of <see cref="T:TableTypeCheckConstraint"/>
+		/// </summary>
+		protected TSqlTableTypeCheckConstraint()
 		{
 		}
 
@@ -10503,18 +18918,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecheckconstraint.expressiondependencies.aspx">TableTypeCheckConstraint.ExpressionDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableTypeCheckConstraint.ExpressionDependencies);
+				return Element.GetReferencedRelationshipInstances(TableTypeCheckConstraint.ExpressionDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeColumn"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.aspx">TableTypeColumn</see>
+	///
+	public partial class TSqlTableTypeColumnReference : TSqlTableTypeColumn, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlTableTypeColumnReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeColumn"/>
@@ -10528,6 +19016,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlTableTypeColumn to adapt instances of <see cref="T:TableTypeColumn"/>
 		/// </summary>
 		public TSqlTableTypeColumn(TSqlObject obj)  : base(obj, TableTypeColumn.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlTableTypeColumn to adapt instances of <see cref="T:TableTypeColumn"/>
+		/// </summary>
+		protected TSqlTableTypeColumn()
 		{
 		}
 
@@ -10677,42 +19173,124 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// Metadata property wrapper for <see cref="M:TableTypeColumn.TableTypeColumnType"/>
+		///
+		public TableTypeColumnType TableTypeColumnType 
+		{
+			get { return Element.GetMetadata<TableTypeColumnType>(TableTypeColumn.TableTypeColumnType);}
+		}
+
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.datatype.aspx">TableTypeColumn.DataType</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableTypeColumn.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(TableTypeColumn.DataType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.expressiondependencies.aspx">TableTypeColumn.ExpressionDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableTypeColumn.ExpressionDependencies);
+				return Element.GetReferencedRelationshipInstances(TableTypeColumn.ExpressionDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.xmlschemacollection.aspx">TableTypeColumn.XmlSchemaCollection</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection> XmlSchemaCollection 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference> XmlSchemaCollection 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableTypeColumn.XmlSchemaCollection).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollection)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(TableTypeColumn.XmlSchemaCollection).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlSchemaCollectionReference(o, Microsoft.SqlServer.Dac.Model.XmlSchemaCollection.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeDefaultConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypedefaultconstraint.aspx">TableTypeDefaultConstraint</see>
+	///
+	public partial class TSqlTableTypeDefaultConstraintReference : TSqlTableTypeDefaultConstraint, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlTableTypeDefaultConstraintReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeDefaultConstraint"/>
@@ -10726,6 +19304,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlTableTypeDefaultConstraint to adapt instances of <see cref="T:TableTypeDefaultConstraint"/>
 		/// </summary>
 		public TSqlTableTypeDefaultConstraint(TSqlObject obj)  : base(obj, TableTypeDefaultConstraint.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlTableTypeDefaultConstraint to adapt instances of <see cref="T:TableTypeDefaultConstraint"/>
+		/// </summary>
+		protected TSqlTableTypeDefaultConstraint()
 		{
 		}
 
@@ -10745,30 +19331,103 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypedefaultconstraint.expressiondependencies.aspx">TableTypeDefaultConstraint.ExpressionDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> ExpressionDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ExpressionDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableTypeDefaultConstraint.ExpressionDependencies);
+				return Element.GetReferencedRelationshipInstances(TableTypeDefaultConstraint.ExpressionDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypedefaultconstraint.targetcolumn.aspx">TableTypeDefaultConstraint.TargetColumn</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> TargetColumn 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> TargetColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableTypeDefaultConstraint.TargetColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(TableTypeDefaultConstraint.TargetColumn).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeindex.aspx">TableTypeIndex</see>
+	///
+	public partial class TSqlTableTypeIndexReference : TSqlTableTypeIndex, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlTableTypeIndexReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeIndex"/>
@@ -10782,6 +19441,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlTableTypeIndex to adapt instances of <see cref="T:TableTypeIndex"/>
 		/// </summary>
 		public TSqlTableTypeIndex(TSqlObject obj)  : base(obj, TableTypeIndex.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlTableTypeIndex to adapt instances of <see cref="T:TableTypeIndex"/>
+		/// </summary>
+		protected TSqlTableTypeIndex()
 		{
 		}
 
@@ -10821,18 +19488,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeindex.columns.aspx">TableTypeIndex.Columns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableTypeIndex.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(TableTypeIndex.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypePrimaryKeyConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeprimarykeyconstraint.aspx">TableTypePrimaryKeyConstraint</see>
+	///
+	public partial class TSqlTableTypePrimaryKeyConstraintReference : TSqlTableTypePrimaryKeyConstraint, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlTableTypePrimaryKeyConstraintReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypePrimaryKeyConstraint"/>
@@ -10846,6 +19586,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlTableTypePrimaryKeyConstraint to adapt instances of <see cref="T:TableTypePrimaryKeyConstraint"/>
 		/// </summary>
 		public TSqlTableTypePrimaryKeyConstraint(TSqlObject obj)  : base(obj, TableTypePrimaryKeyConstraint.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlTableTypePrimaryKeyConstraint to adapt instances of <see cref="T:TableTypePrimaryKeyConstraint"/>
+		/// </summary>
+		protected TSqlTableTypePrimaryKeyConstraint()
 		{
 		}
 
@@ -10895,18 +19643,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TableTypePrimaryKeyConstraintColumnsReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeprimarykeyconstraint.columns.aspx">TableTypePrimaryKeyConstraint.Columns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TableTypePrimaryKeyConstraintColumnsReference> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableTypePrimaryKeyConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(TableTypePrimaryKeyConstraint.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TableTypePrimaryKeyConstraintColumnsReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeUniqueConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeuniqueconstraint.aspx">TableTypeUniqueConstraint</see>
+	///
+	public partial class TSqlTableTypeUniqueConstraintReference : TSqlTableTypeUniqueConstraint, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlTableTypeUniqueConstraintReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TableTypeUniqueConstraint"/>
@@ -10920,6 +19741,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlTableTypeUniqueConstraint to adapt instances of <see cref="T:TableTypeUniqueConstraint"/>
 		/// </summary>
 		public TSqlTableTypeUniqueConstraint(TSqlObject obj)  : base(obj, TableTypeUniqueConstraint.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlTableTypeUniqueConstraint to adapt instances of <see cref="T:TableTypeUniqueConstraint"/>
+		/// </summary>
+		protected TSqlTableTypeUniqueConstraint()
 		{
 		}
 
@@ -10949,18 +19778,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TableTypeUniqueConstraintColumnsReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypeuniqueconstraint.columns.aspx">TableTypeUniqueConstraint.Columns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TableTypeUniqueConstraintColumnsReference> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(TableTypeUniqueConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(TableTypeUniqueConstraint.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TableTypeUniqueConstraintColumnsReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TcpProtocolSpecifier"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tcpprotocolspecifier.aspx">TcpProtocolSpecifier</see>
+	///
+	public partial class TSqlTcpProtocolSpecifierReference : TSqlTcpProtocolSpecifier, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlTcpProtocolSpecifierReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:TcpProtocolSpecifier"/>
@@ -10974,6 +19876,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlTcpProtocolSpecifier to adapt instances of <see cref="T:TcpProtocolSpecifier"/>
 		/// </summary>
 		public TSqlTcpProtocolSpecifier(TSqlObject obj)  : base(obj, TcpProtocolSpecifier.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlTcpProtocolSpecifier to adapt instances of <see cref="T:TcpProtocolSpecifier"/>
+		/// </summary>
+		protected TSqlTcpProtocolSpecifier()
 		{
 		}
 
@@ -11024,6 +19934,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:UniqueConstraint"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.aspx">UniqueConstraint</see>
+	///
+	public partial class TSqlUniqueConstraintReference : TSqlUniqueConstraint, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlUniqueConstraintReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:UniqueConstraint"/>
 	///
@@ -11036,6 +20019,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlUniqueConstraint to adapt instances of <see cref="T:UniqueConstraint"/>
 		/// </summary>
 		public TSqlUniqueConstraint(TSqlObject obj)  : base(obj, UniqueConstraint.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlUniqueConstraint to adapt instances of <see cref="T:UniqueConstraint"/>
+		/// </summary>
+		protected TSqlUniqueConstraint()
 		{
 		}
 
@@ -11135,102 +20126,175 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.UniqueConstraintColumnsReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.columns.aspx">UniqueConstraint.Columns</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.UniqueConstraintColumnsReference> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(UniqueConstraint.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(UniqueConstraint.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.UniqueConstraintColumnsReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.datacompressionoptions.aspx">UniqueConstraint.DataCompressionOptions</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption> DataCompressionOptions 
 		{
 			get 
 			{
-				return Element.GetReferenced(UniqueConstraint.DataCompressionOptions).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(UniqueConstraint.DataCompressionOptions).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataCompressionOption(o));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.filegroup.aspx">UniqueConstraint.Filegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> Filegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> Filegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(UniqueConstraint.Filegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(UniqueConstraint.Filegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.filestreamfilegroup.aspx">UniqueConstraint.FileStreamFilegroup</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup> FileStreamFilegroup 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference> FileStreamFilegroup 
 		{
 			get 
 			{
-				return Element.GetReferenced(UniqueConstraint.FileStreamFilegroup).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroup)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(UniqueConstraint.FileStreamFilegroup).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference(o, Microsoft.SqlServer.Dac.Model.Filegroup.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.filestreampartitionscheme.aspx">UniqueConstraint.FileStreamPartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> FileStreamPartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(UniqueConstraint.FileStreamPartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(UniqueConstraint.FileStreamPartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.host.aspx">UniqueConstraint.Host</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable> Host 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference> Host 
 		{
 			get 
 			{
-				return Element.GetReferenced(UniqueConstraint.Host).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTable)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(UniqueConstraint.Host).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlTableReference(o, Microsoft.SqlServer.Dac.Model.Table.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.partitioncolumn.aspx">UniqueConstraint.PartitionColumn</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> PartitionColumn 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> PartitionColumn 
 		{
 			get 
 			{
-				return Element.GetReferenced(UniqueConstraint.PartitionColumn).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(UniqueConstraint.PartitionColumn).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.uniqueconstraint.partitionscheme.aspx">UniqueConstraint.PartitionScheme</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme> PartitionScheme 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference> PartitionScheme 
 		{
 			get 
 			{
-				return Element.GetReferenced(UniqueConstraint.PartitionScheme).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionScheme)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(UniqueConstraint.PartitionScheme).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlPartitionSchemeReference(o, Microsoft.SqlServer.Dac.Model.PartitionScheme.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:User"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.aspx">User</see>
+	///
+	public partial class TSqlUserReference : TSqlUser, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlUserReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:User"/>
@@ -11244,6 +20308,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlUser to adapt instances of <see cref="T:User"/>
 		/// </summary>
 		public TSqlUser(TSqlObject obj)  : base(obj, User.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlUser to adapt instances of <see cref="T:User"/>
+		/// </summary>
+		protected TSqlUser()
 		{
 		}
 
@@ -11303,54 +20375,127 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.asymmetrickey.aspx">User.AsymmetricKey</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey> AsymmetricKey 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference> AsymmetricKey 
 		{
 			get 
 			{
-				return Element.GetReferenced(User.AsymmetricKey).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKey)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(User.AsymmetricKey).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAsymmetricKeyReference(o, Microsoft.SqlServer.Dac.Model.AsymmetricKey.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.certificate.aspx">User.Certificate</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate> Certificate 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference> Certificate 
 		{
 			get 
 			{
-				return Element.GetReferenced(User.Certificate).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificate)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(User.Certificate).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlCertificateReference(o, Microsoft.SqlServer.Dac.Model.Certificate.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.defaultschema.aspx">User.DefaultSchema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> DefaultSchema 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> DefaultSchema 
 		{
 			get 
 			{
-				return Element.GetReferenced(User.DefaultSchema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(User.DefaultSchema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.login.aspx">User.Login</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin> Login 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference> Login 
 		{
 			get 
 			{
-				return Element.GetReferenced(User.Login).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLogin)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(User.Login).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlLoginReference(o, Microsoft.SqlServer.Dac.Model.Login.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:UserDefinedServerRole"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedserverrole.aspx">UserDefinedServerRole</see>
+	///
+	public partial class TSqlUserDefinedServerRoleReference : TSqlUserDefinedServerRole, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlUserDefinedServerRoleReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:UserDefinedServerRole"/>
@@ -11367,6 +20512,14 @@ public partial class TSqlModelElement
 		{
 		}
 
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlUserDefinedServerRole to adapt instances of <see cref="T:UserDefinedServerRole"/>
+		/// </summary>
+		protected TSqlUserDefinedServerRole()
+		{
+		}
+
 		public static ModelTypeClass TypeClass 
 		{
 			get { return typeClass;}
@@ -11375,16 +20528,89 @@ public partial class TSqlModelElement
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedserverrole.authorizer.aspx">UserDefinedServerRole.Authorizer</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> Authorizer 
 		{
 			get 
 			{
-				return Element.GetReferenced(UserDefinedServerRole.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(UserDefinedServerRole.Authorizer).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlObjectAuthorizerElement(ri)));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:UserDefinedType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.aspx">UserDefinedType</see>
+	///
+	public partial class TSqlUserDefinedTypeReference : TSqlUserDefinedType, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlUserDefinedTypeReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:UserDefinedType"/>
@@ -11398,6 +20624,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlUserDefinedType to adapt instances of <see cref="T:UserDefinedType"/>
 		/// </summary>
 		public TSqlUserDefinedType(TSqlObject obj)  : base(obj, UserDefinedType.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlUserDefinedType to adapt instances of <see cref="T:UserDefinedType"/>
+		/// </summary>
+		protected TSqlUserDefinedType()
 		{
 		}
 
@@ -11467,54 +20701,127 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.assembly.aspx">UserDefinedType.Assembly</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly> Assembly 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference> Assembly 
 		{
 			get 
 			{
-				return Element.GetReferenced(UserDefinedType.Assembly).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssembly)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(UserDefinedType.Assembly).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlAssemblyReference(o, Microsoft.SqlServer.Dac.Model.Assembly.TypeClass));
 			}
 		}
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.methods.aspx">UserDefinedType.Methods</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Methods 
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> Methods 
 		{
 			get 
 			{
-				return Element.GetReferenced(UserDefinedType.Methods);
+				return Element.GetReferenced(UserDefinedType.Methods).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 		///
-		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.properties.aspx">UserDefinedType.Properties</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> Properties 
+		/// Relationship Type:Composing
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> Properties 
 		{
 			get 
 			{
-				return Element.GetReferenced(UserDefinedType.Properties);
+				return Element.GetReferenced(UserDefinedType.Properties).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.schema.aspx">UserDefinedType.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(UserDefinedType.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(UserDefinedType.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:View"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.aspx">View</see>
+	///
+	public partial class TSqlViewReference : TSqlView, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlViewReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:View"/>
@@ -11528,6 +20835,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlView to adapt instances of <see cref="T:View"/>
 		/// </summary>
 		public TSqlView(TSqlObject obj)  : base(obj, View.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlView to adapt instances of <see cref="T:View"/>
+		/// </summary>
+		protected TSqlView()
 		{
 		}
 
@@ -11617,42 +20932,115 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Model.TSqlObject"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.bodydependencies.aspx">View.BodyDependencies</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Model.TSqlObject> BodyDependencies 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> BodyDependencies 
 		{
 			get 
 			{
-				return Element.GetReferenced(View.BodyDependencies);
+				return Element.GetReferencedRelationshipInstances(View.BodyDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.columns.aspx">View.Columns</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Columns 
 		{
 			get 
 			{
-				return Element.GetReferenced(View.Columns).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(View.Columns).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn(o));
 			}
 		}
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.view.schema.aspx">View.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(View.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(View.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:WorkloadGroup"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.workloadgroup.aspx">WorkloadGroup</see>
+	///
+	public partial class TSqlWorkloadGroupReference : TSqlWorkloadGroup, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlWorkloadGroupReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:WorkloadGroup"/>
@@ -11666,6 +21054,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlWorkloadGroup to adapt instances of <see cref="T:WorkloadGroup"/>
 		/// </summary>
 		public TSqlWorkloadGroup(TSqlObject obj)  : base(obj, WorkloadGroup.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlWorkloadGroup to adapt instances of <see cref="T:WorkloadGroup"/>
+		/// </summary>
+		protected TSqlWorkloadGroup()
 		{
 		}
 
@@ -11735,18 +21131,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlResourcePool"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlResourcePoolReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.workloadgroup.resourcepool.aspx">WorkloadGroup.ResourcePool</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlResourcePool> ResourcePool 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlResourcePoolReference> ResourcePool 
 		{
 			get 
 			{
-				return Element.GetReferenced(WorkloadGroup.ResourcePool).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlResourcePool)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(WorkloadGroup.ResourcePool).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlResourcePoolReference(o, Microsoft.SqlServer.Dac.Model.ResourcePool.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:XmlIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.aspx">XmlIndex</see>
+	///
+	public partial class TSqlXmlIndexReference : TSqlXmlIndex, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlXmlIndexReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:XmlIndex"/>
@@ -11760,6 +21229,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlXmlIndex to adapt instances of <see cref="T:XmlIndex"/>
 		/// </summary>
 		public TSqlXmlIndex(TSqlObject obj)  : base(obj, XmlIndex.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlXmlIndex to adapt instances of <see cref="T:XmlIndex"/>
+		/// </summary>
+		protected TSqlXmlIndex()
 		{
 		}
 
@@ -11859,42 +21336,115 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.column.aspx">XmlIndex.Column</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Column 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> Column 
 		{
 			get 
 			{
-				return Element.GetReferenced(XmlIndex.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(XmlIndex.Column).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
 		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.indexedobject.aspx">XmlIndex.IndexedObject</see>
-		///
+		/// Relationship Type:Hierarchical
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(XmlIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(XmlIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISpecifiesIndexElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlIndex"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlIndexReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlindex.primaryxmlindex.aspx">XmlIndex.PrimaryXmlIndex</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlIndex> PrimaryXmlIndex 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlIndexReference> PrimaryXmlIndex 
 		{
 			get 
 			{
-				return Element.GetReferenced(XmlIndex.PrimaryXmlIndex).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(XmlIndex.PrimaryXmlIndex).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlIndexReference(o, Microsoft.SqlServer.Dac.Model.XmlIndex.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SelectiveXmlIndex"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.aspx">SelectiveXmlIndex</see>
+	///
+	public partial class TSqlSelectiveXmlIndexReference : TSqlSelectiveXmlIndex, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlSelectiveXmlIndexReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:SelectiveXmlIndex"/>
@@ -11908,6 +21458,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlSelectiveXmlIndex to adapt instances of <see cref="T:SelectiveXmlIndex"/>
 		/// </summary>
 		public TSqlSelectiveXmlIndex(TSqlObject obj)  : base(obj, SelectiveXmlIndex.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlSelectiveXmlIndex to adapt instances of <see cref="T:SelectiveXmlIndex"/>
+		/// </summary>
+		protected TSqlSelectiveXmlIndex()
 		{
 		}
 
@@ -11997,78 +21555,151 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.column.aspx">SelectiveXmlIndex.Column</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn> Column 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference> Column 
 		{
 			get 
 			{
-				return Element.GetReferenced(SelectiveXmlIndex.Column).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumn)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SelectiveXmlIndex.Column).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference(o, Microsoft.SqlServer.Dac.Model.Column.TypeClass));
 			}
 		}
 
 		///
 		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.indexedobject.aspx">SelectiveXmlIndex.IndexedObject</see>
-		///
+		/// Relationship Type:Hierarchical
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> IndexedObject 
 		{
 			get 
 			{
-				return Element.GetReferenced(SelectiveXmlIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SelectiveXmlIndex.IndexedObject).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISpecifiesIndexElement(ri)));
 			}
 		}
 
 		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.primarypromotedpath.aspx">SelectiveXmlIndex.PrimaryPromotedPath</see>
-		///
+		/// Relationship Type:Peer
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> PrimaryPromotedPath 
 		{
 			get 
 			{
-				return Element.GetReferenced(SelectiveXmlIndex.PrimaryPromotedPath).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SelectiveXmlIndex.PrimaryPromotedPath).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlPromotedNodePathElement(ri)));
 			}
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSelectiveXmlIndex"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSelectiveXmlIndexReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.primaryselectivexmlindex.aspx">SelectiveXmlIndex.PrimarySelectiveXmlIndex</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSelectiveXmlIndex> PrimarySelectiveXmlIndex 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSelectiveXmlIndexReference> PrimarySelectiveXmlIndex 
 		{
 			get 
 			{
-				return Element.GetReferenced(SelectiveXmlIndex.PrimarySelectiveXmlIndex).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSelectiveXmlIndex)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(SelectiveXmlIndex.PrimarySelectiveXmlIndex).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSelectiveXmlIndexReference(o, Microsoft.SqlServer.Dac.Model.SelectiveXmlIndex.TypeClass));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.promotedpaths.aspx">SelectiveXmlIndex.PromotedPaths</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath> PromotedPaths 
 		{
 			get 
 			{
-				return Element.GetReferenced(SelectiveXmlIndex.PromotedPaths).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SelectiveXmlIndex.PromotedPaths).Select( o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlPromotedNodePath)TSqlModelElement.AdaptInstance(o));
 			}
 		}
 
 		///
 		/// Composing relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlNamespace"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.selectivexmlindex.xmlnamespaces.aspx">SelectiveXmlIndex.XmlNamespaces</see>
-		///
+		/// Relationship Type:Composing
 		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlNamespace> XmlNamespaces 
 		{
 			get 
 			{
-				return Element.GetReferenced(SelectiveXmlIndex.XmlNamespaces).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlNamespace)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferenced(SelectiveXmlIndex.XmlNamespaces).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlXmlNamespace(o));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:XmlNamespace"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlnamespace.aspx">XmlNamespace</see>
+	///
+	public partial class TSqlXmlNamespaceReference : TSqlXmlNamespace, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlXmlNamespaceReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:XmlNamespace"/>
@@ -12082,6 +21713,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlXmlNamespace to adapt instances of <see cref="T:XmlNamespace"/>
 		/// </summary>
 		public TSqlXmlNamespace(TSqlObject obj)  : base(obj, XmlNamespace.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlXmlNamespace to adapt instances of <see cref="T:XmlNamespace"/>
+		/// </summary>
+		protected TSqlXmlNamespace()
 		{
 		}
 
@@ -12112,6 +21751,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PromotedNodePathForXQueryType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforxquerytype.aspx">PromotedNodePathForXQueryType</see>
+	///
+	public partial class TSqlPromotedNodePathForXQueryTypeReference : TSqlPromotedNodePathForXQueryType, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlPromotedNodePathForXQueryTypeReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PromotedNodePathForXQueryType"/>
 	///
@@ -12124,6 +21836,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlPromotedNodePathForXQueryType to adapt instances of <see cref="T:PromotedNodePathForXQueryType"/>
 		/// </summary>
 		public TSqlPromotedNodePathForXQueryType(TSqlObject obj)  : base(obj, PromotedNodePathForXQueryType.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlPromotedNodePathForXQueryType to adapt instances of <see cref="T:PromotedNodePathForXQueryType"/>
+		/// </summary>
+		protected TSqlPromotedNodePathForXQueryType()
 		{
 		}
 
@@ -12174,6 +21894,79 @@ public partial class TSqlModelElement
 
 }
 
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PromotedNodePathForSqlType"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforsqltype.aspx">PromotedNodePathForSqlType</see>
+	///
+	public partial class TSqlPromotedNodePathForSqlTypeReference : TSqlPromotedNodePathForSqlType, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlPromotedNodePathForSqlTypeReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
+
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:PromotedNodePathForSqlType"/>
 	///
@@ -12186,6 +21979,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlPromotedNodePathForSqlType to adapt instances of <see cref="T:PromotedNodePathForSqlType"/>
 		/// </summary>
 		public TSqlPromotedNodePathForSqlType(TSqlObject obj)  : base(obj, PromotedNodePathForSqlType.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlPromotedNodePathForSqlType to adapt instances of <see cref="T:PromotedNodePathForSqlType"/>
+		/// </summary>
+		protected TSqlPromotedNodePathForSqlType()
 		{
 		}
 
@@ -12255,18 +22056,91 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.promotednodepathforsqltype.datatype.aspx">PromotedNodePathForSqlType.DataType</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType> DataType 
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> DataType 
 		{
 			get 
 			{
-				return Element.GetReferenced(PromotedNodePathForSqlType.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataType)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(PromotedNodePathForSqlType.DataType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
 }
+
+
+    ///
+	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:XmlSchemaCollection"/>
+	///
+	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlschemacollection.aspx">XmlSchemaCollection</see>
+	///
+	public partial class TSqlXmlSchemaCollectionReference : TSqlXmlSchemaCollection, ISqlModelElementReference
+	{		
+        private ModelRelationshipInstance relationshipInstance;
+        private ModelTypeClass predefinedTypeClass;
+        public TSqlXmlSchemaCollectionReference (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+		{
+            relationshipInstance = relationshipReference;
+            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
+            {
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                "typeClass");
+            }
+            predefinedTypeClass = typeClass;
+        }
+
+        public override ObjectIdentifier Name
+        {
+            get
+            {
+                return relationshipInstance.ObjectName;
+            }
+        }
+
+        public override ModelTypeClass ObjectType
+        {
+            get
+            {
+                if (IsResovled())
+                {
+                    return base.ObjectType;
+                }
+                else
+                {
+                    // when object is unresolved default to the predefined ModelTypClass
+                    return predefinedTypeClass;
+                }
+            }
+        }
+
+        public bool IsResovled()
+        {
+            return relationshipInstance.Object != null;
+        }
+
+        public override TSqlObject Element
+        {
+            get
+            {
+                // Verify the Element is resolved.
+                if (!IsResovled())
+                {
+                    throw new UnresolvedElementException(
+                       string.Format(CultureInfo.CurrentUICulture,
+                       ModelMessages.UnresolvedObject,
+                       relationshipInstance.ObjectName));
+                }
+                return relationshipInstance.Object;
+            }
+        }
+        
+        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        {
+            return relationshipInstance.GetProperty<T>(property);
+        }
+	}
 
 	///
 	/// Adapter class for instances of <see cref="T:TSqlObject"/> with an <see cref="T:TSqlObject M:ObjectType"> equal to <see cref="T:XmlSchemaCollection"/>
@@ -12280,6 +22154,14 @@ public partial class TSqlModelElement
 		///	Create a strongly-typed class TSqlXmlSchemaCollection to adapt instances of <see cref="T:XmlSchemaCollection"/>
 		/// </summary>
 		public TSqlXmlSchemaCollection(TSqlObject obj)  : base(obj, XmlSchemaCollection.TypeClass)
+		{
+		}
+
+
+		/// <summary>
+		///	Create a strongly-typed class TSqlXmlSchemaCollection to adapt instances of <see cref="T:XmlSchemaCollection"/>
+		/// </summary>
+		protected TSqlXmlSchemaCollection()
 		{
 		}
 
@@ -12299,16 +22181,152 @@ public partial class TSqlModelElement
 
 
 		///
-		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema"/>
+		/// Hierarchical relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.xmlschemacollection.schema.aspx">XmlSchemaCollection.Schema</see>
-		///
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema> Schema 
+		/// Relationship Type:Hierarchical
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference> Schema 
 		{
 			get 
 			{
-				return Element.GetReferenced(XmlSchemaCollection.Schema).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchema)TSqlModelElement.AdaptInstance(o));
+				return Element.GetReferencedRelationshipInstances(XmlSchemaCollection.Schema).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlSchemaReference(o, Microsoft.SqlServer.Dac.Model.Schema.TypeClass));
 			}
 		}
 
 }
+
+
+    // Derived Types with Metadata properties.
+
+    public partial class ClrTableOptionOrderColumnsReference : Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference
+    {
+        public  ClrTableOptionOrderColumnsReference (ModelRelationshipInstance relationshipReference,  ModelTypeClass typeClass) : base(relationshipReference, typeClass) { }
+
+        ///
+	    /// Metadata property wrapper for <see cref="M:ClrTableOption.OrderColumns"/>		
+	    ///
+	    public Boolean Ascending 
+	    {
+            get { return this.GetMetdataProperty<Boolean>(ClrTableOption.OrderColumnsRelationship.Ascending);}
+    	}
+
+    }
+
+    public partial class IndexColumnsReference : Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference
+    {
+        public  IndexColumnsReference (ModelRelationshipInstance relationshipReference,  ModelTypeClass typeClass) : base(relationshipReference, typeClass) { }
+
+        ///
+	    /// Metadata property wrapper for <see cref="M:Index.Columns"/>		
+	    ///
+	    public Boolean Ascending 
+	    {
+            get { return this.GetMetdataProperty<Boolean>(Index.ColumnsRelationship.Ascending);}
+    	}
+
+    }
+
+    public partial class ColumnStoreIndexColumnsReference : Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference
+    {
+        public  ColumnStoreIndexColumnsReference (ModelRelationshipInstance relationshipReference,  ModelTypeClass typeClass) : base(relationshipReference, typeClass) { }
+
+        ///
+	    /// Metadata property wrapper for <see cref="M:ColumnStoreIndex.Columns"/>		
+	    ///
+	    public Boolean Ascending 
+	    {
+            get { return this.GetMetdataProperty<Boolean>(ColumnStoreIndex.ColumnsRelationship.Ascending);}
+    	}
+
+    }
+
+    public partial class ContractMessagesReference : Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlMessageTypeReference
+    {
+        public  ContractMessagesReference (ModelRelationshipInstance relationshipReference,  ModelTypeClass typeClass) : base(relationshipReference, typeClass) { }
+
+        ///
+	    /// Metadata property wrapper for <see cref="M:Contract.Messages"/>		
+	    ///
+	    public Boolean Default 
+	    {
+            get { return this.GetMetdataProperty<Boolean>(Contract.MessagesRelationship.Default);}
+    	}
+        ///
+	    /// Metadata property wrapper for <see cref="M:Contract.Messages"/>		
+	    ///
+	    public Int32 SentBy 
+	    {
+            get { return this.GetMetdataProperty<Int32>(Contract.MessagesRelationship.SentBy);}
+    	}
+
+    }
+
+    public partial class PartitionSchemeFilegroupsReference : Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlFilegroupReference
+    {
+        public  PartitionSchemeFilegroupsReference (ModelRelationshipInstance relationshipReference,  ModelTypeClass typeClass) : base(relationshipReference, typeClass) { }
+
+        ///
+	    /// Metadata property wrapper for <see cref="M:PartitionScheme.Filegroups"/>		
+	    ///
+	    public Boolean IsDefault 
+	    {
+            get { return this.GetMetdataProperty<Boolean>(PartitionScheme.FilegroupsRelationship.IsDefault);}
+    	}
+
+    }
+
+    public partial class PrimaryKeyConstraintColumnsReference : Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference
+    {
+        public  PrimaryKeyConstraintColumnsReference (ModelRelationshipInstance relationshipReference,  ModelTypeClass typeClass) : base(relationshipReference, typeClass) { }
+
+        ///
+	    /// Metadata property wrapper for <see cref="M:PrimaryKeyConstraint.Columns"/>		
+	    ///
+	    public Boolean Ascending 
+	    {
+            get { return this.GetMetdataProperty<Boolean>(PrimaryKeyConstraint.ColumnsRelationship.Ascending);}
+    	}
+
+    }
+
+    public partial class TableTypePrimaryKeyConstraintColumnsReference : Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference
+    {
+        public  TableTypePrimaryKeyConstraintColumnsReference (ModelRelationshipInstance relationshipReference,  ModelTypeClass typeClass) : base(relationshipReference, typeClass) { }
+
+        ///
+	    /// Metadata property wrapper for <see cref="M:TableTypePrimaryKeyConstraint.Columns"/>		
+	    ///
+	    public Boolean Ascending 
+	    {
+            get { return this.GetMetdataProperty<Boolean>(TableTypePrimaryKeyConstraint.ColumnsRelationship.Ascending);}
+    	}
+
+    }
+
+    public partial class TableTypeUniqueConstraintColumnsReference : Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference
+    {
+        public  TableTypeUniqueConstraintColumnsReference (ModelRelationshipInstance relationshipReference,  ModelTypeClass typeClass) : base(relationshipReference, typeClass) { }
+
+        ///
+	    /// Metadata property wrapper for <see cref="M:TableTypeUniqueConstraint.Columns"/>		
+	    ///
+	    public Boolean Ascending 
+	    {
+            get { return this.GetMetdataProperty<Boolean>(TableTypeUniqueConstraint.ColumnsRelationship.Ascending);}
+    	}
+
+    }
+
+    public partial class UniqueConstraintColumnsReference : Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlColumnReference
+    {
+        public  UniqueConstraintColumnsReference (ModelRelationshipInstance relationshipReference,  ModelTypeClass typeClass) : base(relationshipReference, typeClass) { }
+
+        ///
+	    /// Metadata property wrapper for <see cref="M:UniqueConstraint.Columns"/>		
+	    ///
+	    public Boolean Ascending 
+	    {
+            get { return this.GetMetdataProperty<Boolean>(UniqueConstraint.ColumnsRelationship.Ascending);}
+    	}
+
+    }
 }

@@ -26,26 +26,21 @@
 //</copyright>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Data.SqlClient;
+using System.IO;
 using Microsoft.SqlServer.Dac;
 using Microsoft.SqlServer.Dac.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Public.Dac.Samples;
 using Public.Dac.Samples.Contributors;
-using System;
-using System.Data.SqlClient;
-using System.IO;
+using Public.Dac.Samples.TestUtilities;
 
 namespace Public.Dac.Sample.Tests
 {
     [TestClass]
     public class TestDeploymentStoppingContributor
     {
-        private const string DataSourceName = "(localdb)\\MSSQLLocalDB";
-        private static string ServerConnectionString
-        {
-            get { return "Data Source=" + DataSourceName + ";Integrated Security=True"; }
-        }
-
         public TestContext TestContext { get; set; }
         
         private DisposableList _trash;
@@ -90,7 +85,7 @@ namespace Public.Dac.Sample.Tests
             string dbName = TestContext.TestName;
 
             // Delete any existing artifacts from a previous run
-            TestUtils.DropDatabase(ServerConnectionString, dbName);
+            TestUtils.DropDatabase(TestUtils.ServerConnectionString, dbName);
 
             // When deploying using the deployment stopping contributor
             try
@@ -102,8 +97,7 @@ namespace Public.Dac.Sample.Tests
 
                 using (DacPackage dacpac = DacPackage.Load(_dacpacPath, DacSchemaModelStorageType.Memory))
                 {
-                    const string connectionString = "Data Source=" + DataSourceName + ";Integrated Security=True";
-                    DacServices dacServices = new DacServices(connectionString);
+                    DacServices dacServices = new DacServices(TestUtils.ServerConnectionString);
 
                     // Script then deploy, to support debugging of the generated plan
                     try
@@ -121,11 +115,11 @@ namespace Public.Dac.Sample.Tests
                 }
 
                 // Also expect the deployment to fail
-                AssertDeployFailed(ServerConnectionString, dbName);
+                AssertDeployFailed(TestUtils.ServerConnectionString, dbName);
             }
             finally
             {
-                TestUtils.DropDatabase(ServerConnectionString, dbName);
+                TestUtils.DropDatabase(TestUtils.ServerConnectionString, dbName);
             }
         }
         

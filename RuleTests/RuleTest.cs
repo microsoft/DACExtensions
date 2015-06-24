@@ -25,18 +25,18 @@
 //</copyright>
 //------------------------------------------------------------------------------
 
-using Microsoft.SqlServer.Dac;
-using Microsoft.SqlServer.Dac.CodeAnalysis;
-using Microsoft.SqlServer.Dac.Extensibility;
-using Microsoft.SqlServer.Dac.Model;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Microsoft.SqlServer.Dac;
+using Microsoft.SqlServer.Dac.CodeAnalysis;
+using Microsoft.SqlServer.Dac.Extensibility;
+using Microsoft.SqlServer.Dac.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Public.Dac.Samples.TestUtilities;
 
 namespace Public.Dac.Samples.Rules.Tests
 {
@@ -59,7 +59,8 @@ namespace Public.Dac.Samples.Rules.Tests
         public enum AnalysisTarget
         {
             PublicModel,
-            DacpacModel
+            DacpacModel,
+            Database
         }
 
         public RuleTest(IList<Tuple<string, string>> testScripts, TSqlModelOptions databaseOptions, SqlServerVersion sqlVersion)
@@ -122,14 +123,27 @@ namespace Public.Dac.Samples.Rules.Tests
             set;
         }
 
+        public string DatabaseName
+        {
+            get;
+            set;
+        }
+
         protected void CreateModelUsingTestScripts()
         {
-            TSqlModel scriptedModel = CreateScriptedModel();
-            ModelForAnalysis = scriptedModel;
-            if (Target == AnalysisTarget.DacpacModel)
+            switch(Target)
             {
-                ModelForAnalysis = CreateDacpacModel(scriptedModel);
-                scriptedModel.Dispose();
+                case AnalysisTarget.Database:
+                    ModelForAnalysis = CreateDatabaseModel();
+                    break;
+                case AnalysisTarget.DacpacModel:
+                    TSqlModel scriptedModel = CreateScriptedModel();
+                    ModelForAnalysis = CreateDacpacModel(scriptedModel);
+                    scriptedModel.Dispose();                    
+                    break;
+                default:
+                    ModelForAnalysis = CreateScriptedModel();
+                    break;
             }
 
             _trash.Add(ModelForAnalysis);
@@ -138,11 +152,8 @@ namespace Public.Dac.Samples.Rules.Tests
         private TSqlModel CreateScriptedModel()
         {
             TSqlModel model = new TSqlModel(SqlVersion, DatabaseOptions);
-
             AddScriptsToModel(model);
-
             AssertModelValid(model);
-
             return model;
         }
 
@@ -161,6 +172,25 @@ namespace Public.Dac.Samples.Rules.Tests
             }
 
             Assert.IsFalse(breakingIssuesFound, "Cannot run analysis if there are model errors");
+        }
+        
+        /// <summary>
+        /// Deploys test scripts to a database and creates a model directly against this DB. 
+        /// Since this is a RuleTest we load the model as script backed to ensure that we have file names,
+        /// source code positions, and that programmability objects (stored procedures, views) have a full SQLDOM 
+        /// syntax tree instead of just a snippet.
+        /// </summary>
+        private TSqlModel CreateDatabaseModel()
+        {
+            ArgumentValidation.CheckForEmptyString(DatabaseName, "DatabaseName");
+            SqlTestDB db = TestUtils.CreateTestDatabase(TestUtils.DefaultInstanceInfo, DatabaseName);
+            _trash.Add(db);
+
+            TestUtils.ExecuteNonQuery(db, TestScripts.Select(t => t.Item1).SelectMany(s => TestUtils.GetBatches(s)).ToList());
+
+            TSqlModel model = TSqlModel.LoadFromDatabase(db.BuildConnectionString(), new ModelExtractOptions { LoadAsScriptBackedModel = true });            
+            AssertModelValid(model);
+            return model;
         }
 
         /// <summary>
@@ -203,7 +233,7 @@ namespace Public.Dac.Samples.Rules.Tests
             return TSqlModel.LoadFromDacpac(dacpacPath, 
                 new ModelLoadOptions(DacSchemaModelStorageType.Memory, loadAsScriptBackedModel: true));
         }
-
+        
         protected void AddScriptsToModel(TSqlModel model)
         {
             foreach (Tuple<string,string> tuple in TestScripts)

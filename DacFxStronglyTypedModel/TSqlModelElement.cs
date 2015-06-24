@@ -25,19 +25,19 @@
 //</copyright>
 //------------------------------------------------------------------------------
 using Microsoft.SqlServer.Dac.Model;
+using Microsoft.SqlServer.TransactSql.ScriptDom;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
-using Microsoft.SqlServer.Dac;
-using DacFxStronglyTypedModel;
 using System.Globalization;
 
 namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 {
     public abstract partial class TSqlModelElement : ISqlModelElement
     {
+        protected TSqlModelElement()
+        {
+        }
+
         public TSqlModelElement(TSqlObject obj, ModelTypeClass typeClass)
         {
             if (obj == null)
@@ -47,7 +47,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             else if (obj.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                    Messages.InvalidObjecType, obj.ObjectType.Name, typeClass.Name),
+                    ModelMessages.InvalidObjecType, obj.ObjectType.Name, typeClass.Name),
                     "typeClass");
             }
             Element = obj; 
@@ -55,21 +55,22 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
 
 
-        public ObjectIdentifier Name
+        public virtual ObjectIdentifier Name
         {
             get 
             {
                 return Element.Name;
             }
+
         }
 
-        public TSqlObject Element
+        public virtual TSqlObject Element
         {
             get;
-            private set;
+            protected set;
         }
 
-        public ModelTypeClass ObjectType { get { return Element.ObjectType; } }
+        public virtual ModelTypeClass ObjectType { get { return Element.ObjectType; } }
 
         public object this[ModelPropertyClass property] { get { return Element[property]; } }
 

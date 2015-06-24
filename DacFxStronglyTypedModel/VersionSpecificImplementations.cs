@@ -24,32 +24,6 @@
 //    SOFTWARE.
 //</copyright>
 //------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//<copyright company="Microsoft">
-//
-//    The MIT License (MIT)
-//    
-//    Copyright (c) 2015 Microsoft
-//    
-//    Permission is hereby granted, free of charge, to any person obtaining a copy
-//    of this software and associated documentation files (the "Software"), to deal
-//    in the Software without restriction, including without limitation the rights
-//    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//    copies of the Software, and to permit persons to whom the Software is
-//    furnished to do so, subject to the following conditions:
-//    
-//    The above copyright notice and this permission notice shall be included in all
-//    copies or substantial portions of the Software.
-//    
-//    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//    SOFTWARE.
-//</copyright>
-//------------------------------------------------------------------------------
 
 namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 {
@@ -125,16 +99,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlColumn.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -143,11 +117,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection> ISql90TSqlColumn.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollectionReference> ISql90TSqlColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -239,7 +213,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlTableValuedFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlTableValuedFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -247,21 +221,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlTableValuedFunction.Login 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlTableValuedFunction.Columns 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlTableValuedFunction.OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> ISql90TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference>();
 			}
 		}
 
@@ -275,29 +249,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlTableValuedFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlTableValuedFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlTableValuedFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlClrTableOption> ISql90TSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlClrTableOption>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlTableValuedFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference> ISql90TSqlTableValuedFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference>();
 			}
 		}
 	}
@@ -385,7 +368,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlScalarFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlScalarFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -394,11 +377,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlScalarFunction.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> ISql90TSqlScalarFunction.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference>();
 			}
 		}
 
@@ -412,30 +395,40 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlScalarFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlScalarFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlScalarFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlScalarFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference> ISql90TSqlScalarFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference>();
 			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql90TSqlClrTableOption"/>.
+	/// </summary>
+	public partial class TSqlClrTableOption : ISql90TSqlClrTableOption
+	{		
+		String ISql90TSqlClrTableOption.ClassName 
+		{
+			get { return this.ClassName;}
 		}
 	}
 	/// <summary>
@@ -469,11 +462,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlAggregate.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference> ISql90TSqlAggregate.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference>();
 			}
 		}
 
@@ -487,20 +480,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlAggregate.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlAggregate.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlAggregate.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlAggregate.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 	}
@@ -515,11 +508,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlApplicationRole.DefaultSchema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlApplicationRole.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 	}
@@ -574,29 +567,29 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference> ISql90TSqlIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlIndex.IncludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlIndex.IncludedColumns 
 		{
 			get 
 			{
-				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
@@ -610,20 +603,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme> ISql90TSqlIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionSchemeReference> ISql90TSqlIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -660,11 +653,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlAssembly.ReferencedAssemblies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference> ISql90TSqlAssembly.ReferencedAssemblies 
 		{
 			get 
 			{
-				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference>();
 			}
 		}
 	}
@@ -705,11 +698,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlAsymmetricKey.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference> ISql90TSqlAsymmetricKey.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference>();
 			}
 		}
 
@@ -759,11 +752,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlDataType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlDataType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 
@@ -836,11 +829,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlCertificate.ExistingKeysAssembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference> ISql90TSqlCertificate.ExistingKeysAssembly 
 		{
 			get 
 			{
-				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
+				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference>();
 			}
 		}
 	}
@@ -863,7 +856,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlCheckConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -872,11 +865,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlCheckConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference> ISql90TSqlCheckConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference>();
 			}
 		}
 	}
@@ -923,11 +916,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -942,11 +935,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlClrTypeProperty.ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
-				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -966,11 +959,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlMessageType> ISql90TSqlContract.Messages 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlMessageTypeReference> ISql90TSqlContract.Messages 
 		{
 			get 
 			{
-				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlMessageType>();
+				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlMessageTypeReference>();
 			}
 		}
 	}
@@ -1035,16 +1028,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlDatabaseDdlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference> ISql90TSqlDatabaseDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlDatabaseDdlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlDatabaseDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -1071,20 +1064,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlDatabaseDdlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> ISql90TSqlDatabaseDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlDatabaseDdlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference> ISql90TSqlDatabaseDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference>();
 			}
 		}
 	}
@@ -1155,11 +1148,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference> ISql90TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference>();
 			}
 		}
 	}
@@ -1310,11 +1303,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlDatabaseOptions.DefaultFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference> ISql90TSqlDatabaseOptions.DefaultFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
+				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -1329,7 +1322,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlDefault.BoundObjects 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlDefault.BoundObjects 
 		{
 			get 
 			{
@@ -1338,11 +1331,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlDefault.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlDefault.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 	}
@@ -1365,7 +1358,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlDefaultConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -1374,20 +1367,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlDefaultConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference> ISql90TSqlDefaultConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlDefaultConstraint.TargetColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 	}
@@ -1470,16 +1463,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlDmlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference> ISql90TSqlDmlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlDmlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlDmlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -1488,16 +1481,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlDmlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> ISql90TSqlDmlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql90TSqlDmlTrigger.TriggerObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlDmlTrigger.TriggerObject 
 		{
 			get 
 			{
@@ -1506,11 +1499,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlDmlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference> ISql90TSqlDmlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference>();
 			}
 		}
 	}
@@ -1632,11 +1625,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlExtendedProcedure.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> ISql90TSqlExtendedProcedure.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference>();
 			}
 		}
 
@@ -1650,20 +1643,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlExtendedProcedure.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlExtendedProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlExtendedProcedure.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference> ISql90TSqlExtendedProcedure.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference>();
 			}
 		}
 	}
@@ -1733,11 +1726,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlSqlFile.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference> ISql90TSqlSqlFile.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -1774,38 +1767,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlForeignKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlForeignKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlForeignKeyConstraint.ForeignColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlForeignKeyConstraint.ForeignColumns 
 		{
 			get 
 			{
-				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlForeignKeyConstraint.ForeignTable 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference> ISql90TSqlForeignKeyConstraint.ForeignTable 
 		{
 			get 
 			{
-				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlForeignKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference> ISql90TSqlForeignKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference>();
 			}
 		}
 	}
@@ -1837,11 +1830,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlFullTextCatalog.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference> ISql90TSqlFullTextCatalog.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -1864,7 +1857,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlFullTextIndex.Catalog 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference> ISql90TSqlFullTextIndex.Catalog 
 		{
 			get 
 			{
@@ -1873,11 +1866,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlFullTextIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFullTextIndexColumnSpecifier> ISql90TSqlFullTextIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFullTextIndexColumnSpecifier>();
 			}
 		}
 
@@ -1891,7 +1884,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlFullTextIndex.UniqueIndexName 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlFullTextIndex.UniqueIndexName 
 		{
 			get 
 			{
@@ -1910,20 +1903,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlFullTextIndexColumnSpecifier.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlFullTextIndexColumnSpecifier.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlFullTextIndexColumnSpecifier.TypeColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlFullTextIndexColumnSpecifier.TypeColumn 
 		{
 			get 
 			{
-				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 	}
@@ -2074,20 +2067,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLinkedServer> ISql90TSqlLinkedServerLogin.LinkedServer 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLinkedServerReference> ISql90TSqlLinkedServerLogin.LinkedServer 
 		{
 			get 
 			{
-				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLinkedServer>();
+				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLinkedServerReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlLinkedServerLogin.LocalLogin 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> ISql90TSqlLinkedServerLogin.LocalLogin 
 		{
 			get 
 			{
-				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
+				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference>();
 			}
 		}
 	}
@@ -2142,29 +2135,29 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey> ISql90TSqlLogin.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKeyReference> ISql90TSqlLogin.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlLogin.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference> ISql90TSqlLogin.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCredential> ISql90TSqlLogin.Credential 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCredentialReference> ISql90TSqlLogin.Credential 
 		{
 			get 
 			{
-				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCredential>();
+				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCredentialReference>();
 			}
 		}
 	}
@@ -2198,11 +2191,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection> ISql90TSqlMessageType.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollectionReference> ISql90TSqlMessageType.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -2226,11 +2219,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlPartitionFunction.ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
-				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
+				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -2245,20 +2238,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlPartitionScheme.Filegroups 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference> ISql90TSqlPartitionScheme.Filegroups 
 		{
 			get 
 			{
-				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
+				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionFunction> ISql90TSqlPartitionScheme.PartitionFunction 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionFunctionReference> ISql90TSqlPartitionScheme.PartitionFunction 
 		{
 			get 
 			{
-				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionFunction>();
+				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionFunctionReference>();
 			}
 		}
 	}
@@ -2273,7 +2266,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlPartitionValue.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlPartitionValue.ExpressionDependencies 
 		{
 			get 
 			{
@@ -2304,16 +2297,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlPermission.ExcludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlPermission.ExcludedColumns 
 		{
 			get 
 			{
-				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql90TSqlPermission.Grantee 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISql90TSqlPermission.Grantee 
 		{
 			get 
 			{
@@ -2322,7 +2315,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql90TSqlPermission.Grantor 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISql90TSqlPermission.Grantor 
 		{
 			get 
 			{
@@ -2331,11 +2324,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlPermission.RevokedGrantOptionColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlPermission.RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
@@ -2395,47 +2388,47 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlPrimaryKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlPrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlPrimaryKeyConstraint.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference> ISql90TSqlPrimaryKeyConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlPrimaryKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference> ISql90TSqlPrimaryKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlPrimaryKeyConstraint.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlPrimaryKeyConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme> ISql90TSqlPrimaryKeyConstraint.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionSchemeReference> ISql90TSqlPrimaryKeyConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -2490,16 +2483,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlProcedure.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference> ISql90TSqlProcedure.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlProcedure.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlProcedure.BodyDependencies 
 		{
 			get 
 			{
@@ -2508,11 +2501,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlProcedure.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> ISql90TSqlProcedure.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference>();
 			}
 		}
 
@@ -2526,29 +2519,29 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedure> ISql90TSqlProcedure.ParentProcedure 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedureReference> ISql90TSqlProcedure.ParentProcedure 
 		{
 			get 
 			{
-				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedure>();
+				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedureReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlProcedure.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlProcedure.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference> ISql90TSqlProcedure.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference>();
 			}
 		}
 	}
@@ -2587,11 +2580,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedure> ISql90TSqlQueue.ActivationProcedure 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedureReference> ISql90TSqlQueue.ActivationProcedure 
 		{
 			get 
 			{
-				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedure>();
+				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlProcedureReference>();
 			}
 		}
 
@@ -2605,56 +2598,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlQueue.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference> ISql90TSqlQueue.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlQueue.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> ISql90TSqlQueue.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlQueue.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlQueue.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme> ISql90TSqlQueue.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionSchemeReference> ISql90TSqlQueue.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlQueue.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlQueue.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlQueue.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference> ISql90TSqlQueue.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference>();
 			}
 		}
 	}
@@ -2695,11 +2688,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueue> ISql90TSqlQueueEventNotification.Queue 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueueReference> ISql90TSqlQueueEventNotification.Queue 
 		{
 			get 
 			{
-				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueue>();
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueueReference>();
 			}
 		}
 	}
@@ -2727,11 +2720,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlRemoteServiceBinding.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference> ISql90TSqlRemoteServiceBinding.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference>();
 			}
 		}
 	}
@@ -2766,11 +2759,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRole> ISql90TSqlRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRoleReference> ISql90TSqlRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRoleReference>();
 			}
 		}
 	}
@@ -2820,7 +2813,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlRule.BoundObjects 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlRule.BoundObjects 
 		{
 			get 
 			{
@@ -2829,11 +2822,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlRule.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlRule.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 	}
@@ -2903,16 +2896,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlServerDdlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference> ISql90TSqlServerDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlServerDdlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlServerDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -2939,20 +2932,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlServerDdlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> ISql90TSqlServerDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser> ISql90TSqlServerDdlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference> ISql90TSqlServerDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlUserReference>();
 			}
 		}
 	}
@@ -3014,11 +3007,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRole> ISql90TSqlServerRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRoleReference> ISql90TSqlServerRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlRoleReference>();
 			}
 		}
 	}
@@ -3042,20 +3035,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlContract> ISql90TSqlService.Contracts 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlContractReference> ISql90TSqlService.Contracts 
 		{
 			get 
 			{
-				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlContract>();
+				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlContractReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueue> ISql90TSqlService.Queue 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueueReference> ISql90TSqlService.Queue 
 		{
 			get 
 			{
-				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueue>();
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlQueueReference>();
 			}
 		}
 	}
@@ -3094,11 +3087,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference> ISql90TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference>();
 			}
 		}
 	}
@@ -3113,7 +3106,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql90TSqlSignature.EncryptionMechanism 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql90TSqlSignature.EncryptionMechanism 
 		{
 			get 
 			{
@@ -3122,7 +3115,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql90TSqlSignature.SignedObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlSignature.SignedObject 
 		{
 			get 
 			{
@@ -3145,20 +3138,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey> ISql90TSqlSignatureEncryptionMechanism.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKeyReference> ISql90TSqlSignatureEncryptionMechanism.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlSignatureEncryptionMechanism.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference> ISql90TSqlSignatureEncryptionMechanism.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference>();
 			}
 		}
 	}
@@ -3256,7 +3249,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlSoapMethodSpecification.RelatedMethod 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlSoapMethodSpecification.RelatedMethod 
 		{
 			get 
 			{
@@ -3287,16 +3280,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlStatistics.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlStatistics.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql90TSqlStatistics.OnObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlStatistics.OnObject 
 		{
 			get 
 			{
@@ -3343,20 +3336,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType> ISql90TSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection> ISql90TSqlParameter.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollectionReference> ISql90TSqlParameter.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -3379,11 +3372,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey> ISql90TSqlSymmetricKey.AsymmetricKeys 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKeyReference> ISql90TSqlSymmetricKey.AsymmetricKeys 
 		{
 			get 
 			{
-				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey>();
+				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKeyReference>();
 			}
 		}
 
@@ -3397,16 +3390,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlSymmetricKey.Certificates 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference> ISql90TSqlSymmetricKey.Certificates 
 		{
 			get 
 			{
-				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
+				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference>();
 			}
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql90TSqlSymmetricKey.Passwords 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql90TSqlSymmetricKey.Passwords 
 		{
 			get 
 			{
@@ -3415,11 +3408,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSymmetricKey> ISql90TSqlSymmetricKey.SymmetricKeys 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSymmetricKeyReference> ISql90TSqlSymmetricKey.SymmetricKeys 
 		{
 			get 
 			{
-				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSymmetricKey>();
+				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSymmetricKeyReference>();
 			}
 		}
 	}
@@ -3444,7 +3437,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlSynonym.ForObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlSynonym.ForObject 
 		{
 			get 
 			{
@@ -3453,11 +3446,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlSynonym.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlSynonym.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 	}
@@ -3505,47 +3498,47 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlTable.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference> ISql90TSqlTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlTable.FilegroupForTextImage 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference> ISql90TSqlTable.FilegroupForTextImage 
 		{
 			get 
 			{
-				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
+				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlTable.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme> ISql90TSqlTable.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionSchemeReference> ISql90TSqlTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlTable.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlTable.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 	}
@@ -3610,47 +3603,47 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlUniqueConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup> ISql90TSqlUniqueConstraint.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference> ISql90TSqlUniqueConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlFilegroupReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable> ISql90TSqlUniqueConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference> ISql90TSqlUniqueConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlUniqueConstraint.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlUniqueConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme> ISql90TSqlUniqueConstraint.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionSchemeReference> ISql90TSqlUniqueConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -3659,48 +3652,44 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlUser : ISql90TSqlUser
 	{		
-		AuthenticationType ISql90TSqlUser.AuthenticationType 
-		{
-			get { return this.AuthenticationType;}
-		}
 		Boolean ISql90TSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey> ISql90TSqlUser.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKeyReference> ISql90TSqlUser.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate> ISql90TSqlUser.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference> ISql90TSqlUser.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlCertificateReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlUser.DefaultSchema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlUser.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin> ISql90TSqlUser.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference> ISql90TSqlUser.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlLoginReference>();
 			}
 		}
 	}
@@ -3735,16 +3724,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly> ISql90TSqlUserDefinedType.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference> ISql90TSqlUserDefinedType.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlAssemblyReference>();
 			}
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql90TSqlUserDefinedType.Methods 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql90TSqlUserDefinedType.Methods 
 		{
 			get 
 			{
@@ -3753,7 +3742,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql90TSqlUserDefinedType.Properties 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql90TSqlUserDefinedType.Properties 
 		{
 			get 
 			{
@@ -3762,11 +3751,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlUserDefinedType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlUserDefinedType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 	}
@@ -3809,7 +3798,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql90TSqlView.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql90TSqlView.BodyDependencies 
 		{
 			get 
 			{
@@ -3827,11 +3816,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlView.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlView.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 	}
@@ -3874,11 +3863,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn> ISql90TSqlXmlIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference> ISql90TSqlXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlColumnReference>();
 			}
 		}
 
@@ -3892,11 +3881,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlIndex> ISql90TSqlXmlIndex.PrimaryXmlIndex 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlIndexReference> ISql90TSqlXmlIndex.PrimaryXmlIndex 
 		{
 			get 
 			{
-				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlIndex>();
+				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlXmlIndexReference>();
 			}
 		}
 	}
@@ -3911,11 +3900,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema> ISql90TSqlXmlSchemaCollection.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference> ISql90TSqlXmlSchemaCollection.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlSchemaReference>();
 			}
 		}
 	}
@@ -3994,16 +3983,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlColumn.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -4012,11 +4001,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection> ISql100TSqlColumn.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollectionReference> ISql100TSqlColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -4108,7 +4097,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlTableValuedFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlTableValuedFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -4116,21 +4105,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlTableValuedFunction.Login 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableValuedFunction.Columns 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableValuedFunction.OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> ISql100TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference>();
 			}
 		}
 
@@ -4144,29 +4133,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlTableValuedFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlTableValuedFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlTableValuedFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlClrTableOption> ISql100TSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlClrTableOption>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlTableValuedFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference> ISql100TSqlTableValuedFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference>();
 			}
 		}
 	}
@@ -4254,7 +4252,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlScalarFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlScalarFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -4263,11 +4261,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlScalarFunction.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> ISql100TSqlScalarFunction.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference>();
 			}
 		}
 
@@ -4281,29 +4279,48 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlScalarFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlScalarFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlScalarFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlScalarFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference> ISql100TSqlScalarFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql100TSqlClrTableOption"/>.
+	/// </summary>
+	public partial class TSqlClrTableOption : ISql100TSqlClrTableOption
+	{		
+		String ISql100TSqlClrTableOption.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlClrTableOption.OrderColumns 
+		{
+			get 
+			{
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 	}
@@ -4338,11 +4355,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlAggregate.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference> ISql100TSqlAggregate.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference>();
 			}
 		}
 
@@ -4356,20 +4373,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlAggregate.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlAggregate.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlAggregate.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlAggregate.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 	}
@@ -4384,11 +4401,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlApplicationRole.DefaultSchema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlApplicationRole.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 	}
@@ -4451,7 +4468,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlIndex.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlIndex.BodyDependencies 
 		{
 			get 
 			{
@@ -4460,11 +4477,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
@@ -4478,38 +4495,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlIndex.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlIndex.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlIndex.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference> ISql100TSqlIndex.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlIndex.IncludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlIndex.IncludedColumns 
 		{
 			get 
 			{
-				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
@@ -4523,20 +4540,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference> ISql100TSqlIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -4573,11 +4590,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlAssembly.ReferencedAssemblies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference> ISql100TSqlAssembly.ReferencedAssemblies 
 		{
 			get 
 			{
-				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference>();
 			}
 		}
 	}
@@ -4626,11 +4643,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlAsymmetricKey.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference> ISql100TSqlAsymmetricKey.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference>();
 			}
 		}
 
@@ -4644,7 +4661,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlAsymmetricKey.Provider 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlAsymmetricKey.Provider 
 		{
 			get 
 			{
@@ -4720,7 +4737,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlBrokerPriority.ContractName 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlBrokerPriority.ContractName 
 		{
 			get 
 			{
@@ -4729,7 +4746,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlBrokerPriority.LocalServiceName 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlBrokerPriority.LocalServiceName 
 		{
 			get 
 			{
@@ -4774,11 +4791,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlDataType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlDataType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 
@@ -4851,11 +4868,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlCertificate.ExistingKeysAssembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference> ISql100TSqlCertificate.ExistingKeysAssembly 
 		{
 			get 
 			{
-				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
+				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference>();
 			}
 		}
 	}
@@ -4878,7 +4895,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlCheckConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -4887,11 +4904,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlCheckConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference> ISql100TSqlCheckConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference>();
 			}
 		}
 	}
@@ -4938,11 +4955,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -4957,11 +4974,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlClrTypeProperty.ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
-				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -4981,11 +4998,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlMessageType> ISql100TSqlContract.Messages 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlMessageTypeReference> ISql100TSqlContract.Messages 
 		{
 			get 
 			{
-				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlMessageType>();
+				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlMessageTypeReference>();
 			}
 		}
 	}
@@ -5004,11 +5021,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCryptographicProvider> ISql100TSqlCredential.CryptographicProvider 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCryptographicProviderReference> ISql100TSqlCredential.CryptographicProvider 
 		{
 			get 
 			{
-				return this.CryptographicProvider.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCryptographicProvider>();
+				return this.CryptographicProvider.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCryptographicProviderReference>();
 			}
 		}
 	}
@@ -5055,11 +5072,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAudit> ISql100TSqlDatabaseAuditSpecification.ServerAudit 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAuditReference> ISql100TSqlDatabaseAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAudit>();
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAuditReference>();
 			}
 		}
 	}
@@ -5110,16 +5127,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlDatabaseDdlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference> ISql100TSqlDatabaseDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlDatabaseDdlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlDatabaseDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -5146,20 +5163,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlDatabaseDdlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> ISql100TSqlDatabaseDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlDatabaseDdlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference> ISql100TSqlDatabaseDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference>();
 			}
 		}
 	}
@@ -5174,20 +5191,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey> ISql100TSqlDatabaseEncryptionKey.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKeyReference> ISql100TSqlDatabaseEncryptionKey.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlDatabaseEncryptionKey.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference> ISql100TSqlDatabaseEncryptionKey.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference>();
 			}
 		}
 	}
@@ -5258,11 +5275,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference> ISql100TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference>();
 			}
 		}
 	}
@@ -5437,20 +5454,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlDatabaseOptions.DefaultFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlDatabaseOptions.DefaultFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlDatabaseOptions.DefaultFileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlDatabaseOptions.DefaultFileStreamFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.DefaultFileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -5479,7 +5496,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlDefault.BoundObjects 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlDefault.BoundObjects 
 		{
 			get 
 			{
@@ -5488,11 +5505,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlDefault.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlDefault.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 	}
@@ -5515,7 +5532,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlDefaultConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -5524,20 +5541,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlDefaultConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference> ISql100TSqlDefaultConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlDefaultConstraint.TargetColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 	}
@@ -5620,16 +5637,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlDmlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference> ISql100TSqlDmlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlDmlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlDmlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -5638,16 +5655,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlDmlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> ISql100TSqlDmlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql100TSqlDmlTrigger.TriggerObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlDmlTrigger.TriggerObject 
 		{
 			get 
 			{
@@ -5656,11 +5673,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlDmlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference> ISql100TSqlDmlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference>();
 			}
 		}
 	}
@@ -5788,7 +5805,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql100TSqlEventSession.EventDefinitions 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql100TSqlEventSession.EventDefinitions 
 		{
 			get 
 			{
@@ -5797,7 +5814,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql100TSqlEventSession.EventTargets 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql100TSqlEventSession.EventTargets 
 		{
 			get 
 			{
@@ -5855,7 +5872,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql100TSqlEventSessionDefinitions.AttributeSettings 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql100TSqlEventSessionDefinitions.AttributeSettings 
 		{
 			get 
 			{
@@ -5896,7 +5913,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql100TSqlEventSessionTarget.ParameterSettings 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql100TSqlEventSessionTarget.ParameterSettings 
 		{
 			get 
 			{
@@ -5941,11 +5958,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlExtendedProcedure.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> ISql100TSqlExtendedProcedure.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference>();
 			}
 		}
 
@@ -5959,20 +5976,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlExtendedProcedure.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlExtendedProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlExtendedProcedure.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference> ISql100TSqlExtendedProcedure.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference>();
 			}
 		}
 	}
@@ -6042,11 +6059,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlSqlFile.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlSqlFile.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -6087,38 +6104,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlForeignKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlForeignKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlForeignKeyConstraint.ForeignColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlForeignKeyConstraint.ForeignColumns 
 		{
 			get 
 			{
-				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlForeignKeyConstraint.ForeignTable 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference> ISql100TSqlForeignKeyConstraint.ForeignTable 
 		{
 			get 
 			{
-				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlForeignKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference> ISql100TSqlForeignKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference>();
 			}
 		}
 	}
@@ -6150,11 +6167,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlFullTextCatalog.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlFullTextCatalog.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -6185,7 +6202,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlFullTextIndex.Catalog 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference> ISql100TSqlFullTextIndex.Catalog 
 		{
 			get 
 			{
@@ -6194,20 +6211,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlFullTextIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFullTextIndexColumnSpecifier> ISql100TSqlFullTextIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFullTextIndexColumnSpecifier>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlFullTextIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlFullTextIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
@@ -6221,7 +6238,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlFullTextIndex.StopList 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlFullTextIndex.StopList 
 		{
 			get 
 			{
@@ -6230,7 +6247,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlFullTextIndex.UniqueIndexName 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlFullTextIndex.UniqueIndexName 
 		{
 			get 
 			{
@@ -6249,20 +6266,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlFullTextIndexColumnSpecifier.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlFullTextIndexColumnSpecifier.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlFullTextIndexColumnSpecifier.TypeColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlFullTextIndexColumnSpecifier.TypeColumn 
 		{
 			get 
 			{
-				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 	}
@@ -6432,20 +6449,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLinkedServer> ISql100TSqlLinkedServerLogin.LinkedServer 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLinkedServerReference> ISql100TSqlLinkedServerLogin.LinkedServer 
 		{
 			get 
 			{
-				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLinkedServer>();
+				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLinkedServerReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlLinkedServerLogin.LocalLogin 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> ISql100TSqlLinkedServerLogin.LocalLogin 
 		{
 			get 
 			{
-				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
+				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference>();
 			}
 		}
 	}
@@ -6500,29 +6517,29 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey> ISql100TSqlLogin.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKeyReference> ISql100TSqlLogin.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlLogin.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference> ISql100TSqlLogin.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCredential> ISql100TSqlLogin.Credential 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCredentialReference> ISql100TSqlLogin.Credential 
 		{
 			get 
 			{
-				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCredential>();
+				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCredentialReference>();
 			}
 		}
 	}
@@ -6556,11 +6573,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection> ISql100TSqlMessageType.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollectionReference> ISql100TSqlMessageType.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -6584,11 +6601,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlPartitionFunction.ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
-				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
+				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -6603,20 +6620,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlPartitionScheme.Filegroups 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlPartitionScheme.Filegroups 
 		{
 			get 
 			{
-				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionFunction> ISql100TSqlPartitionScheme.PartitionFunction 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionFunctionReference> ISql100TSqlPartitionScheme.PartitionFunction 
 		{
 			get 
 			{
-				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionFunction>();
+				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionFunctionReference>();
 			}
 		}
 	}
@@ -6631,7 +6648,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlPartitionValue.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlPartitionValue.ExpressionDependencies 
 		{
 			get 
 			{
@@ -6662,16 +6679,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlPermission.ExcludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlPermission.ExcludedColumns 
 		{
 			get 
 			{
-				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql100TSqlPermission.Grantee 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISql100TSqlPermission.Grantee 
 		{
 			get 
 			{
@@ -6680,7 +6697,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql100TSqlPermission.Grantor 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISql100TSqlPermission.Grantor 
 		{
 			get 
 			{
@@ -6689,11 +6706,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlPermission.RevokedGrantOptionColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlPermission.RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
@@ -6757,11 +6774,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlPrimaryKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlPrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
@@ -6775,56 +6792,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlPrimaryKeyConstraint.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlPrimaryKeyConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlPrimaryKeyConstraint.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlPrimaryKeyConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlPrimaryKeyConstraint.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference> ISql100TSqlPrimaryKeyConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlPrimaryKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference> ISql100TSqlPrimaryKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlPrimaryKeyConstraint.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlPrimaryKeyConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlPrimaryKeyConstraint.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference> ISql100TSqlPrimaryKeyConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -6879,16 +6896,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlProcedure.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference> ISql100TSqlProcedure.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlProcedure.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlProcedure.BodyDependencies 
 		{
 			get 
 			{
@@ -6897,11 +6914,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlProcedure.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> ISql100TSqlProcedure.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference>();
 			}
 		}
 
@@ -6915,29 +6932,29 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedure> ISql100TSqlProcedure.ParentProcedure 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedureReference> ISql100TSqlProcedure.ParentProcedure 
 		{
 			get 
 			{
-				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedure>();
+				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedureReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlProcedure.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlProcedure.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference> ISql100TSqlProcedure.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference>();
 			}
 		}
 	}
@@ -6980,11 +6997,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedure> ISql100TSqlQueue.ActivationProcedure 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedureReference> ISql100TSqlQueue.ActivationProcedure 
 		{
 			get 
 			{
-				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedure>();
+				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlProcedureReference>();
 			}
 		}
 
@@ -6998,56 +7015,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlQueue.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlQueue.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlQueue.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> ISql100TSqlQueue.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlQueue.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlQueue.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlQueue.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference> ISql100TSqlQueue.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlQueue.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlQueue.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlQueue.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference> ISql100TSqlQueue.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference>();
 			}
 		}
 	}
@@ -7088,11 +7105,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueue> ISql100TSqlQueueEventNotification.Queue 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueueReference> ISql100TSqlQueueEventNotification.Queue 
 		{
 			get 
 			{
-				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueue>();
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueueReference>();
 			}
 		}
 	}
@@ -7120,11 +7137,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlRemoteServiceBinding.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference> ISql100TSqlRemoteServiceBinding.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference>();
 			}
 		}
 	}
@@ -7139,7 +7156,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlResourceGovernor.ClassifierFunction 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlResourceGovernor.ClassifierFunction 
 		{
 			get 
 			{
@@ -7200,11 +7217,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRole> ISql100TSqlRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRoleReference> ISql100TSqlRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRoleReference>();
 			}
 		}
 	}
@@ -7254,7 +7271,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlRule.BoundObjects 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlRule.BoundObjects 
 		{
 			get 
 			{
@@ -7263,11 +7280,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlRule.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlRule.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 	}
@@ -7360,11 +7377,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAudit> ISql100TSqlServerAuditSpecification.ServerAudit 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAuditReference> ISql100TSqlServerAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAudit>();
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlServerAuditReference>();
 			}
 		}
 	}
@@ -7419,16 +7436,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlServerDdlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference> ISql100TSqlServerDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlServerDdlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlServerDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -7455,20 +7472,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlServerDdlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> ISql100TSqlServerDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser> ISql100TSqlServerDdlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference> ISql100TSqlServerDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlUserReference>();
 			}
 		}
 	}
@@ -7530,11 +7547,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRole> ISql100TSqlServerRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRoleReference> ISql100TSqlServerRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlRoleReference>();
 			}
 		}
 	}
@@ -7558,20 +7575,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlContract> ISql100TSqlService.Contracts 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlContractReference> ISql100TSqlService.Contracts 
 		{
 			get 
 			{
-				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlContract>();
+				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlContractReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueue> ISql100TSqlService.Queue 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueueReference> ISql100TSqlService.Queue 
 		{
 			get 
 			{
-				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueue>();
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlQueueReference>();
 			}
 		}
 	}
@@ -7610,11 +7627,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference> ISql100TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference>();
 			}
 		}
 	}
@@ -7629,7 +7646,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql100TSqlSignature.EncryptionMechanism 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql100TSqlSignature.EncryptionMechanism 
 		{
 			get 
 			{
@@ -7638,7 +7655,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql100TSqlSignature.SignedObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlSignature.SignedObject 
 		{
 			get 
 			{
@@ -7661,20 +7678,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey> ISql100TSqlSignatureEncryptionMechanism.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKeyReference> ISql100TSqlSignatureEncryptionMechanism.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlSignatureEncryptionMechanism.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference> ISql100TSqlSignatureEncryptionMechanism.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference>();
 			}
 		}
 	}
@@ -7772,7 +7789,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlSoapMethodSpecification.RelatedMethod 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlSoapMethodSpecification.RelatedMethod 
 		{
 			get 
 			{
@@ -7855,20 +7872,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlSpatialIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlSpatialIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlSpatialIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlSpatialIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
@@ -7882,20 +7899,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlSpatialIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlSpatialIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlSpatialIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference> ISql100TSqlSpatialIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -7926,16 +7943,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlStatistics.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlStatistics.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlStatistics.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlStatistics.ExpressionDependencies 
 		{
 			get 
 			{
@@ -7944,7 +7961,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql100TSqlStatistics.OnObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlStatistics.OnObject 
 		{
 			get 
 			{
@@ -7995,20 +8012,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection> ISql100TSqlParameter.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollectionReference> ISql100TSqlParameter.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -8039,11 +8056,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey> ISql100TSqlSymmetricKey.AsymmetricKeys 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKeyReference> ISql100TSqlSymmetricKey.AsymmetricKeys 
 		{
 			get 
 			{
-				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey>();
+				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKeyReference>();
 			}
 		}
 
@@ -8057,16 +8074,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlSymmetricKey.Certificates 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference> ISql100TSqlSymmetricKey.Certificates 
 		{
 			get 
 			{
-				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
+				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference>();
 			}
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql100TSqlSymmetricKey.Passwords 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql100TSqlSymmetricKey.Passwords 
 		{
 			get 
 			{
@@ -8075,7 +8092,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlSymmetricKey.Provider 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlSymmetricKey.Provider 
 		{
 			get 
 			{
@@ -8084,11 +8101,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSymmetricKey> ISql100TSqlSymmetricKey.SymmetricKeys 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSymmetricKeyReference> ISql100TSqlSymmetricKey.SymmetricKeys 
 		{
 			get 
 			{
-				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSymmetricKey>();
+				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSymmetricKeyReference>();
 			}
 		}
 	}
@@ -8113,7 +8130,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlSynonym.ForObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlSynonym.ForObject 
 		{
 			get 
 			{
@@ -8122,11 +8139,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlSynonym.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlSynonym.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 	}
@@ -8203,65 +8220,65 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlTable.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlTable.FilegroupForTextImage 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlTable.FilegroupForTextImage 
 		{
 			get 
 			{
-				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlTable.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlTable.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlTable.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference> ISql100TSqlTable.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTable.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlTable.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference> ISql100TSqlTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlTable.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlTable.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 	}
@@ -8290,11 +8307,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlTableType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlTableType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 	}
@@ -8309,7 +8326,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlTableTypeCheckConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlTableTypeCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -8380,16 +8397,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType> ISql100TSqlTableTypeColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlTableTypeColumn.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlTableTypeColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -8398,11 +8415,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection> ISql100TSqlTableTypeColumn.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollectionReference> ISql100TSqlTableTypeColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -8417,7 +8434,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlTableTypeDefaultConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlTableTypeDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -8426,11 +8443,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableTypeDefaultConstraint.TargetColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlTableTypeDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 	}
@@ -8457,11 +8474,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableTypePrimaryKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlTableTypePrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 	}
@@ -8480,11 +8497,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlTableTypeUniqueConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlTableTypeUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 	}
@@ -8553,11 +8570,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlUniqueConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
@@ -8571,56 +8588,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlUniqueConstraint.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlUniqueConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup> ISql100TSqlUniqueConstraint.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference> ISql100TSqlUniqueConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlUniqueConstraint.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference> ISql100TSqlUniqueConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable> ISql100TSqlUniqueConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference> ISql100TSqlUniqueConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlUniqueConstraint.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlUniqueConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme> ISql100TSqlUniqueConstraint.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference> ISql100TSqlUniqueConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -8629,48 +8646,44 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlUser : ISql100TSqlUser
 	{		
-		AuthenticationType ISql100TSqlUser.AuthenticationType 
-		{
-			get { return this.AuthenticationType;}
-		}
 		Boolean ISql100TSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey> ISql100TSqlUser.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKeyReference> ISql100TSqlUser.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate> ISql100TSqlUser.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference> ISql100TSqlUser.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlCertificateReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlUser.DefaultSchema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlUser.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin> ISql100TSqlUser.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference> ISql100TSqlUser.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlLoginReference>();
 			}
 		}
 	}
@@ -8705,16 +8718,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly> ISql100TSqlUserDefinedType.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference> ISql100TSqlUserDefinedType.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlAssemblyReference>();
 			}
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql100TSqlUserDefinedType.Methods 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql100TSqlUserDefinedType.Methods 
 		{
 			get 
 			{
@@ -8723,7 +8736,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql100TSqlUserDefinedType.Properties 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql100TSqlUserDefinedType.Properties 
 		{
 			get 
 			{
@@ -8732,11 +8745,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlUserDefinedType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlUserDefinedType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 	}
@@ -8779,7 +8792,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql100TSqlView.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql100TSqlView.BodyDependencies 
 		{
 			get 
 			{
@@ -8797,11 +8810,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlView.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlView.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 	}
@@ -8836,11 +8849,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlResourcePool> ISql100TSqlWorkloadGroup.ResourcePool 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlResourcePoolReference> ISql100TSqlWorkloadGroup.ResourcePool 
 		{
 			get 
 			{
-				return this.ResourcePool.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlResourcePool>();
+				return this.ResourcePool.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlResourcePoolReference>();
 			}
 		}
 	}
@@ -8887,11 +8900,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn> ISql100TSqlXmlIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference> ISql100TSqlXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlColumnReference>();
 			}
 		}
 
@@ -8905,11 +8918,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlIndex> ISql100TSqlXmlIndex.PrimaryXmlIndex 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlIndexReference> ISql100TSqlXmlIndex.PrimaryXmlIndex 
 		{
 			get 
 			{
-				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlIndex>();
+				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlXmlIndexReference>();
 			}
 		}
 	}
@@ -8924,11 +8937,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema> ISql100TSqlXmlSchemaCollection.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference> ISql100TSqlXmlSchemaCollection.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlSchemaReference>();
 			}
 		}
 	}
@@ -8995,16 +9008,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlColumn.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -9013,11 +9026,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection> ISqlAzureTSqlColumn.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollectionReference> ISqlAzureTSqlColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -9081,7 +9094,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlTableValuedFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlTableValuedFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -9089,21 +9102,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlTableValuedFunction.Login 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableValuedFunction.Columns 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableValuedFunction.OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference> ISqlAzureTSqlTableValuedFunction.Login 
 		{
 			get 
 			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference>();
 			}
 		}
 
@@ -9117,29 +9130,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlTableValuedFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlTableValuedFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference> ISqlAzureTSqlTableValuedFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlClrTableOption> ISqlAzureTSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlClrTableOption>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser> ISqlAzureTSqlTableValuedFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUserReference> ISqlAzureTSqlTableValuedFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUserReference>();
 			}
 		}
 	}
@@ -9199,7 +9221,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlScalarFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlScalarFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -9208,11 +9230,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlScalarFunction.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference> ISqlAzureTSqlScalarFunction.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference>();
 			}
 		}
 
@@ -9226,29 +9248,29 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlScalarFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlScalarFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference> ISqlAzureTSqlScalarFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser> ISqlAzureTSqlScalarFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUserReference> ISqlAzureTSqlScalarFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUserReference>();
 			}
 		}
 	}
@@ -9291,20 +9313,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlIndex.IncludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlIndex.IncludedColumns 
 		{
 			get 
 			{
-				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 
@@ -9350,11 +9372,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlAssembly.ReferencedAssemblies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblyReference> ISqlAzureTSqlAssembly.ReferencedAssemblies 
 		{
 			get 
 			{
-				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblyReference>();
 			}
 		}
 	}
@@ -9405,11 +9427,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlDataType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference> ISqlAzureTSqlDataType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference>();
 			}
 		}
 
@@ -9437,7 +9459,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlCheckConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -9446,11 +9468,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlCheckConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference> ISqlAzureTSqlCheckConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference>();
 			}
 		}
 	}
@@ -9497,11 +9519,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
 			}
 		}
 	}
@@ -9516,11 +9538,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlClrTypeProperty.ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
-				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
 			}
 		}
 	}
@@ -9567,16 +9589,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlDatabaseDdlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblyReference> ISqlAzureTSqlDatabaseDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlDatabaseDdlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlDatabaseDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -9603,20 +9625,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlDatabaseDdlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference> ISqlAzureTSqlDatabaseDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser> ISqlAzureTSqlDatabaseDdlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUserReference> ISqlAzureTSqlDatabaseDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUserReference>();
 			}
 		}
 	}
@@ -9653,7 +9675,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlDefaultConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -9662,20 +9684,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlDefaultConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference> ISqlAzureTSqlDefaultConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlDefaultConstraint.TargetColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 	}
@@ -9746,16 +9768,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlDmlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblyReference> ISqlAzureTSqlDmlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlDmlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlDmlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -9764,16 +9786,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlDmlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference> ISqlAzureTSqlDmlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlDmlTrigger.TriggerObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlDmlTrigger.TriggerObject 
 		{
 			get 
 			{
@@ -9782,11 +9804,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser> ISqlAzureTSqlDmlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUserReference> ISqlAzureTSqlDmlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUserReference>();
 			}
 		}
 	}
@@ -9833,38 +9855,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlForeignKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlForeignKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlForeignKeyConstraint.ForeignColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlForeignKeyConstraint.ForeignColumns 
 		{
 			get 
 			{
-				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlForeignKeyConstraint.ForeignTable 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference> ISqlAzureTSqlForeignKeyConstraint.ForeignTable 
 		{
 			get 
 			{
-				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlForeignKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference> ISqlAzureTSqlForeignKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference>();
 			}
 		}
 	}
@@ -9911,16 +9933,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlPermission.ExcludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlPermission.ExcludedColumns 
 		{
 			get 
 			{
-				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISqlAzureTSqlPermission.Grantee 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISqlAzureTSqlPermission.Grantee 
 		{
 			get 
 			{
@@ -9929,7 +9951,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISqlAzureTSqlPermission.Grantor 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISqlAzureTSqlPermission.Grantor 
 		{
 			get 
 			{
@@ -9938,11 +9960,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlPermission.RevokedGrantOptionColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlPermission.RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 
@@ -9986,20 +10008,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlPrimaryKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlPrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlPrimaryKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference> ISqlAzureTSqlPrimaryKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference>();
 			}
 		}
 	}
@@ -10042,16 +10064,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlProcedure.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblyReference> ISqlAzureTSqlProcedure.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlProcedure.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlProcedure.BodyDependencies 
 		{
 			get 
 			{
@@ -10060,11 +10082,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlProcedure.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference> ISqlAzureTSqlProcedure.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference>();
 			}
 		}
 
@@ -10078,20 +10100,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlProcedure.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference> ISqlAzureTSqlProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser> ISqlAzureTSqlProcedure.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUserReference> ISqlAzureTSqlProcedure.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlUserReference>();
 			}
 		}
 	}
@@ -10126,11 +10148,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRole> ISqlAzureTSqlRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRoleReference> ISqlAzureTSqlRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRoleReference>();
 			}
 		}
 	}
@@ -10171,11 +10193,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRole> ISqlAzureTSqlServerRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRoleReference> ISqlAzureTSqlServerRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlRoleReference>();
 			}
 		}
 	}
@@ -10238,11 +10260,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlSpatialIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlSpatialIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 
@@ -10282,16 +10304,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlStatistics.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlStatistics.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlStatistics.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlStatistics.ExpressionDependencies 
 		{
 			get 
 			{
@@ -10300,7 +10322,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlStatistics.OnObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlStatistics.OnObject 
 		{
 			get 
 			{
@@ -10351,20 +10373,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection> ISqlAzureTSqlParameter.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollectionReference> ISqlAzureTSqlParameter.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -10379,7 +10401,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlSynonym.ForObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlSynonym.ForObject 
 		{
 			get 
 			{
@@ -10388,11 +10410,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlSynonym.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference> ISqlAzureTSqlSynonym.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference>();
 			}
 		}
 	}
@@ -10436,11 +10458,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlTable.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference> ISqlAzureTSqlTable.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference>();
 			}
 		}
 	}
@@ -10469,11 +10491,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlTableType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference> ISqlAzureTSqlTableType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference>();
 			}
 		}
 	}
@@ -10488,7 +10510,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlTableTypeCheckConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlTableTypeCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -10555,16 +10577,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType> ISqlAzureTSqlTableTypeColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlTableTypeColumn.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlTableTypeColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -10573,11 +10595,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection> ISqlAzureTSqlTableTypeColumn.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollectionReference> ISqlAzureTSqlTableTypeColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -10592,7 +10614,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlTableTypeDefaultConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlTableTypeDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -10601,11 +10623,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableTypeDefaultConstraint.TargetColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlTableTypeDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 	}
@@ -10632,11 +10654,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableTypePrimaryKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlTableTypePrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 	}
@@ -10655,11 +10677,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlTableTypeUniqueConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlTableTypeUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 	}
@@ -10686,20 +10708,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn> ISqlAzureTSqlUniqueConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference> ISqlAzureTSqlUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlColumnReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable> ISqlAzureTSqlUniqueConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference> ISqlAzureTSqlUniqueConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlTableReference>();
 			}
 		}
 	}
@@ -10708,30 +10730,26 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlUser : ISqlAzureTSqlUser
 	{		
-		AuthenticationType ISqlAzureTSqlUser.AuthenticationType 
-		{
-			get { return this.AuthenticationType;}
-		}
 		Boolean ISqlAzureTSqlUser.WithoutLogin 
 		{
 			get { return this.WithoutLogin;}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlUser.DefaultSchema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference> ISqlAzureTSqlUser.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin> ISqlAzureTSqlUser.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference> ISqlAzureTSqlUser.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlLoginReference>();
 			}
 		}
 	}
@@ -10766,16 +10784,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly> ISqlAzureTSqlUserDefinedType.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblyReference> ISqlAzureTSqlUserDefinedType.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlAssemblyReference>();
 			}
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlUserDefinedType.Methods 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISqlAzureTSqlUserDefinedType.Methods 
 		{
 			get 
 			{
@@ -10784,7 +10802,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlUserDefinedType.Properties 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISqlAzureTSqlUserDefinedType.Properties 
 		{
 			get 
 			{
@@ -10793,11 +10811,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlUserDefinedType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference> ISqlAzureTSqlUserDefinedType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference>();
 			}
 		}
 	}
@@ -10832,7 +10850,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureTSqlView.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureTSqlView.BodyDependencies 
 		{
 			get 
 			{
@@ -10850,11 +10868,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema> ISqlAzureTSqlView.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference> ISqlAzureTSqlView.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlSchemaReference>();
 			}
 		}
 	}
@@ -10933,16 +10951,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlColumn.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -10951,11 +10969,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection> ISql110TSqlColumn.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollectionReference> ISql110TSqlColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -11047,7 +11065,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlTableValuedFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlTableValuedFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -11055,21 +11073,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlTableValuedFunction.Login 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableValuedFunction.Columns 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableValuedFunction.OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> ISql110TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference>();
 			}
 		}
 
@@ -11083,29 +11101,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlTableValuedFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlTableValuedFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlTableValuedFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlClrTableOption> ISql110TSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlClrTableOption>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlTableValuedFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference> ISql110TSqlTableValuedFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference>();
 			}
 		}
 	}
@@ -11193,7 +11220,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlScalarFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlScalarFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -11202,11 +11229,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlScalarFunction.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> ISql110TSqlScalarFunction.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference>();
 			}
 		}
 
@@ -11220,29 +11247,48 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlScalarFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlScalarFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlScalarFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlScalarFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference> ISql110TSqlScalarFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql110TSqlClrTableOption"/>.
+	/// </summary>
+	public partial class TSqlClrTableOption : ISql110TSqlClrTableOption
+	{		
+		String ISql110TSqlClrTableOption.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlClrTableOption.OrderColumns 
+		{
+			get 
+			{
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 	}
@@ -11277,11 +11323,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlAggregate.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference> ISql110TSqlAggregate.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference>();
 			}
 		}
 
@@ -11295,20 +11341,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlAggregate.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlAggregate.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlAggregate.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlAggregate.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -11323,11 +11369,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlApplicationRole.DefaultSchema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlApplicationRole.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -11390,7 +11436,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlIndex.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlIndex.BodyDependencies 
 		{
 			get 
 			{
@@ -11399,11 +11445,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
@@ -11417,38 +11463,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlIndex.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlIndex.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlIndex.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlIndex.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlIndex.IncludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlIndex.IncludedColumns 
 		{
 			get 
 			{
-				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
@@ -11462,20 +11508,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -11512,11 +11558,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlAssembly.ReferencedAssemblies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference> ISql110TSqlAssembly.ReferencedAssemblies 
 		{
 			get 
 			{
-				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference>();
 			}
 		}
 	}
@@ -11565,11 +11611,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlAsymmetricKey.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference> ISql110TSqlAsymmetricKey.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference>();
 			}
 		}
 
@@ -11583,7 +11629,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlAsymmetricKey.Provider 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlAsymmetricKey.Provider 
 		{
 			get 
 			{
@@ -11659,7 +11705,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlBrokerPriority.ContractName 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlBrokerPriority.ContractName 
 		{
 			get 
 			{
@@ -11668,7 +11714,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlBrokerPriority.LocalServiceName 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlBrokerPriority.LocalServiceName 
 		{
 			get 
 			{
@@ -11713,11 +11759,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlDataType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlDataType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 
@@ -11790,11 +11836,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlCertificate.ExistingKeysAssembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference> ISql110TSqlCertificate.ExistingKeysAssembly 
 		{
 			get 
 			{
-				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
+				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference>();
 			}
 		}
 	}
@@ -11817,7 +11863,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlCheckConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -11826,11 +11872,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlCheckConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference> ISql110TSqlCheckConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference>();
 			}
 		}
 	}
@@ -11877,11 +11923,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -11896,11 +11942,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlClrTypeProperty.ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
-				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -11919,11 +11965,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlColumnStoreIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlColumnStoreIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
@@ -11937,11 +11983,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlColumnStoreIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlColumnStoreIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
@@ -11955,20 +12001,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlColumnStoreIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlColumnStoreIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlColumnStoreIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlColumnStoreIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -11988,11 +12034,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlMessageType> ISql110TSqlContract.Messages 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlMessageTypeReference> ISql110TSqlContract.Messages 
 		{
 			get 
 			{
-				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlMessageType>();
+				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlMessageTypeReference>();
 			}
 		}
 	}
@@ -12011,11 +12057,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCryptographicProvider> ISql110TSqlCredential.CryptographicProvider 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCryptographicProviderReference> ISql110TSqlCredential.CryptographicProvider 
 		{
 			get 
 			{
-				return this.CryptographicProvider.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCryptographicProvider>();
+				return this.CryptographicProvider.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCryptographicProviderReference>();
 			}
 		}
 	}
@@ -12062,11 +12108,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAudit> ISql110TSqlDatabaseAuditSpecification.ServerAudit 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAuditReference> ISql110TSqlDatabaseAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAudit>();
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAuditReference>();
 			}
 		}
 	}
@@ -12117,16 +12163,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlDatabaseDdlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference> ISql110TSqlDatabaseDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlDatabaseDdlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlDatabaseDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -12153,20 +12199,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlDatabaseDdlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> ISql110TSqlDatabaseDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlDatabaseDdlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference> ISql110TSqlDatabaseDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference>();
 			}
 		}
 	}
@@ -12181,20 +12227,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey> ISql110TSqlDatabaseEncryptionKey.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKeyReference> ISql110TSqlDatabaseEncryptionKey.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlDatabaseEncryptionKey.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference> ISql110TSqlDatabaseEncryptionKey.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference>();
 			}
 		}
 	}
@@ -12265,11 +12311,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference> ISql110TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference>();
 			}
 		}
 	}
@@ -12484,20 +12530,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlDatabaseOptions.DefaultFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlDatabaseOptions.DefaultFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlDatabaseOptions.DefaultFileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlDatabaseOptions.DefaultFileStreamFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.DefaultFileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -12526,7 +12572,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlDefault.BoundObjects 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlDefault.BoundObjects 
 		{
 			get 
 			{
@@ -12535,11 +12581,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlDefault.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlDefault.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -12562,7 +12608,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlDefaultConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -12571,20 +12617,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlDefaultConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference> ISql110TSqlDefaultConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlDefaultConstraint.TargetColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 	}
@@ -12667,16 +12713,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlDmlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference> ISql110TSqlDmlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlDmlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlDmlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -12685,16 +12731,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlDmlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> ISql110TSqlDmlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql110TSqlDmlTrigger.TriggerObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlDmlTrigger.TriggerObject 
 		{
 			get 
 			{
@@ -12703,11 +12749,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlDmlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference> ISql110TSqlDmlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference>();
 			}
 		}
 	}
@@ -12835,7 +12881,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql110TSqlEventSession.EventDefinitions 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql110TSqlEventSession.EventDefinitions 
 		{
 			get 
 			{
@@ -12844,7 +12890,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql110TSqlEventSession.EventTargets 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql110TSqlEventSession.EventTargets 
 		{
 			get 
 			{
@@ -12902,7 +12948,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql110TSqlEventSessionDefinitions.AttributeSettings 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql110TSqlEventSessionDefinitions.AttributeSettings 
 		{
 			get 
 			{
@@ -12943,7 +12989,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql110TSqlEventSessionTarget.ParameterSettings 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql110TSqlEventSessionTarget.ParameterSettings 
 		{
 			get 
 			{
@@ -12988,11 +13034,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlExtendedProcedure.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> ISql110TSqlExtendedProcedure.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference>();
 			}
 		}
 
@@ -13006,20 +13052,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlExtendedProcedure.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlExtendedProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlExtendedProcedure.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference> ISql110TSqlExtendedProcedure.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference>();
 			}
 		}
 	}
@@ -13089,11 +13135,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlSqlFile.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlSqlFile.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -13134,38 +13180,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlForeignKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlForeignKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlForeignKeyConstraint.ForeignColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlForeignKeyConstraint.ForeignColumns 
 		{
 			get 
 			{
-				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlForeignKeyConstraint.ForeignTable 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference> ISql110TSqlForeignKeyConstraint.ForeignTable 
 		{
 			get 
 			{
-				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlForeignKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference> ISql110TSqlForeignKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference>();
 			}
 		}
 	}
@@ -13197,11 +13243,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlFullTextCatalog.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlFullTextCatalog.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -13232,7 +13278,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlFullTextIndex.Catalog 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference> ISql110TSqlFullTextIndex.Catalog 
 		{
 			get 
 			{
@@ -13241,20 +13287,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlFullTextIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFullTextIndexColumnSpecifier> ISql110TSqlFullTextIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFullTextIndexColumnSpecifier>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlFullTextIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlFullTextIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
@@ -13268,16 +13314,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyList> ISql110TSqlFullTextIndex.SearchPropertyList 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyListReference> ISql110TSqlFullTextIndex.SearchPropertyList 
 		{
 			get 
 			{
-				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyList>();
+				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyListReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlFullTextIndex.StopList 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlFullTextIndex.StopList 
 		{
 			get 
 			{
@@ -13286,7 +13332,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlFullTextIndex.UniqueIndexName 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlFullTextIndex.UniqueIndexName 
 		{
 			get 
 			{
@@ -13309,20 +13355,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlFullTextIndexColumnSpecifier.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlFullTextIndexColumnSpecifier.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlFullTextIndexColumnSpecifier.TypeColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlFullTextIndexColumnSpecifier.TypeColumn 
 		{
 			get 
 			{
-				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 	}
@@ -13442,20 +13488,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLinkedServer> ISql110TSqlLinkedServerLogin.LinkedServer 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLinkedServerReference> ISql110TSqlLinkedServerLogin.LinkedServer 
 		{
 			get 
 			{
-				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLinkedServer>();
+				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLinkedServerReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlLinkedServerLogin.LocalLogin 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> ISql110TSqlLinkedServerLogin.LocalLogin 
 		{
 			get 
 			{
-				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
+				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference>();
 			}
 		}
 	}
@@ -13510,29 +13556,29 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey> ISql110TSqlLogin.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKeyReference> ISql110TSqlLogin.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlLogin.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference> ISql110TSqlLogin.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCredential> ISql110TSqlLogin.Credential 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCredentialReference> ISql110TSqlLogin.Credential 
 		{
 			get 
 			{
-				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCredential>();
+				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCredentialReference>();
 			}
 		}
 	}
@@ -13566,11 +13612,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection> ISql110TSqlMessageType.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollectionReference> ISql110TSqlMessageType.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -13594,11 +13640,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlPartitionFunction.ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
-				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
+				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -13613,20 +13659,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlPartitionScheme.Filegroups 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlPartitionScheme.Filegroups 
 		{
 			get 
 			{
-				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionFunction> ISql110TSqlPartitionScheme.PartitionFunction 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionFunctionReference> ISql110TSqlPartitionScheme.PartitionFunction 
 		{
 			get 
 			{
-				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionFunction>();
+				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionFunctionReference>();
 			}
 		}
 	}
@@ -13641,7 +13687,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlPartitionValue.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlPartitionValue.ExpressionDependencies 
 		{
 			get 
 			{
@@ -13672,16 +13718,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlPermission.ExcludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlPermission.ExcludedColumns 
 		{
 			get 
 			{
-				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql110TSqlPermission.Grantee 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISql110TSqlPermission.Grantee 
 		{
 			get 
 			{
@@ -13690,7 +13736,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql110TSqlPermission.Grantor 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISql110TSqlPermission.Grantor 
 		{
 			get 
 			{
@@ -13699,11 +13745,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlPermission.RevokedGrantOptionColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlPermission.RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
@@ -13767,11 +13813,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlPrimaryKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlPrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
@@ -13785,56 +13831,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlPrimaryKeyConstraint.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlPrimaryKeyConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlPrimaryKeyConstraint.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlPrimaryKeyConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlPrimaryKeyConstraint.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlPrimaryKeyConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlPrimaryKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference> ISql110TSqlPrimaryKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlPrimaryKeyConstraint.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlPrimaryKeyConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlPrimaryKeyConstraint.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlPrimaryKeyConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -13889,16 +13935,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlProcedure.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference> ISql110TSqlProcedure.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlProcedure.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlProcedure.BodyDependencies 
 		{
 			get 
 			{
@@ -13907,11 +13953,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlProcedure.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> ISql110TSqlProcedure.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference>();
 			}
 		}
 
@@ -13925,29 +13971,29 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedure> ISql110TSqlProcedure.ParentProcedure 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedureReference> ISql110TSqlProcedure.ParentProcedure 
 		{
 			get 
 			{
-				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedure>();
+				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedureReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlProcedure.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlProcedure.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference> ISql110TSqlProcedure.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference>();
 			}
 		}
 	}
@@ -13990,11 +14036,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedure> ISql110TSqlQueue.ActivationProcedure 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedureReference> ISql110TSqlQueue.ActivationProcedure 
 		{
 			get 
 			{
-				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedure>();
+				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlProcedureReference>();
 			}
 		}
 
@@ -14008,56 +14054,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlQueue.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlQueue.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlQueue.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> ISql110TSqlQueue.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlQueue.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlQueue.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlQueue.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlQueue.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlQueue.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlQueue.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlQueue.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference> ISql110TSqlQueue.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference>();
 			}
 		}
 	}
@@ -14098,11 +14144,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueue> ISql110TSqlQueueEventNotification.Queue 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueueReference> ISql110TSqlQueueEventNotification.Queue 
 		{
 			get 
 			{
-				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueue>();
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueueReference>();
 			}
 		}
 	}
@@ -14130,11 +14176,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlRemoteServiceBinding.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference> ISql110TSqlRemoteServiceBinding.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference>();
 			}
 		}
 	}
@@ -14149,7 +14195,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlResourceGovernor.ClassifierFunction 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlResourceGovernor.ClassifierFunction 
 		{
 			get 
 			{
@@ -14214,11 +14260,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRole> ISql110TSqlRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRoleReference> ISql110TSqlRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRoleReference>();
 			}
 		}
 	}
@@ -14268,7 +14314,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlRule.BoundObjects 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlRule.BoundObjects 
 		{
 			get 
 			{
@@ -14277,11 +14323,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlRule.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlRule.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -14319,11 +14365,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyList> ISql110TSqlSearchProperty.SearchPropertyList 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyListReference> ISql110TSqlSearchProperty.SearchPropertyList 
 		{
 			get 
 			{
-				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyList>();
+				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSearchPropertyListReference>();
 			}
 		}
 	}
@@ -14385,20 +14431,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlSequence.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlSequence.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlSequence.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlSequence.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -14484,11 +14530,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAudit> ISql110TSqlServerAuditSpecification.ServerAudit 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAuditReference> ISql110TSqlServerAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAudit>();
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlServerAuditReference>();
 			}
 		}
 	}
@@ -14543,16 +14589,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlServerDdlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference> ISql110TSqlServerDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlServerDdlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlServerDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -14579,20 +14625,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlServerDdlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> ISql110TSqlServerDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser> ISql110TSqlServerDdlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference> ISql110TSqlServerDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlUserReference>();
 			}
 		}
 	}
@@ -14654,11 +14700,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRole> ISql110TSqlServerRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRoleReference> ISql110TSqlServerRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlRoleReference>();
 			}
 		}
 	}
@@ -14682,20 +14728,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlContract> ISql110TSqlService.Contracts 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlContractReference> ISql110TSqlService.Contracts 
 		{
 			get 
 			{
-				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlContract>();
+				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlContractReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueue> ISql110TSqlService.Queue 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueueReference> ISql110TSqlService.Queue 
 		{
 			get 
 			{
-				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueue>();
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlQueueReference>();
 			}
 		}
 	}
@@ -14734,11 +14780,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference> ISql110TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference>();
 			}
 		}
 	}
@@ -14753,7 +14799,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql110TSqlSignature.EncryptionMechanism 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql110TSqlSignature.EncryptionMechanism 
 		{
 			get 
 			{
@@ -14762,7 +14808,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql110TSqlSignature.SignedObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlSignature.SignedObject 
 		{
 			get 
 			{
@@ -14785,20 +14831,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey> ISql110TSqlSignatureEncryptionMechanism.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKeyReference> ISql110TSqlSignatureEncryptionMechanism.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlSignatureEncryptionMechanism.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference> ISql110TSqlSignatureEncryptionMechanism.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference>();
 			}
 		}
 	}
@@ -14881,20 +14927,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlSpatialIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlSpatialIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlSpatialIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlSpatialIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
@@ -14908,20 +14954,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlSpatialIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlSpatialIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlSpatialIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlSpatialIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -14952,16 +14998,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlStatistics.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlStatistics.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlStatistics.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlStatistics.ExpressionDependencies 
 		{
 			get 
 			{
@@ -14970,7 +15016,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql110TSqlStatistics.OnObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlStatistics.OnObject 
 		{
 			get 
 			{
@@ -15021,20 +15067,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection> ISql110TSqlParameter.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollectionReference> ISql110TSqlParameter.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -15065,11 +15111,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey> ISql110TSqlSymmetricKey.AsymmetricKeys 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKeyReference> ISql110TSqlSymmetricKey.AsymmetricKeys 
 		{
 			get 
 			{
-				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey>();
+				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKeyReference>();
 			}
 		}
 
@@ -15083,16 +15129,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlSymmetricKey.Certificates 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference> ISql110TSqlSymmetricKey.Certificates 
 		{
 			get 
 			{
-				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
+				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference>();
 			}
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql110TSqlSymmetricKey.Passwords 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql110TSqlSymmetricKey.Passwords 
 		{
 			get 
 			{
@@ -15101,7 +15147,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlSymmetricKey.Provider 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlSymmetricKey.Provider 
 		{
 			get 
 			{
@@ -15110,11 +15156,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSymmetricKey> ISql110TSqlSymmetricKey.SymmetricKeys 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSymmetricKeyReference> ISql110TSqlSymmetricKey.SymmetricKeys 
 		{
 			get 
 			{
-				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSymmetricKey>();
+				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSymmetricKeyReference>();
 			}
 		}
 	}
@@ -15139,7 +15185,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlSynonym.ForObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlSynonym.ForObject 
 		{
 			get 
 			{
@@ -15148,11 +15194,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlSynonym.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlSynonym.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -15229,65 +15275,65 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlTable.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlTable.FilegroupForTextImage 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlTable.FilegroupForTextImage 
 		{
 			get 
 			{
-				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlTable.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlTable.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlTable.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlTable.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTable.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlTable.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlTable.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlTable.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -15348,56 +15394,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlFileTable.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlFileTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlFileTable.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlFileTable.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlFileTable.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlFileTable.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlFileTable.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlFileTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlFileTable.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlFileTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlFileTable.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlFileTable.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -15426,11 +15472,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlTableType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlTableType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -15445,7 +15491,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlTableTypeCheckConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlTableTypeCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -15516,16 +15562,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlTableTypeColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlTableTypeColumn.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlTableTypeColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -15534,11 +15580,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection> ISql110TSqlTableTypeColumn.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollectionReference> ISql110TSqlTableTypeColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -15553,7 +15599,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlTableTypeDefaultConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlTableTypeDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -15562,11 +15608,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableTypeDefaultConstraint.TargetColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlTableTypeDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 	}
@@ -15593,11 +15639,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableTypePrimaryKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlTableTypePrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 	}
@@ -15616,11 +15662,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlTableTypeUniqueConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlTableTypeUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 	}
@@ -15689,11 +15735,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlUniqueConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
@@ -15707,56 +15753,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlUniqueConstraint.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlUniqueConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup> ISql110TSqlUniqueConstraint.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference> ISql110TSqlUniqueConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlUniqueConstraint.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlUniqueConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable> ISql110TSqlUniqueConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference> ISql110TSqlUniqueConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlUniqueConstraint.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlUniqueConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme> ISql110TSqlUniqueConstraint.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference> ISql110TSqlUniqueConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -15787,38 +15833,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey> ISql110TSqlUser.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKeyReference> ISql110TSqlUser.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate> ISql110TSqlUser.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference> ISql110TSqlUser.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlCertificateReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlUser.DefaultSchema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlUser.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin> ISql110TSqlUser.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference> ISql110TSqlUser.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlLoginReference>();
 			}
 		}
 	}
@@ -15868,16 +15914,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly> ISql110TSqlUserDefinedType.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference> ISql110TSqlUserDefinedType.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlAssemblyReference>();
 			}
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql110TSqlUserDefinedType.Methods 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql110TSqlUserDefinedType.Methods 
 		{
 			get 
 			{
@@ -15886,7 +15932,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql110TSqlUserDefinedType.Properties 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql110TSqlUserDefinedType.Properties 
 		{
 			get 
 			{
@@ -15895,11 +15941,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlUserDefinedType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlUserDefinedType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -15942,7 +15988,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql110TSqlView.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql110TSqlView.BodyDependencies 
 		{
 			get 
 			{
@@ -15960,11 +16006,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlView.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlView.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -15999,11 +16045,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlResourcePool> ISql110TSqlWorkloadGroup.ResourcePool 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlResourcePoolReference> ISql110TSqlWorkloadGroup.ResourcePool 
 		{
 			get 
 			{
-				return this.ResourcePool.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlResourcePool>();
+				return this.ResourcePool.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlResourcePoolReference>();
 			}
 		}
 	}
@@ -16050,11 +16096,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlXmlIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
@@ -16068,11 +16114,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlIndex> ISql110TSqlXmlIndex.PrimaryXmlIndex 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlIndexReference> ISql110TSqlXmlIndex.PrimaryXmlIndex 
 		{
 			get 
 			{
-				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlIndex>();
+				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlXmlIndexReference>();
 			}
 		}
 	}
@@ -16115,11 +16161,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn> ISql110TSqlSelectiveXmlIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference> ISql110TSqlSelectiveXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlColumnReference>();
 			}
 		}
 
@@ -16142,11 +16188,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSelectiveXmlIndex> ISql110TSqlSelectiveXmlIndex.PrimarySelectiveXmlIndex 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSelectiveXmlIndexReference> ISql110TSqlSelectiveXmlIndex.PrimarySelectiveXmlIndex 
 		{
 			get 
 			{
-				return this.PrimarySelectiveXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSelectiveXmlIndex>();
+				return this.PrimarySelectiveXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSelectiveXmlIndexReference>();
 			}
 		}
 
@@ -16235,11 +16281,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType> ISql110TSqlPromotedNodePathForSqlType.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlPromotedNodePathForSqlType.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -16254,11 +16300,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema> ISql110TSqlXmlSchemaCollection.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference> ISql110TSqlXmlSchemaCollection.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlSchemaReference>();
 			}
 		}
 	}
@@ -16337,16 +16383,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlColumn.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -16355,11 +16401,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection> ISql120TSqlColumn.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollectionReference> ISql120TSqlColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -16451,7 +16497,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlTableValuedFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlTableValuedFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -16459,21 +16505,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlTableValuedFunction.Login 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableValuedFunction.Columns 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableValuedFunction.OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> ISql120TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference>();
 			}
 		}
 
@@ -16487,29 +16533,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlTableValuedFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlTableValuedFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlTableValuedFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlClrTableOption> ISql120TSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlClrTableOption>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlTableValuedFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference> ISql120TSqlTableValuedFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference>();
 			}
 		}
 	}
@@ -16597,7 +16652,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlScalarFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlScalarFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -16606,11 +16661,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlScalarFunction.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> ISql120TSqlScalarFunction.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference>();
 			}
 		}
 
@@ -16624,29 +16679,48 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlScalarFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlScalarFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlScalarFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlScalarFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference> ISql120TSqlScalarFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISql120TSqlClrTableOption"/>.
+	/// </summary>
+	public partial class TSqlClrTableOption : ISql120TSqlClrTableOption
+	{		
+		String ISql120TSqlClrTableOption.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlClrTableOption.OrderColumns 
+		{
+			get 
+			{
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 	}
@@ -16681,11 +16755,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlAggregate.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference> ISql120TSqlAggregate.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference>();
 			}
 		}
 
@@ -16699,20 +16773,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlAggregate.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlAggregate.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlAggregate.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlAggregate.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -16727,11 +16801,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlApplicationRole.DefaultSchema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlApplicationRole.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -16798,7 +16872,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlIndex.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlIndex.BodyDependencies 
 		{
 			get 
 			{
@@ -16807,11 +16881,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
@@ -16825,38 +16899,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlIndex.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlIndex.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlIndex.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlIndex.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlIndex.IncludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlIndex.IncludedColumns 
 		{
 			get 
 			{
-				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
@@ -16870,20 +16944,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -16920,11 +16994,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlAssembly.ReferencedAssemblies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference> ISql120TSqlAssembly.ReferencedAssemblies 
 		{
 			get 
 			{
-				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference>();
 			}
 		}
 	}
@@ -16973,11 +17047,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlAsymmetricKey.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference> ISql120TSqlAsymmetricKey.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference>();
 			}
 		}
 
@@ -16991,7 +17065,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlAsymmetricKey.Provider 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlAsymmetricKey.Provider 
 		{
 			get 
 			{
@@ -17067,7 +17141,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlBrokerPriority.ContractName 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlBrokerPriority.ContractName 
 		{
 			get 
 			{
@@ -17076,7 +17150,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlBrokerPriority.LocalServiceName 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlBrokerPriority.LocalServiceName 
 		{
 			get 
 			{
@@ -17121,11 +17195,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlDataType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlDataType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 
@@ -17198,11 +17272,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlCertificate.ExistingKeysAssembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference> ISql120TSqlCertificate.ExistingKeysAssembly 
 		{
 			get 
 			{
-				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
+				return this.ExistingKeysAssembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference>();
 			}
 		}
 	}
@@ -17225,7 +17299,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlCheckConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -17234,11 +17308,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlCheckConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference> ISql120TSqlCheckConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference>();
 			}
 		}
 	}
@@ -17285,11 +17359,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -17304,11 +17378,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlClrTypeProperty.ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
-				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -17327,11 +17401,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlColumnStoreIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlColumnStoreIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
@@ -17345,11 +17419,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlColumnStoreIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlColumnStoreIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
@@ -17363,20 +17437,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlColumnStoreIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlColumnStoreIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlColumnStoreIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlColumnStoreIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -17396,11 +17470,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlMessageType> ISql120TSqlContract.Messages 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlMessageTypeReference> ISql120TSqlContract.Messages 
 		{
 			get 
 			{
-				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlMessageType>();
+				return this.Messages.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlMessageTypeReference>();
 			}
 		}
 	}
@@ -17419,11 +17493,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCryptographicProvider> ISql120TSqlCredential.CryptographicProvider 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCryptographicProviderReference> ISql120TSqlCredential.CryptographicProvider 
 		{
 			get 
 			{
-				return this.CryptographicProvider.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCryptographicProvider>();
+				return this.CryptographicProvider.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCryptographicProviderReference>();
 			}
 		}
 	}
@@ -17470,11 +17544,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAudit> ISql120TSqlDatabaseAuditSpecification.ServerAudit 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAuditReference> ISql120TSqlDatabaseAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAudit>();
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAuditReference>();
 			}
 		}
 	}
@@ -17525,16 +17599,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlDatabaseDdlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference> ISql120TSqlDatabaseDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlDatabaseDdlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlDatabaseDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -17561,20 +17635,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlDatabaseDdlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> ISql120TSqlDatabaseDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlDatabaseDdlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference> ISql120TSqlDatabaseDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference>();
 			}
 		}
 	}
@@ -17589,20 +17663,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey> ISql120TSqlDatabaseEncryptionKey.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKeyReference> ISql120TSqlDatabaseEncryptionKey.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlDatabaseEncryptionKey.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference> ISql120TSqlDatabaseEncryptionKey.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference>();
 			}
 		}
 	}
@@ -17673,11 +17747,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference> ISql120TSqlDatabaseMirroringLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference>();
 			}
 		}
 	}
@@ -17900,20 +17974,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlDatabaseOptions.DefaultFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlDatabaseOptions.DefaultFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.DefaultFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlDatabaseOptions.DefaultFileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlDatabaseOptions.DefaultFileStreamFilegroup 
 		{
 			get 
 			{
-				return this.DefaultFileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.DefaultFileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -17942,7 +18016,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlDefault.BoundObjects 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlDefault.BoundObjects 
 		{
 			get 
 			{
@@ -17951,11 +18025,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlDefault.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlDefault.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -17978,7 +18052,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlDefaultConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -17987,20 +18061,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlDefaultConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference> ISql120TSqlDefaultConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlDefaultConstraint.TargetColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 	}
@@ -18083,16 +18157,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlDmlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference> ISql120TSqlDmlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlDmlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlDmlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -18101,16 +18175,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlDmlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> ISql120TSqlDmlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql120TSqlDmlTrigger.TriggerObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlDmlTrigger.TriggerObject 
 		{
 			get 
 			{
@@ -18119,11 +18193,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlDmlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference> ISql120TSqlDmlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference>();
 			}
 		}
 	}
@@ -18251,7 +18325,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql120TSqlEventSession.EventDefinitions 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql120TSqlEventSession.EventDefinitions 
 		{
 			get 
 			{
@@ -18260,7 +18334,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql120TSqlEventSession.EventTargets 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql120TSqlEventSession.EventTargets 
 		{
 			get 
 			{
@@ -18318,7 +18392,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql120TSqlEventSessionDefinitions.AttributeSettings 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql120TSqlEventSessionDefinitions.AttributeSettings 
 		{
 			get 
 			{
@@ -18359,7 +18433,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql120TSqlEventSessionTarget.ParameterSettings 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql120TSqlEventSessionTarget.ParameterSettings 
 		{
 			get 
 			{
@@ -18404,11 +18478,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlExtendedProcedure.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> ISql120TSqlExtendedProcedure.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference>();
 			}
 		}
 
@@ -18422,20 +18496,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlExtendedProcedure.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlExtendedProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlExtendedProcedure.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference> ISql120TSqlExtendedProcedure.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference>();
 			}
 		}
 	}
@@ -18505,11 +18579,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlSqlFile.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlSqlFile.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -18554,38 +18628,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlForeignKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlForeignKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlForeignKeyConstraint.ForeignColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlForeignKeyConstraint.ForeignColumns 
 		{
 			get 
 			{
-				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlForeignKeyConstraint.ForeignTable 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference> ISql120TSqlForeignKeyConstraint.ForeignTable 
 		{
 			get 
 			{
-				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlForeignKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference> ISql120TSqlForeignKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference>();
 			}
 		}
 	}
@@ -18617,11 +18691,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlFullTextCatalog.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlFullTextCatalog.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 	}
@@ -18652,7 +18726,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlFullTextIndex.Catalog 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference> ISql120TSqlFullTextIndex.Catalog 
 		{
 			get 
 			{
@@ -18661,20 +18735,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlFullTextIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFullTextIndexColumnSpecifier> ISql120TSqlFullTextIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFullTextIndexColumnSpecifier>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlFullTextIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlFullTextIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
@@ -18688,16 +18762,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyList> ISql120TSqlFullTextIndex.SearchPropertyList 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyListReference> ISql120TSqlFullTextIndex.SearchPropertyList 
 		{
 			get 
 			{
-				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyList>();
+				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyListReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlFullTextIndex.StopList 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlFullTextIndex.StopList 
 		{
 			get 
 			{
@@ -18706,7 +18780,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlFullTextIndex.UniqueIndexName 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlFullTextIndex.UniqueIndexName 
 		{
 			get 
 			{
@@ -18729,20 +18803,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlFullTextIndexColumnSpecifier.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlFullTextIndexColumnSpecifier.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlFullTextIndexColumnSpecifier.TypeColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlFullTextIndexColumnSpecifier.TypeColumn 
 		{
 			get 
 			{
-				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 	}
@@ -18862,20 +18936,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLinkedServer> ISql120TSqlLinkedServerLogin.LinkedServer 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLinkedServerReference> ISql120TSqlLinkedServerLogin.LinkedServer 
 		{
 			get 
 			{
-				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLinkedServer>();
+				return this.LinkedServer.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLinkedServerReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlLinkedServerLogin.LocalLogin 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> ISql120TSqlLinkedServerLogin.LocalLogin 
 		{
 			get 
 			{
-				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
+				return this.LocalLogin.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference>();
 			}
 		}
 	}
@@ -18930,29 +19004,29 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey> ISql120TSqlLogin.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKeyReference> ISql120TSqlLogin.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlLogin.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference> ISql120TSqlLogin.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCredential> ISql120TSqlLogin.Credential 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCredentialReference> ISql120TSqlLogin.Credential 
 		{
 			get 
 			{
-				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCredential>();
+				return this.Credential.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCredentialReference>();
 			}
 		}
 	}
@@ -18986,11 +19060,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection> ISql120TSqlMessageType.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollectionReference> ISql120TSqlMessageType.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -19014,11 +19088,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlPartitionFunction.ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
-				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
+				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -19033,20 +19107,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlPartitionScheme.Filegroups 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlPartitionScheme.Filegroups 
 		{
 			get 
 			{
-				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionFunction> ISql120TSqlPartitionScheme.PartitionFunction 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionFunctionReference> ISql120TSqlPartitionScheme.PartitionFunction 
 		{
 			get 
 			{
-				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionFunction>();
+				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionFunctionReference>();
 			}
 		}
 	}
@@ -19061,7 +19135,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlPartitionValue.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlPartitionValue.ExpressionDependencies 
 		{
 			get 
 			{
@@ -19092,16 +19166,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlPermission.ExcludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlPermission.ExcludedColumns 
 		{
 			get 
 			{
-				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql120TSqlPermission.Grantee 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISql120TSqlPermission.Grantee 
 		{
 			get 
 			{
@@ -19110,7 +19184,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISql120TSqlPermission.Grantor 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISql120TSqlPermission.Grantor 
 		{
 			get 
 			{
@@ -19119,11 +19193,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlPermission.RevokedGrantOptionColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlPermission.RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
@@ -19187,11 +19261,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlPrimaryKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlPrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
@@ -19205,56 +19279,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlPrimaryKeyConstraint.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlPrimaryKeyConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlPrimaryKeyConstraint.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlPrimaryKeyConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlPrimaryKeyConstraint.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlPrimaryKeyConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlPrimaryKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference> ISql120TSqlPrimaryKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlPrimaryKeyConstraint.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlPrimaryKeyConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlPrimaryKeyConstraint.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlPrimaryKeyConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -19317,16 +19391,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlProcedure.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference> ISql120TSqlProcedure.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlProcedure.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlProcedure.BodyDependencies 
 		{
 			get 
 			{
@@ -19335,11 +19409,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlProcedure.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> ISql120TSqlProcedure.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference>();
 			}
 		}
 
@@ -19353,29 +19427,29 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedure> ISql120TSqlProcedure.ParentProcedure 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedureReference> ISql120TSqlProcedure.ParentProcedure 
 		{
 			get 
 			{
-				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedure>();
+				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedureReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlProcedure.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlProcedure.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference> ISql120TSqlProcedure.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference>();
 			}
 		}
 	}
@@ -19418,11 +19492,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedure> ISql120TSqlQueue.ActivationProcedure 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedureReference> ISql120TSqlQueue.ActivationProcedure 
 		{
 			get 
 			{
-				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedure>();
+				return this.ActivationProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlProcedureReference>();
 			}
 		}
 
@@ -19436,56 +19510,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlQueue.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlQueue.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlQueue.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> ISql120TSqlQueue.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlQueue.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlQueue.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlQueue.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlQueue.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlQueue.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlQueue.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlQueue.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference> ISql120TSqlQueue.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference>();
 			}
 		}
 	}
@@ -19526,11 +19600,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueue> ISql120TSqlQueueEventNotification.Queue 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueueReference> ISql120TSqlQueueEventNotification.Queue 
 		{
 			get 
 			{
-				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueue>();
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueueReference>();
 			}
 		}
 	}
@@ -19558,11 +19632,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlRemoteServiceBinding.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference> ISql120TSqlRemoteServiceBinding.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference>();
 			}
 		}
 	}
@@ -19577,7 +19651,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlResourceGovernor.ClassifierFunction 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlResourceGovernor.ClassifierFunction 
 		{
 			get 
 			{
@@ -19650,11 +19724,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRole> ISql120TSqlRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRoleReference> ISql120TSqlRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRoleReference>();
 			}
 		}
 	}
@@ -19704,7 +19778,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlRule.BoundObjects 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlRule.BoundObjects 
 		{
 			get 
 			{
@@ -19713,11 +19787,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlRule.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlRule.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -19755,11 +19829,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyList> ISql120TSqlSearchProperty.SearchPropertyList 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyListReference> ISql120TSqlSearchProperty.SearchPropertyList 
 		{
 			get 
 			{
-				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyList>();
+				return this.SearchPropertyList.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSearchPropertyListReference>();
 			}
 		}
 	}
@@ -19821,20 +19895,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlSequence.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlSequence.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlSequence.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlSequence.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -19920,11 +19994,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAudit> ISql120TSqlServerAuditSpecification.ServerAudit 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAuditReference> ISql120TSqlServerAuditSpecification.ServerAudit 
 		{
 			get 
 			{
-				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAudit>();
+				return this.ServerAudit.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlServerAuditReference>();
 			}
 		}
 	}
@@ -19979,16 +20053,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlServerDdlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference> ISql120TSqlServerDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlServerDdlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlServerDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -20015,20 +20089,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlServerDdlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> ISql120TSqlServerDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser> ISql120TSqlServerDdlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference> ISql120TSqlServerDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlUserReference>();
 			}
 		}
 	}
@@ -20090,11 +20164,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRole> ISql120TSqlServerRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRoleReference> ISql120TSqlServerRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlRoleReference>();
 			}
 		}
 	}
@@ -20118,20 +20192,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlContract> ISql120TSqlService.Contracts 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlContractReference> ISql120TSqlService.Contracts 
 		{
 			get 
 			{
-				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlContract>();
+				return this.Contracts.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlContractReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueue> ISql120TSqlService.Queue 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueueReference> ISql120TSqlService.Queue 
 		{
 			get 
 			{
-				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueue>();
+				return this.Queue.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlQueueReference>();
 			}
 		}
 	}
@@ -20170,11 +20244,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference> ISql120TSqlServiceBrokerLanguageSpecifier.AuthenticationCertificate 
 		{
 			get 
 			{
-				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
+				return this.AuthenticationCertificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference>();
 			}
 		}
 	}
@@ -20189,7 +20263,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql120TSqlSignature.EncryptionMechanism 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql120TSqlSignature.EncryptionMechanism 
 		{
 			get 
 			{
@@ -20198,7 +20272,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql120TSqlSignature.SignedObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlSignature.SignedObject 
 		{
 			get 
 			{
@@ -20221,20 +20295,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey> ISql120TSqlSignatureEncryptionMechanism.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKeyReference> ISql120TSqlSignatureEncryptionMechanism.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlSignatureEncryptionMechanism.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference> ISql120TSqlSignatureEncryptionMechanism.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference>();
 			}
 		}
 	}
@@ -20317,20 +20391,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlSpatialIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlSpatialIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlSpatialIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlSpatialIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
@@ -20344,20 +20418,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlSpatialIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlSpatialIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlSpatialIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlSpatialIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -20392,16 +20466,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlStatistics.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlStatistics.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlStatistics.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlStatistics.ExpressionDependencies 
 		{
 			get 
 			{
@@ -20410,7 +20484,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISql120TSqlStatistics.OnObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlStatistics.OnObject 
 		{
 			get 
 			{
@@ -20461,20 +20535,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection> ISql120TSqlParameter.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollectionReference> ISql120TSqlParameter.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -20505,11 +20579,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey> ISql120TSqlSymmetricKey.AsymmetricKeys 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKeyReference> ISql120TSqlSymmetricKey.AsymmetricKeys 
 		{
 			get 
 			{
-				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey>();
+				return this.AsymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKeyReference>();
 			}
 		}
 
@@ -20523,16 +20597,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlSymmetricKey.Certificates 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference> ISql120TSqlSymmetricKey.Certificates 
 		{
 			get 
 			{
-				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
+				return this.Certificates.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference>();
 			}
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql120TSqlSymmetricKey.Passwords 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql120TSqlSymmetricKey.Passwords 
 		{
 			get 
 			{
@@ -20541,7 +20615,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlSymmetricKey.Provider 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlSymmetricKey.Provider 
 		{
 			get 
 			{
@@ -20550,11 +20624,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSymmetricKey> ISql120TSqlSymmetricKey.SymmetricKeys 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSymmetricKeyReference> ISql120TSqlSymmetricKey.SymmetricKeys 
 		{
 			get 
 			{
-				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSymmetricKey>();
+				return this.SymmetricKeys.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSymmetricKeyReference>();
 			}
 		}
 	}
@@ -20579,7 +20653,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlSynonym.ForObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlSynonym.ForObject 
 		{
 			get 
 			{
@@ -20588,11 +20662,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlSynonym.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlSynonym.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -20677,65 +20751,65 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlTable.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlTable.FilegroupForTextImage 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlTable.FilegroupForTextImage 
 		{
 			get 
 			{
-				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.FilegroupForTextImage.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlTable.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlTable.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlTable.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlTable.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTable.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlTable.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlTable.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlTable.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -20796,56 +20870,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlFileTable.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlFileTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlFileTable.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlFileTable.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlFileTable.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlFileTable.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlFileTable.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlFileTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlFileTable.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlFileTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlFileTable.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlFileTable.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -20887,11 +20961,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlTableType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlTableType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -20906,7 +20980,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlTableTypeCheckConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlTableTypeCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -20977,16 +21051,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlTableTypeColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlTableTypeColumn.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlTableTypeColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -20995,11 +21069,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection> ISql120TSqlTableTypeColumn.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollectionReference> ISql120TSqlTableTypeColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -21014,7 +21088,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlTableTypeDefaultConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlTableTypeDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -21023,11 +21097,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableTypeDefaultConstraint.TargetColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlTableTypeDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 	}
@@ -21050,11 +21124,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableTypeIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlTableTypeIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 	}
@@ -21081,11 +21155,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableTypePrimaryKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlTableTypePrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 	}
@@ -21104,11 +21178,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlTableTypeUniqueConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlTableTypeUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 	}
@@ -21177,11 +21251,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlUniqueConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
@@ -21195,56 +21269,56 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlUniqueConstraint.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlUniqueConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup> ISql120TSqlUniqueConstraint.FileStreamFilegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference> ISql120TSqlUniqueConstraint.FileStreamFilegroup 
 		{
 			get 
 			{
-				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroup>();
+				return this.FileStreamFilegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlUniqueConstraint.FileStreamPartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlUniqueConstraint.FileStreamPartitionScheme 
 		{
 			get 
 			{
-				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.FileStreamPartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable> ISql120TSqlUniqueConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference> ISql120TSqlUniqueConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlUniqueConstraint.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlUniqueConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme> ISql120TSqlUniqueConstraint.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference> ISql120TSqlUniqueConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -21275,38 +21349,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey> ISql120TSqlUser.AsymmetricKey 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKeyReference> ISql120TSqlUser.AsymmetricKey 
 		{
 			get 
 			{
-				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKey>();
+				return this.AsymmetricKey.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAsymmetricKeyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate> ISql120TSqlUser.Certificate 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference> ISql120TSqlUser.Certificate 
 		{
 			get 
 			{
-				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificate>();
+				return this.Certificate.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlCertificateReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlUser.DefaultSchema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlUser.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin> ISql120TSqlUser.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference> ISql120TSqlUser.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlLoginReference>();
 			}
 		}
 	}
@@ -21356,16 +21430,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly> ISql120TSqlUserDefinedType.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference> ISql120TSqlUserDefinedType.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlAssemblyReference>();
 			}
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql120TSqlUserDefinedType.Methods 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql120TSqlUserDefinedType.Methods 
 		{
 			get 
 			{
@@ -21374,7 +21448,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISql120TSqlUserDefinedType.Properties 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISql120TSqlUserDefinedType.Properties 
 		{
 			get 
 			{
@@ -21383,11 +21457,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlUserDefinedType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlUserDefinedType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -21430,7 +21504,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISql120TSqlView.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISql120TSqlView.BodyDependencies 
 		{
 			get 
 			{
@@ -21448,11 +21522,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlView.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlView.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -21487,11 +21561,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlResourcePool> ISql120TSqlWorkloadGroup.ResourcePool 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlResourcePoolReference> ISql120TSqlWorkloadGroup.ResourcePool 
 		{
 			get 
 			{
-				return this.ResourcePool.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlResourcePool>();
+				return this.ResourcePool.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlResourcePoolReference>();
 			}
 		}
 	}
@@ -21538,11 +21612,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlXmlIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
@@ -21556,11 +21630,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlIndex> ISql120TSqlXmlIndex.PrimaryXmlIndex 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlIndexReference> ISql120TSqlXmlIndex.PrimaryXmlIndex 
 		{
 			get 
 			{
-				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlIndex>();
+				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlXmlIndexReference>();
 			}
 		}
 	}
@@ -21603,11 +21677,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn> ISql120TSqlSelectiveXmlIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference> ISql120TSqlSelectiveXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlColumnReference>();
 			}
 		}
 
@@ -21630,11 +21704,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSelectiveXmlIndex> ISql120TSqlSelectiveXmlIndex.PrimarySelectiveXmlIndex 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSelectiveXmlIndexReference> ISql120TSqlSelectiveXmlIndex.PrimarySelectiveXmlIndex 
 		{
 			get 
 			{
-				return this.PrimarySelectiveXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSelectiveXmlIndex>();
+				return this.PrimarySelectiveXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSelectiveXmlIndexReference>();
 			}
 		}
 
@@ -21723,11 +21797,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType> ISql120TSqlPromotedNodePathForSqlType.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlPromotedNodePathForSqlType.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -21742,11 +21816,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema> ISql120TSqlXmlSchemaCollection.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference> ISql120TSqlXmlSchemaCollection.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlSchemaReference>();
 			}
 		}
 	}
@@ -21821,16 +21895,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlColumn.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -21839,11 +21913,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection> ISqlAzureV12TSqlColumn.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollectionReference> ISqlAzureV12TSqlColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -21931,7 +22005,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlTableValuedFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlTableValuedFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -21939,21 +22013,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			}
 		}
 
-		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlTableValuedFunction.Login 
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableValuedFunction.Columns 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableValuedFunction.OrderColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference> ISqlAzureV12TSqlTableValuedFunction.Login 
 		{
 			get 
 			{
-				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference>();
 			}
 		}
 
@@ -21967,29 +22041,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlTableValuedFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlTableValuedFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlTableValuedFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlTableValuedFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlClrTableOption> ISqlAzureV12TSqlTableValuedFunction.TableOption 
+		{
+			get 
+			{
+				return this.TableOption.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlClrTableOption>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> ISqlAzureV12TSqlTableValuedFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference> ISqlAzureV12TSqlTableValuedFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference>();
 			}
 		}
 	}
@@ -22073,7 +22156,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlScalarFunction.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlScalarFunction.BodyDependencies 
 		{
 			get 
 			{
@@ -22082,11 +22165,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlScalarFunction.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference> ISqlAzureV12TSqlScalarFunction.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference>();
 			}
 		}
 
@@ -22100,29 +22183,48 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlScalarFunction.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlScalarFunction.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlScalarFunction.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlScalarFunction.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> ISqlAzureV12TSqlScalarFunction.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference> ISqlAzureV12TSqlScalarFunction.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlClrTableOption"/>.
+	/// </summary>
+	public partial class TSqlClrTableOption : ISqlAzureV12TSqlClrTableOption
+	{		
+		String ISqlAzureV12TSqlClrTableOption.ClassName 
+		{
+			get { return this.ClassName;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlClrTableOption.OrderColumns 
+		{
+			get 
+			{
+				return this.OrderColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 	}
@@ -22157,11 +22259,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlAggregate.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference> ISqlAzureV12TSqlAggregate.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference>();
 			}
 		}
 
@@ -22175,20 +22277,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlAggregate.ReturnType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlAggregate.ReturnType 
 		{
 			get 
 			{
-				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+				return this.ReturnType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlAggregate.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlAggregate.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 	}
@@ -22203,11 +22305,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlApplicationRole.DefaultSchema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlApplicationRole.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 	}
@@ -22270,7 +22372,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlIndex.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlIndex.BodyDependencies 
 		{
 			get 
 			{
@@ -22279,11 +22381,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
@@ -22297,20 +22399,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> ISqlAzureV12TSqlIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlIndex.IncludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlIndex.IncludedColumns 
 		{
 			get 
 			{
-				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.IncludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
@@ -22324,20 +22426,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference> ISqlAzureV12TSqlIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -22374,11 +22476,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlAssembly.ReferencedAssemblies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference> ISqlAzureV12TSqlAssembly.ReferencedAssemblies 
 		{
 			get 
 			{
-				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+				return this.ReferencedAssemblies.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference>();
 			}
 		}
 	}
@@ -22429,11 +22531,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlDataType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlDataType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 
@@ -22465,7 +22567,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlCheckConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -22474,11 +22576,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlCheckConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference> ISqlAzureV12TSqlCheckConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference>();
 			}
 		}
 	}
@@ -22525,11 +22627,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -22544,11 +22646,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlClrTypeProperty.ClrType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlClrTypeProperty.ClrType 
 		{
 			get 
 			{
-				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+				return this.ClrType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -22567,11 +22669,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlColumnStoreIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlColumnStoreIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
@@ -22585,11 +22687,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlColumnStoreIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> ISqlAzureV12TSqlColumnStoreIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference>();
 			}
 		}
 
@@ -22603,20 +22705,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlColumnStoreIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlColumnStoreIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlColumnStoreIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference> ISqlAzureV12TSqlColumnStoreIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -22667,16 +22769,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlDatabaseDdlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference> ISqlAzureV12TSqlDatabaseDdlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlDatabaseDdlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlDatabaseDdlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -22703,20 +22805,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlDatabaseDdlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference> ISqlAzureV12TSqlDatabaseDdlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> ISqlAzureV12TSqlDatabaseDdlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference> ISqlAzureV12TSqlDatabaseDdlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference>();
 			}
 		}
 	}
@@ -22805,6 +22907,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.DateCorrelationOptimizationOn;}
 		}
+		Boolean ISqlAzureV12TSqlDatabaseOptions.FullTextEnabled 
+		{
+			get { return this.FullTextEnabled;}
+		}
 		Boolean ISqlAzureV12TSqlDatabaseOptions.NumericRoundAbortOn 
 		{
 			get { return this.NumericRoundAbortOn;}
@@ -22855,7 +22961,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlDefault.BoundObjects 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlDefault.BoundObjects 
 		{
 			get 
 			{
@@ -22864,11 +22970,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlDefault.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlDefault.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 	}
@@ -22891,7 +22997,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlDefaultConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -22900,20 +23006,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlDefaultConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference> ISqlAzureV12TSqlDefaultConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlDefaultConstraint.TargetColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 	}
@@ -22996,16 +23102,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlDmlTrigger.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference> ISqlAzureV12TSqlDmlTrigger.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlDmlTrigger.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlDmlTrigger.BodyDependencies 
 		{
 			get 
 			{
@@ -23014,16 +23120,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlDmlTrigger.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference> ISqlAzureV12TSqlDmlTrigger.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlDmlTrigger.TriggerObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlDmlTrigger.TriggerObject 
 		{
 			get 
 			{
@@ -23032,11 +23138,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> ISqlAzureV12TSqlDmlTrigger.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference> ISqlAzureV12TSqlDmlTrigger.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference>();
 			}
 		}
 	}
@@ -23106,38 +23212,150 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlForeignKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlForeignKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlForeignKeyConstraint.ForeignColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlForeignKeyConstraint.ForeignColumns 
 		{
 			get 
 			{
-				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.ForeignColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlForeignKeyConstraint.ForeignTable 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference> ISqlAzureV12TSqlForeignKeyConstraint.ForeignTable 
 		{
 			get 
 			{
-				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+				return this.ForeignTable.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlForeignKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference> ISqlAzureV12TSqlForeignKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlFullTextCatalog"/>.
+	/// </summary>
+	public partial class TSqlFullTextCatalog : ISqlAzureV12TSqlFullTextCatalog
+	{		
+		Boolean? ISqlAzureV12TSqlFullTextCatalog.AccentSensitivity 
+		{
+			get { return this.AccentSensitivity;}
+		}
+		Boolean ISqlAzureV12TSqlFullTextCatalog.IsDefault 
+		{
+			get { return this.IsDefault;}
+		}
+		String ISqlAzureV12TSqlFullTextCatalog.Path 
+		{
+			get { return this.Path;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureV12TSqlFullTextCatalog.Authorizer 
+		{
+			get 
+			{
+				return this.Authorizer;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> ISqlAzureV12TSqlFullTextCatalog.Filegroup 
+		{
+			get 
+			{
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlFullTextIndex"/>.
+	/// </summary>
+	public partial class TSqlFullTextIndex : ISqlAzureV12TSqlFullTextIndex
+	{		
+		ChangeTrackingOption ISqlAzureV12TSqlFullTextIndex.ChangeTracking 
+		{
+			get { return this.ChangeTracking;}
+		}
+		Boolean ISqlAzureV12TSqlFullTextIndex.Disabled 
+		{
+			get { return this.Disabled;}
+		}
+		Boolean ISqlAzureV12TSqlFullTextIndex.StopListOff 
+		{
+			get { return this.StopListOff;}
+		}
+		Boolean ISqlAzureV12TSqlFullTextIndex.UseSystemStopList 
+		{
+			get { return this.UseSystemStopList;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference> ISqlAzureV12TSqlFullTextIndex.Catalog 
+		{
+			get 
+			{
+				return this.Catalog;
+			}
+		}
+
+		// Composing relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFullTextIndexColumnSpecifier> ISqlAzureV12TSqlFullTextIndex.Columns 
+		{
+			get 
+			{
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFullTextIndexColumnSpecifier>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> ISqlAzureV12TSqlFullTextIndex.Filegroup 
+		{
+			get 
+			{
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference>();
+			}
+		}
+
+		// Hierarchical relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISpecifiesIndex> ISqlAzureV12TSqlFullTextIndex.IndexedObject 
+		{
+			get 
+			{
+				return this.IndexedObject;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlFullTextIndex.StopList 
+		{
+			get 
+			{
+				return this.StopList;
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlFullTextIndex.UniqueIndexName 
+		{
+			get 
+			{
+				return this.UniqueIndexName;
 			}
 		}
 	}
@@ -23146,6 +23364,43 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	/// </summary>
 	public partial class TSqlFullTextIndexColumnSpecifier : ISqlAzureV12TSqlFullTextIndexColumnSpecifier
 	{		
+		Int32? ISqlAzureV12TSqlFullTextIndexColumnSpecifier.LanguageId 
+		{
+			get { return this.LanguageId;}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlFullTextIndexColumnSpecifier.Column 
+		{
+			get 
+			{
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
+			}
+		}
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlFullTextIndexColumnSpecifier.TypeColumn 
+		{
+			get 
+			{
+				return this.TypeColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
+			}
+		}
+	}
+	/// <summary>
+	/// Explicit implementation of <see cref="ISqlAzureV12TSqlFullTextStopList"/>.
+	/// </summary>
+	public partial class TSqlFullTextStopList : ISqlAzureV12TSqlFullTextStopList
+	{		
+
+		// Peer relationship		
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlObjectAuthorizer> ISqlAzureV12TSqlFullTextStopList.Authorizer 
+		{
+			get 
+			{
+				return this.Authorizer;
+			}
+		}
 	}
 	/// <summary>
 	/// Explicit implementation of <see cref="ISqlAzureV12TSqlLogin"/>.
@@ -23181,11 +23436,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlPartitionFunction.ParameterType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlPartitionFunction.ParameterType 
 		{
 			get 
 			{
-				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+				return this.ParameterType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -23200,20 +23455,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlPartitionScheme.Filegroups 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> ISqlAzureV12TSqlPartitionScheme.Filegroups 
 		{
 			get 
 			{
-				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+				return this.Filegroups.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionFunction> ISqlAzureV12TSqlPartitionScheme.PartitionFunction 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionFunctionReference> ISqlAzureV12TSqlPartitionScheme.PartitionFunction 
 		{
 			get 
 			{
-				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionFunction>();
+				return this.PartitionFunction.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionFunctionReference>();
 			}
 		}
 	}
@@ -23228,7 +23483,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlPartitionValue.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlPartitionValue.ExpressionDependencies 
 		{
 			get 
 			{
@@ -23259,16 +23514,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlPermission.ExcludedColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlPermission.ExcludedColumns 
 		{
 			get 
 			{
-				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.ExcludedColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISqlAzureV12TSqlPermission.Grantee 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISqlAzureV12TSqlPermission.Grantee 
 		{
 			get 
 			{
@@ -23277,7 +23532,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal > ISqlAzureV12TSqlPermission.Grantor 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlSecurityPrincipal> ISqlAzureV12TSqlPermission.Grantor 
 		{
 			get 
 			{
@@ -23286,11 +23541,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlPermission.RevokedGrantOptionColumns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlPermission.RevokedGrantOptionColumns 
 		{
 			get 
 			{
-				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.RevokedGrantOptionColumns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
@@ -23350,11 +23605,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlPrimaryKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlPrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
@@ -23368,38 +23623,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlPrimaryKeyConstraint.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> ISqlAzureV12TSqlPrimaryKeyConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlPrimaryKeyConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference> ISqlAzureV12TSqlPrimaryKeyConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlPrimaryKeyConstraint.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlPrimaryKeyConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlPrimaryKeyConstraint.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference> ISqlAzureV12TSqlPrimaryKeyConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -23446,16 +23701,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlProcedure.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference> ISqlAzureV12TSqlProcedure.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlProcedure.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlProcedure.BodyDependencies 
 		{
 			get 
 			{
@@ -23464,11 +23719,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlProcedure.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference> ISqlAzureV12TSqlProcedure.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference>();
 			}
 		}
 
@@ -23482,29 +23737,29 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlProcedure> ISqlAzureV12TSqlProcedure.ParentProcedure 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlProcedureReference> ISqlAzureV12TSqlProcedure.ParentProcedure 
 		{
 			get 
 			{
-				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlProcedure>();
+				return this.ParentProcedure.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlProcedureReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlProcedure.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlProcedure.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser> ISqlAzureV12TSqlProcedure.User 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference> ISqlAzureV12TSqlProcedure.User 
 		{
 			get 
 			{
-				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUser>();
+				return this.User.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlUserReference>();
 			}
 		}
 	}
@@ -23539,11 +23794,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRole> ISqlAzureV12TSqlRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRoleReference> ISqlAzureV12TSqlRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRoleReference>();
 			}
 		}
 	}
@@ -23558,7 +23813,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlRule.BoundObjects 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlRule.BoundObjects 
 		{
 			get 
 			{
@@ -23567,11 +23822,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlRule.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlRule.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 	}
@@ -23633,20 +23888,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlSequence.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlSequence.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlSequence.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlSequence.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 	}
@@ -23672,11 +23927,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRole> ISqlAzureV12TSqlServerRoleMembership.Role 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRoleReference> ISqlAzureV12TSqlServerRoleMembership.Role 
 		{
 			get 
 			{
-				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRole>();
+				return this.Role.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlRoleReference>();
 			}
 		}
 	}
@@ -23759,20 +24014,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlSpatialIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlSpatialIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlSpatialIndex.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> ISqlAzureV12TSqlSpatialIndex.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference>();
 			}
 		}
 
@@ -23786,20 +24041,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlSpatialIndex.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlSpatialIndex.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlSpatialIndex.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference> ISqlAzureV12TSqlSpatialIndex.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -23834,16 +24089,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlStatistics.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlStatistics.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlStatistics.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlStatistics.ExpressionDependencies 
 		{
 			get 
 			{
@@ -23852,7 +24107,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlStatistics.OnObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlStatistics.OnObject 
 		{
 			get 
 			{
@@ -23903,20 +24158,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection> ISqlAzureV12TSqlParameter.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollectionReference> ISqlAzureV12TSqlParameter.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -23931,7 +24186,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlSynonym.ForObject 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlSynonym.ForObject 
 		{
 			get 
 			{
@@ -23940,11 +24195,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlSynonym.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlSynonym.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 	}
@@ -24009,38 +24264,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlTable.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> ISqlAzureV12TSqlTable.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTable.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlTable.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlTable.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference> ISqlAzureV12TSqlTable.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlTable.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlTable.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 	}
@@ -24078,11 +24333,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlTableType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlTableType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 	}
@@ -24097,7 +24352,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlTableTypeCheckConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlTableTypeCheckConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -24168,16 +24423,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlTableTypeColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlTableTypeColumn.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlTableTypeColumn.ExpressionDependencies 
 		{
 			get 
 			{
@@ -24186,11 +24441,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection> ISqlAzureV12TSqlTableTypeColumn.XmlSchemaCollection 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollectionReference> ISqlAzureV12TSqlTableTypeColumn.XmlSchemaCollection 
 		{
 			get 
 			{
-				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollection>();
+				return this.XmlSchemaCollection.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlSchemaCollectionReference>();
 			}
 		}
 	}
@@ -24205,7 +24460,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlTableTypeDefaultConstraint.ExpressionDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlTableTypeDefaultConstraint.ExpressionDependencies 
 		{
 			get 
 			{
@@ -24214,11 +24469,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableTypeDefaultConstraint.TargetColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlTableTypeDefaultConstraint.TargetColumn 
 		{
 			get 
 			{
-				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.TargetColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 	}
@@ -24241,11 +24496,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableTypeIndex.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlTableTypeIndex.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 	}
@@ -24272,11 +24527,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableTypePrimaryKeyConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlTableTypePrimaryKeyConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 	}
@@ -24295,11 +24550,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlTableTypeUniqueConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlTableTypeUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 	}
@@ -24342,11 +24597,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlUniqueConstraint.Columns 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlUniqueConstraint.Columns 
 		{
 			get 
 			{
-				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Columns.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
@@ -24360,38 +24615,38 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup> ISqlAzureV12TSqlUniqueConstraint.Filegroup 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference> ISqlAzureV12TSqlUniqueConstraint.Filegroup 
 		{
 			get 
 			{
-				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroup>();
+				return this.Filegroup.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlFilegroupReference>();
 			}
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable> ISqlAzureV12TSqlUniqueConstraint.Host 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference> ISqlAzureV12TSqlUniqueConstraint.Host 
 		{
 			get 
 			{
-				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTable>();
+				return this.Host.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlTableReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlUniqueConstraint.PartitionColumn 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlUniqueConstraint.PartitionColumn 
 		{
 			get 
 			{
-				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.PartitionColumn.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme> ISqlAzureV12TSqlUniqueConstraint.PartitionScheme 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference> ISqlAzureV12TSqlUniqueConstraint.PartitionScheme 
 		{
 			get 
 			{
-				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionScheme>();
+				return this.PartitionScheme.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlPartitionSchemeReference>();
 			}
 		}
 	}
@@ -24418,20 +24673,20 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlUser.DefaultSchema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlUser.DefaultSchema 
 		{
 			get 
 			{
-				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.DefaultSchema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin> ISqlAzureV12TSqlUser.Login 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference> ISqlAzureV12TSqlUser.Login 
 		{
 			get 
 			{
-				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLogin>();
+				return this.Login.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlLoginReference>();
 			}
 		}
 	}
@@ -24466,16 +24721,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly> ISqlAzureV12TSqlUserDefinedType.Assembly 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference> ISqlAzureV12TSqlUserDefinedType.Assembly 
 		{
 			get 
 			{
-				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssembly>();
+				return this.Assembly.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlAssemblyReference>();
 			}
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlUserDefinedType.Methods 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISqlAzureV12TSqlUserDefinedType.Methods 
 		{
 			get 
 			{
@@ -24484,7 +24739,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Composing relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlUserDefinedType.Properties 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElement> ISqlAzureV12TSqlUserDefinedType.Properties 
 		{
 			get 
 			{
@@ -24493,11 +24748,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlUserDefinedType.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlUserDefinedType.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 	}
@@ -24536,7 +24791,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<TSqlObject> ISqlAzureV12TSqlView.BodyDependencies 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> ISqlAzureV12TSqlView.BodyDependencies 
 		{
 			get 
 			{
@@ -24554,11 +24809,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlView.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlView.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 	}
@@ -24605,11 +24860,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlXmlIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
@@ -24623,11 +24878,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlIndex> ISqlAzureV12TSqlXmlIndex.PrimaryXmlIndex 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlIndexReference> ISqlAzureV12TSqlXmlIndex.PrimaryXmlIndex 
 		{
 			get 
 			{
-				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlIndex>();
+				return this.PrimaryXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlXmlIndexReference>();
 			}
 		}
 	}
@@ -24670,11 +24925,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn> ISqlAzureV12TSqlSelectiveXmlIndex.Column 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference> ISqlAzureV12TSqlSelectiveXmlIndex.Column 
 		{
 			get 
 			{
-				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumn>();
+				return this.Column.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlColumnReference>();
 			}
 		}
 
@@ -24697,11 +24952,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSelectiveXmlIndex> ISqlAzureV12TSqlSelectiveXmlIndex.PrimarySelectiveXmlIndex 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSelectiveXmlIndexReference> ISqlAzureV12TSqlSelectiveXmlIndex.PrimarySelectiveXmlIndex 
 		{
 			get 
 			{
-				return this.PrimarySelectiveXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSelectiveXmlIndex>();
+				return this.PrimarySelectiveXmlIndex.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSelectiveXmlIndexReference>();
 			}
 		}
 
@@ -24790,11 +25045,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType> ISqlAzureV12TSqlPromotedNodePathForSqlType.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlPromotedNodePathForSqlType.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataType>();
+				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -24809,11 +25064,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Hierarchical relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema> ISqlAzureV12TSqlXmlSchemaCollection.Schema 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference> ISqlAzureV12TSqlXmlSchemaCollection.Schema 
 		{
 			get 
 			{
-				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchema>();
+				return this.Schema.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlSchemaReference>();
 			}
 		}
 	}

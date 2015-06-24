@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7855389B-A1F0-4A7C-A83A-38EEF5B73F9A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{EDF01D79-66D0-496C-82D2-431831564817}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Public.Dac.Samples.App</RootNamespace>
-    <AssemblyName>SampleConsoleApp</AssemblyName>
+    <RootNamespace>Public.Dac.Samples.TestUtilities</RootNamespace>
+    <AssemblyName>Public.Dac.Samples.TestUtilitiess</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -54,28 +52,16 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModelEndToEnd.cs" />
-    <Compile Include="ModelFilterExample.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="CommonConstants.cs" />
+    <Compile Include="ExceptionText.cs" />
+    <Compile Include="InstanceInfo.cs" />
+    <Compile Include="SqlTestDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RunCodeAnalysisExample.cs" />
-    <Compile Include="RunValidateQuerySemanticallyExample.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Samples\Samples.csproj">
-      <Project>{c1c2b521-22b6-4124-aaec-a5e1fcab0dfa}</Project>
-      <Name>Samples</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TestUtils\TestUtils.csproj">
-      <Project>{edf01d79-66d0-496c-82d2-431831564817}</Project>
-      <Name>TestUtils</Name>
-    </ProjectReference>
+    <Compile Include="TestUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

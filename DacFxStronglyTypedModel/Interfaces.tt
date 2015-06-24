@@ -57,6 +57,9 @@ foreach(SqlServerVersion currentSQLVersion in GetSqlServerVersionValues())
 		overrides.TryGetValue(type.Name, out modelEntry);
 		
 #>
+    public interface <#= className #>Reference : <#= className #>
+	{
+    }
 	public interface <#= className #> : ISqlModelElement
 	{		
 <#
@@ -67,7 +70,7 @@ foreach(SqlServerVersion currentSQLVersion in GetSqlServerVersionValues())
 				continue;
 			}
 			bool useGenericGetter;
-			string typeName = GetPropertyTypeName(property, out useGenericGetter);		
+			string typeName = GetPropertyTypeName(property.DataType, out useGenericGetter);		
 			string propertyName = GetPropertyName(property, modelEntry);
 #>
 		<#= typeName #> <#= propertyName #> 
@@ -86,7 +89,7 @@ foreach(SqlServerVersion currentSQLVersion in GetSqlServerVersionValues())
 	   // skip unsupported properties
 		continue;
 	   }
-	string returnType = "TSqlObject";
+	string returnType = DefaultReturnType;
 	if(modelEntry != null)
 	{
 		RelationshipOverride localoverride;

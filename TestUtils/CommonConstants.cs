@@ -24,26 +24,15 @@
 //    SOFTWARE.
 //</copyright>
 //------------------------------------------------------------------------------
-using Microsoft.SqlServer.Dac.Extensions.Prototype;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Microsoft.SqlServer.Dac.Extensions.Prototype
+namespace Public.Dac.Samples.TestUtilities
 {
-    // All additions here are to fill  in gaps in the mapping of the public model.
-    // These issues should be fixed by the product team
-    public partial class TSqlTableValuedFunction
+    internal class CommonConstants
     {
-        public IEnumerable<TSqlColumn> Columns
-        {
-            get
-            {
-                //Microsoft.SqlServer.Dac.Model.TableValuedFunction
-                throw new NotImplementedException("Columns is not implemented on TablueValuedFunctions");
-            }
-        }
-    }   
+        public const string MasterDatabaseName = "master";
+
+        public const int DefaultSqlQueryTimeoutInSeconds = 60;
+
+        public const int DefaultCommandTimeout = 30;
+    }
 }
