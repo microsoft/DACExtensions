@@ -569,7 +569,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -587,7 +587,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -599,7 +599,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -609,7 +609,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -620,7 +620,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -887,7 +887,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -905,7 +905,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -917,7 +917,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -927,7 +927,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -938,7 +938,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -1287,7 +1287,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -1305,7 +1305,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -1317,7 +1317,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -1327,7 +1327,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -1338,7 +1338,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -1644,7 +1644,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -1662,7 +1662,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -1674,7 +1674,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -1684,7 +1684,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -1695,7 +1695,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -1769,7 +1769,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -1787,7 +1787,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -1799,7 +1799,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -1809,7 +1809,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -1820,7 +1820,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -1980,7 +1980,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -1998,7 +1998,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -2010,7 +2010,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -2020,7 +2020,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -2031,7 +2031,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -2105,7 +2105,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -2123,7 +2123,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -2135,7 +2135,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -2145,7 +2145,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -2156,7 +2156,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -2468,7 +2468,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -2486,7 +2486,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -2498,7 +2498,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -2508,7 +2508,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -2519,7 +2519,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -2627,7 +2627,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -2645,7 +2645,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -2657,7 +2657,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -2667,7 +2667,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -2678,7 +2678,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -2740,7 +2740,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -2758,7 +2758,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -2770,7 +2770,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -2780,7 +2780,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -2791,7 +2791,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -2949,7 +2949,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -2967,7 +2967,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -2979,7 +2979,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -2989,7 +2989,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -3000,7 +3000,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -3062,7 +3062,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -3080,7 +3080,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -3092,7 +3092,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -3102,7 +3102,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -3113,7 +3113,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -3175,7 +3175,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -3193,7 +3193,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -3205,7 +3205,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -3215,7 +3215,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -3226,7 +3226,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -3314,7 +3314,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -3332,7 +3332,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -3344,7 +3344,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -3354,7 +3354,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -3365,7 +3365,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -3461,7 +3461,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -3479,7 +3479,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -3491,7 +3491,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -3501,7 +3501,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -3512,7 +3512,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -3564,7 +3564,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -3582,7 +3582,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -3594,7 +3594,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -3604,7 +3604,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -3615,7 +3615,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -3751,7 +3751,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -3769,7 +3769,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -3781,7 +3781,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -3791,7 +3791,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -3802,7 +3802,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -3988,7 +3988,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -4006,7 +4006,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -4018,7 +4018,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -4028,7 +4028,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -4039,7 +4039,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -4145,7 +4145,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -4163,7 +4163,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -4175,7 +4175,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -4185,7 +4185,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -4196,7 +4196,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -4282,7 +4282,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -4300,7 +4300,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -4312,7 +4312,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -4322,7 +4322,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -4333,7 +4333,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -4417,7 +4417,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -4435,7 +4435,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -4447,7 +4447,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -4457,7 +4457,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -4468,7 +4468,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -4542,7 +4542,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -4560,7 +4560,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -4572,7 +4572,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -4582,7 +4582,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -4593,7 +4593,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -4737,7 +4737,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -4755,7 +4755,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -4767,7 +4767,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -4777,7 +4777,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -4788,7 +4788,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -4864,7 +4864,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -4882,7 +4882,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -4894,7 +4894,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -4904,7 +4904,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -4915,7 +4915,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -4999,7 +4999,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -5017,7 +5017,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -5029,7 +5029,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -5039,7 +5039,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -5050,7 +5050,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -5122,7 +5122,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -5140,7 +5140,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -5152,7 +5152,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -5162,7 +5162,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -5173,7 +5173,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -5271,7 +5271,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -5289,7 +5289,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -5301,7 +5301,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -5311,7 +5311,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -5322,7 +5322,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -5546,7 +5546,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -5564,7 +5564,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -5576,7 +5576,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -5586,7 +5586,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -5597,7 +5597,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -5683,7 +5683,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -5701,7 +5701,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -5713,7 +5713,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -5723,7 +5723,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -5734,7 +5734,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -5840,7 +5840,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -5858,7 +5858,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -5870,7 +5870,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -5880,7 +5880,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -5891,7 +5891,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -6015,7 +6015,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -6033,7 +6033,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -6045,7 +6045,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -6055,7 +6055,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -6066,7 +6066,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -6672,7 +6672,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -6690,7 +6690,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -6702,7 +6702,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -6712,7 +6712,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -6723,7 +6723,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -6795,7 +6795,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -6813,7 +6813,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -6825,7 +6825,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -6835,7 +6835,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -6846,7 +6846,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -6932,7 +6932,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -6950,7 +6950,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -6962,7 +6962,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -6972,7 +6972,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -6983,7 +6983,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -7101,7 +7101,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -7119,7 +7119,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -7131,7 +7131,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -7141,7 +7141,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -7152,7 +7152,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -7444,7 +7444,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -7462,7 +7462,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -7474,7 +7474,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -7484,7 +7484,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -7495,7 +7495,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -7613,7 +7613,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -7631,7 +7631,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -7643,7 +7643,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -7653,7 +7653,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -7664,7 +7664,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -7766,7 +7766,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -7784,7 +7784,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -7796,7 +7796,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -7806,7 +7806,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -7817,7 +7817,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -7879,7 +7879,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -7897,7 +7897,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -7909,7 +7909,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -7919,7 +7919,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -7930,7 +7930,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -8096,7 +8096,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -8114,7 +8114,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -8126,7 +8126,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -8136,7 +8136,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -8147,7 +8147,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -8229,7 +8229,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -8247,7 +8247,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -8259,7 +8259,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -8269,7 +8269,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -8280,7 +8280,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -8396,7 +8396,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -8414,7 +8414,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -8426,7 +8426,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -8436,7 +8436,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -8447,7 +8447,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -8519,7 +8519,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -8537,7 +8537,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -8549,7 +8549,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -8559,7 +8559,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -8570,7 +8570,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -8664,7 +8664,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -8682,7 +8682,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -8694,7 +8694,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -8704,7 +8704,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -8715,7 +8715,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -8787,7 +8787,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -8805,7 +8805,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -8817,7 +8817,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -8827,7 +8827,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -8838,7 +8838,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -8978,7 +8978,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -8996,7 +8996,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -9008,7 +9008,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -9018,7 +9018,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -9029,7 +9029,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -9103,7 +9103,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -9121,7 +9121,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -9133,7 +9133,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -9143,7 +9143,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -9154,7 +9154,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -9318,7 +9318,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -9336,7 +9336,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -9348,7 +9348,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -9358,7 +9358,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -9369,7 +9369,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -9451,7 +9451,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -9469,7 +9469,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -9481,7 +9481,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -9491,7 +9491,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -9502,7 +9502,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -9642,7 +9642,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -9660,7 +9660,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -9672,7 +9672,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -9682,7 +9682,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -9693,7 +9693,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -9799,7 +9799,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -9817,7 +9817,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -9829,7 +9829,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -9839,7 +9839,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -9850,7 +9850,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -10036,7 +10036,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -10054,7 +10054,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -10066,7 +10066,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -10076,7 +10076,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -10087,7 +10087,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -10183,7 +10183,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -10201,7 +10201,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -10213,7 +10213,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -10223,7 +10223,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -10234,7 +10234,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -10298,7 +10298,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -10316,7 +10316,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -10328,7 +10328,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -10338,7 +10338,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -10349,7 +10349,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -10511,7 +10511,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -10529,7 +10529,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -10541,7 +10541,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -10551,7 +10551,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -10562,7 +10562,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -10804,7 +10804,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -10822,7 +10822,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -10834,7 +10834,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -10844,7 +10844,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -10855,7 +10855,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -10961,7 +10961,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -10979,7 +10979,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -10991,7 +10991,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -11001,7 +11001,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -11012,7 +11012,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -11210,7 +11210,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -11228,7 +11228,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -11240,7 +11240,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -11250,7 +11250,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -11261,7 +11261,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -11323,7 +11323,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -11341,7 +11341,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -11353,7 +11353,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -11363,7 +11363,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -11374,7 +11374,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -11460,7 +11460,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -11478,7 +11478,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -11490,7 +11490,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -11500,7 +11500,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -11511,7 +11511,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -11597,7 +11597,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -11615,7 +11615,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -11627,7 +11627,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -11637,7 +11637,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -11648,7 +11648,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -11734,7 +11734,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -11752,7 +11752,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -11764,7 +11764,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -11774,7 +11774,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -11785,7 +11785,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -11859,7 +11859,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -11877,7 +11877,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -11889,7 +11889,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -11899,7 +11899,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -11910,7 +11910,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -12062,7 +12062,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -12080,7 +12080,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -12092,7 +12092,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -12102,7 +12102,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -12113,7 +12113,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -12371,7 +12371,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -12389,7 +12389,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -12401,7 +12401,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -12411,7 +12411,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -12422,7 +12422,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -12688,7 +12688,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -12706,7 +12706,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -12718,7 +12718,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -12728,7 +12728,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -12739,7 +12739,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -12967,7 +12967,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -12985,7 +12985,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -12997,7 +12997,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -13007,7 +13007,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -13018,7 +13018,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -13136,7 +13136,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -13154,7 +13154,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -13166,7 +13166,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -13176,7 +13176,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -13187,7 +13187,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -13283,7 +13283,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -13301,7 +13301,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -13313,7 +13313,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -13323,7 +13323,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -13334,7 +13334,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -13408,7 +13408,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -13426,7 +13426,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -13438,7 +13438,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -13448,7 +13448,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -13459,7 +13459,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -13581,7 +13581,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -13599,7 +13599,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -13611,7 +13611,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -13621,7 +13621,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -13632,7 +13632,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -13696,7 +13696,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -13714,7 +13714,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -13726,7 +13726,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -13736,7 +13736,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -13747,7 +13747,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -13823,7 +13823,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -13841,7 +13841,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -13853,7 +13853,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -13863,7 +13863,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -13874,7 +13874,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -13988,7 +13988,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -14006,7 +14006,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -14018,7 +14018,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -14028,7 +14028,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -14039,7 +14039,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -14125,7 +14125,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -14143,7 +14143,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -14155,7 +14155,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -14165,7 +14165,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -14176,7 +14176,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -14240,7 +14240,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -14258,7 +14258,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -14270,7 +14270,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -14280,7 +14280,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -14291,7 +14291,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -14385,7 +14385,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -14403,7 +14403,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -14415,7 +14415,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -14425,7 +14425,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -14436,7 +14436,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -14500,7 +14500,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -14518,7 +14518,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -14530,7 +14530,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -14540,7 +14540,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -14551,7 +14551,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -14717,7 +14717,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -14735,7 +14735,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -14747,7 +14747,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -14757,7 +14757,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -14768,7 +14768,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -14960,7 +14960,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -14978,7 +14978,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -14990,7 +14990,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -15000,7 +15000,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -15011,7 +15011,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -15097,7 +15097,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -15115,7 +15115,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -15127,7 +15127,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -15137,7 +15137,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -15148,7 +15148,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -15382,7 +15382,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -15400,7 +15400,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -15412,7 +15412,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -15422,7 +15422,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -15433,7 +15433,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -15539,7 +15539,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -15557,7 +15557,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -15569,7 +15569,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -15579,7 +15579,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -15590,7 +15590,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -15642,7 +15642,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -15660,7 +15660,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -15672,7 +15672,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -15682,7 +15682,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -15693,7 +15693,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -15769,7 +15769,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -15787,7 +15787,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -15799,7 +15799,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -15809,7 +15809,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -15820,7 +15820,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -15918,7 +15918,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -15936,7 +15936,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -15948,7 +15948,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -15958,7 +15958,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -15969,7 +15969,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -16103,7 +16103,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -16121,7 +16121,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -16133,7 +16133,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -16143,7 +16143,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -16154,7 +16154,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -16240,7 +16240,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -16258,7 +16258,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -16270,7 +16270,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -16280,7 +16280,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -16291,7 +16291,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -16387,7 +16387,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -16405,7 +16405,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -16417,7 +16417,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -16427,7 +16427,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -16438,7 +16438,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -16642,7 +16642,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -16660,7 +16660,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -16672,7 +16672,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -16682,7 +16682,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -16693,7 +16693,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -16797,7 +16797,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -16815,7 +16815,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -16827,7 +16827,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -16837,7 +16837,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -16848,7 +16848,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -17140,7 +17140,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -17158,7 +17158,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -17170,7 +17170,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -17180,7 +17180,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -17191,7 +17191,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -17339,7 +17339,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -17357,7 +17357,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -17369,7 +17369,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -17379,7 +17379,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -17390,7 +17390,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -17556,7 +17556,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -17574,7 +17574,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -17586,7 +17586,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -17596,7 +17596,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -17607,7 +17607,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -17781,7 +17781,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -17799,7 +17799,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -17811,7 +17811,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -17821,7 +17821,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -17832,7 +17832,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -17894,7 +17894,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -17912,7 +17912,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -17924,7 +17924,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -17934,7 +17934,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -17945,7 +17945,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -18031,7 +18031,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -18049,7 +18049,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -18061,7 +18061,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -18071,7 +18071,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -18082,7 +18082,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -18382,7 +18382,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -18400,7 +18400,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -18412,7 +18412,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -18422,7 +18422,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -18433,7 +18433,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -18661,7 +18661,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -18679,7 +18679,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -18691,7 +18691,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -18701,7 +18701,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -18712,7 +18712,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -18822,7 +18822,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -18840,7 +18840,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -18852,7 +18852,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -18862,7 +18862,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -18873,7 +18873,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -18947,7 +18947,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -18965,7 +18965,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -18977,7 +18977,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -18987,7 +18987,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -18998,7 +18998,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -19235,7 +19235,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -19253,7 +19253,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -19265,7 +19265,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -19275,7 +19275,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -19286,7 +19286,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -19372,7 +19372,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -19390,7 +19390,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -19402,7 +19402,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -19412,7 +19412,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -19423,7 +19423,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -19517,7 +19517,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -19535,7 +19535,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -19547,7 +19547,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -19557,7 +19557,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -19568,7 +19568,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -19672,7 +19672,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -19690,7 +19690,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -19702,7 +19702,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -19712,7 +19712,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -19723,7 +19723,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -19807,7 +19807,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -19825,7 +19825,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -19837,7 +19837,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -19847,7 +19847,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -19858,7 +19858,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -19950,7 +19950,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -19968,7 +19968,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -19980,7 +19980,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -19990,7 +19990,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -20001,7 +20001,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -20239,7 +20239,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -20257,7 +20257,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -20269,7 +20269,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -20279,7 +20279,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -20290,7 +20290,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -20440,7 +20440,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -20458,7 +20458,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -20470,7 +20470,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -20480,7 +20480,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -20491,7 +20491,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -20555,7 +20555,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -20573,7 +20573,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -20585,7 +20585,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -20595,7 +20595,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -20606,7 +20606,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -20766,7 +20766,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -20784,7 +20784,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -20796,7 +20796,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -20806,7 +20806,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -20817,7 +20817,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -20985,7 +20985,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -21003,7 +21003,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -21015,7 +21015,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -21025,7 +21025,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -21036,7 +21036,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -21160,7 +21160,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -21178,7 +21178,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -21190,7 +21190,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -21200,7 +21200,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -21211,7 +21211,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -21389,7 +21389,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -21407,7 +21407,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -21419,7 +21419,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -21429,7 +21429,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -21440,7 +21440,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -21644,7 +21644,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -21662,7 +21662,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -21674,7 +21674,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -21684,7 +21684,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -21695,7 +21695,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -21767,7 +21767,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -21785,7 +21785,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -21797,7 +21797,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -21807,7 +21807,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -21818,7 +21818,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -21910,7 +21910,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -21928,7 +21928,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -21940,7 +21940,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -21950,7 +21950,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -21961,7 +21961,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -22085,7 +22085,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -22103,7 +22103,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -22115,7 +22115,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -22125,7 +22125,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -22136,7 +22136,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -22206,7 +22206,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	    ///
 	    public Boolean Ascending 
 	    {
-            get { return this.GetMetdataProperty<Boolean>(ClrTableOption.OrderColumnsRelationship.Ascending);}
+            get { return this.GetMetadataProperty<Boolean>(ClrTableOption.OrderColumnsRelationship.Ascending);}
     	}
 
     }
@@ -22220,7 +22220,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	    ///
 	    public Boolean Ascending 
 	    {
-            get { return this.GetMetdataProperty<Boolean>(Index.ColumnsRelationship.Ascending);}
+            get { return this.GetMetadataProperty<Boolean>(Index.ColumnsRelationship.Ascending);}
     	}
 
     }
@@ -22234,7 +22234,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	    ///
 	    public Boolean Ascending 
 	    {
-            get { return this.GetMetdataProperty<Boolean>(ColumnStoreIndex.ColumnsRelationship.Ascending);}
+            get { return this.GetMetadataProperty<Boolean>(ColumnStoreIndex.ColumnsRelationship.Ascending);}
     	}
 
     }
@@ -22248,14 +22248,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	    ///
 	    public Boolean Default 
 	    {
-            get { return this.GetMetdataProperty<Boolean>(Contract.MessagesRelationship.Default);}
+            get { return this.GetMetadataProperty<Boolean>(Contract.MessagesRelationship.Default);}
     	}
         ///
 	    /// Metadata property wrapper for <see cref="M:Contract.Messages"/>		
 	    ///
 	    public Int32 SentBy 
 	    {
-            get { return this.GetMetdataProperty<Int32>(Contract.MessagesRelationship.SentBy);}
+            get { return this.GetMetadataProperty<Int32>(Contract.MessagesRelationship.SentBy);}
     	}
 
     }
@@ -22269,7 +22269,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	    ///
 	    public Boolean IsDefault 
 	    {
-            get { return this.GetMetdataProperty<Boolean>(PartitionScheme.FilegroupsRelationship.IsDefault);}
+            get { return this.GetMetadataProperty<Boolean>(PartitionScheme.FilegroupsRelationship.IsDefault);}
     	}
 
     }
@@ -22283,7 +22283,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	    ///
 	    public Boolean Ascending 
 	    {
-            get { return this.GetMetdataProperty<Boolean>(PrimaryKeyConstraint.ColumnsRelationship.Ascending);}
+            get { return this.GetMetadataProperty<Boolean>(PrimaryKeyConstraint.ColumnsRelationship.Ascending);}
     	}
 
     }
@@ -22297,7 +22297,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	    ///
 	    public Boolean Ascending 
 	    {
-            get { return this.GetMetdataProperty<Boolean>(TableTypePrimaryKeyConstraint.ColumnsRelationship.Ascending);}
+            get { return this.GetMetadataProperty<Boolean>(TableTypePrimaryKeyConstraint.ColumnsRelationship.Ascending);}
     	}
 
     }
@@ -22311,7 +22311,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	    ///
 	    public Boolean Ascending 
 	    {
-            get { return this.GetMetdataProperty<Boolean>(TableTypeUniqueConstraint.ColumnsRelationship.Ascending);}
+            get { return this.GetMetadataProperty<Boolean>(TableTypeUniqueConstraint.ColumnsRelationship.Ascending);}
     	}
 
     }
@@ -22325,7 +22325,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	    ///
 	    public Boolean Ascending 
 	    {
-            get { return this.GetMetdataProperty<Boolean>(UniqueConstraint.ColumnsRelationship.Ascending);}
+            get { return this.GetMetadataProperty<Boolean>(UniqueConstraint.ColumnsRelationship.Ascending);}
     	}
 
     }

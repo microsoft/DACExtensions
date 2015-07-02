@@ -141,7 +141,7 @@ namespace <#=NamespaceName#>
             if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjecType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
+                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
                 "typeClass");
             }
             predefinedTypeClass = typeClass;
@@ -159,7 +159,7 @@ namespace <#=NamespaceName#>
         {
             get
             {
-                if (IsResovled())
+                if (IsResolved())
                 {
                     return base.ObjectType;
                 }
@@ -171,7 +171,7 @@ namespace <#=NamespaceName#>
             }
         }
 
-        public bool IsResovled()
+        public bool IsResolved()
         {
             return relationshipInstance.Object != null;
         }
@@ -181,7 +181,7 @@ namespace <#=NamespaceName#>
             get
             {
                 // Verify the Element is resolved.
-                if (!IsResovled())
+                if (!IsResolved())
                 {
                     throw new UnresolvedElementException(
                        string.Format(CultureInfo.CurrentUICulture,
@@ -192,7 +192,7 @@ namespace <#=NamespaceName#>
             }
         }
         
-        protected T GetMetdataProperty<T>(ModelPropertyClass property)
+        public T GetMetadataProperty<T>(ModelPropertyClass property)
         {
             return relationshipInstance.GetProperty<T>(property);
         }
@@ -449,7 +449,7 @@ namespace <#=NamespaceName#>
 	    {
     <#if (useGenericGetter) { 
 #>
-        get { return this.GetMetdataProperty<<#= typeName #>>(<#=metadataProperty.Item1#>);}
+        get { return this.GetMetadataProperty<<#= typeName #>>(<#=metadataProperty.Item1#>);}
     <#} else { 
 #>
 	    get { return (<#=typeName#>)Element.GetMetadata<object>(<#=metadataProperty.Item1#>);}

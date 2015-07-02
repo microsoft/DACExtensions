@@ -117,6 +117,10 @@ public class PropertyOverride
 
 private static Dictionary<string, ModelEntry> LoadOverrides(string templateFile)
 {
+	// Matches and extracts the DacFX ModelElementType name.
+	// The ModelElementType name is extracted by removing the prefix "TSql" and the optional suffix of "Reference". 
+	// The element type name is used to determine the ModelElementType to pass to the TSQLModelElement constructor 
+	// when adapting the model element.
     Regex r = new Regex("TSql([a-zA-Z]+?)(?:Reference)?$");    
 
 	XmlDocument configurationData = new XmlDocument();

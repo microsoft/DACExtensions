@@ -47,7 +47,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
             else if (obj.ObjectType != typeClass)
             {
                 throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                    ModelMessages.InvalidObjecType, obj.ObjectType.Name, typeClass.Name),
+                    ModelMessages.InvalidObjectType, obj.ObjectType.Name, typeClass.Name),
                     "typeClass");
             }
             Element = obj; 

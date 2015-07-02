@@ -113,6 +113,10 @@ AS
                 ClrTableOptionOrderColumnsReference orderColumn = function.TableOption.First().OrderColumns.First();
                 Assert.AreEqual("value", orderColumn.Name.Parts[2], "Incorrect number of Order columns");
                 Assert.AreEqual(true, orderColumn.Ascending, "Incorrect Ascending metadata value");
+                //validate Function Metadata property
+                Assert.AreEqual(FunctionType.MultiStatementTableValuedFunction, function.FunctionType, "Incorrect function type");
+                Assert.AreEqual(FunctionType.MultiStatementTableValuedFunction, function.GetMetadata<FunctionType>(TableValuedFunction.FunctionType), "Incorrect function type");
+
             }
 
 
@@ -337,7 +341,10 @@ CREATE TABLE [dbo].[Table1]
                 var columns = index.Columns.ToList();
                 Assert.AreEqual(2, columns.Count, "Incorrect number of index columns");
                 Assert.AreEqual(true, columns[0].Ascending, "Incorrect Ascending value");
+                Assert.AreEqual(true, columns[0].GetMetadataProperty<bool>(Index.ColumnsRelationship.Ascending), "Incorrect Ascending value from GetMetadataProperty");
                 Assert.AreEqual(false, columns[1].Ascending, "Incorrect Ascending value");
+                Assert.AreEqual(false, columns[1].GetMetadataProperty<bool>(Index.ColumnsRelationship.Ascending), "Incorrect Ascending value from GetMetadataProperty");
+
             }
         }
         [TestMethod]

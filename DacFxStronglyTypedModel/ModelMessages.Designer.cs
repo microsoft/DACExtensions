@@ -63,9 +63,9 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype {
         /// <summary>
         ///   Looks up a localized string similar to Model Type Class {0} does not match the TSqlObject ObjectType {1}.
         /// </summary>
-        internal static string InvalidObjecType {
+        internal static string InvalidObjectType {
             get {
-                return ResourceManager.GetString("InvalidObjecType", resourceCulture);
+                return ResourceManager.GetString("InvalidObjectType", resourceCulture);
             }
         }
         

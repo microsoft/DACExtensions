@@ -24,10 +24,12 @@
 //    SOFTWARE.
 //</copyright>
 //------------------------------------------------------------------------------
+using Microsoft.SqlServer.Dac.Model;
 namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 {
 
     public interface ISqlModelElementReference : ISqlModelElement
     {
+        T GetMetadataProperty<T>(ModelPropertyClass property);
     }
 }
