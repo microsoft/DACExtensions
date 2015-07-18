@@ -45,6 +45,7 @@ namespace Public.Dac.Sample.Tests
         
         private DisposableList _trash;
         private string _dacpacPath;
+        private const string CreateOneTable = "CREATE TABLE [dbo].[t1] (c1 INT NOT NULL PRIMARY KEY)";
 
         [TestInitialize]
         public void InitializeTest()
@@ -55,7 +56,7 @@ namespace Public.Dac.Sample.Tests
             _dacpacPath = GetTestFilePath("myDatabase.dacpac");
             using (TSqlModel model = new TSqlModel(SqlServerVersion.Sql110, null))
             {
-                model.AddObjects("CREATE TABLE [dbo].[t1] (c1 INT NOT NULL PRIMARY KEY)");
+                model.AddObjects(CreateOneTable);
                 DacPackageExtensions.BuildPackage(_dacpacPath, model, new PackageMetadata());
             }
         }
@@ -64,7 +65,7 @@ namespace Public.Dac.Sample.Tests
         public void CleanupTest()
         {
             _trash.Dispose();
-            DeleteIfExists(_dacpacPath);
+            TestUtils.DeleteIfExists(_dacpacPath);
         }
 
         private string GetTestFilePath(string fileName)
@@ -92,7 +93,7 @@ namespace Public.Dac.Sample.Tests
             string ldfFilePath = Path.Combine(dataFolder, filePrefix + "_Primary.ldf");
 
             // Delete any existing artifacts from a previous run
-            DropDbAndDeleteFiles(dbName, mdfFilePath, ldfFilePath);
+            TestUtils.DropDbAndDeleteFiles(dbName, mdfFilePath, ldfFilePath);
 
             // When deploying using the location modifying contributor
             try
@@ -111,17 +112,70 @@ namespace Public.Dac.Sample.Tests
             }
             finally
             {
-                DropDbAndDeleteFiles(dbName, mdfFilePath, ldfFilePath);
+                TestUtils.DropDbAndDeleteFiles(dbName, mdfFilePath, ldfFilePath);
             }
         }
 
-        private static void DropDbAndDeleteFiles(string dbName, string mdfFilePath, string ldfFilePath)
-        {
-            TestUtils.DropDatabase(TestUtils.ServerConnectionString, dbName);
-            DeleteIfExists(mdfFilePath);
-            DeleteIfExists(ldfFilePath);
-        }
 
+        /// <summary>
+        /// Tests the contributor that overrides default paths when creating a database
+        /// </summary>
+        [TestMethod]
+        public void TestDbLocationModifierForImport()
+        {
+            // Given database name, and path to save to
+            string dbName = TestContext.TestName;
+            string dataFolder = GetTestDir();
+            string filePrefix = "mydb";
+            string bacpacPath = Path.Combine(dataFolder, dbName + ".bacpac");
+            string mdfFilePath = Path.Combine(dataFolder, filePrefix + "_Primary.mdf");
+            string ldfFilePath = Path.Combine(dataFolder, filePrefix + "_Primary.ldf");
+            
+            // Delete any existing artifacts from a previous run
+            TestUtils.DropDbAndDeleteFiles(dbName, mdfFilePath, ldfFilePath);
+
+            SqlTestDB importedDb = null;
+            try
+            {
+                // Create a DB and export
+                SqlTestDB db = _trash.Add(TestUtils.CreateTestDatabase(TestUtils.DefaultInstanceInfo, "MyOriginalDb"));
+                db.Execute(CreateOneTable);
+                db.ExportBacpac(bacpacPath);
+                
+                // When deploying using the location modifying contributor
+                DacImportOptions options = new DacImportOptions();
+                options.ImportContributors = DbLocationModifier.ContributorId;
+
+                options.ImportContributorArguments =
+                    Utils.BuildContributorArguments(new Dictionary<string, string>()
+                    {
+                    {DbLocationModifier.DbSaveLocationArg, dataFolder},
+                    {DbLocationModifier.DbFilePrefixArg, filePrefix},
+                    });
+                
+                importedDb = SqlTestDB.CreateFromBacpac(TestUtils.DefaultInstanceInfo, bacpacPath, options, true);
+                
+                // Then expect the database to be saved under that path
+                AssertDeploySucceeded(importedDb.BuildConnectionString(), importedDb.DatabaseName);
+                Assert.IsTrue(File.Exists(mdfFilePath));
+                Assert.IsTrue(File.Exists(ldfFilePath));
+
+                // Note: for a real application, after creating the DB on the server they may want to
+                // detach it and reattach using the database path. We are not doing this since it's
+                // not relevant to this test
+            }
+            finally
+            {
+                if(importedDb != null)
+                {
+                    importedDb.Dispose();
+                }
+                TestUtils.DeleteIfExists(bacpacPath);
+                TestUtils.DeleteIfExists(mdfFilePath);
+                TestUtils.DeleteIfExists(ldfFilePath);
+            }
+        }
+        
         private static DacDeployOptions SetLocationChangingContributorOptions(string dataFolder, string filePrefix)
         {
             DacDeployOptions options = new DacDeployOptions();
@@ -149,8 +203,8 @@ namespace Public.Dac.Sample.Tests
             string mdfFilePath = Path.Combine(dataFolder, "mydb.mdf");
             string ldfFilePath = Path.Combine(dataFolder, "mydb_log.ldf");
 
-            DeleteIfExists(mdfFilePath);
-            DeleteIfExists(ldfFilePath);
+            TestUtils.DeleteIfExists(mdfFilePath);
+            TestUtils.DeleteIfExists(ldfFilePath);
 
             // When deploying using the create database statement changing contributor
             try
@@ -171,8 +225,8 @@ namespace Public.Dac.Sample.Tests
             finally
             {
                 TestUtils.DropDatabase(TestUtils.ServerConnectionString, dbName);
-                DeleteIfExists(mdfFilePath);
-                DeleteIfExists(ldfFilePath);
+                TestUtils.DeleteIfExists(mdfFilePath);
+                TestUtils.DeleteIfExists(ldfFilePath);
             }
         }
 
@@ -230,14 +284,6 @@ namespace Public.Dac.Sample.Tests
                 conn.Open();
                 Assert.AreEqual(1, TestUtils.ExecuteScalar(conn, matchingTableCountStatement));
             }
-        }
-
-        private static void DeleteIfExists(string filePath)
-        {
-            if (File.Exists(filePath))
-            {
-                File.Delete(filePath);
-            }
-        }
+        }        
     }
 }
