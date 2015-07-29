@@ -69,7 +69,12 @@ namespace <#=NamespaceName#>
 			// create the list of ModelElement classes that implement each interface.
 			foreach( var type in ModelSchema.SchemaInstance.AllTypes.OrderBy(t => t.Name))
             {
-				var typeOverrides = overrides[type.Name];
+				ModelEntry typeOverrides;
+				if(!overrides.TryGetValue(type.Name, out typeOverrides))
+				{
+					throw new ArgumentException(string.Format("There is not override for type {0} in the modelmetadata file. This is required to process the model", type.Name));
+				}
+
 				foreach(string interfaceName in typeOverrides.Interfaces)
                 {
 					List<ModelTypeClass> implementationTypes;

@@ -2991,6 +2991,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
+		Double? IndexSize 
+		{
+			get;
+		}
 		Boolean IsReplicated 
 		{
 			get;
@@ -3003,11 +3015,19 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
 		}
 		Int32 TextInRowSize 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -7023,7 +7043,19 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
 		Boolean? FileStreamNull 
+		{
+			get;
+		}
+		Double? IndexSize 
 		{
 			get;
 		}
@@ -7043,6 +7075,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
@@ -7052,6 +7088,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		Boolean TrackColumnsUpdated 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -9579,6 +9619,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
+		Double? IndexSize 
+		{
+			get;
+		}
 		Boolean LargeValueTypesOutOfRow 
 		{
 			get;
@@ -9591,11 +9643,19 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
 		}
 		Int32 TextInRowSize 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -13572,7 +13632,19 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
 		Boolean? FileStreamNull 
+		{
+			get;
+		}
+		Double? IndexSize 
 		{
 			get;
 		}
@@ -13592,6 +13664,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
@@ -13601,6 +13677,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		Boolean TrackColumnsUpdated 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -17977,11 +18057,23 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
 		Durability Durability 
 		{
 			get;
 		}
 		Boolean? FileStreamNull 
+		{
+			get;
+		}
+		Double? IndexSize 
 		{
 			get;
 		}
@@ -18005,6 +18097,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
@@ -18014,6 +18110,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		Boolean TrackColumnsUpdated 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -18865,6 +18965,714 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+	}
+    public interface ISql130TSqlColumnReference : ISql130TSqlColumn
+	{
+    }
+	public interface ISql130TSqlColumn : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlTableValuedFunctionReference : ISql130TSqlTableValuedFunction
+	{
+    }
+	public interface ISql130TSqlTableValuedFunction : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlScalarFunctionReference : ISql130TSqlScalarFunction
+	{
+    }
+	public interface ISql130TSqlScalarFunction : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlClrTableOptionReference : ISql130TSqlClrTableOption
+	{
+    }
+	public interface ISql130TSqlClrTableOption : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlAggregateReference : ISql130TSqlAggregate
+	{
+    }
+	public interface ISql130TSqlAggregate : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlApplicationRoleReference : ISql130TSqlApplicationRole
+	{
+    }
+	public interface ISql130TSqlApplicationRole : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlIndexReference : ISql130TSqlIndex
+	{
+    }
+	public interface ISql130TSqlIndex : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlAssemblyReference : ISql130TSqlAssembly
+	{
+    }
+	public interface ISql130TSqlAssembly : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlAssemblySourceReference : ISql130TSqlAssemblySource
+	{
+    }
+	public interface ISql130TSqlAssemblySource : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlAsymmetricKeyReference : ISql130TSqlAsymmetricKey
+	{
+    }
+	public interface ISql130TSqlAsymmetricKey : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlAuditActionReference : ISql130TSqlAuditAction
+	{
+    }
+	public interface ISql130TSqlAuditAction : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlAuditActionGroupReference : ISql130TSqlAuditActionGroup
+	{
+    }
+	public interface ISql130TSqlAuditActionGroup : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlAuditActionSpecificationReference : ISql130TSqlAuditActionSpecification
+	{
+    }
+	public interface ISql130TSqlAuditActionSpecification : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlBrokerPriorityReference : ISql130TSqlBrokerPriority
+	{
+    }
+	public interface ISql130TSqlBrokerPriority : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlBuiltInServerRoleReference : ISql130TSqlBuiltInServerRole
+	{
+    }
+	public interface ISql130TSqlBuiltInServerRole : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlDataTypeReference : ISql130TSqlDataType
+	{
+    }
+	public interface ISql130TSqlDataType : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlCertificateReference : ISql130TSqlCertificate
+	{
+    }
+	public interface ISql130TSqlCertificate : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlCheckConstraintReference : ISql130TSqlCheckConstraint
+	{
+    }
+	public interface ISql130TSqlCheckConstraint : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlClrTypeMethodReference : ISql130TSqlClrTypeMethod
+	{
+    }
+	public interface ISql130TSqlClrTypeMethod : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlClrTypeMethodParameterReference : ISql130TSqlClrTypeMethodParameter
+	{
+    }
+	public interface ISql130TSqlClrTypeMethodParameter : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlClrTypePropertyReference : ISql130TSqlClrTypeProperty
+	{
+    }
+	public interface ISql130TSqlClrTypeProperty : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlColumnStoreIndexReference : ISql130TSqlColumnStoreIndex
+	{
+    }
+	public interface ISql130TSqlColumnStoreIndex : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlContractReference : ISql130TSqlContract
+	{
+    }
+	public interface ISql130TSqlContract : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlCredentialReference : ISql130TSqlCredential
+	{
+    }
+	public interface ISql130TSqlCredential : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlCryptographicProviderReference : ISql130TSqlCryptographicProvider
+	{
+    }
+	public interface ISql130TSqlCryptographicProvider : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlDatabaseAuditSpecificationReference : ISql130TSqlDatabaseAuditSpecification
+	{
+    }
+	public interface ISql130TSqlDatabaseAuditSpecification : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlDatabaseDdlTriggerReference : ISql130TSqlDatabaseDdlTrigger
+	{
+    }
+	public interface ISql130TSqlDatabaseDdlTrigger : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlDatabaseEncryptionKeyReference : ISql130TSqlDatabaseEncryptionKey
+	{
+    }
+	public interface ISql130TSqlDatabaseEncryptionKey : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlDatabaseEventNotificationReference : ISql130TSqlDatabaseEventNotification
+	{
+    }
+	public interface ISql130TSqlDatabaseEventNotification : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlDatabaseMirroringLanguageSpecifierReference : ISql130TSqlDatabaseMirroringLanguageSpecifier
+	{
+    }
+	public interface ISql130TSqlDatabaseMirroringLanguageSpecifier : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlDatabaseOptionsReference : ISql130TSqlDatabaseOptions
+	{
+    }
+	public interface ISql130TSqlDatabaseOptions : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlDataCompressionOptionReference : ISql130TSqlDataCompressionOption
+	{
+    }
+	public interface ISql130TSqlDataCompressionOption : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlDefaultReference : ISql130TSqlDefault
+	{
+    }
+	public interface ISql130TSqlDefault : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlDefaultConstraintReference : ISql130TSqlDefaultConstraint
+	{
+    }
+	public interface ISql130TSqlDefaultConstraint : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlDmlTriggerReference : ISql130TSqlDmlTrigger
+	{
+    }
+	public interface ISql130TSqlDmlTrigger : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlEndpointReference : ISql130TSqlEndpoint
+	{
+    }
+	public interface ISql130TSqlEndpoint : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlErrorMessageReference : ISql130TSqlErrorMessage
+	{
+    }
+	public interface ISql130TSqlErrorMessage : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlEventGroupReference : ISql130TSqlEventGroup
+	{
+    }
+	public interface ISql130TSqlEventGroup : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlEventSessionReference : ISql130TSqlEventSession
+	{
+    }
+	public interface ISql130TSqlEventSession : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlEventSessionActionReference : ISql130TSqlEventSessionAction
+	{
+    }
+	public interface ISql130TSqlEventSessionAction : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlEventSessionDefinitionsReference : ISql130TSqlEventSessionDefinitions
+	{
+    }
+	public interface ISql130TSqlEventSessionDefinitions : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlEventSessionSettingReference : ISql130TSqlEventSessionSetting
+	{
+    }
+	public interface ISql130TSqlEventSessionSetting : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlEventSessionTargetReference : ISql130TSqlEventSessionTarget
+	{
+    }
+	public interface ISql130TSqlEventSessionTarget : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlEventTypeSpecifierReference : ISql130TSqlEventTypeSpecifier
+	{
+    }
+	public interface ISql130TSqlEventTypeSpecifier : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlExtendedProcedureReference : ISql130TSqlExtendedProcedure
+	{
+    }
+	public interface ISql130TSqlExtendedProcedure : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlExtendedPropertyReference : ISql130TSqlExtendedProperty
+	{
+    }
+	public interface ISql130TSqlExtendedProperty : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSqlFileReference : ISql130TSqlSqlFile
+	{
+    }
+	public interface ISql130TSqlSqlFile : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlFilegroupReference : ISql130TSqlFilegroup
+	{
+    }
+	public interface ISql130TSqlFilegroup : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlForeignKeyConstraintReference : ISql130TSqlForeignKeyConstraint
+	{
+    }
+	public interface ISql130TSqlForeignKeyConstraint : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlFullTextCatalogReference : ISql130TSqlFullTextCatalog
+	{
+    }
+	public interface ISql130TSqlFullTextCatalog : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlFullTextIndexReference : ISql130TSqlFullTextIndex
+	{
+    }
+	public interface ISql130TSqlFullTextIndex : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlFullTextIndexColumnSpecifierReference : ISql130TSqlFullTextIndexColumnSpecifier
+	{
+    }
+	public interface ISql130TSqlFullTextIndexColumnSpecifier : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlFullTextStopListReference : ISql130TSqlFullTextStopList
+	{
+    }
+	public interface ISql130TSqlFullTextStopList : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlHttpProtocolSpecifierReference : ISql130TSqlHttpProtocolSpecifier
+	{
+    }
+	public interface ISql130TSqlHttpProtocolSpecifier : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlLinkedServerReference : ISql130TSqlLinkedServer
+	{
+    }
+	public interface ISql130TSqlLinkedServer : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlLinkedServerLoginReference : ISql130TSqlLinkedServerLogin
+	{
+    }
+	public interface ISql130TSqlLinkedServerLogin : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlLoginReference : ISql130TSqlLogin
+	{
+    }
+	public interface ISql130TSqlLogin : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlMasterKeyReference : ISql130TSqlMasterKey
+	{
+    }
+	public interface ISql130TSqlMasterKey : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlMessageTypeReference : ISql130TSqlMessageType
+	{
+    }
+	public interface ISql130TSqlMessageType : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlPartitionFunctionReference : ISql130TSqlPartitionFunction
+	{
+    }
+	public interface ISql130TSqlPartitionFunction : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlPartitionSchemeReference : ISql130TSqlPartitionScheme
+	{
+    }
+	public interface ISql130TSqlPartitionScheme : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlPartitionValueReference : ISql130TSqlPartitionValue
+	{
+    }
+	public interface ISql130TSqlPartitionValue : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlPermissionReference : ISql130TSqlPermission
+	{
+    }
+	public interface ISql130TSqlPermission : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlPrimaryKeyConstraintReference : ISql130TSqlPrimaryKeyConstraint
+	{
+    }
+	public interface ISql130TSqlPrimaryKeyConstraint : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlProcedureReference : ISql130TSqlProcedure
+	{
+    }
+	public interface ISql130TSqlProcedure : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlQueueReference : ISql130TSqlQueue
+	{
+    }
+	public interface ISql130TSqlQueue : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlQueueEventNotificationReference : ISql130TSqlQueueEventNotification
+	{
+    }
+	public interface ISql130TSqlQueueEventNotification : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlRemoteServiceBindingReference : ISql130TSqlRemoteServiceBinding
+	{
+    }
+	public interface ISql130TSqlRemoteServiceBinding : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlResourceGovernorReference : ISql130TSqlResourceGovernor
+	{
+    }
+	public interface ISql130TSqlResourceGovernor : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlResourcePoolReference : ISql130TSqlResourcePool
+	{
+    }
+	public interface ISql130TSqlResourcePool : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlRoleReference : ISql130TSqlRole
+	{
+    }
+	public interface ISql130TSqlRole : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlRoleMembershipReference : ISql130TSqlRoleMembership
+	{
+    }
+	public interface ISql130TSqlRoleMembership : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlRouteReference : ISql130TSqlRoute
+	{
+    }
+	public interface ISql130TSqlRoute : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlRuleReference : ISql130TSqlRule
+	{
+    }
+	public interface ISql130TSqlRule : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSchemaReference : ISql130TSqlSchema
+	{
+    }
+	public interface ISql130TSqlSchema : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSearchPropertyReference : ISql130TSqlSearchProperty
+	{
+    }
+	public interface ISql130TSqlSearchProperty : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSearchPropertyListReference : ISql130TSqlSearchPropertyList
+	{
+    }
+	public interface ISql130TSqlSearchPropertyList : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSequenceReference : ISql130TSqlSequence
+	{
+    }
+	public interface ISql130TSqlSequence : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlServerAuditReference : ISql130TSqlServerAudit
+	{
+    }
+	public interface ISql130TSqlServerAudit : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlServerAuditSpecificationReference : ISql130TSqlServerAuditSpecification
+	{
+    }
+	public interface ISql130TSqlServerAuditSpecification : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlServerDdlTriggerReference : ISql130TSqlServerDdlTrigger
+	{
+    }
+	public interface ISql130TSqlServerDdlTrigger : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlServerEventNotificationReference : ISql130TSqlServerEventNotification
+	{
+    }
+	public interface ISql130TSqlServerEventNotification : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlServerOptionsReference : ISql130TSqlServerOptions
+	{
+    }
+	public interface ISql130TSqlServerOptions : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlServerRoleMembershipReference : ISql130TSqlServerRoleMembership
+	{
+    }
+	public interface ISql130TSqlServerRoleMembership : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlServiceReference : ISql130TSqlService
+	{
+    }
+	public interface ISql130TSqlService : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlServiceBrokerLanguageSpecifierReference : ISql130TSqlServiceBrokerLanguageSpecifier
+	{
+    }
+	public interface ISql130TSqlServiceBrokerLanguageSpecifier : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSignatureReference : ISql130TSqlSignature
+	{
+    }
+	public interface ISql130TSqlSignature : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSignatureEncryptionMechanismReference : ISql130TSqlSignatureEncryptionMechanism
+	{
+    }
+	public interface ISql130TSqlSignatureEncryptionMechanism : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSoapLanguageSpecifierReference : ISql130TSqlSoapLanguageSpecifier
+	{
+    }
+	public interface ISql130TSqlSoapLanguageSpecifier : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSoapMethodSpecificationReference : ISql130TSqlSoapMethodSpecification
+	{
+    }
+	public interface ISql130TSqlSoapMethodSpecification : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSpatialIndexReference : ISql130TSqlSpatialIndex
+	{
+    }
+	public interface ISql130TSqlSpatialIndex : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlStatisticsReference : ISql130TSqlStatistics
+	{
+    }
+	public interface ISql130TSqlStatistics : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlParameterReference : ISql130TSqlParameter
+	{
+    }
+	public interface ISql130TSqlParameter : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSymmetricKeyReference : ISql130TSqlSymmetricKey
+	{
+    }
+	public interface ISql130TSqlSymmetricKey : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSymmetricKeyPasswordReference : ISql130TSqlSymmetricKeyPassword
+	{
+    }
+	public interface ISql130TSqlSymmetricKeyPassword : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSynonymReference : ISql130TSqlSynonym
+	{
+    }
+	public interface ISql130TSqlSynonym : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlTableReference : ISql130TSqlTable
+	{
+    }
+	public interface ISql130TSqlTable : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlFileTableReference : ISql130TSqlFileTable
+	{
+    }
+	public interface ISql130TSqlFileTable : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlTableTypeReference : ISql130TSqlTableType
+	{
+    }
+	public interface ISql130TSqlTableType : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlTableTypeCheckConstraintReference : ISql130TSqlTableTypeCheckConstraint
+	{
+    }
+	public interface ISql130TSqlTableTypeCheckConstraint : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlTableTypeColumnReference : ISql130TSqlTableTypeColumn
+	{
+    }
+	public interface ISql130TSqlTableTypeColumn : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlTableTypeDefaultConstraintReference : ISql130TSqlTableTypeDefaultConstraint
+	{
+    }
+	public interface ISql130TSqlTableTypeDefaultConstraint : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlTableTypeIndexReference : ISql130TSqlTableTypeIndex
+	{
+    }
+	public interface ISql130TSqlTableTypeIndex : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlTableTypePrimaryKeyConstraintReference : ISql130TSqlTableTypePrimaryKeyConstraint
+	{
+    }
+	public interface ISql130TSqlTableTypePrimaryKeyConstraint : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlTableTypeUniqueConstraintReference : ISql130TSqlTableTypeUniqueConstraint
+	{
+    }
+	public interface ISql130TSqlTableTypeUniqueConstraint : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlTcpProtocolSpecifierReference : ISql130TSqlTcpProtocolSpecifier
+	{
+    }
+	public interface ISql130TSqlTcpProtocolSpecifier : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlUniqueConstraintReference : ISql130TSqlUniqueConstraint
+	{
+    }
+	public interface ISql130TSqlUniqueConstraint : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlUserReference : ISql130TSqlUser
+	{
+    }
+	public interface ISql130TSqlUser : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlUserDefinedServerRoleReference : ISql130TSqlUserDefinedServerRole
+	{
+    }
+	public interface ISql130TSqlUserDefinedServerRole : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlUserDefinedTypeReference : ISql130TSqlUserDefinedType
+	{
+    }
+	public interface ISql130TSqlUserDefinedType : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlViewReference : ISql130TSqlView
+	{
+    }
+	public interface ISql130TSqlView : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlWorkloadGroupReference : ISql130TSqlWorkloadGroup
+	{
+    }
+	public interface ISql130TSqlWorkloadGroup : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlXmlIndexReference : ISql130TSqlXmlIndex
+	{
+    }
+	public interface ISql130TSqlXmlIndex : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlSelectiveXmlIndexReference : ISql130TSqlSelectiveXmlIndex
+	{
+    }
+	public interface ISql130TSqlSelectiveXmlIndex : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlXmlNamespaceReference : ISql130TSqlXmlNamespace
+	{
+    }
+	public interface ISql130TSqlXmlNamespace : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlPromotedNodePathForXQueryTypeReference : ISql130TSqlPromotedNodePathForXQueryType
+	{
+    }
+	public interface ISql130TSqlPromotedNodePathForXQueryType : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlPromotedNodePathForSqlTypeReference : ISql130TSqlPromotedNodePathForSqlType
+	{
+    }
+	public interface ISql130TSqlPromotedNodePathForSqlType : ISqlModelElement
+	{		
+	}
+    public interface ISql130TSqlXmlSchemaCollectionReference : ISql130TSqlXmlSchemaCollection
+	{
+    }
+	public interface ISql130TSqlXmlSchemaCollection : ISqlModelElement
+	{		
 	}
     public interface ISqlAzureV12TSqlColumnReference : ISqlAzureV12TSqlColumn
 	{
@@ -21241,6 +22049,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
+		Double? IndexSize 
+		{
+			get;
+		}
 		Boolean LargeValueTypesOutOfRow 
 		{
 			get;
@@ -21253,6 +22073,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
@@ -21262,6 +22086,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		Boolean TrackColumnsUpdated 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -21647,6 +22475,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		String Sid 
+		{
+			get;
+		}
+		Int32 UserType 
 		{
 			get;
 		}

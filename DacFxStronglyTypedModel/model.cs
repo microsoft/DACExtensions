@@ -4648,6 +4648,28 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
 
 		///
+		/// Property wrapper for <see cref="M:ColumnStoreIndex.FilterPredicate"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.filterpredicate.aspx">ColumnStoreIndex.FilterPredicate</see>
+		///
+		public String FilterPredicate 
+		{
+			get { return (String)Element.GetProperty(ColumnStoreIndex.FilterPredicate);}
+		}
+
+
+		///
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.bodydependencies.aspx">ColumnStoreIndex.BodyDependencies</see>
+		/// Relationship Type:Peer
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference> BodyDependencies 
+		{
+			get 
+			{
+				return Element.GetReferencedRelationshipInstances(ColumnStoreIndex.BodyDependencies).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlModelElementReference)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlModelElementReference(ri)));
+			}
+		}
+
+		///
 		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ColumnStoreIndexColumnsReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.columnstoreindex.columns.aspx">ColumnStoreIndex.Columns</see>
 		/// Relationship Type:Peer
@@ -18147,6 +18169,26 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
 
 		///
+		/// Property wrapper for <see cref="M:Table.DataPages"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.datapages.aspx">Table.DataPages</see>
+		///
+		public Int64? DataPages 
+		{
+			get { return Element.GetProperty<Int64?>(Table.DataPages);}
+		}
+
+
+		///
+		/// Property wrapper for <see cref="M:Table.DataSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.datasize.aspx">Table.DataSize</see>
+		///
+		public Double? DataSize 
+		{
+			get { return Element.GetProperty<Double?>(Table.DataSize);}
+		}
+
+
+		///
 		/// Property wrapper for <see cref="M:Table.Durability"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.durability.aspx">Table.Durability</see>
 		///
@@ -18163,6 +18205,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		public Boolean? FileStreamNull 
 		{
 			get { return Element.GetProperty<Boolean?>(Table.FileStreamNull);}
+		}
+
+
+		///
+		/// Property wrapper for <see cref="M:Table.IndexSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.indexsize.aspx">Table.IndexSize</see>
+		///
+		public Double? IndexSize 
+		{
+			get { return Element.GetProperty<Double?>(Table.IndexSize);}
 		}
 
 
@@ -18217,6 +18269,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
 
 		///
+		/// Property wrapper for <see cref="M:Table.RowCount"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.rowcount.aspx">Table.RowCount</see>
+		///
+		public Int64? RowCount 
+		{
+			get { return Element.GetProperty<Int64?>(Table.RowCount);}
+		}
+
+
+		///
 		/// Property wrapper for <see cref="M:Table.TableLockOnBulkLoad"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.tablelockonbulkload.aspx">Table.TableLockOnBulkLoad</see>
 		///
@@ -18243,6 +18305,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		public Boolean TrackColumnsUpdated 
 		{
 			get { return Element.GetProperty<Boolean>(Table.TrackColumnsUpdated);}
+		}
+
+
+		///
+		/// Property wrapper for <see cref="M:Table.UsedPages"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.usedpages.aspx">Table.UsedPages</see>
+		///
+		public Int64? UsedPages 
+		{
+			get { return Element.GetProperty<Int64?>(Table.UsedPages);}
 		}
 
 
@@ -20361,6 +20433,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		public String Sid 
 		{
 			get { return Element.GetProperty<String>(User.Sid);}
+		}
+
+
+		///
+		/// Property wrapper for <see cref="M:User.UserType"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.user.usertype.aspx">User.UserType</see>
+		///
+		public Int32 UserType 
+		{
+			get { return Element.GetProperty<Int32>(User.UserType);}
 		}
 
 

@@ -3463,6 +3463,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.AnsiNullsOn;}
 		}
+		Int64? ISql90TSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISql90TSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
+		Double? ISql90TSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
+		}
 		Boolean ISql90TSqlTable.IsReplicated 
 		{
 			get { return this.IsReplicated;}
@@ -3475,6 +3487,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISql90TSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISql90TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -3482,6 +3498,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Int32 ISql90TSqlTable.TextInRowSize 
 		{
 			get { return this.TextInRowSize;}
+		}
+		Int64? ISql90TSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 		Boolean ISql90TSqlTable.VardecimalStorageFormatEnabled 
 		{
@@ -8164,9 +8184,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
+		Int64? ISql100TSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISql100TSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
 		Boolean? ISql100TSqlTable.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
+		}
+		Double? ISql100TSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
 		}
 		Boolean ISql100TSqlTable.IsReplicated 
 		{
@@ -8184,6 +8216,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISql100TSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISql100TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -8195,6 +8231,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Boolean ISql100TSqlTable.TrackColumnsUpdated 
 		{
 			get { return this.TrackColumnsUpdated;}
+		}
+		Int64? ISql100TSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 		Boolean ISql100TSqlTable.VardecimalStorageFormatEnabled 
 		{
@@ -10427,6 +10467,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.AnsiNullsOn;}
 		}
+		Int64? ISqlAzureTSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISqlAzureTSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
+		Double? ISqlAzureTSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
+		}
 		Boolean ISqlAzureTSqlTable.LargeValueTypesOutOfRow 
 		{
 			get { return this.LargeValueTypesOutOfRow;}
@@ -10439,6 +10491,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISqlAzureTSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISqlAzureTSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -10446,6 +10502,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Int32 ISqlAzureTSqlTable.TextInRowSize 
 		{
 			get { return this.TextInRowSize;}
+		}
+		Int64? ISqlAzureTSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 
 		// Composing relationship		
@@ -15219,9 +15279,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
+		Int64? ISql110TSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISql110TSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
 		Boolean? ISql110TSqlTable.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
+		}
+		Double? ISql110TSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
 		}
 		Boolean ISql110TSqlTable.IsReplicated 
 		{
@@ -15239,6 +15311,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISql110TSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISql110TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -15250,6 +15326,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Boolean ISql110TSqlTable.TrackColumnsUpdated 
 		{
 			get { return this.TrackColumnsUpdated;}
+		}
+		Int64? ISql110TSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 		Boolean ISql110TSqlTable.VardecimalStorageFormatEnabled 
 		{
@@ -20687,6 +20767,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
+		Int64? ISql120TSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISql120TSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
 		Durability ISql120TSqlTable.Durability 
 		{
 			get { return this.Durability;}
@@ -20694,6 +20782,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Boolean? ISql120TSqlTable.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
+		}
+		Double? ISql120TSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
 		}
 		Boolean ISql120TSqlTable.IsReplicated 
 		{
@@ -20715,6 +20807,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISql120TSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISql120TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -20726,6 +20822,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Boolean ISql120TSqlTable.TrackColumnsUpdated 
 		{
 			get { return this.TrackColumnsUpdated;}
+		}
+		Int64? ISql120TSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 		Boolean ISql120TSqlTable.VardecimalStorageFormatEnabled 
 		{
@@ -24216,6 +24316,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
+		Int64? ISqlAzureV12TSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISqlAzureV12TSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
+		Double? ISqlAzureV12TSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
+		}
 		Boolean ISqlAzureV12TSqlTable.LargeValueTypesOutOfRow 
 		{
 			get { return this.LargeValueTypesOutOfRow;}
@@ -24228,6 +24340,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISqlAzureV12TSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISqlAzureV12TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -24239,6 +24355,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Boolean ISqlAzureV12TSqlTable.TrackColumnsUpdated 
 		{
 			get { return this.TrackColumnsUpdated;}
+		}
+		Int64? ISqlAzureV12TSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 		Boolean ISqlAzureV12TSqlTable.VardecimalStorageFormatEnabled 
 		{
@@ -24666,6 +24786,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		String ISqlAzureV12TSqlUser.Sid 
 		{
 			get { return this.Sid;}
+		}
+		Int32 ISqlAzureV12TSqlUser.UserType 
+		{
+			get { return this.UserType;}
 		}
 		Boolean ISqlAzureV12TSqlUser.WithoutLogin 
 		{
