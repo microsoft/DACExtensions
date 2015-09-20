@@ -92,7 +92,7 @@
   </Element>
   <Element Name="Column">
     <Implements Name="ISqlSecurable"/>
-    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataTypeReference" />
+    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataTypeReference" AdditionalTypeClasses="Microsoft.SqlServer.Dac.Model.UserDefinedType.TypeClass" />
     <Relationship Name="ExpressionDependencies" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlModelElementReference" UnresolvedReturnType="TSqlModelElementReference" />
     <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlXmlSchemaCollectionReference" />
   </Element>

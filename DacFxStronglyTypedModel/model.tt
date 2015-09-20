@@ -135,16 +135,22 @@ namespace <#=NamespaceName#>
 	{		
         private ModelRelationshipInstance relationshipInstance;
         private ModelTypeClass predefinedTypeClass;
-        public <#= className + "Reference" #> (ModelRelationshipInstance relationshipReference, ModelTypeClass typeClass)
+        public <#= className + "Reference" #> (ModelRelationshipInstance relationshipReference, params ModelTypeClass[] typeClasses)
 		{
             relationshipInstance = relationshipReference;
-            if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType != typeClass)
-            {
-                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClass.Name),
-                "typeClass");
-            }
-            predefinedTypeClass = typeClass;
+			
+			foreach(var typeClass in typeClasses){
+				if (relationshipInstance.Object != null && relationshipInstance.Object.ObjectType == typeClass)
+				{
+					predefinedTypeClass = typeClass;					
+					return;
+				}
+			}
+
+			throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
+				ModelMessages.InvalidObjectType, relationshipInstance.Object.ObjectType.Name, typeClasses.First().Name),
+				"typeClass");			
+            
         }
 
         public override ObjectIdentifier Name
@@ -165,7 +171,7 @@ namespace <#=NamespaceName#>
                 }
                 else
                 {
-                    // when object is unresolved default to the predefined ModelTypClass
+                    // when object is `unresolved default to the predefined ModelTypClass
                     return predefinedTypeClass;
                 }
             }
@@ -347,11 +353,13 @@ namespace <#=NamespaceName#>
                         }
                         // For Peer and Hierarchical relationships where there is a single known return type instantiate the object
                         // directly instead of calling AdaptInstance.
-                        castExpression = string.Format(".Select(o => new {0}.{1}(o, {2}.{3}.TypeClass))",
+                        castExpression = string.Format(".Select(o => new {0}.{1}(o, {2}.{3}.TypeClass{4}))",
                             localoverride.ReturnTypeNamespace, 
                             localoverride.ReturnType, 
                             localoverride.InternalReturnTypeNamespace,
-                            localoverride.InternalReturnType);                  
+                            localoverride.InternalReturnType,
+							localoverride.AdditionalTypeClasses == null ? "" : string.Format(", {0}", localoverride.AdditionalTypeClasses)
+							);                  
                     }
                     else
                     {
@@ -403,7 +411,7 @@ namespace <#=NamespaceName#>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.<#=type.Name.ToLowerInvariant()#>.<#=relationship.Name.ToLowerInvariant()#>.aspx"><#=type.Name#>.<#=relationship.Name#></see>
 		/// <#=  "Relationship Type:" + relationship.Type #>
 		public IEnumerable<<#=returnType.ReturnTypeNamespace#>.<#=returnType.ReturnType#>> <#=relationship.Name #> 
-		{
+		{	
 			get 
 			{
 				return Element.<#=accessMethodName #>(<#=type.Name#>.<#=relationship.Name#>)<#=castExpression#>;

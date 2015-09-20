@@ -102,6 +102,7 @@ public class RelationshipOverride
 	public string ReturnType {get;set;}
     public string InternalReturnType {get; set;}
     public string InternalReturnTypeNamespace {get; set;}
+	public string AdditionalTypeClasses{ get; set;}
 	public string ReturnTypeNamespace {get; set;}
     public string UnresolvedReturnType{get; set;}
 	public bool Specialize {get; set;}
@@ -158,6 +159,8 @@ private static Dictionary<string, ModelEntry> LoadOverrides(string templateFile)
                 string internalReturnType = null;
 				bool adaptInstance = true;
 				var adaptInstanceAttribute = relationship.Attributes["AdaptInstance"];
+				string additionalTypeClasses = null;
+
 				if(adaptInstanceAttribute != null)
                 {
 					adaptInstance = bool.Parse(adaptInstanceAttribute.Value);
@@ -175,6 +178,12 @@ private static Dictionary<string, ModelEntry> LoadOverrides(string templateFile)
                     unresolvedReturnType = unresolvedReturnTypeNode.Value;
                 }
 
+				var additionalTypeClassesNode = relationship.Attributes["AdditionalTypeClasses"];
+				if(additionalTypeClassesNode != null)
+				{
+					additionalTypeClasses = additionalTypeClassesNode.Value;
+				}
+
 				modelEntry.RelationshipOverrides.Add(name, new RelationshipOverride() 
 					{ 
 						RelationshipName= name, //todo: allow overriding name
@@ -185,6 +194,7 @@ private static Dictionary<string, ModelEntry> LoadOverrides(string templateFile)
                         UnresolvedReturnType = unresolvedReturnType,
 						Specialize=bool.Parse(relationship.Attributes["Specialize"].Value),
 						AdaptInstance= adaptInstance,
+						AdditionalTypeClasses = additionalTypeClasses,
 					});
             }
 			else if(relationship.LocalName == "Property")
