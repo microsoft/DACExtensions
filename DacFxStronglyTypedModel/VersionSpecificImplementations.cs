@@ -99,11 +99,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql90TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -761,11 +761,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<System.Type> ISql90TSqlDataType.Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlDataType.Type 
 		{
 			get 
 			{
-				return this.Type;
+				return this.Type.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -916,11 +916,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql90TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 	}
@@ -3336,11 +3336,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> ISql90TSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql90TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -3463,6 +3463,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.AnsiNullsOn;}
 		}
+		Int64? ISql90TSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISql90TSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
+		Double? ISql90TSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
+		}
 		Boolean ISql90TSqlTable.IsReplicated 
 		{
 			get { return this.IsReplicated;}
@@ -3475,6 +3487,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISql90TSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISql90TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -3482,6 +3498,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Int32 ISql90TSqlTable.TextInRowSize 
 		{
 			get { return this.TextInRowSize;}
+		}
+		Int64? ISql90TSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 		Boolean ISql90TSqlTable.VardecimalStorageFormatEnabled 
 		{
@@ -3983,11 +4003,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql100TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -4800,11 +4820,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<System.Type> ISql100TSqlDataType.Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlDataType.Type 
 		{
 			get 
 			{
-				return this.Type;
+				return this.Type.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -4955,11 +4975,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql100TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 	}
@@ -8012,11 +8032,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql100TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -8164,9 +8184,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
+		Int64? ISql100TSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISql100TSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
 		Boolean? ISql100TSqlTable.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
+		}
+		Double? ISql100TSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
 		}
 		Boolean ISql100TSqlTable.IsReplicated 
 		{
@@ -8184,6 +8216,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISql100TSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISql100TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -8195,6 +8231,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Boolean ISql100TSqlTable.TrackColumnsUpdated 
 		{
 			get { return this.TrackColumnsUpdated;}
+		}
+		Int64? ISql100TSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 		Boolean ISql100TSqlTable.VardecimalStorageFormatEnabled 
 		{
@@ -8397,11 +8437,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> ISql100TSqlTableTypeColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql100TSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -9008,11 +9048,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISqlAzureTSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -9436,11 +9476,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<System.Type> ISqlAzureTSqlDataType.Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlDataType.Type 
 		{
 			get 
 			{
-				return this.Type;
+				return this.Type.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
 			}
 		}
 	}
@@ -9519,11 +9559,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISqlAzureTSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 	}
@@ -10373,11 +10413,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISqlAzureTSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -10427,6 +10467,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.AnsiNullsOn;}
 		}
+		Int64? ISqlAzureTSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISqlAzureTSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
+		Double? ISqlAzureTSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
+		}
 		Boolean ISqlAzureTSqlTable.LargeValueTypesOutOfRow 
 		{
 			get { return this.LargeValueTypesOutOfRow;}
@@ -10439,6 +10491,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISqlAzureTSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISqlAzureTSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -10446,6 +10502,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Int32 ISqlAzureTSqlTable.TextInRowSize 
 		{
 			get { return this.TextInRowSize;}
+		}
+		Int64? ISqlAzureTSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 
 		// Composing relationship		
@@ -10577,11 +10637,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> ISqlAzureTSqlTableTypeColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISqlAzureTSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -10951,11 +11011,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql110TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -11768,11 +11828,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<System.Type> ISql110TSqlDataType.Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlDataType.Type 
 		{
 			get 
 			{
-				return this.Type;
+				return this.Type.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -11923,11 +11983,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql110TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 	}
@@ -15067,11 +15127,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql110TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -15219,9 +15279,21 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
+		Int64? ISql110TSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISql110TSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
 		Boolean? ISql110TSqlTable.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
+		}
+		Double? ISql110TSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
 		}
 		Boolean ISql110TSqlTable.IsReplicated 
 		{
@@ -15239,6 +15311,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISql110TSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISql110TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -15250,6 +15326,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Boolean ISql110TSqlTable.TrackColumnsUpdated 
 		{
 			get { return this.TrackColumnsUpdated;}
+		}
+		Int64? ISql110TSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 		Boolean ISql110TSqlTable.VardecimalStorageFormatEnabled 
 		{
@@ -15562,11 +15642,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> ISql110TSqlTableTypeColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql110TSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -16383,11 +16463,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql120TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -17204,11 +17284,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<System.Type> ISql120TSqlDataType.Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlDataType.Type 
 		{
 			get 
 			{
-				return this.Type;
+				return this.Type.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -17359,11 +17439,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql120TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 	}
@@ -20535,11 +20615,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql120TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -20687,6 +20767,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
+		Int64? ISql120TSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISql120TSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
 		Durability ISql120TSqlTable.Durability 
 		{
 			get { return this.Durability;}
@@ -20694,6 +20782,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Boolean? ISql120TSqlTable.FileStreamNull 
 		{
 			get { return this.FileStreamNull;}
+		}
+		Double? ISql120TSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
 		}
 		Boolean ISql120TSqlTable.IsReplicated 
 		{
@@ -20715,6 +20807,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISql120TSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISql120TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -20726,6 +20822,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Boolean ISql120TSqlTable.TrackColumnsUpdated 
 		{
 			get { return this.TrackColumnsUpdated;}
+		}
+		Int64? ISql120TSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 		Boolean ISql120TSqlTable.VardecimalStorageFormatEnabled 
 		{
@@ -21051,11 +21151,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> ISql120TSqlTableTypeColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISql120TSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -21895,11 +21995,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISqlAzureV12TSqlColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -22540,11 +22640,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<System.Type> ISqlAzureV12TSqlDataType.Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlDataType.Type 
 		{
 			get 
 			{
-				return this.Type;
+				return this.Type.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
 			}
 		}
 	}
@@ -22627,11 +22727,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlClrTypeMethodParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISqlAzureV12TSqlClrTypeMethodParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 	}
@@ -24158,11 +24258,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlParameter.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISqlAzureV12TSqlParameter.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 
@@ -24216,6 +24316,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.ChangeTrackingEnabled;}
 		}
+		Int64? ISqlAzureV12TSqlTable.DataPages 
+		{
+			get { return this.DataPages;}
+		}
+		Double? ISqlAzureV12TSqlTable.DataSize 
+		{
+			get { return this.DataSize;}
+		}
+		Double? ISqlAzureV12TSqlTable.IndexSize 
+		{
+			get { return this.IndexSize;}
+		}
 		Boolean ISqlAzureV12TSqlTable.LargeValueTypesOutOfRow 
 		{
 			get { return this.LargeValueTypesOutOfRow;}
@@ -24228,6 +24340,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get { return this.QuotedIdentifierOn;}
 		}
+		Int64? ISqlAzureV12TSqlTable.RowCount 
+		{
+			get { return this.RowCount;}
+		}
 		Boolean ISqlAzureV12TSqlTable.TableLockOnBulkLoad 
 		{
 			get { return this.TableLockOnBulkLoad;}
@@ -24239,6 +24355,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		Boolean ISqlAzureV12TSqlTable.TrackColumnsUpdated 
 		{
 			get { return this.TrackColumnsUpdated;}
+		}
+		Int64? ISqlAzureV12TSqlTable.UsedPages 
+		{
+			get { return this.UsedPages;}
 		}
 		Boolean ISqlAzureV12TSqlTable.VardecimalStorageFormatEnabled 
 		{
@@ -24423,11 +24543,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		// Peer relationship		
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> ISqlAzureV12TSqlTableTypeColumn.DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> ISqlAzureV12TSqlTableTypeColumn.DataType 
 		{
 			get 
 			{
-				return this.DataType.Cast<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference>();
+				return this.DataType;
 			}
 		}
 

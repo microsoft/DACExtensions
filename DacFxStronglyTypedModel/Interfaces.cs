@@ -98,7 +98,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -640,7 +640,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<System.Type> Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> Type 
 		{
 			get;
 		}
@@ -767,7 +767,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -2899,7 +2899,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql90TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -2991,6 +2991,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
+		Double? IndexSize 
+		{
+			get;
+		}
 		Boolean IsReplicated 
 		{
 			get;
@@ -3003,11 +3015,19 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
 		}
 		Int32 TextInRowSize 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -3602,7 +3622,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -4231,7 +4251,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<System.Type> Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> Type 
 		{
 			get;
 		}
@@ -4358,7 +4378,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -6910,7 +6930,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -7023,7 +7043,19 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
 		Boolean? FileStreamNull 
+		{
+			get;
+		}
+		Double? IndexSize 
 		{
 			get;
 		}
@@ -7043,6 +7075,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
@@ -7052,6 +7088,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		Boolean TrackColumnsUpdated 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -7269,7 +7309,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql100TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -7834,7 +7874,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -8239,7 +8279,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<System.Type> Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> Type 
 		{
 			get;
 		}
@@ -8313,7 +8353,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -9523,7 +9563,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -9579,6 +9619,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
+		Double? IndexSize 
+		{
+			get;
+		}
 		Boolean LargeValueTypesOutOfRow 
 		{
 			get;
@@ -9591,11 +9643,19 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
 		}
 		Int32 TextInRowSize 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -9736,7 +9796,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureTSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -10149,7 +10209,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -10778,7 +10838,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<System.Type> Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> Type 
 		{
 			get;
 		}
@@ -10905,7 +10965,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -13459,7 +13519,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -13572,7 +13632,19 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
 		Boolean? FileStreamNull 
+		{
+			get;
+		}
+		Double? IndexSize 
 		{
 			get;
 		}
@@ -13592,6 +13664,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
@@ -13601,6 +13677,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		Boolean TrackColumnsUpdated 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -13830,7 +13910,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql110TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -14518,7 +14598,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -15151,7 +15231,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<System.Type> Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> Type 
 		{
 			get;
 		}
@@ -15278,7 +15358,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -17864,7 +17944,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -17977,11 +18057,23 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
 		Durability Durability 
 		{
 			get;
 		}
 		Boolean? FileStreamNull 
+		{
+			get;
+		}
+		Double? IndexSize 
 		{
 			get;
 		}
@@ -18005,6 +18097,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
@@ -18014,6 +18110,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		Boolean TrackColumnsUpdated 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -18252,7 +18352,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISql120TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -18936,7 +19036,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -19468,7 +19568,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<System.Type> Type 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> Type 
 		{
 			get;
 		}
@@ -19546,7 +19646,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -21181,7 +21281,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}
@@ -21241,6 +21341,18 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? DataPages 
+		{
+			get;
+		}
+		Double? DataSize 
+		{
+			get;
+		}
+		Double? IndexSize 
+		{
+			get;
+		}
 		Boolean LargeValueTypesOutOfRow 
 		{
 			get;
@@ -21253,6 +21365,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		{
 			get;
 		}
+		Int64? RowCount 
+		{
+			get;
+		}
 		Boolean TableLockOnBulkLoad 
 		{
 			get;
@@ -21262,6 +21378,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		Boolean TrackColumnsUpdated 
+		{
+			get;
+		}
+		Int64? UsedPages 
 		{
 			get;
 		}
@@ -21455,7 +21575,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 			get;
 		}
 		//Peer
-		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlAzureV12TSqlDataTypeReference> DataType 
+		IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get;
 		}

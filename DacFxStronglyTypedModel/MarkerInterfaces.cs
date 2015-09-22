@@ -1,4 +1,5 @@
-﻿//------------------------------------------------------------------------------
+﻿using Microsoft.SqlServer.Dac.Model;
+//------------------------------------------------------------------------------
 //<copyright company="Microsoft">
 //
 //    The MIT License (MIT)
@@ -119,6 +120,17 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
     {
         IEnumerable<TSqlDataCompressionOption> DataCompressionOptions { get; }
 
+    }
+
+    public interface ISqlDataType: ISqlModelElement
+    {        
+    }
+
+    public sealed class UnresolvedISqlDataTypeElement : TSqlModelElementReference, ISqlDataType
+    {
+        public UnresolvedISqlDataTypeElement(Model.ModelRelationshipInstance relationshipReference)
+            : base(relationshipReference)
+        { }
     }
 }
 

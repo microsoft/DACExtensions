@@ -834,14 +834,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.column.datatype.aspx">Column.DataType</see>
 		/// Relationship Type:Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> DataType 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get 
 			{
-				return Element.GetReferencedRelationshipInstances(Column.DataType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
+				return Element.GetReferencedRelationshipInstances(Column.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlDataTypeElement(ri)));
 			}
 		}
 
@@ -3626,7 +3626,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	///
 	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.aspx">DataType</see>
 	///
-	public partial class TSqlDataType : TSqlModelElement	{
+	public partial class TSqlDataType : TSqlModelElement,ISqlDataType	{
 		private static ModelTypeClass typeClass = DataType.TypeClass;
 
 		/// <summary>
@@ -3722,14 +3722,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		}
 
 		///
-		/// Peer relationship returning instances of <see cref=":T System.Type"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.datatype.type.aspx">DataType.Type</see>
 		/// Relationship Type:Peer
-		public IEnumerable<System.Type> Type 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> Type 
 		{
 			get 
 			{
-				return Element.GetReferencedRelationshipInstances(DataType.Type).Cast<System.Type>();
+				return Element.GetReferencedRelationshipInstances(DataType.Type).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
 			}
 		}
 
@@ -4388,14 +4388,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.clrtypemethodparameter.datatype.aspx">ClrTypeMethodParameter.DataType</see>
 		/// Relationship Type:Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> DataType 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get 
 			{
-				return Element.GetReferencedRelationshipInstances(ClrTypeMethodParameter.DataType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
+				return Element.GetReferencedRelationshipInstances(ClrTypeMethodParameter.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlDataTypeElement(ri)));
 			}
 		}
 
@@ -17515,14 +17515,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.parameter.datatype.aspx">Parameter.DataType</see>
 		/// Relationship Type:Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> DataType 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get 
 			{
-				return Element.GetReferencedRelationshipInstances(Parameter.DataType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
+				return Element.GetReferencedRelationshipInstances(Parameter.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlDataTypeElement(ri)));
 			}
 		}
 
@@ -18147,6 +18147,26 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
 
 		///
+		/// Property wrapper for <see cref="M:Table.DataPages"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.datapages.aspx">Table.DataPages</see>
+		///
+		public Int64? DataPages 
+		{
+			get { return Element.GetProperty<Int64?>(Table.DataPages);}
+		}
+
+
+		///
+		/// Property wrapper for <see cref="M:Table.DataSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.datasize.aspx">Table.DataSize</see>
+		///
+		public Double? DataSize 
+		{
+			get { return Element.GetProperty<Double?>(Table.DataSize);}
+		}
+
+
+		///
 		/// Property wrapper for <see cref="M:Table.Durability"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.durability.aspx">Table.Durability</see>
 		///
@@ -18163,6 +18183,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		public Boolean? FileStreamNull 
 		{
 			get { return Element.GetProperty<Boolean?>(Table.FileStreamNull);}
+		}
+
+
+		///
+		/// Property wrapper for <see cref="M:Table.IndexSize"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.indexsize.aspx">Table.IndexSize</see>
+		///
+		public Double? IndexSize 
+		{
+			get { return Element.GetProperty<Double?>(Table.IndexSize);}
 		}
 
 
@@ -18217,6 +18247,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
 
 		///
+		/// Property wrapper for <see cref="M:Table.RowCount"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.rowcount.aspx">Table.RowCount</see>
+		///
+		public Int64? RowCount 
+		{
+			get { return Element.GetProperty<Int64?>(Table.RowCount);}
+		}
+
+
+		///
 		/// Property wrapper for <see cref="M:Table.TableLockOnBulkLoad"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.tablelockonbulkload.aspx">Table.TableLockOnBulkLoad</see>
 		///
@@ -18243,6 +18283,16 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 		public Boolean TrackColumnsUpdated 
 		{
 			get { return Element.GetProperty<Boolean>(Table.TrackColumnsUpdated);}
+		}
+
+
+		///
+		/// Property wrapper for <see cref="M:Table.UsedPages"/>
+		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.table.usedpages.aspx">Table.UsedPages</see>
+		///
+		public Int64? UsedPages 
+		{
+			get { return Element.GetProperty<Int64?>(Table.UsedPages);}
 		}
 
 
@@ -18723,7 +18773,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	///
 	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletype.aspx">TableType</see>
 	///
-	public partial class TSqlTableType : TSqlModelElement,ISqlSecurable	{
+	public partial class TSqlTableType : TSqlModelElement,ISqlSecurable,ISqlDataType	{
 		private static ModelTypeClass typeClass = TableType.TypeClass;
 
 		/// <summary>
@@ -19182,14 +19232,14 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 
 
 		///
-		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference"/>
+		/// Peer relationship returning instances of <see cref=":T Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType"/>
 		/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.tabletypecolumn.datatype.aspx">TableTypeColumn.DataType</see>
 		/// Relationship Type:Peer
-		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference> DataType 
+		public IEnumerable<Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType> DataType 
 		{
 			get 
 			{
-				return Element.GetReferencedRelationshipInstances(TableTypeColumn.DataType).Select(o => new Microsoft.SqlServer.Dac.Extensions.Prototype.TSqlDataTypeReference(o, Microsoft.SqlServer.Dac.Model.DataType.TypeClass));
+				return Element.GetReferencedRelationshipInstances(TableTypeColumn.DataType).Select(o => (Microsoft.SqlServer.Dac.Extensions.Prototype.ISqlDataType)TSqlModelElement.AdaptInstance(o, (ri) => new Microsoft.SqlServer.Dac.Extensions.Prototype.UnresolvedISqlDataTypeElement(ri)));
 			}
 		}
 
@@ -20617,7 +20667,7 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 	///
 	/// <see href="http://msdn.microsoft.com/en-us/library/microsoft.sqlserver.dac.model.userdefinedtype.aspx">UserDefinedType</see>
 	///
-	public partial class TSqlUserDefinedType : TSqlModelElement,ISqlSecurable	{
+	public partial class TSqlUserDefinedType : TSqlModelElement,ISqlSecurable,ISqlDataType	{
 		private static ModelTypeClass typeClass = UserDefinedType.TypeClass;
 
 		/// <summary>

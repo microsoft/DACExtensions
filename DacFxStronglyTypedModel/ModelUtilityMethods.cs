@@ -973,6 +973,11 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					yield return TSqlRole.TypeClass;
 					yield return TSqlUser.TypeClass;
 					break;
+				case "ISqlDataType":
+					yield return TSqlDataType.TypeClass;
+					yield return TSqlTableType.TypeClass;
+					yield return TSqlUserDefinedType.TypeClass;
+					break;
 				case "ISqlIndex":
 					yield return TSqlColumnStoreIndex.TypeClass;
 					yield return TSqlIndex.TypeClass;
@@ -1240,6 +1245,41 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if(typeof(ISqlSecurable).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				// no interfaces mapped.
+				return false;
+			case "DataType":
+				if (typeof(TSqlDataType).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISql90TSqlDataType).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISql100TSqlDataType).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureTSqlDataType).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISql110TSqlDataType).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISql120TSqlDataType).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if (typeof(ISqlAzureV12TSqlDataType).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if(typeof(ISqlDataType).IsAssignableFrom(type))
 				{
 					return true;
 				}
@@ -2125,6 +2165,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 				{
 					return true;
 				}
+				else if(typeof(ISqlDataType).IsAssignableFrom(type))
+				{
+					return true;
+				}
 				// no interfaces mapped.
 				return false;
 			case "TableTypeCheckConstraint":
@@ -2401,6 +2445,10 @@ namespace Microsoft.SqlServer.Dac.Extensions.Prototype
 					return true;
 				}
 				else if(typeof(ISqlSecurable).IsAssignableFrom(type))
+				{
+					return true;
+				}
+				else if(typeof(ISqlDataType).IsAssignableFrom(type))
 				{
 					return true;
 				}

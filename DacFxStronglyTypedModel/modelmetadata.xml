@@ -84,7 +84,7 @@
   </Element>
   <Element Name="ClrTypeMethodParameter">
     <Property Name="Name" OverrideName="ParameterName"/>
-    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataTypeReference" />
+    <Relationship Name="DataType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlDataType"  UnresolvedReturnType="UnresolvedISqlDataTypeElement" />
   </Element>
   <Element Name="ClrTypeProperty">
     <Property Name="Name" OverrideName="PropertyName"/>
@@ -92,7 +92,8 @@
   </Element>
   <Element Name="Column">
     <Implements Name="ISqlSecurable"/>
-    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataTypeReference" />
+    <!-- While the DataType is modeled as ISqlDataType it is not true that all ISqlDataTypes are valid: TSqlTableTypes are not valid for columns references-->
+    <Relationship Name="DataType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlDataType"  UnresolvedReturnType="UnresolvedISqlDataTypeElement" />
     <Relationship Name="ExpressionDependencies" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlModelElementReference" UnresolvedReturnType="TSqlModelElementReference" />
     <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlXmlSchemaCollectionReference" />
   </Element>
@@ -148,8 +149,10 @@
   <Element Name="DataCompressionOption">
   </Element>
   <Element Name="DataType">
+    <Implements Name="ISqlDataType"/>
     <Relationship Name="Schema" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlSchemaReference" />
-    <Relationship Name="Type" Specialize="False" ReturnTypeNamespace="System" ReturnType="Type" />
+    <!-- For UserDefinedTypes, the Type releationship references the base data type. -->
+    <Relationship Name="Type" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataTypeReference" />
   </Element>
   <Element Name="Default">
     <Implements Name="ISqlSecurable"/>
@@ -285,7 +288,7 @@
     <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlXmlSchemaCollectionReference" />
   </Element>
   <Element Name="Parameter">
-    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataTypeReference" />
+    <Relationship Name="DataType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlDataType"  UnresolvedReturnType="UnresolvedISqlDataTypeElement" />
     <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlXmlSchemaCollectionReference" />
   </Element>
   <Element Name="PartitionFunction">
@@ -506,6 +509,7 @@
   </Element>
   <Element Name="TableType">
     <Implements Name="ISqlSecurable"/>
+    <Implements Name="ISqlDataType"/>
     <Relationship Name="Columns" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlTableTypeColumn" />
     <Relationship Name="Constraints" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ITableTypeConstraint" />
     <Relationship Name="Indexes" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlTableTypeIndex" />
@@ -516,7 +520,8 @@
     <Relationship Name="ExpressionDependencies" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlModelElementReference" UnresolvedReturnType="TSqlModelElementReference" />
   </Element>
   <Element Name="TableTypeColumn">
-    <Relationship Name="DataType" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlDataTypeReference" />
+    <!-- While the DataType is modeled as ISqlDataType it is not true that all ISqlDataTypes are valid: TSqlTableTypes are not valid for columns references-->
+    <Relationship Name="DataType" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlDataType" UnresolvedReturnType="UnresolvedISqlDataTypeElement" />
     <Relationship Name="ExpressionDependencies" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="ISqlModelElementReference" UnresolvedReturnType="TSqlModelElementReference" />
     <Relationship Name="XmlSchemaCollection" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlXmlSchemaCollectionReference" />
   </Element>
@@ -581,6 +586,7 @@
   </Element>
   <Element Name="UserDefinedType">
     <Implements Name="ISqlSecurable"/>
+    <Implements Name="ISqlDataType"/>
     <Relationship Name="Assembly" Specialize="True" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlAssemblyReference" />
     <Relationship Name="Methods" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlModelElement" />
     <Relationship Name="Properties" Specialize="False" ReturnTypeNamespace="Microsoft.SqlServer.Dac.Extensions.Prototype" ReturnType="TSqlModelElement" />
