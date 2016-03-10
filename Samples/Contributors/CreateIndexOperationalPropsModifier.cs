@@ -123,28 +123,40 @@ namespace Public.Dac.Samples.Contributors
                     break;
                 }
 
-                // We only care about CreateElementSteps for Indexes. 
-                CreateElementStep createElementStep = currentStep as CreateElementStep;
-                if (createElementStep != null
-                    && createElementStep.SourceElement != null
-                    && Index.TypeClass.Equals(createElementStep.SourceElement.ObjectType))
+                // We need to care about CreateElementSteps and AlterElementSteps for Indexes. 
+                DeploymentScriptDomStep domStep = currentStep as DeploymentScriptDomStep;
+                TSqlObject elementObject = null;
+
+                if (domStep is CreateElementStep)
                 {
-                    TSqlFragment fragment = createElementStep.Script;
+                    elementObject = ((CreateElementStep)domStep).SourceElement;
+                    
+                }
+                else if (domStep is AlterElementStep)
+                {
+                    elementObject = ((AlterElementStep)domStep).SourceElement;
+                }
 
-                    CreateIndexStatementVisitor visitor = new CreateIndexStatementVisitor(options);
-                    fragment.Accept(visitor);
+                if (elementObject != null)
+                {
+                    if (Index.TypeClass.Equals(elementObject.ObjectType) && !(View.TypeClass.Equals(elementObject.GetParent().ObjectType)))
+                    {
+                        TSqlFragment fragment = domStep.Script;
 
+                        IndexStatementVisitor visitor = new IndexStatementVisitor(options);
+                        fragment.Accept(visitor);
+                    }
                 }
             }
         }
 
         /// <summary>
-        /// A <see cref="TSqlConcreteFragmentVisitor"/> that updates the index options on a Create Index statement
+        /// A <see cref="TSqlConcreteFragmentVisitor"/> that updates the index options on a Create or Alter Index statement
         /// </summary>
-        private class CreateIndexStatementVisitor : TSqlConcreteFragmentVisitor
+        private class IndexStatementVisitor : TSqlConcreteFragmentVisitor
         {
             private readonly Dictionary<IndexOptionKind, IndexOption> _optionKindToOptionMap;
-            public CreateIndexStatementVisitor(IEnumerable<IndexOption> indexOptions)
+            public IndexStatementVisitor(IEnumerable<IndexOption> indexOptions)
             {
                 _optionKindToOptionMap = new Dictionary<IndexOptionKind, IndexOption>();
                 foreach (IndexOption option in indexOptions)
@@ -157,6 +169,24 @@ namespace Public.Dac.Samples.Contributors
             /// Add all options to the list of index options, overriding existing values if present
             /// </summary>
             public override void ExplicitVisit(CreateIndexStatement node)
+            {
+                IndexExplicitVisit(node);
+            }
+
+            /// <summary>
+            /// Add all options to the list of index options, overriding existing values if present
+            /// </summary>
+            public override void ExplicitVisit(AlterIndexStatement node)
+            {
+                IndexExplicitVisit(node);
+            }
+
+            /// <summary>
+            /// Cannot override the sealed method ExplicitIndex(IndexStatement node) in TSqlConcreteFragmentVisitor so working around that
+            /// with this method that the create and alter overrides can call.
+            /// </summary>
+            /// <param name="node">IndexStatement node to change options on</param>
+            private void IndexExplicitVisit(IndexStatement node)
             {
                 // IndexOptions is not expected to be null, since it can't be overridden
                 if (node.IndexOptions != null)
@@ -181,7 +211,7 @@ namespace Public.Dac.Samples.Contributors
                 }
             }
         }
-        
+
         private class OptionDefinition
         {
             private IndexOptionKind _kind;
