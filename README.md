@@ -69,6 +69,8 @@ Then copy them to the extension installation directory:
 * VS 2013: %ProgramFiles(x86)%\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\120\Extensions
 * VS 2012: %ProgramFiles(x86)%\Microsoft Visual Studio 11.0\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\120\Extensions
 
+##Code of Conduct
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 [msdn]:http://msdn.microsoft.com/en-us/library/dn268597(v=vs.103).aspx
 [dacfxturorial]:http://blogs.msdn.com/b/ssdt/archive/2013/12/23/dacfx-public-model-tutorial.aspx
