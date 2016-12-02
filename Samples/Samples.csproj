@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="CompositeFilter.cs" />
     <Compile Include="Contributors\CreateIndexOperationalPropsModifier.cs" />
+    <Compile Include="Contributors\AlterTableAlterColumnOnlineModifier.cs" />
     <Compile Include="Contributors\DefaultConstraintNameModifier.cs" />
     <Compile Include="Contributors\DeploymentStoppingContributor.cs" />
     <Compile Include="Contributors\DbLocationModifier.cs" />
