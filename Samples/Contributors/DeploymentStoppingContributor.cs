@@ -39,8 +39,8 @@ namespace Public.Dac.Samples.Contributors
     public class DeploymentStoppingContributor : DeploymentPlanModifier
     {
         public const string ContributorId = "Public.Dac.Samples.Contributors.DeploymentStoppingContributor";
-        public const string ErrorViaPublishMessage = "Canceling deployment 1!";
-        public const string ErrorViaThrownException = "Canceling deployment 2!";
+        public const string ErrorViaPublishMessage = "Data Motion Detected!";
+        public const string ErrorViaThrownException = "Data Motion Detected!";
 
         /// <summary>
         /// Iterates over the deployment plan to find the definition for 
@@ -48,11 +48,19 @@ namespace Public.Dac.Samples.Contributors
         /// <param name="context"></param>
         protected override void OnExecute(DeploymentPlanContributorContext context)
         {
-            // Publishing Severity.Error message blocks deployment
-            base.PublishMessage(new ExtensibilityError(ErrorViaPublishMessage, Severity.Error));
+            var planStep = context.PlanHandle.Head;
+            while (planStep != null)
+            {
+                if (planStep is SqlTableMigrationStep)
+                {
+                    // Publishing Severity.Error message blocks deployment
+                    base.PublishMessage(new ExtensibilityError(ErrorViaPublishMessage, Severity.Error));
 
-            // Alternatively throwing an exception will also block deployment
-            throw new DeploymentFailedException(ErrorViaThrownException);
+                    // Alternatively throwing an exception will also block deployment
+                    throw new DeploymentFailedException(ErrorViaThrownException);
+                }
+                planStep = planStep.Next;
+            }
         }
     }
 }

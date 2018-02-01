@@ -95,11 +95,25 @@ namespace Public.Dac.Sample.Tests
                     AdditionalDeploymentContributors = DeploymentStoppingContributor.ContributorId
                 };
 
+                // Deploy initial schema, should pass as no data motion
+                using (DacPackage dacpac = DacPackage.Load(_dacpacPath, DacSchemaModelStorageType.Memory))
+                {
+                    DacServices dacServices = new DacServices(TestUtils.ServerConnectionString);
+                    dacServices.Deploy(dacpac, dbName, false, options);
+                }
+
+                // Create schema that will cause data motion by adding column before existing one
+                using (TSqlModel model = new TSqlModel(SqlServerVersion.Sql110, null))
+                {
+                    model.AddObjects("CREATE TABLE [dbo].[t1] (motion int NOT NULL, c1 INT NOT NULL PRIMARY KEY)");
+                    DacPackageExtensions.BuildPackage(_dacpacPath, model, new PackageMetadata());
+                }
+
+                // Attempt to deploy and verify it fails as there's now data motion blocking it
                 using (DacPackage dacpac = DacPackage.Load(_dacpacPath, DacSchemaModelStorageType.Memory))
                 {
                     DacServices dacServices = new DacServices(TestUtils.ServerConnectionString);
 
-                    // Script then deploy, to support debugging of the generated plan
                     try
                     {
                         dacServices.GenerateDeployScript(dacpac, dbName, options);
@@ -113,9 +127,7 @@ namespace Public.Dac.Sample.Tests
                             "Expected thrown exception to block deployment");
                     }
                 }
-
-                // Also expect the deployment to fail
-                AssertDeployFailed(TestUtils.ServerConnectionString, dbName);
+                
             }
             finally
             {
