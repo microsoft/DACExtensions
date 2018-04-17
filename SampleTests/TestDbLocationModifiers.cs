@@ -149,7 +149,8 @@ namespace Public.Dac.Sample.Tests
                 options.ImportContributorArguments =
                     Utils.BuildContributorArguments(new Dictionary<string, string>()
                     {
-                    {DbLocationModifier.DbSaveLocationArg, dataFolder},
+                    {DbLocationModifier.DbSaveDataLocationArg, dataFolder},
+                    {DbLocationModifier.DbSaveLogDataLocationArg, dataFolder},
                     {DbLocationModifier.DbFilePrefixArg, filePrefix},
                     });
                 
@@ -184,7 +185,8 @@ namespace Public.Dac.Sample.Tests
             options.AdditionalDeploymentContributorArguments =
                 Utils.BuildContributorArguments(new Dictionary<string, string>()
                 {
-                    {DbLocationModifier.DbSaveLocationArg, dataFolder},
+                    {DbLocationModifier.DbSaveDataLocationArg, dataFolder},
+                    {DbLocationModifier.DbSaveLogDataLocationArg, dataFolder},
                     {DbLocationModifier.DbFilePrefixArg, filePrefix},
                 });
             return options;
