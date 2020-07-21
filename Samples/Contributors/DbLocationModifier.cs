@@ -77,22 +77,20 @@ namespace Public.Dac.Samples.Contributors
         /// </summary>
         /// <param name="context"></param>
         protected override void OnExecute(DeploymentPlanContributorContext context)
-        {     
-            
-
+        { 
             // Run only if a location is defined and we're targeting a serverless (LocalDB) instance
-                string datalocation, logdatalocation, filePrefix;
-            if (context.Arguments.TryGetValue(DbSaveDataLocationArg, out datalocation) 
-                && context.Arguments.TryGetValue(DbSaveLogDataLocationArg, out logdatalocation)
+            string datalocation, logdatalocation, filePrefix;
+            if (context.Arguments.TryGetValue(DbSaveDataLocationArg, out datalocation)                 
                 && context.Arguments.TryGetValue(DbFilePrefixArg, out filePrefix))
             {
+                logdatalocation = context.Arguments.TryGetValue(DbSaveLogDataLocationArg, out logdatalocation) ? logdatalocation : datalocation;
                 //Assuming the path for SQL Server on Linux starts with "/"
                 if (datalocation.StartsWith("/") && logdatalocation.StartsWith("/"))
                 {
 
                     if (TargetConnectionMatchesPattern(context))
                     {                        
-                        ChangeNewDatabaseLocation(context, datalocation, logdatalocation, filePrefix);
+                       ChangeNewDatabaseLocation(context, datalocation, logdatalocation, filePrefix);
                     }
                 }
                 else
