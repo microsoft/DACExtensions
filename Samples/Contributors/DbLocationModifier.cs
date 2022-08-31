@@ -52,9 +52,14 @@ namespace Public.Dac.Samples.Contributors
         public const string ContributorId = "Public.Dac.Samples.Contributors.DbLocationModifier";
 
         /// <summary>
-        /// Contributor argument defining the directory to save the MDF and LDF files for the database
+        /// Contributor argument defining the directory to save the MDF file for the database
         /// </summary>
-        public const string DbSaveLocationArg = "DbLocationModifier.SaveLocation";
+        public const string DbSaveDataLocationArg = "DbLocationModifier.SaveDataLocation";
+
+        /// <summary>
+        /// Contributor argument defining the directory to save the LDF file for the database
+        /// </summary>
+        public const string DbSaveLogDataLocationArg = "DbLocationModifier.SaveLogDataLocation";
 
         /// <summary>
         /// Contributor argument defining the prefix to use for the database files
@@ -72,16 +77,30 @@ namespace Public.Dac.Samples.Contributors
         /// </summary>
         /// <param name="context"></param>
         protected override void OnExecute(DeploymentPlanContributorContext context)
-        {
+        { 
             // Run only if a location is defined and we're targeting a serverless (LocalDB) instance
-            string location, filePrefix;
-            if (context.Arguments.TryGetValue(DbSaveLocationArg, out location)
+            string datalocation, logdatalocation, filePrefix;
+            if (context.Arguments.TryGetValue(DbSaveDataLocationArg, out datalocation)                 
                 && context.Arguments.TryGetValue(DbFilePrefixArg, out filePrefix))
             {
-                if (TargetConnectionMatchesPattern(context))
+                logdatalocation = context.Arguments.TryGetValue(DbSaveLogDataLocationArg, out logdatalocation) ? logdatalocation : datalocation;
+                //Assuming the path for SQL Server on Linux starts with "/"
+                if (datalocation.StartsWith("/") && logdatalocation.StartsWith("/"))
                 {
-                    location = new DirectoryInfo(location).FullName + "\\";
-                    ChangeNewDatabaseLocation(context, location, filePrefix);
+
+                    if (TargetConnectionMatchesPattern(context))
+                    {                        
+                       ChangeNewDatabaseLocation(context, datalocation, logdatalocation, filePrefix);
+                    }
+                }
+                else
+                {
+                    if (TargetConnectionMatchesPattern(context))
+                    {
+                        datalocation = new DirectoryInfo(datalocation).FullName + "\\";
+                        logdatalocation = new DirectoryInfo(logdatalocation).FullName + "\\";
+                        ChangeNewDatabaseLocation(context, datalocation, logdatalocation, filePrefix);
+                    }
                 }
             }
         }
@@ -98,7 +117,7 @@ namespace Public.Dac.Samples.Contributors
             return true;
         }
         
-        private void ChangeNewDatabaseLocation(DeploymentPlanContributorContext context, string location, string filePrefix)
+        private void ChangeNewDatabaseLocation(DeploymentPlanContributorContext context,  string datalocation, string logdatalocation, string filePrefix)
         {
             DeploymentStep nextStep = context.PlanHandle.Head;
 
@@ -129,9 +148,9 @@ namespace Public.Dac.Samples.Contributors
 
                             // Override setvars before the deployment begins
                             StringBuilder sb = new StringBuilder();
-                            sb.AppendFormat(":setvar DefaultDataPath \"{0}\"", location)
+                            sb.AppendFormat(":setvar DefaultDataPath \"{0}\"", datalocation)
                                 .AppendLine()
-                                .AppendFormat(":setvar DefaultLogPath \"{0}\"", location)
+                                .AppendFormat(":setvar DefaultLogPath \"{0}\"", logdatalocation)
                                 .AppendLine()
                                 .AppendFormat(":setvar DefaultFilePrefix \"{0}\"", filePrefix)
                                 .AppendLine();
