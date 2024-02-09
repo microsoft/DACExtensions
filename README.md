@@ -1,5 +1,9 @@
 # DACExtensions
 
+
+> [!IMPORTANT]  
+> This repository has been archived and the samples are no longer maintained.  The development of DacFx and SQL projects is active, including the areas of extensibility and code analysis as seen in this repository. We welcome your feedback and issue reports over at https://github.com/microsoft/dacfx.
+
 ## Project Description
 DACExtensions contains API extensions and samples using the [DacFx API](https://msdn.microsoft.com/en-us/library/dn645454.aspx) to develop Data-Tier Applications.
 
